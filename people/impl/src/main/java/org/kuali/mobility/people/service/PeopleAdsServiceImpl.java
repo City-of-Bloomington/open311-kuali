@@ -24,9 +24,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import edu.iu.uis.sit.util.directory.AdsPerson;
 
-public class AdsServiceImpl implements AdsService {
+public class PeopleAdsServiceImpl implements PeopleAdsService {
 	
-	private static org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(AdsServiceImpl.class);
+	private static org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(PeopleAdsServiceImpl.class);
 	
 	@Autowired
 	private ConfigParamService configParamService;
@@ -34,9 +34,9 @@ public class AdsServiceImpl implements AdsService {
 	private String adsUsername;
 	private String adsPassword;
 	private static AddressBookAdsHelper adsHelper;
-	private int defaultResultLimit;
+	private int defaultResultLimit; 
 	
-	public AdsServiceImpl() {
+	public PeopleAdsServiceImpl() {
 		this.defaultResultLimit = 75;
 	}
 	

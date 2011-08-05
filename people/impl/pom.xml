@@ -58,6 +58,12 @@
            	<groupId>net.sf.flexjson</groupId>
        	    <artifactId>flexjson</artifactId>
         </dependency> 
+        <!-- UIS Utilities dependencies -->
+		<dependency>
+			<groupId>uisutilities</groupId>
+			<artifactId>uisutilities</artifactId>
+			<version>2.2.5</version>
+		</dependency>
    		<!-- Testing dependencies -->
 		<dependency>
 			<groupId>org.mortbay.jetty</groupId>

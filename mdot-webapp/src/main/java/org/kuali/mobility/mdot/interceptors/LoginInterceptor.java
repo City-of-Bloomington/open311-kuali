@@ -9,14 +9,20 @@ import org.kuali.mobility.shared.Constants;
 import org.kuali.mobility.user.entity.User;
 import org.kuali.mobility.user.entity.UserImpl;
 import org.kuali.mobility.util.HttpUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
+import edu.iu.m.auth.AdsService;
 import edu.iu.uis.cas.filter.CASFilter;
+import edu.iu.uis.sit.util.directory.AdsPerson;
 
 public class LoginInterceptor implements HandlerInterceptor {
 
 	private static final org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(LoginInterceptor.class);
+	
+	@Autowired
+	private AdsService adsService;
 
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 		if (HttpUtil.needsAuthenticated(request.getServletPath())) {
@@ -37,6 +43,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 		return true;
 	}
 
+	@SuppressWarnings("unchecked")
 	private User login(HttpServletRequest request) {		
 		User user = (User) request.getSession(true).getAttribute(Constants.KME_USER_KEY);
 		if (user == null) {
@@ -44,8 +51,14 @@ public class LoginInterceptor implements HandlerInterceptor {
 			user.setUserId(CASFilter.getRemoteUser(request));
 			
 			// TODO: Get person attributes and set on User Object. Save to database.
-			
-			
+			try {
+				AdsPerson adsPerson = adsService.getAdsPerson(user.getUserId());
+				user.setAffiliations(adsPerson.getIuEduPersonAffiliation());
+				user.setGroups(adsPerson.getGroups());
+				user.setPrimaryCampus(adsPerson.getOu());
+			} catch (Exception e) {
+				LOG.error(e.getMessage(), e);
+			}
 			
 			request.getSession().setAttribute(Constants.KME_USER_KEY, user);
 			LOG.info("User id: " + user.getUserId() + " logging in."); 
@@ -58,5 +71,9 @@ public class LoginInterceptor implements HandlerInterceptor {
 
 	@Override
 	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception e) throws Exception {}
+
+	public void setAdsService(AdsService adsService) {
+		this.adsService = adsService;
+	}
 
 }

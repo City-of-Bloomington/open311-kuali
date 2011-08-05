@@ -15,6 +15,7 @@
 
 package org.kuali.mobility.user.entity;
 
+import java.util.List;
 import java.util.Map;
 
 public interface User {
@@ -23,9 +24,22 @@ public interface User {
     String getUserId();
     void setUserId(String userId);
     Map<String, String> getUserAttributes();
-    void setUserAttriebutes(Map<String, String> userAttributes);
+    void setUserAttributes(Map<String, String> userAttributes);
     String getUserAttribute(String key);
     void setUserAttribute(String key, String value);
     void removeUserAttribute(String key);
     
+    List<String> getGroups();
+    List<String> getAffiliations();
+    String getPrimaryCampus();
+    
+    void setGroups(List<String> groups);
+    void setAffiliations(List<String> affiliations);
+    void setPrimaryCampus(String primaryCampus);
+    
+    boolean isMember(String groupName);
+    boolean isStudent();
+    boolean isFaculty();
+    boolean isStaff();
+    boolean isAlumnus();
 }

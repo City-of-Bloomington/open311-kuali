@@ -19,10 +19,8 @@ import java.util.List;
 
 import edu.iu.uis.sit.util.directory.AdsPerson;
 
-public interface AdsService {
-
+public interface PeopleAdsService {
 	public AdsPerson getAdsPerson(String username) throws Exception;
 	public List<AdsPerson> getAdsPersons(String last, String first, String status, String campus, boolean isExactLastName, int resultLimit) throws Exception;
 	public int getResultLimit();
-	
 }

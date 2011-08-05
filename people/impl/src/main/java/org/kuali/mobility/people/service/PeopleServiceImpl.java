@@ -41,14 +41,14 @@ public class PeopleServiceImpl implements PeopleService {
 	private static org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(PeopleServiceImpl.class);
 	
 	@Autowired
-	private AdsService adsService;
+	private PeopleAdsService adsService;
 	
 	@Override
 	public List<Person> performSearch(Search search) {
 		List<Person> persons = null;
 		int resultLimit = adsService.getResultLimit();
 		try {
-			List<AdsPerson> adsPersons = this.getAdsService().getAdsPersons(search.getLastName(), search.getFirstName(), search.getStatus(), search.getLocation(), search.isExactLastName(), resultLimit);
+			List<AdsPerson> adsPersons = this.getPeopleAdsService().getAdsPersons(search.getLastName(), search.getFirstName(), search.getStatus(), search.getLocation(), search.isExactLastName(), resultLimit);
 //			int initialResultSize = adsPersons.size();
 			// Filtering will remove users that should not be displayed
 			this.filterAdsPersons(adsPersons);
@@ -236,11 +236,11 @@ public class PeopleServiceImpl implements PeopleService {
         return name.trim();
 	}
 
-	public AdsService getAdsService() {
+	public PeopleAdsService getPeopleAdsService() {
 		return adsService;
 	}
 
-	public void setAdsService(AdsService adsService) {
+	public void setPeopleAdsService(PeopleAdsService adsService) {
 		this.adsService = adsService;
 	}
 }

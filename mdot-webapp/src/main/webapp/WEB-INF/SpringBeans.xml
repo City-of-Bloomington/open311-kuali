@@ -53,7 +53,7 @@
         </property>
     </bean>
 	
-    <bean id="calendarEventOAuthService" class="edu.iu.es.espd.ccl.oauth.CalendarEventOAuthServiceImpl">
+     <bean id="calendarEventOAuthService" class="edu.iu.es.espd.ccl.oauth.CalendarEventOAuthServiceImpl">
         <property name="calendarRestURL" value="${calendar.oauth.baseUrl}/rest/" />
         <property name="providerPublicURL" value="${calendar.oauth.baseUrl}/session" />
         <property name="providerRequestTokenURL" value="${calendar.oauth.baseUrl}/oauth/request_token" />
@@ -80,22 +80,22 @@
     </bean>
      
     <bean class="org.kuali.mobility.knowledgebase.service.KnowledgeBaseServiceImpl">
-        <qualifier value="main"/>
         <!-- inject any dependencies required by this bean -->
 		<property name="username" value="${kb.username}" />
 		<property name="password" value="${kb.password}" />
     </bean>
     
     <bean class="org.kuali.mobility.email.service.IUEmailServiceImpl">
-        <qualifier value="main"/>
-        <!-- inject any dependencies required by this bean -->
 		<property name="username" value="${kerberos.username}" />
 		<property name="password" value="${kerberos.password}" />
     </bean>
     
-    <bean class="org.kuali.mobility.people.service.AdsServiceImpl">
-	    <qualifier value="main"/>
-        <!-- inject any dependencies required by this bean -->
+    <bean class="org.kuali.mobility.people.service.PeopleAdsServiceImpl">
+    	<property name="adsUsername" value="${ads.username}" />
+		<property name="adsPassword" value="${ads.password}" />
+    </bean>
+    
+    <bean class="edu.iu.m.auth.AdsServiceImpl">
 	    <property name="adsUsername" value="${ads.username}" />
 		<property name="adsPassword" value="${ads.password}" />
 	</bean>

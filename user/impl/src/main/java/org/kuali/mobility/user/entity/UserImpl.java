@@ -17,7 +17,10 @@ package org.kuali.mobility.user.entity;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.persistence.Column;
@@ -70,8 +73,19 @@ public class UserImpl implements User, Serializable {
     @Transient
     private Map<String, String> userAttributes;
     
+    @Transient
+    private String primaryCampus;
+    
+    @Transient
+    private List<String> groups;
+    
+    @Transient
+    private List<String> affiliations;
+    
     public UserImpl() {
     	userAttributes = new HashMap<String, String>();
+    	groups = new ArrayList<String>();
+    	affiliations = new ArrayList<String>();
     }
 
     public Long getGuid() {
@@ -152,7 +166,7 @@ public class UserImpl implements User, Serializable {
 	}
 
 	@Override
-	public void setUserAttriebutes(Map<String, String> userAttributes) {
+	public void setUserAttributes(Map<String, String> userAttributes) {
 		this.userAttributes = userAttributes;
 	}
 
@@ -171,5 +185,58 @@ public class UserImpl implements User, Serializable {
 		userAttributes.remove(key);
 	}
 
+	@Override
+	public String getPrimaryCampus() {
+		return primaryCampus;
+	}
 
+	@Override
+	public void setPrimaryCampus(String primaryCampus) {
+		this.primaryCampus = primaryCampus;
+	}
+
+	@Override
+	public List<String> getGroups() {
+		return Collections.unmodifiableList(groups);
+	}
+
+	@Override
+	public List<String> getAffiliations() {
+		return Collections.unmodifiableList(affiliations);
+	}
+
+	@Override
+	public boolean isMember(String groupName) {
+		return groups.contains(groupName);
+	}
+
+	@Override
+	public boolean isStudent() {
+		return affiliations.contains("Enrolled");
+	}
+
+	@Override
+	public boolean isFaculty() {
+		return affiliations.contains("Faculty");
+	}
+
+	@Override
+	public boolean isStaff() {
+		return affiliations.contains("Staff");
+	}
+
+	@Override
+	public boolean isAlumnus() {
+		return affiliations.contains("Alimni");
+	}
+
+	@Override
+	public void setGroups(List<String> groups) {
+		this.groups = groups;
+	}
+
+	@Override
+	public void setAffiliations(List<String> affiliations) {
+		this.affiliations = affiliations;
+	}
 }
