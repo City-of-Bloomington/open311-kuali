@@ -59,12 +59,6 @@ public class UserImpl implements User, Serializable {
     
     @Column(name="CAMPUS")
     private String campus;
-
-    @Column(name="DEVICE_ID")
-    private String deviceId;
-
-    @Column(name="CAS_PAIR_DATE")
-    private Timestamp pairDate;
     
     @Version
     @Column(name="VER_NBR")
@@ -144,22 +138,6 @@ public class UserImpl implements User, Serializable {
         this.versionNumber = versionNumber;
     }
 
-    public String getDeviceId() {
-        return deviceId;
-    }
-
-    public void setDeviceId(String deviceId) {
-        this.deviceId = deviceId;
-    }
-
-    public Timestamp getPairDate() {
-        return pairDate;
-    }
-
-    public void setPairDate(Timestamp pairDate) {
-        this.pairDate = pairDate;
-    }
-
 	@Override
 	public Map<String, String> getUserAttributes() {		
 		return userAttributes;
@@ -227,7 +205,7 @@ public class UserImpl implements User, Serializable {
 
 	@Override
 	public boolean isAlumnus() {
-		return affiliations.contains("Alimni");
+		return affiliations.contains("Alumni");
 	}
 
 	@Override

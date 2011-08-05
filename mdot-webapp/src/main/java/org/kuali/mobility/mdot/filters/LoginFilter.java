@@ -31,7 +31,7 @@ public class LoginFilter extends CASFilter {
 
 	public void doFilter(final ServletRequest request, final ServletResponse response, final FilterChain chain) throws IOException, ServletException {
 		final HttpServletRequest hrequest = (HttpServletRequest) request;
-		if (HttpUtil.needsAuthenticated(hrequest.getServletPath())) {
+		if (HttpUtil.needsAuthenticated(hrequest.getServletPath()) || "yes".equals(hrequest.getParameter("login"))) {
 			super.doFilter(request, response, chain);
 		} else {
 			chain.doFilter(request, response);

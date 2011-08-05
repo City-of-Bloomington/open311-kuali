@@ -15,15 +15,18 @@
  
 package org.kuali.mobility.mdot.controllers;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.kuali.mobility.mdot.entity.Backdoor;
 import org.kuali.mobility.mdot.entity.HomeScreen;
 import org.kuali.mobility.mdot.entity.Tool;
 import org.kuali.mobility.shared.Constants;
+import org.kuali.mobility.user.entity.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,6 +44,23 @@ public class HomeController {
     	return "index";
     }
 
+    @RequestMapping(value = "logout", method = RequestMethod.GET)
+    public String logout(HttpServletRequest request, Model uiModel) {      
+    	return "logout";
+    }
+
+    @RequestMapping(value = "yesLogout", method = RequestMethod.GET)
+    public void fullLogout(HttpServletRequest request, HttpServletResponse response, Model uiModel) {      
+    	request.getSession().setAttribute(Constants.KME_USER_KEY, null);
+    	request.getSession().setAttribute(Constants.KME_BACKDOOR_USER_KEY, null);
+    	request.getSession().removeAttribute("edu.iu.uis.cas.filter.CASAuthenticationMap");
+    	try {
+			response.sendRedirect("https://cas-test.iu.edu/cas/logout");
+		} catch (IOException e) {
+			LOG.error(e.getMessage(), e);
+		}
+    }
+
     /*
     @RequestMapping(value = "home.json", method = RequestMethod.GET, headers = "Accept=application/json")
     @ResponseBody
@@ -51,6 +71,7 @@ public class HomeController {
 
     private HomeScreen buildHomeScreen(HttpServletRequest request) {
     	
+    	User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
     	Backdoor backdoor = (Backdoor) request.getSession().getAttribute(Constants.KME_BACKDOOR_USER_KEY);
     	 
     	HomeScreen home = new HomeScreen();
@@ -94,7 +115,7 @@ public class HomeController {
     	tool.setDescription("Never miss an IU Bloomington campus bus again.");
     	tool.setIconUrl("images/service-icons/srvc-bus.png");
     	tool.setTitle("Bus Schedules");
-    	tool.setUrl("bus");
+    	tool.setUrl("http://iub.doublemap.com/map/mobile");
     	tools.add(tool);
 
     	tool = new Tool();
@@ -224,7 +245,22 @@ public class HomeController {
     	tool.setTitle("Jaguar Athletics");
     	tool.setUrl("http://www.iupuijags.com");
     	tools.add(tool);
-    	
+
+    	tool = new Tool();
+    	tool.setBadgeCount("");
+    	if (user == null) {
+	    	tool.setDescription("Log in to Mobile CAS.");
+	    	tool.setIconUrl("images/service-icons/srvc-feedback.png");
+	    	tool.setTitle("Login");
+	    	tool.setUrl("home?login=yes");
+    	} else {
+	    	tool.setDescription("Log out out of Mobile CAS.");
+	    	tool.setIconUrl("images/service-icons/srvc-feedback.png");
+	    	tool.setTitle("Logout");
+	    	tool.setUrl("logout");
+    	}
+    	tools.add(tool);
+ 	
     	home.setTools(tools);
     	
     	return home;
