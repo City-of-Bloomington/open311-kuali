@@ -28,22 +28,25 @@
 			<h1>Invite</h1>
 			<c:choose>
 				<c:when test="${referer eq 'pending'}">
-					<a href="${pageContext.request.contextPath}/calendar/pendingMeetings" class="ui-btn-left" data-ajax="false">meetings</a>
+					<a href="${pageContext.request.contextPath}/calendar/pendingMeetings" data-icon="back" data-iconpos="notext">meetings</a>
 				</c:when>
 				<c:otherwise>
-					<a href="${pageContext.request.contextPath}/calendar/event?eventId=${invite.eventId}&date=${date}&occurrenceId=${occurrenceId}" class="ui-btn-left" data-ajax="false">view event</a>
+					<a href="${pageContext.request.contextPath}/calendar/event?eventId=${invite.eventId}&date=${date}&occurrenceId=${occurrenceId}" data-icon="back" data-iconpos="notext" data-ajax="false">view event</a>
 				</c:otherwise>
 			</c:choose>
-			<a href="${pageContext.request.contextPath}/calendar/options" class="ui-btn-right">options</a>
+			<a href="${pageContext.request.contextPath}/home" data-icon="home" data-iconpos="notext">home</a>
 		</div>
 		<div data-role="content">
-			<ul data-role="listview" data-theme="g">
-				<li>
-					<h3 style="white-space: normal">
+		
+		 <h3 style=" margin-top:0px">Event Details</h3>
+		
+		
+		  <ul data-role="listview" data-theme="c" data-inset="true">
+    		<li>
+      			<h4 class="wrap"">
 						<c:out value="${invite.title}" />
-					</h3>
-					<p style="white-space: normal">
-						<c:choose>
+					</h4>
+     			  <p class="wrap"><c:choose>
 							<c:when test="${invite.allDay}">
 								<c:out value="${invite.start}" /> all day
 							</c:when>
@@ -52,61 +55,80 @@
 								-
 								<c:out value="${invite.end}" />
 							</c:otherwise>
-						</c:choose>
-					</p></li>
-				<c:if test="${not empty invite.recurrenceMessage}">
-					<li>
-						<h3>Recurrence</h3>
-						<p style="white-space: normal">
+						</c:choose></p> 
+     			 <c:if test="${not empty invite.recurrenceMessage}">
+					
+						<h4>Recurrence</h4>
+						<p class="wrap"">
 							<c:out value="${invite.recurrenceMessage}" />
-						</p></li>
+						</p>
 				</c:if>
-				<li>
-					<h3>Host</h3>
-					<p>
-						<c:out value="${invite.hostName}" />
-					</p></li>
-				<li>
-					<h3>Accepted</h3> <c:forEach var="accepted" items="${invite.acceptedAttendees}">
-						<p>
+    			  <h4>Host</h4>
+      			   <p class="wrap"><c:out value="${invite.hostName}" /></p>
+    		</li>
+   
+  			</ul>
+		
+		
+		
+<div data-role="collapsible" data-collapsed="true">
+    <h3>Accepted</h3>
+   
+<c:forEach var="accepted" items="${invite.acceptedAttendees}">
+						
 							<c:out value="${accepted.name}" />
-						</p>
-					</c:forEach></li>
-				<li>
-					<h3>Tentative</h3> <c:forEach var="tentative" items="${invite.tentativeAttendees}">
-						<p>
+						<br />
+					</c:forEach>
+
+  </div>
+  <div data-role="collapsible" data-collapsed="true">
+    <h3>Tentative</h3>
+
+<c:forEach var="tentative" items="${invite.tentativeAttendees}">
+					
 							<c:out value="${tentative.name}" />
-						</p>
-					</c:forEach></li>
-				<li>
-					<h3>Declined</h3> <c:forEach var="declined" items="${invite.declinedAttendees}">
-						<p>
+						<br />
+					</c:forEach>
+ 
+  </div>
+  <div data-role="collapsible" data-collapsed="true">
+    <h3>Declined</h3>
+    
+       <c:forEach var="declined" items="${invite.declinedAttendees}">
+					
 							<c:out value="${declined.name}" />
-						</p>
-					</c:forEach></li>
-				<li>
-					<h3>No Reply</h3> <c:forEach var="noReply" items="${invite.noReplyAttendees}">
-						<p>
+							<br />
+					</c:forEach>
+    
+  </div>
+  <div data-role="collapsible" data-collapsed="true">
+    <h3>Awaiting Reply</h3>
+   
+      <c:forEach var="noReply" items="${invite.noReplyAttendees}">
+					
 							<c:out value="${noReply.name}" />
-						</p>
-					</c:forEach></li>
-			</ul>
-			<br />
+						<br />
+					</c:forEach>
+    
+  </div>
+		
+		
+
 		</div>
-		<div data-role="footer" data-id="events-footer" data-position="fixed" role="contentinfo" data-theme="b">
-			<div data-role="controlgroup" data-type="horizontal">
+		<div data-role="footer" class="ui-bar" data-position="fixed" data-theme="b">
+			
 				<c:choose>
 					<c:when test="${invite.cancelation}">
-						<a href="${pageContext.request.contextPath}/calendar/meetingAction?eventId=${invite.eventId}&type=R&occurrenceId=${occurrenceId}&occurrenceDate=${date}&referer=${referer}" data-role="button" data-ajax="false">delete</a>
-						<a href="${pageContext.request.contextPath}/calendar/meetingAction?eventId=${invite.eventId}&type=K&occurrenceId=${occurrenceId}&occurrenceDate=${date}&referer=${referer}" data-role="button" data-ajax="false">keep</a>
+						<a href="${pageContext.request.contextPath}/calendar/meetingAction?eventId=${invite.eventId}&type=R&occurrenceId=${occurrenceId}&occurrenceDate=${date}&referer=${referer}" data-role="button" data-icon="delete" data-ajax="false">Delete</a>
+						<a href="${pageContext.request.contextPath}/calendar/meetingAction?eventId=${invite.eventId}&type=K&occurrenceId=${occurrenceId}&occurrenceDate=${date}&referer=${referer}" data-role="button" data-icon="check"data-ajax="false">Keep</a>
 					</c:when>
 					<c:otherwise>
-						<a href="${pageContext.request.contextPath}/calendar/meetingAction?eventId=${invite.eventId}&type=A&occurrenceId=${occurrenceId}&occurrenceDate=${date}&referer=${referer}" data-role="button" data-ajax="false">accept</a>
-						<a href="${pageContext.request.contextPath}/calendar/meetingAction?eventId=${invite.eventId}&type=T&occurrenceId=${occurrenceId}&occurrenceDate=${date}&referer=${referer}" data-role="button" data-ajax="false">tentative</a>
-						<a href="${pageContext.request.contextPath}/calendar/meetingAction?eventId=${invite.eventId}&type=D&occurrenceId=${occurrenceId}&occurrenceDate=${date}&referer=${referer}" data-role="button" data-ajax="false">decline</a>
+						<a href="${pageContext.request.contextPath}/calendar/meetingAction?eventId=${invite.eventId}&type=A&occurrenceId=${occurrenceId}&occurrenceDate=${date}&referer=${referer}" data-role="button" data-icon="check" data-ajax="false">Accept</a>
+						<a href="${pageContext.request.contextPath}/calendar/meetingAction?eventId=${invite.eventId}&type=T&occurrenceId=${occurrenceId}&occurrenceDate=${date}&referer=${referer}" data-role="button" data-icon="question" data-ajax="false">Tentative</a>
+						<a href="${pageContext.request.contextPath}/calendar/meetingAction?eventId=${invite.eventId}&type=D&occurrenceId=${occurrenceId}&occurrenceDate=${date}&referer=${referer}" data-role="button" data-icon="delete" data-ajax="false">Decline</a>
 					</c:otherwise>
 				</c:choose>
-			</div>
+			
 		</div>
 	</div>
 	<!-- /page -->

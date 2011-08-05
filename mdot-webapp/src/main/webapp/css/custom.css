@@ -190,7 +190,7 @@
 	font-family: Helvetica, Arial, sans-serif;
 }
 .ui-body-c {
-	border: 1px solid #B3B3B3;
+	/* [disabled]border: 1px solid #B3B3B3; */
 	color: #333333;
 	text-shadow: 0 1px 0 #fff;
 	background: #f0f0f0;
@@ -639,6 +639,11 @@ div#home span.dl-dt-count {
 	background: url(images/icon-disclosure-gps-18.png);
 	background-color:#939393
 }
+
+
+.ui-icon-question { background: url(images/icon-disclosure-question-18.png), rgba(0,0,0,.4);
+	}
+
 /* Horizontal Tabs
 -----------------------------------------------------------------------------------------------------------*/
 
@@ -662,7 +667,7 @@ div#home span.dl-dt-count {
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
 	top:50px;
-	width:100%;
+	width:98%;
 	text-align:center;
 	text-decoration:none;
 	text-shadow: 1px 1px 1px #000000;
@@ -711,4 +716,27 @@ div.ui-body-b {
 }
 div.ui-body-b {
 	background-color: #E6E6E6 !important;
+}
+
+
+/* Error Messaging
+-----------------------------------------------------------------------------------------------------------*/
+
+
+div.error span {
+	color: #900;
+	background: #FCC url(images/icon-visualaid-error-16.png) no-repeat 12px;
+	display:block;
+	padding:12px 12px 12px 32px;
+	margin-top:10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+}
+
+/* Misc Stuff
+-----------------------------------------------------------------------------------------------------------*/
+
+.wrap {
+	white-space:normal;
 }

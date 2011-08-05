@@ -38,9 +38,21 @@
 	
 	
 
-<%--<div align="center"><b><c:out value="${viewData.title}"/></b><br/><br/></div>--%>
+
 
   <div class="tabs-panel2" name="tabs-panel2">
+  
+  
+  
+  <div class="container_12" style="margin-bottom:22px">
+         <div class="grid_6"><a href="${pageContext.request.contextPath}/calendar/listEvents?date=${selectedDate}&beginDate=${previousDate}&endDate=${currentEndDate}" >&lt; <c:out value="${days}"/> previous</a></div>
+        <div class="grid_6" align="right"><c:out value="${viewData.title}"/></div>
+      </div>
+  
+  
+  
+  
+  
   
   <c:if test="${not empty filter}">Filtered by: ${filter.filterName}<br/><br/></c:if>
           <ul data-role="listview" data-theme="c"  data-dividertheme="d"  data-inset="false">
@@ -58,14 +70,13 @@
    
     </ul>
 
-
+      <div  style="padding-top:20px" align="right">
+       
+       <a href="${pageContext.request.contextPath}/calendar/listEvents?date=${selectedDate}&beginDate=${beginDate}&endDate=${endDate}" ><c:out value="${days}"/> More &gt;</a>
+      </div>
 
             
-            
-             <div class="container_12" style="padding-top:20px">
-      <div class="grid_6"><a href="${pageContext.request.contextPath}/calendar/listEvents?date=${selectedDate}&beginDate=${previousDate}&endDate=${currentEndDate}" data-role="button" data-icon="arrow-l" data-theme="a"><c:out value="${days}"/> prev</a></div>
-      <div class="grid_6"><a href="${pageContext.request.contextPath}/calendar/listEvents?date=${selectedDate}&beginDate=${beginDate}&endDate=${endDate}" data-role="button" data-icon="arrow-r" data-theme="a" data-iconpos="right"><c:out value="${days}"/> future</a></div>
-    </div>
+           
     
 
   </div>

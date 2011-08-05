@@ -31,8 +31,9 @@
 
 <body>
 <div data-role="page" id="Calendar-Events-edit">
-  <div data-role="header">
-    <h1>Event</h1><a href="${pageContext.request.contextPath}/calendar/options" class="ui-btn-right">options</a>
+  <div data-role="header"><a href="${pageContext.request.contextPath}/calendar/options" data-icon="back" data-iconpos="notext">options</a>
+    <h1>Event</h1>
+    <a href="${pageContext.request.contextPath}/home" data-icon="home" data-iconpos="notext">home</a>
   </div>
   <div data-role="content" >
     <form:form action="${pageContext.request.contextPath}/calendar/selectFilter" commandName="filter" data-ajax="false">

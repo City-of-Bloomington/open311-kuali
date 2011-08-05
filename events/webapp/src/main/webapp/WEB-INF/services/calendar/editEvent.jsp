@@ -70,11 +70,11 @@
         <fieldset>
             <label for="title">Title</label>
             <form:input path="title" cssClass="text ui-widget-content ui-corner-all" />
-            <form:errors path="title" />
+             <div class="error"><form:errors path="title" /></div>
                         <br/>
             <label for="location">Location</label>
             <form:input path="location"  cssClass="text ui-widget-content ui-corner-all" />
-            <form:errors path="location" />
+             <div class="error"><form:errors path="location" /></div>
             <br/>
             
             <fieldset data-role="controlgroup" class="temp-checkbox-hack">
@@ -85,7 +85,7 @@
             </fieldset>
             <label for="startDate">Start Date</label>
             <form:input path="startDate"  cssClass="genField textEntry date" data-role="datebox" data-options='{"useDialogForceFalse": true, "dateFormat": "MM/DD/YYYY"}'/>
-            <form:errors path="startDate" />
+             <div class="error"><form:errors path="startDate" /></div>
             <br/>
             <c:choose>
                 <c:when test="${event.allDay}">
@@ -101,7 +101,7 @@
                 <br/>
                 <label for="endDate">End Date</label>
                 <form:input path="endDate"  cssClass="text ui-widget-content ui-corner-all" data-role="datebox" data-options='{"useDialogForceFalse": true, "dateFormat": "MM/DD/YYYY"}'/>
-                <form:errors path="endDate" />
+                 <div class="error"><form:errors path="endDate" /></div>
                 <br/>
                  <label for="endTime">End Time</label>
                 <form:input path="endTime"  cssClass="text ui-widget-content ui-corner-all" data-role="datebox" data-options='{"mode": "timebox", "timeFormat":12}' />
@@ -113,24 +113,24 @@
             	<form:option value="" label="No Category" data-placeholder="true"/>
             	<form:options items="${event.defaultCategories}"/>
             </form:select>
-            <form:errors path="categories" />
+             <div class="error"><form:errors path="categories" /></div>
             <br/>
             <label for="showAs">Show As</label>
              <form:select path="showAs"  cssClass="ui-widget-content ui-corner-all" data-native-menu="false">
                 <form:option value="BUSY" label="Busy" />
                 <form:option value="FREE" label="Free" />
-            </form:select><form:errors path="showAs" />
+            </form:select> <div class="error"><form:errors path="showAs" /></div>
             <br/>
             <label for="sharing">Sharing</label>
             <form:select path="sharing"  cssClass="ui-widget-content ui-corner-all" data-native-menu="false">
                 <form:option value="PUBLIC" label="Public" />
                 <form:option value="PRIVATE" label="Private" />
                 <form:option value="CONFIDENTIAL" label="Confidential" />
-            </form:select><form:errors path="sharing" />
+            </form:select> <div class="error"><form:errors path="sharing" /></div>
             <br/>
             <label for="description">Description</label>
             <form:textarea path="description" />
-            <form:errors path="description" />
+             <div class="error"><form:errors path="description" /></div>
             <br/>
             
             <c:if test="${empty seriesId}">
@@ -157,12 +157,12 @@
 	    	        <form:radiobutton path="recurrenceType" value="WEEKLY2" label="Every 2 Weeks" />
 	                <form:radiobutton path="recurrenceType" value="MONTHLY" label="Every Month" />
 	                <form:radiobutton path="recurrenceType" value="YEARLY" label="Every Year"/>
-	                <form:errors path="recurrenceType" />
+	                 <div class="error"><form:errors path="recurrenceType" /></div>
                 </fieldset>
                 <br/>
                 <label for="recurrenceUntilDate">Repeat Until Date</label>
             	<form:input path="recurrenceUntilDate"  cssClass="text ui-widget-content ui-corner-all" data-role="datebox" data-options='{"useDialogForceFalse": true, "dateFormat": "MM/DD/YYYY"}'/>
-            	<form:errors path="recurrenceUntilDate" /><br/>
+            	 <div class="error"><form:errors path="recurrenceUntilDate" /></div><br/>
             </c:if>
             
             <br/>
@@ -171,7 +171,7 @@
             	<form:option value="NONE" label="Choose delivery" data-placeholder="true"/>
             	<form:option value="EMAIL" label="Email Address" />
             	<form:option value="SMS" label="SMS" />
-            </form:select><form:errors property="remindBy" />
+            </form:select> <div class="error"><form:errors property="remindBy" /></div>
             <br/>
             <label for="reminder">Send Reminder</label>
             <form:select path="reminder"  cssClass="ui-widget-content ui-corner-all" data-native-menu="false">
@@ -187,11 +187,11 @@
                 <form:option value="172800000" label="2 Days before event" />
                 <form:option value="604800000" label="1 Week before event" />
                 <form:option value="1209600000" label="2 Weeks before event" />
-            </form:select><form:errors property="reminder" />
+            </form:select> <div class="error"><form:errors property="reminder" /></div>
             <br/>
             <label for="invitations">Invite</label>
             <form:textarea path="invitations" />
-            <form:errors path="invitations" />
+             <div class="error"><form:errors path="invitations" /></div>
             <br/>
         </fieldset>
         <input data-theme="a" name="save" type="submit" value="Save"  />

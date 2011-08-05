@@ -29,10 +29,10 @@
 		calendarSelectedMonthYear = ${monthYear};
 	</script>
 	<div data-role="page" id="Calendar-Events">
-		<div data-role="header">
-			<h1>Pending Meetings</h1>
-			<a href="${pageContext.request.contextPath}/calendar/month" class="ui-btn-left" data-direction="reverse" data-transition="slide" data-ajax="false">view calendar</a> <a href="${pageContext.request.contextPath}/calendar/options" class="ui-btn-right">options</a>
-		</div>
+  <div data-role="header"><a href="${pageContext.request.contextPath}/calendar/options" data-icon="back" data-iconpos="notext">options</a>
+    <h1>Pending Meetings</h1>
+    <a href="${pageContext.request.contextPath}/home" data-icon="home" data-iconpos="notext">home</a>
+  </div>
 		<!-- /header -->
 		<div data-role="content">
 			<ul data-role="listview" data-theme="g">
