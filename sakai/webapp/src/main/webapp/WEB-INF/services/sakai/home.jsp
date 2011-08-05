@@ -96,7 +96,7 @@
 		    </script>
 		    
 		    <div style="margin:10px 0 0 -15px; position:absolute; top:40px; width:100%;">
-		        <c:if test="${!empty home.courses}">
+		        <c:if test="${!empty home.courses && home.showTodayTab}">
                     <a style="float:left; padding:9px 1%; color:#999999; -moz-box-shadow:0 -1px 1px #AAAAAA; -webkit-box-shadow:0 -1px 1px #AAAAAA; box-shadow:0 -1px 1px #AAAAAA; border-radius:10px 10px 0 0; background-color:#CCCCCC; top:50px; width:${(100/tabCount)-2}%; text-align:center; text-decoration:none;" id="todayTab" name="todayTab" href="#">Today</a>
                 </c:if>
 			    <c:if test="${!empty home.courses}">
@@ -111,7 +111,7 @@
             </div>
             
             <c:choose>
-                <c:when test="${!empty home.courses}">
+                <c:when test="${!empty home.courses && home.showTodayTab}">
                     <script type="text/javascript">
                     $(window).load(function () {
                         $('#todayTab').css('background-color', '#E6E6E6');
@@ -216,7 +216,7 @@
             </div>
         </c:if>
      
-        <c:if test="${!empty home.courses}">
+        <c:if test="${!empty home.courses && home.showTodayTab}">
             <div background-color:#E6E6E6;" id="todayPanel" name="todayPanel">
                 <!-- 
                 <div data-inline="true">

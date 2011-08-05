@@ -23,9 +23,10 @@ import org.kuali.mobility.sakai.entity.Home;
 import org.kuali.mobility.sakai.entity.Resource;
 import org.kuali.mobility.sakai.entity.Roster;
 import org.kuali.mobility.sakai.entity.Site;
+import org.kuali.mobility.user.entity.User;
 
 public interface SakaiSiteService {
-	public Home findSakaiHome(String user, String shortDate);
+	public Home findSakaiHome(User user, String shortDate);
 	public Site findSite(String siteId, String user);
 	
 	public Announcement findAnnouncementDetails(String json);

@@ -51,6 +51,7 @@ import org.kuali.mobility.sakai.entity.Term;
 import org.kuali.mobility.shared.Constants;
 import org.kuali.mobility.shared.Constants.FileType;
 import org.kuali.mobility.shared.Constants.FileTypes;
+import org.kuali.mobility.user.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -78,10 +79,12 @@ public class SakaiSiteServiceImpl implements SakaiSiteService {
 	private CalendarEventOAuthService calendarEventOAuthService;
 	
 	@SuppressWarnings("unchecked")
-	public Home findSakaiHome(String user, String shortDate) {
+	public Home findSakaiHome(User user, String shortDate) {
 		try {
+			boolean showTodayTab = user.isStudent();
+			
 			String url = configParamService.findValueByName("Sakai.Url.Base") + "user_prefs.json";
-			ResponseEntity<InputStream> is = oncourseOAuthService.oAuthGetRequest(user, url, "text/html");
+			ResponseEntity<InputStream> is = oncourseOAuthService.oAuthGetRequest(user.getUserId(), url, "text/html");
 			String prefsJson = IOUtils.toString(is.getBody(), "UTF-8");
 			Set<String> visibleSiteIds = new HashSet<String>();
 			try {
@@ -98,40 +101,43 @@ public class SakaiSiteServiceImpl implements SakaiSiteService {
 			}
 			
 			Set<String> calendarCourseIds = new HashSet<String>();
-			try {
-				Calendar todayDate = Calendar.getInstance();
-				Calendar tomorrowDate = Calendar.getInstance();
-				if (shortDate != null) {
-					try {
-						todayDate.setTime(Constants.DateFormat.queryStringDateFormat.getFormat().parse(shortDate));
-					} catch (Exception e) {}
-				}
-				todayDate.set(Calendar.HOUR, 0);
-				todayDate.set(Calendar.MINUTE, 0);
-				todayDate.set(Calendar.SECOND, 0);
-				todayDate.set(Calendar.MILLISECOND, 0);
-				tomorrowDate.setTime(todayDate.getTime());
-				tomorrowDate.add(Calendar.DATE, 1);
-				ListViewEvents listViewEvents = calendarEventOAuthService.retrieveViewEventsList(user, todayDate.getTime(), todayDate.getTime(), todayDate.getTime(), null);
-				List<ListData> events = listViewEvents.getEvents();
-				if (events.size() > 0) {
-					ListData list = events.get(0);
-					List<CalendarViewEvent> viewEvents = list.getEvents();
-					for (CalendarViewEvent event : viewEvents) {
-						if (event.getOncourseSiteId() != null) {
-							calendarCourseIds.add(event.getOncourseSiteId().toLowerCase());
+			if (showTodayTab) {
+				try {
+					Calendar todayDate = Calendar.getInstance();
+					Calendar tomorrowDate = Calendar.getInstance();
+					if (shortDate != null) {
+						try {
+							todayDate.setTime(Constants.DateFormat.queryStringDateFormat.getFormat().parse(shortDate));
+						} catch (Exception e) {}
+					}
+					todayDate.set(Calendar.HOUR, 0);
+					todayDate.set(Calendar.MINUTE, 0);
+					todayDate.set(Calendar.SECOND, 0);
+					todayDate.set(Calendar.MILLISECOND, 0);
+					tomorrowDate.setTime(todayDate.getTime());
+					tomorrowDate.add(Calendar.DATE, 1);
+					ListViewEvents listViewEvents = calendarEventOAuthService.retrieveViewEventsList(user.getUserId(), todayDate.getTime(), todayDate.getTime(), todayDate.getTime(), null);
+					List<ListData> events = listViewEvents.getEvents();
+					if (events.size() > 0) {
+						ListData list = events.get(0);
+						List<CalendarViewEvent> viewEvents = list.getEvents();
+						for (CalendarViewEvent event : viewEvents) {
+							if (event.getOncourseSiteId() != null) {
+								calendarCourseIds.add(event.getOncourseSiteId().toLowerCase());
+							}
 						}
 					}
+				} catch (Exception e) {
+					LOG.error(e.getMessage(), e);
 				}
-			} catch (Exception e) {
-				LOG.error(e.getMessage(), e);
 			}
 			
 			url = configParamService.findValueByName("Sakai.Url.Base") + "site.json";
-			is = oncourseOAuthService.oAuthGetRequest(user, url, "text/html");
+			is = oncourseOAuthService.oAuthGetRequest(user.getUserId(), url, "text/html");
 			String siteJson = IOUtils.toString(is.getBody(), "UTF-8");
 	
 			Home home = new Home();
+			home.setShowTodayTab(showTodayTab);
 			List<Term> courses = home.getCourses();
 			List<Site> projects = home.getProjects();
 			List<Site> other = home.getOther();
@@ -185,7 +191,7 @@ public class SakaiSiteServiceImpl implements SakaiSiteService {
 	                courseSiteMap.put(item.getId(), item);
 	                courseSiteIdList.add(item.getId());
 	                
-	                if (calendarCourseIds.contains(item.getId().toLowerCase())) {
+	                if (showTodayTab && calendarCourseIds.contains(item.getId().toLowerCase())) {
 	                	today.add(item);
 	                }
             	} else if ("project".equals(type)) {

@@ -73,9 +73,9 @@ public class SakaiController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String getSites(HttpServletRequest request, @RequestParam(value="date", required=false) String date, Model uiModel) {
 		User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
-		Home home = sakaiSiteService.findSakaiHome(user.getUserId(), date);
+		Home home = sakaiSiteService.findSakaiHome(user, date);
 		uiModel.addAttribute("home", home);
-		uiModel.addAttribute("tabCount", (home.getCourses() != null && home.getCourses().size() > 0 ? 2 : 0) + (home.getProjects() != null && home.getProjects().size() > 0 ? 1 : 0) + (home.getOther() != null && home.getOther().size() > 0 ? 1 : 0));
+		uiModel.addAttribute("tabCount", (home.getCourses() != null && home.getCourses().size() > 0 ? 1 : 0) + (home.getCourses() != null && home.getCourses().size() > 0 && home.isShowTodayTab() == true ? 1 : 0) + (home.getProjects() != null && home.getProjects().size() > 0 ? 1 : 0) + (home.getOther() != null && home.getOther().size() > 0 ? 1 : 0));
 		
 		Calendar todayDate = Calendar.getInstance();
 		if (date != null) {

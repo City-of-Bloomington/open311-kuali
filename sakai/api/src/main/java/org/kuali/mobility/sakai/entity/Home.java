@@ -8,6 +8,7 @@ public class Home {
 	private List<Site> projects;
 	private List<Site> other;
 	private List<Site> todaysCourses;
+	private boolean showTodayTab = false;
 	
 	public Home(){
 		courses = new ArrayList<Term>();
@@ -46,5 +47,13 @@ public class Home {
 
 	public void setTodaysCourses(List<Site> todaysCourses) {
 		this.todaysCourses = todaysCourses;
+	}
+
+	public boolean isShowTodayTab() {
+		return showTodayTab;
+	}
+
+	public void setShowTodayTab(boolean showTodayTab) {
+		this.showTodayTab = showTodayTab;
 	}
 }
