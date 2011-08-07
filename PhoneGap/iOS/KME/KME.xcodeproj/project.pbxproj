@@ -40,6 +40,8 @@
 		F8409CFC13E9E16900946CFF /* ChildBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8409CF613E9E16900946CFF /* ChildBrowserViewController.m */; };
 		F8409CFD13E9E16900946CFF /* ChildBrowserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8409CF713E9E16900946CFF /* ChildBrowserViewController.xib */; };
 		F8409CFE13E9E16900946CFF /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = F8409CF813E9E16900946CFF /* README.txt */; };
+		F888DB7013EDF20A0099509E /* ajax-get.js in Sources */ = {isa = PBXBuildFile; fileRef = F888DB6F13EDF20A0099509E /* ajax-get.js */; };
+		F888DB7213EE12310099509E /* notification.json in Resources */ = {isa = PBXBuildFile; fileRef = F888DB7113EE12310099509E /* notification.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +85,8 @@
 		F8409CF613E9E16900946CFF /* ChildBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChildBrowserViewController.m; sourceTree = "<group>"; };
 		F8409CF713E9E16900946CFF /* ChildBrowserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ChildBrowserViewController.xib; sourceTree = "<group>"; };
 		F8409CF813E9E16900946CFF /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		F888DB6F13EDF20A0099509E /* ajax-get.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = "ajax-get.js"; path = "KME/www/ajax-get.js"; sourceTree = "<group>"; };
+		F888DB7113EE12310099509E /* notification.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = notification.json; path = KME/www/notification.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +124,8 @@
 		F8409C9413E9E09400946CFF = {
 			isa = PBXGroup;
 			children = (
+				F888DB7113EE12310099509E /* notification.json */,
+				F888DB6F13EDF20A0099509E /* ajax-get.js */,
 				F8409CC013E9E09400946CFF /* KME */,
 				F8409CEF13E9E11600946CFF /* www */,
 				F8409CA513E9E09400946CFF /* Frameworks */,
@@ -327,6 +333,7 @@
 				F8409CF913E9E16900946CFF /* ChildBrowser.bundle in Resources */,
 				F8409CFD13E9E16900946CFF /* ChildBrowserViewController.xib in Resources */,
 				F8409CFE13E9E16900946CFF /* README.txt in Resources */,
+				F888DB7213EE12310099509E /* notification.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +365,7 @@
 				F8409CFA13E9E16900946CFF /* ChildBrowser.js in Sources */,
 				F8409CFB13E9E16900946CFF /* ChildBrowserCommand.m in Sources */,
 				F8409CFC13E9E16900946CFF /* ChildBrowserViewController.m in Sources */,
+				F888DB7013EDF20A0099509E /* ajax-get.js in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

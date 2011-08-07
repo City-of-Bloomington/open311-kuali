@@ -33,7 +33,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.persistence.Version;
 
-@Entity
+@Entity(name="User")
 @Table(name="USR_T")
 public class UserImpl implements User, Serializable {
     
@@ -59,6 +59,9 @@ public class UserImpl implements User, Serializable {
     
     @Column(name="CAMPUS")
     private String campus;
+    
+    @Column(name="DEVICE_ID")
+    private String deviceId;
     
     @Version
     @Column(name="VER_NBR")
@@ -137,6 +140,14 @@ public class UserImpl implements User, Serializable {
     public void setVersionNumber(Long versionNumber) {
         this.versionNumber = versionNumber;
     }
+
+	public String getDeviceId() {
+		return deviceId;
+	}
+
+	public void setDeviceId(String deviceId) {
+		this.deviceId = deviceId;
+	}
 
 	@Override
 	public Map<String, String> getUserAttributes() {		

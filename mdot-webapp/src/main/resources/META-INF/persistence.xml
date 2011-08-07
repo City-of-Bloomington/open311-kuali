@@ -26,6 +26,9 @@
     <class>edu.iu.m.news.entity.Rss</class>
     <class>edu.iu.m.news.entity.RssItem</class>
     <class>org.kuali.mobility.feedback.entity.Feedback</class>
+    <class>org.kuali.mobility.notification.entity.Notification</class>
+    <class>org.kuali.mobility.notification.entity.UserNotification</class>
+    <class>org.kuali.mobility.user.entity.UserImpl</class>    
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
   </persistence-unit>
 
