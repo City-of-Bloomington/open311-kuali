@@ -10,19 +10,25 @@
 --%>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%@ taglib prefix="c"    uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Publishing</title>
+	<title>Publishing :: Notifications</title>
 </head>
 <body>
-<h2>Publishing</h2>
-
-<a href="tool">Tool</a><br/>
-<a href="layout">Layout</a>
-<a href="notifications">Notifications</a>
-
+<h2>Notifications</h2>
+<p>
+<a href="notificationForm">New</a> 
+</p>
+<p>
+<c:forEach items="${notifications}" var="notification" varStatus="status">
+<a href="editNotification?id=${notification.notificationId}">Edit</a> | <a href="deleteNotification?id=${notification.notificationId}">Delete</a> -- 
+${notification.title} - ${notification.message} : ${notification.startDate} - ${notification.endDate} <br/> 
+</c:forEach>
+</p>
 </body>
 </html>

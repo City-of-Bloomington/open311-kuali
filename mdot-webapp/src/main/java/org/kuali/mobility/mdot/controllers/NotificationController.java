@@ -56,7 +56,6 @@ public class NotificationController {
 		this.userService = userService;
 	}
 
-
 	@RequestMapping(method = RequestMethod.GET)
     @ResponseBody
     public String backdoor(HttpServletRequest request, @RequestParam("deviceId") String deviceId, Model uiModel) {
@@ -69,20 +68,24 @@ public class NotificationController {
     	for (Notification notification : notifications) {
 			UserNotification un = notificationService.findUserNotificationByNotificationId(notification.getNotificationId());
 			if (un == null) {
-				newNotifications.add(notification);
-				UserNotification userNotification = new UserNotification();
-				userNotification.setDeviceId(deviceId);
-				userNotification.setNotifyDate(new Timestamp(new Date().getTime()));
-				userNotification.setPersonId(userService.findUserByDeviceId(deviceId).getGuid());
-				userNotification.setNotificationId(notification.getNotificationId());
-				//notificationService.saveUserNotification(userNotification);
+				User user = userService.findUserByDeviceId(deviceId);
+				if (user != null) {
+					if (notification.getPrimaryCampus() == null || notification.getPrimaryCampus().equals(user.getPrimaryCampus())) {
+						newNotifications.add(notification);
+						UserNotification userNotification = new UserNotification();
+						userNotification.setDeviceId(deviceId);
+						userNotification.setNotifyDate(new Timestamp(new Date().getTime()));
+						userNotification.setPersonId(user.getGuid());
+						userNotification.setNotificationId(notification.getNotificationId());
+						//notificationService.saveUserNotification(userNotification);
+					}
+				}
 			}
 		}
     	
         return new JSONSerializer().exclude("*.class", "notificationId", "startDate", "endDate", "notificationType", "versionNumber").serialize(newNotifications);
     }
 	
-
     @RequestMapping(method = RequestMethod.POST)
     public String submit(HttpServletRequest request, Model uiModel, @ModelAttribute("command") Object command, BindingResult result) {
     	User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);

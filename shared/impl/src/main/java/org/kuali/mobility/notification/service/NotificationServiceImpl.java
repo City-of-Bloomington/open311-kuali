@@ -42,6 +42,12 @@ public class NotificationServiceImpl implements NotificationService {
 
 	@Override
 	@Transactional
+	public List<Notification> findAllNotifications() {
+		return notificationDao.findAllNotifications();
+	}
+
+	@Override
+	@Transactional
 	public List<Notification> findAllValidNotifications(Date date) {
 		return notificationDao.findAllValidNotifications(date);
 	}

@@ -16,7 +16,7 @@
 package org.kuali.mobility.notification.entity;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,6 +25,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Version;
 
 @Entity(name="Notification")
@@ -39,11 +41,13 @@ public class Notification implements Serializable {
     @Column(name="NOTIFICATION_ID")
     private Long notificationId;
 
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name="START_DT")
-	private Timestamp startDate;
+	private Date startDate;
 
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name="END_DT")
-	private Timestamp endDate;
+	private Date endDate;
 
     @Column(name="TITLE")
 	private String title;
@@ -51,7 +55,11 @@ public class Notification implements Serializable {
     @Column(name="MESSAGE")
     private String message;
 
-	@Column(name="NOTIFICATION_TYPE")
+    // TODO: This needs to be refactored to be a set of generic user attributes, permissions, etc
+    @Column(name="PCAMPUS")
+    private String primaryCampus;
+
+    @Column(name="NOTIFICATION_TYPE")
     private Long notificationType;
 
     @Version
@@ -66,19 +74,19 @@ public class Notification implements Serializable {
 		this.notificationId = notificationId;
 	}
 
-	public Timestamp getStartDate() {
+	public Date getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(Timestamp startDate) {
+	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
 
-	public Timestamp getEndDate() {
+	public Date getEndDate() {
 		return endDate;
 	}
 
-	public void setEndDate(Timestamp endDate) {
+	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
 
@@ -96,6 +104,14 @@ public class Notification implements Serializable {
 
 	public void setMessage(String message) {
 		this.message = message;
+	}
+
+	public String getPrimaryCampus() {
+		return primaryCampus;
+	}
+
+	public void setPrimaryCampus(String primaryCampus) {
+		this.primaryCampus = primaryCampus;
 	}
 
 	public Long getNotificationType() {

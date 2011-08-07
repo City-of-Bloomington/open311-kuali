@@ -16,7 +16,7 @@
 package org.kuali.mobility.notification.entity;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,6 +25,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Version;
 
 @Entity(name="UserNotification")
@@ -48,8 +50,9 @@ public class UserNotification implements Serializable {
     @Column(name="DEVICE_ID")
     private String deviceId;
 
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name="NOTIFY_DT")
-	private Timestamp notifyDate;
+	private Date notifyDate;
 
     @Version
     @Column(name="VER_NBR")
@@ -87,11 +90,11 @@ public class UserNotification implements Serializable {
 		this.deviceId = deviceId;
 	}
 
-	public Timestamp getNotifyDate() {
+	public Date getNotifyDate() {
 		return notifyDate;
 	}
 
-	public void setNotifyDate(Timestamp notifyDate) {
+	public void setNotifyDate(Date notifyDate) {
 		this.notifyDate = notifyDate;
 	}
 

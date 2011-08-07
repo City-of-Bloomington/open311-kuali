@@ -46,6 +46,17 @@ public class NotificationDaoImpl implements NotificationDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
+	public List<Notification> findAllNotifications() {
+        Query query = entityManager.createQuery("select n from Notification n");
+        try { 
+        	return (List<Notification>) query.getResultList();
+        } catch (Exception e) {        	
+        	return null;
+        }
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
 	public List<Notification> findAllValidNotifications(Date date) {
         Query query = entityManager.createQuery("select n from Notification n where (n.startDate is null and n.endDate is null) or (n.startDate is null and :date < n.endDate) or (:date > n.startDate and n.endDate is null) or (:date between n.startDate and n.endDate)");
         query.setParameter("date", date);

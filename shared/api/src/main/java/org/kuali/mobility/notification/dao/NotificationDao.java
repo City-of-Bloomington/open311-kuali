@@ -26,6 +26,7 @@ public interface NotificationDao {
     Notification findNotificationById(Long id);
     Long saveNotification(Notification notification);
     void deleteNotificationById(Long id);
+    List<Notification> findAllNotifications();
     List<Notification> findAllValidNotifications(Date date);
 
     UserNotification findUserNotificationById(Long id);

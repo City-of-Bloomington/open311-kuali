@@ -15,12 +15,26 @@
 
 package org.kuali.mobility.admin.controllers;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.kuali.mobility.admin.service.AdminService;
+import org.kuali.mobility.notification.entity.Notification;
+import org.kuali.mobility.notification.service.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller 
 @RequestMapping("/publishing")
@@ -32,7 +46,13 @@ public class PublishingController {
         this.adminService = adminService;
     }
     
-    @RequestMapping(value = "index", method = RequestMethod.GET)
+    @Autowired
+    private NotificationService notificationService;
+    public void setNotificationService(NotificationService notificationService) {
+		this.notificationService = notificationService;
+	}
+
+	@RequestMapping(value = "index", method = RequestMethod.GET)
     public String index(Model uiModel) {
 
     	return "publishing/index";
@@ -48,6 +68,77 @@ public class PublishingController {
     public String layout(Model uiModel) {
 
     	return "publishing/layout";
+    }
+
+    @RequestMapping(value = "notifications", method = RequestMethod.GET)
+    public String notifications(Model uiModel) {
+    	uiModel.addAttribute("notifications", notificationService.findAllNotifications());
+    	return "publishing/notifications";
+    }
+
+    @RequestMapping(value = "notificationForm", method = RequestMethod.GET)
+    public String notificationForm(@RequestParam(value="id", required=false) Long id, Model uiModel) {
+    	Notification n = new Notification();
+    	if (id != null) {
+    		n = notificationService.findNotificationById(id);
+    	}
+    	uiModel.addAttribute("notification", n);
+    	return "publishing/notificationForm";
+    }
+
+    @RequestMapping(value = "editNotification", method = RequestMethod.GET)
+    public String editNotification(@RequestParam(value="id", required=true) Long id, Model uiModel) {
+    	Notification n = notificationService.findNotificationById(id);
+    	uiModel.addAttribute("notification", n);
+    	return "publishing/notificationForm";
+    }
+
+    @RequestMapping(value = "deleteNotification", method = RequestMethod.GET)
+    public String deleteNotification(@RequestParam(value="id", required=true) Long id, Model uiModel) {
+    	notificationService.deleteNotificationById(id);
+    	return "redirect:/publishing/notifications";
+    }
+    
+    @RequestMapping(value="notificationSubmit", method = RequestMethod.POST)
+    public String submit(HttpServletRequest request, Model uiModel, @ModelAttribute("notification") Notification notification, BindingResult result) {
+    	if (isValidNotification(notification, result)) {
+    		notificationService.saveNotification(notification);
+        	return "redirect:/publishing/notifications"; 
+        } else {
+        	return "publishing/notificationForm";    	
+        }
+    }
+    
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        dateFormat.setLenient(false);
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
+    }
+
+    private boolean isValidNotification(Notification notification, BindingResult result) {
+    	boolean hasErrors = false;
+    	Errors errors = ((Errors) result);
+    	if (errors.hasFieldErrors("startDate")) {    		
+    		errors.rejectValue("startDate", "", "Please enter a valid start date (empty or YYYY-MM-DD)");
+    		hasErrors = true;    		
+    	}
+    	if (errors.hasFieldErrors("endDate")) {
+    		errors.rejectValue("endDate", "", "Please enter a valid end date (empty or YYYY-MM-DD)");
+    		hasErrors = true;    		
+    	}
+    	if (notification.getMessage() == null || "".equals(notification.getMessage().trim())) {
+    		errors.rejectValue("message", "", "Please enter a message");
+    		hasErrors = true;
+    	}
+    	if (notification.getTitle() == null || "".equals(notification.getTitle().trim())) {
+    		errors.rejectValue("title", "", "Please enter a title");
+    		hasErrors = true;
+    	}
+    	if (notification.getNotificationType() == null) {
+    		notification.setNotificationType(new Long(1));
+    	}
+    	return !hasErrors;
     }
 
 }
