@@ -17,12 +17,6 @@
 	<kme:content>
 		<form:form action="${pageContext.request.contextPath}/maps/building/search" commandName="mapsearchform" data-ajax="false">
 			<fieldset>
-            <label for="searchText">Search</label>
-            <%-- <form:input path="searchText" cssClass="text ui-widget-content ui-corner-all" /> --%>
-			<input id="searchText" name="searchText" class="text ui-widget-content ui-corner-all" type="search" />
-			<form:errors path="searchText" />
-			</fieldset>
-			<fieldset>
 			<label for="searchCampus">Campus</label>
 			<form:select path="searchCampus" multiple="false">
 				<option value="UA" label="">select:</option>			  
@@ -36,6 +30,12 @@
 				<option value="SB" label="">IU South Bend</option>
 				<option value="SE" label="">IU Southeast</option>
 			</form:select>
+			</fieldset>
+			<fieldset>
+            <label for="searchText">Search</label>
+            <%-- <form:input path="searchText" cssClass="text ui-widget-content ui-corner-all" /> --%>
+			<input id="searchText" name="searchText" class="text ui-widget-content ui-corner-all" type="search" />
+			<form:errors path="searchText" />
 			</fieldset>
 		</form:form>
 		<div id="searchresults">
@@ -73,6 +73,7 @@ $('#maps').live("pageshow", function() {
 	mapSearch(searchText, groupCode);	
 });
 
+var timeout;
 var previousSearchKey;
 var mapsRemoteCallCount = 0;
 var mapsCurrentDisplayNumber = 0;

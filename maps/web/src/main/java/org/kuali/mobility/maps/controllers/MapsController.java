@@ -135,6 +135,7 @@ public class MapsController {
         } else {
         	Location location = locations.get(0);
         	uiModel.addAttribute("location", location);
+        	uiModel.addAttribute("buildingCode", location.getBuildingCode());
         }
         return "maps/building";
     }
@@ -152,6 +153,20 @@ public class MapsController {
 		uiModel.addAttribute("container", container);
 //		uiModel.addAttribute("message", pageLevelException.getMessage());
 		return "maps/search";
+	}
+	
+    /*
+     * Buildings search autocomplete
+     */
+	@RequestMapping(value = "/building/searchassist", method = RequestMethod.GET)
+	public String searchBuildingsAutocomplete(Model uiModel, 
+			@RequestParam(required = true) String criteria, 
+			@RequestParam(required = true) String groupCode) {
+		criteria = criteria.trim();
+		LOG.info("Search: " + groupCode + " : " + criteria);
+		MapsFormSearchResultContainer container = search(criteria, groupCode);
+		uiModel.addAttribute("container", container);
+		return "maps/searchautocomplete";
 	}
 
     /*
@@ -193,6 +208,8 @@ public class MapsController {
         			MapsFormSearchResult result = new MapsFormSearchResult();
         			result.setName(location.getName());
         			result.setCode(location.getBuildingCode());
+        			result.setLatitude(location.getLatitude());
+        			result.setLongitude(location.getLongitude());
     				results.add(result);
     			}
     		}

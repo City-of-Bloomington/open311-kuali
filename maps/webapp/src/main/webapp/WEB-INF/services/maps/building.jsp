@@ -14,8 +14,10 @@
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility" %>
 
-<kme:page title="Maps" id="mapsbuilding" backButton="true" homeButton="true" cssFilename="maps">
+<kme:page title="Maps" id="mapsbuilding" backButton="true" homeButton="true" cssFilename="maps" jsFilename="maps">
 	<kme:content>
+	
+<div id="map_canvas" style="height:300px;"></div>
 	
 	${location.name}
 	<br/><br/>
@@ -24,6 +26,28 @@
 	${location.city}
 	<c:if test="${not empty location.city and not empty location.state}">, </c:if>
 	${location.state} ${location.zip}
+
+<script type="text/javascript">
+var markersArray = [];
+var userMarkersArray = [];
+var buildingCode = "${buildingCode}";
+
+$('#mapsbuilding').live("pageshow", function() {
+	setContextPath("${pageContext.request.contextPath}");
+	var map = initialize("map_canvas", 39.17, -86.5);
+	deleteOverlays(markersArray);
+	if (buildingCode) {
+		showBuildingByCode(map, buildingCode);	
+	} else {
+		var latitude = getParameterByName("latitude");
+		var longitude = getParameterByName("longitude");
+		if (latitude && longitude) {
+			showLocationByCoordinates(map, markersArray, latitude, longitude);	
+		}
+	}
+	drawUserLocation(map, markersArray, userMarkersArray);
+});
+</script>
 
 	</kme:content>
 </kme:page>

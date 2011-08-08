@@ -15,7 +15,7 @@
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility" %>
 
-<kme:page title="Maps" id="mapslocation" backButton="true" homeButton="true" cssFilename="maps">
+<kme:page title="Maps" id="mapslocation" backButton="true" homeButton="true" cssFilename="maps" jsFilename="maps">
 	<kme:content>
 	
 <div id="map_canvas" style="height:300px;"></div>
@@ -23,23 +23,11 @@
 <script type="text/javascript">
 /* Maps */
 
-var buildingCode;
-
 var markersArray = [];
 var userMarkersArray = [];
 
-function showBuildingByCode(map, buildingCode) {
-	if (buildingCode) {
-		$.getJSON('${pageContext.request.contextPath}/maps/building/' + buildingCode, function(data) {
-			var items = [];
-			var latitude = data.latitude;
-			var longitude = data.longitude;
-			showLocationByCoordinates(map, markersArray, latitude, longitude);
-		});
-	}
-}
-
 $('#mapslocation').live("pageshow", function() {
+	setContextPath("${pageContext.request.contextPath}");
 /* 	$('#map_canvas').gmap({'center': getLatLng(), 'callback': function() {
 		
 	}); */
@@ -56,41 +44,14 @@ $('#mapslocation').live("pageshow", function() {
 			showLocationByCoordinates(map, markersArray, latitude, longitude);	
 		}
 	}
-	drawUserLocation(map);
+	drawUserLocation(map, markersArray, userMarkersArray);
 	
 	//alert(buildingCode);
 
 });
 
-function drawUserLocation(map) {
-	if(navigator.geolocation) {
-		navigator.geolocation.getCurrentPosition(function(position){
-			//initialize(position.coords.latitude,position.coords.longitude);
-			var location = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
-			deleteOverlays(userMarkersArray);
-			addMarker(map, userMarkersArray, location, "http://www.google.com/intl/en_us/mapfiles/ms/micons/blue-dot.png");
-			if (hasLoaded == 0) {
-				hasLoaded = 1;
-				centerOverAllLocations(map);
-			}
-		});
-	}
-}
 
-function centerOverAllLocations(map) {
-	var bounds = new google.maps.LatLngBounds();
-	if (markersArray) {
-		for (i in markersArray) {
-			bounds.extend(markersArray[i].getPosition());
-		}
-	}
-	if (userMarkersArray) {
-		for (i in userMarkersArray) {
-			bounds.extend(userMarkersArray[i].getPosition());
-		}
-	}
-	map.fitBounds(bounds);
-}
+
 </script>
 	</kme:content>
 </kme:page>
