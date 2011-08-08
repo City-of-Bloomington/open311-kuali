@@ -19,7 +19,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.kuali.mobility.configparams.service.ConfigParamService;
 import org.kuali.mobility.news.dao.NewsDao;
@@ -54,15 +56,26 @@ public class NewsServiceImpl implements NewsService {
 	@Autowired
 	private ConfigParamService configParamService;
 
-	public void setConfigParamService(ConfigParamService configParamService) {
-		this.configParamService = configParamService;
-	}
+	private static final Map<String, String> defaultNewsFeeds;
 
-	private static final String NEWS_DEFAULT_SOURCE_ID = "NEWS_DEFAULT_SOURCE_ID";
+//	private static final String NEWS_DEFAULT_SOURCE_ID = "NEWS_DEFAULT_SOURCE_ID";
 	private static final int SAMPLE_COUNT_DEFAULT = 2;
 	private static final String SAMPLE_COUNT = "NEWS_SAMPLE_COUNT";
 
 	private static org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(NewsServiceImpl.class);
+	
+	static {
+		defaultNewsFeeds = new HashMap<String, String>();
+		defaultNewsFeeds.put("UA", "admin");
+		defaultNewsFeeds.put("BL", "top");
+		defaultNewsFeeds.put("IN", "iupui");
+		defaultNewsFeeds.put("CO", "iupuc_news");
+		defaultNewsFeeds.put("EA", "iue");
+		defaultNewsFeeds.put("KO", "iuk");
+		defaultNewsFeeds.put("NW", "iun");
+		defaultNewsFeeds.put("SB", "iusb");
+		defaultNewsFeeds.put("SE", "iuse");
+	}
 
 	@Override
 	public List<NewsSource> getAllNewsSourcesByLocation(String campusCode) {
@@ -76,19 +89,25 @@ public class NewsServiceImpl implements NewsService {
 	}
 
 	@Override
-	public NewsStream getNewsStream(String rssShortCode, boolean sample) {
+	public NewsStream getNewsStream(String rssShortCode, String campus, boolean sample) {
 		String title = "";
 		Rss rss = null;
 		if (rssShortCode.startsWith("http:")) {
 			rss = this.getDynamicRssCacheService().getRss(rssShortCode, 900);
 			title = rss.getTitle();
 		} else {
-			MaintRss maintRss = this.getRssCacheService().getMaintRssByCampusAndShortCode("BL", rssShortCode);
+			MaintRss maintRss = this.getRssCacheService().getMaintRssByCampusAndShortCode(campus, rssShortCode);
 			if (maintRss != null) {
 				title = maintRss.getDisplayName();
 				rss = this.getRssCacheService().getRssByMaintRssId(maintRss.getRssId());
 			} else {
-				return null;
+				maintRss = this.getRssCacheService().getMaintRssByCampusAndShortCode("UA", rssShortCode);
+				if (maintRss != null) {
+					title = maintRss.getDisplayName();
+					rss = this.getRssCacheService().getRssByMaintRssId(maintRss.getRssId());
+				} else {
+					return null;
+				}
 			}
 		}
 		try {
@@ -106,10 +125,10 @@ public class NewsServiceImpl implements NewsService {
 	}
 
 	@Override
-	public NewsArticle getNewsArticle(String sourceId, String articleId) {
+	public NewsArticle getNewsArticle(String sourceId, String articleId, String campus) {
 		Rss rss = null;
 		if (sourceId != null) {
-			MaintRss maintRss = this.getRssCacheService().getMaintRssByCampusAndShortCode("BL", sourceId);
+			MaintRss maintRss = this.getRssCacheService().getMaintRssByCampusAndShortCode(campus, sourceId);
 			if (maintRss != null) {
 				rss = this.getRssCacheService().getRssByMaintRssId(maintRss.getRssId());
 			} else {
@@ -133,8 +152,16 @@ public class NewsServiceImpl implements NewsService {
 	}
 
 	@Override
-	public String getDefaultNewsSourceId() {
-		return configParamService.findValueByName(NEWS_DEFAULT_SOURCE_ID);
+	public String getDefaultNewsSourceId(String locationId) {
+		//return configParamService.findValueByName(NEWS_DEFAULT_SOURCE_ID);
+		String defaultFeed = null;
+		try {
+			defaultFeed = configParamService.findValueByName("News.Top." + locationId.toUpperCase());
+		} catch (Exception e) {
+			LOG.error("ConfigParam News.Top." + locationId.toUpperCase() + " was not found.  Using default.");
+			defaultFeed = defaultNewsFeeds.get(locationId);
+		}
+		return defaultFeed;
 	}
 
 	private NewsStream convertRssToNewsStream(Rss rss, boolean sample) {
@@ -235,5 +262,9 @@ public class NewsServiceImpl implements NewsService {
 
 	public void setDynamicRssCacheService(DynamicRssCacheService dynamicRssCacheService) {
 		this.dynamicRssCacheService = dynamicRssCacheService;
+	}
+	
+	public void setConfigParamService(ConfigParamService configParamService) {
+		this.configParamService = configParamService;
 	}
 }

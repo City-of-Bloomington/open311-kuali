@@ -62,7 +62,7 @@ public class AthleticsController {
 	@RequestMapping(value = "/viewSport", method = RequestMethod.GET)
 	public String viewSport(HttpServletRequest request, Model uiModel, @RequestParam(required = true) Long sportId) throws Exception {
 		Sport sport = athleticsService.retrieveSport(sportId);
-		NewsStream newsStream = newsService.getNewsStream(sport.getLink(), false);
+		NewsStream newsStream = newsService.getNewsStream(sport.getLink(), null, false);
 		uiModel.addAttribute("sport", sport);
 		uiModel.addAttribute("newsStream", newsStream);
 		return "athletics/newsList";
@@ -70,7 +70,7 @@ public class AthleticsController {
 	
 	@RequestMapping(value = "/viewStory", method = RequestMethod.GET)
 	public String viewStory(HttpServletRequest request, Model uiModel, @RequestParam(required = true) String link) throws Exception {
-		NewsArticle newsArticle = newsService.getNewsArticle(null, link);
+		NewsArticle newsArticle = newsService.getNewsArticle(null, link, null);
 		uiModel.addAttribute("newsArticle", newsArticle);
 		return "athletics/news";
 	}

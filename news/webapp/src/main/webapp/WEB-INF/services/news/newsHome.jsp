@@ -12,26 +12,28 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility" %>
 
-<kme:page title="News" id="news" homeButton="true" cssFilename="news">
+<kme:page title="News" id="news" homeButton="true" backButton="true" backButtonURL="${pageContext.request.contextPath}/home" cssFilename="news">
     <kme:content>
 		<ul data-role="listview" data-theme="c" class="news-index">
-			<li class="news-topstory">
-		        <div class="bottom-fade"></div>
-		        <a href="${pageContext.request.contextPath}/news/${topArticleSourceId}?articleId=${topArticle.articleId}&referrer=home">
-		        	<c:choose>
-		        		<c:when test="${!empty topArticle.thumbnailImageUrl}">
-					    	<img src="${topArticle.thumbnailImageUrl}" alt="topstory">
-					    </c:when>
-					    <c:otherwise>
-					    	<img src="images/news-generic.png" alt="topstory">
-					    </c:otherwise>
-					</c:choose>
-			        <div>
-			          <p class="news-title">${topArticle.title}</p>
-			          <p class="news-teaser">${topArticle.description}</p>
-			        </div>
-		        </a> 
-	        </li>
+			<c:if test="${topArticle != null}">
+				<li class="news-topstory">
+			        <div class="bottom-fade"></div>
+			        <a href="${pageContext.request.contextPath}/news/${topArticleSourceId}?articleId=${topArticle.articleId}&referrer=home">
+			        	<c:choose>
+			        		<c:when test="${!empty topArticle.thumbnailImageUrl}">
+						    	<img src="${topArticle.thumbnailImageUrl}" alt="topstory">
+						    </c:when>
+						    <c:otherwise>
+						    	<img src="images/news-generic.png" alt="topstory">
+						    </c:otherwise>
+						</c:choose>
+				        <div>
+				          <p class="news-title">${topArticle.title}</p>
+				          <p class="news-teaser">${topArticle.description}</p>
+				        </div>
+			        </a> 
+		        </li>
+	        </c:if>
 		
 			<c:forEach items="${newsStreams}" var="stream" varStatus="status">
 			

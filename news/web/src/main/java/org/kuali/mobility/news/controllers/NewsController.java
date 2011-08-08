@@ -18,11 +18,15 @@ package org.kuali.mobility.news.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.kuali.mobility.news.entity.NewsArticle;
 import org.kuali.mobility.news.entity.NewsDay;
 import org.kuali.mobility.news.entity.NewsSource;
 import org.kuali.mobility.news.entity.NewsStream;
 import org.kuali.mobility.news.service.NewsService;
+import org.kuali.mobility.shared.Constants;
+import org.kuali.mobility.user.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,8 +38,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller 
 @RequestMapping("/news")
 public class NewsController {
-	
-	private static String selectedCampus = "BL"; //TODO: this should be replaced by the yet-to-be-created general campus selection handler
     
     @Autowired
     private NewsService newsService;
@@ -44,13 +46,21 @@ public class NewsController {
     }
     
     @RequestMapping(method = RequestMethod.GET)
-    public String newsHome(Model uiModel) {	
+    public String newsHome(Model uiModel, HttpServletRequest request) {	
+    	User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
+    	String selectedCampus = "UA";
+    	if (user.getViewCampus() == null) {
+    		return "redirect:campus?toolName=news";
+    	} else {
+    		selectedCampus = user.getViewCampus();
+    	}
+
     	List<NewsSource> sources = newsService.getAllNewsSourcesByLocation(selectedCampus);
     	List<NewsStream> newsStreams = new ArrayList<NewsStream>();
-    	String defaultSourceId = newsService.getDefaultNewsSourceId();
+    	String defaultSourceId = newsService.getDefaultNewsSourceId(selectedCampus);
     	NewsArticle topNewsArticle = null; 
     	for (NewsSource source : sources) {
-    		NewsStream news = newsService.getNewsStream(source.getSourceId(), true);
+    		NewsStream news = newsService.getNewsStream(source.getSourceId(), selectedCampus, true);
     		if (news != null) {
     			newsStreams.add(news);
     			if (source.getSourceId().equals(defaultSourceId)) {
@@ -71,9 +81,16 @@ public class NewsController {
     }
     
     @RequestMapping(value = "/{sourceId}", method = RequestMethod.GET)
-    public String getNewsArticle(@PathVariable("sourceId") String sourceId, @RequestParam(value = "articleId", required = false) String articleId, @RequestParam(value = "referrer", required = false) String referrer, Model uiModel) {
+    public String getNewsArticle(HttpServletRequest request, @PathVariable("sourceId") String sourceId, @RequestParam(value = "articleId", required = false) String articleId, @RequestParam(value = "referrer", required = false) String referrer, Model uiModel) {
+    	User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
+		String selectedCampus = "UA";
+    	if (user.getViewCampus() == null) {
+    		return "redirect:/campus?toolName=news";
+    	} else {
+    		selectedCampus = user.getViewCampus();
+    	}
     	if (articleId != null && articleId != "") {
-    		NewsArticle newsArticle = newsService.getNewsArticle(sourceId, articleId);
+    		NewsArticle newsArticle = newsService.getNewsArticle(sourceId, articleId, selectedCampus);
     		NewsSource news = newsService.getNewsSourceById(sourceId);
         	uiModel.addAttribute("newsArticle", newsArticle);
         	uiModel.addAttribute("sourceId", sourceId);
@@ -81,7 +98,7 @@ public class NewsController {
         	uiModel.addAttribute("referrer", referrer);
         	return "news/newsArticle";
     	} else {
-    		NewsStream news = newsService.getNewsStream(sourceId, false);
+    		NewsStream news = newsService.getNewsStream(sourceId, selectedCampus, false);
         	uiModel.addAttribute("newsStream", news);
         	uiModel.addAttribute("sourceId", sourceId);
         	
