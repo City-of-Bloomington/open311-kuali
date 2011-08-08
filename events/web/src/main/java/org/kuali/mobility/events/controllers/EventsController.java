@@ -22,6 +22,8 @@ import javax.servlet.http.HttpServletRequest;
 import org.kuali.mobility.events.entity.Category;
 import org.kuali.mobility.events.entity.Event;
 import org.kuali.mobility.events.service.EventsService;
+import org.kuali.mobility.shared.Constants;
+import org.kuali.mobility.user.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,10 +43,18 @@ public class EventsController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
-	public String getList(Model uiModel) {
-		List<Category> categories = eventsService.getCategoriesByCampus("NW");
+	public String homePage(HttpServletRequest request, Model uiModel) {
+		User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
+		String campus = null;
+		if (user.getViewCampus() == null) {
+			return "redirect:campus?toolName=events";
+		} else {
+			campus = user.getViewCampus();
+		}
+
+		List<Category> categories = eventsService.getCategoriesByCampus(campus);
 		uiModel.addAttribute("categories", categories);
-		uiModel.addAttribute("campus", "NW");
+		uiModel.addAttribute("campus", campus);
 		return "events/list";
 	}
 

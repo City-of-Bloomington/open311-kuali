@@ -20,15 +20,20 @@ import java.util.Map;
 
 public interface User {
 
-    Long getGuid();
-    String getUserId();
-    void setUserId(String userId);
-    Map<String, String> getUserAttributes();
-    void setUserAttributes(Map<String, String> userAttributes);
-    String getUserAttribute(String key);
-    void setUserAttribute(String key, String value);
-    void removeUserAttribute(String key);
-    
+	String getViewCampus();
+
+	void setViewCampus(String campus);
+
+	boolean isPublicUser();
+
+	String getCampus();
+
+	Long getGuid();
+
+	String getUserId();
+
+	void setUserId(String userId);
+
     List<String> getGroups();
     List<String> getAffiliations();
     String getPrimaryCampus();
@@ -36,6 +41,11 @@ public interface User {
     void setGroups(List<String> groups);
     void setAffiliations(List<String> affiliations);
     void setPrimaryCampus(String primaryCampus);
+    Map<String, String> getUserAttributes();
+    void setUserAttributes(Map<String, String> userAttributes);
+    String getUserAttribute(String key);
+    void setUserAttribute(String key, String value);
+    void removeUserAttribute(String key);
     
     boolean isMember(String groupName);
     boolean isStudent();

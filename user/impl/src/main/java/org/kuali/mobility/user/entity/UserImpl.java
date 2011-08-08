@@ -34,112 +34,144 @@ import javax.persistence.Transient;
 import javax.persistence.Version;
 
 @Entity(name="User")
-@Table(name="USR_T")
+@Table(name = "USR_T")
 public class UserImpl implements User, Serializable {
-    
-    private static final long serialVersionUID = -2720266083487368287L;
 
-    @Id
-    @SequenceGenerator(name="user_sequence", sequenceName="SEQ_USR_T", initialValue=1000, allocationSize=1)
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="user_sequence")
-    @Column(name="PERSON_ID")
-    private Long guid;
+	private static final long serialVersionUID = -2720266083487368287L;
 
-    @Column(name="EMPL_ID")
-    private String emplId;
-    
-    @Column(name="USER_ID")
-    private String userId;
+	@Id
+	@SequenceGenerator(name = "user_sequence", sequenceName = "SEQ_USR_T", initialValue = 1000, allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_sequence")
+	@Column(name = "PERSON_ID")
+	private Long guid;
 
-    @Column(name="FIRST_LOGIN_DATE")
-    private Timestamp firstLogin;
+	@Column(name = "EMPL_ID")
+	private String emplId;
 
-    @Column(name="LAST_LOGIN_DATE")
-    private Timestamp lastLogin;
-    
-    @Column(name="CAMPUS")
-    private String campus;
-    
-    @Column(name="DEVICE_ID")
-    private String deviceId;
-    
-    @Version
-    @Column(name="VER_NBR")
-    protected Long versionNumber;
-    
-    @Transient
-    private Map<String, String> userAttributes;
-    
-    @Transient
-    private String primaryCampus;
-    
-    @Transient
-    private List<String> groups;
-    
-    @Transient
-    private List<String> affiliations;
-    
-    public UserImpl() {
+	@Column(name = "USER_ID")
+	private String userId;
+
+	@Column(name = "FIRST_LOGIN_DATE")
+	private Timestamp firstLogin;
+
+	@Column(name = "LAST_LOGIN_DATE")
+	private Timestamp lastLogin;
+
+	@Column(name = "CAMPUS")
+	private String campus;
+
+	@Column(name = "DEVICE_ID")
+	private String deviceId;
+
+	@Column(name = "CAS_PAIR_DATE")
+	private Timestamp pairDate;
+
+	@Version
+	@Column(name = "VER_NBR")
+	protected Long versionNumber;
+	
+	 @Transient
+	    private Map<String, String> userAttributes;
+	    
+	    @Transient
+	    private String primaryCampus;
+	    
+	    @Transient
+	    private List<String> groups;
+	    
+	    @Transient
+	    private List<String> affiliations;
+	    
+
+	private String viewCampus;
+
+	private boolean publicUser;
+
+	public UserImpl() {
+		this.publicUser = false;
     	userAttributes = new HashMap<String, String>();
     	groups = new ArrayList<String>();
     	affiliations = new ArrayList<String>();
-    }
+	}
 
-    public Long getGuid() {
-        return guid;
-    }
+	public UserImpl(boolean publicUser) {
+    	userAttributes = new HashMap<String, String>();
+    	groups = new ArrayList<String>();
+    	affiliations = new ArrayList<String>();
+		this.publicUser = publicUser;
+	}
 
-    public void setGuid(Long guid) {
-        this.guid = guid;
-    }
+	public boolean isPublicUser() {
+		return publicUser;
+	}
 
-    public String getEmplId() {
-        return emplId;
-    }
+	public void setPublicUser(boolean publicUser) {
+		this.publicUser = publicUser;
+	}
+    
+	public String getViewCampus() {
+		return viewCampus;
+	}
 
-    public void setEmplId(String emplId) {
-        this.emplId = emplId;
-    }
+	public void setViewCampus(String viewCampus) {
+		this.viewCampus = viewCampus;
+	}
 
-    public String getUserId() {
-        return userId;
-    }
+	public Long getGuid() {
+		return guid;
+	}
 
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
+	public void setGuid(Long guid) {
+		this.guid = guid;
+	}
 
-    public Timestamp getFirstLogin() {
-        return firstLogin;
-    }
+	public String getEmplId() {
+		return emplId;
+	}
 
-    public void setFirstLogin(Timestamp firstLogin) {
-        this.firstLogin = firstLogin;
-    }
+	public void setEmplId(String emplId) {
+		this.emplId = emplId;
+	}
 
-    public Timestamp getLastLogin() {
-        return lastLogin;
-    }
+	public String getUserId() {
+		return userId;
+	}
 
-    public void setLastLogin(Timestamp lastLogin) {
-        this.lastLogin = lastLogin;
-    }
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 
-    public String getCampus() {
-        return campus;
-    }
+	public Timestamp getFirstLogin() {
+		return firstLogin;
+	}
 
-    public void setCampus(String campus) {
-        this.campus = campus;
-    }
+	public void setFirstLogin(Timestamp firstLogin) {
+		this.firstLogin = firstLogin;
+	}
 
-    public Long getVersionNumber() {
-        return versionNumber;
-    }
+	public Timestamp getLastLogin() {
+		return lastLogin;
+	}
 
-    public void setVersionNumber(Long versionNumber) {
-        this.versionNumber = versionNumber;
-    }
+	public void setLastLogin(Timestamp lastLogin) {
+		this.lastLogin = lastLogin;
+	}
+
+	public String getCampus() {
+		return campus;
+	}
+
+	public void setCampus(String campus) {
+		this.campus = campus;
+	}
+
+	public Long getVersionNumber() {
+		return versionNumber;
+	}
+
+	public void setVersionNumber(Long versionNumber) {
+		this.versionNumber = versionNumber;
+	}
 
 	public String getDeviceId() {
 		return deviceId;
@@ -149,6 +181,13 @@ public class UserImpl implements User, Serializable {
 		this.deviceId = deviceId;
 	}
 
+	public Timestamp getPairDate() {
+		return pairDate;
+	}
+
+	public void setPairDate(Timestamp pairDate) {
+		this.pairDate = pairDate;
+	}
 	@Override
 	public Map<String, String> getUserAttributes() {		
 		return userAttributes;
@@ -223,7 +262,6 @@ public class UserImpl implements User, Serializable {
 	public void setGroups(List<String> groups) {
 		this.groups = groups;
 	}
-
 	@Override
 	public void setAffiliations(List<String> affiliations) {
 		this.affiliations = affiliations;

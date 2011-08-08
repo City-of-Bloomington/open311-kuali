@@ -14,7 +14,7 @@
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility"%>
 
 
-<kme:page title="Events" id="Calendar-Events" backButton="true" homeButton="true" cssFilename="events" backButtonURL="${pageContext.request.contextPath}/home">
+<kme:page title="Events" id="Calendar-Events" backButton="true" homeButton="true" cssFilename="events" backButtonURL="${pageContext.request.contextPath}/events">
 
 
 	<kme:content>

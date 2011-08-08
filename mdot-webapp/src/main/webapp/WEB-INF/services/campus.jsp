@@ -14,37 +14,21 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility"%>
 
-<kme:page title="Event Categories" id="events" backButton="true" homeButton="true" cssFilename="events" backButtonURL="${pageContext.request.contextPath}/home">
+<kme:page title="Campus" id="campus" backButton="true" homeButton="true">
 	<kme:content>
-
-		<c:url var="campusUrl" value="/campus">
-			<c:param name="toolName" value="events"></c:param>
-		</c:url>
-		<p>
-			<a href="${campusUrl}">select campus</a>
-		</p>
-		<kme:listView id="eventslist" dataTheme="c" dataDividerTheme="b" filter="false">
-			<kme:listItem>
-				<c:url var="calendarUrl" value="/calendar">
-				</c:url>
-				<a href="${calendarUrl}">
-					<h3>
-						My Calendar
-					</h3> </a>
-			</kme:listItem>
-
-			<c:forEach items="${categories}" var="category" varStatus="status">
+		<kme:listView id="campuslist" filter="false">
+			<c:forEach items="${campuses}" var="campus" varStatus="status">
 				<kme:listItem>
-					<c:url var="url" value="/events/viewEvents">
-						<c:param name="categoryId" value="${category.categoryId}"></c:param>
-						<c:param name="campus" value="${campus}"></c:param>
+					<c:url var="campusUrl" value="/campus/select">
+						<c:param name="toolName" value="${toolName}" />
+						<c:param name="campus" value="${campus.code}" />
 					</c:url>
-					<a href="${url}">
-						<h3>
-							<c:out value="${category.title}" />
-						</h3> </a>
+					<a href="${campusUrl}"> <c:out value="${campus.name}" />
+					</a>
 				</kme:listItem>
 			</c:forEach>
 		</kme:listView>
 	</kme:content>
 </kme:page>
+
+

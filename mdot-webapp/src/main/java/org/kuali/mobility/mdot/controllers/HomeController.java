@@ -176,18 +176,10 @@ public class HomeController {
 
     	tool = new Tool();
     	tool.setBadgeCount("");
-    	tool.setDescription("See what's happening on campus today, this week, and year-round.");
+    	tool.setDescription("See what's happening on campus today, this week, and year-round. Access and manage your personal OneStart calendar.");
     	tool.setIconUrl("images/service-icons/srvc-events.png");
     	tool.setTitle("Events");
     	tool.setUrl("events");
-    	tools.add(tool);
-
-    	tool = new Tool();
-    	tool.setBadgeCount("");
-    	tool.setDescription("Access and manage your personal OneStart calendar.");
-    	tool.setIconUrl("images/service-icons/srvc-events.png");
-    	tool.setTitle("Calendar");
-    	tool.setUrl("calendar/month");
     	tools.add(tool);
 
     	tool = new Tool();

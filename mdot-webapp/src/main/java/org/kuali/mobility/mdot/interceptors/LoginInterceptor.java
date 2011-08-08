@@ -27,6 +27,8 @@ public class LoginInterceptor implements HandlerInterceptor {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 		if (HttpUtil.needsAuthenticated(request.getServletPath()) || "yes".equals(request.getParameter("login"))) {
 			login(request);
+		} else {
+			publicLogin(request);
 		}
 
 		User user = (User) request.getSession(true).getAttribute(Constants.KME_USER_KEY);
@@ -44,10 +46,18 @@ public class LoginInterceptor implements HandlerInterceptor {
 	}
 
 	@SuppressWarnings("unchecked")
-	private User login(HttpServletRequest request) {		
+	private void publicLogin(HttpServletRequest request) {
 		User user = (User) request.getSession(true).getAttribute(Constants.KME_USER_KEY);
 		if (user == null) {
-			user = new UserImpl();
+			user = new UserImpl(true);
+			request.getSession().setAttribute(Constants.KME_USER_KEY, user);
+		}
+	}
+
+	private User login(HttpServletRequest request) {
+		User user = (User) request.getSession(true).getAttribute(Constants.KME_USER_KEY);
+		if (user == null || user.isPublicUser()) {
+			user = new UserImpl(false);
 			user.setUserId(CASFilter.getRemoteUser(request));
 			
 			// TODO: Get person attributes and set on User Object. Save to database.
@@ -56,12 +66,13 @@ public class LoginInterceptor implements HandlerInterceptor {
 				user.setAffiliations(adsPerson.getIuEduPersonAffiliation());
 				user.setGroups(adsPerson.getGroups());
 				user.setPrimaryCampus(adsPerson.getOu());
+				user.setViewCampus(adsPerson.getOu());
 			} catch (Exception e) {
 				LOG.error(e.getMessage(), e);
 			}
 			
 			request.getSession().setAttribute(Constants.KME_USER_KEY, user);
-			LOG.info("User id: " + user.getUserId() + " logging in."); 
+			LOG.info("User id: " + user.getUserId() + " logging in.");
 		}
 		return user;
 	}
@@ -70,10 +81,12 @@ public class LoginInterceptor implements HandlerInterceptor {
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView e) throws Exception {}
 
 	@Override
-	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception e) throws Exception {}
+	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception e) throws Exception {
+	}
 
 	public void setAdsService(AdsService adsService) {
 		this.adsService = adsService;
 	}
+
 
 }

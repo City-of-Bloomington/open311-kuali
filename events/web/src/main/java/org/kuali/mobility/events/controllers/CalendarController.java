@@ -64,6 +64,11 @@ public class CalendarController {
 		this.calendarEventOAuthService = calendarEventOAuthService;
 	}
 
+	@RequestMapping(method = RequestMethod.GET)
+	public String home(HttpServletRequest request, Model uiModel, @RequestParam(required = false) String date) {
+		return month(request, uiModel, date);
+	}
+
 	@RequestMapping(value = "/month", method = RequestMethod.GET)
 	public String month(HttpServletRequest request, Model uiModel, @RequestParam(required = false) String date) {
 		User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
