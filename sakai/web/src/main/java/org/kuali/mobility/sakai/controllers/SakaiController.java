@@ -15,8 +15,10 @@
  
 package org.kuali.mobility.sakai.controllers;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Calendar;
 import java.util.List;
 
@@ -39,6 +41,7 @@ import org.kuali.mobility.sakai.service.SakaiSiteService;
 import org.kuali.mobility.shared.Constants;
 import org.kuali.mobility.user.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -48,6 +51,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import edu.iu.es.espd.oauth.OAuth2LegService;
+import edu.iu.es.espd.oauth.OAuthException;
 
 @Controller
 @RequestMapping("/myclasses")
@@ -142,17 +146,34 @@ public class SakaiController {
 	
 	@RequestMapping(value="/{siteId}/announcements/{annId}", method = RequestMethod.GET)
 	public String getAnnouncement(HttpServletRequest request, @PathVariable("siteId") String siteId, @PathVariable("annId") String annId, Model uiModel) {
+		Announcement announcement = null;
 		try {
 			User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
 			String url = configParamService.findValueByName("Sakai.Url.Base") + "announcement/message/" + siteId + "/" + annId + ".json";
 			ResponseEntity<InputStream> is = oncourseOAuthService.oAuthGetRequest(user.getUserId(), url, "text/html");
 			String json = IOUtils.toString(is.getBody(), "UTF-8");
 
-			Announcement announcement = sakaiSiteService.findAnnouncementDetails(json);
-			uiModel.addAttribute("announcement", announcement);
+			announcement = sakaiSiteService.findAnnouncementDetails(json);
+			
+		} catch (OAuthException e) {
+			if (e.getResponseCode() == HttpStatus.NOT_FOUND.value()) {
+				announcement = new Announcement();
+				announcement.setBody("This announcement was not found.");
+			} else {
+				BufferedReader br = new BufferedReader(new InputStreamReader(e.getResponseBody()));
+				String body = "";
+				try {
+					body = br.readLine();
+				} catch (IOException e1) {
+				}
+				LOG.error(e.getResponseCode() + ", " + body, e);
+				announcement = new Announcement();
+				announcement.setBody("There was an error retrieving this announcement.");
+			}
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
 		}
+		uiModel.addAttribute("announcement", announcement);
 		uiModel.addAttribute("siteId", siteId);
 		return "sakai/announcement";
 	}

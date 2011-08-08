@@ -14,10 +14,10 @@
 
 <kme:page title="Announcement Details" id="announcement" backButton="true" homeButton="true" cssFilename="sakai">
 	<kme:content>
-		<h3>${announcement.title}</h3>
-		<p>Posted: ${announcement.createdByDisplayName}</p>
-		<p>Date: ${announcement.createdOn}</p>
-		<p>${announcement.body}</p>
+		<c:if test="${not empty announcement.title}"><h3>${announcement.title}</h3></c:if>
+		<c:if test="${not empty announcement.createdByDisplayName}"><p>Posted: ${announcement.createdByDisplayName}</p></c:if>
+		<c:if test="${not empty announcement.createdOn}"><p>Date: ${announcement.createdOn}</p></c:if>
+		<c:if test="${not empty announcement.body}"><p>${announcement.body}</p></c:if>
 		<c:if test="${not empty announcement.attachments}">
 			Attachments:
 			<ul data-role="listview" data-inset="true">
