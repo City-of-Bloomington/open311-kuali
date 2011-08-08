@@ -17,8 +17,12 @@ package org.kuali.mobility.emergencyinfo.controllers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.kuali.mobility.emergencyinfo.entity.EmergencyInfo;
 import org.kuali.mobility.emergencyinfo.service.EmergencyInfoService;
+import org.kuali.mobility.shared.Constants;
+import org.kuali.mobility.user.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -41,9 +45,15 @@ public class EmergencyInfoController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public String getList(Model uiModel) {
-    	uiModel.addAttribute("test", "test2");
-    	List<EmergencyInfo> infos = emergencyInfoService.findAllEmergencyInfoByCampus("BL");
+    public String getList(Model uiModel, HttpServletRequest request) {
+    	User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
+		String selectedCampus = "UA";
+    	if (user.getViewCampus() == null) {
+    		return "redirect:/campus?toolName=emergencycontacts";
+    	} else {
+    		selectedCampus = user.getViewCampus();
+    	}
+    	List<EmergencyInfo> infos = emergencyInfoService.findAllEmergencyInfoByCampus(selectedCampus);
     	uiModel.addAttribute("emergencyinfos", infos);
     	return "emergencyinfo/list";
     }
