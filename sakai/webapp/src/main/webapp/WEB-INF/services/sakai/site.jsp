@@ -15,33 +15,43 @@
 <kme:page title="${site.title}" id="class_details" backButton="true" homeButton="true" backButtonURL="${pageContext.request.contextPath}/myclasses" cssFilename="sakai">
 	<kme:content>
 		<kme:listView dataTheme="c" dataDividerTheme="b">
+			<c:if test="${(site.instructorName != null && site.instructorName != 'null') || not empty site.location}">
+				<kme:listItem dataTheme="b" dataRole="list-divider">Details</kme:listItem>
+			</c:if>
 			<c:if test="${site.instructorName != null && site.instructorName != 'null'}">
 				<kme:listItem>
 					<a href="${pageContext.request.contextPath}/myclasses/${site.id}/roster/${site.instructorId}" class="icon-INSTRUCTOR">
 						Instructor<br />
-						<span style=" font-weight:normal; font-size:.8em">${site.instructorName}</span>
+						<span class="wrap" style="font-weight:normal; font-size:.8em">${site.instructorName}</span>
 					</a>
 				</kme:listItem>
 			</c:if>
-			<c:if test="${not empty site.meetingTime}">
-                <kme:listItem>
-                	<p>${site.meetingTime}</p>
-                </kme:listItem>
-            </c:if>
             <c:if test="${not empty site.location}">
-                <kme:listItem>
+                <kme:listItem cssClass="link-gps">
 	                <c:if test="${not empty site.buildingCode}">
 	                	<c:url value="/maps/location" var="url">
 	                		<c:param name="id" value="${site.buildingCode}" />
 	                	</c:url>
-						<a href="${url}" class="icon-MAPS">${site.location}</a>
+						<a href="${url}" class="icon-MAPS">${site.location}
+						<c:if test="${not empty site.meetingTime}">
+                			<br/><span class="wrap" style="font-weight:normal; font-size:.8em">${site.meetingTime}</span>
+						</c:if>
+						</a>
 	            	</c:if>
 	            	<c:if test="${empty site.buildingCode}">
-	                	<p>${site.location}</p>
+	            		<p>
+	                	${site.location}
+	                	<c:if test="${not empty site.meetingTime}">
+                			<br/><span class="wrap" style="font-weight:normal; font-size:.8em">${site.meetingTime}</span>
+						</c:if>
+						</p>
 	            	</c:if>
                 </kme:listItem>
             </c:if>
             
+            <c:if test="${site.hasAnnouncementsTool || (site.hasAssignmentsTool && false) || (site.hasGradesTool && false) || site.hasRosterTool || site.hasForumsTool || site.hasResourcesTool || site.hasMessagesTool}">
+            	<kme:listItem dataTheme="b" dataRole="list-divider">Tools</kme:listItem>
+            </c:if>
 			<c:if test="${site.hasAnnouncementsTool}">
 				<kme:listItem>
 					<a href="${pageContext.request.contextPath}/myclasses/${site.id}/announcements" class="icon-ANNOUNCEMENTS">

@@ -169,7 +169,7 @@
 	                            <a href="${pageContext.request.contextPath}/myclasses/${item.id}">
 	                                <h3>${item.title}</h3>
 	                                <c:if test="${not empty item.description && item.description != 'null'}">
-	                                    <p>${item.description}</p>
+	                                    <p class="wrap">${item.description}</p>
 	                                </c:if>
 	                            </a>
 	                        </kme:listItem>
@@ -188,7 +188,7 @@
                         <a href="${pageContext.request.contextPath}/myclasses/${item.id}">
                             <h3>${item.title}</h3>
                             <c:if test="${not empty item.description && item.description != 'null'}">
-                                <p>${item.description}</p>
+                                <p class="wrap">${item.description}</p>
                             </c:if>
                         </a>
                     </kme:listItem>
@@ -207,7 +207,7 @@
 	                        <a href="${pageContext.request.contextPath}/myclasses/${item.id}">
 	                            <h3>${item.title}</h3>
 	                            <c:if test="${not empty item.description && item.description != 'null'}">
-	                                <p>${item.description}</p>
+	                                <p class="wrap">${item.description}</p>
 	                            </c:if>
 	                        </a>
 	                    </kme:listItem>
@@ -237,7 +237,7 @@
 	                        <a href="${pageContext.request.contextPath}/myclasses/${item.id}">
 	                            <h3>${item.title}</h3>
 	                            <c:if test="${not empty item.description && item.description != 'null'}">
-	                                <p>${item.description}</p>
+	                                <p class="wrap">${item.description}</p>
 	                            </c:if>
 	                        </a>
 	                    </kme:listItem>

@@ -624,20 +624,62 @@ div#home span.dl-dt-count {
 
 
 .link-email .ui-icon.ui-icon-arrow-r {
-	background: url(images/icon-disclosure-email-18.png);
-	background-color:#939393
+	background-image: url(images/icon-disclosure-email-18.png);
+	background-color:#939393;
+	background-position: 1px 1px;
 }
 .link-phone .ui-icon.ui-icon-arrow-r {
-	background: url(images/icon-disclosure-phone-18.png);
-	background-color:#939393
+	background-image: url(images/icon-disclosure-phone-18.png);
+	background-color:#939393;
+	background-position: 1px 1px;
 }
 .link-view .ui-icon.ui-icon-arrow-r {
-	background: url(images/icon-disclosure-view-18.png);
-	background-color:#939393
+	background-image: url(images/icon-disclosure-view-18.png);
+	background-color:#939393;
+	background-position: 1px 1px;
 }
 .link-gps .ui-icon.ui-icon-arrow-r {
-	background: url(images/icon-disclosure-gps-18.png);
-	background-color:#939393
+	background-image: url(images/icon-disclosure-gps-18.png);
+	background-color:#939393;
+	background-position: 1px 1px;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+       only screen and (min--moz-device-pixel-ratio: 1.5),
+       only screen and (min-resolution: 240dpi) {
+	
+	.link-email .ui-icon.ui-icon-arrow-r {
+		background-image: url(images/icon-disclosure-email-36.png);
+		-moz-background-size: 18px 18px;
+		-o-background-size: 18px 18px;
+		-webkit-background-size: 18px 18px;
+		background-size: 18px 18px;
+		background-position: 0px 0px;
+	}
+	.link-phone .ui-icon.ui-icon-arrow-r {
+		background-image: url(images/icon-disclosure-phone-36.png);
+		-moz-background-size: 18px 18px;
+		-o-background-size: 18px 18px;
+		-webkit-background-size: 18px 18px;
+		background-size: 18px 18px;
+		background-position: 0px 0px;
+	}
+	.link-view .ui-icon.ui-icon-arrow-r {
+		background-image: url(images/icon-disclosure-view-36.png);
+		-moz-background-size: 18px 18px;
+		-o-background-size: 18px 18px;
+		-webkit-background-size: 18px 18px;
+		background-size: 18px 18px;
+		background-position: 0px 0px;
+	}
+	.link-gps .ui-icon.ui-icon-arrow-r {
+		background-image: url(images/icon-disclosure-gps-36.png);
+		-moz-background-size: 18px 18px;
+		-o-background-size: 18px 18px;
+		-webkit-background-size: 18px 18px;
+		background-size: 18px 18px;
+		background-position: 0px 0px;
+	}
 }
 
 

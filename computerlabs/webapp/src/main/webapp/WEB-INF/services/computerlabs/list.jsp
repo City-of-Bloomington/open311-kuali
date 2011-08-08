@@ -19,7 +19,7 @@
             <c:forEach items="${lablocations}" var="location" varStatus="status">
                 <kme:listItem dataTheme="b" dataRole="list-divider">${location.name}</kme:listItem>
 	            <c:forEach items="${location.computerLabs}" var="computerlab" varStatus="status">
-	                <kme:listItem>
+	                <kme:listItem cssClass="link-gps">
 				       <c:choose>
 			                <c:when test="${!empty computerlab.buildingCode}">
                                 <a href="${pageContext.request.contextPath}/maps/location?id=${computerlab.buildingCode}"><h3>${computerlab.labCode}</h3><p>${computerlab.availability} seats available</p></a>

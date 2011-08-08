@@ -48,6 +48,9 @@
 #class_details ul.ui-listview a.icon-ROSTER, #announcement ul.ui-listview a.icon-ROSTER, #message ul.ui-listview a.icon-ROSTER, #forum ul li ul li a.icon-ROSTER {
     background-image: url('../images/service-icons/mcl-roster.png');
 }
+#class_details ul.ui-listview a.icon-MAPS, #announcement ul.ui-listview a.icon-MAPS, #message ul.ui-listview a.icon-MAPS, #forum ul li ul li a.icon-MAPS {
+    background-image: url('../images/service-icons/mcl-maps.png');
+}
 #class_details ul.ui-listview a.icon-FORUMS, #announcement ul.ui-listview a.icon-FORUMS, #message ul.ui-listview a.icon-FORUMS, #forum ul li ul li a.icon-FORUMS {
     background-image: url('../images/service-icons/mcl-forums.png');
 }
