@@ -17,8 +17,12 @@ package org.kuali.mobility.computerlabs.controllers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.kuali.mobility.computerlabs.entity.LabLocation;
 import org.kuali.mobility.computerlabs.service.ComputerLabsService;
+import org.kuali.mobility.shared.Constants;
+import org.kuali.mobility.user.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,14 +43,28 @@ public class ComputerLabsController {
     
     @RequestMapping(method = RequestMethod.GET, headers = "Accept=application/json")
     @ResponseBody
-    public String findAllComputerLabsByCampus(@RequestParam(value = "campus", required = true) String campus) {
-    	List<LabLocation> labLocations = computerLabsService.findAllLabLocationsByCampus("BL");
+    public String findAllComputerLabsByCampus(@RequestParam(value = "campus", required = true) String campus, HttpServletRequest request) {
+    	User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
+		String selectedCampus = "UA";
+    	if (user.getViewCampus() == null) {
+    		return "redirect:/campus?toolName=computerlabs";
+    	} else {
+    		selectedCampus = user.getViewCampus();
+    	}
+    	List<LabLocation> labLocations = computerLabsService.findAllLabLocationsByCampus(selectedCampus);
     	return computerLabsService.toJsonLabLocation(labLocations);
     }
     
     @RequestMapping(method = RequestMethod.GET)
-    public String getList(Model uiModel) {
-   		List<LabLocation> labLocations = computerLabsService.findAllLabLocationsByCampus("BL");
+    public String getList(Model uiModel, HttpServletRequest request) {
+    	User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
+		String selectedCampus = "UA";
+    	if (user.getViewCampus() == null) {
+    		return "redirect:/campus?toolName=computerlabs";
+    	} else {
+    		selectedCampus = user.getViewCampus();
+    	}
+   		List<LabLocation> labLocations = computerLabsService.findAllLabLocationsByCampus(selectedCampus);
    		uiModel.addAttribute("lablocations", labLocations);
     	return "computerlabs/list";
     }
