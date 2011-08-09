@@ -14,6 +14,8 @@ public class PageTag extends SimpleTagSupport {
     private boolean homeButton;
     private boolean backButton;
     private String backButtonURL;
+    private boolean preferencesButton;
+    private String preferencesButtonURL;
     private String cssFilename;
     private String jsFilename;
     
@@ -37,7 +39,15 @@ public class PageTag extends SimpleTagSupport {
         this.backButtonURL = backButtonURL;
     }
     
-    public void setCssFilename(String cssFilename) {
+    public void setPreferencesButton(boolean preferencesButton) {
+		this.preferencesButton = preferencesButton;
+	}
+
+	public void setPreferencesButtonURL(String preferencesButtonURL) {
+		this.preferencesButtonURL = preferencesButtonURL;
+	}
+
+	public void setCssFilename(String cssFilename) {
 		this.cssFilename = cssFilename;
 	}
     
@@ -79,6 +89,9 @@ public class PageTag extends SimpleTagSupport {
                 out.println("<a href=\"" + (backButtonURL != null ? backButtonURL : "javascript: history.go(-1)") + "\" class=\"ui-btn-left\" data-icon=\"back\" data-iconpos=\"notext\">Back</a>");
             }
             out.println("<h1>" + title + "</h1>");
+            if (preferencesButton) {
+                out.println("<a href=\"" + (preferencesButtonURL != null ? preferencesButtonURL : contextPath + "/preferences") + "\" class=\"ui-btn-right\" data-icon=\"gear\" data-iconpos=\"notext\">Preferences</a>");
+            }
             if (homeButton) {
                 out.println("<a href=\"" + contextPath + "/home\" class=\"ui-btn-right\" data-icon=\"home\" data-iconpos=\"notext\">Home</a>");
             }

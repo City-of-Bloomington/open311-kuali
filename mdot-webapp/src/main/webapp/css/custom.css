@@ -762,3 +762,17 @@ div.error span {
 .wrap {
 	white-space:normal;
 }
+
+/*body {
+	position:relative;
+}*/
+
+/*div.ui-header {
+	position:fixed !important;
+	top:0;
+	left:0;
+	z-index:100;
+	-moz-box-shadow: 0 0 10px #333;
+	-webkit-box-shadow: 0 0 10px #333;
+	box-shadow: 0 0 10px #333;
+}*/

@@ -41,6 +41,17 @@
             <rtexprvalue>true</rtexprvalue>
         </attribute>
         <attribute>
+            <name>preferencesButton</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>boolean</type>
+        </attribute>
+        <attribute>
+            <name>preferencesButtonURL</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
             <name>cssFilename</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
