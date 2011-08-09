@@ -11,7 +11,7 @@
 
 /* IT Notices
 -----------------------------------------------------------------------------------------------------------*/
-dl.itnoticeslist dt a {
+/*dl.itnoticeslist dt a {
     padding: 15px 250px 10px 75px;
     position: relative;
     color: #000 !important;
@@ -24,14 +24,18 @@ dl.itnoticeslist dd a {
     color: #333 !important;
     border: none;
     width: 60%;
+}*/
+
+ul#itnoticeslist li a {
+	padding-left: 80px;
 }
 
-div#itnotices div.ui-content span, div#itnotices div.ui-content span.itNoticeIcon-Announcement, div#itnotices div.ui-content span.itNoticeIcon-Critical, div#itnotices div.ui-content span.itNoticeIcon-Error, div#itnotices div.ui-content span.itNoticeIcon-News, div#itnotices div.ui-content span.itNoticeIcon-Warning {
+div#itnotices h3 span, div#itnotices h3 span.itNoticeIcon-Announcement, div#itnotices h3 span.itNoticeIcon-Critical, div#itnotices h3 span.itNoticeIcon-Error, div#itnotices h3 span.itNoticeIcon-News, div#itnotices h3 span.itNoticeIcon-Warning {
     margin: 0;
     padding: 0;
     position: absolute;
-    left: 10px;
-    top: 10px;
+    left: 14px;
+    top: 20px;
     width: 60px;
     height: 100px;
     display: block;
@@ -42,26 +46,26 @@ div#itnotices div.ui-content span, div#itnotices div.ui-content span.itNoticeIco
 }
 
 /* default icon */
-div#itnotices div.ui-content span {
+div#itnotices h3 span {
 	background-image: url('../images/itnotices/announcement.png');
 }
 
-div#itnotices div.ui-content span.itNoticeIcon-Announcement {
+div#itnotices h3 span.itNoticeIcon-Announcement {
     background-image: url('../images/itnotices/announcement.png');
 }
 
-div#itnotices div.ui-content span.itNoticeIcon-Critical {
+div#itnotices h3 span.itNoticeIcon-Critical {
     background-image: url('../images/itnotices/critical.png');
 }
 
-div#itnotices div.ui-content span.itNoticeIcon-Error {
+div#itnotices h3 span.itNoticeIcon-Error {
     background-image: url('../images/itnotices/error.png');
 }
 
-div#itnotices div.ui-content span.itNoticeIcon-News {
+div#itnotices h3 span.itNoticeIcon-News {
     background-image: url('../images/itnotices/news.png');
 }
 
-div#itnotices div.ui-content span.itNoticeIcon-Warning {
+div#itnotices h3 span.itNoticeIcon-Warning {
     background-image: url('../images/itnotices/warning.png');
 }

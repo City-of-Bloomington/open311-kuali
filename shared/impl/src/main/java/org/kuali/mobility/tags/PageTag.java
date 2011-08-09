@@ -57,7 +57,6 @@ public class PageTag extends SimpleTagSupport {
             out.println("<link href=\"" + contextPath + "/css/jquery.mobile-1.0b1.css\" rel=\"stylesheet\" type=\"text/css\" />");
             out.println("<link href=\"" + contextPath + "/css/jquery-mobile-fluid960.css\" rel=\"stylesheet\" type=\"text/css\" />");
             out.println("<link href=\"" + contextPath + "/css/custom.css\" rel=\"stylesheet\" type=\"text/css\" />");
-            out.println("<link href=\"" + contextPath + "/css/retina.css\" rel=\"stylesheet\" type=\"text/css\" media=\"only screen and (-webkit-min-device-pixel-ratio: 2)\" />");
             if (cssFilename != null && !cssFilename.trim().equals("")) {
             	out.println("<link href=\"" + contextPath + "/css/" + cssFilename + ".css\" rel=\"stylesheet\" type=\"text/css\" />");
             }

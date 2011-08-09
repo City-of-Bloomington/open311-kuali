@@ -14,29 +14,25 @@
 
 <kme:page title="IT Notices" id="itnotices" homeButton="true" backButton="true" cssFilename="itnotices">
 	<kme:content>
-	    <kme:definitionListView id="itnoticeslist">
+	    <kme:listView id="itnoticeslist">
 	        <c:forEach items="${notices}" var="notice" varStatus="status">
-	            <kme:definitionListTerm>
-	                <c:if test="${empty notice.title && empty notice.noticeType ? 'false' : 'true'}">
-						<a href="itnotices/details?id=${status.index}">
+	            <kme:listItem>
+	            	<a href="itnotices/details?id=${status.index}">
+	            		<h3 class="wrap">
+	                	<c:if test="${empty notice.title && empty notice.noticeType ? 'false' : 'true'}">
 						    <c:if test="${empty notice.noticeType ? 'false' : 'true'}">
 								<span class="itNoticeIcon-${notice.noticeType}">${notice.noticeType}: </span>
 		                    </c:if>
 		                    <c:if test="${empty notice.title ? 'false' : 'true'}">
 		                        ${notice.title}
 		                    </c:if>
-						</a>
-					</c:if>
-	            </kme:definitionListTerm>
-	            <kme:definitionListDefinition>
-	                <a href="itnotices/details?id=${status.index}">
-	                    <p>${notice.service}</p>
+						</c:if>
+						</h3>
+	                    <p class="wrap">${notice.service}</p>
+	                    <p class="wrap">Last Updated: ${notice.lastUpdated}</p>
 	                </a>
-	                <a href="itnotices/details?id=${status.index}">
-	                    <p>Last Updated: ${notice.lastUpdated}</p>
-	                </a>
-	            </kme:definitionListDefinition>
+	            </kme:listItem>
 	        </c:forEach>
-	    </kme:definitionListView>
+	    </kme:listView>
 	</kme:content>
 </kme:page>
