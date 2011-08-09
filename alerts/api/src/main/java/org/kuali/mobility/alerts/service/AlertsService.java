@@ -43,5 +43,4 @@ public interface AlertsService {
     List<Alert> findAllAlertsFromJson(String url);
 
     int findAlertCountByCriteria(Map<String, String> criteria);
-	
 }
