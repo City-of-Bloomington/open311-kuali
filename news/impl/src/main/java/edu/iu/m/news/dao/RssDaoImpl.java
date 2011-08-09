@@ -18,7 +18,7 @@ public class RssDaoImpl implements RssDao {
 
     @SuppressWarnings("unchecked")
     public List<Rss> findAllRss() {
-        Query query = entityManager.createQuery("select r from Rss r");
+        Query query = entityManager.createQuery("select r from Rss r"); 
         try { 
         	return query.getResultList();
         } catch (Exception e) {        	

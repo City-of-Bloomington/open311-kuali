@@ -16,13 +16,6 @@
 
 <kme:page title="Event Categories" id="events" backButton="true" homeButton="true" cssFilename="events" backButtonURL="${pageContext.request.contextPath}/home">
 	<kme:content>
-
-		<c:url var="campusUrl" value="/campus">
-			<c:param name="toolName" value="events"></c:param>
-		</c:url>
-		<p>
-			<a href="${campusUrl}">select campus</a>
-		</p>
 		<kme:listView id="eventslist" dataTheme="c" dataDividerTheme="b" filter="false">
 			<kme:listItem>
 				<c:url var="calendarUrl" value="/calendar">

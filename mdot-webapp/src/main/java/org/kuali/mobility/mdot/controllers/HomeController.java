@@ -176,7 +176,7 @@ public class HomeController {
     	tool.setBadgeCount("");
     	tool.setDescription("See what's happening on campus today or personal your calendar.");
     	tool.setIconUrl("images/service-icons/srvc-events.png");
-    	tool.setTitle("IU Calendar");
+    	tool.setTitle("Calendar");
     	tool.setUrl("events");
     	tools.add(tool);
 
