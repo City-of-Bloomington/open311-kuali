@@ -1,23 +1,95 @@
-/* Athletics - Custom Grid
+/*does this belong in custom.css?*/
+
+.ui-li-icon.ui-li-thumb {
+	width:18px;
+	height:18px;
+}
+
+
+/* Match Info Display
 -----------------------------------------------------------------------------------------------------------*/
 
 
-
-
-
-
-/* grid d: 20/60/20/ */
-.ui-grid-20-60-20 .ui-block-a, .ui-grid-20-60-20 .ui-block-c {
-	width: 20%;
+.match-info {
+	padding-top:10px;
+	padding-bottom:10px;
+	border-bottom: 1px solid #CCC;
 }
-.ui-grid-20-60-20 .ui-block-b {
-	width: 60%;
+.match-info .team-score {
 	text-align:center;
-	border-left:none;
-	border-right:0px none
 }
-.ui-grid-20-60-20 .ui-block-a {
-	clear: left;
+.match-info .team-score img {
+	width:24px;
+	height:24px;
+}
+.match-info .team-score span {
+	display:block;
+	font-size: 24px;
+	font-weight: bold;
+}
+.match-info .match-outcome {
+	display:block;
+	font-weight: bold;
+	color: #900;
+	text-align: center;
+	font-size: 10px;
 }
 
+.match-info .sport-category {
+	display:block;
+	color: #666;
+	text-align: center;
+	font-size: 10px;
+}
+
+.match-info .opponent {
+	display:block;
+	font-weight: bold;
+	color: #000;
+	text-align: center;
+}
+.match-info .date-time {
+	display:block;
+ font-weight:;
+	text-align: center;
+	font-size: 10px;
+}
+.match-info .location {
+	display:block;
+ font-weight:;
+	text-align: center;
+	font-size: 10px;
+}
+
+/* News
+-----------------------------------------------------------------------------------------------------------*/
+.news-list li a p {
+	white-space:normal;
+	
+}
+
+.news-list li a p img {
+	
+
+
+}
+
+/* Roster
+-----------------------------------------------------------------------------------------------------------*/
+/*does this belong in custom.css?*/
+
+.contentwrapper {
+	float: left;
+	width: 100%;
+}
+.contentcolumn {
+	margin-left: 130px;
+	
+}
+.leftcolumn {
+	float: left;
+	width: 130px;
+	margin-left: -100%;
+	
+}
 
