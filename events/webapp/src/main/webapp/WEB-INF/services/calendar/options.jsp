@@ -48,9 +48,11 @@
 							<h3>Remove Filter ${filter.filterName}</h3>
 							<p>Remove your filter.</p> </a></li>
 				</c:if>
+				<%--
 				<li><a data-ajax="false" href="${pageContext.request.contextPath}/calendar/refresh">
 						<h3>Refresh My Calendar</h3>
 						<p>This will refresh your calendar.</p> </a></li>
+						 --%>
 				<li><a data-ajax="false" href="${pageContext.request.contextPath}/calendar/pendingMeetings">
 						<h3>Pending Meetings</h3>
 						<p>New, updated, or cancelled meetings.</p> </a></li>
