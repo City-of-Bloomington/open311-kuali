@@ -70,7 +70,7 @@
    
     </ul>
 
-      <div  style="padding-top:20px" align="right">
+      <div  style="padding-top:20px">
        
        <a href="${pageContext.request.contextPath}/calendar/listEvents?date=${selectedDate}&beginDate=${beginDate}&endDate=${endDate}" ><c:out value="${days}"/> More &gt;</a>
       </div>
