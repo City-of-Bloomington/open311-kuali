@@ -15,14 +15,21 @@
 
 <kme:page title="Emergency Contacts" id="emergencyinfo" backButton="true" homeButton="true" cssFilename="emergencyinfo">
     <kme:content>
-        <kme:definitionListView id="emergencylist" filter="false">
+        <kme:listView id="emergencylist" filter="false">
+        	<kme:listItem cssClass="link-phone">
+        	<a href="tel:18123616233">
+        		<h3>In a true emergency: <span style="color:red;">911</span></h3>
+        	</a>
+        	</kme:listItem>
+        	<kme:listItem dataTheme="b" dataRole="list-divider">Phone Numbers</kme:listItem>
             <c:forEach items="${emergencyinfos}" var="emergencyinfo" varStatus="status">
-                <kme:definitionListTerm><a href="tel:${emergencyinfo.link}">${emergencyinfo.title}</a></kme:definitionListTerm>
-                <kme:definitionListDefinition>
-                    <a href="tel:${emergencyinfo.link}">
-                        ${emergencyinfo.link}
-                    </a></kme:definitionListDefinition>
+                <kme:listItem cssClass="link-phone">
+                	<a href="tel:${emergencyinfo.link}">
+                		<h3>${emergencyinfo.title}</h3>
+                    	<p>${emergencyinfo.link}</p>
+               	 	</a>
+                </kme:listItem>
             </c:forEach>
-        </kme:definitionListView>
+        </kme:listView>
     </kme:content>
 </kme:page>

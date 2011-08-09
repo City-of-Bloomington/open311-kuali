@@ -114,3 +114,8 @@ function centerOverAllLocations(map, markersArray, userMarkersArray) {
 	}
 	map.fitBounds(bounds);
 }
+
+/* resize map to full height after page load */
+$(window).load(function () {
+	$('div#map_canvas').height($('div#mapslocation').height());
+});
