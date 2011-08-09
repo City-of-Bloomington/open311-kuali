@@ -7,7 +7,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import edu.iu.m.news.entity.MaintRss;
 
@@ -20,44 +19,72 @@ public class MaintRssDaoImpl implements MaintRssDao {
     @SuppressWarnings("unchecked")
     public List<MaintRss> findAllRss() {
         Query query = entityManager.createQuery("select r from MaintRss r order by r.order");
-        return query.getResultList();
+        try { 
+        	return query.getResultList();
+        } catch (Exception e) {        	
+        	return null;
+        }
     }
 
     @SuppressWarnings("unchecked")
     public List<MaintRss> findAllRssOrderBy(String order) {
         Query query = entityManager.createQuery("select r from MaintRss r order by " + order);
-        return query.getResultList();
+        try { 
+        	return query.getResultList();
+        } catch (Exception e) {        	
+        	return null;
+        }
     }
     
     @SuppressWarnings("unchecked")
     public List<MaintRss> rssDaofindAllRss(String clause) {
         Query query = entityManager.createQuery("select r from MaintRss r " + clause);
-        return query.getResultList();
+        try { 
+        	return query.getResultList();
+        } catch (Exception e) {        	
+        	return null;
+        }
     }
     
     public MaintRss findRssById(Long id) {
         Query query = entityManager.createQuery("select r from MaintRss r where r.rssId = :id");
         query.setParameter("id", id);
-        return (MaintRss) query.getSingleResult();
+        try { 
+        	return (MaintRss) query.getSingleResult();
+        } catch (Exception e) {        	
+        	return null;
+        }
     }
 
     public MaintRss findRssByUrl(String url) {
         Query query = entityManager.createQuery("select r from MaintRss r where r.rssId = :url");
         query.setParameter("url", url);
-        return (MaintRss) query.getSingleResult();
+        try { 
+        	return (MaintRss) query.getSingleResult();
+        } catch (Exception e) {        	
+        	return null;
+        }
     }
     
     public MaintRss findRssByShortCode(String code) {
         Query query = entityManager.createQuery("select r from MaintRss r where r.shortCode = :code");
         query.setParameter("code", code);
-        return (MaintRss) query.getSingleResult();
+        try { 
+        	return (MaintRss) query.getSingleResult();
+        } catch (Exception e) {        	
+        	return null;
+        }
     }
     
     @SuppressWarnings("unchecked")
 	public List<MaintRss> findAllNewsRssByCampusCode(String campusCode) {
         Query query = entityManager.createQuery("select r from MaintRss r where r.type like 'NEWS' and (r.campus like :campusCode or r.campus like 'UA') order by r.order");
         query.setParameter("campusCode", campusCode);
-        return query.getResultList();
+        try { 
+        	return query.getResultList();
+        } catch (Exception e) {        	
+        	return null;
+        }
     }
 
     public void saveRss(MaintRss rss) {
@@ -82,8 +109,12 @@ public class MaintRssDaoImpl implements MaintRssDao {
     public String findUrlByShortCode(String code) {
         Query query = entityManager.createQuery("select r from MaintRss r where r.shortCode = :code");
         query.setParameter("code", code);
-        MaintRss rss = (MaintRss) query.getSingleResult();
-        return rss.getUrl();
+        try { 
+        	MaintRss rss = (MaintRss) query.getSingleResult();
+            return rss.getUrl();
+        } catch (Exception e) {        	
+        	return null;
+        }
     }
     
     public void reoder(Long id, boolean up) {

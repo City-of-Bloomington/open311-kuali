@@ -7,7 +7,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import edu.iu.m.news.entity.Rss;
 
@@ -20,25 +19,41 @@ public class RssDaoImpl implements RssDao {
     @SuppressWarnings("unchecked")
     public List<Rss> findAllRss() {
         Query query = entityManager.createQuery("select r from Rss r");
-        return query.getResultList();
+        try { 
+        	return query.getResultList();
+        } catch (Exception e) {        	
+        	return null;
+        }
     }
 
     public Rss findRssById(Long id) {
         Query query = entityManager.createQuery("select r from Rss r where r.rssId = :id");
         query.setParameter("id", id);
-        return (Rss) query.getSingleResult();
+        try { 
+        	return (Rss) query.getSingleResult();
+        } catch (Exception e) {        	
+        	return null;
+        }
     }
 
     public Rss findRssByUrl(String url) {
         Query query = entityManager.createQuery("select r from Rss r where r.url = :url");
         query.setParameter("url", url);
-        return (Rss) query.getSingleResult();
+        try { 
+        	return (Rss) query.getSingleResult();
+        } catch (Exception e) {        	
+        	return null;
+        }
     }
     
     public Rss findRssByMaintRssId(Long maintRssId) {
         Query query = entityManager.createQuery("select r from Rss r where r.rssMaintId = :rssMaintId");
         query.setParameter("rssMaintId", maintRssId);
-        return (Rss) query.getSingleResult();
+        try { 
+        	return (Rss) query.getResultList();
+        } catch (Exception e) {        	
+        	return null;
+        }
     }
 
     public void saveRss(Rss rss) {
