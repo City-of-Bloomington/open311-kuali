@@ -1,3 +1,18 @@
-.asdf {
-	
+form#kbsearchform {
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+
+div.ui-content {
+	padding-top: 5px;
+}
+
+p.searchResults {
+	font-size: 14px;
+	margin: 10px;
+	padding: 0;
+}
+
+a.ui-link-inherit {
+	padding-right: 30px !important;
 }

@@ -15,7 +15,7 @@
 <kme:listView id="kbsearchresults" dataTheme="c" dataDividerTheme="b" filter="false">
 <c:forEach items="${container.results}" var="item" varStatus="status">
 <kme:listItem>
-	<a href="${pageContext.request.contextPath}/knowledgebase/${item.documentId}">${item.title}</a>
+	<a href="${pageContext.request.contextPath}/knowledgebase/${item.documentId}"><p class="wrap searchResults">${item.title}</p></a>
 </kme:listItem>
 </c:forEach>
 </kme:listView>
