@@ -15,18 +15,19 @@
 <%@ taglib prefix="kme"  uri="http://kuali.org/mobility" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<kme:page title="Mobile CAS Acknowledgement" id="mobCasAck" backButton="true" homeButton="true" backButtonURL="home">
+<kme:page title="Verify" id="mobCasAck" backButton="true" homeButton="true" backButtonURL="home">
 	<kme:content>
-		<ol>
+		<h2>Mobile CAS</h2>
+		<ul>
 			<li>Mobile CAS allows a 24 hour session.</li>
 			<li>A PIN should be used to secure your phone.</li>
 			<li>If you lose your phone you should change your passphrase to invalidate your Mobile CAS Session.</li>
-		</ol>		    
+		</ul>		    
 		<form:form action="${pageContext.request.contextPath}/mobileCasAck" commandName="command" data-ajax="false" method="post">
 	      <div data-inline="true">
 	        <div class="ui-grid-a">
 	          <div class="ui-block-a"><a href="${pageContext.request.contextPath}/home" data-role="button">Cancel</a></div>
-	          <div class="ui-block-b"><input class="submit" type="submit" value="I understand" /></div>
+	          <div class="ui-block-b"><input class="submit" type="submit" value="I Agree" /></div>
 	        </div>
 	      </div>
 	    </form:form>

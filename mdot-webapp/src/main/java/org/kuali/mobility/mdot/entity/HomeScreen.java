@@ -22,25 +22,7 @@ public class HomeScreen implements Serializable {
 
 	private static final long serialVersionUID = 4947101996672004361L;
 
-	private String principalId;
-	private String principalName;
 	private List<Tool> tools; 
-
-	public String getPrincipalId() {
-		return principalId;
-	}
-
-	public void setPrincipalId(String principalId) {
-		this.principalId = principalId;
-	}
-
-	public String getPrincipalName() {
-		return principalName;
-	}
-
-	public void setPrincipalName(String principalName) {
-		this.principalName = principalName;
-	}
 
 	public List<Tool> getTools() {
 		return tools;

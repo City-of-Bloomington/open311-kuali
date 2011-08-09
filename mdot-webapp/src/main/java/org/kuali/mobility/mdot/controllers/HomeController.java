@@ -75,8 +75,6 @@ public class HomeController {
     	Backdoor backdoor = (Backdoor) request.getSession().getAttribute(Constants.KME_BACKDOOR_USER_KEY);
     	 
     	HomeScreen home = new HomeScreen();
-    	home.setPrincipalId("1234");
-    	home.setPrincipalName("natjohns");
     	
     	List<Tool> tools = new ArrayList<Tool>();
 
@@ -176,9 +174,9 @@ public class HomeController {
 
     	tool = new Tool();
     	tool.setBadgeCount("");
-    	tool.setDescription("See what's happening on campus today, this week, and year-round. Access and manage your personal OneStart calendar.");
+    	tool.setDescription("See what's happening on campus today or personal your calendar.");
     	tool.setIconUrl("images/service-icons/srvc-events.png");
-    	tool.setTitle("Events");
+    	tool.setTitle("IU Calendar");
     	tool.setUrl("events");
     	tools.add(tool);
 
