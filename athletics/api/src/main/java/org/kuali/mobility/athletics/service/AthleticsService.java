@@ -22,7 +22,7 @@ import org.kuali.mobility.athletics.entity.RosterData;
 import org.kuali.mobility.athletics.entity.Sport;
 
 public interface AthleticsService {
-	public Athletics retrieveAthletics() throws Exception;
+	public Athletics retrieveAthletics(String campus) throws Exception;
 
 	public MatchData retrieveScheduleForSeason(Long sportId, Long seasonId) throws Exception;
 

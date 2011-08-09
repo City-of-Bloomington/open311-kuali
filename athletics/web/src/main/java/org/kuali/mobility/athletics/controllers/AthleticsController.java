@@ -26,6 +26,8 @@ import org.kuali.mobility.athletics.service.AthleticsService;
 import org.kuali.mobility.news.entity.NewsArticle;
 import org.kuali.mobility.news.entity.NewsStream;
 import org.kuali.mobility.news.service.NewsService;
+import org.kuali.mobility.shared.Constants;
+import org.kuali.mobility.user.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -53,8 +55,15 @@ public class AthleticsController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
-	public String getList(Model uiModel) throws Exception {
-		Athletics athletics = athleticsService.retrieveAthletics();
+	public String getList(Model uiModel, HttpServletRequest request) throws Exception {
+		User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
+    	String selectedCampus = "UA";
+    	if (user.getViewCampus() == null) {
+    		return "redirect:campus?toolName=athletics";
+    	} else {
+    		selectedCampus = user.getViewCampus();
+    	}
+		Athletics athletics = athleticsService.retrieveAthletics(selectedCampus);
 		uiModel.addAttribute("athletics", athletics);
 		return "athletics/list";
 	}

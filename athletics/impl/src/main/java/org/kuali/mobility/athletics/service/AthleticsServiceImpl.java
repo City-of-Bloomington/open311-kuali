@@ -30,6 +30,8 @@ import org.kuali.mobility.athletics.entity.MatchData;
 import org.kuali.mobility.athletics.entity.Player;
 import org.kuali.mobility.athletics.entity.RosterData;
 import org.kuali.mobility.athletics.entity.Sport;
+import org.kuali.mobility.shared.Constants;
+import org.kuali.mobility.user.entity.User;
 
 import flexjson.JSONDeserializer;
 
@@ -45,8 +47,8 @@ public class AthleticsServiceImpl implements AthleticsService {
 
 	private String athleticsURL;
 
-	public Athletics retrieveAthletics() throws Exception {
-		GetMethod get = new GetMethod(athleticsURL + "sports.do?version=2");
+	public Athletics retrieveAthletics(String campus) throws Exception {
+		GetMethod get = new GetMethod(athleticsURL + "sports.do?version=2&campus=" + campus);
 		String json = IOUtils.toString(getInputStreamFromGetMethod(get), "UTF-8");
 		return new JSONDeserializer<Athletics>().deserialize(json, Athletics.class);
 	}
