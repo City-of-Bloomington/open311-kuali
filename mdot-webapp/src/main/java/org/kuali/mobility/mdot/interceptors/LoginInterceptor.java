@@ -1,6 +1,7 @@
 package org.kuali.mobility.mdot.interceptors;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -45,7 +46,6 @@ public class LoginInterceptor implements HandlerInterceptor {
 		return true;
 	}
 
-	@SuppressWarnings("unchecked")
 	private void publicLogin(HttpServletRequest request) {
 		User user = (User) request.getSession(true).getAttribute(Constants.KME_USER_KEY);
 		if (user == null) {
@@ -54,6 +54,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	private User login(HttpServletRequest request) {
 		User user = (User) request.getSession(true).getAttribute(Constants.KME_USER_KEY);
 		if (user == null || user.isPublicUser()) {
@@ -63,8 +64,14 @@ public class LoginInterceptor implements HandlerInterceptor {
 			// TODO: Get person attributes and set on User Object. Save to database.
 			try {
 				AdsPerson adsPerson = adsService.getAdsPerson(user.getUserId());
-				user.setAffiliations(adsPerson.getIuEduPersonAffiliation());
-				user.setGroups(adsPerson.getGroups());
+				List<String> affiliations = adsPerson.getIuEduPersonAffiliation();
+				if (affiliations != null) {
+					user.setAffiliations(affiliations);
+				}
+				List<String> groups = adsPerson.getGroups();
+				if (affiliations != null) {
+					user.setGroups(groups);
+				}
 				user.setPrimaryCampus(adsPerson.getOu());
 				user.setViewCampus(adsPerson.getOu());
 			} catch (Exception e) {
