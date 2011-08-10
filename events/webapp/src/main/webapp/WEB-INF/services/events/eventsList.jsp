@@ -33,11 +33,11 @@
 							<c:param name="campus" value="${campus}"></c:param>
 							<c:param name="eventId" value="${event.eventId}"></c:param>
 						</c:url>
-						<a href="${url}">
-							<h3>
+						<a style="padding-right:25px !important;" href="${url}">
+							<h3 class="wrap">
 								<c:out value="${event.title}" />
 							</h3>
-							<p>
+							<p class="wrap">
 								<c:out value="${event.displayStartTime}" />
 							</p> </a>
 					</kme:listItem>

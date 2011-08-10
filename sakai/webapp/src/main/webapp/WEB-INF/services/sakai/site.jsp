@@ -34,7 +34,7 @@
 	                	</c:url>
 						<a href="${url}" class="icon-MAPS">${site.location}
 						<c:if test="${not empty site.meetingTime}">
-                			<br/><span class="wrap" style="font-weight:normal; font-size:.8em">${site.meetingTime}</span>
+                			<br/><span class="wrap" style="font-weight:normal; font-size:.8em; line-height:0.5em;">${site.meetingTime}</span>
 						</c:if>
 						</a>
 	            	</c:if>
@@ -42,7 +42,7 @@
 	            		<p>
 	                	${site.location}
 	                	<c:if test="${not empty site.meetingTime}">
-                			<br/><span class="wrap" style="font-weight:normal; font-size:.8em">${site.meetingTime}</span>
+                			<br/><span class="wrap" style="font-weight:normal; font-size:.8em; line-height:0.5em;">${site.meetingTime}</span>
 						</c:if>
 						</p>
 	            	</c:if>

@@ -135,8 +135,8 @@
           </li>
         </c:forEach>
         <c:if test="${empty day.value.events}">
-           <li>
-                <h3>There are no events on this day.</h3>
+           <li style="padding:15px !important;">
+                <h3 style="margin: 0 0 0 0;" class="wrap">There are no events on this day.</h3>
           </li>     
         </c:if>
       </ul>
