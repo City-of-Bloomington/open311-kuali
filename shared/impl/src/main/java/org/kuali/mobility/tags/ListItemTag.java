@@ -11,6 +11,7 @@ public class ListItemTag extends SimpleTagSupport {
     
     private String dataRole;
     private String dataTheme;
+    private String dataIcon;
     private boolean hideDataIcon;
     private String cssClass;
     
@@ -18,7 +19,7 @@ public class ListItemTag extends SimpleTagSupport {
         PageContext pageContext = (PageContext) getJspContext();
         JspWriter out = pageContext.getOut();
         try {
-            out.println("<li " + (dataRole != null && !"".equals(dataRole.trim()) ? " data-role=\"" + dataRole.trim() + "\"" : "") + (hideDataIcon ? " data-icon=\"false\"" : "") + (cssClass != null && !"".equals(cssClass.trim()) ? " class=\"" + cssClass.trim() + "\"" : "") + " data-theme=\"" + (dataTheme != null && !"".equals(dataTheme.trim()) ? dataTheme : "c") + "\">");
+            out.println("<li " + (dataRole != null && !"".equals(dataRole.trim()) ? " data-role=\"" + dataRole.trim() + "\"" : "") + (hideDataIcon ? " data-icon=\"false\"" : (dataIcon != null && !"".equals(dataIcon.trim()) ? "data-icon=\"" + dataIcon.trim() + "\"" : "")) + (cssClass != null && !"".equals(cssClass.trim()) ? " class=\"" + cssClass.trim() + "\"" : "") + " data-theme=\"" + (dataTheme != null && !"".equals(dataTheme.trim()) ? dataTheme : "c") + "\">");
             getJspBody().invoke(out);          
             out.println("</li>");
         } catch (Exception e) {
@@ -32,6 +33,10 @@ public class ListItemTag extends SimpleTagSupport {
     
     public void setDataTheme(String dataTheme) {
         this.dataTheme = dataTheme;
+    }
+    
+    public void setDataIcon(String dataIcon) {
+        this.dataIcon = dataIcon;
     }
     
     public void setHideDataIcon(boolean hideDataIcon) {

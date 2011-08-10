@@ -240,12 +240,12 @@ public class HomeController {
     	tool.setBadgeCount("");
     	if (user == null) {
 	    	tool.setDescription("Log in to Mobile CAS.");
-	    	tool.setIconUrl("images/service-icons/srvc-feedback.png");
+	    	tool.setIconUrl("images/service-icons/srvc-cas.png");
 	    	tool.setTitle("Login");
 	    	tool.setUrl("home?login=yes");
     	} else {
 	    	tool.setDescription("Log out out of Mobile CAS.");
-	    	tool.setIconUrl("images/service-icons/srvc-feedback.png");
+	    	tool.setIconUrl("images/service-icons/srvc-cas.png");
 	    	tool.setTitle("Logout");
 	    	tool.setUrl("logout");
     	}

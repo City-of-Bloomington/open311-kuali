@@ -14,9 +14,10 @@
 
 <kme:page title="News" id="news" homeButton="true" backButton="true" backButtonURL="${pageContext.request.contextPath}/home" cssFilename="news">
     <kme:content>
-		<ul data-role="listview" data-theme="c" class="news-index">
+		<!-- <ul data-role="listview" data-theme="c" class="news-index"> -->
+		<kme:listView dataTheme="c" cssClass="news-index">
 			<c:if test="${topArticle != null}">
-				<li class="news-topstory">
+				<kme:listItem cssClass="news-topstory">
 			        <div class="bottom-fade"></div>
 			        <a href="${pageContext.request.contextPath}/news/${topArticleSourceId}?articleId=${topArticle.articleId}&referrer=home">
 			        	<c:choose>
@@ -32,25 +33,28 @@
 				          <p class="news-teaser">${topArticle.description}</p>
 				        </div>
 			        </a> 
-		        </li>
+		        </kme:listItem>
 	        </c:if>
 		
 			<c:forEach items="${newsStreams}" var="stream" varStatus="status">
 			
-				<li data-role="" class="" data-theme="b" data-icon="listview" >
+				<!-- <li data-role="" class="" data-theme="b" data-icon="listview" > -->
+				<kme:listItem dataRole="list-divider" dataTheme="b" dataIcon="listview" cssClass="streamTitle">
 					<a href="${pageContext.request.contextPath}/news/${stream.sourceId}">${stream.title}</a>
-				</li> 
+				</kme:listItem>
+				<!-- </li> --> 
 				
 				<c:forEach items="${stream.articles}" var="day" varStatus="status">
 					<c:forEach items="${day.articles}" var="article" varStatus="status">
-						<li>
+						<kme:listItem>
 							<a href="${pageContext.request.contextPath}/news/${stream.sourceId}?articleId=${article.articleId}&referrer=home">
-				        		<p class="news-title">${article.title}</p>
+				        		<!-- <p class="news-title">${article.title}</p>-->
+				        		<p class="wrap">${article.title}</p>
 				        	</a>
-				        </li>
+				        </kme:listItem>
 					</c:forEach>
 				</c:forEach>
 			</c:forEach>
-		</ul>
+		</kme:listView>
 	</kme:content>
 </kme:page>

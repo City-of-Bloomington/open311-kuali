@@ -2,6 +2,7 @@
 .news-index li {
 	font-size:.7em
 }
+
 .news-index .ui-li-thumb, .ui-li-icon {
 	position: absolute;
 	left: 0px;
@@ -61,15 +62,34 @@
 
 
 
+/* special style for list dividers only */
+li.streamTitle {
+	border-top: 1px solid #FFFFFF;
+	border-bottom: 1px solid #666666;
+	background-color:#777777;
+	color: #FFFFFF;
+	font-size: 1em;
+	font-weight: bold;
+	text-shadow: 0 1px 0 #333333;
+	border-top: 1px solid #FFFFFF;
+	border-bottom: 1px solid #666666;
+	border-left: none;
+	border-right: none;
+	background-image: -moz-linear-gradient(top, #AAAAAA, #777777);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #AAAAAA), color-stop(1, #777777));
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#AAAAAA', EndColorStr='#777777')";
+}
 
-
-
-.news-index .ui-li, .ui-li.ui-field-contain {
-	
-	border-top-width: 0px;
+.ui-li-desc {
+	margin: 0.2em;
 }
 
 
+/*
+.news-index .ui-li, .ui-li.ui-field-contain {
+	border-top-width: 0px;
+}
+*/
 
 .news-story h3 {
 	margin-top:0px;

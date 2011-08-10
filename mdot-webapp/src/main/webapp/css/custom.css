@@ -183,6 +183,8 @@
 .ui-li-divider.ui-bar-b, .ui-li-divider.ui-btn-up-b, .ui-li-divide.ui-btn-hover-b, .ui-li-divide.ui-btn-down-b {
 	border-top: 1px solid #FFFFFF;
 	border-bottom: 1px solid #666666;
+	border-left: none;
+	border-right: none;
 	background-image: -moz-linear-gradient(top, #AAAAAA, #777777);
 	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #AAAAAA), color-stop(1, #777777));
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#AAAAAA', EndColorStr='#777777')";
@@ -776,16 +778,4 @@ div.error span {
 	white-space:normal;
 }
 
-/*body {
-	position:relative;
-}*/
 
-/*div.ui-header {
-	position:fixed !important;
-	top:0;
-	left:0;
-	z-index:100;
-	-moz-box-shadow: 0 0 10px #333;
-	-webkit-box-shadow: 0 0 10px #333;
-	box-shadow: 0 0 10px #333;
-}*/

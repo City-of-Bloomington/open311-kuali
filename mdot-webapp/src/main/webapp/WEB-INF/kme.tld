@@ -181,6 +181,11 @@
             <rtexprvalue>true</rtexprvalue>
         </attribute>
         <attribute>
+            <name>dataIcon</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
             <name>hideDataIcon</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
