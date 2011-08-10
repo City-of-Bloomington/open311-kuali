@@ -14,7 +14,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility"%>
 
-<kme:page title="Schedule" id="athletics-schedule" backButton="true" homeButton="true" cssFilename="athletics" backButtonURL="${pageContext.request.contextPath}/athletics">
+<kme:page title="Schedule" id="athletics-schedule" backButton="true" homeButton="true" cssFilename="athletics" backButtonURL="${pageContext.request.contextPath}/athletics?selectedTab=tab2">
 	<kme:content>
 		<div class="subnav">
 			<div class="subnav-container">

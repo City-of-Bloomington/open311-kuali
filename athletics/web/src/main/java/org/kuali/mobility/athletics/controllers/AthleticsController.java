@@ -49,22 +49,22 @@ public class AthleticsController {
 	@Autowired
 	private NewsService newsService;
 
-	
 	public void setNewsService(NewsService newsService) {
 		this.newsService = newsService;
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
-	public String getList(Model uiModel, HttpServletRequest request) throws Exception {
+	public String getList(Model uiModel, HttpServletRequest request, @RequestParam(required = false) String selectedTab) throws Exception {
 		User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
-    	String selectedCampus = "UA";
-    	if (user.getViewCampus() == null) {
-    		return "redirect:campus?toolName=athletics";
-    	} else {
-    		selectedCampus = user.getViewCampus();
-    	}
+		String selectedCampus = "";
+		if (user.getViewCampus() == null) {
+			return "redirect:campus?toolName=athletics";
+		} else {
+			selectedCampus = user.getViewCampus();
+		}
 		Athletics athletics = athleticsService.retrieveAthletics(selectedCampus);
 		uiModel.addAttribute("athletics", athletics);
+		uiModel.addAttribute("selectedTab", selectedTab);
 		return "athletics/list";
 	}
 
@@ -76,11 +76,13 @@ public class AthleticsController {
 		uiModel.addAttribute("newsStream", newsStream);
 		return "athletics/newsList";
 	}
-	
+
 	@RequestMapping(value = "/viewStory", method = RequestMethod.GET)
-	public String viewStory(HttpServletRequest request, Model uiModel, @RequestParam(required = true) String link) throws Exception {
+	public String viewStory(HttpServletRequest request, Model uiModel, @RequestParam(required = true) String link, @RequestParam(required = false) String selectedTab, @RequestParam(required = false) Long sportId) throws Exception {
 		NewsArticle newsArticle = newsService.getNewsArticle(null, link, null);
 		uiModel.addAttribute("newsArticle", newsArticle);
+		uiModel.addAttribute("selectedTab", selectedTab);
+		uiModel.addAttribute("sportId", sportId);
 		return "athletics/news";
 	}
 

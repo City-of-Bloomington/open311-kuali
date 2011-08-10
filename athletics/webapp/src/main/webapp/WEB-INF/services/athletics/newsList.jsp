@@ -15,7 +15,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility"%>
 
-<kme:page title="News" id="athletics-news" backButton="true" homeButton="true" cssFilename="athletics" backButtonURL="${pageContext.request.contextPath}/athletics">
+<kme:page title="News" id="athletics-news" backButton="true" homeButton="true" cssFilename="athletics" backButtonURL="${pageContext.request.contextPath}/athletics?selectedTab=tab2">
 	<kme:content>
 
 		<div class="subnav">
@@ -55,10 +55,11 @@
 								<img src="${pageContext.request.contextPath}/images/default-blockiu.png" class="rowicon-news" />
 							</c:otherwise>
 						</c:choose> <c:url var="articleUrl" value="/athletics/viewStory">
+							<c:param name="sportId" value="${sport.sportId}" />
 							<c:param name="link" value="${article.link}" />
 						</c:url> <a href="${articleUrl}"> <strong><c:out value="${article.title}" escapeXml="true" /> </strong>
 							<div class="teaserline">
-								<c:out value="${article.description}" escapeXml="true" />
+								<c:out value="${article.description}" escapeXml="false" />
 							</div>
 							<div class="timestamp">
 								<fmt:formatDate value="${article.publishDate}" pattern="EEE, dd MMM yyyy" />

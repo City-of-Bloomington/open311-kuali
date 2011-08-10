@@ -41,7 +41,23 @@
             <rtexprvalue>true</rtexprvalue>
         </attribute>
         <attribute>
+            <name>preferencesButton</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>boolean</type>
+        </attribute>
+        <attribute>
+            <name>preferencesButtonURL</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
             <name>cssFilename</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>jsFilename</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
         </attribute>
@@ -70,6 +86,11 @@
         <body-content>scriptless</body-content>
         <description>This tag is for jQuery Mobility general list views, ListView</description>
         <attribute>
+            <name>id</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
             <name>filter</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
@@ -90,6 +111,11 @@
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
             <type>boolean</type>
+        </attribute>
+        <attribute>
+            <name>cssClass</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
         </attribute>
     </tag>
 
@@ -144,6 +170,32 @@
         <tag-class>org.kuali.mobility.tags.ListItemTag</tag-class>
         <body-content>scriptless</body-content>
         <description>This tag is for listItem</description>
+        <attribute>
+            <name>dataRole</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>dataTheme</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>dataIcon</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>hideDataIcon</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>boolean</type>
+        </attribute>
+        <attribute>
+            <name>cssClass</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
     </tag>
     
     <tag>
