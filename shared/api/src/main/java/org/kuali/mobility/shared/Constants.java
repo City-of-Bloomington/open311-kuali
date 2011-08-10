@@ -64,12 +64,11 @@ public class Constants {
 	
 	public enum FileType {
 		
-		GENERIC, IMAGE, VIDEO, TEXT, PRESENTATION, SPREADSHEET, PDF, AUDIO, LINK, FOLDER;
+		GENERIC, IMAGE, VIDEO, TEXT, PRESENTATION, SPREADSHEET, PDF, AUDIO, LINK, FOLDER, COMPRESSED;
 	
 	}
 		
 	public enum FileTypes {
-		
 		txt(FileType.TEXT),
 		rtf(FileType.TEXT),
 		doc(FileType.TEXT),
@@ -108,6 +107,9 @@ public class Constants {
 		pptx(FileType.PRESENTATION),
 		odp(FileType.PRESENTATION),
 		pdf(FileType.PDF),
+		zip(FileType.COMPRESSED),
+		rar(FileType.COMPRESSED),
+		gz(FileType.COMPRESSED),
 		fldr(FileType.FOLDER),
 		url(FileType.LINK);
 		
