@@ -20,9 +20,9 @@
 					<c:forEach items="${roster}" var="item" varStatus="status">
 						<li>
 							<a href="${pageContext.request.contextPath}/myclasses/${siteId}/roster/${item.displayID}">
-								<c:if test="${item.imageUrl != 'null'}">
+								<%--<c:if test="${item.imageUrl != 'null'}">
 									<img src="${item.imageUrl}" alt="image">
-								</c:if>
+								</c:if> --%>
 								<h3>${item.displayName}</h3>
 								<p>${item.roleTitle}</p>
 							</a>

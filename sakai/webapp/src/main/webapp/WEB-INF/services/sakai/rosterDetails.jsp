@@ -17,15 +17,15 @@
     	<ul data-role="listview" data-inset="true">
 			<li>
 				<div class="container_12">
-					<c:if test="${not empty roster.imageUrl && roster.imageUrl != 'null'}">
+					<%--<c:if test="${not empty roster.imageUrl && roster.imageUrl != 'null'}">
 			        	<div class="grid_5">
 			        			<img src="${roster.imageUrl}" width="80px" alt="image">
 			        	</div>
 			        	<div class="grid_7">
 		        	</c:if>
-		        	<c:if test="${empty roster.imageUrl || roster.imageUrl == 'null'}">
+		        	<c:if test="${empty roster.imageUrl || roster.imageUrl == 'null'}"> --%>
 			        	<div class="grid_12">
-		        	</c:if>
+		        	<%--</c:if>--%>
 		            	<c:choose>
 			            	<c:when test="${not empty roster.lastName && roster.lastName != 'null' && not empty roster.firstName && roster.firstName != 'null'}">
 				            	<h3>${roster.lastName}, ${roster.firstName}</h3>
@@ -62,6 +62,9 @@
 		    </c:if>
 		    <c:if test="${not empty roster.homePhone && roster.homePhone != 'null'}">
 		      	<li class="link-phone"><a href="tel:${roster.homePhone}">${roster.homePhone} (Home)</a> </li>
+		    </c:if>
+		    <c:if test="${not empty roster.mobilePhone && roster.mobilePhone != 'null'}">
+		      	<li class="link-phone"><a href="tel:${roster.mobilePhone}">${roster.mobilePhone} (Mobile)</a> </li>
 		    </c:if>
 		    <c:if test="${not empty roster.homePage && roster.homePage != 'null'}">
 		      	<li><a href="${roster.homePage}">Home Page</a></li>

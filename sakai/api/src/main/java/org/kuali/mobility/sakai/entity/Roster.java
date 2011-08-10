@@ -22,7 +22,7 @@ public class Roster implements Serializable, Comparable<Roster> {
 	private static final long serialVersionUID = -5535399238213510311L;
 	
 	private String displayID,displayName,firstName,lastName,nickName, imageUrl;
-	private String department,email,homePage,homePhone,workPhone;
+	private String department,email,homePage,homePhone,workPhone,mobilePhone;
 	private String position,roleTitle,room,school,otherInformation;
 	private String entityReference,entityURL;
 	private String sortName;
@@ -152,5 +152,11 @@ public class Roster implements Serializable, Comparable<Roster> {
 		this.imageUrl = imageUrl;
 	}
 
-		
+	public String getMobilePhone() {
+		return mobilePhone;
+	}
+
+	public void setMobilePhone(String mobilePhone) {
+		this.mobilePhone = mobilePhone;
+	}
 }

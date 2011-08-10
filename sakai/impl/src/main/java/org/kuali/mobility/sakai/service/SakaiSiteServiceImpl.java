@@ -541,22 +541,26 @@ public class SakaiSiteServiceImpl implements SakaiSiteService {
             	JSONObject rosterObject = itemArray.getJSONObject(i);
             	trs.setDisplayID(rosterObject.getString("displayID"));
             	trs.setDisplayName(rosterObject.getString("displayName"));
-            	trs.setFirstName(rosterObject.getString("firstName"));
-            	trs.setLastName(rosterObject.getString("lastName"));
-            	trs.setNickName(rosterObject.getString("nickName"));
             	trs.setImageUrl(rosterObject.getString("imageUrl"));
-            	trs.setDepartment(rosterObject.getString("department"));
-            	trs.setEmail(rosterObject.getString("email"));
-            	trs.setHomePage(rosterObject.getString("homePage"));
-            	trs.setHomePhone(rosterObject.getString("homePhone"));
-            	trs.setWorkPhone(rosterObject.getString("workPhone"));
-            	trs.setPosition(rosterObject.getString("position"));
-            	trs.setRoleTitle(rosterObject.getString("roleTitle"));
-            	trs.setRoom(rosterObject.getString("room"));
-            	trs.setSchool(rosterObject.getString("school"));
-            	trs.setOtherInformation(rosterObject.getString("otherInformation"));
             	trs.setEntityReference(rosterObject.getString("entityReference"));
             	trs.setEntityURL(rosterObject.getString("entityURL"));
+            	trs.setRoleTitle(rosterObject.getString("roleTitle"));
+            	
+            	JSONObject rosterProfile = rosterObject.getJSONObject("profile");
+            	trs.setFirstName(rosterProfile.getString("firstName"));
+            	trs.setLastName(rosterProfile.getString("lastName"));
+            	trs.setNickName(rosterProfile.getString("nickName"));
+            	trs.setDepartment(rosterProfile.getString("department"));
+            	trs.setEmail(rosterProfile.getString("email"));
+            	trs.setHomePage(rosterProfile.getString("homePage"));
+            	trs.setHomePhone(rosterProfile.getString("homePhone"));
+            	trs.setWorkPhone(rosterProfile.getString("workPhone"));
+            	trs.setMobilePhone(rosterProfile.getString("mobile"));
+            	trs.setPosition(rosterProfile.getString("position"));
+            	trs.setRoom(rosterProfile.getString("room"));
+            	trs.setSchool(rosterProfile.getString("school"));
+            	trs.setOtherInformation(rosterProfile.getString("otherInformation"));
+            	
             	trs.setSortName();
                 roster.add(trs);
             }
@@ -578,24 +582,28 @@ public class SakaiSiteServiceImpl implements SakaiSiteService {
             		continue;
             	}
                 Roster trs = new Roster();
-                trs.setDisplayID(participant.getString("displayID"));
+            	trs.setDisplayID(participant.getString("displayID"));
             	trs.setDisplayName(participant.getString("displayName"));
-            	trs.setFirstName(participant.getString("firstName"));
-            	trs.setLastName(participant.getString("lastName"));
-            	trs.setNickName(participant.getString("nickName"));
             	trs.setImageUrl(participant.getString("imageUrl"));
-            	trs.setDepartment(participant.getString("department"));
-            	trs.setEmail(participant.getString("email"));
-            	trs.setHomePage(participant.getString("homePage"));
-            	trs.setHomePhone(participant.getString("homePhone"));
-            	trs.setWorkPhone(participant.getString("workPhone"));
-            	trs.setPosition(participant.getString("position"));
-            	trs.setRoleTitle(participant.getString("roleTitle"));
-            	trs.setRoom(participant.getString("room"));
-            	trs.setSchool(participant.getString("school"));
-            	trs.setOtherInformation(participant.getString("otherInformation"));
             	trs.setEntityReference(participant.getString("entityReference"));
             	trs.setEntityURL(participant.getString("entityURL"));
+            	trs.setRoleTitle(participant.getString("roleTitle"));
+            	
+            	JSONObject rosterProfile = participant.getJSONObject("profile");
+            	trs.setFirstName(rosterProfile.getString("firstName"));
+            	trs.setLastName(rosterProfile.getString("lastName"));
+            	trs.setNickName(rosterProfile.getString("nickName"));
+            	trs.setDepartment(rosterProfile.getString("department"));
+            	trs.setEmail(rosterProfile.getString("email"));
+            	trs.setHomePage(rosterProfile.getString("homePage"));
+            	trs.setHomePhone(rosterProfile.getString("homePhone"));
+            	trs.setWorkPhone(rosterProfile.getString("workPhone"));
+            	trs.setMobilePhone(rosterProfile.getString("mobile"));
+            	trs.setPosition(rosterProfile.getString("position"));
+            	trs.setRoom(rosterProfile.getString("room"));
+            	trs.setSchool(rosterProfile.getString("school"));
+            	trs.setOtherInformation(rosterProfile.getString("otherInformation"));
+            	
                 return trs;
             }
     	} catch (JSONException e) {
@@ -667,10 +675,14 @@ public class SakaiSiteServiceImpl implements SakaiSiteService {
 	}
 	
 	private FileType determineFileType(String fileExtension) {
-		FileTypes type = Constants.FileTypes.valueOf(fileExtension.toLowerCase());
-		if (type != null) {
-			return type.getFileType();
-		} else {
+		try {
+			FileTypes type = Constants.FileTypes.valueOf(fileExtension.toLowerCase());
+			if (type != null) {
+				return type.getFileType();
+			} else {
+				return FileType.GENERIC;
+			}
+		} catch (Exception e) {
 			return FileType.GENERIC;
 		}
 	}
@@ -687,10 +699,14 @@ public class SakaiSiteServiceImpl implements SakaiSiteService {
     		extension = resExt[resExt.length-1].toLowerCase();
     	}
 		
-    	FileTypes type = Constants.FileTypes.valueOf(extension);
-		if (type != null) {
-			return type.getFileType();
-		} else {
+    	try {
+			FileTypes type = Constants.FileTypes.valueOf(extension.toLowerCase());
+			if (type != null) {
+				return type.getFileType();
+			} else {
+				return FileType.GENERIC;
+			}
+		} catch (Exception e) {
 			return FileType.GENERIC;
 		}
 	}
