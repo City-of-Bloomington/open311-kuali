@@ -48,7 +48,7 @@ public class NewsController {
     @RequestMapping(method = RequestMethod.GET)
     public String newsHome(Model uiModel, HttpServletRequest request) {	
     	User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
-    	String selectedCampus = "UA";
+    	String selectedCampus = null;
     	if (user.getViewCampus() == null) {
     		return "redirect:campus?toolName=news";
     	} else {
