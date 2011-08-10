@@ -23,8 +23,8 @@
 						<kme:listItem dataTheme="b" dataRole="list-divider">${menu.dateFormatted}</kme:listItem>
 						<c:forEach items="${menu.items}" var="item" varStatus="status">
 							<kme:listItem>
-									<h3>${item.name}</h3>
-									<p>${item.priceFormatted}</p>
+									<h3 class="wrap">${item.name}</h3>
+									<p class="wrap">${item.priceFormatted}</p>
 							</kme:listItem>
 						</c:forEach>
 					</c:forEach>
