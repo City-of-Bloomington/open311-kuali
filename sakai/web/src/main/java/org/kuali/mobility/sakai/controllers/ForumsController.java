@@ -85,7 +85,7 @@ public class ForumsController {
 	public String getForumTopic(HttpServletRequest request, @PathVariable("siteId") String siteId, @PathVariable("topicId") String topicId, @RequestParam("title") String topicTitle, @PathVariable("forumId") String forumId, Model uiModel) {
 		try {
 			User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
-			ForumTopic topic = sakaiForumService.findTopic(topicId, user.getUserId(), topicTitle);
+			ForumTopic topic = sakaiForumService.findTopic(forumId, topicId, user.getUserId(), topicTitle);
 			topic.setForumId(forumId);
 			uiModel.addAttribute("topic", topic);
 		} catch (Exception e) {

@@ -15,13 +15,31 @@
 <kme:page title="${forum.title}" id="forum" cssFilename="sakai" backButton="true" homeButton="true" backButtonURL="${pageContext.request.contextPath}/myclasses/${siteId}/forums">
 	<kme:content>
 		<kme:listView>
+			<c:if test="${not empty forum.description}">
+				<kme:listItem>
+	            	${forum.description}
+				</kme:listItem>
+			</c:if>
+			<c:if test="${not empty forum.attachments}">
+				<kme:listItem dataTheme="b" dataRole="list-divider">Attachments</kme:listItem>
+				<c:forEach items="${forum.attachments}" var="attachment" varStatus="status">
+					<kme:listItem cssClass="link-view">
+                        <a href="${pageContext.request.contextPath}/myclasses/${siteId}/attachment?attachmentId=${attachment.url}&type=${attachment.mimeType}" class="attachment icon-${attachment.fileType}" >
+							${attachment.title}
+						</a>
+                    </kme:listItem>
+				</c:forEach>
+			</c:if>
+			<kme:listItem dataTheme="b" dataRole="list-divider">Topics</kme:listItem>
 			<c:choose>
 				<c:when test="${not empty forum.topics}">
 					<c:forEach items="${forum.topics}" var="topic" varStatus="status">
 						<kme:listItem>
 							<a href="${pageContext.request.contextPath}/myclasses/${siteId}/forums/${forum.forumId}/${topic.id}?title=${topic.title}">
 								${topic.title}
-								<span class="ui-li-count">${topic.unreadCount}</span>
+								<c:if test="${topic.unreadCount > 0}">
+									<span class="ui-li-count">${topic.unreadCount}</span>
+								</c:if>
 							</a>
 						</kme:listItem>
 					</c:forEach>

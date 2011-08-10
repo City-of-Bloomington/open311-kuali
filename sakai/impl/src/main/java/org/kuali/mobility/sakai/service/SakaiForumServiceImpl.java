@@ -102,40 +102,87 @@ public class SakaiForumServiceImpl implements SakaiForumService {
             JSONObject jsonObj = (JSONObject) JSONSerializer.toJSON(json);
             JSONArray itemArray = jsonObj.getJSONArray("forum_topic_collection");
 
-            for (int i = 0; i < itemArray.size(); i++) {
-            	JSONObject object = itemArray.getJSONObject(i);
-                forum.setForumId(object.getString("forumId"));
-                forum.setTitle(object.getString("forumTitle"));
-                
-                JSONArray topicsArray = object.getJSONArray("topics");
-                List<ForumTopic> topics = forum.getTopics();
-                for (int j = 0; j < topicsArray.size(); j++) {
-                	JSONObject topic = topicsArray.getJSONObject(j);
-                	ForumTopic forumTopic = new ForumTopic();
-                	forumTopic.setId(topic.getString("topicId"));
-                    forumTopic.setTitle(topic.getString("topicTitle"));
-                    forumTopic.setUnreadCount(topic.getInt("unreadMessagesCount"));
-                    forumTopic.setMessageCount(topic.getInt("messagesCount"));
-                    topics.add(forumTopic);
-                }
+        	JSONObject object = itemArray.getJSONObject(0);
+            forum.setForumId(object.getString("forumId"));
+            forum.setTitle(object.getString("forumTitle"));
+            forum.setDescription(object.getString("shortDescription"));
+            if (forum.getDescription() == null || "null".equals(forum.getDescription())) {
+            	forum.setDescription(object.getString("description"));
             }
-
+            
+            JSONArray attachmentArray = object.getJSONArray("attachments");
+            List<Attachment> attachments = forum.getAttachments();
+            for (int j = 0; j < attachmentArray.size(); j++) {
+            	JSONObject attach = attachmentArray.getJSONObject(j);
+            	Attachment attachment = new Attachment();
+            	attachment.setMimeType(attach.getString("type"));
+            	attachment.setTitle(attach.getString("name"));
+            	attachment.setUrl(attach.getString("id"));
+            	attachment.setFileType(determineAttachmentFileType(attachment.getUrl(), attachment.getMimeType()));
+                attachments.add(attachment);
+            }
+            
+            JSONArray topicsArray = object.getJSONArray("topics");
+            List<ForumTopic> topics = forum.getTopics();
+            for (int j = 0; j < topicsArray.size(); j++) {
+            	JSONObject topic = topicsArray.getJSONObject(j);
+            	ForumTopic forumTopic = new ForumTopic();
+            	forumTopic.setId(topic.getString("topicId"));
+                forumTopic.setTitle(topic.getString("topicTitle"));
+                forumTopic.setUnreadCount(topic.getInt("unreadMessagesCount"));
+                forumTopic.setMessageCount(topic.getInt("messagesCount"));
+                topics.add(forumTopic);
+            }
     	} catch (Exception e) {
     		LOG.error(e.getMessage(), e);
         }
 		return forum;
 	}
 	
-	public ForumTopic findTopic(String topicId, String userId, String topicTitle) {
+	public ForumTopic findTopic(String forumId, String topicId, String userId, String topicTitle) {
 		ForumTopic topic = new ForumTopic();
 		topic.setTitle(topicTitle);
 		topic.setId(topicId);
     	try {
-    		String url = configParamService.findValueByName("Sakai.Url.Base") + "forum_message/topic/" + topicId + ".json";
-			ResponseEntity<InputStream> is = oncourseOAuthService.oAuthGetRequest(userId, url, "text/html");
-			String json = IOUtils.toString(is.getBody(), "UTF-8");
-			
+    		//Get topic description and attachments
+    		String url = configParamService.findValueByName("Sakai.Url.Base") + "forum_topic/forum/" + forumId + ".json";
+    		ResponseEntity<InputStream> is = oncourseOAuthService.oAuthGetRequest(userId, url, "text/html");
+    		String json = IOUtils.toString(is.getBody(), "UTF-8");
+    		
             JSONObject jsonObj = (JSONObject) JSONSerializer.toJSON(json);
+            JSONArray topicArray = jsonObj.getJSONArray("forum_topic_collection").getJSONObject(0).getJSONArray("topics");
+            for (int i = 0; i < topicArray.size(); i++) {
+            	JSONObject topicObj = topicArray.getJSONObject(i);
+            	if (!topicObj.getString("topicId").equals(topicId)) {
+            		continue;
+            	}
+            	
+            	topic.setDescription(topicObj.getString("shortDescription"));
+                if (topic.getDescription() == null || "null".equals(topic.getDescription())) {
+                	topic.setDescription(topicObj.getString("description"));
+                }
+                
+	            JSONArray attachmentArray = topicObj.getJSONArray("attachments");
+	            List<Attachment> attachments = topic.getAttachments();
+	            for (int j = 0; j < attachmentArray.size(); j++) {
+	            	JSONObject attach = attachmentArray.getJSONObject(j);
+	            	Attachment attachment = new Attachment();
+	            	attachment.setMimeType(attach.getString("type"));
+	            	attachment.setTitle(attach.getString("name"));
+	            	attachment.setUrl(attach.getString("id"));
+	            	attachment.setFileType(determineAttachmentFileType(attachment.getUrl(), attachment.getMimeType()));
+	                attachments.add(attachment);
+	            }
+            	
+            	break;
+            }
+    		
+    		//Get topic messages
+    		url = configParamService.findValueByName("Sakai.Url.Base") + "forum_message/topic/" + topicId + ".json";
+			is = oncourseOAuthService.oAuthGetRequest(userId, url, "text/html");
+			json = IOUtils.toString(is.getBody(), "UTF-8");
+			
+            jsonObj = (JSONObject) JSONSerializer.toJSON(json);
             JSONArray itemArray = jsonObj.getJSONArray("forum_message_collection");
             
             List<ForumThread> threads = topic.getThreads();
@@ -312,12 +359,16 @@ public class SakaiForumServiceImpl implements SakaiForumService {
     		extension = resExt[resExt.length-1].toLowerCase();
     	}
 		
-		FileType type = Constants.FileTypes.valueOf(extension).getFileType();
-		if (type != null) {
-			return type;
-		} else {
-			return FileType.GENERIC;
-		}
+    	try {
+			FileType type = Constants.FileTypes.valueOf(extension).getFileType();
+			if (type != null) {
+				return type;
+			} else {
+				return FileType.GENERIC;
+			}
+    	} catch(Exception e) {
+    		return FileType.GENERIC;
+    	}
 	}
 	
 	@Override

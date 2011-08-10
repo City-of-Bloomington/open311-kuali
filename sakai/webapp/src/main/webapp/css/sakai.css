@@ -1,5 +1,5 @@
 /* resource icons */
-#class_details ul.ui-listview a, div#announcement ul.ui-listview a, div#message ul.ui-listview a {
+#class_details ul.ui-listview a, div#announcement ul.ui-listview a, div#message ul.ui-listview a, #forum ul.ui-listview a.attachment {
 	background: transparent url('../images/service-icons/mcl-file.png') 15px 50% no-repeat;
 	padding-left: 50px;
 }
@@ -14,28 +14,28 @@
 #class_details ul.ui-listview a.icon-FOLDER, #announcement ul.ui-listview a.icon-FOLDER, #message ul.ui-listview a.icon-FOLDER, #forum ul li ul li a.icon-FOLDER {
 	background-image: url('../images/service-icons/mcl-folder.png');
 }
-#class_details ul.ui-listview a.icon-IMAGE, #announcement ul.ui-listview a.icon-IMAGE, #message ul.ui-listview a.icon-IMAGE, #forum ul li ul li a.icon-IMAGE {
+#class_details ul.ui-listview a.icon-IMAGE, #announcement ul.ui-listview a.icon-IMAGE, #message ul.ui-listview a.icon-IMAGE, #forum ul li ul li a.icon-IMAGE, #forum ul.ui-listview a.icon-IMAGE {
     background-image: url('../images/service-icons/mcl-image.png');
 }
-#class_details ul.ui-listview a.icon-VIDEO, #announcement ul.ui-listview a.icon-VIDEO, #message ul.ui-listview a.icon-VIDEO, #forum ul li ul li a.icon-VIDEO {
+#class_details ul.ui-listview a.icon-VIDEO, #announcement ul.ui-listview a.icon-VIDEO, #message ul.ui-listview a.icon-VIDEO, #forum ul li ul li a.icon-VIDEO, #forum ul.ui-listview a.icon-VIDEO {
     background-image: url('../images/service-icons/mcl-movie.png');
 }
-#class_details ul.ui-listview a.icon-TEXT, #announcement ul.ui-listview a.icon-TEXT, #message ul.ui-listview a.icon-TEXT, #forum ul li ul li a.icon-TEXT {
+#class_details ul.ui-listview a.icon-TEXT, #announcement ul.ui-listview a.icon-TEXT, #message ul.ui-listview a.icon-TEXT, #forum ul li ul li a.icon-TEXT, #forum ul.ui-listview a.icon-TEXT {
     background-image: url('../images/service-icons/mcl-doc.png');
 }
-#class_details ul.ui-listview a.icon-PRESENTATION, #announcement ul.ui-listview a.icon-PRESENTATION, #message ul.ui-listview a.icon-PRESENTATION, #forum ul li ul li a.icon-PRESENTATION {
+#class_details ul.ui-listview a.icon-PRESENTATION, #announcement ul.ui-listview a.icon-PRESENTATION, #message ul.ui-listview a.icon-PRESENTATION, #forum ul li ul li a.icon-PRESENTATION, #forum ul.ui-listview a.icon-PRESENTATION {
     background-image: url('../images/service-icons/mcl-powerpoint.png');
 }
-#class_details ul.ui-listview a.icon-SPREADSHEET, #announcement ul.ui-listview a.icon-SPREADSHEET, #message ul.ui-listview a.icon-SPREADSHEET, #forum ul li ul li a.icon-SPREADSHEET {
+#class_details ul.ui-listview a.icon-SPREADSHEET, #announcement ul.ui-listview a.icon-SPREADSHEET, #message ul.ui-listview a.icon-SPREADSHEET, #forum ul li ul li a.icon-SPREADSHEET, #forum ul.ui-listview a.icon-SPREADSHEET {
     background-image: url('../images/service-icons/mcl-spreadsheet.png');
 }
-#class_details ul.ui-listview a.icon-PDF, #announcement ul.ui-listview a.icon-PDF, #message ul.ui-listview a.icon-PDF, #forum ul li ul li a.icon-PDF {
+#class_details ul.ui-listview a.icon-PDF, #announcement ul.ui-listview a.icon-PDF, #message ul.ui-listview a.icon-PDF, #forum ul li ul li a.icon-PDF, #forum ul.ui-listview a.icon-PDF {
     background-image: url('../images/service-icons/mcl-pdf.png');
 }
-#class_details ul.ui-listview a.icon-AUDIO, #announcement ul.ui-listview a.icon-AUDIO, #message ul.ui-listview a.icon-AUDIO, #forum ul li ul li a.icon-AUDIO {
+#class_details ul.ui-listview a.icon-AUDIO, #announcement ul.ui-listview a.icon-AUDIO, #message ul.ui-listview a.icon-AUDIO, #forum ul li ul li a.icon-AUDIO, #forum ul.ui-listview a.icon-AUDIO {
     background-image: url('../images/service-icons/mcl-audio.png');
 }
-#class_details ul.ui-listview a.icon-LINK, #announcement ul.ui-listview a.icon-LINK, #message ul.ui-listview a.icon-LINK, #forum ul li ul li a.icon-LINK {
+#class_details ul.ui-listview a.icon-LINK, #announcement ul.ui-listview a.icon-LINK, #message ul.ui-listview a.icon-LINK, #forum ul li ul li a.icon-LINK, #forum ul.ui-listview a.icon-LINK {
     background-image: url('../images/service-icons/mcl-weblink.png');
 }
 

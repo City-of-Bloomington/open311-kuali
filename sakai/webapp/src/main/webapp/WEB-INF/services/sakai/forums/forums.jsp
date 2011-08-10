@@ -21,7 +21,9 @@
 						<li>
 							<a href="${pageContext.request.contextPath}/myclasses/${siteId}/forums/${item.forumId}">
 								${item.title}
-								<span class="ui-li-count">${item.unreadCount}</span>
+								<c:if test="${item.unreadCount > 0}">
+									<span class="ui-li-count">${item.unreadCount}</span>
+								</c:if>
 							</a>
 						</li>
 					</c:forEach>

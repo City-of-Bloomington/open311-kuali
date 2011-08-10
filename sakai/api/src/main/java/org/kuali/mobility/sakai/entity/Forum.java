@@ -26,12 +26,15 @@ public class Forum implements Serializable, Comparable<Forum> {
     private String title;
     private String typeUuid;
     private String forumId;
+    private String description;
     private int unreadCount;
     private int messageCount;
     private List<ForumTopic> topics;
+    private List<Attachment> attachments;
     
     public Forum() {
     	topics = new ArrayList<ForumTopic>();
+    	attachments = new ArrayList<Attachment>();
     }
     
 	public String getTitle() {
@@ -87,6 +90,22 @@ public class Forum implements Serializable, Comparable<Forum> {
 
 	public void setTopics(List<ForumTopic> topics) {
 		this.topics = topics;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public List<Attachment> getAttachments() {
+		return attachments;
+	}
+
+	public void setAttachments(List<Attachment> attachments) {
+		this.attachments = attachments;
 	}
 
 		

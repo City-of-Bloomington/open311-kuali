@@ -12,12 +12,15 @@ public class ForumTopic implements Serializable{
     private String typeUuid;
     private String id;
     private String forumId;
+    private String description;
     private int unreadCount;
     private int messageCount;
     private List<ForumThread> threads;
+    private List<Attachment> attachments;
     
     public ForumTopic() {
     	threads = new ArrayList<ForumThread>();
+    	attachments = new ArrayList<Attachment>();
     }
 	
     public String getTitle() {
@@ -65,5 +68,21 @@ public class ForumTopic implements Serializable{
 
 	public void setThreads(List<ForumThread> threads) {
 		this.threads = threads;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public List<Attachment> getAttachments() {
+		return attachments;
+	}
+
+	public void setAttachments(List<Attachment> attachments) {
+		this.attachments = attachments;
 	}  
 }

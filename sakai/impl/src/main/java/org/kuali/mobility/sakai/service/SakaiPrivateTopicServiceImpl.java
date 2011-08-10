@@ -266,12 +266,16 @@ public class SakaiPrivateTopicServiceImpl implements SakaiPrivateTopicService {
     		extension = resExt[resExt.length-1].toLowerCase();
     	}
 		
-		FileType type = Constants.FileTypes.valueOf(extension).getFileType();
-		if (type != null) {
-			return type;
-		} else {
-			return FileType.GENERIC;
-		}
+    	try {
+			FileType type = Constants.FileTypes.valueOf(extension).getFileType();
+			if (type != null) {
+				return type;
+			} else {
+				return FileType.GENERIC;
+			}
+    	} catch(Exception e) {
+    		return FileType.GENERIC;
+    	}
 	}
 	
 	public void setConfigParamService(ConfigParamService configParamService) {

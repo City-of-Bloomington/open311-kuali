@@ -80,5 +80,4 @@ public class ForumThread implements Serializable {
 	public void setTopicTitle(String topicTitle) {
 		this.topicTitle = topicTitle;
 	}
-
 }

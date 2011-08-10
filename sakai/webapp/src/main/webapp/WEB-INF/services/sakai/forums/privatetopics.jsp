@@ -19,7 +19,9 @@
 				<li>
 					<a href="${pageContext.request.contextPath}/myclasses/${siteId}/messages/folder/${item.typeUuid}?title=${item.title}">
 						<span style="text-transform:capitalize">${item.title}</span>
-						<span class="ui-li-count">${item.unreadCount}</span>
+						<c:if test="${item.unreadCount > 0}">
+							<span class="ui-li-count">${item.unreadCount}</span>
+						</c:if>
 					</a>
 				</li>
 			</c:forEach>

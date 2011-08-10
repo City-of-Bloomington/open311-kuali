@@ -26,7 +26,7 @@ import org.springframework.http.ResponseEntity;
 public interface SakaiForumService {
 	public List<Forum> findForums(String siteId, String userId);
 	public Forum findForum(String forumId, String userId);
-	public ForumTopic findTopic(String topicId, String userId, String topicTitle);
+	public ForumTopic findTopic(String forumId, String topicId, String userId, String topicTitle);
 	public ForumThread findThread(String topicId, String threadId, String userId);
 	public Message findMessage(String messageId, String topicId, String userId);
 	public ResponseEntity<String> postMessage(Message message, String userId);
