@@ -17,7 +17,7 @@
 	<kme:content>
 		<form:form action="${pageContext.request.contextPath}/maps/building/search" commandName="mapsearchform" data-ajax="false">
 			<fieldset>
-			<label for="searchCampus">Campus</label>
+			<label for="searchCampus">Campus:</label>
 			<form:select path="searchCampus" multiple="false">
 				<option value="UA" label="">select:</option>			  
 				<option value="BL" label="">IU Bloomington</option>
@@ -32,7 +32,7 @@
 			</form:select>
 			</fieldset>
 			<fieldset>
-            <label for="searchText">Search</label>
+            <label for="searchText">Search:</label>
             <%-- <form:input path="searchText" cssClass="text ui-widget-content ui-corner-all" /> --%>
 			<input id="searchText" name="searchText" class="text ui-widget-content ui-corner-all" type="search" />
 			<form:errors path="searchText" />

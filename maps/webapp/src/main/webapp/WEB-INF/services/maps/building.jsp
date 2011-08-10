@@ -14,11 +14,12 @@
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility" %>
 
-<kme:page title="Maps" id="mapsbuilding" backButton="true" homeButton="true" cssFilename="maps" jsFilename="maps">
+<kme:page title="Maps" id="mapsbuilding" backButton="true" homeButton="true" cssFilename="location" jsFilename="maps">
 	<kme:content>
 	
 <div id="map_canvas" style="height:300px;"></div>
 	
+	<p class="locationDetails">
 	${location.name}
 	<br/><br/>
 	${location.street}
@@ -26,6 +27,7 @@
 	${location.city}
 	<c:if test="${not empty location.city and not empty location.state}">, </c:if>
 	${location.state} ${location.zip}
+	</p>
 
 <script type="text/javascript">
 var markersArray = [];
