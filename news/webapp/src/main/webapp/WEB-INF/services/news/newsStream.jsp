@@ -15,15 +15,22 @@
 <kme:page title="${newsStream.title}" id="news" homeButton="true" backButton="true" cssFilename="news">
     <kme:content>
 		<ul data-role="listview" data-theme="c" class="news-index">
-			<c:forEach items="${newsStream.articles}" var="day" varStatus="status">
-				<c:forEach items="${day.articles}" var="article" varStatus="status">
-					<li>
-						<a href="${pageContext.request.contextPath}/news/${sourceId}?articleId=${article.articleId}&referrer=stream">
-							<p class="news-title">${article.title}</p>
-						</a>
-					</li>
-				</c:forEach>
-			</c:forEach>
+			<c:choose>
+				<c:when test="${not empty newsStream.articles}">
+					<c:forEach items="${newsStream.articles}" var="day" varStatus="status">
+						<c:forEach items="${day.articles}" var="article" varStatus="status">
+							<li>
+								<a href="${pageContext.request.contextPath}/news/${sourceId}?articleId=${article.articleId}&referrer=stream">
+									<p class="news-title">${article.title}</p>
+								</a>
+							</li>
+						</c:forEach>
+					</c:forEach>
+				</c:when>
+				<c:otherwise>
+					<kme:listItem>No articles available at this time</kme:listItem>
+				</c:otherwise>
+			</c:choose>	
 		</ul>
 	</kme:content>
 </kme:page>

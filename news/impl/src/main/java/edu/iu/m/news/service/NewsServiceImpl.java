@@ -223,10 +223,12 @@ public class NewsServiceImpl implements NewsService {
 			}
 			articleListForDate.add(article);
 		}
-		NewsDay newsDay = new NewsDay();
-		newsDay.setArticles(articleListForDate);
-		newsDay.setFormattedDate(currentDateString);
-		dayArticles.add(newsDay);
+		if (articleListForDate != null && !articleListForDate.isEmpty()) {
+			NewsDay newsDay = new NewsDay();
+			newsDay.setArticles(articleListForDate);
+			newsDay.setFormattedDate(currentDateString);
+			dayArticles.add(newsDay);
+		}
 
 		newsStream.setArticles(dayArticles);
 		return newsStream;
