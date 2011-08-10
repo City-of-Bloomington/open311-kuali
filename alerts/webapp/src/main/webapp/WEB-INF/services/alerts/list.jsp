@@ -13,14 +13,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility" %>
 
-
 <kme:page title="Campus Alerts" id="campusalerts" backButton="true" homeButton="true" cssFilename="alerts">
 	<kme:content>
-	    <kme:definitionListView id="alertlist" filter="false">
+	    <kme:listView id="alertlist" filter="false">
 	        <c:forEach items="${alerts}" var="alert" varStatus="status">
-	            <kme:definitionListTerm>${alert.campus} - ${alert.title}</kme:definitionListTerm>
-	            <kme:definitionListDefinition><p>${alert.mobileText}</p></kme:definitionListDefinition>
+	            <kme:listItem>
+	            	<h3 class="wrap">${alert.campus} - ${alert.title}</h3>
+	            	<p class="wrap">${alert.mobileText}</p>
+	            </kme:listItem>
 			</c:forEach>
-	    </kme:definitionListView>
+	    </kme:listView>
 	</kme:content>
 </kme:page>
