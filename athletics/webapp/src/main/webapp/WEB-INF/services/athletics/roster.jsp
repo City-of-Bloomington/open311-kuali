@@ -14,15 +14,29 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility"%>
 
-<kme:page title="Roster" id="athletics-roster" backButton="true" homeButton="true" cssFilename="athletics" backButtonURL="${pageContext.request.contextPath}/athletics?selectedTab=tab2">
+<c:set var="sportname">
+<c:out value="${rosterData.sport.name}" escapeXml="true"></c:out>
+</c:set>
+
+<kme:page title="${sportname}" id="athletics-roster" backButton="true" homeButton="true" cssFilename="athletics" backButtonURL="${pageContext.request.contextPath}/athletics?selectedTab=tab2">
 	<kme:content>
-		<div class="subnav">
-			<div class="subnav-container">
-				<c:url var="newsUrl" value="/athletics/viewSport">
-					<c:param name="sportId" value="${rosterData.sport.sportId}" />
-				</c:url>
-				<a href="${newsUrl}" class="button-subnav left"><span>news</span> </a>
-				<c:if test="${rosterData.sport.seasonId > 0}">
+
+
+    <script type="text/javascript">
+ $(window).load(function() {
+     $('.tabs-tab2').addClass('selected');
+     $('.tabs-panel2').show();
+ });
+</script>
+
+
+    <div class="tabs-tabcontainer container_12">				
+    <c:url var="newsUrl" value="/athletics/viewSport">
+			<c:param name="sportId" value="${rosterData.sport.sportId}" />
+	</c:url>
+      <div class="grid_4"><a class="tabs-tab1" name="tabs-tab1" href="${newsUrl}" >News</a></div>
+      
+      <c:if test="${rosterData.sport.seasonId > 0}">
 					<c:url var="rosterUrl" value="/athletics/viewRoster">
 						<c:param name="sportId" value="${rosterData.sport.sportId}" />
 						<c:param name="seasonId" value="${rosterData.sport.seasonId}" />
@@ -31,36 +45,50 @@
 						<c:param name="sportId" value="${rosterData.sport.sportId}" />
 						<c:param name="seasonId" value="${rosterData.sport.seasonId}" />
 					</c:url>
+      
+      
+      <div class="grid_4"><a class="tabs-tab2" name="tabs-tab2" href="${rosterUrl}" >Roster</a></div>
+      <div class="grid_4"><a class="tabs-tab3" name="tabs-tab3" href="${scheduleUrl}">Schedule</a></div>
+      
+      </c:if>
+    </div>
 
-					<a href="${rosterUrl}" class="button-subnav left"><span>roster</span> </a>
-					<a href="${scheduleUrl}" class="button-subnav left"><span>schedule</span> </a>
-				</c:if>
-			</div>
-		</div>
-		<div class="nonfocal">
-			<c:out value="${rosterData.sport.name}" escapeXml="true"></c:out>
-		</div>
-		<ul class="nav">
+
+    <div class="tabs-panel2" name="tabs-panel2">
+
+		   <ul data-role="listview" data-theme="c">
 			<c:forEach items="${rosterData.players}" var="player" varStatus="status">
 				<li>
-					<div>
+				
 						<c:url var="playerUrl" value="/athletics/viewPlayer">
 							<c:param name="sportId" value="${rosterData.sport.sportId}" />
 							<c:param name="seasonId" value="${rosterData.sport.seasonId}" />
 							<c:param name="playerId" value="${player.playerId}" />
 						</c:url>
-						<a href="${playerUrl}"> <img class="rowicon-roster" src="<c:out value="${player.thumbnail}" escapeXml="true" />" /> <em class="roster"> <c:if test="${not empty player.number}">
-									<c:out value="${player.number}" escapeXml="true" /> - </c:if> <c:if test="${not empty player.name}">
+						<a href="${playerUrl}"> <img src="<c:out value="${player.thumbnail}" escapeXml="true" />" />  
+						  <h3><c:if test="${not empty player.number}">
+									<c:out value="${player.number}" escapeXml="true" /> - </c:if> 
+									<c:if test="${not empty player.name}">
 									<c:out value="${player.name}" escapeXml="true" />
-								</c:if> </em> <br /> <em class="roster-smallprint"> <c:if test="${not empty player.position}">
-									<c:out value="${player.position}" escapeXml="true" />,</c:if> <c:if test="${not empty player.height}">
+								    </c:if> </h3>
+								<p>
+								<c:if test="${not empty player.position}">
+									<c:out value="${player.position}" escapeXml="true" />,</c:if> 
+									<c:if test="${not empty player.height}">
 									<c:out value="${player.height}" escapeXml="true" />
-								</c:if> <c:if test="${not empty player.weight}">
+								</c:if> 
+								<c:if test="${not empty player.weight}">
 									<c:out value="${player.weight}" escapeXml="true" />
-								</c:if> </em> </a>
-					</div>
-					<div style="clear: both"></div></li>
+								</c:if> </p> 
+								</a>
+					
+					</li>
 			</c:forEach>
 		</ul>
+    </div>
+
+
+
+		
 	</kme:content>
 </kme:page>

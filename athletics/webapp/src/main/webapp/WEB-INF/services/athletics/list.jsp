@@ -50,9 +50,13 @@
 						<span><c:out value="${match.score}" escapeXml="true" /> </span>
 					</div>
 					<div class="grid_6 ">
-						<span class="match-outcome"> <c:if test="${not empty match.winLoss}">
+						<span class="match-outcome"> 
+						<c:if test="${not empty match.winLoss}">
 								<c:out value="${match.winLoss}" />
-							</c:if> </span> <span class="sport-category"> <c:out value="${match.sportName}" escapeXml="true" /> </span> <span class="opponent"> <c:choose>
+							</c:if> 
+							</span> 
+							<span class="sport-category"> <c:out value="${match.sportName}" escapeXml="true" /> </span> 
+							<span class="opponent"> <c:choose>
 								<c:when test="${not empty match.opponent}">
 									<c:out value="${match.home}" />&nbsp;<c:out value="${match.opponent}" escapeXml="true" />
 								</c:when>
@@ -60,16 +64,21 @@
 									<c:out value="${match.name}" />
 								</c:when>
 								<c:otherwise>TBD</c:otherwise>
-							</c:choose> </span> <span class="date-time"> <c:choose>
+							</c:choose> 
+							</span> 
+							<span class="date-time"> <c:choose>
 								<c:when test="${match.winLoss eq 'in progress' and not empty match.timeRemaining}">
 									<c:out value="${match.timeRemaining}" escapeXml="true" />
 								</c:when>
 								<c:when test="${not empty match.dateTime}">
 									<c:out value="${match.dateTime}" escapeXml="true" />
 								</c:when>
-							</c:choose> </span> <span class="location"> <c:if test="${not empty match.location}">
+							</c:choose> 
+							</span> 
+							<span class="location"> <c:if test="${not empty match.location}">
 								<c:out value="${match.location}" escapeXml="true" />
-							</c:if> </span>
+							</c:if> 
+							</span>
 					</div>
 					<div class="grid_3 team-score">
 						<c:if test="${not empty match.oppThumbnail}">

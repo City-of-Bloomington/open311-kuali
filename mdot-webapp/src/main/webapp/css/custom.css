@@ -747,6 +747,7 @@ div.tabs-panel2, div.tabs-panel3, div.tabs-panel4, div.tabs-panel1 {
 }
 div.tabs-panel2, div.tabs-panel3, div.tabs-panel4, div.tabs-panel1 {
 	margin-top: 36px;
+	display:none;
 }
 div.ui-body-b {
 	background: none;

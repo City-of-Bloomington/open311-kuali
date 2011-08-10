@@ -14,94 +14,118 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility"%>
 
-<kme:page title="Schedule" id="athletics-schedule" backButton="true" homeButton="true" cssFilename="athletics" backButtonURL="${pageContext.request.contextPath}/athletics?selectedTab=tab2">
+
+<c:set var="sportname">
+<c:out value="${matchData.sport.name}" escapeXml="true"></c:out>
+</c:set>
+
+
+
+<kme:page title="${sportname}" id="athletics-schedule" backButton="true" homeButton="true" cssFilename="athletics" backButtonURL="${pageContext.request.contextPath}/athletics?selectedTab=tab2">
 	<kme:content>
-		<div class="subnav">
-			<div class="subnav-container">
-				<c:url var="newsUrl" value="/athletics/viewSport">
-					<c:param name="sportId" value="${matchData.sport.sportId}" />
-				</c:url>
-				<a href="${newsUrl}" class="button-subnav left"><span>news</span> </a>
-				<c:if test="${matchData.sport.seasonId > 0}">
-					<c:url var="rosterUrl" value="/athletics/viewRoster">
-						<c:param name="sportId" value="${matchData.sport.sportId}" />
-						<c:param name="seasonId" value="${matchData.sport.seasonId}" />
-					</c:url>
-					<c:url var="scheduleUrl" value="/athletics/viewSchedule">
-						<c:param name="sportId" value="${matchData.sport.sportId}" />
-						<c:param name="seasonId" value="${matchData.sport.seasonId}" />
-					</c:url>
-					<a href="${rosterUrl}" class="button-subnav left"><span>roster</span> </a>
-					<a href="${scheduleUrl}" class="button-subnav left"><span>schedule</span> </a>
-				</c:if>
+
+<script type="text/javascript">
+ $(window).load(function() {
+     $('.tabs-tab3').addClass('selected');
+     $('.tabs-panel3').show();
+ });
+</script>
+
+
+		<div class="tabs-tabcontainer container_12">
+			<c:url var="newsUrl" value="/athletics/viewSport">
+				<c:param name="sportId" value="${matchData.sport.sportId}" />
+			</c:url>
+			<div class="grid_4">
+				<a class="tabs-tab1" name="tabs-tab1" href="${newsUrl}">News</a>
 			</div>
+			<c:if test="${matchData.sport.seasonId > 0}">
+				<c:url var="rosterUrl" value="/athletics/viewRoster">
+					<c:param name="sportId" value="${matchData.sport.sportId}" />
+					<c:param name="seasonId" value="${matchData.sport.seasonId}" />
+				</c:url>
+				<c:url var="scheduleUrl" value="/athletics/viewSchedule">
+					<c:param name="sportId" value="${matchData.sport.sportId}" />
+					<c:param name="seasonId" value="${matchData.sport.seasonId}" />
+				</c:url>
+				<div class="grid_4">
+					<a class="tabs-tab2" name="tabs-tab2" href="${rosterUrl}">Roster</a>
+				</div>
+				<div class="grid_4">
+					<a class="tabs-tab3" name="tabs-tab3" href="${scheduleUrl}">Schedule</a>
+				</div>
+
+			</c:if>
 		</div>
-		<div class="nonfocal">
-			<c:out value="${matchData.sport.name}" escapeXml="true"></c:out>
-		</div>
-		<ul class="nav">
-			<c:forEach items="${matchData.matches}" var="match" varStatus="status">
-				<li>
-					<div>
-						<div class="livescore-container">
-							<div class="livescore-sidebar1">
-								<div class="scorebox">
-									<c:if test="${not empty match.thumbnail}">
-										<img src='<c:out value="${match.thumbnail}"/>' class="team-icon" />
-									</c:if>
-									<div class="currentscore">
-										<c:out value="${match.score}" escapeXml="true" />
-									</div>
-								</div>
-								<!-- end .sidebar1 -->
-							</div>
-							<div class="livescore-content">
-								<div class="sport-name">
-									<c:if test="${not empty match.winLoss}">
-										<span class="gamestatus"><c:out value="${match.winLoss}" /> </span>
-										<br />
-									</c:if>
-									<span class="opponent"> <c:choose>
-											<c:when test="${not empty match.opponent}">
-												<c:out value="${match.home}" />&nbsp;<c:out value="${match.opponent}" escapeXml="true" />
-											</c:when>
-											<c:when test="${not empty match.name}">
-												<c:out value="${match.name}" />
-											</c:when>
-											<c:otherwise>TBD</c:otherwise>
-										</c:choose> </span>
-								</div>
-								<div class="gametimeloc">
-									<c:choose>
-										<c:when test="${match.winLoss eq 'in progress' and not empty match.timeRemaining}">
-											<c:out value="${match.timeRemaining}" escapeXml="true" />
-											<br />
-										</c:when>
-										<c:when test="${not empty match.dateTime}">
-											<c:out value="${match.dateTime}" escapeXml="true" />
-											<br />
-										</c:when>
-									</c:choose>
-									<c:if test="${not empty match.location}">
-										<c:out value="${match.location}" escapeXml="true" />
-									</c:if>
-								</div>
-							</div>
-							<div class="livescore-sidebar2">
-								<div class="scorebox">
-									<c:if test="${not empty match.oppThumbnail}">
-										<img src='<c:out value="${match.oppThumbnail}"/>' class="team-icon" />
-									</c:if>
-									<div class="currentscore">
-										<c:out value="${match.oppScore}" escapeXml="true" />
-									</div>
-								</div>
-								<!-- end .sidebar2 -->
-							</div>
-						</div>
+
+
+
+		<div class="tabs-panel3" name="tabs-panel3">
+
+
+
+			<c:forEach items="${matchData.matches}" var="match"
+				varStatus="status">
+
+
+
+
+				<div class="container_12 match-info">
+					<div class="grid_3 team-score">
+						<c:if test="${not empty match.thumbnail}">
+							<img src='<c:out value="${match.thumbnail}"/>' />
+						</c:if>
+						<span><c:out value="${match.score}" escapeXml="true" />
+						</span>
 					</div>
-				</li>
+					<div class="grid_6 ">
+						<span class="match-outcome"><c:if
+								test="${not empty match.winLoss}">
+								<c:out value="${match.winLoss}" />
+
+							</c:if>
+						</span> <span class="opponent"> <c:choose>
+								<c:when test="${not empty match.opponent}">
+									<c:out value="${match.home}" />&nbsp;<c:out
+										value="${match.opponent}" escapeXml="true" />
+								</c:when>
+								<c:when test="${not empty match.name}">
+									<c:out value="${match.name}" />
+								</c:when>
+								<c:otherwise>TBD</c:otherwise>
+							</c:choose>
+						</span> <span class="date-time"> <c:choose>
+								<c:when
+									test="${match.winLoss eq 'in progress' and not empty match.timeRemaining}">
+									<c:out value="${match.timeRemaining}" escapeXml="true" />
+
+								</c:when>
+								<c:when test="${not empty match.dateTime}">
+									<c:out value="${match.dateTime}" escapeXml="true" />
+
+								</c:when>
+							</c:choose>
+						</span> <span class="location"> <c:if
+								test="${not empty match.location}">
+								<c:out value="${match.location}" escapeXml="true" />
+							</c:if>
+						</span>
+					</div>
+					<div class="grid_3 team-score">
+						<c:if test="${not empty match.oppThumbnail}">
+							<img src='<c:out value="${match.oppThumbnail}"/>' />
+						</c:if>
+						<span><c:out value="${match.oppScore}" escapeXml="true" />
+						</span>
+					</div>
+				</div>
+
+
+
 			</c:forEach>
-		</ul>
+
+
+		</div>
+
 	</kme:content>
 </kme:page>

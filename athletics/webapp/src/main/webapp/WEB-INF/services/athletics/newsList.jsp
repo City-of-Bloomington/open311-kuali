@@ -14,18 +14,27 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility"%>
-
-<kme:page title="News" id="athletics-news" backButton="true" homeButton="true" cssFilename="athletics" backButtonURL="${pageContext.request.contextPath}/athletics?selectedTab=tab2">
+<c:set var="sportname">
+<c:out value="${sport.name}" escapeXml="true"></c:out>
+</c:set>
+<kme:page title="${sportname}" id="athletics-news" backButton="true" homeButton="true" cssFilename="athletics" backButtonURL="${pageContext.request.contextPath}/athletics?selectedTab=tab2">
 	<kme:content>
 
-		<div class="subnav">
-			<div class="subnav-container">
-				<c:url var="newsUrl" value="/athletics/viewSport">
+	<script type="text/javascript">
+ $(window).load(function() {
+     $('.tabs-tab1').addClass('selected');
+     $('.tabs-panel1').show();
+ });
+</script>
+    <div class="tabs-tabcontainer container_12">
+    
+    <c:url var="newsUrl" value="/athletics/viewSport">
 					<c:param name="sportId" value="${sport.sportId}" />
 				</c:url>
-
-				<a href="${newsUrl}" class="button-subnav left"><span>news</span> </a>
-				<c:if test="${sport.seasonId > 0}">
+    
+    
+      <div class="grid_4"><a class="tabs-tab1" name="tabs-tab1" href="${newsUrl}">News</a></div>
+      <c:if test="${sport.seasonId > 0}">
 					<c:url var="rosterUrl" value="/athletics/viewRoster">
 						<c:param name="sportId" value="${sport.sportId}" />
 						<c:param name="seasonId" value="${sport.seasonId}" />
@@ -34,41 +43,45 @@
 						<c:param name="sportId" value="${sport.sportId}" />
 						<c:param name="seasonId" value="${sport.seasonId}" />
 					</c:url>
-					<a href="${rosterUrl}" class="button-subnav left"><span>roster</span> </a>
-					<a href="${scheduleUrl}" class="button-subnav left"><span>schedule</span> </a>
-				</c:if>
-			</div>
-		</div>
+      <div class="grid_4"><a class="tabs-tab2" name="tabs-tab2" href="${rosterUrl}">Roster</a></div>
+      <div class="grid_4"><a class="tabs-tab3" name="tabs-tab3" href="${scheduleUrl}">Schedule</a></div>
+      </c:if>
 
-		<div class="nonfocal">
-			<c:out value="${sport.name}" escapeXml="true"></c:out>
-		</div>
-
-		<ul class="nav-news" id="newsindex">
+    </div>
+    
+    
+    
+    <div class="tabs-panel1" name="tabs-panel1">
+     <ul data-role="listview" data-theme="c">
 			<c:forEach items="${newsStream.articles}" var="item" varStatus="status">
 				<c:forEach items="${item.articles}" var="article" varStatus="status">
-					<li><c:choose>
-							<c:when test="${not empty article.thumbnailImageUrl}">
-								<img src="<c:out value="${article.thumbnailImageUrl}" escapeXml="true"  />" class="rowicon-news" />
-							</c:when>
-							<c:otherwise>
-								<img src="${pageContext.request.contextPath}/images/default-blockiu.png" class="rowicon-news" />
-							</c:otherwise>
-						</c:choose> <c:url var="articleUrl" value="/athletics/viewStory">
+					<li>
+						<c:url var="articleUrl" value="/athletics/viewStory">
 							<c:param name="sportId" value="${sport.sportId}" />
 							<c:param name="link" value="${article.link}" />
-						</c:url> <a href="${articleUrl}"> <strong><c:out value="${article.title}" escapeXml="true" /> </strong>
-							<div class="teaserline">
+						</c:url> <a href="${articleUrl}">
+						<c:choose>
+							<c:when test="${not empty article.thumbnailImageUrl}">
+								<img src="<c:out value="${article.thumbnailImageUrl}" escapeXml="true"  />" />
+							</c:when>
+							<c:otherwise>
+								<img src="${pageContext.request.contextPath}/images/default-blockiu.png" />
+							</c:otherwise>
+						</c:choose> 
+						<p class="wrap"><strong><c:out value="${article.title}" escapeXml="true" /></strong></p>
+							<%--<p>
 								<c:out value="${article.description}" escapeXml="false" />
-							</div>
-							<div class="timestamp">
+							</p>--%>
+							  <p class="datestamp">
 								<fmt:formatDate value="${article.publishDate}" pattern="EEE, dd MMM yyyy" />
-							</div> </a>
-						<div style="clear: both"></div>
+							</p> </a>
+					
 					</li>
 				</c:forEach>
 			</c:forEach>
-		</ul>
+		</ul>  </div>
+
+		
 
 	</kme:content>
 </kme:page>
