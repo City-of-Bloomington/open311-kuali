@@ -15,36 +15,36 @@
 <%@ taglib prefix="kme"  uri="http://kuali.org/mobility" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<kme:page title="Search Results" id="people" backButton="true" homeButton="true">
+<kme:page title="Search Results" id="people" backButton="true" homeButton="true" cssFilename="people">
 	<kme:content>
 		<c:choose>
 			<c:when test="${person != null}">
-				<kme:listView id="peopleList" filter="false" dataTheme="c" dataInset="true">
+				<kme:listView id="peopleList" filter="false" dataTheme="c" dataInset="false">
 					<li data-role="list-divider"><c:out value="${person.lastName}" />, <c:out value="${person.firstName}" /></li>
 					<li>
 						<c:if test="${not empty person.locations}" >
-							<h3>Campus:
+							<h3 class="wrap">Campus:
 						      		<c:forEach items="${person.locations}" var="location" varStatus="status">
 						      			<c:out value="${location}" /><c:if test="${not status.last}">, </c:if>
 						      		</c:forEach>
 							</h3>
 						</c:if>
 						<c:if test="${not empty person.departments}" >
-							<h3>Department:
+							<h3 class="wrap">Department:
 						      		<c:forEach items="${person.departments}" var="department" varStatus="status">
 						      			<c:out value="${department}" /><c:if test="${not status.last}">, </c:if>
 						      		</c:forEach>
 							</h3>
 						</c:if>
 						<c:if test="${not empty person.affiliations}" >
-							<h3>Affiliation:
+							<h3 class="wrap">Affiliation:
 						      		<c:forEach items="${person.affiliations}" var="affiliation" varStatus="status">
 						      			<c:out value="${affiliation}" /><c:if test="${not status.last}">, </c:if>
 						      		</c:forEach>
 							</h3>
 						</c:if>
 						<c:if test="${not empty person.address}" >
-							<h3>Address: <c:out value="${person.address}" /></h3>
+							<h3 class="wrap">Address: <c:out value="${person.address}" /></h3>
 						</c:if>
 					</li>
 					<c:if test="${not empty person.email}" >

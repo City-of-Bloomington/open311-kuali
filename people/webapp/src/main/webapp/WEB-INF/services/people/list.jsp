@@ -19,7 +19,7 @@
 	<kme:content>
 		<c:choose>
 			<c:when test="${not empty people}">
-				<kme:listView id="peopleList" filter="false" dataTheme="c" dataInset="true">
+				<kme:listView id="peopleList" filter="false" dataTheme="c" dataInset="false">
 		            <c:forEach items="${people}" var="person" varStatus="status">
 		                <kme:listItem>
 		                	<c:url value="/people/${person.hashedUserName}" var="url">
