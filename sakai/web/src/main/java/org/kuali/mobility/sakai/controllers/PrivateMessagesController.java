@@ -60,7 +60,7 @@ public class PrivateMessagesController {
 		try {
 			User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
 			MessageFolder messages = sakaiPrivateTopicService.findPrivateMessages(siteId, typeUuid, user.getUserId());
-			messages.setTitle(title);
+			messages.setTitle(Character.toUpperCase(title.charAt(0)) + title.substring(1));
 			uiModel.addAttribute("messageFolder", messages);
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);

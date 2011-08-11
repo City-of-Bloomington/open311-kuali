@@ -664,7 +664,11 @@ public class SakaiSiteServiceImpl implements SakaiSiteService {
                 		item.setExtension(null);
                 	}
     			}
-                item.setFileType(determineFileType(item.getExtension()));
+    			if ("text/html".equals(item.getMimeType())) {
+    				item.setFileType(FileType.LINK);
+    			} else {
+    				item.setFileType(determineFileType(item.getExtension()));
+    			}
                 resources.add(item);
             }
             Collections.sort(resources);
