@@ -134,10 +134,10 @@ public class HomeController {
 
     	tool = new Tool();
     	tool.setBadgeCount("");
-    	tool.setDescription("Stay up to date with the IU twitter feeds.");
-    	tool.setIconUrl("images/service-icons/srvc-twitter.png");
-    	tool.setTitle("Twitter");
-    	tool.setUrl("twitter");
+    	tool.setDescription("Stay up to date with the IU social media.");
+    	tool.setIconUrl("images/service-icons/srvc-social.png");
+    	tool.setTitle("Social Media");
+    	tool.setUrl("socialmedia");
     	tools.add(tool);
 
     	tool = new Tool();
