@@ -47,7 +47,7 @@ public class EventsController {
 		User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
 		String campus = null;
 		if (user.getViewCampus() == null) {
-			return "redirect:campus?toolName=events";
+			return "redirect:/campus?toolName=events";
 		} else {
 			campus = user.getViewCampus();
 		}

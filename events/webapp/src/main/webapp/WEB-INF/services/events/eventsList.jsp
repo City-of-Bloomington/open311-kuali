@@ -16,9 +16,18 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <c:set var="categoryTitle">
-	<c:out value="${category.title}"/>
+	<c:out value="${category.title}" />
 </c:set>
-<kme:page title="${categoryTitle}" id="events" backButton="true" homeButton="true" backButtonURL="${pageContext.request.contextPath}/events/">
+<c:choose>
+	<c:when test="${category.returnPage eq 'Home'}">
+		<c:url var="back" value="/home" />
+	</c:when>
+	<c:otherwise>
+		<c:url var="back" value="/events" />
+	</c:otherwise>
+</c:choose>
+
+<kme:page title="${categoryTitle}" id="events" backButton="true" homeButton="true" backButtonURL="${back}">
 	<kme:content>
 		<kme:listView id="eventslist" dataTheme="c" dataDividerTheme="b" filter="false">
 			<c:forEach items="${category.days}" var="day" varStatus="statusEventDay">
@@ -33,7 +42,7 @@
 							<c:param name="campus" value="${campus}"></c:param>
 							<c:param name="eventId" value="${event.eventId}"></c:param>
 						</c:url>
-						<a style="padding-right:25px !important;" href="${url}">
+						<a style="padding-right: 25px !important;" href="${url}">
 							<h3 class="wrap">
 								<c:out value="${event.title}" />
 							</h3>

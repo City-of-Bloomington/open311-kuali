@@ -216,6 +216,9 @@ public class EventsServiceImpl implements EventsService {
 
 			Rss rss = getRssCacheService().getRssByMaintRssId(maintRss.getRssId());
 			Category category = new Category();
+			if (maintRss.getCampus().equals("ZZ")) {
+				category.setReturnPage("Home");
+			}
 			category.setCategoryId(maintRss.getShortCode());
 			category.setDays(days);
 			if (rss != null) {

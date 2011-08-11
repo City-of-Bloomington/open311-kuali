@@ -245,10 +245,28 @@ public class HomeController {
 //    	tool.setTitle("Jaguar Athletics");
 //    	tool.setUrl("http://www.iupuijags.com");
 //    	tools.add(tool);
-
     	Tool tool = new Tool();
+    	
+		if (user.getViewCampus() != null && user.getViewCampus().equals("NW")) {
+			tool = new Tool();
+			tool.setBadgeCount("");
+			tool.setDescription("Class Cancellations");
+			tool.setIconUrl("images/service-icons/srvc-jag.png");
+			tool.setTitle("Class Cancellations");
+			tool.setUrl("events/viewEvents?categoryId=nw_cancel&campus=ZZ");
+			tools.add(tool);
+
+			tool = new Tool();
+			tool.setBadgeCount("");
+			tool.setDescription("RedHawk Shuttle");
+			tool.setIconUrl("images/service-icons/srvc-jag.png");
+			tool.setTitle("RedHawk Shuttle");
+			tool.setUrl("events/viewEvents?categoryId=nw_shuttle&campus=ZZ");
+			tools.add(tool);
+		}
+    	tool = new Tool();
     	tool.setBadgeCount("");
-    	if (user == null) {
+    	if (user == null || user.isPublicUser()) {
 	    	tool.setDescription("Log in to Mobile CAS.");
 	    	tool.setIconUrl("images/service-icons/srvc-cas.png");
 	    	tool.setTitle("Login");

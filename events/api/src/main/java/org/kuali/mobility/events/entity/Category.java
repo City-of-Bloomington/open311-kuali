@@ -26,7 +26,17 @@ public class Category implements Serializable {
 
 	private String title;
 	
+	private String returnPage;
+	
 	private List<Day> days;
+
+	public String getReturnPage() {
+		return returnPage;
+	}
+
+	public void setReturnPage(String returnPage) {
+		this.returnPage = returnPage;
+	}
 
 	public List<Day> getDays() {
 		return days;
