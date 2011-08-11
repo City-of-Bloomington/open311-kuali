@@ -58,7 +58,7 @@ public class NotificationController {
 
 	@RequestMapping(method = RequestMethod.GET)
     @ResponseBody
-    public String backdoor(HttpServletRequest request, @RequestParam("deviceId") String deviceId, Model uiModel) {
+    public String notifications(HttpServletRequest request, @RequestParam("deviceId") String deviceId, Model uiModel) {
     	List<Notification> notifications = notificationService.findAllValidNotifications(new Date());
     	if (notifications == null) {
     		return "[]";

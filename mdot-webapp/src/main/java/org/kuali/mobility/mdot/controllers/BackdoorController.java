@@ -15,12 +15,15 @@
 
 package org.kuali.mobility.mdot.controllers;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.kuali.mobility.mdot.entity.Backdoor;
 import org.kuali.mobility.shared.Constants;
 import org.kuali.mobility.user.entity.User;
 import org.kuali.mobility.user.entity.UserImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -29,9 +32,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import edu.iu.m.auth.AdsService;
+import edu.iu.uis.sit.util.directory.AdsPerson;
+
 @Controller 
 @RequestMapping("/backdoor")
 public class BackdoorController {
+	
+	@Autowired
+	private AdsService adsService;
         
     @RequestMapping(method = RequestMethod.GET)
     public String backdoor(HttpServletRequest request, Model uiModel) {
@@ -57,13 +66,31 @@ public class BackdoorController {
     	return "redirect:/home";
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @SuppressWarnings("unchecked")
+	@RequestMapping(method = RequestMethod.POST)
     public String submit(HttpServletRequest request, Model uiModel, @ModelAttribute("backdoor") Backdoor backdoor, BindingResult result) {
     	if (isValidQuery(backdoor, result)) {
         	User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
 			backdoor.setActualUser(user);
    			user = new UserImpl();
        		user.setUserId(backdoor.getUserId());
+       		
+			try {
+				AdsPerson adsPerson = adsService.getAdsPerson(user.getUserId());
+				List<String> affiliations = adsPerson.getIuEduPersonAffiliation();
+				if (affiliations != null) {
+					user.setAffiliations(affiliations);
+				}
+				List<String> groups = adsPerson.getGroups();
+				if (affiliations != null) {
+					user.setGroups(groups);
+				}
+				user.setPrimaryCampus(adsPerson.getOu());
+				user.setViewCampus(adsPerson.getOu());
+			} catch (Exception e) {
+				
+			}
+       		
     		request.getSession().setAttribute(Constants.KME_BACKDOOR_USER_KEY, backdoor);
     		request.getSession().setAttribute(Constants.KME_USER_KEY, user);
         	return "redirect:/home"; 
@@ -81,5 +108,13 @@ public class BackdoorController {
     	}
     	return !hasErrors;
     }
+
+	public AdsService getAdsService() {
+		return adsService;
+	}
+
+	public void setAdsService(AdsService adsService) {
+		this.adsService = adsService;
+	}
     
 }
