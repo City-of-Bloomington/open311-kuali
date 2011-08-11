@@ -18,6 +18,8 @@ package org.kuali.mobility.mdot.entity;
 import java.io.Serializable;
 import java.util.List;
 
+import org.kuali.mobility.admin.entity.Tool;
+
 public class HomeScreen implements Serializable {
 
 	private static final long serialVersionUID = 4947101996672004361L;

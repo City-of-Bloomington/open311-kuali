@@ -15,6 +15,13 @@
 
 package org.kuali.mobility.admin.dao;
 
-public interface AdminDao {
+import java.util.List;
 
+import org.kuali.mobility.admin.entity.HomeScreen;
+import org.kuali.mobility.admin.entity.Tool;
+
+public interface AdminDao {
+	public List<HomeScreen> getAllHomeScreens();
+	public List<Tool> getAllTools();
+	public Long saveTool(Tool tool);
 }

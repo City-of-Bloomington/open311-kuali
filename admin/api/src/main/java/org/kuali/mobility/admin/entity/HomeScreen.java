@@ -18,36 +18,69 @@ package org.kuali.mobility.admin.entity;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.Version;
+
+@Entity(name="HomeScreen")
+@Table(name="HOME_T")
 public class HomeScreen implements Serializable {
 
 	private static final long serialVersionUID = 4947101996672004361L;
 
-	private String principalId;
-	private String principalName;
-	private List<Tool> tools; 
+	@Id
+    @SequenceGenerator(name="home_sequence", sequenceName="SEQ_HOME_T", initialValue=1000, allocationSize=1)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="home_sequence")
+    @Column(name="HOME_ID")
+    private Long homeScreenId;
+	
+	@Column(name="HOME_NM")
+	private String homeScreenName;
+	
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<HomeTool> homeTools;
+	
+	@Version
+    @Column(name="VER_NBR")
+    private Long versionNumber;	
 
-	public String getPrincipalId() {
-		return principalId;
+	public List<HomeTool> getHomeTools() {
+		return homeTools;
 	}
 
-	public void setPrincipalId(String principalId) {
-		this.principalId = principalId;
+	public void setHomeTools(List<HomeTool> homeTools) {
+		this.homeTools = homeTools;
 	}
 
-	public String getPrincipalName() {
-		return principalName;
+	public Long getHomeScreenId() {
+		return homeScreenId;
 	}
 
-	public void setPrincipalName(String principalName) {
-		this.principalName = principalName;
+	public void setHomeScreenId(Long homeScreenId) {
+		this.homeScreenId = homeScreenId;
 	}
 
-	public List<Tool> getTools() {
-		return tools;
+	public String getHomeScreenName() {
+		return homeScreenName;
 	}
 
-	public void setTools(List<Tool> tools) {
-		this.tools = tools;
+	public void setHomeScreenName(String homeScreenName) {
+		this.homeScreenName = homeScreenName;
+	}
+
+	public Long getVersionNumber() {
+		return versionNumber;
+	}
+
+	public void setVersionNumber(Long versionNumber) {
+		this.versionNumber = versionNumber;
 	}
 
 }

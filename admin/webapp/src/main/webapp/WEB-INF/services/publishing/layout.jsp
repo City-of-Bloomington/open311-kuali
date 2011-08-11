@@ -19,7 +19,14 @@
 </head>
 <body>
 <h2>Layout</h2>
-
-
+<a href="${pageContext.request.contextPath}/publishing/layout/new">new</a>
+<kme:listView id="layouts" dataTheme="c" dataDividerTheme="b" filter="false">
+	<c:forEach items="${layouts}" var="layout" varStatus="status">
+		<kme:listItem>
+			${layout.homeScreenName}
+			<a href="${pageContext.request.contextPath}/publishing/layout/edit/${layout.homeScreenId}">edit</a> <a href="${pageContext.request.contextPath}/publishing/layout/delete/${layout.homeScreenId}">delete</a>
+		</kme:listItem>
+	</c:forEach>
+</kme:listView>
 </body>
 </html>

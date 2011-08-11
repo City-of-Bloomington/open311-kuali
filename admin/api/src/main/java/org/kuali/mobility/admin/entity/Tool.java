@@ -17,23 +17,53 @@ package org.kuali.mobility.admin.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.persistence.Version;
+
+@Entity(name="Tool")
+@Table(name="TOOL_T")
 public class Tool implements Serializable {
 
 	private static final long serialVersionUID = 4709451428489759275L;
 
-	private String id;
+	@Id
+    @SequenceGenerator(name="tool_sequence", sequenceName="SEQ_TOOL_T", initialValue=1000, allocationSize=1)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="tool_sequence")
+    @Column(name="TOOL_ID")
+	private Long toolId;
+	
+	@Column(name="TITLE")
 	private String title;
+	
+	@Column(name="URL")
 	private String url;
+	
+	@Column(name="DESCRIPTION")
 	private String description;
+	
+	@Transient
 	private String badgeCount;
+	
+	@Column(name="ICON_URL")
 	private String iconUrl;
+	
+	@Version
+    @Column(name="VER_NBR")
+    private Long versionNumber;	
 
-	public String getId() {
-		return id;
+	public Long getToolId() {
+		return toolId;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setToolId(Long id) {
+		this.toolId = id;
 	}
 
 	public String getTitle() {
@@ -74,6 +104,14 @@ public class Tool implements Serializable {
 
 	public void setIconUrl(String iconUrl) {
 		this.iconUrl = iconUrl;
+	}
+
+	public Long getVersionNumber() {
+		return versionNumber;
+	}
+
+	public void setVersionNumber(Long versionNumber) {
+		this.versionNumber = versionNumber;
 	}
 
 }

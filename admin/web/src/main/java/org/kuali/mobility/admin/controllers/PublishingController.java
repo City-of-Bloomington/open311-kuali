@@ -20,6 +20,8 @@ import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.kuali.mobility.admin.entity.HomeScreen;
+import org.kuali.mobility.admin.entity.Tool;
 import org.kuali.mobility.admin.service.AdminService;
 import org.kuali.mobility.notification.entity.Notification;
 import org.kuali.mobility.notification.service.NotificationService;
@@ -60,14 +62,42 @@ public class PublishingController {
 
     @RequestMapping(value = "tool", method = RequestMethod.GET)
     public String tool(Model uiModel) {
-
+    	uiModel.addAttribute("tools", adminService.getAllTools());
     	return "publishing/tool";
+    }
+    
+    @RequestMapping(value = "tool/new", method = RequestMethod.GET)
+    public String newTool(Model uiModel) {
+    	uiModel.addAttribute("tool", new Tool());
+    	return "publishing/editTool";
+    }
+    
+    @RequestMapping(value = "tool/new", method = RequestMethod.POST)
+    public String newTool(Model uiModel, @ModelAttribute("tool") Tool tool, BindingResult result) {
+    	adminService.saveTool(tool);
+    	return tool(uiModel);
     }
 
     @RequestMapping(value = "layout", method = RequestMethod.GET)
     public String layout(Model uiModel) {
-
+    	uiModel.addAttribute("layouts", adminService.getAllHomeScreens());
     	return "publishing/layout";
+    }
+    
+    @RequestMapping(value = "layout/new", method = RequestMethod.GET)
+    public String newLayout(Model uiModel) {
+    	uiModel.addAttribute("layout", new HomeScreen());
+    	uiModel.addAttribute("availableTools", adminService.getAllTools());
+    	return "publishing/editLayout";
+    }
+    
+    @RequestMapping(value = "layout/edit/{layoutId}", method = RequestMethod.GET)
+    public String editLayout(Model uiModel) {
+    	
+//    	HomeScreen layout = 
+//    	uiModel.addAttribute("layout", layout);
+    	uiModel.addAttribute("availableTools", adminService.getAllTools());
+    	return "publishing/editLayout";
     }
 
     @RequestMapping(value = "notifications", method = RequestMethod.GET)

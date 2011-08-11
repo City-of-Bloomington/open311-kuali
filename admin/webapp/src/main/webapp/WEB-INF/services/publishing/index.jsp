@@ -21,8 +21,8 @@
 <h2>Publishing</h2>
 
 <a href="tool">Tool</a><br/>
-<a href="layout">Layout</a>
-<a href="notifications">Notifications</a>
+<a href="layout">Layout</a><br/>
+<a href="notifications">Notifications</a><br/>
 
 </body>
 </html>

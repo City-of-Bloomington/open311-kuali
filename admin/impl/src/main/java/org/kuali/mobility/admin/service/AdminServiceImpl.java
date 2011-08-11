@@ -15,12 +15,37 @@
 
 package org.kuali.mobility.admin.service;
 
-import org.kuali.mobility.admin.service.AdminService;
+import java.util.List;
+
+import org.kuali.mobility.admin.dao.AdminDao;
+import org.kuali.mobility.admin.entity.HomeScreen;
+import org.kuali.mobility.admin.entity.Tool;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class AdminServiceImpl implements AdminService {
 	
+	@Autowired
+    private AdminDao adminDao;
+	
+	public List<HomeScreen> getAllHomeScreens() {
+		return adminDao.getAllHomeScreens();
+	}
+	
+	public List<Tool> getAllTools() {
+		return adminDao.getAllTools();
+	}
+
+	public void setAdminDao(AdminDao adminDao) {
+		this.adminDao = adminDao;
+	}
+	
+	@Transactional
+	public Long saveTool(Tool tool) {
+		return this.adminDao.saveTool(tool);
+	}
 }
 
 
