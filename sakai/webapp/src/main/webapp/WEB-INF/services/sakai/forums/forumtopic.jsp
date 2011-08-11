@@ -15,7 +15,7 @@
 <kme:page title="${topic.title}" id="forum" cssFilename="sakai" backButton="true" homeButton="true" backButtonURL="${pageContext.request.contextPath}/myclasses/${siteId}/forums/${topic.forumId}">
 	<kme:content>
 		<ul data-role="listview">
-			<c:if test="${not empty topic.description}">
+			<c:if test="${not empty topic.description && topic.description != 'null'}">
 				<kme:listItem>
 	            	${topic.description}
 				</kme:listItem>
