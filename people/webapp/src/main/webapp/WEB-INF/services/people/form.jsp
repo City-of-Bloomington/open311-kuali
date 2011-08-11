@@ -15,7 +15,7 @@
 <%@ taglib prefix="kme"  uri="http://kuali.org/mobility" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<kme:page title="Find People" id="people" backButton="true" homeButton="true" cssFilename="people">
+<kme:page title="People" id="people" backButton="true" homeButton="true" cssFilename="people">
 	<kme:content>
 		<form:form action="${pageContext.request.contextPath}/people" commandName="search" data-ajax="false" method="post">
 			<div data-role="fieldcontain">
@@ -23,10 +23,13 @@
                 <form:input path="lastName" type="text" value="" />
                 <form:errors path="lastName"/>
                 
-                <form:select path="exactness" id="slider" data-role="slider">
-					<form:option value="starts" label="starts with" />
-			        <form:option value="exact" label="is exactly" />
-                </form:select>
+                <fieldset data-role="controlgroup" data-type="horizontal" >
+	                <label for="slider"></label>
+	                <form:select path="exactness" id="slider" data-role="slider">
+						<form:option value="starts" label="starts with" />
+				        <form:option value="exact" label="is exactly" />
+	                </form:select>
+                </fieldset>
                 
 				<label for="firstName">First Name:</label>
 	            <form:input path="firstName" type="text" value=""  />
