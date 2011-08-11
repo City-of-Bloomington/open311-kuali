@@ -15,7 +15,7 @@
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<kme:page title="Maps" id="formtest" cssFilename="maps" jsFilename="maps">
+<kme:page title="Maps" id="formtest" cssFilename="location" jsFilename="maps">
 	<kme:content>
 
 <style type="text/css">
@@ -128,7 +128,7 @@ $('#formtest').live("pageshow", function() {
 	var lng = $('#searchLongitude').val();
 	var buildingCode = $('#searchBuilding').val();
 	if (buildingCode) {
-		retrieveBuildingByCode(buildingCode);
+		showBuildingByCode(buildingCode);
 	} else if ((lat != "" && lng != "" && lat != 0 && lng != 0)) {
 		showLocationByCoordinates(map, markersArray, lat, lng);
 	} else {
@@ -137,90 +137,18 @@ $('#formtest').live("pageshow", function() {
 	initializeMapSearchDefault();
 });
 
-function retrieveBuildingByCode(buildingCode) {
+/* function retrieveBuildingByCode(buildingCode) {
 	//clearOverlays(markersArray);
 	$.getJSON('${pageContext.request.contextPath}/maps/building/' + buildingCode, function(data) {
 		showLocationByCoordinates(map, markersArray, data.latitude, data.longitude);
 	}).error(function() { 
 		alert("Could not retrieve data at this time."); 
 	});
-}
+} */
 
-function retrieveBuildingsForGroup(groupCode) {
-	// http://localhost:9999/mdot/maps/group/BL
-	$('#searchBuilding').empty();
-	$('#searchBuilding').append($("<option></option>").attr("value", "").text(""));
-	$.getJSON('${pageContext.request.contextPath}/maps/group/' + groupCode, function(data) {
-		$.each(data.mapsLocations, function(key, value) {
-			$('#searchBuilding').append($("<option></option>").attr("value", value.buildingCode).text(value.name));
-		});
-		$('#searchBuilding').selectmenu('refresh', true);
-	}).error(function() { 
-		alert("Could not retrieve data at this time."); 
-	});
-}
 
-function getCampusBounds(campusCode) {
-	var bounds = new google.maps.LatLngBounds();
-	var latnw;
-	var lngnw;
-	var latse;
-	var lngse;
-	if ("BL" == campusCode) {
-		latnw = 39.186364553452776;
-		lngnw = -86.52849197387695;
-		latse = 39.163741758811305;
-		lngse = -86.49707794189453;
-	} else if ("IN" == campusCode) {
-		latnw = 39.779255060511474;
-		lngnw = -86.18817329406738;
-		latse = 39.76903016131954;
-		lngse = -86.16877555847168;
-	} else if ("CO" == campusCode) {
-		latnw = 39.25628280051443;
-		lngnw = -85.91246366500854;
-		latse = 39.24834029722123;
-		lngse = -85.89401006698608;
-	} else if ("EA" == campusCode) {
-		latnw = 39.86846872971864;
-		lngnw = -84.89223718643188;
-		latse = 39.865026590919314;
-		lngse = -84.88304257392883;
-	} else if ("KO" == campusCode) {
-		latnw = 40.46334797900547;
-		lngnw = -86.13686800003052;
-		latse = 40.459446082380765;
-		lngse = -86.12846732139587;
-	} else if ("NW" == campusCode) {
-		latnw = 41.55735157080083;
-		lngnw = -87.34203815460205;
-		latse = 41.55347378410055;
-		lngse = -87.33360528945923;
-	} else if ("SE" == campusCode) {
-		latnw = 38.34752114090129;
-		lngnw = -85.82106471061707;
-		latse = 38.34407964355921;
-		lngse =  -85.811687707901;
-	} else if ("SB" == campusCode) {
-		latnw = 41.665634758010086;
-		lngnw = -86.22310638427734;
-		latse = 41.65893400481601;
-		lngse = -86.21585369110107;
-	} else if ("UA" == campusCode) {
-		latnw = 41.74069404739962;
-		lngnw = -87.58524999999997;
-		latse = 38.15762916783622;
-		lngse = -84.69953642272947;
-		
-	} else {
-		return null;
-	}
-	var locnw = new google.maps.LatLng(latnw, lngnw);
-	var locse = new google.maps.LatLng(latse, lngse);
-	bounds.extend(locnw);
-	bounds.extend(locse);
-	return bounds;
-}
+
+
 
 function setCampusMapCenter(map, campus) {
 	var latlng = new google.maps.LatLng(39.794187,-86.178589);
@@ -340,7 +268,10 @@ function mapSearchPostProcess() {
 
 function findFoursquareVenues(latlng){
 	if (edit){
-		var url = "https://test.uisapp2.iu.edu:443/ccl-unt" + "/maps/markers/foursquare?lat="+ latlng.lat() + "&lng=" + latlng.lng();
+		var url = "https://test.uisapp2.iu.edu/ccl-unt" + "/maps/markers/foursquare?lat="+ latlng.lat() + "&lng=" + latlng.lng();
+		var jqxhr = $.getJSON(url, function(data) {
+			alert("Test");
+		});
 		var jqxhr = $.getJSON(url, function(data) {
 			var venuesHtml = "";
 			venues = new Array();

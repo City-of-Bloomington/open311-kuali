@@ -47,7 +47,8 @@ $('#mapsbuilding').live("pageshow", function() {
 			showLocationByCoordinates(map, markersArray, latitude, longitude);	
 		}
 	}
-	drawUserLocation(map, markersArray, userMarkersArray);
+	//drawUserLocation(map, markersArray, userMarkersArray);
+	//startTrackingUserLocation(map, markersArray, userMarkersArray);
 });
 </script>
 
