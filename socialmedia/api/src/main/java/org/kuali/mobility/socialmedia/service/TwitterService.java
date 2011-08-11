@@ -21,4 +21,7 @@ import org.kuali.mobility.socialmedia.entity.Tweet;
 
 public interface TwitterService {
 	List<Tweet> retrieveCombinedFeeds(List<String> publicIds);
+	public List<String> getFeeds();
+	public void stopCache();
+	public void startCache();
 }
