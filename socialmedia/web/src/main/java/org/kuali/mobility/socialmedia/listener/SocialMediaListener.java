@@ -1,14 +1,15 @@
-package org.kuali.mobility.socialmedia.service;
+package org.kuali.mobility.socialmedia.listener;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
+import org.kuali.mobility.socialmedia.service.TwitterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 
-public class TwitterListener implements ServletContextListener {
+public class SocialMediaListener implements ServletContextListener {
 	
-	private static org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(TwitterListener.class);
+	private static org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(SocialMediaListener.class);
 
 	@Autowired
 	private TwitterService twitterService;

@@ -39,7 +39,7 @@
 		<listener-class>edu.iu.m.news.listener.NewsListener</listener-class>
 	</listener>
 	<listener>
-		<listener-class>org.kuali.mobility.socialmedia.service.TwitterListener</listener-class>
+		<listener-class>org.kuali.mobility.socialmedia.listener.SocialMediaListener</listener-class>
 	</listener>
 
     <filter>

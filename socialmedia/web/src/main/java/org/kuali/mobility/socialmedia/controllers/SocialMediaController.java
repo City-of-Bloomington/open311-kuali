@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping("/socialmedia")
-public class TwitterController {
+public class SocialMediaController {
 
 	@Autowired
 	private TwitterService twitterService;
