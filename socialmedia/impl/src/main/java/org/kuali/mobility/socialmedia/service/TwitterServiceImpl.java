@@ -112,7 +112,7 @@ public class TwitterServiceImpl implements TwitterService {
     		feedString = configParamService.findValueByName("SocialMedia.Twitter.Feeds");
     	} catch (Exception e){
     		LOG.error("Config param SocialMedia.Twitter.Feeds not defined.", e);
-    		feedString = "";
+    		feedString = "IndianaUniv";
     	}
     	
     	return Arrays.asList(feedString.split(","));
