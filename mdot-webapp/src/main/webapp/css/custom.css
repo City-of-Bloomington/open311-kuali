@@ -568,59 +568,7 @@ div#home span.countBadge {
 }
 
 
-/* IT Notices (moved to dedicated css file)
------------------------------------------------------------------------------------------------------------*/
 
-/* Campus Alerts (moved to dedicated css file)
------------------------------------------------------------------------------------------------------------*/
-
-/* My Classes (moved to dedicated css file)
------------------------------------------------------------------------------------------------------------*/
-
-/* Emergency Info (moved to dedicated css file)
------------------------------------------------------------------------------------------------------------*/
-
-/* Computer Labs (moved to dedicated css file)
------------------------------------------------------------------------------------------------------------*/
-
-/* Home Screen Badge Style Overrides
------------------------------------------------------------------------------------------------------------*/
-
-
-
-/* Horizontal Tab Navigation - (8/2/11 - depreciated)
------------------------------------------------------------------------------------------------------------*/
-
-
-.tabs {
-/*margin-top:2px;*/
-}
-.tabs ul {
-/*margin-right:2px;*/
-	
-}
-.tabs ul li a {
-	margin-left:2px;
-	-webkit-border-top-left-radius: 10px;
-	-webkit-border-top-right-radius: 10px;
-	-moz-border-radius-topleft: 10px;
-	-moz-border-radius-topright: 10px;
-	border-top-left-radius: 10px;
-	border-top-right-radius: 10px;
-	border-right: 1px solid #CCC;
-	background:#666;
-	color:#ffffff;
-	text-shadow:none;
-}
-.tabs ul li a.selected {
-	border-bottom-style: none;
-	background:#FFF;
-	color:#000;
-}
-.tabs ul li .ui-btn .ui-btn-inner, .ui-navbar-noicons .ui-navbar-toggle .ui-btn-inner {
-	padding-top: .4em;
-	padding-bottom: .4em;
-}
 /* Custom Link Disclosure Icons
 -----------------------------------------------------------------------------------------------------------*/
 
@@ -646,6 +594,19 @@ div#home span.countBadge {
 	background-position: 1px 1px;
 }
 
+.ui-icon-lock {
+	background-image: url(images/icon-disclosure-lock-18.png);
+	background-position: 1px 1px;
+}
+.ui-icon-unlock {
+	background-image: url(images/icon-disclosure-unlock-18.png);
+	background-position: 1px 1px;
+}
+
+
+
+
+
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
        only screen and (min--moz-device-pixel-ratio: 1.5),
        only screen and (min-resolution: 240dpi) {
@@ -658,7 +619,7 @@ div#home span.countBadge {
 		background-size: 18px 18px;
 		background-position: 0px 0px;
 	}
-	.link-phone .ui-icon.ui-icon-arrow-r {
+	.link-phone .ui-icon.ui-icon-arrow-r{
 		background-image: url(images/icon-disclosure-phone-36.png);
 		-moz-background-size: 18px 18px;
 		-o-background-size: 18px 18px;
