@@ -74,6 +74,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 				}
 				user.setPrimaryCampus(adsPerson.getOu());
 				user.setViewCampus(adsPerson.getOu());
+				user.setEmail(adsPerson.getMail());
 			} catch (Exception e) {
 				LOG.error(e.getMessage(), e);
 			}

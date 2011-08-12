@@ -23,6 +23,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import org.kuali.mobility.admin.entity.HomeScreen;
+import org.kuali.mobility.admin.entity.HomeTool;
 import org.kuali.mobility.admin.entity.Tool;
 import org.springframework.stereotype.Repository;
 
@@ -50,12 +51,81 @@ public class AdminDaoImpl implements AdminDao {
         }
     }
     
+    @Override
+	public HomeScreen getHomeScreenById(long homeScreenId) {
+		Query query = entityManager.createQuery("select h from HomeScreen h where h.homeScreenId = :id");
+        query.setParameter("id", homeScreenId);
+        try {
+        	return (HomeScreen) query.getSingleResult();
+        } catch (Exception e) {
+        	return null;
+        }
+	}
+    
+    @Override
+	public HomeScreen getHomeScreenByName(String name) {
+		Query query = entityManager.createQuery("select h from HomeScreen h where h.homeScreenName = :name");
+        query.setParameter("name", name);
+        try {
+        	return (HomeScreen) query.getSingleResult();
+        } catch (Exception e) {
+        	return null;
+        }
+	}
+
+	@Override
+	public Long saveHomeScreen(HomeScreen homeScreen) {
+		if (homeScreen == null) {
+            return null;
+        }
+        if (homeScreen.getHomeScreenName() != null) {
+        	homeScreen.setHomeScreenName(homeScreen.getHomeScreenName().trim());
+        }
+        for (HomeTool ht : homeScreen.getHomeTools()) {
+        	ht.setHomeScreen(homeScreen);
+        }
+        try {
+	        if (homeScreen.getHomeScreenId() == null) {
+	            entityManager.persist(homeScreen);
+	        } else {
+	        	deleteHomeToolsByHomeScreenId(homeScreen.getHomeScreenId());
+	            entityManager.merge(homeScreen);
+	        }
+        } catch (OptimisticLockException oe) {
+            return null;
+        }
+        return homeScreen.getHomeScreenId();
+	}
+	
+	private void deleteHomeToolsByHomeScreenId(long homeScreenId) {
+		Query query = entityManager.createQuery("delete from HomeTool ht where ht.homeScreenId = :id");
+        query.setParameter("id", homeScreenId);
+        query.executeUpdate();
+	}
+
+	@Override
+	public void deleteHomeScreenById(long homeScreenId) {
+		Query query = entityManager.createQuery("delete from HomeScreen h where h.homeScreenId = :id");
+        query.setParameter("id", homeScreenId);
+        query.executeUpdate();
+	}
+    
     @SuppressWarnings("unchecked")
 	public List<Tool> getAllTools(){
     	Query query = entityManager.createQuery("select t from Tool t");
         try { 
         	return query.getResultList();
         } catch (Exception e) {        	
+        	return null;
+        }
+    }
+    
+    public Tool getToolById(long toolId) {
+    	Query query = entityManager.createQuery("select t from Tool t where t.toolId = :id");
+        query.setParameter("id", toolId);
+        try {
+        	return (Tool) query.getSingleResult();
+        } catch (Exception e) {
         	return null;
         }
     }
@@ -86,5 +156,11 @@ public class AdminDaoImpl implements AdminDao {
             return null;
         }
         return tool.getToolId();
+    }
+    
+    public void deleteToolById(Long toolId) {
+        Query query = entityManager.createQuery("delete from Tool t where t.toolId = :toolId");
+        query.setParameter("toolId", toolId);
+        query.executeUpdate();
     }
 } 

@@ -20,7 +20,7 @@
 </head>
 <body>
 	<h2>Edit Tool</h2>
-	<form:form action="${pageContext.request.contextPath}/publishing/tool/new" commandName="tool" data-ajax="false" method="post">
+	<form:form action="${pageContext.request.contextPath}/publishing/tool/edit" commandName="tool" data-ajax="false" method="post">
 		<form:hidden path="toolId"/>
 	    <form:hidden path="versionNumber"/>
 		<fieldset>

@@ -29,7 +29,7 @@ import javax.persistence.Version;
 
 @Entity(name="Tool")
 @Table(name="TOOL_T")
-public class Tool implements Serializable {
+public class Tool implements Serializable, Comparable<Tool> {
 
 	private static final long serialVersionUID = 4709451428489759275L;
 
@@ -112,6 +112,19 @@ public class Tool implements Serializable {
 
 	public void setVersionNumber(Long versionNumber) {
 		this.versionNumber = versionNumber;
+	}
+
+	@Override
+	public int compareTo(Tool arg0) {
+		return title.compareTo(arg0.title);
+	}
+	
+	@Override
+	public boolean equals(Object arg0) {
+		if (arg0 instanceof Tool) {
+			return toolId.equals(((Tool)arg0).toolId);
+		}
+		return false;
 	}
 
 }

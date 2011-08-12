@@ -16,11 +16,15 @@
 package org.kuali.mobility.admin.controllers;
 
 import java.text.SimpleDateFormat;
+import java.util.Collections;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.kuali.mobility.admin.entity.HomeScreen;
+import org.kuali.mobility.admin.entity.HomeTool;
 import org.kuali.mobility.admin.entity.Tool;
 import org.kuali.mobility.admin.service.AdminService;
 import org.kuali.mobility.notification.entity.Notification;
@@ -34,6 +38,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -59,10 +64,14 @@ public class PublishingController {
 
     	return "publishing/index";
     }
+	
+	//----------------Tools------------------
 
     @RequestMapping(value = "tool", method = RequestMethod.GET)
     public String tool(Model uiModel) {
-    	uiModel.addAttribute("tools", adminService.getAllTools());
+    	List<Tool> tools = adminService.getAllTools();
+    	Collections.sort(tools);
+    	uiModel.addAttribute("tools", tools);
     	return "publishing/tool";
     }
     
@@ -72,11 +81,26 @@ public class PublishingController {
     	return "publishing/editTool";
     }
     
-    @RequestMapping(value = "tool/new", method = RequestMethod.POST)
-    public String newTool(Model uiModel, @ModelAttribute("tool") Tool tool, BindingResult result) {
+    @RequestMapping(value = "tool/edit/{toolId}", method = RequestMethod.GET)
+    public String editTool(Model uiModel, @PathVariable("toolId") long toolId) {
+    	Tool tool = adminService.getToolById(toolId);
+    	uiModel.addAttribute("tool", tool);
+    	return "publishing/editTool";
+    }
+    
+    @RequestMapping(value = "tool/delete/{toolId}", method = RequestMethod.GET)
+    public String deleteTool(Model uiModel, @PathVariable("toolId") long toolId) {
+    	adminService.deleteToolById(toolId);
+    	return tool(uiModel);
+    }
+    
+    @RequestMapping(value = "tool/edit", method = RequestMethod.POST)
+    public String editTool(Model uiModel, @ModelAttribute("tool") Tool tool, BindingResult result) {
     	adminService.saveTool(tool);
     	return tool(uiModel);
     }
+    
+  //----------------Layouts------------------
 
     @RequestMapping(value = "layout", method = RequestMethod.GET)
     public String layout(Model uiModel) {
@@ -92,13 +116,122 @@ public class PublishingController {
     }
     
     @RequestMapping(value = "layout/edit/{layoutId}", method = RequestMethod.GET)
-    public String editLayout(Model uiModel) {
-    	
-//    	HomeScreen layout = 
-//    	uiModel.addAttribute("layout", layout);
+    public String editLayout(Model uiModel, @PathVariable("layoutId") long layoutId) {
+    	HomeScreen layout = adminService.getHomeScreenById(layoutId);
+    	Collections.sort(layout.getHomeTools());
+    	uiModel.addAttribute("layout", layout);
     	uiModel.addAttribute("availableTools", adminService.getAllTools());
     	return "publishing/editLayout";
     }
+    
+    @RequestMapping(value = "layout/edit", method = RequestMethod.POST)
+    public String editLayout(Model uiModel, @ModelAttribute("layout") HomeScreen homeScreen, BindingResult result) {
+    	adminService.saveHomeScreen(homeScreen);
+    	return layout(uiModel);
+    }
+    
+    @RequestMapping(value = "layout/delete/{layoutId}", method = RequestMethod.GET)
+    public String deleteLayout(Model uiModel, @PathVariable("layoutId") long layoutId) {
+    	adminService.deleteHomeScreenById(layoutId);
+    	return layout(uiModel);
+    }
+    
+    @RequestMapping(value = "layout/edit", method = RequestMethod.POST, params = "add")
+    public String addTool(Model uiModel, @ModelAttribute("layout") HomeScreen homeScreen, BindingResult result, @RequestParam("toolToAdd") Long toolId) {
+    	Tool tool = adminService.getToolById(toolId);
+    	boolean found = false;
+    	for (HomeTool homeTool : homeScreen.getHomeTools()) {
+    		if (homeTool.getToolId().equals(toolId)) {
+    			found = true;
+    			break;
+    		}
+    	}
+    	if (!found) {
+    		HomeTool homeTool = new HomeTool(homeScreen, tool, homeScreen.getHomeTools().size());
+    		homeScreen.getHomeTools().add(homeTool);
+    	}
+    	Collections.sort(homeScreen.getHomeTools());
+    	uiModel.addAttribute("layout", homeScreen);
+    	uiModel.addAttribute("availableTools", adminService.getAllTools());
+    	return "publishing/editLayout";
+    }
+    
+    @RequestMapping(value = "layout/edit", method = RequestMethod.POST, params = "remove")
+    public String removeTool(Model uiModel, @ModelAttribute("layout") HomeScreen homeScreen, BindingResult result, @RequestParam("removeId") Long toolId) {
+    	Integer removedOrder = null;
+    	for (Iterator<HomeTool> iter = homeScreen.getHomeTools().iterator(); iter.hasNext();) {
+    		HomeTool homeTool = iter.next();
+    		if (homeTool.getToolId().equals(toolId)) {
+    			removedOrder = homeTool.getOrder();
+    			iter.remove();
+    			break;
+    		}
+    	}
+    	if (removedOrder != null) {
+    		for (HomeTool ht : homeScreen.getHomeTools()) {
+    			if (ht.getOrder() > removedOrder) {
+    				ht.setOrder(ht.getOrder() - 1);
+    			}
+    		}
+    	}
+    	Collections.sort(homeScreen.getHomeTools());
+    	uiModel.addAttribute("layout", homeScreen);
+    	uiModel.addAttribute("availableTools", adminService.getAllTools());
+    	return "publishing/editLayout";
+    }
+    
+    @RequestMapping(value = "layout/edit", method = RequestMethod.POST, params = "up")
+    public String moveToolUp(Model uiModel, @ModelAttribute("layout") HomeScreen homeScreen, BindingResult result, @RequestParam("removeId") Long toolId) {
+    	HomeTool selectedHomeTool = null;
+    	
+    	for (HomeTool homeTool : homeScreen.getHomeTools()) {
+    		if (homeTool.getToolId().equals(toolId)) {
+    			selectedHomeTool = homeTool;
+    			break;
+    		}
+    	}
+    	if (selectedHomeTool != null && selectedHomeTool.getOrder() > 0) {
+    		for (HomeTool ht : homeScreen.getHomeTools()) {
+    			if (ht.getOrder() == selectedHomeTool.getOrder() - 1) {
+    				ht.setOrder(ht.getOrder() + 1);
+    				selectedHomeTool.setOrder(selectedHomeTool.getOrder() - 1);
+    				break;
+    			}
+    		}
+    	}
+    	Collections.sort(homeScreen.getHomeTools());
+    	uiModel.addAttribute("layout", homeScreen);
+    	uiModel.addAttribute("availableTools", adminService.getAllTools());
+    	return "publishing/editLayout";
+    }
+    
+    @RequestMapping(value = "layout/edit", method = RequestMethod.POST, params = "down")
+    public String moveToolDown(Model uiModel, @ModelAttribute("layout") HomeScreen homeScreen, BindingResult result, @RequestParam("removeId") Long toolId) {
+    	HomeTool selectedHomeTool = null;
+    	
+    	for (HomeTool homeTool : homeScreen.getHomeTools()) {
+    		if (homeTool.getToolId().equals(toolId)) {
+    			selectedHomeTool = homeTool;
+    			break;
+    		}
+    	}
+    	if (selectedHomeTool != null) {
+    		for (HomeTool ht : homeScreen.getHomeTools()) {
+    			if (ht.getOrder() == selectedHomeTool.getOrder() + 1) {
+    				ht.setOrder(ht.getOrder() + 1);
+    				selectedHomeTool.setOrder(selectedHomeTool.getOrder() - 1);
+    				break;
+    			}
+    		}
+    	}
+    	Collections.sort(homeScreen.getHomeTools());
+    	uiModel.addAttribute("layout", homeScreen);
+    	uiModel.addAttribute("availableTools", adminService.getAllTools());
+    	return "publishing/editLayout";
+    }
+    
+    
+    //----------------Notifications------------------
 
     @RequestMapping(value = "notifications", method = RequestMethod.GET)
     public String notifications(Model uiModel) {

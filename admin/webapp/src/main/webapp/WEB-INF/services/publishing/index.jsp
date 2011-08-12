@@ -20,8 +20,8 @@
 <body>
 <h2>Publishing</h2>
 
-<a href="tool">Tool</a><br/>
-<a href="layout">Layout</a><br/>
+<a href="tool">Tools</a><br/>
+<a href="layout">Home Screens</a><br/>
 <a href="notifications">Notifications</a><br/>
 
 </body>

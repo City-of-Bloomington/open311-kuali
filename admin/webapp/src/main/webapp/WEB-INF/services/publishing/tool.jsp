@@ -19,9 +19,13 @@
 </head>
 <body>
 	<h2>Tool</h2>
-	<a href="${pageContext.request.contextPath}/publishing/tool/new">new</a><br />
-	<c:forEach items="${tools}" var="tool" varStatus="status">
-		${tool.title} <a href="${pageContext.request.contextPath}/publishing/tool/edit/${tool.toolId}">edit</a> <a href="${pageContext.request.contextPath}/publishing/tool/delete/${tool.toolId}">delete</a><br />
-	</c:forEach>
+	<a href="${pageContext.request.contextPath}/publishing/tool/new">new</a><br /><br />
+	<table>
+		<c:forEach items="${tools}" var="tool" varStatus="status">
+			<tr>
+				<td>${tool.title}</td><td><a href="${pageContext.request.contextPath}/publishing/tool/edit/${tool.toolId}">edit</a> <a href="${pageContext.request.contextPath}/publishing/tool/delete/${tool.toolId}">delete</a></td>
+			</tr>
+		</c:forEach>
+	</table>
 </body>
 </html>

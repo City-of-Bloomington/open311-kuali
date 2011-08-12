@@ -21,18 +21,17 @@ import java.util.Map;
 public interface User {
 
 	String getViewCampus();
-
 	void setViewCampus(String campus);
 
 	boolean isPublicUser();
 
 	String getCampus();
-
 	Long getGuid();
-
 	String getUserId();
+	String getEmail();
 
 	void setUserId(String userId);
+	void setEmail(String email);
 
     List<String> getGroups();
     List<String> getAffiliations();

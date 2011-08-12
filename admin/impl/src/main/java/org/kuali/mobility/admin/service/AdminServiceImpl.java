@@ -29,23 +29,60 @@ public class AdminServiceImpl implements AdminService {
 	
 	@Autowired
     private AdminDao adminDao;
-	
-	public List<HomeScreen> getAllHomeScreens() {
-		return adminDao.getAllHomeScreens();
-	}
-	
-	public List<Tool> getAllTools() {
-		return adminDao.getAllTools();
-	}
-
 	public void setAdminDao(AdminDao adminDao) {
 		this.adminDao = adminDao;
 	}
 	
+	@Override
+	public List<HomeScreen> getAllHomeScreens() {
+		return adminDao.getAllHomeScreens();
+	}
+	
+	@Override
+	public HomeScreen getHomeScreenById(long homeScreenId) {
+		return adminDao.getHomeScreenById(homeScreenId);
+	}
+	
+	@Override
+	public HomeScreen getHomeScreenByName(String name) {
+		return adminDao.getHomeScreenByName(name);
+	}
+	
+	@Override
+	@Transactional
+	public Long saveHomeScreen(HomeScreen homeScreen) {
+		return adminDao.saveHomeScreen(homeScreen);
+	}
+
+	@Override
+	@Transactional
+	public void deleteHomeScreenById(long homeScreenId) {
+		adminDao.deleteHomeScreenById(homeScreenId);
+	}
+	
+	@Override
+	public List<Tool> getAllTools() {
+		return adminDao.getAllTools();
+	}
+	
+	@Override
+	public Tool getToolById(long toolId) {
+		return adminDao.getToolById(toolId);
+	}
+	
+	@Override
 	@Transactional
 	public Long saveTool(Tool tool) {
-		return this.adminDao.saveTool(tool);
+		return adminDao.saveTool(tool);
 	}
+
+	@Override
+	@Transactional
+	public void deleteToolById(long toolId) {
+		adminDao.deleteToolById(toolId);
+	}
+
+	
 }
 
 

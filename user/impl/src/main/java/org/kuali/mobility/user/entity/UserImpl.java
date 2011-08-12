@@ -62,6 +62,9 @@ public class UserImpl implements User, Serializable {
 
 	@Column(name = "DEVICE_ID")
 	private String deviceId;
+	
+	@Column(name = "MAIL")
+	private String email;
 
 	@Column(name = "CAS_PAIR_DATE")
 	private Timestamp pairDate;
@@ -265,5 +268,14 @@ public class UserImpl implements User, Serializable {
 	@Override
 	public void setAffiliations(List<String> affiliations) {
 		this.affiliations = affiliations;
+	}
+
+	@Override
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 }

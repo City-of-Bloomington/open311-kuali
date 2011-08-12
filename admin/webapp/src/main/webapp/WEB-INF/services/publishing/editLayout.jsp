@@ -20,47 +20,64 @@
 </head>
 <body>
 <h2>Edit Layout</h2>
-<form:form action="${pageContext.request.contextPath}/publishing/layout/new" commandName="layout" data-ajax="false" method="post">
+<form:form action="${pageContext.request.contextPath}/publishing/layout/edit" commandName="layout" data-ajax="false" method="post" id="fm" name="fm">
 	<form:hidden path="homeScreenId"/>
 	<form:hidden path="versionNumber"/>
+	<c:forEach items="${layout.homeTools}" var="homeTool" varStatus="status">
+		<form:hidden path="homeTools[${status.index}].toolId"/>
+		<form:hidden path="homeTools[${status.index}].tool.toolId"/>
+		<form:hidden path="homeTools[${status.index}].tool.title"/>
+		<form:hidden path="homeTools[${status.index}].tool.url"/>
+		<form:hidden path="homeTools[${status.index}].tool.description"/>
+		<form:hidden path="homeTools[${status.index}].tool.iconUrl"/>
+		<form:hidden path="homeTools[${status.index}].tool.versionNumber"/>
+		<form:hidden path="homeTools[${status.index}].homeScreenId"/>
+		<form:hidden path="homeTools[${status.index}].order"/>
+		<form:hidden path="homeTools[${status.index}].versionNumber"/>
+	</c:forEach>
 	<label for="homeScreenName">Title:</label>
 	<form:input path="homeScreenName" /><br/>
 	<form:errors path="homeScreenName" />
-
-	<a href="${pageContext.request.contextPath}/publishing/layout">Cancel</a>
-	<input type="submit" value="Save" />
-</form:form>
-<br />
-<table border="1">
-	<tr>
-		<th>Add Tools</th>
-		<th>Selected Tools</th>
-	</tr>
-	<tr>
-		<td>
-			<form:form action="${pageContext.request.contextPath}/publishing/layout/new/addTool" commandName="layout" data-ajax="false" method="post">
+	<br />
+	<table border="1">
+		<tr>
+			<th>Add Tools</th>
+			<th>Selected Tools</th>
+		</tr>
+		<tr>
+			<td>
 				<div data-role="fieldcontain">
-				    <select id="toolToAdd">
+				    <select id="toolToAdd" name="toolToAdd">
 				    	<c:forEach items="${availableTools}" var="tool" varStatus="status">
 							<option value="${tool.toolId}">${tool.title}</option>
 						</c:forEach>
 				    </select>
-				</div> 
-				<input type="submit" value="Add" />
-			</form:form>
-		</td>
-		<td>
-			<ul>
-				<c:forEach items="${layout.homeTools}" var="homeTool" varStatus="status">
-					<li>
-						<form:form action="${pageContext.request.contextPath}/publishing/layout/new/removeTool/${homeTool.homeToolId}" commandName="layout" data-ajax="false" method="post">
-							${homeTool.tool.title} <input type="submit" value="Remove" />
-						</form:form>
-					</li>
-				</c:forEach>
-			</ul>
-		</td>
-	</tr>
-</table>
+				</div>
+				<input name="add" value="Add" type="submit" alt="add tool"/>
+				<%--<input type="submit" value="Add" /> --%>
+			</td>
+			<td>
+				<table>
+					<input type="hidden" id="removeId" name="removeId" value="" />
+					<c:forEach items="${layout.homeTools}" var="homeTool" varStatus="status">
+						<tr>
+							<td>${homeTool.tool.title}</td>
+							<td>
+								<input name="remove" value="Remove" type="submit" alt="remove tool" onclick="javascript:document.forms['fm'].elements['removeId'].value = '${homeTool.toolId}';"/>
+								<input name="up" value="Up" type="submit" alt="remove tool" onclick="javascript:document.forms['fm'].elements['removeId'].value = '${homeTool.toolId}';"/>
+								<input name="down" value="Down" type="submit" alt="remove tool" onclick="javascript:document.forms['fm'].elements['removeId'].value = '${homeTool.toolId}';"/>
+							</td>
+						</tr>
+					</c:forEach>
+				</table>
+			</td>
+		</tr>
+	</table>
+	<br />
+
+	<a href="${pageContext.request.contextPath}/publishing/layout">Cancel</a>
+	<input type="submit" value="Save" />
+</form:form>
+
 </body>
 </html>

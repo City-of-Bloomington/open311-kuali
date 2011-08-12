@@ -22,6 +22,14 @@ import org.kuali.mobility.admin.entity.Tool;
 
 public interface AdminDao {
 	public List<HomeScreen> getAllHomeScreens();
+	public HomeScreen getHomeScreenById(long homeScreenId);
+	public HomeScreen getHomeScreenByName(String name);
+	public Long saveHomeScreen(HomeScreen homeScreen);
+	public void deleteHomeScreenById(long homeScreenId);
+	
 	public List<Tool> getAllTools();
 	public Long saveTool(Tool tool);
+	public Tool getToolById(long toolId);
+	public void deleteToolById(Long toolId);
+	
 }

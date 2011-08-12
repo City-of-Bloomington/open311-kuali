@@ -15,8 +15,12 @@
 
 package org.kuali.mobility.askiu.controllers;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.kuali.mobility.askiu.entity.AskIU;
 import org.kuali.mobility.askiu.service.AskIUService;
+import org.kuali.mobility.shared.Constants;
+import org.kuali.mobility.user.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,8 +38,13 @@ public class AskIUController {
     private AskIUService askiuService;
     
     @RequestMapping(method = RequestMethod.GET)
-    public String getList(Model uiModel) {
-   		uiModel.addAttribute("askiu", new AskIU());
+    public String getList(Model uiModel, HttpServletRequest request) {
+    	User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
+    	AskIU askIu = new AskIU();
+    	if (user != null && user.getEmail() != null) {
+    		askIu.setEmail(user.getEmail());
+    	}
+   		uiModel.addAttribute("askiu", askIu);
     	return "askiu/form";
     }
     

@@ -17,13 +17,13 @@
 <kme:page title="IU Mobile" id="home" backButton="false" homeButton="false" preferencesButton="true" preferencesButtonURL="campus?toolName=home">
 	<kme:content>
 	    <kme:listView id="homeserviceslist" filter="false">
-	        <c:forEach items="${home.tools}" var="tool" varStatus="status">	            
+	        <c:forEach items="${home.homeTools}" var="homeTool" varStatus="status">	            
 	            <kme:listItem hideDataIcon="true">
-	            	<a href="${tool.url}" style="background-image: url('${tool.iconUrl}');">
-			      		<h3>${tool.title}</h3>
-			      		<p class="wrap">${tool.description}</p>
-			      		<c:if test="${not empty tool.badgeCount}"> 
-			      			<span class="countBadge ui-btn-up-c ui-btn-corner-all">${tool.badgeCount}</span>
+	            	<a href="${homeTool.tool.url}" style="background-image: url('${homeTool.tool.iconUrl}');">
+			      		<h3>${homeTool.tool.title}</h3>
+			      		<p class="wrap">${homeTool.tool.description}</p>
+			      		<c:if test="${not empty homeTool.tool.badgeCount}"> 
+			      			<span class="countBadge ui-btn-up-c ui-btn-corner-all">${homeTool.tool.badgeCount}</span>
 			      		</c:if>
 			      	</a>
 	            </kme:listItem>

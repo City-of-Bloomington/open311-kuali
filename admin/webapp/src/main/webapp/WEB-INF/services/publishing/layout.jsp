@@ -18,15 +18,15 @@
 	<title>Publishing :: Layout</title>
 </head>
 <body>
-<h2>Layout</h2>
-<a href="${pageContext.request.contextPath}/publishing/layout/new">new</a>
-<kme:listView id="layouts" dataTheme="c" dataDividerTheme="b" filter="false">
-	<c:forEach items="${layouts}" var="layout" varStatus="status">
-		<kme:listItem>
-			${layout.homeScreenName}
-			<a href="${pageContext.request.contextPath}/publishing/layout/edit/${layout.homeScreenId}">edit</a> <a href="${pageContext.request.contextPath}/publishing/layout/delete/${layout.homeScreenId}">delete</a>
-		</kme:listItem>
-	</c:forEach>
-</kme:listView>
+	<h2>Layout</h2>
+	<a href="${pageContext.request.contextPath}/publishing/layout/new">new</a><br /><br />
+	<table>
+		<c:forEach items="${layouts}" var="layout" varStatus="status">
+			<tr>
+				<td>${layout.homeScreenName}</td>
+				<td><a href="${pageContext.request.contextPath}/publishing/layout/edit/${layout.homeScreenId}">edit</a> <a href="${pageContext.request.contextPath}/publishing/layout/delete/${layout.homeScreenId}">delete</a></td>
+			</tr>
+		</c:forEach>
+	</table>
 </body>
 </html>

@@ -16,8 +16,11 @@
 package org.kuali.mobility.admin.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -44,12 +47,16 @@ public class HomeScreen implements Serializable {
 	@Column(name="HOME_NM")
 	private String homeScreenName;
 	
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy="homeScreen")
     private List<HomeTool> homeTools;
 	
 	@Version
     @Column(name="VER_NBR")
     private Long versionNumber;	
+	
+	public HomeScreen() {
+		homeTools = new ArrayList<HomeTool>();
+	}
 
 	public List<HomeTool> getHomeTools() {
 		return homeTools;
@@ -57,6 +64,10 @@ public class HomeScreen implements Serializable {
 
 	public void setHomeTools(List<HomeTool> homeTools) {
 		this.homeTools = homeTools;
+	}
+	
+	public void setHomeTools(HomeTool[] homeTools) {
+		this.homeTools = Arrays.asList(homeTools);
 	}
 
 	public Long getHomeScreenId() {

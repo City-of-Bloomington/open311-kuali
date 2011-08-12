@@ -4,18 +4,19 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
 @Entity(name="HomeTool")
 @Table(name="HOME_TOOL_T")
-public class HomeTool implements Serializable {
+public class HomeTool implements Serializable, Comparable<HomeTool> {
 	
 	private static final long serialVersionUID = -8942674782383943102L;
 
@@ -25,10 +26,10 @@ public class HomeTool implements Serializable {
     @Column(name="HOME_TOOL_ID")
     private Long homeToolId;
 	
-    @Column(name="HOME_ID")
+    @Column(name="HOME_ID", insertable=false, updatable=false)
     private Long homeScreenId;
 	
-    @Column(name="TOOL_ID")
+    @Column(name="TOOL_ID", insertable=false, updatable=false)
     private Long toolId;
 	
 	@Column(name="ORDR")
@@ -39,12 +40,24 @@ public class HomeTool implements Serializable {
     private Long versionNumber;
 	
 	@ManyToOne
-	@PrimaryKeyJoinColumn(name="HOME_ID")
+	@JoinColumn(name="HOME_ID")
 	private HomeScreen homeScreen;
 	
-	@ManyToOne
-	@PrimaryKeyJoinColumn(name="TOOL_ID")
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name="TOOL_ID")
 	private Tool tool;
+	
+	public HomeTool() {
+		
+	}
+	
+	public HomeTool(HomeScreen homeScreen, Tool tool, int order) {
+		this.homeScreen = homeScreen;
+		this.homeScreenId = homeScreen.getHomeScreenId();
+		this.tool = tool;
+		this.toolId = tool.getToolId();
+		this.order = order;
+	}
 
 	public Long getHomeScreenId() {
 		return homeScreenId;
@@ -100,5 +113,10 @@ public class HomeTool implements Serializable {
 
 	public void setTool(Tool tool) {
 		this.tool = tool;
+	}
+
+	@Override
+	public int compareTo(HomeTool arg0) {
+		return order - arg0.order;
 	}	
 }
