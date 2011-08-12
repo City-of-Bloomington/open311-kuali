@@ -154,9 +154,9 @@
 	font-weight: bold;
 	color: 					#fff;
 	text-shadow: 0 -1px 1px #014D68;
-	/*background-image: -moz-linear-gradient(top, #000000, #000000);
+	background-image: -moz-linear-gradient(top, #000000, #000000);
 	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #000000), color-stop(1, #000000));
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#000000', EndColorStr='#000000')";*/
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#000000', EndColorStr='#000000')";
 }
 .ui-btn-hover-b a.ui-link-inherit {
 	color: 					#fff;
@@ -181,6 +181,13 @@
 
 /* special style for list dividers only */
 .ui-li-divider.ui-bar-b, .ui-li-divider.ui-btn-up-b, .ui-li-divide.ui-btn-hover-b, .ui-li-divide.ui-btn-down-b {
+	border-top: 1px solid #FFFFFF;
+	border-bottom: 1px solid #666666;
+	background-color:#777777;
+	color: #FFFFFF;
+	font-size: 1em;
+	font-weight: bold;
+	text-shadow: 0 1px 0 #333333;
 	border-top: 1px solid #FFFFFF;
 	border-bottom: 1px solid #666666;
 	border-left: none;

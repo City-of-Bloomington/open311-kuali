@@ -272,7 +272,7 @@ public class HomeController {
 	    	tool.setTitle("Login");
 	    	tool.setUrl("home?login=yes");
     	} else {
-	    	tool.setDescription("Log out out of Mobile CAS.");
+	    	tool.setDescription("Log out of Mobile CAS.");
 	    	tool.setIconUrl("images/service-icons/srvc-cas.png");
 	    	tool.setTitle("Logout");
 	    	tool.setUrl("logout");

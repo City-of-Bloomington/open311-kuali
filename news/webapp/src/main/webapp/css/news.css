@@ -64,6 +64,7 @@
 
 /* special style for list dividers only */
 li.streamTitle {
+	padding: 0;
 	border-top: 1px solid #FFFFFF;
 	border-bottom: 1px solid #666666;
 	background-color:#777777;
@@ -78,6 +79,10 @@ li.streamTitle {
 	background-image: -moz-linear-gradient(top, #AAAAAA, #777777);
 	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #AAAAAA), color-stop(1, #777777));
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#AAAAAA', EndColorStr='#777777')";
+}
+
+li.streamTitle a {
+	padding: 0.5em 15px !important;
 }
 
 .ui-li-desc {
