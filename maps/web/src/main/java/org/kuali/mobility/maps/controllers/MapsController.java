@@ -15,13 +15,24 @@
 
 package org.kuali.mobility.maps.controllers;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.httpclient.DefaultHttpMethodRetryHandler;
+import org.apache.commons.httpclient.HttpClient;
+import org.apache.commons.httpclient.methods.GetMethod;
+import org.apache.commons.httpclient.params.HttpClientParams;
+import org.apache.commons.httpclient.params.HttpConnectionParams;
+import org.apache.commons.httpclient.params.HttpMethodParams;
+import org.kuali.mobility.configparams.service.ConfigParamService;
 import org.kuali.mobility.maps.entity.Location;
 import org.kuali.mobility.maps.entity.LocationSort;
 import org.kuali.mobility.maps.entity.MapsFormSearch;
@@ -49,11 +60,20 @@ public class MapsController {
     
 	private static org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(MapsController.class);
 	
+	private static final String FOURSQUARE_CLIENT_ID = "Maps.Foursquare.Client.Id";
+	private static final String FOURSQUARE_CLIENT_SECRET = "Maps.Foursquare.Client.Secret";
+	
     @Autowired
     private LocationService locationService;
     public void setLocationService(LocationService locationService) {
         this.locationService = locationService;
     }
+    
+    @Autowired
+	private ConfigParamService configParamService;
+	public void setConfigParamService(ConfigParamService configParamService) {
+		this.configParamService = configParamService;
+	}
     
     @RequestMapping(method = RequestMethod.GET)
     public String getHome(Model uiModel) {
@@ -221,4 +241,88 @@ public class MapsController {
     	return container;
 	}
 	
+	@RequestMapping(value = "/foursquare", method = RequestMethod.GET)
+	@ResponseBody
+	protected String getFoursquareData(@RequestParam("lat") String latitude, @RequestParam("lng") String longitude, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String foursquareId = "";
+		String foursquareSecret = "";
+		try {
+			foursquareId = configParamService.findValueByName(FOURSQUARE_CLIENT_ID);
+			foursquareSecret = configParamService.findValueByName(FOURSQUARE_CLIENT_SECRET);
+		} catch (Exception e) {
+			LOG.error("Foursquare config parameters are not set.");
+		}
+
+		BufferedReader br = null;
+        GetMethod get = null;
+        StringBuilder sb = new StringBuilder();
+        try {
+            get = new GetMethod("https://api.foursquare.com/v2/venues/search?v=20110627&ll="+ latitude + "," + longitude +"&limit=8&client_id=" + foursquareId + "&client_secret=" + foursquareSecret);
+            br = new BufferedReader(new InputStreamReader(getInputStreamFromGetMethod(get, 10000)));
+            String line = null;
+            while ((line = br.readLine()) != null) {
+                sb.append(line);
+            }
+        } catch (Exception e) {
+
+        } finally {
+            if (br != null) {
+                br.close();
+            }
+            if (get != null) {
+                get.releaseConnection();
+            }
+        }
+
+        return sb.toString();
+	}
+	
+	@RequestMapping(value = "/foursquare/{id}", method = RequestMethod.GET)
+	@ResponseBody
+	protected String getFoursquareData(@PathVariable("id") String id, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String foursquareId = "";
+		String foursquareSecret = "";
+		try {
+			foursquareId = configParamService.findValueByName(FOURSQUARE_CLIENT_ID);
+			foursquareSecret = configParamService.findValueByName(FOURSQUARE_CLIENT_SECRET);
+		} catch (Exception e) {
+			LOG.error("Foursquare config parameters are not set.");
+		}
+        
+        BufferedReader br = null;
+        GetMethod get = null;
+        StringBuilder sb = new StringBuilder();
+        try {
+            get = new GetMethod("https://api.foursquare.com/v2/venues/" + id + "?client_id=" + foursquareId + "&client_secret=" + foursquareSecret);
+            br = new BufferedReader(new InputStreamReader(getInputStreamFromGetMethod(get, 10000)));
+            String line = null;
+            while ((line = br.readLine()) != null) {
+                sb.append(line);
+            }
+        } catch (Exception e) {
+
+        } finally {
+            if (br != null) {
+                br.close();
+            }
+            if (get != null) {
+                get.releaseConnection();
+            }
+        }
+
+        return sb.toString();
+	}
+	
+	private InputStream getInputStreamFromGetMethod(GetMethod get, int timeout) throws Exception {
+        get.getParams().setParameter(HttpMethodParams.RETRY_HANDLER, new DefaultHttpMethodRetryHandler(0, false));
+        HttpClient httpClient = new HttpClient();
+        httpClient.getParams().setParameter(HttpClientParams.SO_TIMEOUT, new Integer(timeout));
+        httpClient.getParams().setParameter(HttpClientParams.CONNECTION_MANAGER_TIMEOUT, new Long(timeout));
+        httpClient.getParams().setParameter(HttpConnectionParams.CONNECTION_TIMEOUT, new Integer(timeout));
+        int status = httpClient.executeMethod(get);
+        if (status == HttpStatus.OK.value()) {
+        	return get.getResponseBodyAsStream();	
+        }
+        return null;
+    }
 }
