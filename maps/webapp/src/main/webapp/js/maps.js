@@ -1,6 +1,7 @@
 var contextPath;
-var userLocationTimeout;
+var updateLocation;
 var hasLoaded = 0;
+var userLocationCircle;
 
 function setContextPath(path) {
 	contextPath = path;
@@ -93,11 +94,11 @@ function TrackerControl(map, div) {
 	  if (control.getActive()) {
 		  control.setActive(false);
 		  stopTrackingUserLocation();
-		  alert("Stop");
+		  //alert("Stop");
 	  } else {
 		  control.setActive(true);
 		  startTrackingUserLocation(map, markersArray, userMarkersArray);
-		  alert("Start");
+		  //alert("Start");
 	  }
   });
 }
@@ -122,6 +123,7 @@ function addMarker(map, array, location, icon) {
 	}
 	marker = new google.maps.Marker(myOptions);
 	array.push(marker);
+	return marker;
 }
 
 // Removes the overlays from the map, but keeps them in the array
@@ -194,35 +196,73 @@ function retrieveBuildingsForGroup(groupCode) {
 }
 
 function startTrackingUserLocation(map, markersArray, userMarkersArray) {
-	if (userLocationTimeout) { 
-		clearTimeout(userLocationTimeout);
+	if(navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(function(initialPosition) {
+			var success = function(position) {
+				drawUserLocation(map, markersArray, userMarkersArray, position);	
+			};
+			var fail = function(error) {
+				alert("Could not retrieve your position.");
+			};
+			updateLocation = navigator.geolocation.watchPosition(success, fail);			
+		});
+	} else {
+		alert("Your device does not support location services.");
 	}
-	drawUserLocation(map, markersArray, userMarkersArray);
-	userLocationTimeout = setTimeout(function(){
-		startTrackingUserLocation(map, markersArray, userMarkersArray);
-	}, 5000);
+//	if (userLocationTimeout) { 
+//		clearTimeout(userLocationTimeout);
+//	}
+//	drawUserLocation(map, markersArray, userMarkersArray);
+//	userLocationTimeout = setTimeout(function(){
+//		startTrackingUserLocation(map, markersArray, userMarkersArray);
+//	}, 15000);
 }
 
 function stopTrackingUserLocation() {
-	clearTimeout(userLocationTimeout);
+	deleteOverlays(userMarkersArray);
+	if (userLocationCircle) {
+		userLocationCircle.setMap(null);	
+	}
+	//clearTimeout(userLocationTimeout);
+	navigator.geolocation.clearWatch(updateLocation);
+	hasLoaded = 0;
 }
 
-function drawUserLocation(map, markersArray, userMarkersArray) {
-	if(navigator.geolocation) {
-		navigator.geolocation.getCurrentPosition(function(position){
-			//initialize(position.coords.latitude,position.coords.longitude);
-			var location = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
-			deleteOverlays(userMarkersArray);
-			addMarker(map, userMarkersArray, location, "http://www.google.com/intl/en_us/mapfiles/ms/micons/blue-dot.png");
-			if (hasLoaded == 0) {
-				hasLoaded = 1;
-				centerOverAllLocations(map, markersArray, userMarkersArray);
-			}
+function drawUserLocation(map, markersArray, userMarkersArray, position) {
+	if (position.coords.accuracy < 1000) {
+
+		//initialize(position.coords.latitude,position.coords.longitude);
+		var location = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+		deleteOverlays(userMarkersArray);
+		var userLocationMarker = addMarker(map, userMarkersArray, location, "http://www.google.com/intl/en_us/mapfiles/ms/micons/blue-dot.png");
+		
+		if (userLocationCircle) {
+			userLocationCircle.setMap(null);
+		}
+		// Add circle overlay and bind to marker
+		var circle = new google.maps.Circle({
+			map : map,
+			radius : position.coords.accuracy,
+			fillColor : '#00BFFF',
+			strokeColor : '#FFFFFF'
 		});
+		circle.bindTo('center', userLocationMarker, 'position');
+		//userMarkersArray.push(circle);
+		userLocationCircle = circle;
+		
+		if (hasLoaded == 0) {
+			hasLoaded = 1;
+			centerOverAllLocations(map, markersArray, userMarkersArray);
+		}
+
+	} else {
+		alert("Unable to accurately determine your position.");
 	}
+	
 }
 
 function centerOverAllLocations(map, markersArray, userMarkersArray) {
+	// TODO: Fix for non-visible markers
 	var bounds = new google.maps.LatLngBounds();
 	if (markersArray) {
 		for (i in markersArray) {
@@ -233,6 +273,9 @@ function centerOverAllLocations(map, markersArray, userMarkersArray) {
 		for (i in userMarkersArray) {
 			bounds.extend(userMarkersArray[i].getPosition());
 		}
+	}
+	if (userLocationCircle) {
+		bounds.union(userLocationCircle.getBounds());	
 	}
 	map.fitBounds(bounds);
 }

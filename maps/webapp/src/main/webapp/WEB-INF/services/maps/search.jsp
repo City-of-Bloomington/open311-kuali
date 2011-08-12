@@ -15,7 +15,7 @@
 <kme:listView id="mapsearchresults" dataTheme="c" dataDividerTheme="b" filter="false">
 	<c:forEach items="${container.results}" var="item" varStatus="status">
 	<kme:listItem>
-	<a href="${pageContext.request.contextPath}/maps/building/${item.code}">${item.name}</a>
+	<a href="${pageContext.request.contextPath}/maps/building/${item.code}/"><c:out value="${item.name}" /></a>
 	</kme:listItem>
 	</c:forEach>
 </kme:listView>

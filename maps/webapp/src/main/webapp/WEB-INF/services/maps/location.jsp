@@ -44,7 +44,7 @@ $('#mapslocation').live("pageshow", function() {
 			showLocationByCoordinates(map, markersArray, latitude, longitude);	
 		}
 	}
-	drawUserLocation(map, markersArray, userMarkersArray);
+	//drawUserLocation(map, markersArray, userMarkersArray);
 	
 	//alert(buildingCode);
 
