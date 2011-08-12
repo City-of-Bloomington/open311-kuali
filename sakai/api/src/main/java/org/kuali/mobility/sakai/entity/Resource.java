@@ -55,7 +55,20 @@ private static final long serialVersionUID = -2272816569200642551L;
 	}
 	
     public int compareTo(Resource that) {
-        return this.getTitle().compareTo(that.getTitle());
+    	if (this.fileType.equals(FileType.FOLDER)) {
+    		if (that.fileType.equals(FileType.FOLDER)) {
+    			return this.getTitle().compareToIgnoreCase(that.getTitle());
+    		} else {
+    			return -1;
+    		}
+    	} else {
+    		if (that.fileType.equals(FileType.FOLDER)) {
+    			return 1;
+    		} else {
+    			return this.getTitle().compareToIgnoreCase(that.getTitle());
+    		}
+    	}
+        
     }
 
 	public FileType getFileType() {

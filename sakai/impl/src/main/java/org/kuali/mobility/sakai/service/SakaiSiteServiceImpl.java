@@ -133,6 +133,7 @@ public class SakaiSiteServiceImpl implements SakaiSiteService {
 			}
 			
 			url = configParamService.findValueByName("Sakai.Url.Base") + "site.json";
+			//url = configParamService.findValueByName("Sakai.Url.Base") + "site/allMySites.json";
 			is = oncourseOAuthService.oAuthGetRequest(user.getUserId(), url, "text/html");
 			String siteJson = IOUtils.toString(is.getBody(), "UTF-8");
 	
@@ -151,7 +152,7 @@ public class SakaiSiteServiceImpl implements SakaiSiteService {
             	JSONObject object = iter.next();
             	
             	String id = object.getString("id");
-            	if (!visibleSiteIds.contains(id)) {
+            	if (!visibleSiteIds.contains(id) && !id.startsWith("~")) {
             		continue;
             	}
             	
