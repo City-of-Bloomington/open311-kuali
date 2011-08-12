@@ -30,7 +30,7 @@
 					</c:forEach>
 				</c:when>
 				<c:otherwise>
-					<kme:listItem>No tweets to display</kme:listItem>>
+					<kme:listItem>No items to display</kme:listItem>>
 				</c:otherwise>
 			</c:choose>
 		</kme:listView>

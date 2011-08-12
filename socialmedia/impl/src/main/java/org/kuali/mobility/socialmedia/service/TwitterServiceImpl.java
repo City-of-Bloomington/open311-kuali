@@ -95,8 +95,11 @@ public class TwitterServiceImpl implements TwitterService {
 		} catch (Exception e) {
 			
 		}
-		tweets.subList(0, feedCount);
-		return tweets;
+		if (tweets.size() > feedCount) {
+			return tweets.subList(0, feedCount-1);
+		} else {
+			return tweets;
+		}
 	}
 	
 	private TwitterFeed retrieveFeed(String publicId) {
