@@ -63,7 +63,7 @@ public class HomeController {
     	request.getSession().setAttribute(Constants.KME_BACKDOOR_USER_KEY, null);
     	request.getSession().removeAttribute("edu.iu.uis.cas.filter.CASAuthenticationMap");
     	try {
-			response.sendRedirect("https://cas-test.iu.edu/cas/logout");
+			response.sendRedirect("https://cas.iu.edu/cas/logout");
 		} catch (IOException e) {
 			LOG.error(e.getMessage(), e);
 		}
@@ -86,172 +86,181 @@ public class HomeController {
     	
     	List<Tool> tools = new ArrayList<Tool>();
     	
-    	tools = adminService.getAllTools();
+    	//tools = adminService.getAllTools();
 
-//    	Tool tool = new Tool();
-//    	tool.setBadgeCount("");
-//    	tool.setDescription("Class information; Oncourse  forums, resources, and more!");
-//    	tool.setIconUrl("images/service-icons/srvc-myclasses.png");
-//    	tool.setTitle("My Classes");
-//    	tool.setUrl("myclasses");
-//    	tools.add(tool);
-//
-//    	tool = new Tool();
-//    	if (backdoor != null) {
-//    		tool.setBadgeCount(backdoor.getUserId());
-//    	} else {
-//    		tool.setBadgeCount("");
-//    	}
-//    	tool.setDescription("Impersonate a user.");
-//    	tool.setIconUrl("images/service-icons/srvc-backdoor.png");
-//    	tool.setTitle("Backdoor");
-//    	tool.setUrl("backdoor");
-//    	tools.add(tool);
-//    	
-//    	/*
-//    	tool = new Tool();
-//    	tool.setBadgeCount("");
-//    	tool.setDescription("Find furniture, books, an apartment, a job, and more.");
-//    	tool.setIconUrl("images/service-icons/srvc-classifieds.png");
-//    	tool.setTitle("Classifieds");
-//    	tool.setUrl("https://onestart.iu.edu/ccf2-prd/ClassifiedsMb.do");
-//    	tools.add(tool);
-//		*/
-//    	
-//    	tool = new Tool();
-//    	tool.setBadgeCount("");
-//    	tool.setDescription("Never miss an IU Bloomington campus bus again.");
-//    	tool.setIconUrl("images/service-icons/srvc-bus.png");
-//    	tool.setTitle("Bus Schedules");
-//    	tool.setUrl("http://iub.doublemap.com/map/mobile");
-//    	tools.add(tool);
-//
-//    	tool = new Tool();
-//    	tool.setBadgeCount("");
-//    	tool.setDescription("Get from here to there. Search for buildings by name.");
-//    	tool.setIconUrl("images/service-icons/srvc-maps.png");
-//    	tool.setTitle("Maps");
-//    	tool.setUrl("maps");
-//    	tools.add(tool);
-//
-//    	tool = new Tool();
-//    	tool.setBadgeCount("");
-//    	tool.setDescription("Live scores, rosters, news and schedules for your IU teams.");
-//    	tool.setIconUrl("images/service-icons/srvc-athletics.png");
-//    	tool.setTitle("Athletics");
-//    	tool.setUrl("athletics");
-//    	tools.add(tool);
-//
-//    	tool = new Tool();
-//    	tool.setBadgeCount("");
-//    	tool.setDescription("Stay up to date with the IU social media.");
-//    	tool.setIconUrl("images/service-icons/srvc-social.png");
-//    	tool.setTitle("Social Media");
-//    	tool.setUrl("socialmedia");
-//    	tools.add(tool);
-//
-//    	tool = new Tool();
-//    	tool.setBadgeCount("");
-//    	tool.setDescription("Find contact information for IU students, faculty, and staff.");
-//    	tool.setIconUrl("images/service-icons/srvc-people.png");
-//    	tool.setTitle("People");
-//    	tool.setUrl("people");
-//    	tools.add(tool);
-//
-//    	tool = new Tool();
-//    	tool.setBadgeCount("");
-//    	tool.setDescription("See which campus STC labs have an open computer.");
-//    	tool.setIconUrl("images/service-icons/srvc-stc.png");
-//    	tool.setTitle("Computer Labs");
-//    	tool.setUrl("computerlabs");
-//    	tools.add(tool);
-//
-//    	tool = new Tool();
-//    	tool.setBadgeCount("");
-//    	tool.setDescription("Alerts and announcements affecting your technology.");
-//    	tool.setIconUrl("images/service-icons/srvc-itnotice.png");
-//    	tool.setTitle("IT Notices");
-//    	tool.setUrl("itnotices");
-//    	tools.add(tool);
-//
-//    	tool = new Tool();
-//    	tool.setBadgeCount("");
-//    	tool.setDescription("The latest buzz on IU's exciting events and achievements.");
-//    	tool.setIconUrl("images/service-icons/srvc-news.png");
-//    	tool.setTitle("News");
-//    	tool.setUrl("news");
-//    	tools.add(tool);
-//
-//    	tool = new Tool();
-//    	tool.setBadgeCount("");
-//    	tool.setDescription("See what's happening on campus today or personal your calendar.");
-//    	tool.setIconUrl("images/service-icons/srvc-events.png");
-//    	tool.setTitle("Calendar");
-//    	tool.setUrl("events");
-//    	tools.add(tool);
-//
-//    	tool = new Tool();
-//    	tool.setBadgeCount("");
-//    	tool.setDescription("Find answers to questions about IU information technology.");
-//    	tool.setIconUrl("images/service-icons/srvc-kb.png");
-//    	tool.setTitle("Knowledge Base");
-//    	tool.setUrl("knowledgebase");
-//    	tools.add(tool);
-//
-//    	tool = new Tool();
-//    	tool.setBadgeCount("");
-//    	tool.setDescription("Take IU's popular question & answer service with you on the go.");
-//    	tool.setIconUrl("images/service-icons/srvc-askiu.png");
-//    	tool.setTitle("Ask IU");
-//    	tool.setUrl("askiu");
-//    	tools.add(tool);
-//
-//    	tool = new Tool();
-//    	tool.setBadgeCount("");
-//    	tool.setDescription("Get up to date menus and prices for campus dining services.");
-//    	tool.setIconUrl("images/service-icons/srvc-dining.png");
-//    	tool.setTitle("Dining Services");
-//    	tool.setUrl("dining");
-//    	tools.add(tool);
-//
-//    	tool = new Tool();
-//    	tool.setBadgeCount("");
-//    	tool.setDescription("Police and medical phone numbers.");
-//    	tool.setIconUrl("images/service-icons/srvc-emergency.png");
-//    	tool.setTitle("Emergency Contacts");
-//    	tool.setUrl("emergencycontacts");
-//    	tools.add(tool);
-//
-//    	tool = new Tool();
-//    	tool.setBadgeCount("2");
-//    	tool.setDescription("See a list of active campus alert messages.");
-//    	tool.setIconUrl("images/service-icons/srvc-alerts-green.png");
-//    	tool.setTitle("Campus Alerts");
-//    	tool.setUrl("alerts");
-//    	tools.add(tool);
-//
-//    	tool = new Tool();
-//    	tool.setBadgeCount("");
-//    	tool.setDescription("Submit questions and comments about IU Mobile.");
-//    	tool.setIconUrl("images/service-icons/srvc-feedback.png");
-//    	tool.setTitle("Feedback");
-//    	tool.setUrl("feedback");
-//    	tools.add(tool);
-//
-//    	tool = new Tool();
-//    	tool.setBadgeCount("");
-//    	tool.setDescription("IUPUI Athletics information.");
-//    	tool.setIconUrl("images/service-icons/srvc-jag.png");
-//    	tool.setTitle("Jaguar Athletics");
-//    	tool.setUrl("http://www.iupuijags.com");
-//    	tools.add(tool);
     	Tool tool = new Tool();
+    	tool.setBadgeCount("");
+    	tool.setDescription("Class information; Oncourse  forums, resources, and more!");
+    	tool.setIconUrl("images/service-icons/srvc-myclasses.png");
+    	tool.setTitle("My Classes");
+    	tool.setUrl("myclasses");
+    	tools.add(tool);
+
+    	tool = new Tool();
+    	if (backdoor != null) {
+    		tool.setBadgeCount(backdoor.getUserId());
+    	} else {
+    		tool.setBadgeCount("");
+    	}
+    	tool.setDescription("Impersonate a user.");
+    	tool.setIconUrl("images/service-icons/srvc-backdoor.png");
+    	tool.setTitle("Backdoor");
+    	tool.setUrl("backdoor");
+    	tools.add(tool);
+    	
+    	/*
+    	tool = new Tool();
+    	tool.setBadgeCount("");
+    	tool.setDescription("Find furniture, books, an apartment, a job, and more.");
+    	tool.setIconUrl("images/service-icons/srvc-classifieds.png");
+    	tool.setTitle("Classifieds");
+    	tool.setUrl("https://onestart.iu.edu/ccf2-prd/ClassifiedsMb.do");
+    	tools.add(tool);
+		*/
+    	
+    	tool = new Tool();
+    	tool.setBadgeCount("");
+    	tool.setDescription("Never miss an IU Bloomington campus bus again.");
+    	tool.setIconUrl("images/service-icons/srvc-bus.png");
+    	tool.setTitle("Bus Schedules");
+    	tool.setUrl("http://iub.doublemap.com/map/mobile");
+    	tools.add(tool);
+
+    	tool = new Tool();
+    	tool.setBadgeCount("");
+    	tool.setDescription("Get from here to there. Search for buildings by name.");
+    	tool.setIconUrl("images/service-icons/srvc-maps.png");
+    	tool.setTitle("Maps");
+    	tool.setUrl("maps");
+    	tools.add(tool);
+
+    	tool = new Tool();
+    	tool.setBadgeCount("");
+    	tool.setDescription("Live scores, rosters, news and schedules for your IU teams.");
+    	tool.setIconUrl("images/service-icons/srvc-athletics.png");
+    	tool.setTitle("Athletics");
+    	tool.setUrl("athletics");
+    	tools.add(tool);
+
+    	tool = new Tool();
+    	tool.setBadgeCount("");
+    	tool.setDescription("Stay up to date with the IU social media.");
+    	tool.setIconUrl("images/service-icons/srvc-social.png");
+    	tool.setTitle("Social Media");
+    	tool.setUrl("socialmedia");
+    	tools.add(tool);
+
+    	tool = new Tool();
+    	tool.setBadgeCount("");
+    	tool.setDescription("Find contact information for IU students, faculty, and staff.");
+    	tool.setIconUrl("images/service-icons/srvc-people.png");
+    	tool.setTitle("People");
+    	tool.setUrl("people");
+    	tools.add(tool);
+
+    	tool = new Tool();
+    	tool.setBadgeCount("");
+    	tool.setDescription("See which campus STC labs have an open computer.");
+    	tool.setIconUrl("images/service-icons/srvc-stc.png");
+    	tool.setTitle("Computer Labs");
+    	tool.setUrl("computerlabs");
+    	tools.add(tool);
+
+    	tool = new Tool();
+    	tool.setBadgeCount("");
+    	tool.setDescription("Alerts and announcements affecting your technology.");
+    	tool.setIconUrl("images/service-icons/srvc-itnotice.png");
+    	tool.setTitle("IT Notices");
+    	tool.setUrl("itnotices");
+    	tools.add(tool);
+
+    	tool = new Tool();
+    	tool.setBadgeCount("");
+    	tool.setDescription("The latest buzz on IU's exciting events and achievements.");
+    	tool.setIconUrl("images/service-icons/srvc-news.png");
+    	tool.setTitle("News");
+    	tool.setUrl("news");
+    	tools.add(tool);
+
+    	tool = new Tool();
+    	tool.setBadgeCount("");
+    	tool.setDescription("See what's happening on campus today or personal your calendar.");
+    	tool.setIconUrl("images/service-icons/srvc-events.png");
+    	tool.setTitle("Calendar");
+    	tool.setUrl("events");
+    	tools.add(tool);
+
+    	tool = new Tool();
+    	tool.setBadgeCount("");
+    	tool.setDescription("Find answers to questions about IU information technology.");
+    	tool.setIconUrl("images/service-icons/srvc-kb.png");
+    	tool.setTitle("Knowledge Base");
+    	tool.setUrl("knowledgebase");
+    	tools.add(tool);
+
+    	tool = new Tool();
+    	tool.setBadgeCount("");
+    	tool.setDescription("Take IU's popular question & answer service with you on the go.");
+    	tool.setIconUrl("images/service-icons/srvc-askiu.png");
+    	tool.setTitle("Ask IU");
+    	tool.setUrl("askiu");
+    	tools.add(tool);
+
+    	tool = new Tool();
+    	tool.setBadgeCount("");
+    	tool.setDescription("Get up to date menus and prices for campus dining services.");
+    	tool.setIconUrl("images/service-icons/srvc-dining.png");
+    	tool.setTitle("Dining Services");
+    	tool.setUrl("dining");
+    	tools.add(tool);
+
+    	tool = new Tool();
+    	tool.setBadgeCount("");
+    	tool.setDescription("Police and medical phone numbers.");
+    	tool.setIconUrl("images/service-icons/srvc-emergency.png");
+    	tool.setTitle("Emergency Contacts");
+    	tool.setUrl("emergencycontacts");
+    	tools.add(tool);
+
+    	tool = new Tool();
+    	tool.setBadgeCount("2");
+    	tool.setDescription("See a list of active campus alert messages.");
+    	tool.setIconUrl("images/service-icons/srvc-alerts-green.png");
+    	tool.setTitle("Campus Alerts");
+    	tool.setUrl("alerts");
+    	tools.add(tool);
+
+    	tool = new Tool();
+    	tool.setBadgeCount("");
+    	tool.setDescription("Submit questions and comments about IU Mobile.");
+    	tool.setIconUrl("images/service-icons/srvc-feedback.png");
+    	tool.setTitle("Feedback");
+    	tool.setUrl("feedback");
+    	tools.add(tool);
+
+    	tool = new Tool();
+    	tool.setBadgeCount("");
+    	tool.setDescription("IUPUI Athletics information.");
+    	tool.setIconUrl("images/service-icons/srvc-jag.png");
+    	tool.setTitle("Jaguar Athletics");
+    	tool.setUrl("http://www.iupuijags.com");
+    	tools.add(tool);
+
+    	tool = new Tool();
+    	tool.setBadgeCount("");
+    	tool.setDescription("IU South Bend Library information.");
+    	tool.setIconUrl("images/service-icons/srvc-schurzlibrary.png");
+    	tool.setTitle("Library");
+    	tool.setUrl("static-services/SB-Library/index.html");
+    	tools.add(tool);
+    	
+    	tool = new Tool();
     	
 		if (user.getViewCampus() != null && user.getViewCampus().equals("NW")) {
 			tool = new Tool();
 			tool.setBadgeCount("");
 			tool.setDescription("Class Cancellations");
-			tool.setIconUrl("images/service-icons/srvc-jag.png");
+			tool.setIconUrl("images/service-icons/srvc-classcancel.png");
 			tool.setTitle("Class Cancellations");
 			tool.setUrl("events/viewEvents?categoryId=nw_cancel&campus=ZZ");
 			tools.add(tool);
@@ -259,7 +268,7 @@ public class HomeController {
 			tool = new Tool();
 			tool.setBadgeCount("");
 			tool.setDescription("RedHawk Shuttle");
-			tool.setIconUrl("images/service-icons/srvc-jag.png");
+			tool.setIconUrl("images/service-icons/srvc-redhawk.png");
 			tool.setTitle("RedHawk Shuttle");
 			tool.setUrl("events/viewEvents?categoryId=nw_shuttle&campus=ZZ");
 			tools.add(tool);
