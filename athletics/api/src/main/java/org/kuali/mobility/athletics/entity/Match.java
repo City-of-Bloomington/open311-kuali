@@ -12,6 +12,7 @@ public class Match implements Serializable {
 	private String location;
 	private String score;
 	private String date;
+	private int gameDay;
 	private String opponent;
 	private String time;
 	private String name;
@@ -32,6 +33,14 @@ public class Match implements Serializable {
 	private String sportThumbnailSmall;
 	private String sportThumbnailMedium;
 	private String sportThumbnailLarge;
+
+	public int getGameDay() {
+		return gameDay;
+	}
+
+	public void setGameDay(int gameDay) {
+		this.gameDay = gameDay;
+	}
 
 	public String getSportThumbnailSmall() {
 		return sportThumbnailSmall;

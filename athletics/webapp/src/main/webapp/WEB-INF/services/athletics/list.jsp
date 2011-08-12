@@ -39,9 +39,17 @@
 
 		<div class="tabs-panel1" name="tabs-panel1">
 			<c:if test="${empty athletics.matchData.matches}">
-				There are no games today.
+				There are no game updates.
 			</c:if>
+			<c:set var="previousDay" value="false"/>
 			<c:forEach var="match" items="${athletics.matchData.matches}">
+				<c:if test="${match.gameDay ne today and not previousDay}">
+					<br/>
+					<ul data-role="listview" data-theme="c"  data-dividertheme="d"  data-inset="false"><li data-role="list-divider">recent games</li></ul>
+					<br/>
+					<c:set var="previousDay" value="true"/>
+				</c:if>
+				
 				<div class="container_12 match-info">
 					<div class="grid_3 team-score">
 						<c:if test="${not empty match.thumbnail}">

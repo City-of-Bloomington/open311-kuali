@@ -16,6 +16,8 @@
 package org.kuali.mobility.athletics.service;
 
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import org.apache.commons.httpclient.DefaultHttpMethodRetryHandler;
 import org.apache.commons.httpclient.HttpClient;
@@ -26,12 +28,11 @@ import org.apache.commons.httpclient.params.HttpConnectionParams;
 import org.apache.commons.httpclient.params.HttpMethodParams;
 import org.apache.commons.io.IOUtils;
 import org.kuali.mobility.athletics.entity.Athletics;
+import org.kuali.mobility.athletics.entity.Match;
 import org.kuali.mobility.athletics.entity.MatchData;
 import org.kuali.mobility.athletics.entity.Player;
 import org.kuali.mobility.athletics.entity.RosterData;
 import org.kuali.mobility.athletics.entity.Sport;
-import org.kuali.mobility.shared.Constants;
-import org.kuali.mobility.user.entity.User;
 
 import flexjson.JSONDeserializer;
 
@@ -50,7 +51,14 @@ public class AthleticsServiceImpl implements AthleticsService {
 	public Athletics retrieveAthletics(String campus) throws Exception {
 		GetMethod get = new GetMethod(athleticsURL + "sports.do?version=2&campus=" + campus);
 		String json = IOUtils.toString(getInputStreamFromGetMethod(get), "UTF-8");
-		return new JSONDeserializer<Athletics>().deserialize(json, Athletics.class);
+		Athletics athletics = new JSONDeserializer<Athletics>().deserialize(json, Athletics.class);
+		SimpleDateFormat onlyDateFormat = new SimpleDateFormat("MMM dd, yyyy");
+		Calendar calendar = Calendar.getInstance();
+		for (Match match : athletics.getMatchData().getMatches()) {
+			calendar.setTime(onlyDateFormat.parse(match.getDate()));
+			match.setGameDay(calendar.get(Calendar.DATE));
+		}
+		return athletics;
 	}
 
 	public RosterData retrieveRosterForSeason(Long sportId, Long seasonId) throws Exception {

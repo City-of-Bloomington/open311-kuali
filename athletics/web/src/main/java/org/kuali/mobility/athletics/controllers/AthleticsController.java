@@ -15,6 +15,9 @@
 
 package org.kuali.mobility.athletics.controllers;
 
+import java.util.Calendar;
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.kuali.mobility.athletics.entity.Athletics;
@@ -65,6 +68,7 @@ public class AthleticsController {
 		Athletics athletics = athleticsService.retrieveAthletics(selectedCampus);
 		uiModel.addAttribute("athletics", athletics);
 		uiModel.addAttribute("selectedTab", selectedTab);
+		uiModel.addAttribute("today", Calendar.getInstance().get(Calendar.DATE));
 		return "athletics/list";
 	}
 
