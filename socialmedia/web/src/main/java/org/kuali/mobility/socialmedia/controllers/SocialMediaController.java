@@ -35,7 +35,7 @@ public class SocialMediaController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String getList(Model uiModel) {
 		List<Tweet> tweets = twitterService.retrieveCombinedFeeds(twitterService.getFeeds());
-		uiModel.addAttribute("tweets", tweets.subList(0, 25));
+		uiModel.addAttribute("tweets", tweets);
 		return "socialmedia/list";
 	}
 
