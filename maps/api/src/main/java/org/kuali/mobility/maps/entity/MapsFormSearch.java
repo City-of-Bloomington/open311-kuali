@@ -7,6 +7,7 @@ public class MapsFormSearch {
 	private String searchLongitude;
 	private String searchBuilding;
 	private String searchCampus;
+	private String venueId;
 	private String locationName;
 
 	public String getSearchCampus() {
@@ -29,6 +30,14 @@ public class MapsFormSearch {
 
 	public void setLocationName(String locationName) {
 		this.locationName = locationName;
+	}
+
+	public String getVenueId() {
+		return venueId;
+	}
+
+	public void setVenueId(String venueId) {
+		this.venueId = venueId;
 	}
 
 	public void setMapsGroup(MapsGroup mapsGroup) {

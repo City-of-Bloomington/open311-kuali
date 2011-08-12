@@ -48,6 +48,7 @@ padding: 8px;
 	<form:input path="locationName" cssClass="text ui-widget-content ui-corner-all" />
 	</fieldset>
 	<fieldset>
+	<form:hidden path="venueId"/>
 	<div id="venues" class="overflow"></div>
 	</fieldset>
 	<fieldset>
@@ -257,8 +258,8 @@ function mapSearchPostProcess() {
 		var latitude = $(this).attr("kmelatitude");
 		var longitude = $(this).attr("kmelongitude");
 		var name = $(this).attr("kmename");
-    	$('#searchLatitude').val(latitude);
-    	$('#searchLongitude').val(longitude);
+//    	$('#searchLatitude').val(latitude);
+//    	$('#searchLongitude').val(longitude);
     	$('#locationName').val(name);
 		deleteOverlays(markersArray);
 		showLocationByCoordinates(map, markersArray, latitude, longitude);		
@@ -266,74 +267,7 @@ function mapSearchPostProcess() {
     });
 }
 
-function findFoursquareVenues(latlng){
-	if (edit){
-		var url = "https://test.uisapp2.iu.edu/ccl-unt" + "/maps/markers/foursquare?lat="+ latlng.lat() + "&lng=" + latlng.lng();
-		var jqxhr = $.getJSON(url, function(data) {
-			alert("Test");
-		});
-		var jqxhr = $.getJSON(url, function(data) {
-			var venuesHtml = "";
-			venues = new Array();
-			for (var i=0; i<data.response.venues.length; i++){
-				var venue = data.response.venues[i];
-				venuesHtml = venuesHtml + "<div onClick='javascript:selectAVenue(" + i + ")' class='venue " + (i%2==0? "even" : "odd") + (i+1==data.response.venues.length? " last" : "") + "'>";
-				venuesHtml = venuesHtml + "<div class='image'>";
-				if (venue.categories.length > 0){
-					var category = null;
-					for (var c=0; c<venue.categories.length; c++){
-						var cat = venue.categories[c];
-						if (cat.primary){
-							category = cat;
-							break;
-						}
-					}
-					venuesHtml = venuesHtml + "<img src='" + category.icon + "'></img>";
-				}
-				venuesHtml = venuesHtml + "</div>"; //close image
-				
-				venuesHtml = venuesHtml + "<div class='info'>";
-				venuesHtml = venuesHtml + "<div class='name'>" + venue.name + "</div>";
-				
-				venuesHtml = venuesHtml + "<div class='address'>";
-				if (venue.location.address){
-					venuesHtml = venuesHtml + "<span>" + venue.location.address + "</span><br/>";
-				}
-				if (venue.location.city){
-					venuesHtml = venuesHtml + "<span>" + venue.location.city + "</span>";
-				}
-				if (venue.location.state && venue.location.city){
-					venuesHtml = venuesHtml + ",&nbsp";
-				}
-				if (venue.location.state){
-					venuesHtml = venuesHtml + "<span>" + venue.location.state + "</span>";
-				}
-				if ((venue.location.city || venue.location.state) && venue.location.postalCode){
-					venuesHtml = venuesHtml + "&nbsp";
-				}
-				if (venue.location.postalCode){
-					venuesHtml = venuesHtml + "<span>" + venue.location.postalCode + "</span>";
-				}
-				venuesHtml = venuesHtml + "</div>"; //close address
-				
-				venuesHtml = venuesHtml + "</div>"; //close info
-				
-				venuesHtml = venuesHtml + "</div>"; //close venue
-				venues[i] = parseVenue(venue);
-			}
-			// Show results
-			var pagehtml = '<div id="venuesresultdata"></div>'
-			$('#venues').html(pagehtml);
-			$("#venuesresultdata").html(data).page();
-		});
-		jqxhr.error(function() {
-			// Show results
-			var pagehtml = '<div id="venuesresultdata"></div>'
-			$('#venues').html(pagehtml);
-			$("#venuesresultdata").html("There was an error contacting the Foursquare service.").page(); 
-		})
-	}
-}
+
 
 </script>
 	</kme:content>

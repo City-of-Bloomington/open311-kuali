@@ -2,6 +2,7 @@ var contextPath;
 var updateLocation;
 var hasLoaded = 0;
 var userLocationCircle;
+var venues;
 
 function setContextPath(path) {
 	contextPath = path;
@@ -342,6 +343,134 @@ function getCampusBounds(campusCode) {
 	bounds.extend(locse);
 	return bounds;
 }
+
+function selectAVenue(index){
+	var venue = venues[index];
+	//setMarker(venue);
+	$('#venueId').val(venue.id);
+	$('#locationName').val(venue.name);
+	$('#searchLatitude').val("");
+	$('#searchLongitude').val("");
+	$('#searchBuilding').val("");
+}
+
+function findFoursquareVenues(latlng){
+	if (edit){
+		var url = contextPath + "/maps/foursquare?lat="+ latlng.lat() + "&lng=" + latlng.lng();
+//		var jqxhr = $.getJSON(url, function(data) {
+//			alert("Test");
+//		});
+		var jqxhr = $.getJSON(url, function(data) {
+			var venuesHtml = "";
+			venues = new Array();
+			for (var i=0; i<data.response.venues.length; i++){
+				var venue = data.response.venues[i];
+				venuesHtml = venuesHtml + "<div onClick='javascript:selectAVenue(" + i + ")' class='venue " + (i%2==0? "even" : "odd") + (i+1==data.response.venues.length? " last" : "") + "'>";
+				venuesHtml = venuesHtml + "<div class='image'>";
+				if (venue.categories.length > 0){
+					var category = null;
+					for (var c=0; c<venue.categories.length; c++){
+						var cat = venue.categories[c];
+						if (cat.primary){
+							category = cat;
+							break;
+						}
+					}
+					venuesHtml = venuesHtml + "<img src='" + category.icon + "'></img>";
+				}
+				venuesHtml = venuesHtml + "</div>"; //close image
+				
+				venuesHtml = venuesHtml + "<div class='info'>";
+				venuesHtml = venuesHtml + "<div class='name'>" + venue.name + "</div>";
+				
+				venuesHtml = venuesHtml + "<div class='address'>";
+				if (venue.location.address){
+					venuesHtml = venuesHtml + "<span>" + venue.location.address + "</span><br/>";
+				}
+				if (venue.location.city){
+					venuesHtml = venuesHtml + "<span>" + venue.location.city + "</span>";
+				}
+				if (venue.location.state && venue.location.city){
+					venuesHtml = venuesHtml + ",&nbsp";
+				}
+				if (venue.location.state){
+					venuesHtml = venuesHtml + "<span>" + venue.location.state + "</span>";
+				}
+				if ((venue.location.city || venue.location.state) && venue.location.postalCode){
+					venuesHtml = venuesHtml + "&nbsp";
+				}
+				if (venue.location.postalCode){
+					venuesHtml = venuesHtml + "<span>" + venue.location.postalCode + "</span>";
+				}
+				venuesHtml = venuesHtml + "</div>"; //close address
+				
+				venuesHtml = venuesHtml + "</div>"; //close info
+				
+				venuesHtml = venuesHtml + "</div>"; //close venue
+				venues[i] = parseVenue(venue);
+			}
+			// Show results
+			var pagehtml = '<div id="venuesresultdata"></div>'
+			$('#venues').html(pagehtml);
+			$("#venuesresultdata").html(venuesHtml).page();
+		});
+		jqxhr.error(function() {
+			// Show results
+			var pagehtml = '<div id="venuesresultdata"></div>'
+			$('#venues').html(pagehtml);
+			$("#venuesresultdata").html("There was an error contacting the Foursquare service.").page(); 
+		})
+	}
+}
+
+function parseVenue(venue){
+	var v = new Object();
+	v.name = venue.name;
+	v.location = new google.maps.LatLng(venue.location.lat,venue.location.lng);
+	v.id = venue.id;
+	v.street = venue.location.address;
+	v.state = venue.location.state;
+	v.city = venue.location.city;
+	v.zip = venue.location.postalCode;
+	v.longAddress = buildAddress(v, true);
+	
+	return v;
+}
+
+function buildAddress(place, long){
+	var message = "";
+	if (place.street){
+		message = place.street;
+		if (place.city){
+			message = message + (long ? ", ":"<br/>") + place.city;
+			if (place.state){
+				message = message + ", " + place.state;
+				if (place.zip){
+					message = message + " " + place.zip;
+				}
+			} else {
+				if (place.zip){
+					message = message + " " + place.zip;
+				}
+			}
+		} else {
+			if (place.state){
+				message = message + (long ? ", ":"<br/>") + place.state;
+				if (place.zip){
+					message = message + " " + place.zip;
+				}
+			} else {
+				if (place.zip){
+					message = message + (long ? " ":"<br/>") + place.zip;
+				}
+			}
+		}
+	} else {
+		return Math.round(place.location.lat()*1000)/1000 + ", " + Math.round(place.location.lng()*1000)/1000;
+	}
+	return message;
+}
+
 
 /* resize map to full height after page load */
 $(window).load(function () {
