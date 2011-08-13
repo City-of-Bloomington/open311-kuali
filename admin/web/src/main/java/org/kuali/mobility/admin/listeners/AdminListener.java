@@ -13,42 +13,42 @@
  * permissions and limitations under the License.
  */
 
-package org.kuali.mobility.socialmedia.listener;
+package org.kuali.mobility.admin.listeners;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
-import org.kuali.mobility.socialmedia.service.TwitterService;
+import org.kuali.mobility.admin.service.AdminService;
 import org.springframework.context.ApplicationContext;
 
-public class SocialMediaListener implements ServletContextListener {
+public class AdminListener implements ServletContextListener {
 	
-	private static org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(SocialMediaListener.class);
+	private static org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(AdminListener.class);
 
-	private TwitterService twitterService;
+	private AdminService adminService;
 
 	public void contextInitialized(final ServletContextEvent event) {
 		ApplicationContext ctx = org.springframework.web.context.support.WebApplicationContextUtils.getWebApplicationContext(event.getServletContext());
-		twitterService = (TwitterService) ctx.getBean("TwitterService");
+		adminService = (AdminService) ctx.getBean("AdminService");
 		
-		LOG.info("Starting the Twitter cache thread");
-		twitterService.startCache();
-		LOG.info("Twitter cache thread started");
+		LOG.info("Starting the Admin cache thread");
+		adminService.startCache();
+		LOG.info("Admin cache thread started");
 	}
 
 	public void contextDestroyed(final ServletContextEvent event) {
-		if (twitterService != null) {
-			LOG.info("Stopping the Twitter cache thread");
-			twitterService.stopCache();
-			LOG.info("Twitter cache thread should be completely dead");
+		if (adminService != null) {
+			LOG.info("Stopping the Admin cache thread");
+			adminService.stopCache();
+			LOG.info("Admin cache thread should be completely dead");
 		}
 	}
 
-	public TwitterService getTwitterService() {
-		return twitterService;
+	public AdminService getAdminService() {
+		return adminService;
 	}
 
-	public void setTwitterService(TwitterService twitterService) {
-		this.twitterService = twitterService;
+	public void setAdminService(AdminService adminService) {
+		this.adminService = adminService;
 	}
 }

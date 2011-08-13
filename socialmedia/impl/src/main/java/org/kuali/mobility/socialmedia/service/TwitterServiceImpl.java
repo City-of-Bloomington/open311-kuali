@@ -41,13 +41,12 @@ import org.kuali.mobility.socialmedia.entity.TwitterFeed;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service(value = "twitterService")
+@Service(value = "TwitterService")
 public class TwitterServiceImpl implements TwitterService {
 	
 	private static org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(TwitterServiceImpl.class);
 	
 	private static final int FEED_UPDATE_INTERVAL = 5; //5 min
-	private static final SimpleDateFormat twitterDateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy");
 	
 	private static ConcurrentMap<String, TwitterFeed> twitterFeeds;
 	
@@ -69,8 +68,7 @@ public class TwitterServiceImpl implements TwitterService {
 		feedReloaderThread.start();
     }
     
-    public void stopCache()
-    {
+    public void stopCache() {
     	feedReloaderThread.interrupt();
     	feedReloaderThread = null;
     }
@@ -215,6 +213,7 @@ public class TwitterServiceImpl implements TwitterService {
     					tweet.setText(text);
     					
     					String publishDate = tweetObject.getString("created_at").replace("+0000", "GMT");
+    	    			SimpleDateFormat twitterDateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy");
     					tweet.setTimestamp(twitterDateFormat.parse(publishDate).getTime());
     					
     					tweets.add(tweet);

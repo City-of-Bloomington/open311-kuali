@@ -520,7 +520,7 @@ insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (
 /
 insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'SE'), (select TOOL_ID from TOOL_T where TITLE = 'Classifieds'), 4, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'SE'), (select TOOL_ID from TOOL_T where TITLE = 'Dining'), 5, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'SE'), (select TOOL_ID from TOOL_T where TITLE = 'Dining Services'), 5, 0)
 /
 insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'SE'), (select TOOL_ID from TOOL_T where TITLE = 'Maps'), 6, 0)
 /

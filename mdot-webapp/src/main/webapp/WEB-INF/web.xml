@@ -36,10 +36,13 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 	<listener>
+		<listener-class>org.kuali.mobility.socialmedia.listener.SocialMediaListener</listener-class>
+	</listener>
+	<listener>
 		<listener-class>edu.iu.m.news.listener.NewsListener</listener-class>
 	</listener>
 	<listener>
-		<listener-class>org.kuali.mobility.socialmedia.listener.SocialMediaListener</listener-class>
+		<listener-class>org.kuali.mobility.admin.listeners.AdminListener</listener-class>
 	</listener>
 
     <filter>

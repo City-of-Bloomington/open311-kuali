@@ -21,6 +21,8 @@ import org.kuali.mobility.admin.entity.HomeScreen;
 import org.kuali.mobility.admin.entity.Tool;
 
 public interface AdminService {
+	public HomeScreen getCachedHomeScreenByName(String name);
+
 	public List<HomeScreen> getAllHomeScreens();
 	public HomeScreen getHomeScreenById(long layoutId);
 	public HomeScreen getHomeScreenByName(String name);
@@ -31,4 +33,7 @@ public interface AdminService {
 	public Long saveTool(Tool tool);
 	public Tool getToolById(long toolId);
 	public void deleteToolById(long toolId);
+	
+	public void stopCache();
+	public void startCache();
 }

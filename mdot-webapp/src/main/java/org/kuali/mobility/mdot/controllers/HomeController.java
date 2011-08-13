@@ -97,7 +97,7 @@ public class HomeController {
     		homeScreenName = user.getViewCampus();
     	} 
     	
-    	home = adminService.getHomeScreenByName(homeScreenName);
+    	home = adminService.getCachedHomeScreenByName(homeScreenName);
     	
     	Tool tool = new Tool();
     	if (backdoor != null) {
