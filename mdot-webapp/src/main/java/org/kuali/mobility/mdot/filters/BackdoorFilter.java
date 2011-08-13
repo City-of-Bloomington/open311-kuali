@@ -34,14 +34,13 @@ public class BackdoorFilter implements Filter {
 
 	public void doFilter(final ServletRequest request, final ServletResponse response, final FilterChain chain) throws IOException, ServletException {
 		final HttpServletRequest hrequest = (HttpServletRequest) request;
-		final Backdoor backdoor = (Backdoor) hrequest.getSession().getAttribute(Constants.KME_BACKDOOR_USER_KEY);
-		/*
+		
+		final Backdoor backdoor = (Backdoor) hrequest.getSession().getAttribute(Constants.KME_BACKDOOR_USER_KEY);		
 		if (backdoor != null && HttpUtil.backdoorRestricted(hrequest.getServletPath())) {
 			final HttpServletResponse hresponse = (HttpServletResponse) response;
 			hresponse.sendError(401, "Backdoor access is not allowed.");
 			return;
 		}
-		*/
 		chain.doFilter(request, response);
 	}
 

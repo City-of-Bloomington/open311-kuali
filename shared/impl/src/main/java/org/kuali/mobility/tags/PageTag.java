@@ -5,6 +5,9 @@ import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
 
+import org.kuali.mobility.shared.Constants;
+import org.kuali.mobility.user.entity.User;
+
 public class PageTag extends SimpleTagSupport {
 
     private static org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(PageTag.class);
@@ -18,6 +21,9 @@ public class PageTag extends SimpleTagSupport {
     private String preferencesButtonURL;
     private String cssFilename;
     private String jsFilename;
+    private boolean loginButton;
+    private String loginButtonURL;
+    private String logoutButtonURL;
     
     public void setId(String id) {
         this.id = id;
@@ -55,8 +61,21 @@ public class PageTag extends SimpleTagSupport {
         this.jsFilename = jsFilename;
     }
 
+	public void setLoginButton(boolean loginButton) {
+		this.loginButton = loginButton;
+	}
+
+	public void setLoginButtonURL(String loginButtonURL) {
+		this.loginButtonURL = loginButtonURL;
+	}
+
+	public void setButtonLogoutURL(String logoutButtonURL) {
+		this.logoutButtonURL = logoutButtonURL;
+	}
+
 	public void doTag() throws JspException {
         PageContext pageContext = (PageContext) getJspContext();
+        User user = (User) pageContext.getSession().getAttribute(Constants.KME_USER_KEY);
         String contextPath = pageContext.getServletContext().getContextPath();
         JspWriter out = pageContext.getOut();
         try {
@@ -85,6 +104,13 @@ public class PageTag extends SimpleTagSupport {
             out.println("<body>");
             out.println("<div data-role=\"page\" id=\"" + id + "\">");
             out.println("<div data-role=\"header\">");
+            if (loginButton) {
+            	if (user == null || user.isPublicUser()) {
+                    out.println("<a href=\"" + (loginButtonURL != null ? loginButtonURL : contextPath + "/login") + "\" data-role=\"button\" data-icon=\"lock\">Login</a>");
+            	} else {
+                    out.println("<a href=\"" + (logoutButtonURL != null ? logoutButtonURL : contextPath + "/logout") + "\" data-role=\"button\" data-icon=\"unlock\">Logout</a>");
+            	}
+            }
             if (backButton) {
                 out.println("<a href=\"" + (backButtonURL != null ? backButtonURL : "javascript: history.go(-1)") + "\" class=\"ui-btn-left\" data-icon=\"back\" data-iconpos=\"notext\">Back</a>");
             }

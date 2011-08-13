@@ -75,7 +75,18 @@ public class AlertsServiceImpl implements AlertsService {
 	 */
 	@Override
 	public int findAlertCountByCriteria(Map<String, String> criteria) {
-		return findAllAlertsByCriteria(criteria).size();
+		 List<Alert> alerts = findAllAlertsByCriteria(criteria);
+		 if (alerts != null && alerts.size() == 1) {
+			 if (isAlertToReport(alerts.get(0))) {
+				 return 1;
+			 } else {
+				 return 0;
+			 }
+		 }
+		 if (alerts != null) {
+			 return alerts.size();
+		 }
+		 return 0;
 	}
 
 	@Override

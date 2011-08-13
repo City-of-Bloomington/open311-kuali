@@ -19,8 +19,12 @@ import java.sql.Timestamp;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.kuali.mobility.feedback.entity.Feedback;
 import org.kuali.mobility.feedback.service.FeedbackService;
+import org.kuali.mobility.shared.Constants;
+import org.kuali.mobility.user.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -51,9 +55,15 @@ public class FeedbackController{
     }
     
     @RequestMapping(method = RequestMethod.GET)
-    public String getList(Model uiModel) {
+    public String getList(Model uiModel, HttpServletRequest request) {
+    	User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
    		uiModel.addAttribute("feedback", new Feedback());
    		uiModel.addAttribute("deviceTypes", deviceTypes);
+   		Feedback feedback = new Feedback();
+    	if (user != null && user.getEmail() != null) {
+    		feedback.setEmail(user.getEmail());
+    	}
+   		uiModel.addAttribute("feedback", feedback);
     	return "feedback/form";
     }
     

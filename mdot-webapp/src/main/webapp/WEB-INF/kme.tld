@@ -30,6 +30,22 @@
             <type>boolean</type>
         </attribute>
         <attribute>
+            <name>loginButton</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>boolean</type>
+        </attribute>
+        <attribute>
+            <name>loginButtonURL</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>logoutButtonURL</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
             <name>backButton</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
