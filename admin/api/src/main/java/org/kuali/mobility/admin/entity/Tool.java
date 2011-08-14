@@ -39,6 +39,9 @@ public class Tool implements Serializable, Comparable<Tool> {
     @Column(name="TOOL_ID")
 	private Long toolId;
 	
+	@Column(name="ALIAS")
+	private String alias;
+
 	@Column(name="TITLE")
 	private String title;
 	
@@ -64,6 +67,14 @@ public class Tool implements Serializable, Comparable<Tool> {
 
 	public void setToolId(Long id) {
 		this.toolId = id;
+	}
+
+	public String getAlias() {
+		return alias;
+	}
+
+	public void setAlias(String alias) {
+		this.alias = alias;
 	}
 
 	public String getTitle() {

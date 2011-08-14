@@ -128,6 +128,7 @@ GRANT SELECT, ALTER ON MIU.SEQ_TOOL_T TO MIU_PROXY
 
 CREATE TABLE MIU.TOOL_T (
    	TOOL_ID NUMERIC(18,0) NOT NULL,
+   	ALIAS VARCHAR2(2000) NULL,
    	TITLE VARCHAR2(2000) NULL,
    	URL VARCHAR2(2000) NULL,
    	DESCRIPTION VARCHAR2(2000) NULL,
@@ -201,49 +202,49 @@ insert into HOME_T (HOME_ID, HOME_NM, VER_NBR) values (SEQ_HOME_T.NEXTVAL, 'SB',
 insert into HOME_T (HOME_ID, HOME_NM, VER_NBR) values (SEQ_HOME_T.NEXTVAL, 'SE', 0)
 /
 
-insert into TOOL_T (TOOL_ID, TITLE, URL, DESCRIPTION, ICON_URL, VER_NBR) values (SEQ_TOOL_T.NEXTVAL, 'My Classes', 'myclasses', 'Class information; Oncourse  forums, resources, and more!', 'images/service-icons/srvc-myclasses.png', 0)
+insert into TOOL_T (TOOL_ID, ALIAS, TITLE, URL, DESCRIPTION, ICON_URL, VER_NBR) values (SEQ_TOOL_T.NEXTVAL, 'myclasses', 'My Classes', 'myclasses', 'Class information; Oncourse  forums, resources, and more!', 'images/service-icons/srvc-myclasses.png', 0)
 /
-insert into TOOL_T (TOOL_ID, TITLE, URL, DESCRIPTION, ICON_URL, VER_NBR) values (SEQ_TOOL_T.NEXTVAL, 'Classifieds', 'https://onestart.iu.edu/ccf2-prd/ClassifiedsMb.do', 'Find furniture, books, an apartment, a job, and more.', 'images/service-icons/srvc-classifieds.png', 0)
+insert into TOOL_T (TOOL_ID, ALIAS, TITLE, URL, DESCRIPTION, ICON_URL, VER_NBR) values (SEQ_TOOL_T.NEXTVAL, 'classifieds', 'Classifieds', 'https://onestart.iu.edu/ccf2-prd/ClassifiedsMb.do', 'Find furniture, books, an apartment, a job, and more.', 'images/service-icons/srvc-classifieds.png', 0)
 /
-insert into TOOL_T (TOOL_ID, TITLE, URL, DESCRIPTION, ICON_URL, VER_NBR) values (SEQ_TOOL_T.NEXTVAL, 'Bus Schedules', 'http://iub.doublemap.com/map/mobile', 'Never miss an IU Bloomington campus bus again.', 'images/service-icons/srvc-bus.png', 0)
+insert into TOOL_T (TOOL_ID, ALIAS, TITLE, URL, DESCRIPTION, ICON_URL, VER_NBR) values (SEQ_TOOL_T.NEXTVAL, 'buses', 'Bus Schedules', 'http://iub.doublemap.com/map/mobile', 'Never miss an IU Bloomington campus bus again.', 'images/service-icons/srvc-bus.png', 0)
 /
-insert into TOOL_T (TOOL_ID, TITLE, URL, DESCRIPTION, ICON_URL, VER_NBR) values (SEQ_TOOL_T.NEXTVAL, 'Maps', 'maps', 'Get from here to there. Search for buildings by name.', 'images/service-icons/srvc-maps.png', 0)
+insert into TOOL_T (TOOL_ID, ALIAS, TITLE, URL, DESCRIPTION, ICON_URL, VER_NBR) values (SEQ_TOOL_T.NEXTVAL, 'maps', 'Maps', 'maps', 'Get from here to there. Search for buildings by name.', 'images/service-icons/srvc-maps.png', 0)
 /
-insert into TOOL_T (TOOL_ID, TITLE, URL, DESCRIPTION, ICON_URL, VER_NBR) values (SEQ_TOOL_T.NEXTVAL, 'Athletics', 'athletics', 'Live scores, rosters, news and schedules for your IU teams.', 'images/service-icons/srvc-athletics.png', 0)
+insert into TOOL_T (TOOL_ID, ALIAS, TITLE, URL, DESCRIPTION, ICON_URL, VER_NBR) values (SEQ_TOOL_T.NEXTVAL, 'athletics', 'Athletics', 'athletics', 'Live scores, rosters, news and schedules for your IU teams.', 'images/service-icons/srvc-athletics.png', 0)
 /
-insert into TOOL_T (TOOL_ID, TITLE, URL, DESCRIPTION, ICON_URL, VER_NBR) values (SEQ_TOOL_T.NEXTVAL, 'Social Media', 'socialmedia', 'Stay up to date with the IU social media.', 'images/service-icons/srvc-social.png', 0)
+insert into TOOL_T (TOOL_ID, ALIAS, TITLE, URL, DESCRIPTION, ICON_URL, VER_NBR) values (SEQ_TOOL_T.NEXTVAL, 'social', 'Social Media', 'socialmedia', 'Stay up to date with the IU social media.', 'images/service-icons/srvc-social.png', 0)
 /
-insert into TOOL_T (TOOL_ID, TITLE, URL, DESCRIPTION, ICON_URL, VER_NBR) values (SEQ_TOOL_T.NEXTVAL, 'People', 'people', 'Find contact information for IU students, faculty, and staff.', 'images/service-icons/srvc-people.png', 0)
+insert into TOOL_T (TOOL_ID, ALIAS, TITLE, URL, DESCRIPTION, ICON_URL, VER_NBR) values (SEQ_TOOL_T.NEXTVAL, 'people', 'People', 'people', 'Find contact information for IU students, faculty, and staff.', 'images/service-icons/srvc-people.png', 0)
 /
-insert into TOOL_T (TOOL_ID, TITLE, URL, DESCRIPTION, ICON_URL, VER_NBR) values (SEQ_TOOL_T.NEXTVAL, 'Computer Labs', 'computerlabs', 'See which campus STC labs have an open computer.', 'images/service-icons/srvc-stc.png', 0)
+insert into TOOL_T (TOOL_ID, ALIAS, TITLE, URL, DESCRIPTION, ICON_URL, VER_NBR) values (SEQ_TOOL_T.NEXTVAL, 'labs', 'Computer Labs', 'computerlabs', 'See which campus STC labs have an open computer.', 'images/service-icons/srvc-stc.png', 0)
 /
-insert into TOOL_T (TOOL_ID, TITLE, URL, DESCRIPTION, ICON_URL, VER_NBR) values (SEQ_TOOL_T.NEXTVAL, 'IT Notices', 'itnotices', 'Alerts and announcements affecting your technology.', 'images/service-icons/srvc-itnotice.png', 0)
+insert into TOOL_T (TOOL_ID, ALIAS, TITLE, URL, DESCRIPTION, ICON_URL, VER_NBR) values (SEQ_TOOL_T.NEXTVAL, 'itnotices', 'IT Notices', 'itnotices', 'Alerts and announcements affecting your technology.', 'images/service-icons/srvc-itnotice.png', 0)
 /
-insert into TOOL_T (TOOL_ID, TITLE, URL, DESCRIPTION, ICON_URL, VER_NBR) values (SEQ_TOOL_T.NEXTVAL, 'News', 'news', 'The latest buzz on IU''s exciting events and achievements.', 'images/service-icons/srvc-news.png', 0)
+insert into TOOL_T (TOOL_ID, ALIAS, TITLE, URL, DESCRIPTION, ICON_URL, VER_NBR) values (SEQ_TOOL_T.NEXTVAL, 'news', 'News', 'news', 'The latest buzz on IU''s exciting events and achievements.', 'images/service-icons/srvc-news.png', 0)
 /
-insert into TOOL_T (TOOL_ID, TITLE, URL, DESCRIPTION, ICON_URL, VER_NBR) values (SEQ_TOOL_T.NEXTVAL, 'Calendar', 'events', 'See what''s happening on campus today or your personal calendar.', 'images/service-icons/srvc-events.png', 0)
+insert into TOOL_T (TOOL_ID, ALIAS, TITLE, URL, DESCRIPTION, ICON_URL, VER_NBR) values (SEQ_TOOL_T.NEXTVAL, 'events', 'Calendar', 'events', 'See what''s happening on campus today or your personal calendar.', 'images/service-icons/srvc-events.png', 0)
 /
-insert into TOOL_T (TOOL_ID, TITLE, URL, DESCRIPTION, ICON_URL, VER_NBR) values (SEQ_TOOL_T.NEXTVAL, 'Knowledge Base', 'knowledgebase', 'Find answers to questions about IU information technology.', 'images/service-icons/srvc-kb.png', 0)
+insert into TOOL_T (TOOL_ID, ALIAS, TITLE, URL, DESCRIPTION, ICON_URL, VER_NBR) values (SEQ_TOOL_T.NEXTVAL, 'kb', 'Knowledge Base', 'knowledgebase', 'Find answers to questions about IU information technology.', 'images/service-icons/srvc-kb.png', 0)
 /
-insert into TOOL_T (TOOL_ID, TITLE, URL, DESCRIPTION, ICON_URL, VER_NBR) values (SEQ_TOOL_T.NEXTVAL, 'Ask IU', 'askiu', 'Take IU''s popular question & answer service with you on the go.', 'images/service-icons/srvc-askiu.png', 0)
+insert into TOOL_T (TOOL_ID, ALIAS, TITLE, URL, DESCRIPTION, ICON_URL, VER_NBR) values (SEQ_TOOL_T.NEXTVAL, 'ask', 'Ask IU', 'askiu', 'Take IU''s popular question & answer service with you on the go.', 'images/service-icons/srvc-askiu.png', 0)
 /
-insert into TOOL_T (TOOL_ID, TITLE, URL, DESCRIPTION, ICON_URL, VER_NBR) values (SEQ_TOOL_T.NEXTVAL, 'Dining Services', 'dining', 'Get up to date menus and prices for campus dining services.', 'images/service-icons/srvc-dining.png', 0)
+insert into TOOL_T (TOOL_ID, ALIAS, TITLE, URL, DESCRIPTION, ICON_URL, VER_NBR) values (SEQ_TOOL_T.NEXTVAL, 'ius-dining', 'Dining Services', 'dining', 'Get up to date menus and prices for campus dining services.', 'images/service-icons/srvc-dining.png', 0)
 /
-insert into TOOL_T (TOOL_ID, TITLE, URL, DESCRIPTION, ICON_URL, VER_NBR) values (SEQ_TOOL_T.NEXTVAL, 'Emergency Contacts', 'emergencycontacts', 'Police and medical phone numbers.', 'images/service-icons/srvc-emergency.png', 0)
+insert into TOOL_T (TOOL_ID, ALIAS, TITLE, URL, DESCRIPTION, ICON_URL, VER_NBR) values (SEQ_TOOL_T.NEXTVAL, 'emergency', 'Emergency Contacts', 'emergencycontacts', 'Police and medical phone numbers.', 'images/service-icons/srvc-emergency.png', 0)
 /
-insert into TOOL_T (TOOL_ID, TITLE, URL, DESCRIPTION, ICON_URL, VER_NBR) values (SEQ_TOOL_T.NEXTVAL, 'Campus Alerts', 'alerts', 'See a list of active campus alert messages.', 'images/service-icons/srvc-alerts-green.png', 0)
+insert into TOOL_T (TOOL_ID, ALIAS, TITLE, URL, DESCRIPTION, ICON_URL, VER_NBR) values (SEQ_TOOL_T.NEXTVAL, 'alerts', 'Campus Alerts', 'alerts', 'See a list of active campus alert messages.', 'images/service-icons/srvc-alerts-green.png', 0)
 /
-insert into TOOL_T (TOOL_ID, TITLE, URL, DESCRIPTION, ICON_URL, VER_NBR) values (SEQ_TOOL_T.NEXTVAL, 'Feedback', 'feedback', 'Submit questions and comments about IU Mobile.', 'images/service-icons/srvc-feedback.png', 0)
+insert into TOOL_T (TOOL_ID, ALIAS, TITLE, URL, DESCRIPTION, ICON_URL, VER_NBR) values (SEQ_TOOL_T.NEXTVAL, 'feedback', 'Feedback', 'feedback', 'Submit questions and comments about IU Mobile.', 'images/service-icons/srvc-feedback.png', 0)
 /
-insert into TOOL_T (TOOL_ID, TITLE, URL, DESCRIPTION, ICON_URL, VER_NBR) values (SEQ_TOOL_T.NEXTVAL, 'Jaguar Athletics', 'http://www.iupuijags.com', 'IUPUI Athletics information.', 'images/service-icons/srvc-jag.png', 0)
+insert into TOOL_T (TOOL_ID, ALIAS, TITLE, URL, DESCRIPTION, ICON_URL, VER_NBR) values (SEQ_TOOL_T.NEXTVAL, 'jagathletics', 'Jaguar Athletics', 'http://www.iupuijags.com', 'IUPUI Athletics information.', 'images/service-icons/srvc-jag.png', 0)
 /
-insert into TOOL_T (TOOL_ID, TITLE, URL, DESCRIPTION, ICON_URL, VER_NBR) values (SEQ_TOOL_T.NEXTVAL, 'Class Cancellations', 'events/viewEvents?categoryId=nw_cancel&campus=ZZ', 'Class Cancellations', 'images/service-icons/srvc-classcancel.png', 0)
+insert into TOOL_T (TOOL_ID, ALIAS, TITLE, URL, DESCRIPTION, ICON_URL, VER_NBR) values (SEQ_TOOL_T.NEXTVAL, 'cancellations', 'Class Cancellations', 'events/viewEvents?categoryId=nw_cancel&campus=ZZ', 'Class Cancellations', 'images/service-icons/srvc-classcancel.png', 0)
 /
-insert into TOOL_T (TOOL_ID, TITLE, URL, DESCRIPTION, ICON_URL, VER_NBR) values (SEQ_TOOL_T.NEXTVAL, 'Library', 'static-services/SB-Library/index.html', 'IU South Bend Library information.', 'images/service-icons/srvc-schurzlibrary.png', 0)
+insert into TOOL_T (TOOL_ID, ALIAS, TITLE, URL, DESCRIPTION, ICON_URL, VER_NBR) values (SEQ_TOOL_T.NEXTVAL, 'iusb-library', 'Library', 'static-services/SB-Library/index.html', 'IU South Bend Library information.', 'images/service-icons/srvc-schurzlibrary.png', 0)
 /
-insert into TOOL_T (TOOL_ID, TITLE, URL, DESCRIPTION, ICON_URL, VER_NBR) values (SEQ_TOOL_T.NEXTVAL, 'RedHawk Shuttle', 'events/viewEvents?categoryId=nw_shuttle&campus=ZZ', 'RedHawk Shuttle', 'images/service-icons/srvc-redhawk.png', 0)
+insert into TOOL_T (TOOL_ID, ALIAS, TITLE, URL, DESCRIPTION, ICON_URL, VER_NBR) values (SEQ_TOOL_T.NEXTVAL, 'redhawk', 'RedHawk Shuttle', 'events/viewEvents?categoryId=nw_shuttle&campus=ZZ', 'RedHawk Shuttle', 'images/service-icons/srvc-redhawk.png', 0)
 /
-insert into TOOL_T (TOOL_ID, TITLE, URL, DESCRIPTION, ICON_URL, VER_NBR) values (SEQ_TOOL_T.NEXTVAL, 'Email', 'email', 'Check your campus iMail or uMail account.', 'images/service-icons/srvc-email.png', 0)
+insert into TOOL_T (TOOL_ID, ALIAS, TITLE, URL, DESCRIPTION, ICON_URL, VER_NBR) values (SEQ_TOOL_T.NEXTVAL, 'email', 'Email', 'email', 'Check your campus iMail or uMail account.', 'images/service-icons/srvc-email.png', 0)
 /
 
 insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'PUBLIC'), (select TOOL_ID from TOOL_T where TITLE = 'My Classes'), 1, 0)

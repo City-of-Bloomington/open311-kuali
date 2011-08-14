@@ -25,16 +25,19 @@
 	    <form:hidden path="versionNumber"/>
 		<fieldset>
 			<label for="title">Title:</label>
-			<form:input path="title" /><br/>
+			<form:input path="title" size="80" /><br/>
 			<form:errors path="title" />
+			<label for="alias">Alias:</label>
+			<form:input path="alias" size="80" /><br/>
+			<form:errors path="alias" />
 			<label for="url">Url:</label>
-			<form:input path="url" /><br/>
+			<form:input path="url" size="80" /><br/>
 			<form:errors path="url" />
 			<label for="description">Description:</label>
-			<form:input path="description" /><br/>
+			<form:input path="description" size="80" /><br/>
 			<form:errors path="description" />
 			<label for="iconUrl">Icon Url:</label>
-		   	<form:input path="iconUrl" /><br/>
+		   	<form:input path="iconUrl"  size="80" /><br/>
 			<form:errors path="iconUrl" />
 			<a href="${pageContext.request.contextPath}/publishing/tool">Cancel</a>
 			<input type="submit" value="Save" />
