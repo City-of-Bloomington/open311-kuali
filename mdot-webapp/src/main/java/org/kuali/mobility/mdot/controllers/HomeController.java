@@ -16,8 +16,10 @@
 package org.kuali.mobility.mdot.controllers;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -57,7 +59,7 @@ public class HomeController {
 
     @RequestMapping(value = "home", method = RequestMethod.GET)
     public String home(HttpServletRequest request, Model uiModel) {      
-        uiModel.addAttribute("home", buildHomeScreen(request));    	
+        uiModel.addAttribute("tools", buildHomeScreen(request));    
     	return "index";
     }
 
@@ -86,7 +88,7 @@ public class HomeController {
     }
     */
 
-    private HomeScreen buildHomeScreen(HttpServletRequest request) {
+    private List<HomeTool> buildHomeScreen(HttpServletRequest request) {
     	
     	User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
     	Backdoor backdoor = (Backdoor) request.getSession().getAttribute(Constants.KME_BACKDOOR_USER_KEY);
@@ -99,6 +101,8 @@ public class HomeController {
     	
     	home = adminService.getCachedHomeScreenByName(homeScreenName);
     	
+    	List<HomeTool> copy = new ArrayList<HomeTool>(home.getHomeTools());
+    	
     	Tool tool = new Tool();
     	if (backdoor != null) {
     		tool.setBadgeCount(backdoor.getUserId());
@@ -109,9 +113,9 @@ public class HomeController {
     	tool.setIconUrl("images/service-icons/srvc-backdoor.png");
     	tool.setTitle("Backdoor");
     	tool.setUrl("backdoor");
-    	home.getHomeTools().add(new HomeTool(home, tool, home.getHomeTools().size() + 1000));
+    	copy.add(new HomeTool(home, tool, home.getHomeTools().size() + 1000));
 
-    	for (HomeTool homeTool : home.getHomeTools()) {
+    	for (HomeTool homeTool : copy) {
 			if ("Campus Alerts".equals(homeTool.getTool().getTitle())) {
 		    	Map<String, String> criteria = new HashMap<String, String>();
 		    	String campus = user.getViewCampus();
@@ -135,9 +139,9 @@ public class HomeController {
 			}
 		}
  	
-    	Collections.sort(home.getHomeTools());
+    	Collections.sort(copy);
     	
-    	return home;
+    	return copy;
     }
     
 }

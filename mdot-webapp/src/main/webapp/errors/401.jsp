@@ -14,21 +14,9 @@
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility" %>
 
-<kme:page title="IU Mobile" id="home" backButton="false" homeButton="false" preferencesButton="true" preferencesButtonURL="campus?toolName=home" loginButton="true" loginButtonURL="home?login=yes">
+<kme:page title="Access Denied" id="error-401" backButton="true" homeButton="true">
 	<kme:content>
-	    <kme:listView id="homeserviceslist" filter="false">
-	        <c:forEach items="${tools}" var="homeTool" varStatus="status">	            
-	            <kme:listItem hideDataIcon="true">
-	            	<a href="${homeTool.tool.url}" style="background-image: url('${homeTool.tool.iconUrl}');">
-			      		<h3>${homeTool.tool.title}</h3>
-			      		<p class="wrap">${homeTool.tool.description}</p>
-			      		<c:if test="${not empty homeTool.tool.badgeCount}"> 
-			      			<span class="countBadge ui-btn-up-c ui-btn-corner-all">${homeTool.tool.badgeCount}</span>
-			      		</c:if>
-			      	</a>
-	            </kme:listItem>
-			</c:forEach>
-	    </kme:listView>
+		Access Denied.
 	</kme:content>
 </kme:page>
 
