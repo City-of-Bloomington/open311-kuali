@@ -207,7 +207,7 @@ insert into TOOL_T (TOOL_ID, ALIAS, TITLE, URL, DESCRIPTION, ICON_URL, VER_NBR) 
 /
 insert into TOOL_T (TOOL_ID, ALIAS, TITLE, URL, DESCRIPTION, ICON_URL, VER_NBR) values (SEQ_TOOL_T.NEXTVAL, 'classifieds', 'Classifieds', 'https://onestart.iu.edu/ccf2-prd/ClassifiedsMb.do', 'Find furniture, books, an apartment, a job, and more.', 'images/service-icons/srvc-classifieds.png', 0)
 /
-insert into TOOL_T (TOOL_ID, ALIAS, TITLE, URL, DESCRIPTION, ICON_URL, VER_NBR) values (SEQ_TOOL_T.NEXTVAL, 'buses', 'Bus Schedules', 'http://iub.doublemap.com/map/mobile', 'Never miss an IU Bloomington campus bus again.', 'images/service-icons/srvc-bus.png', 0)
+insert into TOOL_T (TOOL_ID, ALIAS, TITLE, URL, DESCRIPTION, ICON_URL, VER_NBR) values (SEQ_TOOL_T.NEXTVAL, 'buses', 'Bus Schedules', 'bus', 'Never miss an IU Bloomington campus bus again.', 'images/service-icons/srvc-bus.png', 0)
 /
 insert into TOOL_T (TOOL_ID, ALIAS, TITLE, URL, DESCRIPTION, ICON_URL, VER_NBR) values (SEQ_TOOL_T.NEXTVAL, 'maps', 'Maps', 'maps', 'Get from here to there. Search for buildings by name.', 'images/service-icons/srvc-maps.png', 0)
 /

@@ -19,7 +19,8 @@ public class PageTag extends SimpleTagSupport {
     private String backButtonURL;
     private boolean preferencesButton;
     private String preferencesButtonURL;
-    private String cssFilename;
+    private boolean usesGoogleMaps;
+	private String cssFilename;
     private String jsFilename;
     private boolean loginButton;
     private String loginButtonURL;
@@ -51,6 +52,10 @@ public class PageTag extends SimpleTagSupport {
 
 	public void setPreferencesButtonURL(String preferencesButtonURL) {
 		this.preferencesButtonURL = preferencesButtonURL;
+	}
+	
+	public void setUsesGoogleMaps(boolean usesGoogleMaps) {
+		this.usesGoogleMaps = usesGoogleMaps;
 	}
 
 	public void setCssFilename(String cssFilename) {
@@ -95,7 +100,9 @@ public class PageTag extends SimpleTagSupport {
             out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/jquery.tmpl.js\"></script>");
             out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/jquery.validate.js\"></script>");
             out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/jquery.validate.ready.js\"></script>");
-            out.println("<script type=\"text/javascript\" src=\"http://maps.google.com/maps/api/js?sensor=true\"></script>");
+            if (usesGoogleMaps) {
+            	out.println("<script type=\"text/javascript\" src=\"http://maps.google.com/maps/api/js?sensor=true\"></script>");
+            }
             if (jsFilename != null && !jsFilename.trim().equals("")) {
                 out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/" + jsFilename + ".js\"></script>");
             }

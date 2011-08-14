@@ -14,7 +14,6 @@
  */
 
 package org.kuali.mobility.bus.controllers;
-
 import org.kuali.mobility.bus.service.BusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,9 +32,8 @@ public class BusController {
     }
     
     @RequestMapping(method = RequestMethod.GET)
-    public String getList(Model uiModel) {
-
-    	return "bus/list";
+    public String index(Model uiModel) {
+    	return "bus/index";
     }
     
 }

@@ -16,6 +16,6 @@
 
 <kme:page title="Bus Schedules" id="bus" backButton="true" homeButton="true" cssFilename="bus">
 	<kme:content>
-	Bus Schedules
+			<iframe src="http://iub.doublemap.com/map/mobile" height="500" width="100%" frameborder="0"/> 
 	</kme:content>
 </kme:page>

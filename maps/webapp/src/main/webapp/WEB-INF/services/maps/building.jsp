@@ -14,14 +14,14 @@
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility" %>
 
-<kme:page title="Maps" id="mapsbuilding" backButton="true" homeButton="true" cssFilename="location" jsFilename="maps">
+<kme:page title="Maps" id="mapsbuilding" backButton="true" homeButton="true" cssFilename="location" jsFilename="maps" usesGoogleMaps="true">
+<script type=\"text/javascript\" src=\"http://maps.google.com/maps/api/js?sensor=true\"></script>
 	<kme:content>
 	
 <div id="map_canvas" style="height:300px;"></div>
-	
+
+	<h3>${location.name}</h3>
 	<p class="locationDetails">
-	${location.name}
-	<br/><br/>
 	${location.street}
 	<c:if test="${not empty location.street}"><br/></c:if>
 	${location.city}
