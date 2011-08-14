@@ -115,6 +115,7 @@ public class HomeController {
     	tool.setUrl("backdoor");
     	copy.add(new HomeTool(home, tool, home.getHomeTools().size() + 1000));
 
+    	// TODO: MOBILITY-53
     	for (HomeTool homeTool : copy) {
 			if ("Campus Alerts".equals(homeTool.getTool().getTitle())) {
 		    	Map<String, String> criteria = new HashMap<String, String>();
