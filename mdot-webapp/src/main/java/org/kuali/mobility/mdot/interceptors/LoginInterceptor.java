@@ -1,6 +1,8 @@
 package org.kuali.mobility.mdot.interceptors;
 
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.kuali.mobility.shared.Constants;
 import org.kuali.mobility.user.entity.User;
 import org.kuali.mobility.user.entity.UserImpl;
+import org.kuali.mobility.user.entity.UserPreference;
+import org.kuali.mobility.user.service.UserService;
 import org.kuali.mobility.util.HttpUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -24,6 +28,15 @@ public class LoginInterceptor implements HandlerInterceptor {
 	
 	@Autowired
 	private AdsService adsService;
+	public void setAdsService(AdsService adsService) {
+		this.adsService = adsService;
+	}
+	
+	@Autowired
+	private UserService userService;
+	public void setUserService(UserService userService) {
+		this.userService = userService;
+	}
 
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 		if (HttpUtil.needsAuthenticated(request.getServletPath()) || "yes".equals(request.getParameter("login"))) {
@@ -58,12 +71,28 @@ public class LoginInterceptor implements HandlerInterceptor {
 	private User login(HttpServletRequest request) {
 		User user = (User) request.getSession(true).getAttribute(Constants.KME_USER_KEY);
 		if (user == null || user.isPublicUser()) {
-			user = new UserImpl(false);
-			user.setUserId(CASFilter.getRemoteUser(request));
+			Timestamp now = new Timestamp(new Date().getTime());
 			
-			// TODO: Get person attributes and set on User Object. Save to database.
+			user = userService.findUserByPrincipalName(CASFilter.getRemoteUser(request));
+			if (user == null) {
+				user = new UserImpl(false);
+				user.setFirstLogin(now);
+			}
+			user.setPrincipalName(CASFilter.getRemoteUser(request));
+			user.setLastLogin(now);
+			userService.saveUser(user);
+			
+			List<UserPreference> prefs = userService.findAllUserPreferencesByPrincipalId(user.getPrincipalId());
+			for (UserPreference pref : prefs) {
+				try {
+					user.setUserAttribute(pref.getPreferenceName(), pref.getPreferenceValues().get(0).getValue());
+				} catch (Exception e) {
+					LOG.error(e.getMessage(), e);
+				}
+			}
+			
 			try {
-				AdsPerson adsPerson = adsService.getAdsPerson(user.getUserId());
+				AdsPerson adsPerson = adsService.getAdsPerson(user.getPrincipalName());
 				List<String> affiliations = adsPerson.getIuEduPersonAffiliation();
 				if (affiliations != null) {
 					user.setAffiliations(affiliations);
@@ -80,7 +109,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 			}
 			
 			request.getSession().setAttribute(Constants.KME_USER_KEY, user);
-			LOG.info("User id: " + user.getUserId() + " logging in.");
+			LOG.info("User id: " + user.getPrincipalName() + " logging in.");
 		}
 		return user;
 	}
@@ -89,12 +118,6 @@ public class LoginInterceptor implements HandlerInterceptor {
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView e) throws Exception {}
 
 	@Override
-	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception e) throws Exception {
-	}
-
-	public void setAdsService(AdsService adsService) {
-		this.adsService = adsService;
-	}
-
+	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception e) throws Exception {}
 
 }

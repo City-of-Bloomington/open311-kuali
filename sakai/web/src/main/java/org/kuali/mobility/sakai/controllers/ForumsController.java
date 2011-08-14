@@ -56,7 +56,7 @@ public class ForumsController {
 		try {
 			User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
 
-			List<Forum> forums = sakaiForumService.findForums(siteId, user.getUserId());
+			List<Forum> forums = sakaiForumService.findForums(siteId, user.getPrincipalName());
 			uiModel.addAttribute("forums", forums);
 			uiModel.addAttribute("siteId", siteId);
 		} catch (Exception e) {
@@ -71,7 +71,7 @@ public class ForumsController {
 		try {
 			User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
 
-			Forum forum = sakaiForumService.findForum(forumId, user.getUserId());
+			Forum forum = sakaiForumService.findForum(forumId, user.getPrincipalName());
 			uiModel.addAttribute("forum", forum);
 			uiModel.addAttribute("siteId", siteId);
 		} catch (Exception e) {
@@ -85,7 +85,7 @@ public class ForumsController {
 	public String getForumTopic(HttpServletRequest request, @PathVariable("siteId") String siteId, @PathVariable("topicId") String topicId, @RequestParam("title") String topicTitle, @PathVariable("forumId") String forumId, Model uiModel) {
 		try {
 			User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
-			ForumTopic topic = sakaiForumService.findTopic(forumId, topicId, user.getUserId(), topicTitle);
+			ForumTopic topic = sakaiForumService.findTopic(forumId, topicId, user.getPrincipalName(), topicTitle);
 			topic.setForumId(forumId);
 			uiModel.addAttribute("topic", topic);
 		} catch (Exception e) {
@@ -99,7 +99,7 @@ public class ForumsController {
 	public String getForumTopicThread(HttpServletRequest request, @PathVariable("siteId") String siteId, @PathVariable("topicId") String topicId, @RequestParam("topicTitle") String topicTitle, @PathVariable("forumId") String forumId, @PathVariable("threadId") String threadId, Model uiModel) {
 		try {
 			User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
-			ForumThread thread = sakaiForumService.findThread(topicId, threadId, user.getUserId());
+			ForumThread thread = sakaiForumService.findThread(topicId, threadId, user.getPrincipalName());
 			thread.setForumId(forumId);
 			thread.setTopicTitle(topicTitle);
 			uiModel.addAttribute("thread", thread);
@@ -113,13 +113,13 @@ public class ForumsController {
 	@RequestMapping(value = "/{forumId}/{topicId}/{threadId}/{messageId}/markread/ajax", method = RequestMethod.GET)
 	public ResponseEntity<String> markMessageRead(HttpServletRequest request, @PathVariable("siteId") String siteId, @PathVariable("messageId") String messageId, Model uiModel) {
 		User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
-		return sakaiForumService.markMessageRead(siteId, messageId, user.getUserId());
+		return sakaiForumService.markMessageRead(siteId, messageId, user.getPrincipalName());
 	}
 	
 	@RequestMapping(value = "/{forumId}/{topicId}/{threadId}/{messageId}/markread", method = RequestMethod.GET)
 	public String markMessageRead(HttpServletRequest request, @PathVariable("siteId") String siteId, @PathVariable("topicId") String topicId, @RequestParam("topicTitle") String topicTitle, @PathVariable("forumId") String forumId, @PathVariable("threadId") String threadId, @PathVariable("messageId") String messageId, Model uiModel) {
 		User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
-		sakaiForumService.markMessageRead(siteId, messageId, user.getUserId());
+		sakaiForumService.markMessageRead(siteId, messageId, user.getPrincipalName());
 		return getForumTopicThread(request, siteId, topicId, topicTitle, forumId, threadId, uiModel);
 	}
 	
@@ -127,7 +127,7 @@ public class ForumsController {
 	public String reply(HttpServletRequest request, @PathVariable("siteId") String siteId, @PathVariable("forumId") String forumId, @PathVariable("topicId") String topicId, @RequestParam("topicTitle") String topicTitle, @PathVariable("threadId") String threadId, @PathVariable("messageId") String messageId, Model uiModel) {
 		try {
 			User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
-			Message message = sakaiForumService.findMessage(messageId, topicId, user.getUserId());
+			Message message = sakaiForumService.findMessage(messageId, topicId, user.getPrincipalName());
 			message.setTopicId(topicId);
 			message.setThreadId(threadId);
 			message.setTopicTitle(topicTitle);
@@ -147,7 +147,7 @@ public class ForumsController {
 	@RequestMapping(value = "/reply", method = RequestMethod.POST)
 	public String reply(HttpServletRequest request, @PathVariable("siteId") String siteId, @ModelAttribute("message") Message message, BindingResult result, Model uiModel) {
 		User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
-		ResponseEntity<String> response = sakaiForumService.postMessage(message, user.getUserId());
+		ResponseEntity<String> response = sakaiForumService.postMessage(message, user.getPrincipalName());
 		
 		if (response.getStatusCode().value() < 200 || response.getStatusCode().value() >= 300) {
 			Errors errors = ((Errors) result);

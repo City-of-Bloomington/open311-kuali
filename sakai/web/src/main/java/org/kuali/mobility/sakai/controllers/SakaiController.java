@@ -106,16 +106,16 @@ public class SakaiController {
 	public String getSite(HttpServletRequest request, @PathVariable("siteId") String siteId, Model uiModel) {
 		try {
 			User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
-			Site site = sakaiSiteService.findSite(siteId, user.getUserId());
+			Site site = sakaiSiteService.findSite(siteId, user.getPrincipalName());
 			uiModel.addAttribute("site", site);
 			
-			List<Forum> forums = sakaiForumService.findForums(siteId, user.getUserId());
+			List<Forum> forums = sakaiForumService.findForums(siteId, user.getPrincipalName());
 			int forumCount = 0;
 			for (Forum forum : forums) {
 				forumCount += forum.getUnreadCount();
 			}
 			
-			List<ForumTopic> topics = sakaiPrivateTopicService.findPrivateTopics(siteId, user.getUserId());
+			List<ForumTopic> topics = sakaiPrivateTopicService.findPrivateTopics(siteId, user.getPrincipalName());
 			int messageCount = 0;
 			for (ForumTopic topic : topics) {
 				messageCount += topic.getUnreadCount();
@@ -135,7 +135,7 @@ public class SakaiController {
 	public String getAnnouncements(HttpServletRequest request, @PathVariable("siteId") String siteId, Model uiModel) {
 		try {
 			User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
-			List<Announcement> announcements = sakaiSiteService.findAllAnnouncements(siteId, user.getUserId());
+			List<Announcement> announcements = sakaiSiteService.findAllAnnouncements(siteId, user.getPrincipalName());
 			uiModel.addAttribute("announcements", announcements);
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
@@ -150,7 +150,7 @@ public class SakaiController {
 		try {
 			User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
 			String url = configParamService.findValueByName("Sakai.Url.Base") + "announcement/message/" + siteId + "/" + annId + ".json";
-			ResponseEntity<InputStream> is = oncourseOAuthService.oAuthGetRequest(user.getUserId(), url, "text/html");
+			ResponseEntity<InputStream> is = oncourseOAuthService.oAuthGetRequest(user.getPrincipalName(), url, "text/html");
 			String json = IOUtils.toString(is.getBody(), "UTF-8");
 
 			announcement = sakaiSiteService.findAnnouncementDetails(json);
@@ -182,7 +182,7 @@ public class SakaiController {
 	public String getAnnouncementAttachment(HttpServletRequest request, HttpServletResponse response, @PathVariable("siteId") String siteId, @RequestParam(value="attachmentId") String attachmentId, @RequestParam(value="type") String type, Model uiModel) {
 		User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
 		
-		byte [] fileData = sakaiSiteService.findAnnouncementAttachment(siteId, attachmentId, user.getUserId());
+		byte [] fileData = sakaiSiteService.findAnnouncementAttachment(siteId, attachmentId, user.getPrincipalName());
 		
 		try {
 			if (type.equals(Constants.URL_MIME_TYPE)) {
@@ -206,7 +206,7 @@ public class SakaiController {
 		try {
 			User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
 
-			List<Assignment> assignments = sakaiSiteService.findAllAssignments(siteId, user.getUserId());
+			List<Assignment> assignments = sakaiSiteService.findAllAssignments(siteId, user.getPrincipalName());
 			uiModel.addAttribute("sakaiassignments", assignments);
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
@@ -219,8 +219,8 @@ public class SakaiController {
 	public String getAssignment(HttpServletRequest request, @PathVariable("siteId") String siteId, @PathVariable("assId") String assId, Model uiModel) {
 		try {
 			User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
-			String url = configParamService.findValueByName("Sakai.Url.Base") + "assignment/submissions/" + user.getUserId() + "/" + assId + ".json";
-			ResponseEntity<InputStream> is = oncourseOAuthService.oAuthGetRequest(user.getUserId(), url, "text/html");
+			String url = configParamService.findValueByName("Sakai.Url.Base") + "assignment/submissions/" + user.getPrincipalName() + "/" + assId + ".json";
+			ResponseEntity<InputStream> is = oncourseOAuthService.oAuthGetRequest(user.getPrincipalName(), url, "text/html");
 			String json = IOUtils.toString(is.getBody(), "UTF-8");
 
 			List<Assignment> assignments = sakaiSiteService.findAssignmentDetails(json);
@@ -236,14 +236,14 @@ public class SakaiController {
 	public String getGrades(HttpServletRequest request, @PathVariable("siteId") String siteId, Model uiModel) {
 		try {
 			User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
-			String url = configParamService.findValueByName("Sakai.Url.Base") + "assignment/grades/" + siteId + "/" + user.getUserId() + ".json";
-			ResponseEntity<InputStream> is = oncourseOAuthService.oAuthGetRequest(user.getUserId(), url, "text/html");
+			String url = configParamService.findValueByName("Sakai.Url.Base") + "assignment/grades/" + siteId + "/" + user.getPrincipalName() + ".json";
+			ResponseEntity<InputStream> is = oncourseOAuthService.oAuthGetRequest(user.getPrincipalName(), url, "text/html");
 			String json = IOUtils.toString(is.getBody(), "UTF-8");
 
 			List<Assignment> assignments = sakaiSiteService.findAssignmentDetails(json);
 			
-			url = configParamService.findValueByName("Sakai.Url.Base") + "gradebook/courseGrade/" + siteId + "/" + user.getUserId() + ".json";
-			ResponseEntity<InputStream> is1 = oncourseOAuthService.oAuthGetRequest(user.getUserId(), url, "text/html");
+			url = configParamService.findValueByName("Sakai.Url.Base") + "gradebook/courseGrade/" + siteId + "/" + user.getPrincipalName() + ".json";
+			ResponseEntity<InputStream> is1 = oncourseOAuthService.oAuthGetRequest(user.getPrincipalName(), url, "text/html");
 			String gradeJson = IOUtils.toString(is1.getBody(), "UTF-8");
 			String courseGrade = sakaiSiteService.findCourseGrade(gradeJson);
 			
@@ -261,7 +261,7 @@ public class SakaiController {
 	public String getRoster(HttpServletRequest request, @PathVariable("siteId") String siteId, Model uiModel) {
 		try {
 			User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
-			List<Roster> roster = sakaiSiteService.findRoster(siteId, user.getUserId());
+			List<Roster> roster = sakaiSiteService.findRoster(siteId, user.getPrincipalName());
 			uiModel.addAttribute("roster", roster);
 			uiModel.addAttribute("siteId", siteId);
 		} catch (Exception e) {
@@ -275,7 +275,7 @@ public class SakaiController {
 		try {
 			User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
 			String url = configParamService.findValueByName("Sakai.Url.Base") + "participant.json?siteId=" + siteId;
-			ResponseEntity<InputStream> is = oncourseOAuthService.oAuthGetRequest(user.getUserId(), url, "text/html");
+			ResponseEntity<InputStream> is = oncourseOAuthService.oAuthGetRequest(user.getPrincipalName(), url, "text/html");
 			String json = IOUtils.toString(is.getBody(), "UTF-8");
 
 			Roster roster = sakaiSiteService.findParticipantDetails(json, displayId);
@@ -293,17 +293,17 @@ public class SakaiController {
 	        //resId = URLEncoder.encode(resId, "UTF-8");
 			User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
 			if (resId == null || resId.isEmpty()) {
-				List<Resource> resources = sakaiSiteService.findSiteResources(siteId, user.getUserId(), null);
+				List<Resource> resources = sakaiSiteService.findSiteResources(siteId, user.getPrincipalName(), null);
 				uiModel.addAttribute("resources", resources);
 			} else {
 				char lastChar = resId.charAt(resId.length()-1);
     			if(lastChar == '/'){
     				//Go into a sub-folder
-    				List<Resource> resources = sakaiSiteService.findSiteResources(siteId, user.getUserId(), resId);
+    				List<Resource> resources = sakaiSiteService.findSiteResources(siteId, user.getPrincipalName(), resId);
     				uiModel.addAttribute("resources", resources);
     			} else {
     				//download the file
-					byte [] fileData = sakaiSiteService.getResource(resId, user.getUserId());
+					byte [] fileData = sakaiSiteService.getResource(resId, user.getPrincipalName());
 					if (fileData!= null) {
 						String mimeType = type;
 						

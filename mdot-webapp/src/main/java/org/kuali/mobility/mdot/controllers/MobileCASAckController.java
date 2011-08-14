@@ -19,6 +19,10 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.kuali.mobility.shared.Constants;
 import org.kuali.mobility.user.entity.User;
+import org.kuali.mobility.user.entity.UserPreference;
+import org.kuali.mobility.user.entity.UserPreferenceValue;
+import org.kuali.mobility.user.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -30,6 +34,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/mobileCasAck")
 public class MobileCASAckController {
         
+	@Autowired
+	private UserService userService;
+	public void setUserService(UserService userService) {
+		this.userService = userService;
+	}
+	
     @RequestMapping(method = RequestMethod.GET)
     public String backdoor(HttpServletRequest request, Model uiModel) {
     	return "mobileCasAck";
@@ -41,6 +51,14 @@ public class MobileCASAckController {
     	String service = user.getUserAttribute("service");
     	user.removeUserAttribute("service");
     	user.setUserAttribute("acked", "true");
+    	UserPreference pref = new UserPreference();
+    	UserPreferenceValue value = new UserPreferenceValue();
+    	pref.setPrincipalId(user.getPrincipalId());
+    	pref.setPreferenceName("acked");
+    	value.setPreference(pref);
+    	value.setValue("true");
+    	pref.addPreferenceValue(value);
+    	userService.saveUserPreference(pref);
     	return "redirect:" + service; 
     }
 

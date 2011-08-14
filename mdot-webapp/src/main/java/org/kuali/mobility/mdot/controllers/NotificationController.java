@@ -75,7 +75,7 @@ public class NotificationController {
 						UserNotification userNotification = new UserNotification();
 						userNotification.setDeviceId(deviceId);
 						userNotification.setNotifyDate(new Timestamp(new Date().getTime()));
-						userNotification.setPersonId(user.getGuid());
+						userNotification.setPersonId(user.getPrincipalId());
 						userNotification.setNotificationId(notification.getNotificationId());
 						//notificationService.saveUserNotification(userNotification);
 					}

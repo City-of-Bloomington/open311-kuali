@@ -84,7 +84,7 @@ public class CalendarController {
 		}
 		try {
 			Filter filter = (Filter) request.getSession().getAttribute("calendar.event.filterId");
-			MonthViewEvents monthEvents = calendarEventOAuthService.retrieveMonthEvents(user.getUserId(), selectedDate.getTime(), filter != null ? filter.getFilterId() : null);
+			MonthViewEvents monthEvents = calendarEventOAuthService.retrieveMonthEvents(user.getPrincipalName(), selectedDate.getTime(), filter != null ? filter.getFilterId() : null);
 			uiModel.addAttribute("viewData", monthEvents.getViewData());
 			uiModel.addAttribute("appData", monthEvents.getAppData());
 
@@ -160,7 +160,7 @@ public class CalendarController {
 			Calendar endDate = (Calendar) selectedDate.clone();
 			Calendar previousDate = (Calendar) selectedDate.clone();
 			Filter filter = (Filter) request.getSession().getAttribute("calendar.event.filterId");
-			ListViewEvents listViewEvents = calendarEventOAuthService.retrieveViewEventsList(user.getUserId(), selectedDate.getTime(), filter != null ? filter.getFilterId() : null);
+			ListViewEvents listViewEvents = calendarEventOAuthService.retrieveViewEventsList(user.getPrincipalName(), selectedDate.getTime(), filter != null ? filter.getFilterId() : null);
 
 			Calendar currentEndDate = (Calendar) selectedDate.clone();
 			currentEndDate.add(Calendar.DATE, listViewEvents.getAppData().getListViewFutureDaysLimit());
@@ -209,7 +209,7 @@ public class CalendarController {
 		}
 		try {
 			Filter filter = (Filter) request.getSession().getAttribute("calendar.event.filterId");
-			ListViewEvents listViewEvents = calendarEventOAuthService.retrieveViewEventsList(user.getUserId(), selectedDate.getTime(), beginCalendar.getTime(), endCalendar.getTime(), filter != null ? filter.getFilterId() : null);
+			ListViewEvents listViewEvents = calendarEventOAuthService.retrieveViewEventsList(user.getPrincipalName(), selectedDate.getTime(), beginCalendar.getTime(), endCalendar.getTime(), filter != null ? filter.getFilterId() : null);
 
 			Calendar currentEndDate = (Calendar) endCalendar.clone();
 			Calendar previousDate = (Calendar) beginCalendar.clone();
@@ -239,7 +239,7 @@ public class CalendarController {
 	public String filters(HttpServletRequest request, Model uiModel) {
 		User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
 		try {
-			Filters filters = calendarEventOAuthService.retrieveFilters(user.getUserId());
+			Filters filters = calendarEventOAuthService.retrieveFilters(user.getPrincipalName());
 			uiModel.addAttribute("filters", filters.getFilters());
 
 			Filter filter = (Filter) request.getSession().getAttribute("calendar.event.filterId");
@@ -260,7 +260,7 @@ public class CalendarController {
 		User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
 		try {
 			if (filter.getFilterId() != null && !"".equals(filter.getFilterId().trim())) {
-				Filter filterFound = calendarEventOAuthService.retrieveFilter(user.getUserId(), filter.getFilterId());
+				Filter filterFound = calendarEventOAuthService.retrieveFilter(user.getPrincipalName(), filter.getFilterId());
 				request.getSession().setAttribute("calendar.event.filterId", filterFound);
 			}
 		} catch (PageLevelException pageLevelException) {
@@ -293,7 +293,7 @@ public class CalendarController {
 
 		}
 		try {
-			ViewDetailedEvent event = calendarEventOAuthService.retrieveViewEventDetails(user.getUserId(), eventId, selectedDate);
+			ViewDetailedEvent event = calendarEventOAuthService.retrieveViewEventDetails(user.getPrincipalName(), eventId, selectedDate);
 			// uiModel.addAttribute("selectedDate",
 			// sdf.format(selectedDate.getTime()));
 			if (occurrenceId != null) {
@@ -320,7 +320,7 @@ public class CalendarController {
 
 		}
 		try {
-			EditEvent event = calendarEventOAuthService.retrieveNewEvent(user.getUserId(), selectedDate);
+			EditEvent event = calendarEventOAuthService.retrieveNewEvent(user.getPrincipalName(), selectedDate);
 			uiModel.addAttribute("event", event);
 		} catch (PageLevelException pageLevelException) {
 			uiModel.addAttribute("message", pageLevelException.getMessage());
@@ -342,7 +342,7 @@ public class CalendarController {
 
 		}
 		try {
-			EditEvent event = calendarEventOAuthService.retrieveEditEvent(user.getUserId(), eventId, seriesId, selectedDate);
+			EditEvent event = calendarEventOAuthService.retrieveEditEvent(user.getPrincipalName(), eventId, seriesId, selectedDate);
 			uiModel.addAttribute("event", event);
 			if (seriesId == null) {
 				uiModel.addAttribute("seriesId", event.getSeriesId());
@@ -361,7 +361,7 @@ public class CalendarController {
 		User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
 		EditEvent eventReturned = null;
 		try {
-			eventReturned = calendarEventOAuthService.saveEvent(user.getUserId(), event, event.getEventId());
+			eventReturned = calendarEventOAuthService.saveEvent(user.getPrincipalName(), event, event.getEventId());
 			if (eventReturned.getResponseCode() == HttpStatus.UNPROCESSABLE_ENTITY.value()) {
 				Errors errors = ((Errors) result);
 				for (Iterator iterator = eventReturned.getErrors().entrySet().iterator(); iterator.hasNext();) {
@@ -393,7 +393,7 @@ public class CalendarController {
 
 		}
 		try {
-			calendarEventOAuthService.deleteEvent(user.getUserId(), eventId, seriesId, selectedDate);
+			calendarEventOAuthService.deleteEvent(user.getPrincipalName(), eventId, seriesId, selectedDate);
 		} catch (PageLevelException pageLevelException) {
 			uiModel.addAttribute("message", pageLevelException.getMessage());
 			return "calendar/message";
@@ -414,7 +414,7 @@ public class CalendarController {
 
 		}
 		try {
-			MeetingInvite invite = calendarEventOAuthService.retrieveMeeting(user.getUserId(), eventId, seriesId, selectedDate);
+			MeetingInvite invite = calendarEventOAuthService.retrieveMeeting(user.getPrincipalName(), eventId, seriesId, selectedDate);
 			uiModel.addAttribute("invite", invite);
 			if (occurrenceId != null) {
 				uiModel.addAttribute("occurrenceId", occurrenceId);
@@ -442,14 +442,14 @@ public class CalendarController {
 		try {
 			if (type != null) {
 				if (type.equals("R")) {
-					calendarEventOAuthService.removeMeeting(user.getUserId(), eventId);
+					calendarEventOAuthService.removeMeeting(user.getPrincipalName(), eventId);
 				} else if (type.equals("K")) {
-					calendarEventOAuthService.keepMeeting(user.getUserId(), eventId);
+					calendarEventOAuthService.keepMeeting(user.getPrincipalName(), eventId);
 				} else {
 					MeetingStatusChange meetingStatusChange = new MeetingStatusChange();
 					meetingStatusChange.setEventId(eventId);
 					meetingStatusChange.setStatus(type);
-					calendarEventOAuthService.updateMeetingStatus(user.getUserId(), meetingStatusChange);
+					calendarEventOAuthService.updateMeetingStatus(user.getPrincipalName(), meetingStatusChange);
 				}
 			}
 		} catch (PageLevelException pageLevelException) {
@@ -468,7 +468,7 @@ public class CalendarController {
 	public String pendingMeetings(HttpServletRequest request, Model uiModel) {
 		User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
 		try {
-			PendingMeetings pendingMeetings = calendarEventOAuthService.retrievePendingMeetings(user.getUserId());
+			PendingMeetings pendingMeetings = calendarEventOAuthService.retrievePendingMeetings(user.getPrincipalName());
 			uiModel.addAttribute("pendingMeetings", pendingMeetings.getPendingMeetings());
 		} catch (PageLevelException pageLevelException) {
 			uiModel.addAttribute("message", pageLevelException.getMessage());
@@ -488,7 +488,7 @@ public class CalendarController {
 	public String refresh(HttpServletRequest request, Model uiModel) {
 		User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
 		try {
-			calendarEventOAuthService.reloadPersonalCache(user.getUserId());
+			calendarEventOAuthService.reloadPersonalCache(user.getPrincipalName());
 		} catch (PageLevelException pageLevelException) {
 			uiModel.addAttribute("message", pageLevelException.getMessage());
 			return "calendar/message";

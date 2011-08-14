@@ -15,13 +15,21 @@
 
 package org.kuali.mobility.user.service;
 
+import java.util.List;
+
 import org.kuali.mobility.user.entity.User;
+import org.kuali.mobility.user.entity.UserPreference;
 
 public interface UserService {
     
-    void saveUser(User person);
-    User findUserByGuid(Long guid);
-    User findUserByUserId(String userId);    
+    void saveUser(User user);
+    User findUserByPrincipalId(Long principalId);
+    User findUserByPrincipalName(String principalName);    
     User findUserByDeviceId(String deviceId);
     
+    void saveUserPreference(UserPreference userPreference);
+    void deleteUserPreferenceById(Long preferenceId);
+    List<UserPreference> findAllUserPreferencesByPrincipalId(Long principalId);
+    UserPreference findUserPreferenceByPreferenceId(Long preferenceId);
+
 }

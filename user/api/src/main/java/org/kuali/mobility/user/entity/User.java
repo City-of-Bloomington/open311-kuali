@@ -15,6 +15,7 @@
 
 package org.kuali.mobility.user.entity;
 
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
 
@@ -25,12 +26,13 @@ public interface User {
 
 	boolean isPublicUser();
 
-	String getCampus();
-	Long getGuid();
-	String getUserId();
+	Long getPrincipalId();
+	String getPrincipalName();
 	String getEmail();
+	void setFirstLogin(Timestamp firstLogin);
+	void setLastLogin(Timestamp firstLogin);
 
-	void setUserId(String userId);
+	void setPrincipalName(String userId);
 	void setEmail(String email);
 
     List<String> getGroups();
@@ -51,4 +53,5 @@ public interface User {
     boolean isFaculty();
     boolean isStaff();
     boolean isAlumnus();
+    
 }

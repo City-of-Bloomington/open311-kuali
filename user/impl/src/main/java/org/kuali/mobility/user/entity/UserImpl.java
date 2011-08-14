@@ -33,7 +33,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.persistence.Version;
 
-@Entity(name="User")
+@Entity(name = "User")
 @Table(name = "USR_T")
 public class UserImpl implements User, Serializable {
 
@@ -43,13 +43,10 @@ public class UserImpl implements User, Serializable {
 	@SequenceGenerator(name = "user_sequence", sequenceName = "SEQ_USR_T", initialValue = 1000, allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_sequence")
 	@Column(name = "PERSON_ID")
-	private Long guid;
-
-	@Column(name = "EMPL_ID")
-	private String emplId;
+	private Long principalId;
 
 	@Column(name = "USER_ID")
-	private String userId;
+	private String principalName;
 
 	@Column(name = "FIRST_LOGIN_DATE")
 	private Timestamp firstLogin;
@@ -57,50 +54,45 @@ public class UserImpl implements User, Serializable {
 	@Column(name = "LAST_LOGIN_DATE")
 	private Timestamp lastLogin;
 
-	@Column(name = "CAMPUS")
-	private String campus;
-
 	@Column(name = "DEVICE_ID")
 	private String deviceId;
-	
-	@Column(name = "MAIL")
-	private String email;
-
-	@Column(name = "CAS_PAIR_DATE")
-	private Timestamp pairDate;
 
 	@Version
 	@Column(name = "VER_NBR")
 	protected Long versionNumber;
-	
-	 @Transient
-	    private Map<String, String> userAttributes;
-	    
-	    @Transient
-	    private String primaryCampus;
-	    
-	    @Transient
-	    private List<String> groups;
-	    
-	    @Transient
-	    private List<String> affiliations;
-	    
 
+	@Transient
+	private Map<String, String> userAttributes;
+
+	@Transient
+	private String primaryCampus;
+	
+	@Transient
+	private String email;
+
+	@Transient
+	private List<String> groups;
+
+	@Transient
+	private List<String> affiliations;
+
+	@Transient
 	private String viewCampus;
 
+	@Transient
 	private boolean publicUser;
 
 	public UserImpl() {
-		this.publicUser = false;
-    	userAttributes = new HashMap<String, String>();
-    	groups = new ArrayList<String>();
-    	affiliations = new ArrayList<String>();
+		publicUser = false;
+		userAttributes = new HashMap<String, String>();
+		groups = new ArrayList<String>();
+		affiliations = new ArrayList<String>();
 	}
 
 	public UserImpl(boolean publicUser) {
-    	userAttributes = new HashMap<String, String>();
-    	groups = new ArrayList<String>();
-    	affiliations = new ArrayList<String>();
+		userAttributes = new HashMap<String, String>();
+		groups = new ArrayList<String>();
+		affiliations = new ArrayList<String>();
 		this.publicUser = publicUser;
 	}
 
@@ -111,7 +103,7 @@ public class UserImpl implements User, Serializable {
 	public void setPublicUser(boolean publicUser) {
 		this.publicUser = publicUser;
 	}
-    
+
 	public String getViewCampus() {
 		return viewCampus;
 	}
@@ -120,28 +112,20 @@ public class UserImpl implements User, Serializable {
 		this.viewCampus = viewCampus;
 	}
 
-	public Long getGuid() {
-		return guid;
+	public Long getPrincipalId() {
+		return principalId;
 	}
 
-	public void setGuid(Long guid) {
-		this.guid = guid;
+	public void setPrincipalId(Long principalId) {
+		this.principalId = principalId;
 	}
 
-	public String getEmplId() {
-		return emplId;
+	public String getPrincipalName() {
+		return principalName;
 	}
 
-	public void setEmplId(String emplId) {
-		this.emplId = emplId;
-	}
-
-	public String getUserId() {
-		return userId;
-	}
-
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setPrincipalName(String principalName) {
+		this.principalName = principalName;
 	}
 
 	public Timestamp getFirstLogin() {
@@ -160,14 +144,6 @@ public class UserImpl implements User, Serializable {
 		this.lastLogin = lastLogin;
 	}
 
-	public String getCampus() {
-		return campus;
-	}
-
-	public void setCampus(String campus) {
-		this.campus = campus;
-	}
-
 	public Long getVersionNumber() {
 		return versionNumber;
 	}
@@ -184,15 +160,8 @@ public class UserImpl implements User, Serializable {
 		this.deviceId = deviceId;
 	}
 
-	public Timestamp getPairDate() {
-		return pairDate;
-	}
-
-	public void setPairDate(Timestamp pairDate) {
-		this.pairDate = pairDate;
-	}
 	@Override
-	public Map<String, String> getUserAttributes() {		
+	public Map<String, String> getUserAttributes() {
 		return userAttributes;
 	}
 
@@ -202,7 +171,7 @@ public class UserImpl implements User, Serializable {
 	}
 
 	@Override
-	public String getUserAttribute(String key) {		
+	public String getUserAttribute(String key) {
 		return userAttributes.get(key);
 	}
 
@@ -210,9 +179,9 @@ public class UserImpl implements User, Serializable {
 	public void setUserAttribute(String key, String value) {
 		userAttributes.put(key, value);
 	}
-	
+
 	@Override
-    public void removeUserAttribute(String key) {
+	public void removeUserAttribute(String key) {
 		userAttributes.remove(key);
 	}
 
@@ -265,6 +234,7 @@ public class UserImpl implements User, Serializable {
 	public void setGroups(List<String> groups) {
 		this.groups = groups;
 	}
+
 	@Override
 	public void setAffiliations(List<String> affiliations) {
 		this.affiliations = affiliations;
@@ -278,4 +248,5 @@ public class UserImpl implements User, Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 }

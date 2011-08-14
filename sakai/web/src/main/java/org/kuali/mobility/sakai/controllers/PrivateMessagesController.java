@@ -49,7 +49,7 @@ public class PrivateMessagesController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String getMessages(HttpServletRequest request, @PathVariable("siteId") String siteId, Model uiModel) {
 		User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
-		List<ForumTopic> topics = sakaiPrivateTopicService.findPrivateTopics(siteId, user.getUserId());
+		List<ForumTopic> topics = sakaiPrivateTopicService.findPrivateTopics(siteId, user.getPrincipalName());
 		uiModel.addAttribute("privatetopics", topics);
 		uiModel.addAttribute("siteId", siteId);
 		return "sakai/forums/privatetopics";
@@ -59,7 +59,7 @@ public class PrivateMessagesController {
 	public String getFolder(HttpServletRequest request, @PathVariable("siteId") String siteId, @PathVariable("typeUuid") String typeUuid, @RequestParam("title") String title, Model uiModel) {
 		try {
 			User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
-			MessageFolder messages = sakaiPrivateTopicService.findPrivateMessages(siteId, typeUuid, user.getUserId());
+			MessageFolder messages = sakaiPrivateTopicService.findPrivateMessages(siteId, typeUuid, user.getPrincipalName());
 			messages.setTitle(Character.toUpperCase(title.charAt(0)) + title.substring(1));
 			uiModel.addAttribute("messageFolder", messages);
 		} catch (Exception e) {
@@ -72,7 +72,7 @@ public class PrivateMessagesController {
 	@RequestMapping(value = "/folder/{typeUuid}/{messageId}", method = RequestMethod.GET)
 	public String getMessage(HttpServletRequest request, @PathVariable("siteId") String siteId, @PathVariable("typeUuid") String typeUuid, @PathVariable("messageId") String messageId, Model uiModel) {
 		User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
-		Message message = sakaiPrivateTopicService.findPrivateMessageDetails(user.getUserId(), siteId, typeUuid, messageId);
+		Message message = sakaiPrivateTopicService.findPrivateMessageDetails(user.getPrincipalName(), siteId, typeUuid, messageId);
 		uiModel.addAttribute("message", message);
 		uiModel.addAttribute("siteId", siteId);
 		uiModel.addAttribute("typeUuid", typeUuid);
@@ -82,13 +82,13 @@ public class PrivateMessagesController {
 	@RequestMapping(value = "/folder/{typeUuid}/{messageId}/markread/ajax", method = RequestMethod.GET)
 	public ResponseEntity<String> markMessageRead(HttpServletRequest request, @PathVariable("siteId") String siteId, @PathVariable("messageId") String messageId, Model uiModel) {
 		User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
-		return sakaiPrivateTopicService.markMessageRead(siteId, messageId, user.getUserId());
+		return sakaiPrivateTopicService.markMessageRead(siteId, messageId, user.getPrincipalName());
 	}
 	
 	@RequestMapping(value = "/folder/{typeUuid}/{messageId}/markread", method = RequestMethod.GET)
 	public String markMessageRead(HttpServletRequest request, @PathVariable("siteId") String siteId, @PathVariable("typeUuid") String typeUuid, @PathVariable("messageId") String messageId, @RequestParam("title") String title, Model uiModel) {
 		User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
-		sakaiPrivateTopicService.markMessageRead(siteId, messageId, user.getUserId());
+		sakaiPrivateTopicService.markMessageRead(siteId, messageId, user.getPrincipalName());
 		return getFolder(request, siteId, typeUuid, title, uiModel);
 	}
 	
@@ -103,7 +103,7 @@ public class PrivateMessagesController {
 	public String postMesssage(HttpServletRequest request, Model uiModel, @ModelAttribute("message") Message message, BindingResult result, @PathVariable("siteId") String siteId) {
 		if (isValidMessage(message, result)) {
 			User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
-			ResponseEntity<String> response = sakaiPrivateTopicService.postMessage(message, siteId, user.getUserId());
+			ResponseEntity<String> response = sakaiPrivateTopicService.postMessage(message, siteId, user.getPrincipalName());
 			
 			if (response.getStatusCode().value() < 200 || response.getStatusCode().value() >= 300) {
 				Errors errors = ((Errors) result);

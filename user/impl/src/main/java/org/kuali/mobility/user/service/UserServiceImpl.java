@@ -15,8 +15,11 @@
 
 package org.kuali.mobility.user.service;
 
+import java.util.List;
+
 import org.kuali.mobility.user.dao.UserDao;
 import org.kuali.mobility.user.entity.User;
+import org.kuali.mobility.user.entity.UserPreference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,18 +39,38 @@ public class UserServiceImpl implements UserService {
     }
     
     @Transactional
-    public User findUserByUserId(String userId) {
-        return userDao.findUserByUserId(userId);
+    public User findUserByPrincipalName(String principalName) {
+        return userDao.findUserByPrincipalName(principalName);
     }
     
     @Transactional
-    public User findUserByGuid(Long guid) {
-        return userDao.findUserByGuid(guid);
+    public User findUserByPrincipalId(Long principalId) {
+        return userDao.findUserByPrincipalId(principalId);
     }
 
     @Transactional
     public void saveUser(User user) {
         userDao.saveUser(user);
     }
+
+    @Transactional
+	public void saveUserPreference(UserPreference userPreference) {
+		userDao.saveUserPreference(userPreference);
+	}
+
+    @Transactional
+	public void deleteUserPreferenceById(Long preferenceId) {
+		userDao.deleteUserPreferenceById(preferenceId);
+	}
+
+    @Transactional
+	public List<UserPreference> findAllUserPreferencesByPrincipalId(Long principalId) {
+		return userDao.findAllUserPreferencesByPrincipalId(principalId);
+	}
+
+    @Transactional
+	public UserPreference findUserPreferenceByPreferenceId(Long preferenceId) {
+		return userDao.findUserPreferenceByPreferenceId(preferenceId);
+	}
     
 }

@@ -73,10 +73,10 @@ public class BackdoorController {
         	User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
 			backdoor.setActualUser(user);
    			user = new UserImpl();
-       		user.setUserId(backdoor.getUserId());
+       		user.setPrincipalName(backdoor.getUserId());
        		
 			try {
-				AdsPerson adsPerson = adsService.getAdsPerson(user.getUserId());
+				AdsPerson adsPerson = adsService.getAdsPerson(user.getPrincipalName());
 				List<String> affiliations = adsPerson.getIuEduPersonAffiliation();
 				if (affiliations != null) {
 					user.setAffiliations(affiliations);

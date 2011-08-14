@@ -84,7 +84,7 @@ public class SakaiSiteServiceImpl implements SakaiSiteService {
 			boolean showTodayTab = user.isStudent();
 			
 			String url = configParamService.findValueByName("Sakai.Url.Base") + "user_prefs.json";
-			ResponseEntity<InputStream> is = oncourseOAuthService.oAuthGetRequest(user.getUserId(), url, "text/html");
+			ResponseEntity<InputStream> is = oncourseOAuthService.oAuthGetRequest(user.getPrincipalName(), url, "text/html");
 			String prefsJson = IOUtils.toString(is.getBody(), "UTF-8");
 			Set<String> visibleSiteIds = new HashSet<String>();
 			try {
@@ -116,7 +116,7 @@ public class SakaiSiteServiceImpl implements SakaiSiteService {
 					todayDate.set(Calendar.MILLISECOND, 0);
 					tomorrowDate.setTime(todayDate.getTime());
 					tomorrowDate.add(Calendar.DATE, 1);
-					ListViewEvents listViewEvents = calendarEventOAuthService.retrieveViewEventsList(user.getUserId(), todayDate.getTime(), todayDate.getTime(), todayDate.getTime(), null);
+					ListViewEvents listViewEvents = calendarEventOAuthService.retrieveViewEventsList(user.getPrincipalName(), todayDate.getTime(), todayDate.getTime(), todayDate.getTime(), null);
 					List<ListData> events = listViewEvents.getEvents();
 					if (events.size() > 0) {
 						ListData list = events.get(0);
@@ -134,7 +134,7 @@ public class SakaiSiteServiceImpl implements SakaiSiteService {
 			
 			url = configParamService.findValueByName("Sakai.Url.Base") + "site.json";
 			//url = configParamService.findValueByName("Sakai.Url.Base") + "site/allMySites.json";
-			is = oncourseOAuthService.oAuthGetRequest(user.getUserId(), url, "text/html");
+			is = oncourseOAuthService.oAuthGetRequest(user.getPrincipalName(), url, "text/html");
 			String siteJson = IOUtils.toString(is.getBody(), "UTF-8");
 	
 			Home home = new Home();

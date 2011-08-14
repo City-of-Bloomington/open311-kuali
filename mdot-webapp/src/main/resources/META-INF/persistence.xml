@@ -29,9 +29,11 @@
     <class>org.kuali.mobility.notification.entity.Notification</class>
     <class>org.kuali.mobility.notification.entity.UserNotification</class>
     <class>org.kuali.mobility.user.entity.UserImpl</class>  
-      <class>org.kuali.mobility.admin.entity.HomeScreen</class> 
-      <class>org.kuali.mobility.admin.entity.Tool</class> 
-      <class>org.kuali.mobility.admin.entity.HomeTool</class> 
+    <class>org.kuali.mobility.user.entity.UserPreference</class>  
+    <class>org.kuali.mobility.user.entity.UserPreferenceValue</class>  
+    <class>org.kuali.mobility.admin.entity.HomeScreen</class> 
+    <class>org.kuali.mobility.admin.entity.Tool</class> 
+    <class>org.kuali.mobility.admin.entity.HomeTool</class> 
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
   </persistence-unit>
 

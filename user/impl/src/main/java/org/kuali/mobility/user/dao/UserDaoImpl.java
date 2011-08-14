@@ -15,11 +15,14 @@
 
 package org.kuali.mobility.user.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import org.kuali.mobility.user.entity.User;
+import org.kuali.mobility.user.entity.UserPreference;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -40,9 +43,9 @@ public class UserDaoImpl implements UserDao {
         }
     }
     
-    public User findUserByUserId(String userId) {
-        Query query = entityManager.createQuery("select u from User u where u.userId = :userId");
-        query.setParameter("userId", userId);
+    public User findUserByPrincipalName(String principalName) {
+        Query query = entityManager.createQuery("select u from User u where u.principalName = :principalName");
+        query.setParameter("principalName", principalName);
         try {
             return (User) query.getSingleResult();
         } catch (Exception e) {
@@ -50,9 +53,9 @@ public class UserDaoImpl implements UserDao {
         }
     }
     
-    public User findUserByGuid(Long guid) {
-        Query query = entityManager.createQuery("select u from User u where u.guid = :guid");
-        query.setParameter("guid", guid);
+    public User findUserByPrincipalId(Long principalId) {
+        Query query = entityManager.createQuery("select u from User u where u.principalId = :principalId");
+        query.setParameter("principalId", principalId);
         try {
             return (User) query.getSingleResult();
         } catch (Exception e) {
@@ -64,13 +67,51 @@ public class UserDaoImpl implements UserDao {
         if (user == null) {
             return;
         }
-        if (user.getGuid() == null) {
+        if (user.getPrincipalId() == null) {
             entityManager.persist(user);
         } else {
             entityManager.merge(user);
         }
     }
     
+	public void saveUserPreference(UserPreference userPreference) {
+        if (userPreference == null) {
+            return;
+        }
+        if (userPreference.getPreferenceId() == null) {
+            entityManager.persist(userPreference);
+        } else {
+            entityManager.merge(userPreference);
+        }		
+	}
+
+	public void deleteUserPreferenceById(Long preferenceId) {
+        Query query = entityManager.createQuery("delete from UserPreference up where up.preferenceId = :preferenceId");
+        query.setParameter("preferenceId", preferenceId);
+        query.executeUpdate();
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<UserPreference> findAllUserPreferencesByPrincipalId(Long principalId) {
+        Query query = entityManager.createQuery("select up from UserPreference up where up.principalId = :principalId");
+        query.setParameter("principalId", principalId);
+        try {
+            return (List<UserPreference>) query.getResultList();
+        } catch (Exception e) {
+            return null;
+        }
+	}
+
+	public UserPreference findUserPreferenceByPreferenceId(Long preferenceId) {
+        Query query = entityManager.createQuery("select up from UserPreference up where up.preferenceId = :preferenceId");
+        query.setParameter("preferenceId", preferenceId);
+        try {
+            return (UserPreference) query.getSingleResult();
+        } catch (Exception e) {
+            return null;
+        }
+	}
+
     public EntityManager getEntityManager() {
         return entityManager;
     }
@@ -78,5 +119,5 @@ public class UserDaoImpl implements UserDao {
     public void setEntityManager(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
-
+    
 } 
