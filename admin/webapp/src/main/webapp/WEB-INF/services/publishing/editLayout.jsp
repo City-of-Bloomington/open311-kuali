@@ -35,9 +35,13 @@
 		<form:hidden path="homeTools[${status.index}].order"/>
 		<form:hidden path="homeTools[${status.index}].versionNumber"/>
 	</c:forEach>
-	<label for="homeScreenName">Title:</label>
-	<form:input path="homeScreenName" /><br/>
-	<form:errors path="homeScreenName" />
+	<label for="alias">Alias:</label>
+	<form:input path="alias" /><br/>
+	<form:errors path="alias" />
+	<br />
+	<label for="title">Title:</label>
+	<form:input path="title" /><br/>
+	<form:errors path="title" />
 	<br />
 	<table border="1">
 		<tr>

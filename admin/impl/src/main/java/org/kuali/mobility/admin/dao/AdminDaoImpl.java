@@ -63,9 +63,9 @@ public class AdminDaoImpl implements AdminDao {
 	}
     
     @Override
-	public HomeScreen getHomeScreenByName(String name) {
-		Query query = entityManager.createQuery("select h from HomeScreen h where h.homeScreenName = :name");
-        query.setParameter("name", name);
+	public HomeScreen getHomeScreenByAlias(String alias) {
+		Query query = entityManager.createQuery("select h from HomeScreen h where h.alias = :alias");
+        query.setParameter("alias", alias);
         try {
         	return (HomeScreen) query.getSingleResult();
         } catch (Exception e) {
@@ -78,8 +78,8 @@ public class AdminDaoImpl implements AdminDao {
 		if (homeScreen == null) {
             return null;
         }
-        if (homeScreen.getHomeScreenName() != null) {
-        	homeScreen.setHomeScreenName(homeScreen.getHomeScreenName().trim());
+        if (homeScreen.getAlias() != null) {
+        	homeScreen.setAlias(homeScreen.getAlias().trim());
         }
         for (HomeTool ht : homeScreen.getHomeTools()) {
         	ht.setHomeScreen(homeScreen);

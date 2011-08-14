@@ -41,7 +41,7 @@ public class AdminServiceImpl implements AdminService {
 
 	static {
 		homeScreens = new ConcurrentHashMap<String, HomeScreen>();
-	}
+	} 
 	
 	@Autowired
     private AdminDao adminDao;
@@ -62,11 +62,11 @@ public class AdminServiceImpl implements AdminService {
     	homeScreenReloaderThread = null;
     }
 	
-	public HomeScreen getCachedHomeScreenByName(String name) {
-		HomeScreen homeScreen = homeScreens.get(name);
+	public HomeScreen getCachedHomeScreenByAlias(String alias) {
+		HomeScreen homeScreen = homeScreens.get(alias);
 		if (homeScreen == null) {
-			LOG.warn("Cannot find homeScreen with name: " + name + " in the cache. Fetching from database");
-			return getHomeScreenByName(name);
+			LOG.warn("Cannot find homeScreen with alias: " + alias + " in the cache. Fetching from database");
+			return getHomeScreenByAlias(alias);
 		}
 		return homeScreen;
  	}
@@ -82,8 +82,8 @@ public class AdminServiceImpl implements AdminService {
 	}
 	
 	@Override
-	public HomeScreen getHomeScreenByName(String name) {
-		return adminDao.getHomeScreenByName(name);
+	public HomeScreen getHomeScreenByAlias(String alias) {
+		return adminDao.getHomeScreenByAlias(alias);
 	}
 	
 	@Override
@@ -149,7 +149,7 @@ public class AdminServiceImpl implements AdminService {
 		private void reloadHomeScreens() {
 			List<HomeScreen> names = adminDao.getAllHomeScreens();
 			for (HomeScreen homeScreen : names) {
-				homeScreens.put(homeScreen.getHomeScreenName(), adminDao.getHomeScreenByName(homeScreen.getHomeScreenName()));
+				homeScreens.put(homeScreen.getAlias(), adminDao.getHomeScreenByAlias(homeScreen.getAlias()));
 			}			
 		}
         

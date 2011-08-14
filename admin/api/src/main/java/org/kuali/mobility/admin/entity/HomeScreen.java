@@ -44,9 +44,12 @@ public class HomeScreen implements Serializable {
     @Column(name="HOME_ID")
     private Long homeScreenId;
 	
-	@Column(name="HOME_NM")
-	private String homeScreenName;
-	
+	@Column(name="ALIAS")
+	private String alias;
+
+	@Column(name="TITLE")
+	private String title;
+
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy="homeScreen")
     private List<HomeTool> homeTools;
 	
@@ -78,12 +81,20 @@ public class HomeScreen implements Serializable {
 		this.homeScreenId = homeScreenId;
 	}
 
-	public String getHomeScreenName() {
-		return homeScreenName;
+	public String getAlias() {
+		return alias;
 	}
 
-	public void setHomeScreenName(String homeScreenName) {
-		this.homeScreenName = homeScreenName;
+	public void setAlias(String alias) {
+		this.alias = alias;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public Long getVersionNumber() {

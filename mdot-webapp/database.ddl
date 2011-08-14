@@ -98,7 +98,8 @@ GRANT SELECT, ALTER ON MIU.SEQ_HOME_T TO MIU_PROXY
 
 CREATE TABLE MIU.HOME_T (
    	HOME_ID NUMERIC(18,0) NOT NULL,
-   	HOME_NM VARCHAR2(2000) NULL,
+   	ALIAS VARCHAR2(2000) NULL,
+   	TITLE VARCHAR2(2000) NULL,
    	VER_NBR NUMERIC(18,0) NOT NULL,
    	CONSTRAINT HOME_T_PK PRIMARY KEY (HOME_ID)
 ) 
@@ -183,23 +184,23 @@ delete from HOME_TOOL_T
 /
 
 
-insert into HOME_T (HOME_ID, HOME_NM, VER_NBR) values (SEQ_HOME_T.NEXTVAL, 'PUBLIC', 0)
+insert into HOME_T (HOME_ID, ALIAS, TITLE, VER_NBR) values (SEQ_HOME_T.NEXTVAL, 'PUBLIC', 'IU Mobile', 0)
 /
-insert into HOME_T (HOME_ID, HOME_NM, VER_NBR) values (SEQ_HOME_T.NEXTVAL, 'BL', 0)
+insert into HOME_T (HOME_ID, ALIAS, TITLE, VER_NBR) values (SEQ_HOME_T.NEXTVAL, 'BL', 'IUB Mobile', 0)
 /
-insert into HOME_T (HOME_ID, HOME_NM, VER_NBR) values (SEQ_HOME_T.NEXTVAL, 'IN', 0)
+insert into HOME_T (HOME_ID, ALIAS, TITLE, VER_NBR) values (SEQ_HOME_T.NEXTVAL, 'IN', 'IUPUI Mobile', 0)
 /
-insert into HOME_T (HOME_ID, HOME_NM, VER_NBR) values (SEQ_HOME_T.NEXTVAL, 'CO', 0)
+insert into HOME_T (HOME_ID, ALIAS, TITLE, VER_NBR) values (SEQ_HOME_T.NEXTVAL, 'CO', 'IUPUC Mobile', 0)
 /
-insert into HOME_T (HOME_ID, HOME_NM, VER_NBR) values (SEQ_HOME_T.NEXTVAL, 'EA', 0)
+insert into HOME_T (HOME_ID, ALIAS, TITLE, VER_NBR) values (SEQ_HOME_T.NEXTVAL, 'EA', 'IUE Mobile', 0)
 /
-insert into HOME_T (HOME_ID, HOME_NM, VER_NBR) values (SEQ_HOME_T.NEXTVAL, 'KO', 0)
+insert into HOME_T (HOME_ID, ALIAS, TITLE, VER_NBR) values (SEQ_HOME_T.NEXTVAL, 'KO', 'IUK Mobile', 0)
 /
-insert into HOME_T (HOME_ID, HOME_NM, VER_NBR) values (SEQ_HOME_T.NEXTVAL, 'NW', 0)
+insert into HOME_T (HOME_ID, ALIAS, TITLE, VER_NBR) values (SEQ_HOME_T.NEXTVAL, 'NW', 'IUN Mobile', 0)
 /
-insert into HOME_T (HOME_ID, HOME_NM, VER_NBR) values (SEQ_HOME_T.NEXTVAL, 'SB', 0)
+insert into HOME_T (HOME_ID, ALIAS, TITLE, VER_NBR) values (SEQ_HOME_T.NEXTVAL, 'SB', 'IUSB Mobile', 0)
 /
-insert into HOME_T (HOME_ID, HOME_NM, VER_NBR) values (SEQ_HOME_T.NEXTVAL, 'SE', 0)
+insert into HOME_T (HOME_ID, ALIAS, TITLE, VER_NBR) values (SEQ_HOME_T.NEXTVAL, 'SE', 'IUS Mobile', 0)
 /
 
 insert into TOOL_T (TOOL_ID, ALIAS, TITLE, URL, DESCRIPTION, ICON_URL, VER_NBR) values (SEQ_TOOL_T.NEXTVAL, 'myclasses', 'My Classes', 'myclasses', 'Class information; Oncourse  forums, resources, and more!', 'images/service-icons/srvc-myclasses.png', 0)
@@ -247,305 +248,305 @@ insert into TOOL_T (TOOL_ID, ALIAS, TITLE, URL, DESCRIPTION, ICON_URL, VER_NBR) 
 insert into TOOL_T (TOOL_ID, ALIAS, TITLE, URL, DESCRIPTION, ICON_URL, VER_NBR) values (SEQ_TOOL_T.NEXTVAL, 'email', 'Email', 'email', 'Check your campus iMail or uMail account.', 'images/service-icons/srvc-email.png', 0)
 /
 
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'PUBLIC'), (select TOOL_ID from TOOL_T where TITLE = 'My Classes'), 1, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'PUBLIC'), (select TOOL_ID from TOOL_T where TITLE = 'My Classes'), 1, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'PUBLIC'), (select TOOL_ID from TOOL_T where TITLE = 'Email'), 2, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'PUBLIC'), (select TOOL_ID from TOOL_T where TITLE = 'Email'), 2, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'PUBLIC'), (select TOOL_ID from TOOL_T where TITLE = 'Social Media'), 3, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'PUBLIC'), (select TOOL_ID from TOOL_T where TITLE = 'Social Media'), 3, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'PUBLIC'), (select TOOL_ID from TOOL_T where TITLE = 'Classifieds'), 4, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'PUBLIC'), (select TOOL_ID from TOOL_T where TITLE = 'Classifieds'), 4, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'PUBLIC'), (select TOOL_ID from TOOL_T where TITLE = 'Maps'), 6, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'PUBLIC'), (select TOOL_ID from TOOL_T where TITLE = 'Maps'), 6, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'PUBLIC'), (select TOOL_ID from TOOL_T where TITLE = 'Athletics'), 7, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'PUBLIC'), (select TOOL_ID from TOOL_T where TITLE = 'Athletics'), 7, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'PUBLIC'), (select TOOL_ID from TOOL_T where TITLE = 'Computer Labs'), 8, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'PUBLIC'), (select TOOL_ID from TOOL_T where TITLE = 'Computer Labs'), 8, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'PUBLIC'), (select TOOL_ID from TOOL_T where TITLE = 'People'), 9, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'PUBLIC'), (select TOOL_ID from TOOL_T where TITLE = 'People'), 9, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'PUBLIC'), (select TOOL_ID from TOOL_T where TITLE = 'News'), 10, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'PUBLIC'), (select TOOL_ID from TOOL_T where TITLE = 'News'), 10, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'PUBLIC'), (select TOOL_ID from TOOL_T where TITLE = 'Calendar'), 11, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'PUBLIC'), (select TOOL_ID from TOOL_T where TITLE = 'Calendar'), 11, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'PUBLIC'), (select TOOL_ID from TOOL_T where TITLE = 'IT Notices'), 12, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'PUBLIC'), (select TOOL_ID from TOOL_T where TITLE = 'IT Notices'), 12, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'PUBLIC'), (select TOOL_ID from TOOL_T where TITLE = 'Knowledge Base'), 13, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'PUBLIC'), (select TOOL_ID from TOOL_T where TITLE = 'Knowledge Base'), 13, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'PUBLIC'), (select TOOL_ID from TOOL_T where TITLE = 'Ask IU'), 14, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'PUBLIC'), (select TOOL_ID from TOOL_T where TITLE = 'Ask IU'), 14, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'PUBLIC'), (select TOOL_ID from TOOL_T where TITLE = 'Emergency Contacts'), 15, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'PUBLIC'), (select TOOL_ID from TOOL_T where TITLE = 'Emergency Contacts'), 15, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'PUBLIC'), (select TOOL_ID from TOOL_T where TITLE = 'Campus Alerts'), 16, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'PUBLIC'), (select TOOL_ID from TOOL_T where TITLE = 'Campus Alerts'), 16, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'PUBLIC'), (select TOOL_ID from TOOL_T where TITLE = 'Feedback'), 17, 0)
-/
-
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'BL'), (select TOOL_ID from TOOL_T where TITLE = 'My Classes'), 1, 0)
-/
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'BL'), (select TOOL_ID from TOOL_T where TITLE = 'Email'), 2, 0)
-/
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'BL'), (select TOOL_ID from TOOL_T where TITLE = 'Bus Schedules'), 3, 0)
-/
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'BL'), (select TOOL_ID from TOOL_T where TITLE = 'Social Media'), 4, 0)
-/
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'BL'), (select TOOL_ID from TOOL_T where TITLE = 'Classifieds'), 5, 0)
-/
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'BL'), (select TOOL_ID from TOOL_T where TITLE = 'Maps'), 6, 0)
-/
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'BL'), (select TOOL_ID from TOOL_T where TITLE = 'Athletics'), 7, 0)
-/
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'BL'), (select TOOL_ID from TOOL_T where TITLE = 'Computer Labs'), 8, 0)
-/
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'BL'), (select TOOL_ID from TOOL_T where TITLE = 'People'), 9, 0)
-/
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'BL'), (select TOOL_ID from TOOL_T where TITLE = 'News'), 10, 0)
-/
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'BL'), (select TOOL_ID from TOOL_T where TITLE = 'Calendar'), 11, 0)
-/
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'BL'), (select TOOL_ID from TOOL_T where TITLE = 'IT Notices'), 12, 0)
-/
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'BL'), (select TOOL_ID from TOOL_T where TITLE = 'Knowledge Base'), 13, 0)
-/
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'BL'), (select TOOL_ID from TOOL_T where TITLE = 'Ask IU'), 14, 0)
-/
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'BL'), (select TOOL_ID from TOOL_T where TITLE = 'Emergency Contacts'), 15, 0)
-/
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'BL'), (select TOOL_ID from TOOL_T where TITLE = 'Campus Alerts'), 16, 0)
-/
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'BL'), (select TOOL_ID from TOOL_T where TITLE = 'Feedback'), 17, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'PUBLIC'), (select TOOL_ID from TOOL_T where TITLE = 'Feedback'), 17, 0)
 /
 
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'IN'), (select TOOL_ID from TOOL_T where TITLE = 'My Classes'), 1, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'BL'), (select TOOL_ID from TOOL_T where TITLE = 'My Classes'), 1, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'IN'), (select TOOL_ID from TOOL_T where TITLE = 'Email'), 2, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'BL'), (select TOOL_ID from TOOL_T where TITLE = 'Email'), 2, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'IN'), (select TOOL_ID from TOOL_T where TITLE = 'Social Media'), 3, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'BL'), (select TOOL_ID from TOOL_T where TITLE = 'Bus Schedules'), 3, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'IN'), (select TOOL_ID from TOOL_T where TITLE = 'Classifieds'), 4, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'BL'), (select TOOL_ID from TOOL_T where TITLE = 'Social Media'), 4, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'IN'), (select TOOL_ID from TOOL_T where TITLE = 'Maps'), 6, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'BL'), (select TOOL_ID from TOOL_T where TITLE = 'Classifieds'), 5, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'IN'), (select TOOL_ID from TOOL_T where TITLE = 'Athletics'), 7, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'BL'), (select TOOL_ID from TOOL_T where TITLE = 'Maps'), 6, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'IN'), (select TOOL_ID from TOOL_T where TITLE = 'Jaguar Athletics'), 7, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'BL'), (select TOOL_ID from TOOL_T where TITLE = 'Athletics'), 7, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'IN'), (select TOOL_ID from TOOL_T where TITLE = 'Computer Labs'), 8, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'BL'), (select TOOL_ID from TOOL_T where TITLE = 'Computer Labs'), 8, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'IN'), (select TOOL_ID from TOOL_T where TITLE = 'People'), 9, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'BL'), (select TOOL_ID from TOOL_T where TITLE = 'People'), 9, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'IN'), (select TOOL_ID from TOOL_T where TITLE = 'News'), 10, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'BL'), (select TOOL_ID from TOOL_T where TITLE = 'News'), 10, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'IN'), (select TOOL_ID from TOOL_T where TITLE = 'Calendar'), 11, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'BL'), (select TOOL_ID from TOOL_T where TITLE = 'Calendar'), 11, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'IN'), (select TOOL_ID from TOOL_T where TITLE = 'IT Notices'), 12, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'BL'), (select TOOL_ID from TOOL_T where TITLE = 'IT Notices'), 12, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'IN'), (select TOOL_ID from TOOL_T where TITLE = 'Knowledge Base'), 13, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'BL'), (select TOOL_ID from TOOL_T where TITLE = 'Knowledge Base'), 13, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'IN'), (select TOOL_ID from TOOL_T where TITLE = 'Ask IU'), 14, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'BL'), (select TOOL_ID from TOOL_T where TITLE = 'Ask IU'), 14, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'IN'), (select TOOL_ID from TOOL_T where TITLE = 'Emergency Contacts'), 15, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'BL'), (select TOOL_ID from TOOL_T where TITLE = 'Emergency Contacts'), 15, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'IN'), (select TOOL_ID from TOOL_T where TITLE = 'Campus Alerts'), 16, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'BL'), (select TOOL_ID from TOOL_T where TITLE = 'Campus Alerts'), 16, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'IN'), (select TOOL_ID from TOOL_T where TITLE = 'Feedback'), 17, 0)
-/
-
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'CO'), (select TOOL_ID from TOOL_T where TITLE = 'My Classes'), 1, 0)
-/
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'CO'), (select TOOL_ID from TOOL_T where TITLE = 'Email'), 2, 0)
-/
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'CO'), (select TOOL_ID from TOOL_T where TITLE = 'Social Media'), 3, 0)
-/
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'CO'), (select TOOL_ID from TOOL_T where TITLE = 'Classifieds'), 4, 0)
-/
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'CO'), (select TOOL_ID from TOOL_T where TITLE = 'Athletics'), 7, 0)
-/
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'CO'), (select TOOL_ID from TOOL_T where TITLE = 'People'), 9, 0)
-/
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'CO'), (select TOOL_ID from TOOL_T where TITLE = 'News'), 10, 0)
-/
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'CO'), (select TOOL_ID from TOOL_T where TITLE = 'Calendar'), 11, 0)
-/
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'CO'), (select TOOL_ID from TOOL_T where TITLE = 'IT Notices'), 12, 0)
-/
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'CO'), (select TOOL_ID from TOOL_T where TITLE = 'Knowledge Base'), 13, 0)
-/
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'CO'), (select TOOL_ID from TOOL_T where TITLE = 'Ask IU'), 14, 0)
-/
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'CO'), (select TOOL_ID from TOOL_T where TITLE = 'Emergency Contacts'), 15, 0)
-/
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'CO'), (select TOOL_ID from TOOL_T where TITLE = 'Campus Alerts'), 16, 0)
-/
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'CO'), (select TOOL_ID from TOOL_T where TITLE = 'Feedback'), 17, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'BL'), (select TOOL_ID from TOOL_T where TITLE = 'Feedback'), 17, 0)
 /
 
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'EA'), (select TOOL_ID from TOOL_T where TITLE = 'My Classes'), 1, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'IN'), (select TOOL_ID from TOOL_T where TITLE = 'My Classes'), 1, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'EA'), (select TOOL_ID from TOOL_T where TITLE = 'Email'), 2, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'IN'), (select TOOL_ID from TOOL_T where TITLE = 'Email'), 2, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'EA'), (select TOOL_ID from TOOL_T where TITLE = 'Social Media'), 3, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'IN'), (select TOOL_ID from TOOL_T where TITLE = 'Social Media'), 3, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'EA'), (select TOOL_ID from TOOL_T where TITLE = 'Classifieds'), 4, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'IN'), (select TOOL_ID from TOOL_T where TITLE = 'Classifieds'), 4, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'EA'), (select TOOL_ID from TOOL_T where TITLE = 'Maps'), 6, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'IN'), (select TOOL_ID from TOOL_T where TITLE = 'Maps'), 6, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'EA'), (select TOOL_ID from TOOL_T where TITLE = 'Athletics'), 7, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'IN'), (select TOOL_ID from TOOL_T where TITLE = 'Athletics'), 7, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'EA'), (select TOOL_ID from TOOL_T where TITLE = 'Computer Labs'), 8, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'IN'), (select TOOL_ID from TOOL_T where TITLE = 'Jaguar Athletics'), 7, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'EA'), (select TOOL_ID from TOOL_T where TITLE = 'People'), 9, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'IN'), (select TOOL_ID from TOOL_T where TITLE = 'Computer Labs'), 8, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'EA'), (select TOOL_ID from TOOL_T where TITLE = 'News'), 10, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'IN'), (select TOOL_ID from TOOL_T where TITLE = 'People'), 9, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'EA'), (select TOOL_ID from TOOL_T where TITLE = 'Calendar'), 11, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'IN'), (select TOOL_ID from TOOL_T where TITLE = 'News'), 10, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'EA'), (select TOOL_ID from TOOL_T where TITLE = 'IT Notices'), 12, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'IN'), (select TOOL_ID from TOOL_T where TITLE = 'Calendar'), 11, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'EA'), (select TOOL_ID from TOOL_T where TITLE = 'Knowledge Base'), 13, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'IN'), (select TOOL_ID from TOOL_T where TITLE = 'IT Notices'), 12, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'EA'), (select TOOL_ID from TOOL_T where TITLE = 'Ask IU'), 14, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'IN'), (select TOOL_ID from TOOL_T where TITLE = 'Knowledge Base'), 13, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'EA'), (select TOOL_ID from TOOL_T where TITLE = 'Emergency Contacts'), 15, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'IN'), (select TOOL_ID from TOOL_T where TITLE = 'Ask IU'), 14, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'EA'), (select TOOL_ID from TOOL_T where TITLE = 'Campus Alerts'), 16, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'IN'), (select TOOL_ID from TOOL_T where TITLE = 'Emergency Contacts'), 15, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'EA'), (select TOOL_ID from TOOL_T where TITLE = 'Feedback'), 17, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'IN'), (select TOOL_ID from TOOL_T where TITLE = 'Campus Alerts'), 16, 0)
 /
-
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'KO'), (select TOOL_ID from TOOL_T where TITLE = 'My Classes'), 1, 0)
-/
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'KO'), (select TOOL_ID from TOOL_T where TITLE = 'Email'), 2, 0)
-/
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'KO'), (select TOOL_ID from TOOL_T where TITLE = 'Social Media'), 3, 0)
-/
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'KO'), (select TOOL_ID from TOOL_T where TITLE = 'Classifieds'), 4, 0)
-/
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'KO'), (select TOOL_ID from TOOL_T where TITLE = 'Maps'), 6, 0)
-/
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'KO'), (select TOOL_ID from TOOL_T where TITLE = 'Athletics'), 7, 0)
-/
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'KO'), (select TOOL_ID from TOOL_T where TITLE = 'People'), 9, 0)
-/
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'KO'), (select TOOL_ID from TOOL_T where TITLE = 'News'), 10, 0)
-/
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'KO'), (select TOOL_ID from TOOL_T where TITLE = 'Calendar'), 11, 0)
-/
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'KO'), (select TOOL_ID from TOOL_T where TITLE = 'IT Notices'), 12, 0)
-/
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'KO'), (select TOOL_ID from TOOL_T where TITLE = 'Knowledge Base'), 13, 0)
-/
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'KO'), (select TOOL_ID from TOOL_T where TITLE = 'Ask IU'), 14, 0)
-/
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'KO'), (select TOOL_ID from TOOL_T where TITLE = 'Emergency Contacts'), 15, 0)
-/
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'KO'), (select TOOL_ID from TOOL_T where TITLE = 'Campus Alerts'), 16, 0)
-/
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'KO'), (select TOOL_ID from TOOL_T where TITLE = 'Feedback'), 17, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'IN'), (select TOOL_ID from TOOL_T where TITLE = 'Feedback'), 17, 0)
 /
 
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'NW'), (select TOOL_ID from TOOL_T where TITLE = 'My Classes'), 1, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'CO'), (select TOOL_ID from TOOL_T where TITLE = 'My Classes'), 1, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'NW'), (select TOOL_ID from TOOL_T where TITLE = 'Email'), 2, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'CO'), (select TOOL_ID from TOOL_T where TITLE = 'Email'), 2, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'NW'), (select TOOL_ID from TOOL_T where TITLE = 'Social Media'), 3, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'CO'), (select TOOL_ID from TOOL_T where TITLE = 'Social Media'), 3, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'NW'), (select TOOL_ID from TOOL_T where TITLE = 'Class Cancellations'), 4, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'CO'), (select TOOL_ID from TOOL_T where TITLE = 'Classifieds'), 4, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'NW'), (select TOOL_ID from TOOL_T where TITLE = 'RedHawk Shuttle'), 4, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'CO'), (select TOOL_ID from TOOL_T where TITLE = 'Athletics'), 7, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'NW'), (select TOOL_ID from TOOL_T where TITLE = 'Classifieds'), 4, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'CO'), (select TOOL_ID from TOOL_T where TITLE = 'People'), 9, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'NW'), (select TOOL_ID from TOOL_T where TITLE = 'Maps'), 6, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'CO'), (select TOOL_ID from TOOL_T where TITLE = 'News'), 10, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'NW'), (select TOOL_ID from TOOL_T where TITLE = 'Athletics'), 7, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'CO'), (select TOOL_ID from TOOL_T where TITLE = 'Calendar'), 11, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'NW'), (select TOOL_ID from TOOL_T where TITLE = 'People'), 9, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'CO'), (select TOOL_ID from TOOL_T where TITLE = 'IT Notices'), 12, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'NW'), (select TOOL_ID from TOOL_T where TITLE = 'News'), 10, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'CO'), (select TOOL_ID from TOOL_T where TITLE = 'Knowledge Base'), 13, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'NW'), (select TOOL_ID from TOOL_T where TITLE = 'Calendar'), 11, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'CO'), (select TOOL_ID from TOOL_T where TITLE = 'Ask IU'), 14, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'NW'), (select TOOL_ID from TOOL_T where TITLE = 'IT Notices'), 12, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'CO'), (select TOOL_ID from TOOL_T where TITLE = 'Emergency Contacts'), 15, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'NW'), (select TOOL_ID from TOOL_T where TITLE = 'Knowledge Base'), 13, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'CO'), (select TOOL_ID from TOOL_T where TITLE = 'Campus Alerts'), 16, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'NW'), (select TOOL_ID from TOOL_T where TITLE = 'Ask IU'), 14, 0)
-/
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'NW'), (select TOOL_ID from TOOL_T where TITLE = 'Emergency Contacts'), 15, 0)
-/
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'NW'), (select TOOL_ID from TOOL_T where TITLE = 'Campus Alerts'), 16, 0)
-/
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'NW'), (select TOOL_ID from TOOL_T where TITLE = 'Feedback'), 17, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'CO'), (select TOOL_ID from TOOL_T where TITLE = 'Feedback'), 17, 0)
 /
 
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'SB'), (select TOOL_ID from TOOL_T where TITLE = 'My Classes'), 1, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'EA'), (select TOOL_ID from TOOL_T where TITLE = 'My Classes'), 1, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'SB'), (select TOOL_ID from TOOL_T where TITLE = 'Email'), 2, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'EA'), (select TOOL_ID from TOOL_T where TITLE = 'Email'), 2, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'SB'), (select TOOL_ID from TOOL_T where TITLE = 'Social Media'), 3, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'EA'), (select TOOL_ID from TOOL_T where TITLE = 'Social Media'), 3, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'SB'), (select TOOL_ID from TOOL_T where TITLE = 'Classifieds'), 4, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'EA'), (select TOOL_ID from TOOL_T where TITLE = 'Classifieds'), 4, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'SB'), (select TOOL_ID from TOOL_T where TITLE = 'Library'), 5, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'EA'), (select TOOL_ID from TOOL_T where TITLE = 'Maps'), 6, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'SB'), (select TOOL_ID from TOOL_T where TITLE = 'Maps'), 6, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'EA'), (select TOOL_ID from TOOL_T where TITLE = 'Athletics'), 7, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'SB'), (select TOOL_ID from TOOL_T where TITLE = 'Athletics'), 7, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'EA'), (select TOOL_ID from TOOL_T where TITLE = 'Computer Labs'), 8, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'SB'), (select TOOL_ID from TOOL_T where TITLE = 'Computer Labs'), 8, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'EA'), (select TOOL_ID from TOOL_T where TITLE = 'People'), 9, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'SB'), (select TOOL_ID from TOOL_T where TITLE = 'People'), 9, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'EA'), (select TOOL_ID from TOOL_T where TITLE = 'News'), 10, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'SB'), (select TOOL_ID from TOOL_T where TITLE = 'News'), 10, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'EA'), (select TOOL_ID from TOOL_T where TITLE = 'Calendar'), 11, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'SB'), (select TOOL_ID from TOOL_T where TITLE = 'Calendar'), 11, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'EA'), (select TOOL_ID from TOOL_T where TITLE = 'IT Notices'), 12, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'SB'), (select TOOL_ID from TOOL_T where TITLE = 'IT Notices'), 12, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'EA'), (select TOOL_ID from TOOL_T where TITLE = 'Knowledge Base'), 13, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'SB'), (select TOOL_ID from TOOL_T where TITLE = 'Knowledge Base'), 13, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'EA'), (select TOOL_ID from TOOL_T where TITLE = 'Ask IU'), 14, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'SB'), (select TOOL_ID from TOOL_T where TITLE = 'Ask IU'), 14, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'EA'), (select TOOL_ID from TOOL_T where TITLE = 'Emergency Contacts'), 15, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'SB'), (select TOOL_ID from TOOL_T where TITLE = 'Emergency Contacts'), 15, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'EA'), (select TOOL_ID from TOOL_T where TITLE = 'Campus Alerts'), 16, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'SB'), (select TOOL_ID from TOOL_T where TITLE = 'Campus Alerts'), 16, 0)
-/
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'SB'), (select TOOL_ID from TOOL_T where TITLE = 'Feedback'), 17, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'EA'), (select TOOL_ID from TOOL_T where TITLE = 'Feedback'), 17, 0)
 /
 
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'SE'), (select TOOL_ID from TOOL_T where TITLE = 'My Classes'), 1, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'KO'), (select TOOL_ID from TOOL_T where TITLE = 'My Classes'), 1, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'SE'), (select TOOL_ID from TOOL_T where TITLE = 'Email'), 2, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'KO'), (select TOOL_ID from TOOL_T where TITLE = 'Email'), 2, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'SE'), (select TOOL_ID from TOOL_T where TITLE = 'Social Media'), 3, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'KO'), (select TOOL_ID from TOOL_T where TITLE = 'Social Media'), 3, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'SE'), (select TOOL_ID from TOOL_T where TITLE = 'Classifieds'), 4, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'KO'), (select TOOL_ID from TOOL_T where TITLE = 'Classifieds'), 4, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'SE'), (select TOOL_ID from TOOL_T where TITLE = 'Dining Services'), 5, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'KO'), (select TOOL_ID from TOOL_T where TITLE = 'Maps'), 6, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'SE'), (select TOOL_ID from TOOL_T where TITLE = 'Maps'), 6, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'KO'), (select TOOL_ID from TOOL_T where TITLE = 'Athletics'), 7, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'SE'), (select TOOL_ID from TOOL_T where TITLE = 'Athletics'), 7, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'KO'), (select TOOL_ID from TOOL_T where TITLE = 'People'), 9, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'SE'), (select TOOL_ID from TOOL_T where TITLE = 'Computer Labs'), 8, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'KO'), (select TOOL_ID from TOOL_T where TITLE = 'News'), 10, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'SE'), (select TOOL_ID from TOOL_T where TITLE = 'People'), 9, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'KO'), (select TOOL_ID from TOOL_T where TITLE = 'Calendar'), 11, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'SE'), (select TOOL_ID from TOOL_T where TITLE = 'News'), 10, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'KO'), (select TOOL_ID from TOOL_T where TITLE = 'IT Notices'), 12, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'SE'), (select TOOL_ID from TOOL_T where TITLE = 'Calendar'), 11, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'KO'), (select TOOL_ID from TOOL_T where TITLE = 'Knowledge Base'), 13, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'SE'), (select TOOL_ID from TOOL_T where TITLE = 'IT Notices'), 12, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'KO'), (select TOOL_ID from TOOL_T where TITLE = 'Ask IU'), 14, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'SE'), (select TOOL_ID from TOOL_T where TITLE = 'Knowledge Base'), 13, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'KO'), (select TOOL_ID from TOOL_T where TITLE = 'Emergency Contacts'), 15, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'SE'), (select TOOL_ID from TOOL_T where TITLE = 'Ask IU'), 14, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'KO'), (select TOOL_ID from TOOL_T where TITLE = 'Campus Alerts'), 16, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'SE'), (select TOOL_ID from TOOL_T where TITLE = 'Emergency Contacts'), 15, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'KO'), (select TOOL_ID from TOOL_T where TITLE = 'Feedback'), 17, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'SE'), (select TOOL_ID from TOOL_T where TITLE = 'Campus Alerts'), 16, 0)
+
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'NW'), (select TOOL_ID from TOOL_T where TITLE = 'My Classes'), 1, 0)
 /
-insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where HOME_NM = 'SE'), (select TOOL_ID from TOOL_T where TITLE = 'Feedback'), 17, 0)
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'NW'), (select TOOL_ID from TOOL_T where TITLE = 'Email'), 2, 0)
+/
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'NW'), (select TOOL_ID from TOOL_T where TITLE = 'Social Media'), 3, 0)
+/
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'NW'), (select TOOL_ID from TOOL_T where TITLE = 'Class Cancellations'), 4, 0)
+/
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'NW'), (select TOOL_ID from TOOL_T where TITLE = 'RedHawk Shuttle'), 4, 0)
+/
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'NW'), (select TOOL_ID from TOOL_T where TITLE = 'Classifieds'), 4, 0)
+/
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'NW'), (select TOOL_ID from TOOL_T where TITLE = 'Maps'), 6, 0)
+/
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'NW'), (select TOOL_ID from TOOL_T where TITLE = 'Athletics'), 7, 0)
+/
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'NW'), (select TOOL_ID from TOOL_T where TITLE = 'People'), 9, 0)
+/
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'NW'), (select TOOL_ID from TOOL_T where TITLE = 'News'), 10, 0)
+/
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'NW'), (select TOOL_ID from TOOL_T where TITLE = 'Calendar'), 11, 0)
+/
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'NW'), (select TOOL_ID from TOOL_T where TITLE = 'IT Notices'), 12, 0)
+/
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'NW'), (select TOOL_ID from TOOL_T where TITLE = 'Knowledge Base'), 13, 0)
+/
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'NW'), (select TOOL_ID from TOOL_T where TITLE = 'Ask IU'), 14, 0)
+/
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'NW'), (select TOOL_ID from TOOL_T where TITLE = 'Emergency Contacts'), 15, 0)
+/
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'NW'), (select TOOL_ID from TOOL_T where TITLE = 'Campus Alerts'), 16, 0)
+/
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'NW'), (select TOOL_ID from TOOL_T where TITLE = 'Feedback'), 17, 0)
+/
+
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'SB'), (select TOOL_ID from TOOL_T where TITLE = 'My Classes'), 1, 0)
+/
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'SB'), (select TOOL_ID from TOOL_T where TITLE = 'Email'), 2, 0)
+/
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'SB'), (select TOOL_ID from TOOL_T where TITLE = 'Social Media'), 3, 0)
+/
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'SB'), (select TOOL_ID from TOOL_T where TITLE = 'Classifieds'), 4, 0)
+/
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'SB'), (select TOOL_ID from TOOL_T where TITLE = 'Library'), 5, 0)
+/
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'SB'), (select TOOL_ID from TOOL_T where TITLE = 'Maps'), 6, 0)
+/
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'SB'), (select TOOL_ID from TOOL_T where TITLE = 'Athletics'), 7, 0)
+/
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'SB'), (select TOOL_ID from TOOL_T where TITLE = 'Computer Labs'), 8, 0)
+/
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'SB'), (select TOOL_ID from TOOL_T where TITLE = 'People'), 9, 0)
+/
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'SB'), (select TOOL_ID from TOOL_T where TITLE = 'News'), 10, 0)
+/
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'SB'), (select TOOL_ID from TOOL_T where TITLE = 'Calendar'), 11, 0)
+/
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'SB'), (select TOOL_ID from TOOL_T where TITLE = 'IT Notices'), 12, 0)
+/
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'SB'), (select TOOL_ID from TOOL_T where TITLE = 'Knowledge Base'), 13, 0)
+/
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'SB'), (select TOOL_ID from TOOL_T where TITLE = 'Ask IU'), 14, 0)
+/
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'SB'), (select TOOL_ID from TOOL_T where TITLE = 'Emergency Contacts'), 15, 0)
+/
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'SB'), (select TOOL_ID from TOOL_T where TITLE = 'Campus Alerts'), 16, 0)
+/
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'SB'), (select TOOL_ID from TOOL_T where TITLE = 'Feedback'), 17, 0)
+/
+
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'SE'), (select TOOL_ID from TOOL_T where TITLE = 'My Classes'), 1, 0)
+/
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'SE'), (select TOOL_ID from TOOL_T where TITLE = 'Email'), 2, 0)
+/
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'SE'), (select TOOL_ID from TOOL_T where TITLE = 'Social Media'), 3, 0)
+/
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'SE'), (select TOOL_ID from TOOL_T where TITLE = 'Classifieds'), 4, 0)
+/
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'SE'), (select TOOL_ID from TOOL_T where TITLE = 'Dining Services'), 5, 0)
+/
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'SE'), (select TOOL_ID from TOOL_T where TITLE = 'Maps'), 6, 0)
+/
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'SE'), (select TOOL_ID from TOOL_T where TITLE = 'Athletics'), 7, 0)
+/
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'SE'), (select TOOL_ID from TOOL_T where TITLE = 'Computer Labs'), 8, 0)
+/
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'SE'), (select TOOL_ID from TOOL_T where TITLE = 'People'), 9, 0)
+/
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'SE'), (select TOOL_ID from TOOL_T where TITLE = 'News'), 10, 0)
+/
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'SE'), (select TOOL_ID from TOOL_T where TITLE = 'Calendar'), 11, 0)
+/
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'SE'), (select TOOL_ID from TOOL_T where TITLE = 'IT Notices'), 12, 0)
+/
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'SE'), (select TOOL_ID from TOOL_T where TITLE = 'Knowledge Base'), 13, 0)
+/
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'SE'), (select TOOL_ID from TOOL_T where TITLE = 'Ask IU'), 14, 0)
+/
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'SE'), (select TOOL_ID from TOOL_T where TITLE = 'Emergency Contacts'), 15, 0)
+/
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'SE'), (select TOOL_ID from TOOL_T where TITLE = 'Campus Alerts'), 16, 0)
+/
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'SE'), (select TOOL_ID from TOOL_T where TITLE = 'Feedback'), 17, 0)
 /
 
 

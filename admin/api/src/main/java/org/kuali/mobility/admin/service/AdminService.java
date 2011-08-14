@@ -21,11 +21,11 @@ import org.kuali.mobility.admin.entity.HomeScreen;
 import org.kuali.mobility.admin.entity.Tool;
 
 public interface AdminService {
-	public HomeScreen getCachedHomeScreenByName(String name);
+	public HomeScreen getCachedHomeScreenByAlias(String alias);
 
 	public List<HomeScreen> getAllHomeScreens();
 	public HomeScreen getHomeScreenById(long layoutId);
-	public HomeScreen getHomeScreenByName(String name);
+	public HomeScreen getHomeScreenByAlias(String alias);
 	public Long saveHomeScreen(HomeScreen homeScreen);
 	public void deleteHomeScreenById(long layoutId);
 	

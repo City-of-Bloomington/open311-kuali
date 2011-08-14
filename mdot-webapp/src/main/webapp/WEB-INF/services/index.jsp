@@ -14,7 +14,7 @@
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility" %>
 
-<kme:page title="IU Mobile" id="home" backButton="false" homeButton="false" preferencesButton="true" preferencesButtonURL="campus?toolName=home" loginButton="true" loginButtonURL="home?login=yes">
+<kme:page title="${title}" id="home" backButton="false" homeButton="false" preferencesButton="true" preferencesButtonURL="campus?toolName=home" loginButton="true" loginButtonURL="home?login=yes">
 	<kme:content>
 	    <kme:listView id="homeserviceslist" filter="false">
 	        <c:forEach items="${tools}" var="homeTool" varStatus="status">	            

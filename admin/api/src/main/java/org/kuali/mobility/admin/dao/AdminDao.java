@@ -23,7 +23,7 @@ import org.kuali.mobility.admin.entity.Tool;
 public interface AdminDao {
 	public List<HomeScreen> getAllHomeScreens();
 	public HomeScreen getHomeScreenById(long homeScreenId);
-	public HomeScreen getHomeScreenByName(String name);
+	public HomeScreen getHomeScreenByAlias(String alias);
 	public Long saveHomeScreen(HomeScreen homeScreen);
 	public void deleteHomeScreenById(long homeScreenId);
 	

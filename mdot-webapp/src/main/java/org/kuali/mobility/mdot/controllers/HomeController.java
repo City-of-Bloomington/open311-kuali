@@ -59,7 +59,7 @@ public class HomeController {
 
     @RequestMapping(value = "home", method = RequestMethod.GET)
     public String home(HttpServletRequest request, Model uiModel) {      
-        uiModel.addAttribute("tools", buildHomeScreen(request));    
+    	buildHomeScreen(request, uiModel);
     	return "index";
     }
 
@@ -88,18 +88,41 @@ public class HomeController {
     }
     */
 
-    private List<HomeTool> buildHomeScreen(HttpServletRequest request) {
+    private void buildHomeScreen(HttpServletRequest request, Model uiModel) {
     	
     	User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
     	Backdoor backdoor = (Backdoor) request.getSession().getAttribute(Constants.KME_BACKDOOR_USER_KEY);
     	 
-    	String homeScreenName = "PUBLIC";
+    	String alias = "PUBLIC";
     	HomeScreen home = new HomeScreen();
     	if (user != null && user.getViewCampus() != null) {
-    		homeScreenName = user.getViewCampus();
-    	} 
+    		alias = user.getViewCampus();
+    	} else {
+    		// TODO: Refactor out this specific IU feature
+            String ref = request.getParameter("ref");
+            if (ref != null) {
+            	ref = ref.trim();
+            	if (ref.indexOf("m.iub.edu") >= 0) {
+            		user.setViewCampus("BL");
+            	} else if (ref.indexOf("m.iupui.edu") >= 0) {
+            		user.setViewCampus("IN");
+            	} else if (ref.indexOf("m.iupuc.edu") >= 0) {
+            		user.setViewCampus("CO");
+            	} else if (ref.indexOf("m.iue.edu") >= 0) {
+            		user.setViewCampus("EA");
+            	} else if (ref.indexOf("m.iuk.edu") >= 0) {
+            		user.setViewCampus("KO");
+            	} else if (ref.indexOf("m.iun.edu") >= 0) {
+            		user.setViewCampus("NW");
+            	} else if (ref.indexOf("m.iusb.edu") >= 0) {
+            		user.setViewCampus("SB");
+            	} else if (ref.indexOf("m.ius.edu") >= 0) {
+            		user.setViewCampus("SE");
+            	}
+            }
+    	}
     	
-    	home = adminService.getCachedHomeScreenByName(homeScreenName);
+    	home = adminService.getCachedHomeScreenByAlias(alias);
     	
     	List<HomeTool> copy = new ArrayList<HomeTool>(home.getHomeTools());
     	
@@ -142,7 +165,8 @@ public class HomeController {
  	
     	Collections.sort(copy);
     	
-    	return copy;
+    	uiModel.addAttribute("title", home.getTitle());    
+    	uiModel.addAttribute("tools", copy);    
     }
     
 }
