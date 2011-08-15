@@ -555,6 +555,7 @@ div#home span.countBadge {
 	position: absolute;
 	left: 42px;
 	top: 3px;
+	background-color: #7d110c;
 	background: -moz-linear-gradient(center top, #FF8888, #992222) repeat scroll 0 0 #992222;
 	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FF8888), color-stop(1, #992222));
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#FF8888', EndColorStr='#992222')";
