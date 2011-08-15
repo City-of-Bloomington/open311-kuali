@@ -16,6 +16,13 @@
 
 <kme:page title="Bus Schedules" id="bus" backButton="true" homeButton="true" cssFilename="bus">
 	<kme:content>
-			<iframe src="http://iub.doublemap.com/map/mobile" height="500" width="100%" frameborder="0"/> 
+			<iframe id="doublemap" name="doublemap" src="http://iub.doublemap.com/map/mobile" height="500" width="100%" frameborder="0"></iframe>
+			
+			<script type="text/javascript">
+			/* resize map to full height after page load */
+			$(window).load(function () {
+				$('iframe#doublemap').height($('div#bus').height());
+			});
+			</script> 
 	</kme:content>
 </kme:page>
