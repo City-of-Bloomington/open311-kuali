@@ -108,11 +108,28 @@
           
       </c:forEach>
   
-      </div></div>
-     
-       
-  <c:if test="${not empty filter}">Filtered by: ${filter.filterName}</c:if>
-
+      </div>
+      </div>
+ 
+  <c:choose>
+  <c:when test="${not empty filter}">
+        <div class="container_12">
+        <div class="grid_12">
+          <p>Viewing: ${filter.filterName} <a data-ajax="false" href="${pageContext.request.contextPath}/calendar/removeFilter" style="color:#990000; font-weight:normal">(clear filter)</a></p>
+        </div>
+        
+      </div>
+  </c:when>
+  <c:otherwise>
+  
+      <div class="container_12">
+        <div class="grid_12">
+          <p><a data-ajax="false" href="${pageContext.request.contextPath}/calendar/filters" style="color:#990000; font-weight:normal">Filter by category</a></p>
+        </div>
+      </div>
+  
+  </c:otherwise>
+  </c:choose>
     <c:forEach var="day" items="${events}">
     <c:choose>
        <c:when test="${selectedDate eq day.key}">
@@ -124,7 +141,7 @@
 	</c:choose>
     
       <div class="Calendar-Day-${monthYear} Calendar-Day-${monthYear}-${day.key}" style="display: ${display};">
-     <ul data-role="listview" data-theme="c" data-inset="true">
+     <ul data-role="listview" data-theme="c" data-inset="true" style="margin: 0 0 0 0;">
         <c:forEach var="event" items="${day.value.events}">
            <li>
               <a href="${pageContext.request.contextPath}/calendar/event?eventId=${event.eventId}&date=${event.date}">

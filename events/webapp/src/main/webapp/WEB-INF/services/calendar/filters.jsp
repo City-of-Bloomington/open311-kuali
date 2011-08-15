@@ -19,6 +19,7 @@
 <title>My Calendar</title>
 <link href="${pageContext.request.contextPath}/css/jquery.mobile-1.0b1.css" rel="stylesheet" type="text/css" />
 <link href="${pageContext.request.contextPath}/css/jquery.mobile.datebox.min.css" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/css/jquery-mobile-fluid960.css" rel="stylesheet" type="text/css" />
 <link href="${pageContext.request.contextPath}/css/custom.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.6.1.min.js"></script>
 <script type="text/javascript">
@@ -44,11 +45,24 @@
              	<form:options items="${filters}" itemLabel="filterName" itemValue="filterId" />
              </form:select>
         </fieldset>
-        <input name="select" type="image" value="Select" src="${pageContext.request.contextPath}/images/btn-select.gif" alt="select" />
+        
+        
+        <div class="container_12">
+        <div class="grid_6"><a href="${pageContext.request.contextPath}/calendar" data-role="button">Cancel</a></div>
+        <div class="grid_6">   <input name="select" type="image" value="Select"  data-theme="a" src="${pageContext.request.contextPath}/images/btn-select.gif" alt="select" /></div>
+        </div>
+        
+        
+     
     </form:form>
   </div>
-  <div data-role="footer" data-id="events-footer" data-position="fixed" role="contentinfo" data-theme="b">
-  </div>
+
+
+
+
+
+
+
 </div>
 <!-- /page -->
 

@@ -26,8 +26,8 @@
 		<form:form action="${pageContext.request.contextPath}/mobileCasAck" commandName="command" data-ajax="false" method="post">
 	      <div data-inline="true">
 	        <div class="ui-grid-a">
-	          <div class="ui-block-a"><a href="${pageContext.request.contextPath}/home" data-role="button">Cancel</a></div>
-	          <div class="ui-block-b"><input class="submit" type="submit" value="I Agree" /></div>
+	          <div class="ui-block-a"><a href="${pageContext.request.contextPath}/home" data-role="button" data-theme="c" >Cancel</a></div>
+	          <div class="ui-block-b"><input class="submit" type="submit"  value="I Agree" data-theme="a"  /></div>
 	        </div>
 	      </div>
 	    </form:form>

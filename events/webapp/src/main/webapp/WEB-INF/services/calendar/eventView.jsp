@@ -8,27 +8,16 @@
   express or implied. See the License for the specific language governing
   permissions and limitations under the License.
 --%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>My Calendar</title>
-<link href="${pageContext.request.contextPath}/css/jquery.mobile-1.0b1.css" rel="stylesheet" type="text/css" />
-<link href="${pageContext.request.contextPath}/css/custom.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.6.1.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/custom.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.mobile-1.0b1.min.js"></script>
-</head>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="kme" uri="http://kuali.org/mobility"%>
 
-<body>
-	<div data-role="page" id="Calendar-Events">
-		<div data-role="header">
-			<h1>Event</h1>
-			<a href="${pageContext.request.contextPath}/calendar/month" class="ui-btn-left" data-direction="reverse" data-transition="slide" data-ajax="false">view calendar</a><a href="${pageContext.request.contextPath}/calendar/options" class="ui-btn-right">options</a>
-		</div>
-		<div data-role="content">
+
+<kme:page title="Event" id="Calendar-Events" backButton="true" homeButton="true" cssFilename="events" backButtonURL="${pageContext.request.contextPath}/events">
+
+
+	<kme:content>
 			<ul data-role="listview" data-theme="g">
 				<li>
 					<h3 style="white-space: normal">
@@ -117,8 +106,4 @@
 				</c:otherwise>
 			</c:choose>
 		</div>
-	</div>
-	<!-- /page -->
-
-</body>
-</html>
+	 </kme:content></kme:page>

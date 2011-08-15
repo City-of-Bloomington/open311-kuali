@@ -267,13 +267,13 @@ public class CalendarController {
 			uiModel.addAttribute("message", pageLevelException.getMessage());
 			return "calendar/message";
 		}
-		return "redirect:/calendar/options";
+		return "redirect:/calendar/month";
 	}
 
 	@RequestMapping(value = "/removeFilter", method = RequestMethod.GET)
 	public String removeFilter(HttpServletRequest request, Model uiModel) {
 		request.getSession().removeAttribute("calendar.event.filterId");
-		return "redirect:/calendar/options";
+		return "redirect:/calendar/month";
 	}
 
 	@RequestMapping(value = "/event", method = RequestMethod.GET)

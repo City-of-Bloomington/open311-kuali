@@ -45,7 +45,7 @@
 <body>
 <div data-role="page" id="Calendar-Events-edit">
   <div data-role="header">
-    <h1>Event</h1>
+    <h1>Event</h1><a href="${pageContext.request.contextPath}/home" class="ui-btn-right" data-icon="home" data-iconpos="notext">Home</a>
   </div>
   <div data-role="content" >
   
@@ -98,7 +98,7 @@
             <div id="calendar-time" style="display: ${displayCalendarTime}">
                 <label for="startTime">Start Time</label>
                 <form:input path="startTime"  cssClass="text ui-widget-content ui-corner-all" data-role="datebox" data-options='{"mode": "timebox", "timeFormat":12}' />
-                <br/>
+                <br/> <br/>
                 <label for="endDate">End Date</label>
                 <form:input path="endDate"  cssClass="text ui-widget-content ui-corner-all" data-role="datebox" data-options='{"useDialogForceFalse": true, "dateFormat": "MM/DD/YYYY"}'/>
                  <div class="error"><form:errors path="endDate" /></div>
@@ -106,7 +106,7 @@
                  <label for="endTime">End Time</label>
                 <form:input path="endTime"  cssClass="text ui-widget-content ui-corner-all" data-role="datebox" data-options='{"mode": "timebox", "timeFormat":12}' />
                 <br/>
-            </div>
+            </div> <br/>
             <label for="categories">Category</label>
             
             <form:select path="categories" multiple="true"  data-native-menu="false">
