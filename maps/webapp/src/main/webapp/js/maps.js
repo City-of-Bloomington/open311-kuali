@@ -245,7 +245,8 @@ function drawUserLocation(map, markersArray, userMarkersArray, position) {
 			map : map,
 			radius : position.coords.accuracy,
 			fillColor : '#00BFFF',
-			strokeColor : '#FFFFFF'
+			strokeColor : '#FFFFFF',
+			zIndex: 1
 		});
 		circle.bindTo('center', userLocationMarker, 'position');
 		//userMarkersArray.push(circle);

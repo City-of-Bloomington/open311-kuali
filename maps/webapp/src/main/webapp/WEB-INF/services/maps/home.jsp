@@ -13,12 +13,13 @@
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<kme:page title="Campus Maps" id="maps" backButton="true" homeButton="true" cssFilename="maps">
+<kme:page title="Campus Maps" id="maps" backButton="true" homeButton="true" cssFilename="home" jsFilename="maps" usesGoogleMaps="true">
 	<kme:content>
 		<form:form action="${pageContext.request.contextPath}/maps/building/search" commandName="mapsearchform" data-ajax="false">
 			<fieldset>
-			<label for="searchCampus">Campus:</label>
-			<form:select path="searchCampus" multiple="false">
+			<!-- <label for="searchCampus">Campus:</label> -->
+			<form:hidden path="searchCampus" cssClass="text ui-widget-content ui-corner-all" />
+<%-- 			<form:select path="searchCampus" multiple="false">
 				<option value="UA" label="">select:</option>			  
 				<option value="BL" label="">IU Bloomington</option>
 				<option value="CO" label="">IUPUC Columbus</option>
@@ -29,23 +30,40 @@
 				<option value="NW" label="">IU Northwest</option>
 				<option value="SB" label="">IU South Bend</option>
 				<option value="SE" label="">IU Southeast</option>
-			</form:select>
+			</form:select> --%>
 			</fieldset>
 			<fieldset>
             <label for="searchText">Search:</label>
-            <%-- <form:input path="searchText" cssClass="text ui-widget-content ui-corner-all" /> --%>
-			<input id="searchText" name="searchText" class="text ui-widget-content ui-corner-all" type="search" />
+            <form:input path="searchText" cssClass="text ui-widget-content ui-corner-all" />
+			<!-- <input id="searchText" name="searchText" class="text ui-widget-content ui-corner-all" type="search" /> -->
 			<form:errors path="searchText" />
 			</fieldset>
 		</form:form>
-		<div id="searchresults">
+		<div id="searchresults" class="overlay">
 		<jsp:include page="search.jsp" />
 		</div>
+		<div id="map_canvas" style="height:300px;" class="map"></div>
+
 	    
 <script type="text/javascript">
+var map;
+var markersArray = [];
+var userMarkersArray = [];
+
 $('#maps').live("pagebeforeshow", function() {
+	
+	setContextPath("${pageContext.request.contextPath}");
+	deleteOverlays(markersArray);
+	map = initialize("map_canvas", 39.17, -86.5);
+	var campus = $("#searchCampus").val();
+	if (campus) {
+		var bounds = getCampusBounds(campus);
+		map.fitBounds(bounds);
+	}
+	
 	$('#searchText').keypress(function (event) {
-		// Prevent enter key from submitting the form
+		$('#searchresults').show();
+		/* Prevent enter key from submitting the form */
 		lastTypedKeyCode = event.keyCode;
 		console.log(lastTypedKeyCode);
 		if (lastTypedKeyCode == 13) {
@@ -87,10 +105,10 @@ function mapSearch() {
 
 	if (searchKey != previousSearchKey) {
 		if (inputString.length < 2 || groupCode == "UA") {
-			// Hide the suggestion box.
+			// Remove previous results
 			$('#searchresults').html('');
 		} else {
-			var requestUrlString = '${pageContext.request.contextPath}/maps/building/search?criteria=' + encodeURI(inputString) + '&groupCode=' + encodeURI(groupCode);
+			var requestUrlString = '${pageContext.request.contextPath}/maps/building/searchassist?criteria=' + encodeURI(inputString) + '&groupCode=' + encodeURI(groupCode);
 			$.get(requestUrlString, function(data) {
 				//console.log("" + requestUrlString + " " + mapsRemoteCallCount + " " + mapsCurrentDisplayNumber);
 				if (mapsRemoteCallCountAtStartOfRequest >= mapsCurrentDisplayNumber) {
@@ -99,12 +117,28 @@ function mapSearch() {
 					var pagehtml = '<div id="resultdata"></div>'
 					$('#searchresults').html(pagehtml);
 					$("#resultdata").html(data).page();
+					mapSearchPostProcess();
 				}
 			});
 		}
 	}
 	previousSearchKey = searchKey;
 } // mapSearch
+
+function mapSearchPostProcess() {
+    $('a[kmetype="quicksearch"]').click(function(event) {
+		event.preventDefault();
+		$('#searchresults').hide();
+		var latitude = $(this).attr("kmelatitude");
+		var longitude = $(this).attr("kmelongitude");
+		var name = $(this).attr("kmename");
+    	$('#searchText').val(name);
+		deleteOverlays(markersArray);
+		showLocationByCoordinates(map, markersArray, latitude, longitude);		
+		//alert("Test");
+    });
+}
+
 </script>
 
 	</kme:content>

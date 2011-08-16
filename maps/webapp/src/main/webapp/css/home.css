@@ -1,0 +1,12 @@
+form#mapsearchform {
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+div.overlay {
+	position: absolute;
+	top:100px;
+	z-index: 99;
+}
+div.map {
+
+}
