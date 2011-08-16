@@ -24,12 +24,6 @@
 <kme:page title="${sportname}" id="athletics-schedule" backButton="true" homeButton="true" cssFilename="athletics" backButtonURL="${pageContext.request.contextPath}/athletics?selectedTab=tab2">
 	<kme:content>
 
-<script type="text/javascript">
- $(window).load(function() {
-     $('.tabs-tab3').addClass('selected');
-     $('.tabs-panel3').show();
- });
-</script>
 
 
 		<div class="tabs-tabcontainer container_12">
@@ -52,7 +46,7 @@
 					<a class="tabs-tab2" name="tabs-tab2" href="${rosterUrl}">Roster</a>
 				</div>
 				<div class="grid_4">
-					<a class="tabs-tab3" name="tabs-tab3" href="${scheduleUrl}">Schedule</a>
+					<a class="tabs-tab3 selected" name="tabs-tab3" href="${scheduleUrl}">Schedule</a>
 				</div>
 
 			</c:if>
@@ -60,7 +54,7 @@
 
 
 
-		<div class="tabs-panel3" name="tabs-panel3">
+		<div class="tabs-panel3" name="tabs-panel3" style="display:block">
 
 
 

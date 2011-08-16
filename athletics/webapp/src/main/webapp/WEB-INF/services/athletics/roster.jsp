@@ -47,14 +47,14 @@
 					</c:url>
       
       
-      <div class="grid_4"><a class="tabs-tab2" name="tabs-tab2" href="${rosterUrl}" >Roster</a></div>
+      <div class="grid_4"><a class="tabs-tab2 selected" name="tabs-tab2" href="${rosterUrl}" >Roster</a></div>
       <div class="grid_4"><a class="tabs-tab3" name="tabs-tab3" href="${scheduleUrl}">Schedule</a></div>
       
       </c:if>
     </div>
 
 
-    <div class="tabs-panel2" name="tabs-panel2">
+    <div class="tabs-panel2" name="tabs-panel2" style="display:block">
 
 		   <ul data-role="listview" data-theme="c">
 			<c:forEach items="${rosterData.players}" var="player" varStatus="status">
