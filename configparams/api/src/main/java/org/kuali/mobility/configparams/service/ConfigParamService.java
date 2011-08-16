@@ -39,5 +39,9 @@ public interface ConfigParamService {
     public ConfigParam fromJsonToEntity(String json);
     
     public Collection<ConfigParam> fromJsonToCollection(String json);
-    
+ 
+	public void stopCache();
+	
+	public void startCache();
+
 }

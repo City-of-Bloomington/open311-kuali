@@ -30,6 +30,7 @@ import org.kuali.mobility.admin.entity.HomeTool;
 import org.kuali.mobility.admin.entity.Tool;
 import org.kuali.mobility.admin.service.AdminService;
 import org.kuali.mobility.alerts.service.AlertsService;
+import org.kuali.mobility.configparams.service.ConfigParamService;
 import org.kuali.mobility.mdot.entity.Backdoor;
 import org.kuali.mobility.shared.Constants;
 import org.kuali.mobility.user.entity.User;
@@ -57,6 +58,12 @@ public class HomeController {
         this.alertsService = alertsService;
     }
 
+	@Autowired
+	private ConfigParamService configParamService;
+    public void setConfigParamService(ConfigParamService configParamService) {
+		this.configParamService = configParamService;
+	}
+    
     @RequestMapping(value = "home", method = RequestMethod.GET)
     public String home(HttpServletRequest request, Model uiModel) {      
     	buildHomeScreen(request, uiModel);
@@ -127,17 +134,20 @@ public class HomeController {
     	List<HomeTool> copy = new ArrayList<HomeTool>(home.getHomeTools());
     	
     	Tool tool = new Tool();
-    	if (backdoor != null) {
-    		tool.setBadgeCount(backdoor.getUserId());
-    	} else {
-    		tool.setBadgeCount("");
-    	}
-    	tool.setDescription("Impersonate a user.");
-    	tool.setIconUrl("images/service-icons/srvc-backdoor.png");
-    	tool.setTitle("Backdoor");
-    	tool.setUrl("backdoor");
-    	copy.add(new HomeTool(home, tool, home.getHomeTools().size() + 1000));
 
+    	if (user.isMember(configParamService.findValueByName("Backdoor.Group.Name"))) {
+	    	if (backdoor != null) {
+	    		tool.setBadgeCount(backdoor.getUserId());
+	    	} else {
+	    		tool.setBadgeCount("");
+	    	}
+	    	tool.setDescription("Impersonate a user.");
+	    	tool.setIconUrl("images/service-icons/srvc-backdoor.png");
+	    	tool.setTitle("Backdoor");
+	    	tool.setUrl("backdoor");
+	    	copy.add(new HomeTool(home, tool, home.getHomeTools().size() + 1000));
+    	}
+    	
     	// TODO: MOBILITY-53
     	for (HomeTool homeTool : copy) {
 			if ("Campus Alerts".equals(homeTool.getTool().getTitle())) {

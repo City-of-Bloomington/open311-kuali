@@ -13,43 +13,43 @@
  * permissions and limitations under the License.
  */
 
-package org.kuali.mobility.admin.listeners;
+package org.kuali.mobility.configparams.listeners;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
-import org.kuali.mobility.admin.service.AdminService;
+import org.kuali.mobility.configparams.service.ConfigParamService;
 import org.springframework.context.ApplicationContext;
 
-public class AdminListener implements ServletContextListener {
+public class ConfigParamListener implements ServletContextListener {
 	
-	private static org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(AdminListener.class);
+	private static org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(ConfigParamListener.class);
 
-	private AdminService adminService;
+	private ConfigParamService configParamService;
 
 	public void contextInitialized(final ServletContextEvent event) {
 		ApplicationContext ctx = org.springframework.web.context.support.WebApplicationContextUtils.getWebApplicationContext(event.getServletContext());
-		adminService = (AdminService) ctx.getBean("AdminService");
+		configParamService = (ConfigParamService) ctx.getBean("ConfigParamService");
 		
-		LOG.info("Starting the Admin cache thread");
-		adminService.startCache();
-		LOG.info("Admin cache thread started");
+		LOG.info("Starting the ConfigParam cache thread");
+		configParamService.startCache();
+		LOG.info("ConfigParam cache thread started");
 	}
 
 	public void contextDestroyed(final ServletContextEvent event) {
-		if (adminService != null) {
-			LOG.info("Stopping the Admin cache thread");
-			adminService.stopCache();
-			LOG.info("Admin cache thread should be completely dead");
+		if (configParamService != null) {
+			LOG.info("Stopping the ConfigParam cache thread");
+			configParamService.stopCache();
+			LOG.info("ConfigParam cache thread should be completely dead");
 		}
 	}
 
-	public AdminService getAdminService() {
-		return adminService;
+	public ConfigParamService getConfigParamService() {
+		return configParamService;
 	}
 
-	public void setAdminService(AdminService adminService) {
-		this.adminService = adminService;
+	public void setConfigParamService(ConfigParamService configParamService) {
+		this.configParamService = configParamService;
 	}
-	
+
 }

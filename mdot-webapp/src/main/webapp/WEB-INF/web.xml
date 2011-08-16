@@ -44,6 +44,9 @@
 	<listener>
 		<listener-class>org.kuali.mobility.admin.listeners.AdminListener</listener-class>
 	</listener>
+	<listener>
+		<listener-class>org.kuali.mobility.configparams.listeners.ConfigParamListener</listener-class>
+	</listener>
 
     <filter>
         <filter-name>cas</filter-name>

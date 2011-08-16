@@ -16,8 +16,12 @@
 package org.kuali.mobility.configparams.service;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 import org.kuali.mobility.configparams.dao.ConfigParamDao;
 import org.kuali.mobility.configparams.entity.ConfigParam;
@@ -28,9 +32,44 @@ import org.springframework.transaction.annotation.Transactional;
 import flexjson.JSONDeserializer;
 import flexjson.JSONSerializer;
 
-@Service
+@Service(value = "ConfigParamService")
 public class ConfigParamServiceImpl implements ConfigParamService {
 
+	private static org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(ConfigParamServiceImpl.class);
+
+	private static final int CONFIG_PARAM_UPDATE_INTERVAL = 5; //5 min 
+	
+	private static ConcurrentMap<String, ConfigParam> configParams;
+	
+	private static Thread homeScreenReloaderThread = null;
+
+	static {
+		configParams = new ConcurrentHashMap<String, ConfigParam>();
+	} 
+	
+	@Override
+	public void startCache() {
+		homeScreenReloaderThread = new Thread(new ConfigParamReloader());
+		homeScreenReloaderThread.setDaemon(true);
+		homeScreenReloaderThread.start();
+    }
+    
+	@Override
+    public void stopCache() {
+    	homeScreenReloaderThread.interrupt();
+    	homeScreenReloaderThread = null;
+    }
+	
+	public String findCachedConfigParamValueByName(String name) {
+		ConfigParam configParam = configParams.get(name);
+		if (configParam == null) {
+			LOG.warn("Cannot find config param with name: " + name + " in the cache. Fetching from database");
+			return findValueByName(name);
+		}
+		String value = configParam.getValue();
+        return value != null ? value.trim() : "";
+ 	}
+	
 	@Autowired
     private ConfigParamDao configParamDao;
     public void setConfigParamDao(ConfigParamDao configParamDao) {
@@ -59,7 +98,12 @@ public class ConfigParamServiceImpl implements ConfigParamService {
 
     @Transactional
     public String findValueByName(String name) {
-        String value = findConfigParamByName(name).getValue();
+		ConfigParam configParam = configParams.get(name);
+		if (configParam == null) {
+			LOG.warn("Cannot find config param with name: " + name + " in the cache. Fetching from database");
+			return findConfigParamByName(name).getValue();
+		}
+        String value = configParam.getValue();
         return value != null ? value.trim() : "";
     }
 
@@ -79,5 +123,40 @@ public class ConfigParamServiceImpl implements ConfigParamService {
     public Collection<ConfigParam> fromJsonToCollection(String json) {
         return new JSONDeserializer<List<ConfigParam>>().use(null, ArrayList.class).use("values", ConfigParam.class).deserialize(json);
     } 
+    
+	private class ConfigParamReloader implements Runnable {
+        
+        public void run() {    
+            Calendar updateCalendar = Calendar.getInstance();
+            Date nextCacheUpdate = new Date();
+                     
+            // Cache loop
+            while (true) {
+                Date now = new Date();
+                if (now.after(nextCacheUpdate)) {
+                    try {
+                    	reloadConfigParams();	
+                    } catch (Exception e) {
+                    	LOG.error("Error reloading home screen cache.", e);
+                    }
+                    updateCalendar.add(Calendar.MINUTE, CONFIG_PARAM_UPDATE_INTERVAL);
+                    nextCacheUpdate = new Date(updateCalendar.getTimeInMillis());
+                }
+                try {
+                    Thread.sleep(1000 * 60);
+                } catch (InterruptedException e) {
+                    LOG.error("Error:", e);
+                }
+            }
+        }
+
+		private void reloadConfigParams() {
+			List<ConfigParam> params = configParamDao.findAllConfigParam();
+			for (ConfigParam configParam : params) {
+				configParams.put(configParam.getName(), configParam);
+			}			
+		}
+        
+	}
 
 }

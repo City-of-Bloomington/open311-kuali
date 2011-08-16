@@ -33,6 +33,9 @@ public class HttpUtil {
 	
 	public static boolean needsAuthenticated(String path) {
 		if (path.startsWith("/oauth") 
+				|| path.startsWith("/backdoor") 
+				|| path.startsWith("/admin") 
+				|| path.startsWith("/publishing") 
 				|| path.startsWith("/myclasses") 
 				|| path.startsWith("/calendar")) {
 			return true;

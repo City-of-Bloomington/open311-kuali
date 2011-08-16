@@ -17,12 +17,15 @@
 
 <kme:page title="Verify" id="mobCasAck" backButton="true" homeButton="true" backButtonURL="home">
 	<kme:content>
-		<h2>Mobile CAS</h2>
+		<h2>Mobile CAS (Central Authentication System)</h2>
 		<ul>
 			<li>Mobile CAS allows a 24 hour session.</li>
 			<li>A PIN should be used to secure your phone.</li>
 			<li>If you lose your phone you should change your passphrase to invalidate your Mobile CAS Session.</li>
 		</ul>		    
+		
+		<a href="https://m.iu.edu/miu-prd/Base.do?s=KnowledgeBaseService&mtc=detail&query=umail&key=ayvj" data-icon="info" data-role="button">Learn More</a>
+		
 		<form:form action="${pageContext.request.contextPath}/mobileCasAck" commandName="command" data-ajax="false" method="post">
 	      <div data-inline="true">
 	        <div class="ui-grid-a">
