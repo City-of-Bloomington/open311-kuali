@@ -50,6 +50,7 @@
 		<tool.computerlabs.version>1.0.0-BETA-1</tool.computerlabs.version>
 		<tool.configparams.version>1.0.0-BETA-1</tool.configparams.version>
 		<tool.dining.version>1.0.0-BETA-1</tool.dining.version>
+		<tool.email.version>1.0.0-BETA-1</tool.email.version>
 		<tool.emergencyinfo.version>1.0.0-BETA-1</tool.emergencyinfo.version>
 		<tool.events.version>1.0.0-BETA-1</tool.events.version>
 		<tool.feedback.version>1.0.0-BETA-1</tool.feedback.version>
@@ -81,6 +82,7 @@
 				<module>computerlabs</module>
 				<module>configparams</module>
                 <module>dining</module>
+                <module>email</module>
 				<module>emergencyinfo</module>
 				<module>events</module>
                 <module>feedback</module>
@@ -109,6 +111,7 @@
 				<module>computerlabs</module>
 				<module>configparams</module>
                 <module>dining</module>
+                <module>email</module>
 				<module>emergencyinfo</module>
 				<module>events</module>
                 <module>feedback</module>
@@ -293,6 +296,27 @@
                 <artifactId>bus-webapp</artifactId>
                 <version>${tool.bus.version}</version>
             </dependency>
+   			<!-- Email Service -->
+			<dependency>
+				<groupId>org.kuali.mobility</groupId>
+				<artifactId>email-api</artifactId>
+				<version>${tool.email.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.kuali.mobility</groupId>
+				<artifactId>email-impl</artifactId>
+				<version>${tool.email.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.kuali.mobility</groupId>
+				<artifactId>email-web</artifactId>
+				<version>${tool.email.version}</version>
+			</dependency>
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>email-webapp</artifactId>
+                <version>${tool.email.version}</version>
+            </dependency>            
 			<!-- Computer Labs Service -->
 			<dependency>
 				<groupId>org.kuali.mobility</groupId>

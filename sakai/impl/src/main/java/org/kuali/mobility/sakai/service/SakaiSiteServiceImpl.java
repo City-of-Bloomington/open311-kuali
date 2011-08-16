@@ -123,7 +123,11 @@ public class SakaiSiteServiceImpl implements SakaiSiteService {
 						List<CalendarViewEvent> viewEvents = list.getEvents();
 						for (CalendarViewEvent event : viewEvents) {
 							if (event.getOncourseSiteId() != null) {
-								calendarCourseIds.add(event.getOncourseSiteId().toLowerCase());
+								String oncourseSiteId = event.getOncourseSiteId().toLowerCase();
+								if (oncourseSiteId.indexOf("null") >= 0) {
+									oncourseSiteId = oncourseSiteId.replaceAll("null", "");
+								}
+								calendarCourseIds.add(oncourseSiteId);
 							}
 						}
 					}
