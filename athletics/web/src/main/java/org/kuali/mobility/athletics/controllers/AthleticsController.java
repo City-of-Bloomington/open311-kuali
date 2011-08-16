@@ -72,12 +72,27 @@ public class AthleticsController {
 		return "athletics/list";
 	}
 
+	@RequestMapping(value = "/autoUpdate", method = RequestMethod.GET)
+	public String getAutoUpdate(Model uiModel, HttpServletRequest request) throws Exception {
+		User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
+		String selectedCampus = user.getViewCampus();
+
+		Athletics athletics = athleticsService.retrieveAutoUpdatedMatches(selectedCampus);
+		uiModel.addAttribute("athletics", athletics);
+		uiModel.addAttribute("today", Calendar.getInstance().get(Calendar.DATE));
+		return "athletics/autoMatch";
+	}
+
 	@RequestMapping(value = "/viewSport", method = RequestMethod.GET)
 	public String viewSport(HttpServletRequest request, Model uiModel, @RequestParam(required = true) Long sportId) throws Exception {
 		Sport sport = athleticsService.retrieveSport(sportId);
-		NewsStream newsStream = newsService.getNewsStream(sport.getLink(), null, false);
 		uiModel.addAttribute("sport", sport);
-		uiModel.addAttribute("newsStream", newsStream);
+		try {
+			NewsStream newsStream = newsService.getNewsStream(sport.getLink(), null, false);
+			uiModel.addAttribute("newsStream", newsStream);
+		} catch (Exception e) {
+
+		}
 		return "athletics/newsList";
 	}
 

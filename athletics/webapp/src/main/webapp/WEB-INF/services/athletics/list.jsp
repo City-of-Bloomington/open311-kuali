@@ -15,96 +15,41 @@
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility"%>
 
 <c:choose>
-	<c:when test="${selectedTab eq 'tab2'}"><c:set var="jsFilename" value="show-tab2"/></c:when>
-	<c:when test="${selectedTab eq 'tab3'}"><c:set var="jsFilename" value="show-tab3"/></c:when>
-	<c:otherwise><c:set var="jsFilename" value="show-tab1"/></c:otherwise>
+	<c:when test="${selectedTab eq 'tab2'}">
+		<c:set var="jsFilename" value="show-tab2" />
+	</c:when>
+	<c:when test="${selectedTab eq 'tab3'}">
+		<c:set var="jsFilename" value="show-tab3" />
+	</c:when>
+	<c:otherwise>
+		<c:set var="jsFilename" value="show-tab1" />
+	</c:otherwise>
 </c:choose>
 
 <kme:page title="Athletics" id="athletics" backButton="true" homeButton="true" cssFilename="athletics" backButtonURL="${pageContext.request.contextPath}/home" jsFilename="${jsFilename}">
 	<kme:content>
 		<div class="tabs-tabcontainer container_12">
 			<div class="grid_4">
-				<a class="tabs-tab1" name="tabs-tab1" href="#"><c:out value="${athletics.matchData.category}" />
-				</a>
+				<a class="tabs-tab1" name="tabs-tab1" href="#"><c:out value="${athletics.matchData.category}" /> </a>
 			</div>
 			<div class="grid_4">
-				<a class="tabs-tab2" name="tabs-tab2" href="#"><c:out value="${athletics.sportData.category}" />
-				</a>
+				<a class="tabs-tab2" name="tabs-tab2" href="#"><c:out value="${athletics.sportData.category}" /> </a>
 			</div>
 			<div class="grid_4">
-				<a class="tabs-tab3" name="tabs-tab3" href="#"><c:out value="${athletics.newsData.category}" />
-				</a>
+				<a class="tabs-tab3" name="tabs-tab3" href="#"><c:out value="${athletics.newsData.category}" /> </a>
 			</div>
 		</div>
 
-		<div class="tabs-panel1" name="tabs-panel1">
-			<c:if test="${empty athletics.matchData.matches}">
-				There are no game updates.
-			</c:if>
-			<c:set var="previousDay" value="false"/>
-			<c:forEach var="match" items="${athletics.matchData.matches}">
-				<c:if test="${match.gameDay ne today and not previousDay}">
-					<br/>
-					<ul data-role="listview" data-theme="c"  data-dividertheme="d"  data-inset="false"><li data-role="list-divider">recent games</li></ul>
-					<br/>
-					<c:set var="previousDay" value="true"/>
-				</c:if>
-				
-				<div class="container_12 match-info">
-					<div class="grid_3 team-score">
-						<c:if test="${not empty match.thumbnail}">
-							<img src='<c:out value="${match.thumbnail}"/>' />
-						</c:if>
-						<span><c:out value="${match.score}" escapeXml="true" /> </span>
-					</div>
-					<div class="grid_6 ">
-						<span class="match-outcome"> 
-						<c:if test="${not empty match.winLoss}">
-								<c:out value="${match.winLoss}" />
-							</c:if> 
-							</span> 
-							<span class="sport-category"> <c:out value="${match.sportName}" escapeXml="true" /> </span> 
-							<span class="opponent"> <c:choose>
-								<c:when test="${not empty match.opponent}">
-									<c:out value="${match.home}" />&nbsp;<c:out value="${match.opponent}" escapeXml="true" />
-								</c:when>
-								<c:when test="${not empty match.name}">
-									<c:out value="${match.name}" />
-								</c:when>
-								<c:otherwise>TBD</c:otherwise>
-							</c:choose> 
-							</span> 
-							<span class="date-time"> <c:choose>
-								<c:when test="${match.winLoss eq 'in progress' and not empty match.timeRemaining}">
-									<c:out value="${match.timeRemaining}" escapeXml="true" />
-								</c:when>
-								<c:when test="${not empty match.dateTime}">
-									<c:out value="${match.dateTime}" escapeXml="true" />
-								</c:when>
-							</c:choose> 
-							</span> 
-							<span class="location"> <c:if test="${not empty match.location}">
-								<c:out value="${match.location}" escapeXml="true" />
-							</c:if> 
-							</span>
-					</div>
-					<div class="grid_3 team-score">
-						<c:if test="${not empty match.oppThumbnail}">
-							<img src='<c:out value="${match.oppThumbnail}"/>' />
-						</c:if>
-
-						<span><c:out value="${match.oppScore}" escapeXml="true" />
-						</span>
-					</div>
-				</div>
-			</c:forEach>
+		<div class="tabs-panel1" name="tabs-panel1" id="matches">
+				<jsp:include page="autoMatch.jsp" />
 		</div>
 		<div class="tabs-panel2" name="tabs-panel2">
 			<ul data-role="listview">
 				<c:forEach var="sport" items="${athletics.sportData.sports}">
 					<li><a href="${pageContext.request.contextPath}/athletics/viewSport?sportId=${sport.sportId}"> <c:if test="${not empty sport.thumbnail}">
 								<img src='<c:out value="${sport.thumbnail}"/>' class="ui-li-icon ui-li-thumb" />
-							</c:if>${sport.name}</a></li>
+							</c:if>${sport.name}</a>
+					</li>
 				</c:forEach>
 			</ul>
 		</div>
@@ -117,7 +62,8 @@
 						</c:url> <a href="${story}"> <img src='<c:out value="${news.thumbnail}" escapeXml="true" />' class="rowicon-news" />
 							<p>
 								<c:out value="${news.title}" />
-							</p> </a></li>
+							</p> </a>
+					</li>
 				</c:forEach>
 			</ul>
 		</div>

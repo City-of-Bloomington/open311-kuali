@@ -33,6 +33,7 @@ import org.kuali.mobility.athletics.entity.MatchData;
 import org.kuali.mobility.athletics.entity.Player;
 import org.kuali.mobility.athletics.entity.RosterData;
 import org.kuali.mobility.athletics.entity.Sport;
+import org.kuali.mobility.proxy.service.ProxyService;
 
 import flexjson.JSONDeserializer;
 
@@ -48,6 +49,23 @@ public class AthleticsServiceImpl implements AthleticsService {
 
 	private String athleticsURL;
 
+	public Athletics retrieveAutoUpdatedMatches(String campus) throws Exception {
+		GetMethod get = new GetMethod(athleticsURL + "recentMatches.do?version=2&campus=" + campus);
+		String json = IOUtils.toString(getInputStreamFromGetMethod(get), "UTF-8");
+		Athletics athletics = new JSONDeserializer<Athletics>().deserialize(json, Athletics.class);
+		SimpleDateFormat onlyDateFormat = new SimpleDateFormat("MMM dd, yyyy");
+		Calendar calendar = Calendar.getInstance();
+		for (Match match : athletics.getMatchData().getMatches()) {
+			try {
+				calendar.setTime(onlyDateFormat.parse(match.getDate()));
+				match.setGameDay(calendar.get(Calendar.DATE));
+			} catch (Exception e) {
+
+			}
+		}
+		return athletics;
+	}
+
 	public Athletics retrieveAthletics(String campus) throws Exception {
 		GetMethod get = new GetMethod(athleticsURL + "sports.do?version=2&campus=" + campus);
 		String json = IOUtils.toString(getInputStreamFromGetMethod(get), "UTF-8");
@@ -55,8 +73,12 @@ public class AthleticsServiceImpl implements AthleticsService {
 		SimpleDateFormat onlyDateFormat = new SimpleDateFormat("MMM dd, yyyy");
 		Calendar calendar = Calendar.getInstance();
 		for (Match match : athletics.getMatchData().getMatches()) {
-			calendar.setTime(onlyDateFormat.parse(match.getDate()));
-			match.setGameDay(calendar.get(Calendar.DATE));
+			try {
+				calendar.setTime(onlyDateFormat.parse(match.getDate()));
+				match.setGameDay(calendar.get(Calendar.DATE));
+			} catch (Exception e) {
+
+			}
 		}
 		return athletics;
 	}
