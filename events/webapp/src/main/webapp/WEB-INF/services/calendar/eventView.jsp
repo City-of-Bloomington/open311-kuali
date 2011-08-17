@@ -23,15 +23,15 @@
 					<h3 style="white-space: normal">
 						<c:out value="${event.title}" />
 					</h3>
-					<p>
+					<p class="wrap">
 						<c:out value="${event.location}" />
 					</p>
-					<p>
+					<p class="wrap">
 						<c:out value="${event.displayDate}" />
 					</p></li>
 				<li>
 					<h3>Alert</h3>
-					<p>
+					<p class="wrap">
 						<c:choose>
 							<c:when test="${not empty event.reminder}">
 								<c:out value="${event.reminder}" /> before event.
@@ -41,26 +41,26 @@
 					</p></li>
 				<li>
 					<h3>Availability</h3>
-					<p>
+					<p class="wrap">
 						<c:out value="${event.showAs}" />
 					</p></li>
 				<c:if test="${not empty event.category}">
 					<li>
 						<h3>Category</h3>
-						<p>
+						<p class="wrap">
 							<c:out value="${event.category}" />
 						</p></li>
 				</c:if>
 				<c:if test="${not empty event.recurrenceMessage}">
 					<li>
 						<h3>Recurrence</h3>
-						<p style="white-space: normal">
+						<p class="wrap">
 							<c:out value="${event.recurrenceMessage}" />
 						</p></li>
 				</c:if>
 				<li>
 					<h3>Description</h3>
-					<p>
+					<p class="wrap">
 						<c:out value="${event.description}" />
 					</p></li>
 			</ul>
