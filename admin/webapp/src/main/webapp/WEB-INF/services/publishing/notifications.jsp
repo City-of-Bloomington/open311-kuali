@@ -27,7 +27,7 @@
 <p>
 <c:forEach items="${notifications}" var="notification" varStatus="status">
 <a href="editNotification?id=${notification.notificationId}">Edit</a> | <a href="deleteNotification?id=${notification.notificationId}">Delete</a> -- 
-${notification.title} - ${notification.message} : ${notification.startDate} - ${notification.endDate} <br/> 
+<c:out value="${notification.title}"/> - <c:out value="${notification.message}"/> : <c:out value="${notification.startDate}"/> - <c:out value="${notification.endDate}"/> <br/> 
 </c:forEach>
 </p>
 </body>

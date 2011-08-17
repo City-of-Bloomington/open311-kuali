@@ -23,7 +23,7 @@
 	<table>
 		<c:forEach items="${tools}" var="tool" varStatus="status">
 			<tr>
-				<td>${tool.title}</td><td><a href="${pageContext.request.contextPath}/publishing/tool/edit/${tool.toolId}">edit</a> <a href="${pageContext.request.contextPath}/publishing/tool/delete/${tool.toolId}">delete</a></td>
+				<td><c:out value="${tool.title}"/></td><td><a href="${pageContext.request.contextPath}/publishing/tool/edit/${tool.toolId}">edit</a> <a href="${pageContext.request.contextPath}/publishing/tool/delete/${tool.toolId}">delete</a></td>
 			</tr>
 		</c:forEach>
 	</table>

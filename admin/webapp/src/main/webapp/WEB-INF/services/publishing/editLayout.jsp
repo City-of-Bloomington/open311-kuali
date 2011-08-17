@@ -53,7 +53,7 @@
 				<div data-role="fieldcontain">
 				    <select id="toolToAdd" name="toolToAdd">
 				    	<c:forEach items="${availableTools}" var="tool" varStatus="status">
-							<option value="${tool.toolId}">${tool.title}</option>
+							<option value="${tool.toolId}"><c:out value="${tool.title}"/></option>
 						</c:forEach>
 				    </select>
 				</div>
@@ -65,7 +65,7 @@
 					<input type="hidden" id="removeId" name="removeId" value="" />
 					<c:forEach items="${layout.homeTools}" var="homeTool" varStatus="status">
 						<tr>
-							<td>${homeTool.tool.title}</td>
+							<td><c:out value="${homeTool.tool.title}"/></td>
 							<td>
 								<input name="remove" value="Remove" type="submit" alt="remove tool" onclick="javascript:document.forms['fm'].elements['removeId'].value = '${homeTool.toolId}';"/>
 								<input name="up" value="Up" type="submit" alt="remove tool" onclick="javascript:document.forms['fm'].elements['removeId'].value = '${homeTool.toolId}';"/>

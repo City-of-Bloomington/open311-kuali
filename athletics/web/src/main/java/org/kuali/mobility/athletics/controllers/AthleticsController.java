@@ -16,7 +16,6 @@
 package org.kuali.mobility.athletics.controllers;
 
 import java.util.Calendar;
-import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 

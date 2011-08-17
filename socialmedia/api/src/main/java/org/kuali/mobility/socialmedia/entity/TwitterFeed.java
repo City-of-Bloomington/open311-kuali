@@ -16,7 +16,6 @@
 package org.kuali.mobility.socialmedia.entity;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 

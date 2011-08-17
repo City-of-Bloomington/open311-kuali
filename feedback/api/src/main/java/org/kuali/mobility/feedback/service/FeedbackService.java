@@ -15,8 +15,6 @@
 
 package org.kuali.mobility.feedback.service;
 
-import java.util.Map;
-
 import org.kuali.mobility.feedback.entity.Feedback;
 
 public interface FeedbackService {
