@@ -31,5 +31,5 @@
         </a> </div>
     </fieldset>			 
 	</kme:content>
-    <div data-role="footer" class="ui-bar" data-position="fixed"> <a href="https://m.iu.edu/miu-prd/Base.do?s=KnowledgeBaseService&mtc=detail&query=umail&key=bami" data-icon="info" data-role="button">Learn More</a> </div>
+    <div data-role="footer" class="ui-bar" data-position="fixed"> <a href="${pageContext.request.contextPath}/knowledgebase/bami" data-icon="info" data-role="button">Learn More</a> </div>
 </kme:page>
