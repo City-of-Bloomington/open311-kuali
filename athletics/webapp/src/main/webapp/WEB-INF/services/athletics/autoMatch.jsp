@@ -18,11 +18,20 @@
 	There are no game updates.
 </c:if>
 <c:set var="previousDay" value="false" />
-<c:forEach var="match" items="${athletics.matchData.matches}">
+<c:forEach var="match" items="${athletics.matchData.matches}" varStatus="status">
+	<c:if test="${match.gameDay eq today and status eq 1}">
+		<br />
+		<ul data-role="listview" data-theme="c" data-dividertheme="d" data-inset="true">
+			<li data-role="list-divider">Today's Games</li>
+		</ul>
+		<br />
+		<c:set var="previousDay" value="true" />
+	</c:if>
+	
 	<c:if test="${match.gameDay ne today and not previousDay}">
 		<br />
-		<ul data-role="listview" data-theme="c" data-dividertheme="d" data-inset="false">
-			<li data-role="list-divider">recent games</li>
+		<ul data-role="listview" data-theme="c" data-dividertheme="d" data-inset="true">
+			<li data-role="list-divider">Recent Games</li>
 		</ul>
 		<br />
 		<c:set var="previousDay" value="true" />
