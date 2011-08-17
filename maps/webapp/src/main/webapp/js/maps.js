@@ -20,7 +20,7 @@ function setContextPath(path) {
 function initialize(id, lat, lng) {
 	var latlng = new google.maps.LatLng(lat, lng);
 	var myOptions = {
-		zoom: 17,
+		zoom: 13,
 		center: latlng,
 		mapTypeId: google.maps.MapTypeId.ROADMAP
     };
@@ -343,9 +343,11 @@ function getCampusBounds(campusCode) {
 		lngnw = -87.58524999999997;
 		latse = 38.15762916783622;
 		lngse = -84.69953642272947;
-		
 	} else {
-		return null;
+		latnw = 41.74069404739962;
+		lngnw = -87.58524999999997;
+		latse = 38.15762916783622;
+		lngse = -84.69953642272947;
 	}
 	var locnw = new google.maps.LatLng(latnw, lngnw);
 	var locse = new google.maps.LatLng(latse, lngse);

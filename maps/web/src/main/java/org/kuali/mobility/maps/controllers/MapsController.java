@@ -40,6 +40,8 @@ import org.kuali.mobility.maps.entity.MapsFormSearchResult;
 import org.kuali.mobility.maps.entity.MapsFormSearchResultContainer;
 import org.kuali.mobility.maps.entity.MapsGroup;
 import org.kuali.mobility.maps.service.LocationService;
+import org.kuali.mobility.shared.Constants;
+import org.kuali.mobility.user.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -75,9 +77,20 @@ public class MapsController {
 		this.configParamService = configParamService;
 	}
     
+	/*
+	 * Initial view
+	 */
     @RequestMapping(method = RequestMethod.GET)
-    public String getHome(Model uiModel) {
+    public String getHome(Model uiModel, HttpServletRequest request) {
+    	User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
+    	String selectedCampus = "UA";
+    	if (user.getViewCampus() == null) {
+    		return "redirect:/campus?toolName=maps";
+    	} else {
+    		selectedCampus = user.getViewCampus();
+    	}
     	MapsFormSearch mapsFormSearch = new MapsFormSearch();
+    	mapsFormSearch.setSearchCampus(selectedCampus);
     	uiModel.addAttribute("mapsearchform", mapsFormSearch);
     	return "maps/home";
     }

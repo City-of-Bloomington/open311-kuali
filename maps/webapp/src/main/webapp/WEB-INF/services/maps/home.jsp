@@ -54,12 +54,11 @@ $('#maps').live("pagebeforeshow", function() {
 	
 	setContextPath("${pageContext.request.contextPath}");
 	deleteOverlays(markersArray);
-	map = initialize("map_canvas", 39.17, -86.5);
+	map = initialize("map_canvas", 39.788, -86.165);
 	var campus = $("#searchCampus").val();
-	if (campus) {
-		var bounds = getCampusBounds(campus);
-		map.fitBounds(bounds);
-	}
+	// Bounds will be for the state of Indiana for anything other than the valid values.
+	var bounds = getCampusBounds(campus);
+	map.fitBounds(bounds);
 	
 	$('#searchText').keypress(function (event) {
 		$('#searchresults').show();

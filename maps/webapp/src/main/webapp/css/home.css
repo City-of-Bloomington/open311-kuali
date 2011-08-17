@@ -15,7 +15,7 @@ form#mapsearchform {
 }
 div.overlay {
 	position: absolute;
-	top:100px;
+	top:150px;
 	z-index: 99;
 }
 div.map {
