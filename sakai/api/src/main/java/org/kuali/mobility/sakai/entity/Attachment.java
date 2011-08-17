@@ -16,6 +16,8 @@
 package org.kuali.mobility.sakai.entity;
 
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 import org.kuali.mobility.shared.Constants.FileType;
 
@@ -25,8 +27,21 @@ public class Attachment implements Serializable {
 	
 	private String title;
 	private String url;
+	private String ref;
 	private String mimeType;
 	private FileType fileType;
+
+	public String getRef() {
+		try {
+			return URLEncoder.encode(ref, "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			return ref;
+		}
+	}
+
+	public void setRef(String ref) {
+		this.ref = ref;
+	}
 
 	public String getTitle() {
 		return title;

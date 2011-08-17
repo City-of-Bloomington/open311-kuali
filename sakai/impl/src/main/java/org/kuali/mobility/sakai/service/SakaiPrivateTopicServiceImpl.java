@@ -166,6 +166,7 @@ public class SakaiPrivateTopicServiceImpl implements SakaiPrivateTopicService {
                 		JSONObject attach = attachmentArray.getJSONObject(j);
                 		Attachment attachment = new Attachment();
                 		attachment.setUrl(attach.getString("id"));
+                    	attachment.setRef(attach.getString("ref"));
                 		attachment.setTitle(attach.getString("name"));
                 		attachment.setMimeType(attach.getString("type"));
                 		attachment.setFileType(determineAttachmentFileType(attachment.getUrl(), attachment.getMimeType()));

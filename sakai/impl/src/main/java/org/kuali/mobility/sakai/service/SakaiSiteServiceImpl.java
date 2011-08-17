@@ -362,6 +362,7 @@ public class SakaiSiteServiceImpl implements SakaiSiteService {
                 		Attachment attachment = new Attachment();
                 		JSONObject attachObj = attachments.getJSONObject(j);
                 		attachment.setTitle(attachObj.getString("name"));
+                    	attachment.setRef(attachObj.getString("ref"));
                 		attachment.setMimeType(attachObj.getString("type"));
                 		attach.add(attachment);
                 	}
@@ -413,6 +414,7 @@ public class SakaiSiteServiceImpl implements SakaiSiteService {
             		Attachment attachment = new Attachment();
             		attachment.setUrl(attach.getString("id"));
             		attachment.setTitle(attach.getString("name"));
+                	attachment.setRef(attach.getString("ref"));
             		attachment.setMimeType(attach.getString("type"));
             		attachment.setFileType(determineAttachmentFileType(attachment.getUrl(), attachment.getMimeType()));
             		attachments.add(attachment);
@@ -428,7 +430,7 @@ public class SakaiSiteServiceImpl implements SakaiSiteService {
 	
 	public byte[] findAnnouncementAttachment(String siteId, String attachmentId, String userId) {
 		try {
-			String url = configParamService.findValueByName("Sakai.Url.Base") + "announcement" + attachmentId;
+			String url = configParamService.findValueByName("Sakai.Url.Base") + "resources/getresource" + attachmentId;
 			ResponseEntity<InputStream> is = oncourseOAuthService.oAuthGetRequest(userId, url, "application/octet-stream");
 			return IOUtils.toByteArray(is.getBody());
 		} catch (OAuthException e) {
@@ -629,7 +631,8 @@ public class SakaiSiteServiceImpl implements SakaiSiteService {
 
             for (int i = 0; i < itemArray.size(); i++) {
             	JSONObject resourceObject = itemArray.getJSONObject(i);
-            	String id = resourceObject.getString("resourceID");
+            	//String id = resourceObject.getString("resourceID");
+            	String id = resourceObject.getString("resourceRef");
             	
             	if (resId != null && !resId.isEmpty() && (!id.startsWith(resId) || id.equals(resId))) {
             		continue;
@@ -639,7 +642,11 @@ public class SakaiSiteServiceImpl implements SakaiSiteService {
             	if (resId == null) {
             		String strippedId = id.substring(1); //remove the leading slash
                 	strArr = strippedId.split("/");
-            		if (strArr.length > 3) {
+            		if (strArr.length == 5 && "metaobj".equals(strArr[0])) {
+            			
+            		} else if (strArr.length == 5 && "citation".equals(strArr[0])) {
+            			
+            		} else if (strArr.length > 4) {
             			continue;
             		}
             	} else {

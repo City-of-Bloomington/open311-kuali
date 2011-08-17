@@ -76,7 +76,7 @@
 							<ul>
 								<c:forEach items="${message.attachments}" var="attachment" varStatus="status">
 									<li>
-										<a href="${pageContext.request.contextPath}/myclasses/${siteId}/attachment?attachmentId=${attachment.url}&type=${attachment.mimeType}" class="icon-${attachment.fileType}" >
+										<a href="${pageContext.request.contextPath}/myclasses/${siteId}/attachment?attachmentId=${attachment.ref}&type=${attachment.mimeType}" class="icon-${attachment.fileType}" >
 											${attachment.title}
 										</a>
 									</li>

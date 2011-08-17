@@ -24,7 +24,7 @@
 				<kme:listItem dataTheme="b" dataRole="list-divider">Attachments</kme:listItem>
 				<c:forEach items="${forum.attachments}" var="attachment" varStatus="status">
 					<kme:listItem cssClass="link-view">
-                        <a href="${pageContext.request.contextPath}/myclasses/${siteId}/attachment?attachmentId=${attachment.url}&type=${attachment.mimeType}" class="attachment icon-${attachment.fileType}" >
+                        <a href="${pageContext.request.contextPath}/myclasses/${siteId}/attachment?attachmentId=${attachment.ref}&type=${attachment.mimeType}" class="attachment icon-${attachment.fileType}" >
 							${attachment.title}
 						</a>
                     </kme:listItem>

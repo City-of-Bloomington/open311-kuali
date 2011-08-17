@@ -118,6 +118,7 @@ public class SakaiForumServiceImpl implements SakaiForumService {
             	attachment.setMimeType(attach.getString("type"));
             	attachment.setTitle(attach.getString("name"));
             	attachment.setUrl(attach.getString("id"));
+            	attachment.setRef(attach.getString("ref"));
             	attachment.setFileType(determineAttachmentFileType(attachment.getUrl(), attachment.getMimeType()));
                 attachments.add(attachment);
             }
@@ -169,6 +170,7 @@ public class SakaiForumServiceImpl implements SakaiForumService {
 	            	Attachment attachment = new Attachment();
 	            	attachment.setMimeType(attach.getString("type"));
 	            	attachment.setTitle(attach.getString("name"));
+	            	attachment.setRef(attach.getString("ref"));
 	            	attachment.setUrl(attach.getString("id"));
 	            	attachment.setFileType(determineAttachmentFileType(attachment.getUrl(), attachment.getMimeType()));
 	                attachments.add(attachment);
@@ -297,6 +299,7 @@ public class SakaiForumServiceImpl implements SakaiForumService {
                 		Attachment attachment = new Attachment();
                 		attachment.setUrl(attach.getString("id"));
                 		attachment.setTitle(attach.getString("name"));
+                    	attachment.setRef(attach.getString("ref"));
                 		attachment.setMimeType(attach.getString("type"));
                 		attachment.setFileType(determineAttachmentFileType(attachment.getUrl(), attachment.getMimeType()));
                 		attachments.add(attachment);
