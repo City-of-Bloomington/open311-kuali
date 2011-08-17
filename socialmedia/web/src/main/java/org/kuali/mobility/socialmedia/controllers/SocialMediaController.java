@@ -39,7 +39,7 @@ public class SocialMediaController {
 		return "socialmedia/list";
 	}
 
-	public void setEmergencyInfoService(TwitterService twitterService) {
+	public void setTwitterService(TwitterService twitterService) {
 		this.twitterService = twitterService;
 	}
 }
