@@ -20,7 +20,7 @@
 	<kme:content>
 			<ul data-role="listview" data-theme="g">
 				<li>
-					<h3 style="white-space: normal">
+					<h3 class="wrap">
 						<c:out value="${event.title}" />
 					</h3>
 					<p class="wrap">

@@ -24,15 +24,15 @@
 	<kme:content>
 		<kme:listView id="event" dataTheme="g">
 			<kme:listItem>
-				<h3>
+				<h3 class="wrap">
 					<c:out value="${event.title}" />
 				</h3>
 				<c:if test="${not empty event.location}">
-					<p>
+					<p class="wrap">
 						<c:out value="${event.location}" />
 					</p>
 				</c:if>
-				<p>
+				<p class="wrap">
 					<c:out value="${event.displayStartDate}" />
 					<c:out value="${event.displayStartTime}" />
 					<c:if test="${not empty event.displayEndDate}">- <c:if test="${event.displayEndDate ne event.displayStartDate}">
@@ -45,7 +45,7 @@
 					<br />
 					<h3>Description</h3>
 					<c:forEach var="description" items="${event.description}" varStatus="status">
-						<p style="white-space: normal">
+						<p class="wrap">
 							<c:out value="${description}" />
 						</p>
 						<c:if test="${not status.last}">
@@ -56,21 +56,21 @@
 				<c:if test="${not empty event.category}">
 					<br />
 					<h3>Category</h3>
-					<p style="white-space: normal">
+					<p class="wrap">
 						<c:out value="${event.category}" />
 					</p>
 				</c:if>
 				<c:if test="${not empty event.cost}">
 					<br />
 					<h3>Cost</h3>
-					<p style="white-space: normal">
+					<p class="wrap">
 						<c:out value="${event.cost}" />
 					</p>
 				</c:if>
 				<c:if test="${not empty event.contact}">
 					<br />
 					<h3>Contact</h3>
-					<p style="white-space: normal">
+					<p class="wrap">
 						<c:choose>
 							<c:when test="${not empty event.contactEmail}">
 								<c:url var="email" value="mailto:${event.contactEmail}" />
@@ -88,7 +88,7 @@
 					<c:forEach var="otherInfo" items="${event.otherInfo}">
 						<c:if test="${not empty otherInfo}">
 							<c:forEach var="info" items="${otherInfo}">
-								<p style="white-space: normal">
+								<p class="wrap">
 									<c:out value="${info}" />
 								</p>
 							</c:forEach>
