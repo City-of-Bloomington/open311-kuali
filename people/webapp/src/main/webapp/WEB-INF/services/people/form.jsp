@@ -23,21 +23,23 @@
                 <form:input path="lastName" type="text" value="" />
                 <form:errors path="lastName"/>
                 
-                <fieldset data-role="controlgroup" data-type="horizontal" >
+                <div id="peopleSlider">
+                <fieldset data-theme="c" data-role="controlgroup" data-type="horizontal" >
 	                <label for="slider"></label>
-	                <form:select path="exactness" id="slider" data-role="slider">
-						<form:option value="starts" label="starts with" />
-				        <form:option value="exact" label="is exactly" />
+	                <form:select data-theme="c" path="exactness" id="slider" data-role="slider">
+						<form:option data-theme="c" value="starts" label="starts with" />
+				        <form:option data-theme="c" value="exact" label="is exactly" />
 	                </form:select>
                 </fieldset>
+                </div>
                 
 				<label for="firstName">First Name:</label>
 	            <form:input path="firstName" type="text" value=""  />
 			</div>
 			
 			<div data-role="fieldcontain">
-                <form:select path="status" multiple="false" items="${statusTypes}" data-native-menu="false"/>
-                <form:select path="location" multiple="false" items="${locations}" data-native-menu="false"/>
+                <form:select data-theme="c" path="status" multiple="false" items="${statusTypes}" />
+                <form:select data-theme="c" path="location" multiple="false" items="${locations}" />
 			</div> 
                
 			<div data-role="fieldcontain">
@@ -47,9 +49,9 @@
             
 			<div data-inline="true">
                 <div class="ui-grid-a">
-                    <div class="ui-block-a"><a href="${pageContext.request.contextPath}" data-role="button">Cancel</a></div>
+                    <div class="ui-block-a"><a data-theme="c"  href="${pageContext.request.contextPath}" data-role="button">Cancel</a></div>
                     <div class="ui-block-b">
-                        <input class="submit" type="submit" value="Search" />
+                        <input data-theme="a" class="submit" type="submit" value="Search" />
                     </div>
                 </div>
             </div>

@@ -22,7 +22,7 @@
             <fieldset>
                 <div data-role="fieldcontain">
                     <label for="service" class="select">Subject:</label>
-                    <form:select path="service" data-native-menu="false">
+                    <form:select data-theme="c" path="service">
                         <%--<option value="N/A" selected="selected"> Select type:</option> --%>
                         <form:option value="General Feedback" selected="selected">General Feedback</form:option>
                         <form:option value="Bus Schedules">Bus Schedules</form:option>
@@ -41,7 +41,7 @@
                         
                 <div data-role="fieldcontain">
                     <label for="deviceType" class="select">Device Type:</label>
-                    <form:select path="deviceType" multiple="false" items="${deviceTypes}" data-native-menu="false" class="required"/>
+                    <form:select data-theme="c" path="deviceType" multiple="false" items="${deviceTypes}" class="required"/>
                     <form:errors path="deviceType"/>
                 </div> 
                 
@@ -58,9 +58,9 @@
             
             <div data-inline="true">
                 <div class="ui-grid-a">
-                    <div class="ui-block-a"><a href="${pageContext.request.contextPath}/home" data-role="button">Cancel</a></div>
+                    <div class="ui-block-a"><a href="${pageContext.request.contextPath}/home" data-theme="c"  data-role="button">Cancel</a></div>
                     <div class="ui-block-b">
-                        <input class="submit" type="submit" value="Submit" />
+                        <input data-theme="a" class="submit" type="submit" value="Submit" />
                     </div>
                 </div>
             </div>

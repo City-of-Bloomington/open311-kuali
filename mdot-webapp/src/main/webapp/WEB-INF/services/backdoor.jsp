@@ -28,13 +28,13 @@
 		      </fieldset>
 		      <div data-inline="true">
 		        <div class="ui-grid-a">
-		          <div class="ui-block-a"><a href="${pageContext.request.contextPath}/home" data-role="button">Cancel</a></div>
-		          <div class="ui-block-b"><input class="submit" type="submit" value="Submit" /></div>
+		          <div class="ui-block-a"><a data-theme="c" href="${pageContext.request.contextPath}/home" data-role="button">Cancel</a></div>
+		          <div class="ui-block-b"><input data-theme="a" class="submit" type="submit" value="Submit" /></div>
 		        </div>
 		      </div>
 		      </c:if>
 		      <c:if test="${not empty backdoor.userId}">
-	          <a href="${pageContext.request.contextPath}/backdoor/remove" data-role="button">Remove Backdoor</a>
+	          <a data-theme="c" href="${pageContext.request.contextPath}/backdoor/remove" data-role="button">Remove Backdoor</a>
 	          </c:if>
 	    </form:form>
 	</kme:content>

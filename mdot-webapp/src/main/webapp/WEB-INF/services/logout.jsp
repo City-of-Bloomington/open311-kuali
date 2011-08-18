@@ -20,8 +20,8 @@
 		<p>Are you sure you want to log out?</p>
         <div data-inline="true">
 	        <div class="ui-grid-a">
-	          <div class="ui-block-a"><a href="${pageContext.request.contextPath}/home" data-role="button">Cancel</a></div>
-	          <div class="ui-block-b"><a href="${pageContext.request.contextPath}/yesLogout" data-role="button">Yes</a></div>
+	          <div class="ui-block-a"><a href="${pageContext.request.contextPath}/home" data-theme="c" data-role="button">Cancel</a></div>
+	          <div class="ui-block-b"><a href="${pageContext.request.contextPath}/yesLogout" data-theme="a"  data-role="button">Yes</a></div>
 	        </div>
         </div>
 	</kme:content>

@@ -24,7 +24,7 @@
 			<li>If you lose your phone you should change your passphrase to invalidate your Mobile CAS Session.</li>
 		</ul>		    
 		
-		<a href="${pageContext.request.contextPath}/knowledgebase/ayvj" data-icon="info" data-role="button">Learn More</a>
+		<a href="${pageContext.request.contextPath}/knowledgebase/ayvj" data-icon="info" data-theme="c"  data-role="button">Learn More</a>
 		
 		<form:form action="${pageContext.request.contextPath}/mobileCasAck" commandName="command" data-ajax="false" method="post">
 	      <div data-inline="true">

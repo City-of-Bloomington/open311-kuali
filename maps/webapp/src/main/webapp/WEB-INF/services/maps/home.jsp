@@ -150,7 +150,20 @@ $('#searchText').focus(function() {
 
 /* resize map to full height after page load */
 $(window).load(function () {
-	$('div#map_canvas').height($('div#maps').height()-$('#mapsearchform').height()-70);
+	//$('div#map_canvas').height($('div#maps').height()-$('#mapsearchform').height()-70);
+	var newHeight = 500;
+	
+	if ($('div#maps').height() > 1000) {
+		newHeight = $('div#maps').height()/2;
+		newHeight = newHeight - 140;
+	} else {
+		newHeight = $('div#maps').height();
+		newHeight = newHeight - 70;
+	}
+	
+	
+	$('div#map_canvas').height(newHeight);
+	alert("height:" + $('div#maps').height() + " -- newHeight:" + newHeight);
 });
 </script>
 
