@@ -65,14 +65,6 @@ GRANT SELECT, UPDATE, INSERT, DELETE ON MIU.USER_NOTIFICATION_T TO MIU_PROXY
 /
 
 
-insert into NOTIFICATION_T (NOTIFICATION_ID, START_DT, END_DT, TITLE, MESSAGE, NOTIFICATION_TYPE, VER_NBR) values (1, null, null, 'First Notification', 'Hope this works', 1, 0)
-/
-insert into NOTIFICATION_T (NOTIFICATION_ID, START_DT, END_DT, TITLE, MESSAGE, NOTIFICATION_TYPE, VER_NBR) values (2, TO_DATE('01.08.2011', 'DD.MM.YYYY'), TO_DATE('11.11.2011', 'DD.MM.YYYY'), 'Second Notification', 'With valid dates', 1, 0)
-/
-insert into NOTIFICATION_T (NOTIFICATION_ID, START_DT, END_DT, TITLE, MESSAGE, NOTIFICATION_TYPE, VER_NBR) values (3, TO_DATE('01.08.2011', 'DD.MM.YYYY'), TO_DATE('02.08.2011', 'DD.MM.YYYY'), 'Third Notification', 'With invalid dates', 1, 0)
-/
-
-
 
 
 
@@ -552,4 +544,206 @@ insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (
 
 insert into CONFIG_PARAM_MAINT_T (CONFIG_PARAM_ID, NAME, VALUE, VER_NBR) values (SEQ_CONFIG_PARAM_MAINT_T.NEXTVAL, 'Backdoor.Group.Name', 'MIU-BACKDOOR-PRD', 0)
 /
+insert into CONFIG_PARAM_MAINT_T (CONFIG_PARAM_ID, NAME, VALUE, VER_NBR) values (SEQ_CONFIG_PARAM_MAINT_T.NEXTVAL, 'Admin.Group.Name', 'MIU-ADMINISTRATORS', 0)
+/
+insert into CONFIG_PARAM_MAINT_T (CONFIG_PARAM_ID, NAME, VALUE, VER_NBR) values (SEQ_CONFIG_PARAM_MAINT_T.NEXTVAL, 'Maps.Foursquare.Client.Id', 'L323STPYRKMYU2RZAQ1RHF4FCGDYWEHZZB4XHDLM5B51JGVQ', 0)
+/
+insert into CONFIG_PARAM_MAINT_T (CONFIG_PARAM_ID, NAME, VALUE, VER_NBR) values (SEQ_CONFIG_PARAM_MAINT_T.NEXTVAL, 'Maps.Foursquare.Client.Secret', 'CZK5HSH4ZZBXMZ5LCZHM0SO320IBXW4REBDNVHM20D1S3FZY', 0)
+/
+insert into CONFIG_PARAM_MAINT_T (CONFIG_PARAM_ID, NAME, VALUE, VER_NBR) values (SEQ_CONFIG_PARAM_MAINT_T.NEXTVAL, 'NEWS_SAMPLE_COUNT', '2', 0)
+/
+insert into CONFIG_PARAM_MAINT_T (CONFIG_PARAM_ID, NAME, VALUE, VER_NBR) values (SEQ_CONFIG_PARAM_MAINT_T.NEXTVAL, 'Sakai.Url.Base', 'https://oncourse.iu.edu/oauthdirect/', 0)
+/
+insert into CONFIG_PARAM_MAINT_T (CONFIG_PARAM_ID, NAME, VALUE, VER_NBR) values (SEQ_CONFIG_PARAM_MAINT_T.NEXTVAL, 'SocialMedia.Twitter.TweetCount', '25', 0)
+/
+insert into CONFIG_PARAM_MAINT_T (CONFIG_PARAM_ID, NAME, VALUE, VER_NBR) values (SEQ_CONFIG_PARAM_MAINT_T.NEXTVAL, 'SocialMedia.Twitter.Feeds', 'IndianaUniv,idsnews,IDS_Opinion,IU_Health,IUBookstore,UITSNEWS,iumedschool,IUTraffic,IUEMC,OurIndiana,IUAA', 0)
+/
+insert into CONFIG_PARAM_MAINT_T (CONFIG_PARAM_ID, NAME, VALUE, VER_NBR) values (SEQ_CONFIG_PARAM_MAINT_T.NEXTVAL, 'News.Top.UA', 'admin', 0)
+/
+insert into CONFIG_PARAM_MAINT_T (CONFIG_PARAM_ID, NAME, VALUE, VER_NBR) values (SEQ_CONFIG_PARAM_MAINT_T.NEXTVAL, 'News.Top.BL', 'top', 0)
+/
+insert into CONFIG_PARAM_MAINT_T (CONFIG_PARAM_ID, NAME, VALUE, VER_NBR) values (SEQ_CONFIG_PARAM_MAINT_T.NEXTVAL, 'News.Top.IN', 'iupui', 0)
+/
+insert into CONFIG_PARAM_MAINT_T (CONFIG_PARAM_ID, NAME, VALUE, VER_NBR) values (SEQ_CONFIG_PARAM_MAINT_T.NEXTVAL, 'News.Top.CO', 'iupuc_news', 0)
+/
+insert into CONFIG_PARAM_MAINT_T (CONFIG_PARAM_ID, NAME, VALUE, VER_NBR) values (SEQ_CONFIG_PARAM_MAINT_T.NEXTVAL, 'News.Top.EA', 'iue', 0)
+/
+insert into CONFIG_PARAM_MAINT_T (CONFIG_PARAM_ID, NAME, VALUE, VER_NBR) values (SEQ_CONFIG_PARAM_MAINT_T.NEXTVAL, 'News.Top.KO', 'iuk', 0)
+/
+insert into CONFIG_PARAM_MAINT_T (CONFIG_PARAM_ID, NAME, VALUE, VER_NBR) values (SEQ_CONFIG_PARAM_MAINT_T.NEXTVAL, 'News.Top.NW', 'iun', 0)
+/
+insert into CONFIG_PARAM_MAINT_T (CONFIG_PARAM_ID, NAME, VALUE, VER_NBR) values (SEQ_CONFIG_PARAM_MAINT_T.NEXTVAL, 'News.Top.SB', 'iusb', 0)
+/
+insert into CONFIG_PARAM_MAINT_T (CONFIG_PARAM_ID, NAME, VALUE, VER_NBR) values (SEQ_CONFIG_PARAM_MAINT_T.NEXTVAL, 'News.Top.SE', 'iuse', 0)
+/
+
+
+
+
+
+
+
+
+
+
+
+-- Test stuff below this point
+
+insert into NOTIFICATION_T (NOTIFICATION_ID, START_DT, END_DT, TITLE, MESSAGE, NOTIFICATION_TYPE, VER_NBR) values (1, null, null, 'First Notification', 'Hope this works', 1, 0)
+/
+insert into NOTIFICATION_T (NOTIFICATION_ID, START_DT, END_DT, TITLE, MESSAGE, NOTIFICATION_TYPE, VER_NBR) values (2, TO_DATE('01.08.2011', 'DD.MM.YYYY'), TO_DATE('11.11.2011', 'DD.MM.YYYY'), 'Second Notification', 'With valid dates', 1, 0)
+/
+insert into NOTIFICATION_T (NOTIFICATION_ID, START_DT, END_DT, TITLE, MESSAGE, NOTIFICATION_TYPE, VER_NBR) values (3, TO_DATE('01.08.2011', 'DD.MM.YYYY'), TO_DATE('02.08.2011', 'DD.MM.YYYY'), 'Third Notification', 'With invalid dates', 1, 0)
+/
+
+
+
+
+
+select name, count(*) from CONFIG_PARAM_MAINT_T group by name having count(*) > 1
+/
+
+select * from CONFIG_PARAM_MAINT_T where name = 'News.Top.BL'
+/
+select * from CONFIG_PARAM_MAINT_T where name = 'Sakai.Url.Base'
+/
+select * from CONFIG_PARAM_MAINT_T where name = 'Backdoor.Group.Name'
+/
+select * from CONFIG_PARAM_MAINT_T where name = 'NEWS_SAMPLE_COUNT'
+/
+
+delete from CONFIG_PARAM_MAINT_T where CONFIG_PARAM_ID = 1448
+/
+delete from CONFIG_PARAM_MAINT_T where CONFIG_PARAM_ID = 1444
+/
+delete from CONFIG_PARAM_MAINT_T where CONFIG_PARAM_ID = 1439
+/
+delete from CONFIG_PARAM_MAINT_T where CONFIG_PARAM_ID = 1443
+/
+
+
+
+select name, value  from CONFIG_PARAM_MAINT_T where name = 'Core.ReloadCacheMinutes'
+/
+
+select name, value  from CONFIG_PARAM_MAINT_T where name = 'Core.Rss.Server'
+/
+
+select name, value  from CONFIG_PARAM_MAINT_T where name = 'Core.CacheRSSXmlRemoteStartupDelayMinutes'
+/
+
+select name, value  from CONFIG_PARAM_MAINT_T where name = 'News.UITSQueryString'
+/
+
+select name, value  from CONFIG_PARAM_MAINT_T where name = 'NEWS_SAMPLE_COUNT'
+/
+
+select name, value  from CONFIG_PARAM_MAINT_T where name like 'News.Top.%'
+/
+
+select name, value  from CONFIG_PARAM_MAINT_T where name = 'Events.Url.Matcher.Regex'
+/
+
+select name, value  from CONFIG_PARAM_MAINT_T where name = 'Events.Url.Matcher.Format'
+/
+
+select name, value  from CONFIG_PARAM_MAINT_T where name = 'RSS.SOCKET.TIMEOUT.SECONDS'
+/
+
+select name, value  from CONFIG_PARAM_MAINT_T where name = 'CAMPUS_STATUS_XML_URL'
+/
+
+select name, value  from CONFIG_PARAM_MAINT_T where name = 'AskIU.Email.Validation.Regex'
+/
+
+select name, value  from CONFIG_PARAM_MAINT_T where name = 'AskIU.Send.EmailAddress'
+/
+
+select name, value  from CONFIG_PARAM_MAINT_T where name = 'Food.Url.SE'
+/
+
+select name, value  from CONFIG_PARAM_MAINT_T where name = 'Data.XML.Replacement.Tokens'
+/
+
+select name, value  from CONFIG_PARAM_MAINT_T where name = 'Events.CCL.Parser.Header'
+/
+
+select name, value  from CONFIG_PARAM_MAINT_T where name = 'Events.CCL.Parser.Footer'
+/
+
+select name, value  from CONFIG_PARAM_MAINT_T where name = 'Events.Default.Parser.Header'
+/
+
+select name, value  from CONFIG_PARAM_MAINT_T where name = 'Events.Default.Parser.Footer'
+/
+
+select name, value  from CONFIG_PARAM_MAINT_T where name = 'Feedback.SendEmail.On'
+/
+
+select name, value  from CONFIG_PARAM_MAINT_T where name = 'Feedback.SendEmail.EmailAddress'
+/
+
+select name, value  from CONFIG_PARAM_MAINT_T where name = 'Core.EmailAddress'
+/
+
+select name, value  from CONFIG_PARAM_MAINT_T where name = 'KB.Url.Document'
+/
+
+select name, value  from CONFIG_PARAM_MAINT_T where name = 'KB.Url.Search'
+/
+
+select name, value  from CONFIG_PARAM_MAINT_T where name = 'Maps.Foursquare.Client.Id'
+/
+
+select name, value  from CONFIG_PARAM_MAINT_T where name = 'Maps.Foursquare.Client.Secret'
+/
+
+select name, value from CONFIG_PARAM_MAINT_T where name = 'PEOPLE_RESULT_LIMIT_ADS'
+/
+
+select name, value  from CONFIG_PARAM_MAINT_T where name = 'Sakai.Url.Base'
+/
+
+select name, value  from CONFIG_PARAM_MAINT_T where name = 'SocialMedia.Twitter.TweetCount'
+/
+
+select name, value  from CONFIG_PARAM_MAINT_T where name = 'SocialMedia.Twitter.Feeds'
+/
+
+
+
+AskIU.Email.Validation.Regex
+AskIU.Send.EmailAddress
+CAMPUS_STATUS_XML_URL
+Core.CacheRSSXmlRemoteStartupDelayMinutes
+Core.EmailAddress
+Core.ReloadCacheMinutes
+Core.Rss.Server
+Data.XML.Replacement.Tokens
+Events.CCL.Parser.Header
+Events.CCL.Parser.Footer
+Events.Default.Parser.Header
+Events.Default.Parser.Footer
+Events.Url.Matcher.Regex
+Events.Url.Matcher.Format
+Feedback.SendEmail.On
+Feedback.SendEmail.EmailAddress
+Food.Url.SE
+KB.Url.Document
+KB.Url.Search
+Maps.Foursquare.Client.Id
+Maps.Foursquare.Client.Secret
+News.UITSQueryString
+NEWS_SAMPLE_COUNT
+News.Top.%
+PEOPLE_RESULT_LIMIT_ADS
+RSS.SOCKET.TIMEOUT.SECONDS
+Sakai.Url.Base
+SocialMedia.Twitter.TweetCount
+SocialMedia.Twitter.Feeds
+
+
+
+RSS.SOCKET.TIMEOUT.SECONDS
+SocialMedia.Twitter.Feeds
 

@@ -29,6 +29,7 @@
 	            </kme:listItem>
 			</c:forEach>
 	    </kme:listView>
+	    <c:if test="${not empty ipAddress}">${ipAddress}</c:if>
 	</kme:content>
 </kme:page>
 

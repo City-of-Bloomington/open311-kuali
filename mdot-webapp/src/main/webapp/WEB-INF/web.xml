@@ -36,16 +36,18 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 	<listener>
-		<listener-class>org.kuali.mobility.socialmedia.listener.SocialMediaListener</listener-class>
-	</listener>
-	<listener>
-		<listener-class>edu.iu.m.news.listener.NewsListener</listener-class>
+		<listener-class>org.kuali.mobility.configparams.listeners.ConfigParamListener</listener-class>
 	</listener>
 	<listener>
 		<listener-class>org.kuali.mobility.admin.listeners.AdminListener</listener-class>
 	</listener>
+	<!--  
 	<listener>
-		<listener-class>org.kuali.mobility.configparams.listeners.ConfigParamListener</listener-class>
+		<listener-class>org.kuali.mobility.socialmedia.listener.SocialMediaListener</listener-class>
+	</listener>
+	-->
+	<listener>
+		<listener-class>edu.iu.m.news.listener.NewsListener</listener-class>
 	</listener>
 
     <filter>
@@ -68,6 +70,16 @@
     
     <filter-mapping>
         <filter-name>cas</filter-name>
+        <servlet-name>rest</servlet-name>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>access</filter-name>
+		<filter-class>org.kuali.mobility.mdot.filters.AccessFilter</filter-class>
+	</filter>
+
+    <filter-mapping>
+        <filter-name>access</filter-name>
         <servlet-name>rest</servlet-name>
     </filter-mapping>
 

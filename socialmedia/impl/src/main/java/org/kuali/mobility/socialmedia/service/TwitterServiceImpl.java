@@ -123,6 +123,12 @@ public class TwitterServiceImpl implements TwitterService {
             Calendar updateCalendar = Calendar.getInstance();
             Date nextCacheUpdate = new Date();
                      
+            try {
+				Thread.sleep(1000 * (int)(Math.random() * 60));
+			} catch (InterruptedException e1) {
+				
+			}
+            
             // Cache loop
             while (true) {
                 Date now = new Date();
@@ -136,7 +142,7 @@ public class TwitterServiceImpl implements TwitterService {
                     nextCacheUpdate = new Date(updateCalendar.getTimeInMillis());
                 }
                 try {
-                    Thread.sleep(1000 * 60);
+                    Thread.sleep(1000 * 60 + 1000 * (int)(Math.random() * 90));
                 } catch (InterruptedException e) {
                     LOG.error("Error:", e);
                 }

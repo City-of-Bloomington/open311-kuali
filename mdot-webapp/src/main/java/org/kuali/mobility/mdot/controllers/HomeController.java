@@ -16,6 +16,8 @@
 package org.kuali.mobility.mdot.controllers;
 
 import java.io.IOException;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -67,6 +69,14 @@ public class HomeController {
     @RequestMapping(value = "home", method = RequestMethod.GET)
     public String home(HttpServletRequest request, Model uiModel) {      
     	buildHomeScreen(request, uiModel);
+    	User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
+    	String ipAddress = "";
+    	if (user.isMember(configParamService.findValueByName("Admin.Group.Name"))) {
+    		try {
+				ipAddress = "<p><i><small>Server: " + InetAddress.getLocalHost().getHostName() + "</small></i></p>";
+			} catch (UnknownHostException e) {}
+    	}
+    	uiModel.addAttribute("ipAddress", ipAddress);
     	return "index";
     }
 

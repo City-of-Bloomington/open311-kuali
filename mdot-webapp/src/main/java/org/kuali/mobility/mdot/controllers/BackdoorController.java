@@ -55,7 +55,7 @@ public class BackdoorController {
     
     @RequestMapping(method = RequestMethod.GET)
     public String backdoor(HttpServletRequest request, HttpServletResponse response, Model uiModel) {
-    	checkAccess(request, response);
+    	//checkAccess(request, response);
     	Backdoor backdoor = (Backdoor) request.getSession().getAttribute(Constants.KME_BACKDOOR_USER_KEY);
     	if (backdoor != null) {
        		uiModel.addAttribute("backdoor", backdoor);	
@@ -67,7 +67,7 @@ public class BackdoorController {
 
     @RequestMapping(value = "remove", method = RequestMethod.GET)
     public String removeBackdoor(HttpServletRequest request, HttpServletResponse response, Model uiModel) {
-    	checkAccess(request, response);
+    	//checkAccess(request, response);
     	Backdoor backdoor = (Backdoor) request.getSession().getAttribute(Constants.KME_BACKDOOR_USER_KEY);
     	if (backdoor != null) {
     		User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
@@ -82,7 +82,7 @@ public class BackdoorController {
     @SuppressWarnings("unchecked")
 	@RequestMapping(method = RequestMethod.POST)
     public String submit(HttpServletRequest request, HttpServletResponse response, Model uiModel, @ModelAttribute("backdoor") Backdoor backdoor, BindingResult result) {
-    	checkAccess(request, response);
+    	//checkAccess(request, response);
     	if (isValidQuery(backdoor, result)) {
         	User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
 			backdoor.setActualUser(user);
@@ -124,13 +124,13 @@ public class BackdoorController {
     }
     
     // TODO: Refactor to Spring Security or some other better solution
-	private void checkAccess(HttpServletRequest request, HttpServletResponse response) {
-		User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
-    	if (!user.isMember(configParamService.findValueByName("Backdoor.Group.Name"))) {
-    		try {
-				response.sendError(401);
-			} catch (Exception e) {}
-    	}
-	}
+//	private void checkAccess(HttpServletRequest request, HttpServletResponse response) {
+//		User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
+//    	if (!user.isMember(configParamService.findValueByName("Backdoor.Group.Name"))) {
+//    		try {
+//				response.sendError(401);
+//			} catch (Exception e) {}
+//    	}
+//	}
     
 }
