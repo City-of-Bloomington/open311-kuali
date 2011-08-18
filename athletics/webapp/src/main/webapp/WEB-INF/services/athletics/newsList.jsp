@@ -19,6 +19,14 @@
 </c:set>
 <kme:page title="${sportname}" id="athletics-news" backButton="true" homeButton="true" cssFilename="athletics" backButtonURL="${pageContext.request.contextPath}/athletics?selectedTab=tab2">
 	<kme:content>
+	
+	
+<script type="text/javascript">
+ $(window).load(function() {
+     $('.tabs-tab1').addClass('selected');
+     $('.tabs-panel1').show();
+ });
+</script>
 
 		<div class="tabs-tabcontainer container_12">
 
@@ -27,7 +35,7 @@
 			</c:url>
 
 			<div class="grid_4">
-				<a class="tabs-tab1 selected" name="tabs-tab1" href="${newsUrl}">News</a>
+				<a class="tabs-tab1" name="tabs-tab1" href="${newsUrl}">News</a>
 			</div>
 			<c:if test="${sport.seasonId > 0}">
 				<c:url var="rosterUrl" value="/athletics/viewRoster">
@@ -47,7 +55,7 @@
 			</c:if>
 		</div>
 
-		<div class="tabs-panel1" name="tabs-panel1" style="display:block">
+		<div class="tabs-panel1" name="tabs-panel1">
 			<ul data-role="listview" data-theme="c">
 				<c:choose>
 					<c:when test="${not empty newsStream}">
