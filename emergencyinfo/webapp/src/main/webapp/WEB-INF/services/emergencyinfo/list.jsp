@@ -17,7 +17,7 @@
     <kme:content>
         <kme:listView id="emergencylist" filter="false">
         	<kme:listItem cssClass="link-phone">
-        	<a href="tel:18123616233">
+        	<a href="tel:911">
         		<h3>In a true emergency: <span style="color:red;">911</span></h3>
         	</a>
         	</kme:listItem>
