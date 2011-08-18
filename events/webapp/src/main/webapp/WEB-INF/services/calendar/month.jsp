@@ -43,15 +43,15 @@
     <div class="tabs-panel1" name="tabs-panel1" style="margin-top:25px">
     
       <div class="container_16 monthgrid" style="background-color:; margin-top:px">
-        <div class="grid_4">
+        <div class="grid_3">
           <div class="cal-arrow-left">  <a href="${pageContext.request.contextPath}/calendar/month?date=${previousMonth}" onclick="javascript:setCalendarSelectedDate(${previousMonth}01, ${previousMonth}); return true;" data-direction="reverse">
                     <img src="${pageContext.request.contextPath}/images/arrow-left.png" width="16" height="16" alt="back">
                 </a>  </div>
         </div>
-        <div class="grid_8">
+        <div class="grid_10">
           <div class="month-year"><c:out value="${viewData.title}"/></div>
         </div>
-        <div class="grid_4">
+        <div class="grid_3">
           <div class="cal-arrow-right">  <a href="${pageContext.request.contextPath}/calendar/month?date=${nextMonth}" onclick="javascript:setCalendarSelectedDate(${nextMonth}01, ${nextMonth});return true;">
                     <img src="${pageContext.request.contextPath}/images/arrow-right.png" width="16" height="16" alt="forward">
                 </a>  </div>
