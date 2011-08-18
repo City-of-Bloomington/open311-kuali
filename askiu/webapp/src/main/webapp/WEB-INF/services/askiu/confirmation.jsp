@@ -15,8 +15,11 @@
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<kme:page title="Ask IU Acknowledgement" id="ask_iu" backButton="true" homeButton="true" cssFilename="askiu">
+<kme:page title="Ask IU" id="ask_iu" backButton="true" homeButton="true" cssFilename="askiu">
 	<kme:content>
+		<p>
+		Your message has been sent.
+		</p>
 		To: AskIU<br />
 		From: ${askiu.email}<br />
 		Subject: ${askiu.subject}<br />
