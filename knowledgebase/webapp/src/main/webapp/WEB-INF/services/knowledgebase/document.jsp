@@ -26,15 +26,21 @@ $('[data-role=page][id=kbdoc]').live("pagebeforeshow", function(event) {
 	//$('a[href^="\\$"]').click(function(e){
 	$('a[href*="knowledgebase"][href*="#"]').click(function(e){
 		e.preventDefault();
-		var name = $(this).attr('href').substr(25);
-	//	var pos = $('a[name='+name+']').offset();
-	//	$('html,body').animate({ scrollTop: pos.top });
-	//	alert(name);
-		var target = $('a[name='+name+']').get(0).offsetTop;
-		//alert(target);
-		$.mobile.silentScroll(target);
-		//alert(pos.top);
-		//alert(e.isDefaultPrevented());
+		var href = $(this).attr('href');
+		var offset = href.lastIndexOf("#");
+		if (offset > 0) {
+			var name = href.substr(offset + 1, href.length);
+			//var name = $(this).attr('href').substr(25);
+			//alert($(this).attr('href'));
+		//	var pos = $('a[name='+name+']').offset();
+		//	$('html,body').animate({ scrollTop: pos.top });
+		//	alert(name);
+			var target = $('a[name='+name+']').get(0).offsetTop;
+			//alert(target);
+			$.mobile.silentScroll(target);
+			//alert(pos.top);
+			//alert(e.isDefaultPrevented());
+		}
 		return false;
 	});
 });
