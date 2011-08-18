@@ -12,10 +12,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility" %>
 
-<kme:listView id="mapsearchresults" dataTheme="c" dataDividerTheme="b" filter="false">
+<kme:listView id="mapsearchresults" dataTheme="c" dataInset="true" dataDividerTheme="b" filter="false">
 	<c:forEach items="${container.results}" var="item" varStatus="status">
 	<kme:listItem>
-	<a href="#" kmetype="quicksearch" kmecode="${item.code}" kmelatitude="${item.latitude}" kmelongitude="${item.longitude}" kmename="${item.name}">${item.name}</a>
+	<a href="#" kmetype="quicksearch" kmecode="${item.code}" kmelatitude="${item.latitude}" kmelongitude="${item.longitude}" kmename="${item.name}"><p class="wrap">${item.name}</p></a>
 	</kme:listItem>
 	</c:forEach>
 </kme:listView>

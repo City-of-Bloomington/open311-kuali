@@ -33,7 +33,7 @@
 			</form:select> --%>
 			</fieldset>
 			<fieldset>
-            <label for="searchText">Search:</label>
+            <label for="searchText" style="position:absolute; left:-9999px;">Search:</label>
             <form:input path="searchText" cssClass="text ui-widget-content ui-corner-all" />
 			<!-- <input id="searchText" name="searchText" class="text ui-widget-content ui-corner-all" type="search" /> -->
 			<form:errors path="searchText" />
@@ -138,6 +138,20 @@ function mapSearchPostProcess() {
     });
 }
 
+/* display "Search" in search field until focus */
+$(window).load(function () {
+	$('#searchText').val('Search');
+});
+
+$('#searchText').focus(function() {
+	$('input#searchText').val('');
+});
+
+
+/* resize map to full height after page load */
+$(window).load(function () {
+	$('div#map_canvas').height($('div#maps').height()-$('#mapsearchform').height()-70);
+});
 </script>
 
 	</kme:content>

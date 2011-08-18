@@ -19,3 +19,34 @@ position: absolute;
 top: 100px;
 z-index: 99;
 }
+div.gpsIconOff, div.gpsIconOn {
+	margin:0;
+	padding:0;
+	width:37px;
+	height:37px;
+	display:block;
+	text-indent:-9999px;
+	background-position:top left;
+	background-repeat:no-repeat;
+	right:20px;
+	bottom:20px;
+}
+div.gpsIconOff {
+	background-image:url('images/button-compassOff-37.png');
+}
+div.gpsIconOn {
+	background-image:url('images/button-compassOn-37.png');
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+        only screen and (min--moz-device-pixel-ratio: 1.5),
+        only screen and (min-resolution: 240dpi) {
+            
+           div.gpsIconOff {
+                background-image: url('images/button-compassOff-74.png');
+                -webkit-background-size: 37px 37px;
+           }
+           div.gpsIconOn {
+                background-image: url('images/button-compassOn-74.png');
+                -webkit-background-size: 37px 37px;
+           }
+        }
