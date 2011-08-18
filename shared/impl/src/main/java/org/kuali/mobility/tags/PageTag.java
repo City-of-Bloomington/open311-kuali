@@ -102,6 +102,9 @@ public class PageTag extends SimpleTagSupport {
             out.println("<html>");
             out.println("<head>");
             out.println("<title>" + title + "</title>");
+            out.println("<link href=\"http://www.iu.edu/favicon.ico\" rel=\"icon\" />");
+            out.println("<link href=\"http://www.iu.edu/favicon.ico\" rel=\"shortcut icon\" />");
+            out.println("<link rel=\"apple-touch-icon\" href=\"" + contextPath + "/apple-touch-icon.png\"/>");
             out.println("<link href=\"" + contextPath + "/css/jquery.mobile.css\" rel=\"stylesheet\" type=\"text/css\" />");
             out.println("<link href=\"" + contextPath + "/css/jquery-mobile-fluid960.css\" rel=\"stylesheet\" type=\"text/css\" />");
             out.println("<link href=\"" + contextPath + "/css/custom.css\" rel=\"stylesheet\" type=\"text/css\" />");

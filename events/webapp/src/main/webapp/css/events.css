@@ -188,8 +188,16 @@ border-top-right-radius: 5px;
 
 /* temporary hack to maintain checkbox styling when an onclick event is used (wait for jquery mobile to address?) */ 
 
+div#allDayCheckboxSection {
+	margin-bottom:20px;
+}
+
+div#allDayCheckboxSection span {
+	margin-left:40px;
+}
 .temp-checkbox-hack input {
-	margin-top:12px;
+	margin-top:8px;
+	margin-left: 0;
 }
 .temp-checkbox-hack .ui-btn.ui-btn-icon-left.ui-corner-top.ui-corner-bottom.ui-controlgroup-last.ui-btn-up-c .ui-btn-inner.ui-corner-top.ui-corner-bottom.ui-controlgroup-last {
 	text-align:left;

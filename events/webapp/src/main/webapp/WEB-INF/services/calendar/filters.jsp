@@ -39,7 +39,7 @@
   <div data-role="content" >
     <form:form action="${pageContext.request.contextPath}/calendar/selectFilter" commandName="filter" data-ajax="false">
         <fieldset>
-            <label for="title">Filter by</label>
+            <label for="title">Filter by:</label>
              <form:select path="filterId" cssClass="ui-widget-content ui-corner-all" data-native-menu="false">
               	<form:option value="">---</form:option>
              	<form:options items="${filters}" itemLabel="filterName" itemValue="filterId" />

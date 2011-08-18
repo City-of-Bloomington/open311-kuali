@@ -37,8 +37,8 @@
 		      </fieldset>
 		      <div data-inline="true">
 		        <div class="ui-grid-a">
-		          <div class="ui-block-a"><a href="${pageContext.request.contextPath}/home" data-role="button">Cancel</a></div>
-		          <div class="ui-block-b"><input class="submit" type="submit" value="Submit" /></div>
+		          <div class="ui-block-a"><a data-theme="c" href="${pageContext.request.contextPath}/home" data-role="button">Cancel</a></div>
+		          <div class="ui-block-b"><input data-theme="a" class="submit" type="submit" value="Submit" /></div>
 		        </div>
 		      </div>
 	    </form:form>

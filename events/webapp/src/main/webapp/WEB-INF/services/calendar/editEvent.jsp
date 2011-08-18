@@ -68,22 +68,21 @@
         <form:hidden path="locationId"/>
         
         <fieldset>
-            <label for="title">Title</label>
+            <label for="title">Title:</label>
             <form:input path="title" cssClass="text ui-widget-content ui-corner-all" />
              <div class="error"><form:errors path="title" /></div>
                         <br/>
-            <label for="location">Location</label>
+            <label for="location">Location:</label>
             <form:input path="location"  cssClass="text ui-widget-content ui-corner-all" />
              <div class="error"><form:errors path="location" /></div>
             <br/>
             
-            <fieldset data-role="controlgroup" class="temp-checkbox-hack">
-            <legend>All Day</legend>
-            <form:checkbox path="allDay" onclick='javascript:$("div#calendar-time").toggle();' />
-            <label for="allDay" data-theme="c" class="ui-btn ui-btn-icon-left ui-corner-top ui-corner-bottom ui-controlgroup-last ui-btn-up-c"><span class="ui-btn-inner ui-corner-top ui-corner-bottom ui-controlgroup-last"><span class="ui-btn-text">yes</span></span></label>
-            <br/>
-            </fieldset>
-            <label for="startDate">Start Date</label>
+			<div id="allDayCheckboxSection">
+            <form:checkbox path="allDay" style="left:0; width:25px; height:25px;" onclick='javascript:$("div#calendar-time").toggle();' />
+            <span>All day event</span>
+            </div>
+
+            <label for="startDate">Start Date:</label>
             <form:input path="startDate"  cssClass="genField textEntry date" data-role="datebox" data-options='{"useDialogForceFalse": true, "dateFormat": "MM/DD/YYYY"}'/>
              <div class="error"><form:errors path="startDate" /></div>
             <br/>
@@ -96,18 +95,18 @@
                 </c:otherwise>
             </c:choose>
             <div id="calendar-time" style="display: ${displayCalendarTime}">
-                <label for="startTime">Start Time</label>
+                <label for="startTime">Start Time:</label>
                 <form:input path="startTime"  cssClass="text ui-widget-content ui-corner-all" data-role="datebox" data-options='{"mode": "timebox", "timeFormat":12}' />
                 <br/> <br/>
-                <label for="endDate">End Date</label>
+                <label for="endDate">End Date:</label>
                 <form:input path="endDate"  cssClass="text ui-widget-content ui-corner-all" data-role="datebox" data-options='{"useDialogForceFalse": true, "dateFormat": "MM/DD/YYYY"}'/>
                  <div class="error"><form:errors path="endDate" /></div>
                 <br/>
-                 <label for="endTime">End Time</label>
+                 <label for="endTime">End Time:</label>
                 <form:input path="endTime"  cssClass="text ui-widget-content ui-corner-all" data-role="datebox" data-options='{"mode": "timebox", "timeFormat":12}' />
                 <br/>
             </div> <br/>
-            <label for="categories">Category</label>
+            <label for="categories">Category:</label>
             
             <form:select path="categories" multiple="true"  data-native-menu="false">
             	<form:option value="" label="No Category" data-placeholder="true"/>
@@ -115,20 +114,20 @@
             </form:select>
              <div class="error"><form:errors path="categories" /></div>
             <br/>
-            <label for="showAs">Show As</label>
+            <label for="showAs">Show As:</label>
              <form:select path="showAs"  cssClass="ui-widget-content ui-corner-all" data-native-menu="false">
                 <form:option value="BUSY" label="Busy" />
                 <form:option value="FREE" label="Free" />
             </form:select> <div class="error"><form:errors path="showAs" /></div>
             <br/>
-            <label for="sharing">Sharing</label>
+            <label for="sharing">Sharing:</label>
             <form:select path="sharing"  cssClass="ui-widget-content ui-corner-all" data-native-menu="false">
                 <form:option value="PUBLIC" label="Public" />
                 <form:option value="PRIVATE" label="Private" />
                 <form:option value="CONFIDENTIAL" label="Confidential" />
             </form:select> <div class="error"><form:errors path="sharing" /></div>
             <br/>
-            <label for="description">Description</label>
+            <label for="description">Description:</label>
             <form:textarea path="description" />
              <div class="error"><form:errors path="description" /></div>
             <br/>
@@ -160,20 +159,20 @@
 	                 <div class="error"><form:errors path="recurrenceType" /></div>
                 </fieldset>
                 <br/>
-                <label for="recurrenceUntilDate">Repeat Until Date</label>
+                <label for="recurrenceUntilDate">Repeat Until Date:</label>
             	<form:input path="recurrenceUntilDate"  cssClass="text ui-widget-content ui-corner-all" data-role="datebox" data-options='{"useDialogForceFalse": true, "dateFormat": "MM/DD/YYYY"}'/>
             	 <div class="error"><form:errors path="recurrenceUntilDate" /></div><br/>
             </c:if>
             
             <br/>
-            <label for="remindBy">Reminder Delivery</label>
+            <label for="remindBy">Reminder Delivery:</label>
             <form:select path="remindBy" cssClass="ui-widget-content ui-corner-all" data-native-menu="false">
             	<form:option value="NONE" label="Choose delivery" data-placeholder="true"/>
             	<form:option value="EMAIL" label="Email Address" />
             	<form:option value="SMS" label="SMS" />
             </form:select> <div class="error"><form:errors property="remindBy" /></div>
             <br/>
-            <label for="reminder">Send Reminder</label>
+            <label for="reminder">Send Reminder:</label>
             <form:select path="reminder"  cssClass="ui-widget-content ui-corner-all" data-native-menu="false">
             	<form:option value="0" label="Choose option" data-placeholder="true"/>
                 <form:option value="300000" label="5 Minutes before event" />
@@ -189,7 +188,7 @@
                 <form:option value="1209600000" label="2 Weeks before event" />
             </form:select> <div class="error"><form:errors property="reminder" /></div>
             <br/>
-            <label for="invitations">Invite</label>
+            <label for="invitations">Invite:</label>
             <form:textarea path="invitations" />
              <div class="error"><form:errors path="invitations" /></div>
             <br/>
