@@ -166,7 +166,7 @@ public class HomeController {
 		    	if (campus != null) {
 		    		criteria.put("campus", campus);
 		    	} else {
-		    		criteria.put("campus", "UA");
+		    		criteria.put("campus", "");
 		    	}
 		    	int count = alertsService.findAlertCountByCriteria(criteria);
 		    	tool = homeTool.getTool();

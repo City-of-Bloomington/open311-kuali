@@ -46,12 +46,12 @@ public class AlertsController {
    	    //List<Alert> alerts = alertsService.findAllAlertsFromJson(request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/testdata/alerts.json");
    	 	
     	User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
-    	String selectedCampus = "UA";
-    	if (user.getViewCampus() == null) {
-    		return "redirect:/campus?toolName=alerts";
-    	} else {
+    	String selectedCampus = "";
+//    	if (user.getViewCampus() == null) {
+//    		return "redirect:/campus?toolName=alerts";
+//    	} else {
     		selectedCampus = user.getViewCampus();
-    	}
+//    	}
     	
     	Map<String, String> criteria = new HashMap<String, String>();
     	criteria.put("campus", selectedCampus);

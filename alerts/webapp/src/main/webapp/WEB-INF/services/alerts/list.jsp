@@ -13,13 +13,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility" %>
 
-<kme:page title="Campus Alerts" id="campusalerts" backButton="true" homeButton="true" cssFilename="alerts">
+<kme:page title="Campus Alerts" id="campusalerts" backButton="true" homeButton="true" cssFilename="alerts" backButtonURL="${pageContext.request.contextPath}/home">
 	<kme:content>
 	    <kme:listView id="alertlist" filter="false">
 	        <c:forEach items="${alerts}" var="alert" varStatus="status">
 	            <kme:listItem>
-	            	<h3 class="wrap">${alert.campus} - ${alert.title}</h3>
-	            	<p class="wrap">${alert.mobileText}</p>
+	            	<h3 class="wrap"><c:out value="${alert.campus} - ${alert.title}"/></h3>
+	            	<p class="wrap"><c:out value="${alert.mobileText}"/></p>
 	            </kme:listItem>
 			</c:forEach>
 	    </kme:listView>

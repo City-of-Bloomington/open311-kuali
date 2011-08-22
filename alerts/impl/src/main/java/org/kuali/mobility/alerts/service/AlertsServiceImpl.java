@@ -42,16 +42,13 @@ import flexjson.JSONDeserializer;
 @Service
 public class AlertsServiceImpl implements AlertsService {
 
-	private static org.apache.log4j.Logger LOG = org.apache.log4j.Logger
-			.getLogger(AlertsServiceImpl.class);
+	private static org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(AlertsServiceImpl.class);
 
 	private static ConcurrentMap<String, CampusAlerts> cachedAlerts;
 
 	// private static final String CP_JSON_ALERTS_URL = "Alerts.Json.Url";
 
 	private static final ConcurrentMap<String, String> campusCodeMap;
-
-	private static final long UPDATE_INTERVAL = 1000 * 60 * 60; // one hour
 
 	@Autowired
 	private ConfigParamService configParamService;
@@ -75,18 +72,18 @@ public class AlertsServiceImpl implements AlertsService {
 	 */
 	@Override
 	public int findAlertCountByCriteria(Map<String, String> criteria) {
-		 List<Alert> alerts = findAllAlertsByCriteria(criteria);
-		 if (alerts != null && alerts.size() == 1) {
-			 if (isAlertToReport(alerts.get(0))) {
-				 return 1;
-			 } else {
-				 return 0;
-			 }
-		 }
-		 if (alerts != null) {
-			 return alerts.size();
-		 }
-		 return 0;
+		List<Alert> alerts = findAllAlertsByCriteria(criteria);
+		if (alerts != null && alerts.size() == 1) {
+			if (isAlertToReport(alerts.get(0))) {
+				return 1;
+			} else {
+				return 0;
+			}
+		}
+		if (alerts != null) {
+			return alerts.size();
+		}
+		return 0;
 	}
 
 	@Override
@@ -98,10 +95,10 @@ public class AlertsServiceImpl implements AlertsService {
 			if (campus != null && !"".equals(campus)) {
 				return findAllAlertsByCampus(campus);
 			} else {
-				return findAllAlertsByCampus("UA");
+				return findAllAlertsByCampus("ALL");
 			}
 		} else {
-			return findAllAlertsByCampus("UA");
+			return findAllAlertsByCampus("ALL");
 		}
 		// return
 		// findAllAlertsFromJson(configParamService.findConfigParamByName(CP_JSON_ALERTS_URL).getValue());
@@ -120,16 +117,17 @@ public class AlertsServiceImpl implements AlertsService {
 
 	private List<Alert> findAllAlertsByCampus(String campus) {
 		List<Alert> campusStatuses = this.getAlertsByCode(campus);
-		if (campusStatuses != null && "UA".equals(campus) && campusStatuses.size() > 1) {
+		if (campusStatuses != null && campusStatuses.size() > 1) {
 			List<Alert> uaStatuses = new ArrayList<Alert>();
 			List<Alert> filteredStatuses = new ArrayList<Alert>();
 			Iterator<Alert> iter = campusStatuses.iterator();
 			while (iter.hasNext()) {
 				Alert status = (Alert) iter.next();
-				if (isAlertToReport(status)) {
+				if (isAlertToReport(status) && !filteredStatuses.contains(status)) {
 					filteredStatuses.add(status);
-				} else if (campusCodeMap.get("UA").equals(status.getCampus())) {
-					uaStatuses.add(status);
+					// } else if
+					// (campusCodeMap.get("UA").equals(status.getCampus())) {
+					// uaStatuses.add(status);
 				}
 			}
 			if (filteredStatuses.size() < 1) {
@@ -137,10 +135,35 @@ public class AlertsServiceImpl implements AlertsService {
 			}
 			campusStatuses = filteredStatuses;
 		}
+		if (campusStatuses == null || campusStatuses.isEmpty()) {
+			List<Alert> alerts = new ArrayList<Alert>();
+			Alert alert = new Alert();
+			alert.setCampus("IU");
+			alert.setKey(-1);
+			alert.setMobileText("Status is normal.");
+			alert.setPriority("1");
+			alert.setTitle("Normal");
+			alert.setType("normal");
+			alert.setUrl("");
+			alerts.add(alert);
+			campusStatuses = alerts;
+		}
 		return campusStatuses;
 	}
 
 	private List<Alert> getAlertsByCode(String code) {
+		if ("ALL".equals(code)) {
+			List<Alert> foundAlerts = new ArrayList<Alert>();
+			for (String campus : campusCodeMap.keySet()) {
+				foundAlerts.addAll(getAlerts(campus));
+			}
+			return foundAlerts;
+		} else {
+			return getAlerts(code);
+		}
+	}
+
+	private List<Alert> getAlerts(String code) {
 		CampusAlerts alerts = cachedAlerts.get(code);
 		if (alerts == null) {
 			// Entry does not yet exist.
@@ -150,9 +173,14 @@ public class AlertsServiceImpl implements AlertsService {
 				alerts = existing;
 			}
 		}
-
 		Calendar now = Calendar.getInstance();
-		if (alerts.getUpdateTime() + UPDATE_INTERVAL < now.getTimeInMillis()) {
+		long updateInterval = 1000 * 60 * 5;
+		try {
+			updateInterval = 1000 * 60 * Long.parseLong(configParamService.findValueByName("Alerts.CacheUpdate.Minute"));
+		} catch (Exception e) {
+			LOG.error("Update Interval for alerts cache is missing or not a number.  Using default of 5 minutes.", e);
+		}
+		if (alerts.getUpdateTime() + updateInterval < now.getTimeInMillis()) {
 			alerts.setAlerts(parseAlerts(code, false));
 			Calendar cal = Calendar.getInstance();
 			alerts.setUpdateTime(cal.getTimeInMillis());
@@ -161,8 +189,7 @@ public class AlertsServiceImpl implements AlertsService {
 	}
 
 	private boolean isAlertToReport(Alert alert) {
-		return alert.getType() != null
-				&& !alert.getType().equalsIgnoreCase("normal");
+		return alert.getType() != null && !alert.getType().equalsIgnoreCase("normal");
 	}
 
 	@SuppressWarnings("unchecked")
