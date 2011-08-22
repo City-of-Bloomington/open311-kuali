@@ -50,7 +50,7 @@ public class RssDaoImpl implements RssDao {
         Query query = entityManager.createQuery("select r from Rss r where r.rssMaintId = :rssMaintId");
         query.setParameter("rssMaintId", maintRssId);
         try { 
-        	return (Rss) query.getResultList();
+        	return (Rss) query.getSingleResult();
         } catch (Exception e) {        	
         	return null;
         }
@@ -67,6 +67,12 @@ public class RssDaoImpl implements RssDao {
         }
     }
 
+    public void deleteRssByMaintRssId(Long maintRssId) {
+		Query query = entityManager.createQuery("delete from Rss r where r.rssMaintId = :rssMaintId");
+		query.setParameter("rssMaintId", maintRssId);
+		query.executeUpdate();
+    }
+    
     public void deleteRssById(Long id) {
     	this.deleteRss(this.findRssById(id));
     }

@@ -13,4 +13,5 @@ public interface RssDao {
     public List<Rss> findAllRss();
     public void deleteRss(Rss rss);
     public void deleteRssById(Long id);
+    public void deleteRssByMaintRssId(Long maintRssId);
 }

@@ -578,10 +578,15 @@ public class RssServiceImpl implements RssService {
     }
 
 	public void deleteRss(Rss rss) {
-	  	Rss rssToDelete = this.getRssFromDatabase(rss.getRssMaintId());
-	  	if (rssToDelete != null && rssToDelete.getRssId() != null) {
-	  		rssDao.deleteRssById(rssToDelete.getRssId());	
-	  	}
+		if (rss.getRssMaintId() != null) {
+	  		rssDao.deleteRssByMaintRssId(rss.getRssMaintId());
+		} else {
+			LOG.info("Attempted to delete an RSS without a valid RSS Maintenance ID. Title: " + rss.getTitle());
+		}
+//	  	Rss rssToDelete = this.getRssFromDatabase(rss.getRssMaintId());
+//	  	if (rssToDelete != null && rssToDelete.getRssId() != null) {
+//	  		rssDao.deleteRssById(rssToDelete.getRssId());
+//	  	}
 	}
 	
 	public void saveRss(Rss rss) {
