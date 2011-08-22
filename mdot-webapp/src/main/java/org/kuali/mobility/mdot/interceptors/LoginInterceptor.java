@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,15 +26,17 @@ import edu.iu.uis.sit.util.directory.AdsPerson;
 public class LoginInterceptor implements HandlerInterceptor {
 
 	private static final org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(LoginInterceptor.class);
-	
+
 	@Autowired
 	private AdsService adsService;
+
 	public void setAdsService(AdsService adsService) {
 		this.adsService = adsService;
 	}
-	
+
 	@Autowired
 	private UserService userService;
+
 	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
@@ -44,7 +47,6 @@ public class LoginInterceptor implements HandlerInterceptor {
 		} else {
 			publicLogin(request);
 		}
-
 		User user = (User) request.getSession(true).getAttribute(Constants.KME_USER_KEY);
 
 		if (user != null && user.getUserAttribute("acked") == null && (HttpUtil.needsAuthenticated(request.getServletPath()) || "yes".equals(request.getParameter("login")))) {
@@ -55,7 +57,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 				LOG.error(e.getMessage(), e);
 			}
 		}
-		
+
 		return true;
 	}
 
@@ -63,6 +65,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 		User user = (User) request.getSession(true).getAttribute(Constants.KME_USER_KEY);
 		if (user == null) {
 			user = new UserImpl(true);
+			user.setPrincipalName("public_" + Math.random());
 			request.getSession().setAttribute(Constants.KME_USER_KEY, user);
 		}
 	}
@@ -72,7 +75,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 		User user = (User) request.getSession(true).getAttribute(Constants.KME_USER_KEY);
 		if (user == null || user.isPublicUser()) {
 			Timestamp now = new Timestamp(new Date().getTime());
-			
+
 			user = userService.findUserByPrincipalName(CASFilter.getRemoteUser(request));
 			if (user == null) {
 				user = new UserImpl(false);
@@ -81,7 +84,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 			user.setPrincipalName(CASFilter.getRemoteUser(request));
 			user.setLastLogin(now);
 			userService.saveUser(user);
-			
+
 			List<UserPreference> prefs = userService.findAllUserPreferencesByPrincipalId(user.getPrincipalId());
 			for (UserPreference pref : prefs) {
 				try {
@@ -90,7 +93,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 					LOG.error(e.getMessage(), e);
 				}
 			}
-			
+
 			try {
 				AdsPerson adsPerson = adsService.getAdsPerson(user.getPrincipalName());
 				List<String> affiliations = adsPerson.getIuEduPersonAffiliation();
@@ -107,7 +110,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 			} catch (Exception e) {
 				LOG.error(e.getMessage(), e);
 			}
-			
+
 			request.getSession().setAttribute(Constants.KME_USER_KEY, user);
 			LOG.info("User id: " + user.getPrincipalName() + " logging in.");
 		}
@@ -115,9 +118,11 @@ public class LoginInterceptor implements HandlerInterceptor {
 	}
 
 	@Override
-	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView e) throws Exception {}
+	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView e) throws Exception {
+	}
 
 	@Override
-	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception e) throws Exception {}
+	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception e) throws Exception {
+	}
 
 }

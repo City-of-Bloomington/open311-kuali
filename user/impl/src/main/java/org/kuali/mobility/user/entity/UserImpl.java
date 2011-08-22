@@ -66,7 +66,7 @@ public class UserImpl implements User, Serializable {
 
 	@Transient
 	private String primaryCampus;
-	
+
 	@Transient
 	private String email;
 
@@ -90,6 +90,9 @@ public class UserImpl implements User, Serializable {
 	}
 
 	public UserImpl(boolean publicUser) {
+		if (publicUser) {
+			principalId = -1L;
+		}
 		userAttributes = new HashMap<String, String>();
 		groups = new ArrayList<String>();
 		affiliations = new ArrayList<String>();
