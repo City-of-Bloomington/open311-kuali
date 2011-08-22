@@ -15,13 +15,13 @@
 <%@ taglib prefix="kme"  uri="http://kuali.org/mobility" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<kme:page title="People" id="people" backButton="true" homeButton="true" cssFilename="people">
+<kme:page title="People" id="people" backButton="true" homeButton="true" cssFilename="people" backButtonURL="${pageContext.request.contextPath}/home">
 	<kme:content>
 		<form:form action="${pageContext.request.contextPath}/people" commandName="search" data-ajax="false" method="post">
 			<div data-role="fieldcontain">
 				<label for="lastName">Last Name:</label>
                 <form:input path="lastName" type="text" value="" />
-                <form:errors path="lastName"/>
+                <div class="error"><form:errors path="lastName"/></div>
                 
                 <div id="peopleSlider">
                 <fieldset data-theme="c" data-role="controlgroup" data-type="horizontal" >
@@ -44,7 +44,7 @@
                
 			<div data-role="fieldcontain">
                 <label for="userName">User Name:</label>
-                <form:input path="userName" type="text" value=""  />
+                <form:input path="userName" type="text" value="" />
 			</div>
             
 			<div data-inline="true">

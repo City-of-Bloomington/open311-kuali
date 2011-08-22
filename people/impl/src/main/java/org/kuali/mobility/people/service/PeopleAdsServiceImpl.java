@@ -12,7 +12,7 @@
  * or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
- 
+
 package org.kuali.mobility.people.service;
 
 import java.util.HashMap;
@@ -25,21 +25,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import edu.iu.uis.sit.util.directory.AdsPerson;
 
 public class PeopleAdsServiceImpl implements PeopleAdsService {
-	
+
 	private static org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(PeopleAdsServiceImpl.class);
-	
+
 	@Autowired
 	private ConfigParamService configParamService;
-	
+
 	private String adsUsername;
 	private String adsPassword;
 	private static AddressBookAdsHelper adsHelper;
-	private int defaultResultLimit; 
-	
+	private int defaultResultLimit;
+
 	public PeopleAdsServiceImpl() {
 		this.defaultResultLimit = 75;
 	}
-	
+
 	private AddressBookAdsHelper getAdsHelper() {
 		if (adsHelper == null) {
 			try {
@@ -51,7 +51,7 @@ public class PeopleAdsServiceImpl implements PeopleAdsService {
 		}
 		return adsHelper;
 	}
-	
+
 	private int getCachedResultLimit() {
 		Integer limit = new Integer(this.defaultResultLimit);
 		try {
@@ -64,14 +64,14 @@ public class PeopleAdsServiceImpl implements PeopleAdsService {
 		}
 		return limit;
 	}
-	
+
 	public AdsPerson getAdsPerson(String username) throws Exception {
 		/*
 		 * Any filtering done in getAdsPersons needs to be done here as well
 		 */
 		AddressBookAdsHelper helper = getAdsHelper();
-		
-		String[] returnedAttributes = { "cn", "givenName", "sn", "telephoneNumber", "iuEduPersonAffiliation", "mail", "ou", "physicalDeliveryOfficeName", "iuEduJobs", "iuEduCurrentlyEnrolled", "iuEduPrimaryStudentAffiliation" };
+
+		String[] returnedAttributes = { "cn", "givenName", "sn", "telephoneNumber", "iuEduPersonAffiliation", "mail", "ou", "physicalDeliveryOfficeName", "iuEduJobs", "iuEduCurrentlyEnrolled", "iuEduPrimaryStudentAffiliation", "iuEduFERPAMask" };
 		Map<String, String> keyValues = new HashMap<String, String>();
 		keyValues.put("cn", username);
 		keyValues.put("msExchHideFromAddressLists", "FALSE");
@@ -80,7 +80,7 @@ public class PeopleAdsServiceImpl implements PeopleAdsService {
 		if (adsPersons.size() > 0) {
 			adsPerson = adsPersons.get(0);
 		}
-		
+
 		return adsPerson;
 	}
 
@@ -105,14 +105,14 @@ public class PeopleAdsServiceImpl implements PeopleAdsService {
 			if (status.equals("Faculty")) {
 				keyValues.put("iuEduPersonAffiliation", "faculty");
 			} else if (status.equals("Student")) {
-				keyValues.put("|(iuEduPersonAffiliation=undergraduate)(iuEduPersonAffiliation=graduate)(iuEduPersonAffiliation","professional)");
+				keyValues.put("|(iuEduPersonAffiliation=undergraduate)(iuEduPersonAffiliation=graduate)(iuEduPersonAffiliation", "professional)");
 			} else if (status.equals("Employee")) {
 				keyValues.put("|(iuEduPersonAffiliation=regular hourly)(iuEduPersonAffiliation=student hourly)(iuEduPersonAffiliation=retired staff)(iuEduPersonAffiliation", "staff)");
 			}
 		}
 		keyValues.put("iuEduPSEMPLID", "*");
 		keyValues.put("msExchHideFromAddressLists", "FALSE");
-				
+
 		return helper.getAdsPersonsReturnedAttributes(keyValues, returnedAttributes, resultLimit);
 	}
 
