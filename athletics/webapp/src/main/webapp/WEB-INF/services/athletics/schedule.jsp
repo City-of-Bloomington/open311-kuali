@@ -31,13 +31,13 @@
 </script>
 
 
-		<div class="tabs-tabcontainer container_12">
+		<div class="tabs-tabcontainer">
 			<c:url var="newsUrl" value="/athletics/viewSport">
 				<c:param name="sportId" value="${matchData.sport.sportId}" />
 			</c:url>
-			<div class="grid_4">
-				<a class="tabs-tab1" name="tabs-tab1" href="${newsUrl}">News</a>
-			</div>
+			
+				<a style="width:32.733333333333334%" class="tabs-tab1" name="tabs-tab1" href="${newsUrl}">News</a>
+		
 			<c:if test="${matchData.sport.seasonId > 0}">
 				<c:url var="rosterUrl" value="/athletics/viewRoster">
 					<c:param name="sportId" value="${matchData.sport.sportId}" />
@@ -47,12 +47,10 @@
 					<c:param name="sportId" value="${matchData.sport.sportId}" />
 					<c:param name="seasonId" value="${matchData.sport.seasonId}" />
 				</c:url>
-				<div class="grid_4">
-					<a class="tabs-tab2" name="tabs-tab2" href="${rosterUrl}">Roster</a>
-				</div>
-				<div class="grid_4">
-					<a class="tabs-tab3" name="tabs-tab3" href="${scheduleUrl}">Schedule</a>
-				</div>
+				
+					<a style="width:32.733333333333334%" class="tabs-tab2" name="tabs-tab2" href="${rosterUrl}">Roster</a>
+					<a style="width:32.733333333333334%" class="tabs-tab3" name="tabs-tab3" href="${scheduleUrl}">Schedule</a>
+				
 
 			</c:if>
 		</div>

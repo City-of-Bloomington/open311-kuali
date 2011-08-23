@@ -26,87 +26,19 @@
 	    </style>
     
         <c:if test="${tabCount gt 1}">
-	        <script type="text/javascript">
-			    $(window).load(function () {
-			        $('#classesPanel').hide();
-			        $('#projectsPanel').hide();
-			        $('#otherPanel').hide();
-			        $('#todayPanel').hide();
-			        
-			        $('#classesTab').click(function() {
-			            $('#classesTab').css('background-color', '#E6E6E6');
-			            $('#classesTab').css('color', '#2F3E46');
-			            $('#projectsTab').css('background-color', '#CCCCCC');
-			            $('#projectsTab').css('color', '#999999');
-			            $('#otherTab').css('background-color', '#CCCCCC');
-                        $('#otherTab').css('color', '#999999');
-                        $('#todayTab').css('background-color', '#CCCCCC');
-                        $('#todayTab').css('color', '#999999');
-			            $('#classesPanel').show();
-			            $('#projectsPanel').hide();
-			            $('#otherPanel').hide();
-			            $('#todayPanel').hide();
-			        });
-			        
-			        $('#projectsTab').click(function() {
-			            $('#projectsTab').css('background-color', '#E6E6E6');
-			            $('#projectsTab').css('color', '#2F3E46');
-			            $('#classesTab').css('background-color', '#CCCCCC');
-			            $('#classesTab').css('color', '#999999');
-			            $('#otherTab').css('background-color', '#CCCCCC');
-                        $('#otherTab').css('color', '#999999');
-                        $('#todayTab').css('background-color', '#CCCCCC');
-                        $('#todayTab').css('color', '#999999');
-                        $('#classesPanel').hide();
-			            $('#projectsPanel').show();
-			            $('#otherPanel').hide();
-			            $('#todayPanel').hide();
-			        });
-			        
-			        $('#otherTab').click(function() {
-                        $('#projectsTab').css('background-color', '#CCCCCC');
-                        $('#projectsTab').css('color', '#999999');
-                        $('#classesTab').css('background-color', '#CCCCCC');
-                        $('#classesTab').css('color', '#999999');
-                        $('#otherTab').css('background-color', '#E6E6E6');
-                        $('#otherTab').css('color', '#2F3E46');
-                        $('#todayTab').css('background-color', '#CCCCCC');
-                        $('#todayTab').css('color', '#999999');
-                        $('#classesPanel').hide();
-                        $('#projectsPanel').hide();
-                        $('#otherPanel').show();
-                        $('#todayPanel').hide();
-                    });
-			        
-			        $('#todayTab').click(function() {
-                        $('#projectsTab').css('background-color', '#CCCCCC');
-                        $('#projectsTab').css('color', '#999999');
-                        $('#classesTab').css('background-color', '#CCCCCC');
-                        $('#classesTab').css('color', '#999999');
-                        $('#otherTab').css('background-color', '#CCCCCC');
-                        $('#otherTab').css('color', '#999999');
-                        $('#todayTab').css('background-color', '#E6E6E6');
-                        $('#todayTab').css('color', '#2F3E46');
-                        $('#classesPanel').hide();
-                        $('#projectsPanel').hide();
-                        $('#otherPanel').hide();
-                        $('#todayPanel').show();
-                    });
-			    });
-		    </script>
-		    
-		    <div style="margin:10px 0 0 -15px; position:absolute; top:40px; width:100%;">
+		   
+		      <div class="tabs-tabcontainer">
 		        <c:if test="${!empty home.courses && home.showTodayTab}">
-                    <a style="float:left; padding:9px 1%; color:#999999; -moz-box-shadow:0 -1px 1px #AAAAAA; -webkit-box-shadow:0 -1px 1px #AAAAAA; box-shadow:0 -1px 1px #AAAAAA; border-radius:10px 10px 0 0; background-color:#CCCCCC; top:50px; width:${(100/tabCount)-2}%; text-align:center; text-decoration:none;" id="todayTab" name="todayTab" href="#">Today</a>
+                    <a style="width:${(100/tabCount)-.6}%"  class="tabs-tab1" name="tabs-tab1" href="#">Today</a>
                 </c:if>
 			    <c:if test="${!empty home.courses}">
-	                <a style="float:left; padding:9px 1%; color:#999999; -moz-box-shadow:0 -1px 1px #AAAAAA; -webkit-box-shadow:0 -1px 1px #AAAAAA; box-shadow:0 -1px 1px #AAAAAA; border-radius:10px 10px 0 0; background-color:#CCCCCC; top:50px; width:${(100/tabCount)-2}%; text-align:center; text-decoration:none;" id="classesTab" name="classesTab" href="#">Classes</a>
+	                <a style="width:${(100/tabCount)-.6}%"  class="tabs-tab2" name="tabs-tab2" href="#">Classes</a>
 	            </c:if>
 	            <c:if test="${!empty home.projects}">
-	                <a style="float:left; padding:9px 1%; color:#999999; -moz-box-shadow:0 -1px 1px #AAAAAA; -webkit-box-shadow:0 -1px 1px #AAAAAA; box-shadow:0 -1px 1px #AAAAAA; border-radius:10px 10px 0 0; background-color:#CCCCCC; top:50px; width:${(100/tabCount)-2}%; text-align:center; text-decoration:none;" id="projectsTab" name="projectsTab" href="#">Projects</a>
+	                <a style="width:${(100/tabCount)-.6}%"  class="tabs-tab3" name="tabs-tab3" href="#">Projects</a>
 	            </c:if>
 	            <c:if test="${!empty home.other}">
-	                <a style="float:left; padding:9px 1%; color:#999999; -moz-box-shadow:0 -1px 1px #AAAAAA; -webkit-box-shadow:0 -1px 1px #AAAAAA; box-shadow:0 -1px 1px #AAAAAA; border-radius:10px 10px 0 0; background-color:#CCCCCC; top:50px; width:${(100/tabCount)-2}%; text-align:center; text-decoration:none;" id="otherTab" name="otherTab" href="#">Other</a>
+	                <a style="width:${(100/tabCount)-.6}%"  class="tabs-tab4" name="tabs-tab4" href="#">Other</a>
 	            </c:if> 
             </div>
             
@@ -114,36 +46,32 @@
                 <c:when test="${!empty home.courses && home.showTodayTab}">
                     <script type="text/javascript">
                     $(window).load(function () {
-                        $('#todayTab').css('background-color', '#E6E6E6');
-                        $('#todayTab').css('color', '#2F3E46');
-                        $('#todayPanel').show();
+                        $('.tabs-tab1').addClass('selected');
+                        $('.tabs-panel1').show();
                     });
                     </script>
                 </c:when>
                 <c:when test="${!empty home.courses}">
                     <script type="text/javascript">
                     $(window).load(function () {
-                        $('#classesTab').css('background-color', '#E6E6E6');
-                        $('#classesTab').css('color', '#2F3E46');
-                        $('#classesPanel').show();
+                        $('.tabs-tab2').addClass('selected');
+                        $('.tabs-panel2').show();
                     });
                     </script>
                 </c:when>
                 <c:when test="${!empty home.projects}">
                     <script type="text/javascript">
                     $(window).load(function () {
-                        $('#projectsTab').css('background-color', '#E6E6E6');
-                        $('#projectsTab').css('color', '#2F3E46');
-                        $('#projectsPanel').show();
+                        $('.tabs-tab3').addClass('selected');
+                        $('.tabs-panel3').show();
                     });
                     </script>
                 </c:when>
                 <c:otherwise>
                     <script type="text/javascript">
                     $(window).load(function () {
-                        $('#otherTab').css('background-color', '#E6E6E6');
-                        $('#otherTab').css('color', '#2F3E46');
-                        $('#otherPanel').show();
+                        $('.tabs-tab4').addClass('selected');
+                        $('.tabs-panel4').show();
                     });
                     </script>
                 </c:otherwise>
@@ -152,13 +80,13 @@
             
             <style type="text/css">
 			    <!--
-			    div#classesPanel, div#projectsPanel, div#otherPanel, div#todayPanel  { margin-top: 40px; }			    
+			    div.tabs-panel1, div.tabs-panel2, div.tabs-panel3, div.tabs-panel4, { margin-top:; }			    
 			    -->
 		    </style>
         </c:if>
         
         <c:if test="${!empty home.courses}">
-	        <div background-color:#E6E6E6;" id="classesPanel" name="classesPanel">
+	         <div class="tabs-panel1" name="tabs-panel1">
 	        	<c:if test="${tabCount eq 1}"><h2>Classes</h2></c:if>
 	            <c:forEach items="${home.courses}" var="termItem" varStatus="status">
 	                <c:if test="${not empty termItem.term}"><h3>${termItem.term}</h3></c:if>
@@ -180,7 +108,7 @@
         </c:if>
         
         <c:if test="${!empty home.projects}">
-            <div background-color:#E6E6E6;" id="projectsPanel" name="projectsPanel">
+            <div class="tabs-panel2" name="tabs-panel2">
             <c:if test="${tabCount eq 1}"><h2>Projects</h2></c:if>
             <kme:listView dataTheme="c">
                 <c:forEach items="${home.projects}" var="item" varStatus="status">
@@ -199,7 +127,7 @@
         
              
         <c:if test="${!empty home.other}">
-            <div background-color:#E6E6E6;" id="otherPanel" name="otherPanel">
+             <div class="tabs-panel3" name="tabs-panel3">
 	            <c:if test="${tabCount eq 1}"><h2>Other</h2></c:if>
 	            <kme:listView dataTheme="c">
 	                <c:forEach items="${home.other}" var="item" varStatus="status">
@@ -217,7 +145,7 @@
         </c:if>
      
         <c:if test="${!empty home.courses && home.showTodayTab}">
-            <div background-color:#E6E6E6;" id="todayPanel" name="todayPanel">
+             <div class="tabs-panel4" name="tabs-panel4">
                 <!-- 
                 <div data-inline="true">
                     <div class="ui-grid-a">
@@ -248,6 +176,11 @@
                     <p>No classes today.</p>
                 </c:if>
             </div>
-        </c:if>        
+        </c:if>  
+
+
+
+
+ 
     </kme:content>
 </kme:page>

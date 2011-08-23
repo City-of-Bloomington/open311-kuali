@@ -28,16 +28,10 @@
 
 <kme:page title="Athletics" id="athletics" backButton="true" homeButton="true" cssFilename="athletics" backButtonURL="${pageContext.request.contextPath}/home" jsFilename="${jsFilename}">
 	<kme:content>
-		<div class="tabs-tabcontainer container_12">
-			<div class="grid_4">
-				<a class="tabs-tab1" name="tabs-tab1" href="#"><c:out value="${athletics.matchData.category}" /> </a>
-			</div>
-			<div class="grid_4">
-				<a class="tabs-tab2" name="tabs-tab2" href="#"><c:out value="${athletics.sportData.category}" /> </a>
-			</div>
-			<div class="grid_4">
-				<a class="tabs-tab3" name="tabs-tab3" href="#"><c:out value="${athletics.newsData.category}" /> </a>
-			</div>
+		<div class="tabs-tabcontainer">
+				<a style="width:32.733333333333334%" class="tabs-tab1" name="tabs-tab1" href="#"><c:out value="${athletics.matchData.category}" /> </a>
+				<a style="width:32.733333333333334%" class="tabs-tab2" name="tabs-tab2" href="#"><c:out value="${athletics.sportData.category}" /> </a>
+				<a style="width:32.733333333333334%" class="tabs-tab3" name="tabs-tab3" href="#"><c:out value="${athletics.newsData.category}" /> </a>
 		</div>
 
 		<div class="tabs-panel1" name="tabs-panel1" id="matches">
