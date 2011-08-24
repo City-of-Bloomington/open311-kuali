@@ -24,27 +24,27 @@
 					<li>
 						<c:if test="${not empty person.locations}" >
 							<h3 class="wrap">Campus:
-						      		<c:forEach items="${person.locations}" var="location" varStatus="status">
+						      		<span style="font-weight:normal;"><c:forEach items="${person.locations}" var="location" varStatus="status">
 						      			<c:out value="${location}" /><c:if test="${not status.last}">, </c:if>
-						      		</c:forEach>
+						      		</c:forEach></span>
 							</h3>
 						</c:if>
 						<c:if test="${not empty person.departments}" >
 							<h3 class="wrap">Department:
-						      		<c:forEach items="${person.departments}" var="department" varStatus="status">
+						      		<span style="font-weight:normal;"><c:forEach items="${person.departments}" var="department" varStatus="status">
 						      			<c:out value="${department}" /><c:if test="${not status.last}">, </c:if>
-						      		</c:forEach>
+						      		</c:forEach></span>
 							</h3>
 						</c:if>
 						<c:if test="${not empty person.affiliations}" >
 							<h3 class="wrap">Affiliation:
-						      		<c:forEach items="${person.affiliations}" var="affiliation" varStatus="status">
+						      		<span style="font-weight:normal;"><c:forEach items="${person.affiliations}" var="affiliation" varStatus="status">
 						      			<c:out value="${affiliation}" /><c:if test="${not status.last}">, </c:if>
-						      		</c:forEach>
+						      		</c:forEach></span>
 							</h3>
 						</c:if>
 						<c:if test="${not empty person.address}" >
-							<h3 class="wrap">Address: <c:out value="${person.address}" /></h3>
+							<h3 class="wrap">Address: <span style="font-weight:normal;"><c:out value="${person.address}" /></span></h3>
 						</c:if>
 					</li>
 					<c:if test="${not empty person.email}" >

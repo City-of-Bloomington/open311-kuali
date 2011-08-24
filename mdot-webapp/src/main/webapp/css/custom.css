@@ -225,7 +225,9 @@
 	/* [disabled]border: 1px solid #B3B3B3; */
 	color: #333333;
 	text-shadow: 0 1px 0 #fff;
-	background: #f0f0f0;
+	/*background: #f0f0f0;*/
+	/*background-color: #E6E6E6;*/
+	background: #E6E6E6;
 	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #eeeeee), color-stop(1, #dddddd));
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#eeeeee', EndColorStr='#dddddd')";
 }

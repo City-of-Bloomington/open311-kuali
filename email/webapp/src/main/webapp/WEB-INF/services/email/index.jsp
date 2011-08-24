@@ -21,15 +21,16 @@
       <div class="ui-block-a">
         <div style="text-align:center"><img src="${pageContext.request.contextPath}/images/eml-ms.png" width="96" height="96" alt="Imail"></div>
         <a style="text-decoration:none" href="https://imail.iu.edu/">
-        <button type="submit" data-theme="b">Imail</button>
+        <button type="submit" data-theme="c">Imail</button>
         </a>
       </div>
       <div class="ui-block-b">
         <div style="text-align:center"><img src="${pageContext.request.contextPath}/images/eml-google.png" width="96" height="96" alt="Umail"></div>
         <a style="text-decoration:none" href="https://umail.iu.edu/">
-        <button type="submit" data-theme="b">Umail</button>
+        <button type="submit" data-theme="c">Umail</button>
         </a> </div>
-    </fieldset>			 
+        
+    </fieldset>	
+    <a href="${pageContext.request.contextPath}/knowledgebase/bami" data-icon="info" data-theme="c" data-role="button">Learn More</a>
 	</kme:content>
-    <div data-role="footer" class="ui-bar" data-position="fixed"> <a href="${pageContext.request.contextPath}/knowledgebase/bami" data-icon="info" data-role="button">Learn More</a> </div>
 </kme:page>
