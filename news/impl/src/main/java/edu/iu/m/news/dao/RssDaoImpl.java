@@ -1,5 +1,6 @@
 package edu.iu.m.news.dao;
 
+import java.util.Iterator;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -12,6 +13,8 @@ import edu.iu.m.news.entity.Rss;
 
 @Repository 
 public class RssDaoImpl implements RssDao {
+	
+	private static final org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(RssDaoImpl.class);
 
 	@PersistenceContext
     private EntityManager entityManager;
@@ -67,10 +70,36 @@ public class RssDaoImpl implements RssDao {
         }
     }
 
+    /*
     public void deleteRssByMaintRssId(Long maintRssId) {
-		Query query = entityManager.createQuery("delete from Rss r where r.rssMaintId = :rssMaintId");
-		query.setParameter("rssMaintId", maintRssId);
-		query.executeUpdate();
+        Query query = entityManager.createQuery("select r from Rss r where r.rssMaintId = :rssMaintId");
+        query.setParameter("rssMaintId", maintRssId);
+        List<Rss> rssList = null;
+        try { 
+        	rssList =  (List<Rss>) query.getResultList();
+        	Iterator<Rss> iter = rssList.iterator();
+        	while (iter.hasNext()) {
+        		this.deleteRss(iter.next());
+        	}
+        } catch (Exception e) {        	
+        	LOG.error("Error deleting RSS by MaintRssId", e);
+        }        
+    }
+    */
+    
+    public void deleteRssByMaintRssId(Long maintRssId) {
+        Query query = entityManager.createQuery("select r from Rss r where r.rssMaintId = :rssMaintId");
+        query.setParameter("rssMaintId", maintRssId);
+        List<Rss> rssList = null;
+        try { 
+        	rssList =  (List<Rss>) query.getResultList();
+        	Iterator<Rss> iter = rssList.iterator();
+        	while (iter.hasNext()) {
+        		this.deleteRss(iter.next());
+        	}
+        } catch (Exception e) {        	
+        	LOG.error("Error deleting RSS by MaintRssId", e);
+        }        
     }
     
     public void deleteRssById(Long id) {
