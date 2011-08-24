@@ -24,7 +24,7 @@
 	        a.arrowButtonLeft { float:left; background-image:url('images/arrow-left.png'); }
 	        a.arrowButtonRight { float:right; background-image:url('images/arrow-right.png'); }
 	    </style>
-    
+
         <c:if test="${tabCount gt 1}">
 		   
 		      <div class="tabs-tabcontainer">
@@ -80,13 +80,60 @@
             
             <style type="text/css">
 			    <!--
-			    div.tabs-panel1, div.tabs-panel2, div.tabs-panel3, div.tabs-panel4, { margin-top:; }			    
+			    /*div.tabs-panel1, div.tabs-panel2, div.tabs-panel3, div.tabs-panel4, { margin-top:; }*/		    
 			    -->
 		    </style>
         </c:if>
         
+        <c:if test="${tabCount eq 1}">
+        
+        <style type="text/css">
+			    <!--
+			    div.tabs-panel1, div.tabs-panel2, div.tabs-panel3, div.tabs-panel4 {
+			    	margin-top:-15px; 
+			    }		    
+			    -->
+		    </style>
+        <c:choose>
+                <c:when test="${!empty home.courses && home.showTodayTab}">
+                    <script type="text/javascript">
+                    $(window).load(function () {
+                        $('.tabs-tab1').addClass('selected');
+                        $('.tabs-panel1').show();
+                    });
+                    </script>
+                </c:when>
+                <c:when test="${!empty home.courses}">
+                    <script type="text/javascript">
+                    $(window).load(function () {
+                        $('.tabs-tab2').addClass('selected');
+                        $('.tabs-panel2').show();
+                    });
+                    </script>
+                </c:when>
+                <c:when test="${!empty home.projects}">
+                    <script type="text/javascript">
+                    $(window).load(function () {
+                        $('.tabs-tab3').addClass('selected');
+                        $('.tabs-panel3').show();
+                    });
+                    </script>
+                </c:when>
+                <c:otherwise>
+                    <script type="text/javascript">
+                    $(window).load(function () {
+                        $('.tabs-tab4').addClass('selected');
+                        $('.tabs-panel4').show();
+                    });
+                    </script>
+                </c:otherwise>
+                
+            </c:choose>
+          </c:if>
+        
+        
         <c:if test="${!empty home.courses}">
-	         <div class="tabs-panel1" name="tabs-panel1">
+	         <div class="tabs-panel2" name="tabs-panel2">
 	        	<c:if test="${tabCount eq 1}"><h2>Classes</h2></c:if>
 	            <c:forEach items="${home.courses}" var="termItem" varStatus="status">
 	                <c:if test="${not empty termItem.term}"><h3>${termItem.term}</h3></c:if>
@@ -108,7 +155,7 @@
         </c:if>
         
         <c:if test="${!empty home.projects}">
-            <div class="tabs-panel2" name="tabs-panel2">
+            <div class="tabs-panel3" name="tabs-panel3">
             <c:if test="${tabCount eq 1}"><h2>Projects</h2></c:if>
             <kme:listView dataTheme="c">
                 <c:forEach items="${home.projects}" var="item" varStatus="status">
@@ -127,7 +174,7 @@
         
              
         <c:if test="${!empty home.other}">
-             <div class="tabs-panel3" name="tabs-panel3">
+             <div class="tabs-panel4" name="tabs-panel4">
 	            <c:if test="${tabCount eq 1}"><h2>Other</h2></c:if>
 	            <kme:listView dataTheme="c">
 	                <c:forEach items="${home.other}" var="item" varStatus="status">
@@ -145,15 +192,8 @@
         </c:if>
      
         <c:if test="${!empty home.courses && home.showTodayTab}">
-             <div class="tabs-panel4" name="tabs-panel4">
-                <!-- 
-                <div data-inline="true">
-                    <div class="ui-grid-a">
-                        <div class="ui-block-a"><a data-role="button" data-theme="c" href="${pageContext.request.contextPath}/myclasses?date=${yesterday}">&laquo; ${yesterdayButton}</a></div>
-                        <div class="ui-block-b"><a data-role="button" data-theme="c" href="${pageContext.request.contextPath}/myclasses?date=${tomorrow}">${tomorrowButton} &raquo; </a></div>
-                    </div>
-                </div>
-                -->       
+             <div class="tabs-panel1" name="tabs-panel1">
+       
                 <a class="arrowButtonLeft" href="${pageContext.request.contextPath}/myclasses?date=${yesterday}">${yesterdayButton}</a>
                 <a class="arrowButtonRight" href="${pageContext.request.contextPath}/myclasses?date=${tomorrow}">${tomorrowButton}</a>
                 <h2 class="todaysDate">${todayDisplay}</h2>
