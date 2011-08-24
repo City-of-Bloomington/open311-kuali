@@ -102,6 +102,22 @@ public class ConfigParamServiceImpl implements ConfigParamService {
 		String value = configParam.getValue();
 		return value != null ? value.trim() : "";
 	}
+	
+	@Transactional(readOnly = true)
+	public List<ConfigParam> findAllByNameStartsWith(String prefix) {
+		List<ConfigParam> matches = new ArrayList<ConfigParam>();
+		
+		if (configParams == null || configParams.size() == 0) {
+			return matches;
+		}
+		
+		for (ConfigParam configParam : configParams.values()) {
+			if (configParam.getName() != null && configParam.getName().startsWith(prefix)) {
+				matches.add(configParam);
+			}
+		}
+		return matches;
+	}
 
 	@Transactional
 	public Long saveConfigParam(ConfigParam configParam) {

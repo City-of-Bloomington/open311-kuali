@@ -580,7 +580,34 @@ insert into CONFIG_PARAM_MAINT_T (CONFIG_PARAM_ID, NAME, VALUE, VER_NBR) values 
 /
 insert into CONFIG_PARAM_MAINT_T (CONFIG_PARAM_ID, NAME, VALUE, VER_NBR) values (SEQ_CONFIG_PARAM_MAINT_T.NEXTVAL, 'Alerts.CacheUpdate.Minute', '5', 0)
 /
-
+insert into CONFIG_PARAM_MAINT_T (CONFIG_PARAM_ID, NAME, VALUE, VER_NBR) values (SEQ_CONFIG_PARAM_MAINT_T.NEXTVAL, 'Bus.BT.01', '<a class="icon-PDF" href="http://www.bloomingtontransit.com/1_Aug_2010.pdf"><h3 class="wrap">Route 1 North - Fee Lane / BHS North</h3></a>', 0)
+/
+insert into CONFIG_PARAM_MAINT_T (CONFIG_PARAM_ID, NAME, VALUE, VER_NBR) values (SEQ_CONFIG_PARAM_MAINT_T.NEXTVAL, 'Bus.BT.02', '<a class="icon-PDF" href="http://www.bloomingtontransit.com/1_Aug_2010.pdf"><h3 class="wrap">Route 1 South - South Walnut / Clear Creek Shopping</h3></a>', 0)
+/
+insert into CONFIG_PARAM_MAINT_T (CONFIG_PARAM_ID, NAME, VALUE, VER_NBR) values (SEQ_CONFIG_PARAM_MAINT_T.NEXTVAL, 'Bus.BT.03', '<a class="icon-PDF" href="http://www.bloomingtontransit.com/2_South_Aug_2011.htm"><h3 class="wrap">Route 2 South - South Rogers / Countryview</h3></a>', 0)
+/
+insert into CONFIG_PARAM_MAINT_T (CONFIG_PARAM_ID, NAME, VALUE, VER_NBR) values (SEQ_CONFIG_PARAM_MAINT_T.NEXTVAL, 'Bus.BT.04', '<a class="icon-PDF" href="http://www.bloomingtontransit.com/2_Aug_2009.pdf"><h3 class="wrap">Route 2 West - 11th Street via Showers Complex</h3></a>', 0)
+/
+insert into CONFIG_PARAM_MAINT_T (CONFIG_PARAM_ID, NAME, VALUE, VER_NBR) values (SEQ_CONFIG_PARAM_MAINT_T.NEXTVAL, 'Bus.BT.05', '<a class="icon-PDF" href="http://www.bloomingtontransit.com/3_Mar_2010.pdf"><h3 class="wrap">Route 3 East - College Mall / Bradford Place</h3></a>', 0)
+/
+insert into CONFIG_PARAM_MAINT_T (CONFIG_PARAM_ID, NAME, VALUE, VER_NBR) values (SEQ_CONFIG_PARAM_MAINT_T.NEXTVAL, 'Bus.BT.06', '<a class="icon-PDF" href="http://www.bloomingtontransit.com/3_Mar_2010.pdf"><h3 class="wrap">Route 3 West – Highland Village / Curry Pike</h3></a>', 0)
+/
+insert into CONFIG_PARAM_MAINT_T (CONFIG_PARAM_ID, NAME, VALUE, VER_NBR) values (SEQ_CONFIG_PARAM_MAINT_T.NEXTVAL, 'Bus.BT.07', '<a class="icon-PDF" href="http://www.bloomingtontransit.com/4_Aug_2009.pdf"><h3 class="wrap">Route 4 South - High Street / Sherwood Oaks</h3></a>', 0)
+/
+insert into CONFIG_PARAM_MAINT_T (CONFIG_PARAM_ID, NAME, VALUE, VER_NBR) values (SEQ_CONFIG_PARAM_MAINT_T.NEXTVAL, 'Bus.BT.08', '<a class="icon-PDF" href="http://www.bloomingtontransit.com/4_Aug_2009.pdf"><h3 class="wrap">Route 4 West - Bloomfield Road / Heatherwood</h3></a>', 0)
+/
+insert into CONFIG_PARAM_MAINT_T (CONFIG_PARAM_ID, NAME, VALUE, VER_NBR) values (SEQ_CONFIG_PARAM_MAINT_T.NEXTVAL, 'Bus.BT.09', '<a class="icon-PDF" href="http://www.bloomingtontransit.com/5_Aug_2009.pdf"><h3 class="wrap">Route 5 - Sare Road</h3></a>', 0)
+/
+insert into CONFIG_PARAM_MAINT_T (CONFIG_PARAM_ID, NAME, VALUE, VER_NBR) values (SEQ_CONFIG_PARAM_MAINT_T.NEXTVAL, 'Bus.BT.10', '<a class="icon-PDF" href="http://www.bloomingtontransit.com/6_Route_Aug_2009.htm"><h3 class="wrap">Route 6 Campus Shuttle and 6 Limited</h3></a>', 0)
+/
+insert into CONFIG_PARAM_MAINT_T (CONFIG_PARAM_ID, NAME, VALUE, VER_NBR) values (SEQ_CONFIG_PARAM_MAINT_T.NEXTVAL, 'Bus.BT.11', '<a class="icon-PDF" href="http://www.bloomingtontransit.com/7_Route_Aug_2009.htm"><h3 class="wrap">Route 7 Henderson/Walnut Express</h3></a>', 0)
+/
+insert into CONFIG_PARAM_MAINT_T (CONFIG_PARAM_ID, NAME, VALUE, VER_NBR) values (SEQ_CONFIG_PARAM_MAINT_T.NEXTVAL, 'Bus.BT.12', '<a class="icon-PDF" href="http://www.bloomingtontransit.com/8_Aug_2009.pdf"><h3 class="wrap">Route 8 - Eastside Local</h3></a>', 0)
+/
+insert into CONFIG_PARAM_MAINT_T (CONFIG_PARAM_ID, NAME, VALUE, VER_NBR) values (SEQ_CONFIG_PARAM_MAINT_T.NEXTVAL, 'Bus.BT.13', '<a class="icon-PDF" href="http://www.bloomingtontransit.com/9_Route_Jan_2010.htm"><h3 class="wrap">Route 9 IU Campus/College Mall Campus Corner</h3></a>', 0)
+/
+insert into CONFIG_PARAM_MAINT_T (CONFIG_PARAM_ID, NAME, VALUE, VER_NBR) values (SEQ_CONFIG_PARAM_MAINT_T.NEXTVAL, 'Bus.BT.14', '<a class="icon-PDF" href="http://www.bloomingtontransit.com/9_Limited_Route_Aug_2011.htm"><h3 class="wrap">Route 9 Limited</h3></a>', 0)
+/
 
 
 

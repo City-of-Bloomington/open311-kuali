@@ -14,27 +14,12 @@
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility" %>
 
-<kme:page title="Bus Schedules" id="bus" backButton="true" homeButton="true" cssFilename="bus">
+<kme:page title="BT" id="bus" backButton="true" homeButton="true" cssFilename="bus">
 	<kme:content>
 		<kme:listView>
-			<kme:listItem>
-				<a class="icon-doublemap" href="bus/doublemap">
-					<h3 class="wrap">DoubleMap Live Bus Tracking</h3>
-					<p class="wrap">Find IU Bloomington campus buses on the map in real time.</p>
-				</a>
-			</kme:listItem>
-			<kme:listItem>
-				<a class="icon-iubcampusbus" href="bus/iubcampusbus">
-					<h3 class="wrap">IUB Campus Bus Schedules</h3>
-					<p class="wrap">Stop times and locations for Bloomington campus buses.</p>
-				</a>
-			</kme:listItem>
-			<kme:listItem>
-				<a class="icon-bloomingtontransit" href="bus/bloomingtontransit">
-					<h3 class="wrap">Bloomington Transit Bus Schedules</h3>
-					<p class="wrap">Stop times and locations for Bloomington city buses.</p>
-				</a>
-			</kme:listItem>
+		    <c:forEach items="${routes}" var="route" varStatus="status">
+				<kme:listItem>${route.value}</kme:listItem>
+			</c:forEach>
 		</kme:listView>
 	</kme:content>
 </kme:page>

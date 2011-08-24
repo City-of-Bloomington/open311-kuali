@@ -8,6 +8,39 @@
   express or implied. See the License for the specific language governing
   permissions and limitations under the License.
 */
-.ui-content {
-	padding:0;
+/* route link icons */
+ul.ui-listview a {
+	background: transparent url('../images/service-icons/bus-file.png') 10px 50% no-repeat;
+	padding-left: 40px !important;
+}
+ul.ui-listview a.icon-IMAGE {
+    background-image: url('../images/service-icons/bus-image.png');
+}
+ul.ui-listview a.icon-TEXT {
+    background-image: url('../images/service-icons/bus-doc.png');
+}
+ul.ui-listview a.icon-PRESENTATION {
+    background-image: url('../images/service-icons/bus-powerpoint.png');
+}
+ul.ui-listview a.icon-SPREADSHEET {
+    background-image: url('../images/service-icons/bus-spreadsheet.png');
+}
+ul.ui-listview a.icon-PDF {
+    background-image: url('../images/service-icons/bus-pdf.png');
+}
+ul.ui-listview a.icon-LINK {
+    background-image: url('../images/service-icons/bus-weblink.png');
+}
+
+ul.ui-listview a.icon-doublemap {
+	background: transparent url('../images/service-icons/srvc-doublemap.png') 0px 50% no-repeat;
+	padding-left: 80px !important;
+}
+ul.ui-listview a.icon-iubcampusbus {
+	background: transparent url('../images/service-icons/srvc-iubus.png') 0px 50% no-repeat;
+	padding-left: 80px !important;
+}
+ul.ui-listview a.icon-bloomingtontransit {
+	background: transparent url('../images/service-icons/srvc-btbus.png') 0px 50% no-repeat;
+	padding-left: 80px !important;
 }

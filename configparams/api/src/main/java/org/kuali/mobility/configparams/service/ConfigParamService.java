@@ -25,6 +25,8 @@ public interface ConfigParamService {
 	public Long saveConfigParam(ConfigParam configParam);
 
 	public List<ConfigParam> findAllConfigParam();
+	
+	public List<ConfigParam> findAllByNameStartsWith(String prefix);
 
 	public ConfigParam findConfigParamById(Long id);
 

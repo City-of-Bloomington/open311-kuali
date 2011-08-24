@@ -30,7 +30,7 @@ import flexjson.JSONSerializer;
 
 @Entity(name="ConfigParam")
 @Table(name="CONFIG_PARAM_MAINT_T")
-public class ConfigParam implements Serializable {
+public class ConfigParam implements Serializable, Comparable<ConfigParam> {
 
     private static final long serialVersionUID = -7425581809827657649L;
 
@@ -88,5 +88,12 @@ public class ConfigParam implements Serializable {
     public void setVersionNumber(Long versionNumber) {
         this.versionNumber = versionNumber;
     }
+
+	@Override
+	public int compareTo(ConfigParam that) {
+        if (this == null || that == null || this.getName() == null || that.getName() == null) {
+            return -1;
+        }
+        return this.getName().compareTo(that.getName());	}
 
 }
