@@ -17,12 +17,12 @@
 <kme:page title="IUB Campus Bus" id="bus" backButton="true" homeButton="true" cssFilename="bus">
 	<kme:content>
 		<kme:listView>
-			<kme:listItem><a class="icon-PDF" href="http://iubus/campus_bus/schedules/Fall%202011/A%20Fall%202011%20Mon-Thur%20box%20copy.pdf">A Route Mon-Thu</a></kme:listItem>
-       		<kme:listItem><a class="icon-PDF" href="http://iubus/campus_bus/schedules/Fall%202011/A%20Fall%202011%20Fri-Sun%20box%20copy.pdf">A Route Fri-Sun</a></kme:listItem>
-        	<kme:listItem><a class="icon-PDF" href="http://iubus/campus_bus/schedules/Fall%202011/B%20Fall%202011%20box%20copy.pdf">B Route</a></kme:listItem>
-        	<kme:listItem><a class="icon-PDF" href="http://iubus/campus_bus/schedules/Fall%202011/D%20Fall%202011%20box%20copy.pdf">D Route</a></kme:listItem>
-        	<kme:listItem><a class="icon-PDF" href="http://iubus/campus_bus/schedules/Fall%202011/E%20Fall%202011%20box%20copy.pdf">E Route</a></kme:listItem>
-        	<kme:listItem><a class="icon-PDF" href="http://iubus/campus_bus/schedules/Fall%202011/X%20Fall%202011%20box%20copy.pdf">X Route</a></kme:listItem>	
+			<kme:listItem><a class="icon-PDF" href="http://www.iubus.indiana.edu/campus_bus/schedules/Fall%202011/A%20Fall%202011%20Mon-Thur%20box%20copy.pdf">A Route Mon-Thu</a></kme:listItem>
+       		<kme:listItem><a class="icon-PDF" href="http://www.iubus.indiana.edu/campus_bus/schedules/Fall%202011/A%20Fall%202011%20Fri-Sun%20box%20copy.pdf">A Route Fri-Sun</a></kme:listItem>
+        	<kme:listItem><a class="icon-PDF" href="http://www.iubus.indiana.edu/campus_bus/schedules/Fall%202011/B%20Fall%202011%20box%20copy.pdf">B Route</a></kme:listItem>
+        	<kme:listItem><a class="icon-PDF" href="http://www.iubus.indiana.edu/campus_bus/schedules/Fall%202011/D%20Fall%202011%20box%20copy.pdf">D Route</a></kme:listItem>
+        	<kme:listItem><a class="icon-PDF" href="http://www.iubus.indiana.edu/campus_bus/schedules/Fall%202011/E%20Fall%202011%20box%20copy.pdf">E Route</a></kme:listItem>
+        	<kme:listItem><a class="icon-PDF" href="http://www.iubus.indiana.edu/campus_bus/schedules/Fall%202011/X%20Fall%202011%20box%20copy.pdf">X Route</a></kme:listItem>	
 		</kme:listView>
 	</kme:content>
 </kme:page>
