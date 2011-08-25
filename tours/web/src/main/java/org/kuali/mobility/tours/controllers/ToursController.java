@@ -29,4 +29,8 @@ public class ToursController {
     	return "tours/index";
     }
     
+    @RequestMapping(value="/edit", method = RequestMethod.GET)
+    public String edit(Model uiModel) {
+    	return "tours/edit";
+    }
 }
