@@ -15,7 +15,6 @@
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility" %>
 
 <kme:page title="Maps" id="mapsbuilding" backButton="true" homeButton="true" cssFilename="location" jsFilename="maps" usesGoogleMaps="true">
-<script type=\"text/javascript\" src=\"http://maps.google.com/maps/api/js?sensor=true\"></script>
 	<kme:content>
 	
 <div id="map_canvas" style="height:300px;"></div>
