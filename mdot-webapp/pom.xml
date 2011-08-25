@@ -145,6 +145,25 @@
         </dependency>   
         <dependency>
             <groupId>org.kuali.mobility</groupId>
+            <artifactId>conference-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.kuali.mobility</groupId>
+            <artifactId>conference-impl</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.kuali.mobility</groupId>
+            <artifactId>confernce-web</artifactId>
+        </dependency> 
+        <dependency> 
+            <groupId>org.kuali.mobility</groupId>
+            <artifactId>conference-webapp</artifactId>
+			<version>${tool.conference.version}</version>
+            <type>war</type>
+            <scope>runtime</scope>
+        </dependency>   
+        <dependency>
+            <groupId>org.kuali.mobility</groupId>
             <artifactId>socialmedia-api</artifactId>
         </dependency>
         <dependency>
@@ -456,6 +475,25 @@
             <groupId>org.kuali.mobility</groupId>
             <artifactId>maps-webapp</artifactId>
 			<version>${tool.maps.version}</version>
+            <type>war</type>
+            <scope>runtime</scope>
+        </dependency> 
+   		<dependency>
+			<groupId>org.kuali.mobility</groupId>
+			<artifactId>tours-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.kuali.mobility</groupId>
+			<artifactId>tours-impl</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.kuali.mobility</groupId>
+			<artifactId>tours-web</artifactId>
+		</dependency>
+        <dependency> 
+            <groupId>org.kuali.mobility</groupId>
+            <artifactId>tours-webapp</artifactId>
+			<version>${tool.tours.version}</version>
             <type>war</type>
             <scope>runtime</scope>
         </dependency>   

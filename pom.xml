@@ -48,6 +48,7 @@
 		<tool.athletics.version>1.0.0-BETA-1</tool.athletics.version>
 		<tool.bus.version>1.0.0-BETA-1</tool.bus.version>
 		<tool.computerlabs.version>1.0.0-BETA-1</tool.computerlabs.version>
+		<tool.conference.version>1.0.0-BETA-1</tool.conference.version>
 		<tool.configparams.version>1.0.0-BETA-1</tool.configparams.version>
 		<tool.dining.version>1.0.0-BETA-1</tool.dining.version>
 		<tool.email.version>1.0.0-BETA-1</tool.email.version>
@@ -61,6 +62,7 @@
 		<tool.people.version>1.0.0-BETA-1</tool.people.version>
 		<tool.sakai.version>1.0.0-BETA-1</tool.sakai.version>
 		<tool.socialmedia.version>1.0.0-BETA-1</tool.socialmedia.version>	
+		<tool.tours.version>1.0.0-BETA-1</tool.tours.version>
 		
 		<iu.edu.es.espd.oauth-consumer.version>1.0.0</iu.edu.es.espd.oauth-consumer.version>
 		<ccl-oauth-consumer.version>1.0.0</ccl-oauth-consumer.version>
@@ -80,6 +82,7 @@
 				<module>athletics</module>
                 <module>bus</module>
 				<module>computerlabs</module>
+                <module>conference</module>
 				<module>configparams</module>
                 <module>dining</module>
                 <module>email</module>
@@ -93,6 +96,7 @@
 				<module>people</module>
 				<module>sakai</module>
 				<module>socialmedia</module>
+				<module>tours</module>
 				<module>mdot-webapp</module>
 			</modules>
 		</profile>
@@ -109,6 +113,7 @@
 				<module>athletics</module>
                 <module>bus</module>
 				<module>computerlabs</module>
+                <module>conference</module>
 				<module>configparams</module>
                 <module>dining</module>
                 <module>email</module>
@@ -122,6 +127,7 @@
 				<module>people</module>
 				<module>sakai</module>
 				<module>socialmedia</module>
+				<module>tours</module>
 				<module>mdotadmin-webapp</module>
 			</modules>
 		</profile>
@@ -337,6 +343,27 @@
                 <groupId>org.kuali.mobility</groupId>
                 <artifactId>computerlabs-webapp</artifactId>
                 <version>${tool.computerlabs.version}</version>
+            </dependency>
+			<!-- Conference Service -->
+			<dependency>
+				<groupId>org.kuali.mobility</groupId>
+				<artifactId>conference-api</artifactId>
+				<version>${tool.conference.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.kuali.mobility</groupId>
+				<artifactId>conference-impl</artifactId>
+				<version>${tool.conference.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.kuali.mobility</groupId>
+				<artifactId>conference-web</artifactId>
+				<version>${tool.conference.version}</version>
+			</dependency>
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>conference-webapp</artifactId>
+                <version>${tool.conference.version}</version>
             </dependency>
 			<!-- Configuration Parameters Service -->
 			<dependency>
@@ -584,6 +611,27 @@
                 <groupId>org.kuali.mobility</groupId>
                 <artifactId>socialmedia-webapp</artifactId>
                 <version>${tool.socialmedia.version}</version>
+            </dependency>
+			<!-- Tours Service -->
+			<dependency>
+				<groupId>org.kuali.mobility</groupId>
+				<artifactId>tours-api</artifactId>
+				<version>${tool.tours.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.kuali.mobility</groupId>
+				<artifactId>tours-impl</artifactId>
+				<version>${tool.tours.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.kuali.mobility</groupId>
+				<artifactId>tours-web</artifactId>
+				<version>${tool.tours.version}</version>
+			</dependency>
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>tours-webapp</artifactId>
+                <version>${tool.tours.version}</version>
             </dependency>
 			<!-- Spring dependencies -->
 			<dependency>
