@@ -47,6 +47,7 @@
 		<tool.askiu.version>1.0.0-BETA-1</tool.askiu.version>
 		<tool.athletics.version>1.0.0-BETA-1</tool.athletics.version>
 		<tool.bus.version>1.0.0-BETA-1</tool.bus.version>
+		<tool.classifieds.version>1.0.0-BETA-1</tool.classifieds.version>
 		<tool.computerlabs.version>1.0.0-BETA-1</tool.computerlabs.version>
 		<tool.conference.version>1.0.0-BETA-1</tool.conference.version>
 		<tool.configparams.version>1.0.0-BETA-1</tool.configparams.version>
@@ -81,6 +82,7 @@
 				<module>askiu</module>
 				<module>athletics</module>
                 <module>bus</module>
+                <module>classifieds</module>
 				<module>computerlabs</module>
                 <module>conference</module>
 				<module>configparams</module>
@@ -112,6 +114,7 @@
 				<module>askiu</module>
 				<module>athletics</module>
                 <module>bus</module>
+                <module>classifieds</module>
 				<module>computerlabs</module>
                 <module>conference</module>
 				<module>configparams</module>
@@ -301,6 +304,27 @@
                 <groupId>org.kuali.mobility</groupId>
                 <artifactId>bus-webapp</artifactId>
                 <version>${tool.bus.version}</version>
+            </dependency>
+   			<!-- Classifieds Service -->
+			<dependency>
+				<groupId>org.kuali.mobility</groupId>
+				<artifactId>classifieds-api</artifactId>
+				<version>${tool.classifieds.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.kuali.mobility</groupId>
+				<artifactId>classifieds-impl</artifactId>
+				<version>${tool.classifieds.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.kuali.mobility</groupId>
+				<artifactId>classifieds-web</artifactId>
+				<version>${tool.classifieds.version}</version>
+			</dependency>
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>classifieds-webapp</artifactId>
+                <version>${tool.classifieds.version}</version>
             </dependency>
    			<!-- Email Service -->
 			<dependency>

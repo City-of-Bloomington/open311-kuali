@@ -164,6 +164,25 @@
         </dependency>   
         <dependency>
             <groupId>org.kuali.mobility</groupId>
+            <artifactId>classifieds-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.kuali.mobility</groupId>
+            <artifactId>classifieds-impl</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.kuali.mobility</groupId>
+            <artifactId>classifieds-web</artifactId>
+        </dependency> 
+        <dependency> 
+            <groupId>org.kuali.mobility</groupId>
+            <artifactId>classifieds-webapp</artifactId>
+			<version>${tool.classifieds.version}</version>
+            <type>war</type>
+            <scope>runtime</scope>
+        </dependency>   
+        <dependency>
+            <groupId>org.kuali.mobility</groupId>
             <artifactId>socialmedia-api</artifactId>
         </dependency>
         <dependency>
