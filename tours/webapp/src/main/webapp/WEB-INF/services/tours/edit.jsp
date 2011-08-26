@@ -7,6 +7,7 @@
         <script src="${pageContext.request.contextPath}/js/polylineEdit.js" type="text/javascript"></script>
         <script src="${pageContext.request.contextPath}/js/jquery-ui-1.8.16.custom.min.js" type="text/javascript"></script>
         <script src="${pageContext.request.contextPath}/js/math.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/js/mapArrows.js" type="text/javascript"></script>
 		<script src="${pageContext.request.contextPath}/js/tourMaps.js" type="text/javascript"></script>
         <link type="text/css" href="${pageContext.request.contextPath}/css/smoothness/jquery-ui-1.8.16.custom.css" rel="Stylesheet" />	
 		<script>
@@ -98,6 +99,7 @@
                         <div id="name">
                         	<input type="hidden" name="tourId" id ="tourId" value="" />
                         	<input type="hidden" name="tourVersion" id ="tourVersion" value="" />
+                        	<input type="hidden" name="tourJson" id="tourJson" value='${tourJson}' />
                             <table>
                                 <tr align="left" valign="top">
                                     <td>Name: </td>

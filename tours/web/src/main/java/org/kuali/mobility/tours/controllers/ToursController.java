@@ -22,6 +22,7 @@ import java.util.List;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import net.sf.json.JSONSerializer;
+import net.sf.json.JsonConfig;
 
 import org.kuali.mobility.tours.entity.POI;
 import org.kuali.mobility.tours.entity.Tour;
@@ -40,9 +41,6 @@ public class ToursController {
 	
 	@Autowired
     private ToursService toursService;
-    public void setConfigParamService(ToursService toursService) {
-        this.toursService = toursService;
-    }
     
     @RequestMapping(method = RequestMethod.GET)
     public String index(Model uiModel) {
@@ -50,27 +48,31 @@ public class ToursController {
     	return "tours/index";
     }
     
-    @RequestMapping(value="edit", method = RequestMethod.GET)
+    @RequestMapping(value = "new", method = RequestMethod.GET)
     public String edit(Model uiModel) {
     	return "tours/edit";
     }
     
-    @RequestMapping(value="edit/{tourId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/edit/{tourId}", method = RequestMethod.GET)
     public String editTour(Model uiModel, @PathVariable("tourId") long tourId) {
     	Tour tour = toursService.findTourById(tourId);
-    	String tourJson = JSONSerializer.toJSON(tour).toString();
-    	uiModel.addAttribute("tourJson", tourJson);
+    	JsonConfig config = new JsonConfig();
+    	config.registerPropertyExclusion(POI.class, "tour");
+    	config.registerPropertyExclusion(POI.class, "versionNumber");
+    	config.registerPropertyExclusion(POI.class, "tourId");
+    	net.sf.json.JSON json =  JSONSerializer.toJSON(tour, config);
+    	uiModel.addAttribute("tourJson", json.toString());
     	return "tours/edit";
     }
     
-    @RequestMapping(value="edit", method = RequestMethod.POST)
+    @RequestMapping(value = "edit", method = RequestMethod.POST)
     public String save(@RequestParam("data") String postData,  Model uiModel) {
     	Tour tour = convertFromJson(postData);
     	toursService.saveTour(tour);
-    	return "tours/index";
+    	return index(uiModel);
     }
     
-    @RequestMapping(value="delete/{tourId}", method = RequestMethod.GET)
+    @RequestMapping(value = "delete/{tourId}", method = RequestMethod.GET)
     public String delete(@PathVariable("tourId") Long tourId, Model uiModel) {
     	toursService.deleteTourById(tourId);
     	return index(uiModel);

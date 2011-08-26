@@ -1,6 +1,7 @@
 var map;
 var dynaMap;
 var mapService;
+var arrows;
 var markers = [];
 var searchResults = [];
 var startMarker, stopMarker;
@@ -62,6 +63,8 @@ function initializeMap() {
 	}
 	poly = new google.maps.Polyline(polyOptions);
 	poly.setMap(map);
+	
+	arrows = new ArrowHandler();
 
 	google.maps.event.addListener(map, 'click', addPoint);
 	
@@ -70,7 +73,56 @@ function initializeMap() {
     map.overlayMapTypes.insertAt(0, agsType);
 	google.maps.event.addListenerOnce(mapService, 'load', function() {
 		$('#findButton').removeAttr('disabled');
+	});
+	
+	var tourJson = $('#tourJson').val();
+	if (tourJson.length){
+		initializeTour(tourJson);
+	}
+	google.maps.event.addListenerOnce(map, "tilesloaded", function() {
+		arrows.load(poly.getPath().getArray());
 	}); 
+}
+
+function initializeTour(json) {
+	var obj = jQuery.parseJSON(json);
+	if (obj) {
+		$('#tourId').val(obj.tourId);
+		$('#tourName').val(obj.name);
+		$('#tourDescription').val(obj.description);
+		$('#tourVersion').val(obj.versionNumber);
+		poly.setPath(google.maps.geometry.encoding.decodePath(obj.path));
+		updateStartEndMarkers();
+		updatePathDistance();
+		
+		for (var i=0; i<obj.pointsOfInterest.length; i++){
+			var poi = obj.pointsOfInterest[i];
+			place = new Object();
+			place.name = poi.name;
+			place.location = new google.maps.LatLng(poi.latitude,poi.longitude);
+			place.id = poi.locationId;
+			place.type = iuBuildingType;
+			addPOI(place);
+		}
+		centerOverAllLocations();
+	}
+}
+
+function centerOverAllLocations() {
+	// TODO: Fix for non-visible markers
+	var bounds = new google.maps.LatLngBounds();
+	if (markers) {
+		for (i in markers) {
+			bounds.extend(markers[i].getPosition());
+		}
+	}
+	if (poly) {
+		var array = poly.getPath().getArray();
+		for (i in array) {
+			bounds.extend(array[i]);
+		}
+	}
+	map.fitBounds(bounds);
 }
    
 function addToRoute(){
@@ -160,39 +212,7 @@ function addWaypoint(latLng) {
 	// and it will automatically appear
 	path.push(latLng);
 	
-	if (path.getLength() == 1){
-		if (!startMarker){
-			var markerImage = new google.maps.MarkerImage('http://www.google.com/intl/en_us/mapfiles/ms/micons/green-dot.png');
-			startMarker = new google.maps.Marker({
-				position: latLng,
-				title: '#' + path.getLength(),
-				map: map,
-				draggable: false,
-				icon: markerImage
-			});
-		} else {
-			var point = path.getAt(0);
-			startMarker.setPosition(point);
-			startMarker.setMap(map);
-		}
-	}
-	
-	if (path.getLength() > 1){
-		if (!stopMarker){
-			var markerImage = new google.maps.MarkerImage('http://www.google.com/intl/en_us/mapfiles/ms/micons/red-dot.png');
-			stopMarker = new google.maps.Marker({
-				position: latLng,
-				title: '#' + path.getLength(),
-				map: map,
-				draggable: false,
-				icon: markerImage
-			});
-		} else {
-			var point = path.getAt(path.getLength()-1);
-			stopMarker.setPosition(point);
-			stopMarker.setMap(map);
-		}
-	}
+	updateStartEndMarkers();
 	updatePathDistance();
 }
 
@@ -249,25 +269,45 @@ function fineTuneRoute(){
 
 function stopFineTuning(){
 	poly.stopEdit();
-	if (startMarker){
-		var path = poly.getPath();
-		if (path.getLength() > 0){
-			var point = path.getAt(0);
-			startMarker.setPosition(point);
-			startMarker.setMap(map);
-		}
-	}
-	if (stopMarker){
-		var path = poly.getPath();
-		if (path.getLength() > 1){
-			var point = path.getAt(path.getLength()-1);
-			stopMarker.setPosition(point);
-			stopMarker.setMap(map);
-		}
-	}
+	updateStartEndMarkers();
 	changeMode();
 	$('#editStatus').text('Not Editing');
 	updatePathDistance();
+}
+
+function updateStartEndMarkers() {
+	var path = poly.getPath();
+	if (path.getLength() > 0){
+		if (!startMarker){
+			var markerImage = new google.maps.MarkerImage('http://www.google.com/intl/en_us/mapfiles/ms/micons/green-dot.png');
+			startMarker = new google.maps.Marker({
+				position: path.getAt(0),
+				title: 'Start',
+				map: map,
+				draggable: false,
+				icon: markerImage
+			});
+		} else {
+			startMarker.setPosition(path.getAt(0));
+			startMarker.setMap(map);
+		}
+	}
+	
+	if (path.getLength() > 1){
+		if (!stopMarker){
+			var markerImage = new google.maps.MarkerImage('http://www.google.com/intl/en_us/mapfiles/ms/micons/red-dot.png');
+			stopMarker = new google.maps.Marker({
+				position: path.getAt(path.getLength()-1),
+				title: 'End',
+				map: map,
+				draggable: false,
+				icon: markerImage
+			});
+		} else {
+			stopMarker.setPosition(path.getAt(path.getLength()-1));
+			stopMarker.setMap(map);
+		}
+	}
 }
 
 function removeBuilding(marker){
@@ -509,7 +549,7 @@ function processResult(result){
 		b.name = title;
 		b.location = new google.maps.LatLng(a['LATITUDE'],a['LONGITUDE']);
 		b.id = a['IU BLDG NUMBER'];
-		b.street = a['ADDRESS'];
+		//b.street = a['ADDRESS'];
 		b.type = iuBuildingType;
 		//b.state = venue.location.state;
 		//b.city = venue.location.city;
@@ -634,10 +674,6 @@ function parseVenue(venue){
 	v.name = venue.name;
 	v.location = new google.maps.LatLng(venue.location.lat,venue.location.lng);
 	v.id = venue.id;
-	v.street = venue.location.address;
-	v.state = venue.location.state;
-	v.city = venue.location.city;
-	v.zip = venue.location.postalCode;
 	v.type= venueType;
 	return v;
 }
