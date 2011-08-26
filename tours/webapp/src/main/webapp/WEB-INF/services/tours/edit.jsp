@@ -2,15 +2,15 @@
 <html>
 	<head>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.js" type="text/javascript"></script>
-		<script src="https://maps-api-ssl.google.com/maps/api/js?v=3&sensor=false" type="text/javascript"></script>
+		<script src="https://maps-api-ssl.google.com/maps/api/js?libraries=geometry&v=3&sensor=false" type="text/javascript"></script>
         <script src="${pageContext.request.contextPath}/js/arcgislink.js" type="text/javascript"></script>
-        <script src="${pageContext.request.contextPath}/js/polylineEdit_packed.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/js/polylineEdit.js" type="text/javascript"></script>
         <script src="${pageContext.request.contextPath}/js/jquery-ui-1.8.16.custom.min.js" type="text/javascript"></script>
         <script src="${pageContext.request.contextPath}/js/math.js" type="text/javascript"></script>
 		<script src="${pageContext.request.contextPath}/js/tourMaps.js" type="text/javascript"></script>
         <link type="text/css" href="${pageContext.request.contextPath}/css/smoothness/jquery-ui-1.8.16.custom.css" rel="Stylesheet" />	
 		<script>
-			jQuery(function ($) {
+			jQuery(window).load(function() {
 				initializeMap();
 				$("#selector").tabs({
 					show: changeSelectorTabs
@@ -86,7 +86,7 @@
 	<body>
 		<table border="0" style="width:100%px;">
             <tr>
-				<td style="width:800px" valign="top"><div id="map_canvas" style="width:800px; height:600px"></div></td>
+				<td style="width:600px" valign="top"><div id="map_canvas" style="width:600px; height:400px"></div></td>
                 <td valign="top" align="left">
                 	<div id="wizard">
                         <ul>
@@ -96,21 +96,23 @@
                             <li><a href="#save">4. Save the Tour</a></li>
                         </ul>
                         <div id="name">
+                        	<input type="hidden" name="tourId" id ="tourId" value="" />
+                        	<input type="hidden" name="tourVersion" id ="tourVersion" value="" />
                             <table>
                                 <tr align="left" valign="top">
                                     <td>Name: </td>
-                                    <td><input type="text" name="routeName" id="routeName" /></td>
+                                    <td><input type="text" name="tourName" id="tourName" /></td>
                                 </tr>
                                 <tr align="left" valign="top">
                                     <td>Description: </td>
-                                    <td><textarea rows="3" cols="50" name="routeDesc" id="routeDesc"></textarea></td>
+                                    <td><textarea rows="3" cols="50" name="tourDescription" id="tourDescription"></textarea></td>
                                 </tr>
                             </table>
                         </div>
                         <div id="poi">
                             <table style="width:100%;">
                                 <tr>
-                                    <th>1. Select a location</th>
+                                    <th align="left">1. Select a location</th>
                                 </tr>
                                 <tr>
                                     <td>
@@ -146,7 +148,7 @@
                                     </td>
                                 </tr>-->
                                 <tr>
-                                    <th>2. Add Point of Interest to Tour</th>
+                                    <th align="left">2. Add Point of Interest to Tour</th>
                                 </tr>
                                 <tr>
                                     <td>
@@ -168,12 +170,18 @@
                                 <tr>
                                 	<td><span>Status: </span><span id="editStatus">Not Editing</span></td>
                                 </tr>
+                                <tr>
+                                	<td><span>Route Distance: </span><span id="routeDistance">0.0 Miles</span></td>
+                                </tr>
                             </table>
                         </div>
                         <div id="save">
                         	<p>Review Selected Points of Interest</p>
                             <div id="selectedPOIs"></div><br />
                         	<button type="button" onclick="saveTour();">Save</button><button type="button" onclick="generateRouteKML();">Generate KML</button>
+                        	<form id="postForm" action="${pageContext.request.contextPath}/tours/edit" method="post" >
+                        		<input type="hidden" id="data" name="data" value="" />
+                        	</form>
                         </div>
                     </div>
                 </td>

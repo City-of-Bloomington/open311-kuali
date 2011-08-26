@@ -34,6 +34,8 @@
     <class>org.kuali.mobility.admin.entity.HomeScreen</class> 
     <class>org.kuali.mobility.admin.entity.Tool</class> 
     <class>org.kuali.mobility.admin.entity.HomeTool</class> 
+    <class>org.kuali.mobility.tours.entity.Tour</class> 
+    <class>org.kuali.mobility.tours.entity.POI</class> 
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
   </persistence-unit>
 

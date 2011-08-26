@@ -10,12 +10,23 @@
 --%>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="kme" uri="http://kuali.org/mobility" %>
-
-<kme:page title="Tours" id="tours" backButton="true" homeButton="true">
-	<kme:content>
-
-	</kme:content>
-</kme:page>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tours</title>
+</head>
+<body>
+	<h2>Tours</h2>
+	<a href="${pageContext.request.contextPath}/tours/new">new</a><br /><br />
+	<table>
+		<c:forEach items="${tours}" var="tour" varStatus="status">
+			<tr>
+				<td>${tour.name}</td>
+				<td><a href="${pageContext.request.contextPath}/tours/edit/${tour.tourId}">edit</a> <a href="${pageContext.request.contextPath}/tours/delete/${tour.tourId}">delete</a></td>
+			</tr>
+		</c:forEach>
+	</table>
+</body>
+</html>

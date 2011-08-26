@@ -23,20 +23,24 @@ var validationDistanceThresholdMeters = 100;
 var foursquareId = 'L323STPYRKMYU2RZAQ1RHF4FCGDYWEHZZB4XHDLM5B51JGVQ';
 var foursquareSecret = 'CZK5HSH4ZZBXMZ5LCZHM0SO320IBXW4REBDNVHM20D1S3FZY';
 
+var iuBuildingType = 'I';
+var venueType = 'V';
+var customPointType = 'C';
+
 function initializeMap() {
-    var latlng;
+	var latlng;
     var zoom = 15;
     latlng = new google.maps.LatLng(39.168486,-86.523455);
 	
-	if(navigator.geolocation) {
-		navigator.geolocation.getCurrentPosition(function(position) {
-			initialLocation = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
-			map.setCenter(initialLocation);
-			}, 
-			function() {
+	//if(navigator.geolocation) {
+	//	navigator.geolocation.getCurrentPosition(function(position) {
+	//		initialLocation = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+	//		map.setCenter(initialLocation);
+	//		}, 
+	//		function() {
 				//handleNoGeolocation(browserSupportFlag);
-		});
-	}
+	//	});
+	//}
     
     var myOptions = {
 		zoom: zoom,
@@ -45,34 +49,26 @@ function initializeMap() {
 		streetViewControl: true,
 		zoomControl: true,
 		scaleControl: false,
-		mapTypeControl: true,
-		disableDoubleClickZoom: true
+		mapTypeControl: false,
+		disableDoubleClickZoom: false
     };
     map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 	
-	//var agsType = new  gmaps.ags.MapType(arcGisServerUrl,{name:'ArcGIS', opacity:0.5});
-    //map.overlayMapTypes.insertAt(0, agsType);
-	
 	var polyOptions = {
-		strokeColor: '#000000',
+		strokeColor: '#0000FF',
 		strokeOpacity: 0.5,
-		strokeWeight: 3
+		strokeWeight: 3,
+		clickable: false
 	}
 	poly = new google.maps.Polyline(polyOptions);
 	poly.setMap(map);
 
 	google.maps.event.addListener(map, 'click', addPoint);
 	
-	//var selectbox = document.getElementById("mapselect");
-	//selectbox.options.length = 0;
-	//addOption(selectbox,"select:",0);
-	//places = new Array();
-	//downloadMarkerData(null);
-	
-	dynamap = new gmaps.ags.MapOverlay(arcGisServerUrl);
-	mapService = dynamap.getMapService();
+	mapService = new gmaps.ags.MapService(arcGisServerUrl);
+	var agsType = new  gmaps.ags.MapType(arcGisServerUrl,{name:'ArcGIS', opacity:1.0});
+    map.overlayMapTypes.insertAt(0, agsType);
 	google.maps.event.addListenerOnce(mapService, 'load', function() {
-		dynamap.setMap(map);
 		$('#findButton').removeAttr('disabled');
 	}); 
 }
@@ -114,6 +110,7 @@ function addPoint(event) {
 function updateSelectedPlace(latLng){
 	selectedPlace = new Object();
 	selectedPlace.location = latLng;
+	selectedPlace.type = customPointType;
 	$('#selectedLocation').text(selectedPlace.location.lat() + ', ' + selectedPlace.location.lng());
 	setTempMarker(selectedPlace);
 }
@@ -196,6 +193,7 @@ function addWaypoint(latLng) {
 			stopMarker.setMap(map);
 		}
 	}
+	updatePathDistance();
 }
 
 function addPOI(place) {
@@ -221,12 +219,18 @@ function addPOI(place) {
 	});
 }
 
-function startEditingRoute(){
+function updatePathDistance() {
+	var dist = google.maps.geometry.spherical.computeLength(poly.getPath().getArray());
+	dist = dist * 0.000621371192; //convert meters to miles.
+	$('#routeDistance').html(dist.toFixed(2) + ' Miles');
+}
+
+function startEditingRoute() {
 	changeMode('edit');
 	$('#editStatus').text('Editing Route');
 }
 
-function stopEditingRoute(){
+function stopEditingRoute() {
 	changeMode();
 	$('#editStatus').text('Not Editing');
 }
@@ -263,6 +267,7 @@ function stopFineTuning(){
 	}
 	changeMode();
 	$('#editStatus').text('Not Editing');
+	updatePathDistance();
 }
 
 function removeBuilding(marker){
@@ -279,7 +284,7 @@ function removeBuilding(marker){
 
 function showMarkers2() {
 	if (markers) {
-		for (i in markers) {
+		for (var i = 0; i < markers.length; i++) {
 			markers[i].setMap(map);
 		}
 	}
@@ -288,7 +293,7 @@ function showMarkers2() {
 
 function hideMarkers() {
 	if (markers) {
-		for (i in markers) {
+		for (var i = 0; i < markers.length; i++) {
 			markers[i].setMap(null);
 		}
 	}
@@ -301,8 +306,9 @@ function generateRouteKML(){
 	
 	kmlData += '<Style id="Path"><LineStyle><color>FF0000FF</color><width>3</width></LineStyle></Style>';
 	//Get building markers
-	for each (var marker in markers){
-		if (marker.building){
+	for (var i = 0; i < markers.length; i++) {
+		var marker = markers[i];
+		if (marker.building) {
 			kmlData += '<Placemark>';
 			kmlData += '<name>' + marker.building.name + '</name>';
     		kmlData += '<description>' + marker.building.name + '</description>';
@@ -318,8 +324,10 @@ function generateRouteKML(){
 	kmlData += '<description>' + $('#routeDesc').val() + '</description>';
 	kmlData += '<styleUrl>#Path</styleUrl>';
 	kmlData += '<LineString><tessellate>1</tessellate><altitudeMode>clampToGround</altitudeMode><coordinates>\n';
-	for each (var point in path.getArray()){
-    		kmlData += point.lng() + ',' + point.lat() + ',0\n';
+	var array = path.getArray();
+	for (var i = 0; i < array.length; i++) {
+		var point = array[i];
+    	kmlData += point.lng() + ',' + point.lat() + ',0\n';
 	}
 	kmlData += '</coordinates></LineString></Placemark>';
 	
@@ -331,11 +339,34 @@ function generateRouteKML(){
 
 function saveTour(){
 	if (validateRoute()){
+		var places = [];
+		for (var i=0; i<markers.length; i++){
+			var place = markers[i].building;
+			if (place.poly){
+				delete place.poly;
+			}
+			places.push(place);
+		}
+		
+		var tour = new Object();
+		tour.id = $('#tourId').val();
+		tour.name = $('#tourName').val();
+		tour.description = $('#tourDescription').val();
+		tour.path = google.maps.geometry.encoding.encodePath(poly.getPath());
+		tour.version = $('#tourVersion').val();
+		tour.POIs = places;
+		
+		$('#data').val(JSON.stringify(tour));
 		//save here	
+		$("#postForm").submit();
 	}
 }
 
 function validateRoute(){
+	if (!$('#tourName').val().length){
+		alert('The tour must have a name.');
+		return false;
+	}
 	if (!markers || markers.length == 0){
 		alert('You have not added any points of interest to the tour.');
 		return false;
@@ -349,13 +380,13 @@ function validateRoute(){
 	}
 	var distance = 0;
 	var buildings = '';
-	for each (var marker in markers){
-		distance = getDistanceToPolyMtrs(poly, marker.getPosition())
+	for (var i = 0; i < markers.length; i++) {
+		distance = getDistanceToPolyMtrs(poly, markers[i].getPosition())
 		if (distance > validationDistanceThresholdMeters){
 			if (buildings != ''){
 				buildings += ', ';
 			}
-			buildings += marker.building.name;
+			buildings += markers[i].building.name;
 		}
 	}
 	if (buildings.length){
@@ -430,10 +461,8 @@ function updateSelectedPOIs(){
 	var selected = $tabs.tabs('option', 'selected');
 	if (selected == 3){ //Save is the fourth tab
 		var list = '';
-		var i = 1;
-		for each (var marker in markers){
-			list += '<div>' + i + '. ' + marker.building.name + '</div>'
-			i++;
+		for (var i = 0; i < markers.length; i++) {
+			list += '<div>' + (i+1) + '. ' + markers[i].building.name + '</div>'
 		}
 		$('#selectedPOIs').html(list);
 	}
@@ -481,6 +510,7 @@ function processResult(result){
 		b.location = new google.maps.LatLng(a['LATITUDE'],a['LONGITUDE']);
 		b.id = a['IU BLDG NUMBER'];
 		b.street = a['ADDRESS'];
+		b.type = iuBuildingType;
 		//b.state = venue.location.state;
 		//b.city = venue.location.city;
 		//b.zip = venue.location.postalCode;
@@ -608,6 +638,6 @@ function parseVenue(venue){
 	v.state = venue.location.state;
 	v.city = venue.location.city;
 	v.zip = venue.location.postalCode;
-
+	v.type= venueType;
 	return v;
 }
