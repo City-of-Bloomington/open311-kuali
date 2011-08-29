@@ -31,6 +31,12 @@ var iuBuildingType = 'I';
 var venueType = 'V';
 var customPointType = 'C';
 
+function getNextMediaCount(){
+	var value = mediaIdCounter;
+	mediaIdCounter++;
+	return value;
+}
+
 function initializeMap() {
 	var latlng;
     var zoom = 15;
@@ -682,4 +688,132 @@ function parseVenue(venue){
 	v.id = venue.id;
 	v.type= venueType;
 	return v;
+}
+
+function addImageToList() {
+	var url = $('#imageUrl').val();
+	var title = $('#imageTitle').val();
+	var caption = $('#imageCaption').val();
+	
+	var id = addMedia(url, title);
+	
+	var media = new Object();
+	media.type = 'image';
+	media.url = url;
+	media.title = title;
+	media.caption = caption;
+	
+	mediaList[id] = media;
+	
+	return false;
+}
+
+function addVideoToList() {
+	var $tabs = $('#videoTabs').tabs();
+	var selected = $tabs.tabs('option', 'selected');
+	
+	var title = $('#videoTitle').val();
+	var caption = $('#videoCaption').val();
+	var youTubeUrl;
+	var oggUrl;
+	var mp4Url;
+	var webMUrl;
+	
+	if (selected == 0) { //files
+		oggUrl = $('#oggUrl').val();
+		mp4Url = $('#mp4Url').val();
+		webMUrl = $('#webMUrl').val();
+	} else if (selected == 1) { //youtube
+		youTubeUrl = $('#youTubeUrl').val();
+	}
+	
+	var iconUrl = '${pageContext.request.contextPath}/images/video.png';
+	
+	var id = addMedia(iconUrl, title);
+	
+	var media = new Object();
+	media.type = 'video';
+	media.oggUrl = oggUrl;
+	media.mp4Url = mp4Url;
+	media.webMUrl = webMUrl;
+	media.youTubeUrl = youTubeUrl;
+	media.title = title;
+	media.caption = caption;
+	
+	mediaList[id] = media;
+	
+	return false;
+}
+
+function addAudioToList() {				
+	var title = $('#audioTitle').val();
+	var caption = $('#audioCaption').val();
+	var oggVorbisUrl;
+	var mp3Url;
+	var wavUrl;
+	
+	oggVorbisUrl = $('#oggVorbisUrl').val();
+	mp3Url = $('#mp3Url').val();
+	wavUrl = $('#wavUrl').val();
+	
+	var iconUrl = '${pageContext.request.contextPath}/images/audio.png';
+
+	var id = addMedia(iconUrl, title);
+	
+	var media = new Object();
+	media.type = 'audio';
+	media.oggVorbisUrl = oggVorbisUrl;
+	media.mp3Url = mp3Url;
+	media.wavUrl = wavUrl;
+	media.title = title;
+	media.caption = caption;
+	
+	mediaList[id] = media;
+	
+	return false;
+}
+
+function addMedia(imgSrc, title){
+	var li = $("<li></li>");
+	var img = $("<img />");
+	img.attr('src', imgSrc);
+	if (title){
+		img.attr('title', title);
+	}
+	li.append(img);
+	
+	var id = 'media' + getNextMediaCount();
+	img.attr('id', id);
+	
+	$('#images').append(li);
+	
+	img.contextMenu('myMenu', {
+		bindings: {
+			'move_left': moveUp,
+	        'move_right': moveDown,
+	        'remove': remove
+		}
+	});
+	
+	return id;
+}
+
+function moveUp(domElement) {
+	var element = $('img#' + domElement.id).parent(); //get the containing li
+	var prevElement = element.prev();
+	if (prevElement){
+		prevElement.before(element);
+	}
+}
+
+function moveDown(domElement) {
+	var element = $('img#' + domElement.id).parent(); //get the containing li
+	var nextElement = element.next();
+	if (nextElement){
+		nextElement.after(element);
+	}
+}
+
+function remove(domElement) {
+	var element = $('img#' + domElement.id).parent().remove();
 }
