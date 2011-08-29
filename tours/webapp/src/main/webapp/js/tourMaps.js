@@ -14,10 +14,13 @@ var isFineTuning = false;
 var isSelectingPoint = false;
 var isSelectingVenue = false;
 var showMarkers = true;
-var buildingMarkerImage = new google.maps.MarkerImage('http://chart.apis.google.com/chart?chst=d_map_pin_icon&chld=home|88BBFF');
+
+var mediaList = [];
+var mediaIdCounter = 0;
 
 var tempMarker;
 var tempMarkerImage = new google.maps.MarkerImage('http://chart.apis.google.com/chart?chst=d_map_pin_icon&chld=home|FF7777');
+var buildingMarkerImage = new google.maps.MarkerImage('http://chart.apis.google.com/chart?chst=d_map_pin_icon&chld=home|88BBFF');
 
 var arcGisServerUrl = 'http://maps.iu.edu/ArcGIS/rest/services/Bloomington/MapServer';
 var validationDistanceThresholdMeters = 100;
@@ -237,6 +240,9 @@ function addPOI(place) {
 	google.maps.event.addListener(marker, 'rightclick', function() {
 		removeBuilding(marker);
 	});
+	google.maps.event.addListener(marker, 'click', function() {
+		editPOI(marker); //does not exist yet
+	});
 }
 
 function updatePathDistance() {
@@ -279,7 +285,7 @@ function updateStartEndMarkers() {
 	var path = poly.getPath();
 	if (path.getLength() > 0){
 		if (!startMarker){
-			var markerImage = new google.maps.MarkerImage('http://www.google.com/intl/en_us/mapfiles/ms/micons/green-dot.png');
+			var markerImage = new google.maps.MarkerImage('/mdot/images/start.png');
 			startMarker = new google.maps.Marker({
 				position: path.getAt(0),
 				title: 'Start',
@@ -295,7 +301,7 @@ function updateStartEndMarkers() {
 	
 	if (path.getLength() > 1){
 		if (!stopMarker){
-			var markerImage = new google.maps.MarkerImage('http://www.google.com/intl/en_us/mapfiles/ms/micons/red-dot.png');
+			var markerImage = new google.maps.MarkerImage('/mdot/images/end.png');
 			stopMarker = new google.maps.Marker({
 				position: path.getAt(path.getLength()-1),
 				title: 'End',

@@ -6,11 +6,21 @@
         <script src="${pageContext.request.contextPath}/js/arcgislink.js" type="text/javascript"></script>
         <script src="${pageContext.request.contextPath}/js/polylineEdit.js" type="text/javascript"></script>
         <script src="${pageContext.request.contextPath}/js/jquery-ui-1.8.16.custom.min.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/js/jquery.contextmenu.r2.packed.js" type="text/javascript"></script>
         <script src="${pageContext.request.contextPath}/js/math.js" type="text/javascript"></script>
         <script src="${pageContext.request.contextPath}/js/mapArrows.js" type="text/javascript"></script>
 		<script src="${pageContext.request.contextPath}/js/tourMaps.js" type="text/javascript"></script>
         <link type="text/css" href="${pageContext.request.contextPath}/css/smoothness/jquery-ui-1.8.16.custom.css" rel="Stylesheet" />	
+
 		<script>
+			
+			
+			function getNextMediaCount(){
+				var value = mediaIdCounter;
+				mediaIdCounter++;
+				return value;
+			}
+			
 			jQuery(window).load(function() {
 				initializeMap();
 				$("#selector").tabs({
@@ -19,7 +29,137 @@
 				$("#wizard").tabs({
 					show: changeWizardTabs
 				});
+				$("#mediaTabs").tabs();
+				$("#videoTabs").tabs();
 			});
+			
+			function addImageToList() {
+				var url = $('#imageUrl').val();
+				var title = $('#imageTitle').val();
+				var caption = $('#imageCaption').val();
+				
+				var id = addMedia(url, title);
+				
+				var media = new Object();
+				media.type = 'image';
+				media.url = url;
+				media.title = title;
+				media.caption = caption;
+				
+				mediaList[id] = media;
+				
+				return false;
+			}
+			
+			function addVideoToList() {
+				var $tabs = $('#videoTabs').tabs();
+				var selected = $tabs.tabs('option', 'selected');
+				
+				var title = $('#videoTitle').val();
+				var caption = $('#videoCaption').val();
+				var youTubeUrl;
+				var oggUrl;
+				var mp4Url;
+				var webMUrl;
+				
+				if (selected == 0) { //files
+					oggUrl = $('#oggUrl').val();
+					mp4Url = $('#mp4Url').val();
+					webMUrl = $('#webMUrl').val();
+				} else if (selected == 1) { //youtube
+					youTubeUrl = $('#youTubeUrl').val();
+				}
+				
+				var iconUrl = '${pageContext.request.contextPath}/images/video.png';
+				
+				var id = addMedia(iconUrl, title);
+				
+				var media = new Object();
+				media.type = 'video';
+				media.oggUrl = oggUrl;
+				media.mp4Url = mp4Url;
+				media.webMUrl = webMUrl;
+				media.youTubeUrl = youTubeUrl;
+				media.title = title;
+				media.caption = caption;
+				
+				mediaList[id] = media;
+				
+				return false;
+			}
+			
+			function addAudioToList() {				
+				var title = $('#audioTitle').val();
+				var caption = $('#audioCaption').val();
+				var oggVorbisUrl;
+				var mp3Url;
+				var wavUrl;
+				
+				oggVorbisUrl = $('#oggVorbisUrl').val();
+				mp3Url = $('#mp3Url').val();
+				wavUrl = $('#wavUrl').val();
+				
+				var iconUrl = '${pageContext.request.contextPath}/images/audio.png';
+		
+				var id = addMedia(iconUrl, title);
+				
+				var media = new Object();
+				media.type = 'audio';
+				media.oggVorbisUrl = oggVorbisUrl;
+				media.mp3Url = mp3Url;
+				media.wavUrl = wavUrl;
+				media.title = title;
+				media.caption = caption;
+				
+				mediaList[id] = media;
+				
+				return false;
+			}
+			
+			function addMedia(imgSrc, title){
+				var li = $("<li></li>");
+				var img = $("<img />");
+				img.attr('src', imgSrc);
+				if (title){
+					img.attr('title', title);
+				}
+				li.append(img);
+				
+				var id = 'media' + getNextMediaCount();
+				img.attr('id', id);
+				
+				$('#images').append(li);
+				
+				img.contextMenu('myMenu', {
+					bindings: {
+						'move_left': moveUp,
+				        'move_right': moveDown,
+				        'remove': remove
+					}
+				});
+				
+				return id;
+			}
+			
+			function moveUp(domElement) {
+				var element = $('img#' + domElement.id).parent(); //get the containing li
+				var prevElement = element.prev();
+				if (prevElement){
+					prevElement.before(element);
+				}
+			}
+			
+			function moveDown(domElement) {
+				var element = $('img#' + domElement.id).parent(); //get the containing li
+				var nextElement = element.next();
+				if (nextElement){
+					nextElement.after(element);
+				}
+			}
+			
+			function remove(domElement) {
+				var element = $('img#' + domElement.id).parent().remove();
+			}
 		</script>
         <style>
 			p {
@@ -81,10 +221,41 @@
 				background-color: #FFFFFF;
 				padding: 3px;
 			}
+			
+			ul#images {
+				padding:0;
+			}
+			
+			ul#images li {
+				display: inline;
+				margin:0;
+				padding:0;
+				position: relative;
+			}
+			
+			ul#images li img {
+				border: 1px solid #AAA;
+				margin: 0 2px 2px 0;
+				padding: 2px;
+				height: 48px;
+			}
+			
+			div#selectedMedia {
+				border: 1px solid #AAAAAA;
+				border-radius: 4px;
+				padding: 4px;
+			}
 
 		</style>
 	</head>
 	<body>
+		<div class="contextMenu" id="myMenu">
+			<ul>			
+				<li id="move_left">Move Up</li>				
+				<li id="move_right">Move Down</li>				
+				<li id="remove">Remove</li>						
+			</ul>		
+		</div>
 		<table border="0" style="width:100%px;">
             <tr>
 				<td style="width:600px" valign="top"><div id="map_canvas" style="width:600px; height:400px"></div></td>
@@ -141,16 +312,140 @@
                                         </div>
                                     </td>
                                 </tr>
-                                <!--<tr>
-                                    <th>2. Add Custom Info. (Optional)</th>
+                                <tr>
+                                    <th>2. Add A Text Description</th>
                                 </tr>
                                 <tr>
                                     <td>
                                         <textarea rows="5" cols="50" id="description"></textarea>
                                     </td>
-                                </tr>-->
+                                </tr>
                                 <tr>
-                                    <th align="left">2. Add Point of Interest to Tour</th>
+                                    <th>3. Add Media</th>
+                                </tr>
+                                <tr align="left" valign="top">
+                                	<td>
+                                		<div id="mediaTabs">
+                                            <ul>
+                                                <li><a href="#imageTab">Images</a></li>
+                                                <li><a href="#videoTab">Video</a></li>
+                                                <li><a href="#audioTab">Audio</a></li>
+                                            </ul>
+                                            <div id="imageTab">
+                                            	<table>
+			                                		<tr align="left" valign="top">
+			                                			<td>URL: </td>
+			                                			<td><input type="text" name="imageUrl" id="imageUrl" size="50" /></td>
+			                                		</tr>
+			                                		<tr align="left" valign="top">
+			                                			<td>Title: </td>
+			                                			<td><input type="text" name="imageTitle" id="imageTitle" size="50" /></td>
+			                                		</tr>
+			                                		<tr align="left" valign="top">
+			                                			<td>Caption: </td>
+			                                			<td><textarea rows="5" cols="50" id="imageCaption"></textarea></td>
+			                                		</tr>
+			                                	</table>
+			                                	<button type="button" onclick="addImageToList();">Add Image</button>
+                                            </div>
+                                            <div id="videoTab">
+                                            	<table>
+			                                		<tr align="left" valign="top">
+			                                			<td>Source: </td>
+				                                		<td>
+					                                		<div id="videoTabs">
+					                                            <ul>
+					                                                <li><a href="#videoFile">File</a></li>
+					                                                <li><a href="#videoYouTube">YouTube</a></li>
+					                                            </ul>
+					                                            <div id="videoFile">
+					                                            	<table>
+					                                            		<tr>
+					                                            			<th>Format</th>
+					                         								<th>URL</th>
+					                         							</tr>
+					                         							<tr>
+					                         								<td>Ogg</td>
+					                         								<td><input type="text" name="oggUrl" id="oggUrl" size="50" /></td>
+					                         							</tr>
+					                         							<tr>
+					                         								<td>MPEG 4</td>
+					                         								<td><input type="text" name="mpg4Url" id="mpg4Url" size="50" /></td>
+					                         							</tr>
+					                         							<tr>
+					                         								<td>WebM</td>
+					                         								<td><input type="text" name="webMUrl" id="webMUrl" size="50" /></td>
+					                         							</tr>
+					                                            	</table>
+					                                            </div>
+					                                            <div id="videoYouTube">
+																	URL: <input type="text" name="youTubeUrl" id="youTubeUrl" size="50" />
+					                                            </div>
+				                                            </div>
+			                                            </td>
+			                                		</tr>
+			                                		<tr align="left" valign="top">
+			                                			<td>Title: </td>
+			                                			<td><input type="text" name="videoTitle" id="videoTitle" size="50" /></td>
+			                                		</tr>
+			                                		<tr align="left" valign="top">
+			                                			<td>Caption: </td>
+			                                			<td><textarea rows="5" cols="50" id="videoCaption"></textarea></td>
+			                                		</tr>
+			                                	</table>
+	                                            <button type="button" onclick="addVideoToList();">Add Video</button>
+                                            </div>
+                                            <div id="audioTab">
+                                            	<table>
+			                                		<tr align="left" valign="top">
+			                                			<td>Source: </td>
+				                                		<td>
+			                                            	<table>
+			                                            		<tr>
+			                                            			<th>Format</th>
+			                         								<th>URL</th>
+			                         							</tr>
+			                         							<tr>
+			                         								<td>Ogg Vorbis</td>
+			                         								<td><input type="text" name="oggVorbisUrl" id="oggVorbisUrl" size="50" /></td>
+			                         							</tr>
+			                         							<tr>
+			                         								<td>MP3</td>
+			                         								<td><input type="text" name="mp3Url" id="mp3Url" size="50" /></td>
+			                         							</tr>
+			                         							<tr>
+			                         								<td>Wav</td>
+			                         								<td><input type="text" name="wavUrl" id="wavUrl" size="50" /></td>
+			                         							</tr>
+			                                            	</table>
+			                                            </td>
+			                                		</tr>
+			                                		<tr align="left" valign="top">
+			                                			<td>Title: </td>
+			                                			<td><input type="text" name="audioTitle" id="audioTitle" size="50" /></td>
+			                                		</tr>
+			                                		<tr align="left" valign="top">
+			                                			<td>Caption: </td>
+			                                			<td><textarea rows="5" cols="50" id="audioCaption"></textarea></td>
+			                                		</tr>
+			                                	</table>
+	                                            <button type="button" onclick="addAudioToList();">Add Audio</button>
+                                            </div>
+                                        </div>
+                                	</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    	<p>Selected Media</p>
+										<div id="selectedMedia">
+											<ul id="images">
+											
+											</ul>
+										</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th align="left">4. Add Point of Interest to Tour</th>
                                 </tr>
                                 <tr>
                                     <td>
@@ -180,7 +475,7 @@
                         <div id="save">
                         	<p>Review Selected Points of Interest</p>
                             <div id="selectedPOIs"></div><br />
-                        	<button type="button" onclick="saveTour();">Save</button><button type="button" onclick="generateRouteKML();">Generate KML</button>
+                        	<button type="button" onclick="saveTour();">Save</button><!--<button type="button" onclick="generateRouteKML();">Generate KML</button>-->
                         	<form id="postForm" action="${pageContext.request.contextPath}/tours/edit" method="post" >
                         		<input type="hidden" id="data" name="data" value="" />
                         	</form>

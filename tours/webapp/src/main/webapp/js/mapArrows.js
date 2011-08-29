@@ -17,25 +17,9 @@ ArrowHandler.prototype.draw = function() {
 		for (var i = 0, m; m = this.arrowheads[i]; i++) {
 			var gMap = map;
 			if (this.getSegmentLengthInPixels(m.p1, m.p2) < 30) gMap = null;
-			//m.setOptions({ position: this.usePixelOffset(m.p1, m.p2) });
 			m.setOptions({ map: gMap });
 		}
 	}
-};
-
-// Computes the length of a polyline in pixels
-// to adjust the position of the 'head' arrow
-ArrowHandler.prototype.usePixelOffset = function(p1, p2) {
-	var proj = this.getProjection();
-	var g = google.maps;
-	var dist = 12; // Half size of triangle icon
-	var pix1 = proj.fromLatLngToContainerPixel(p1);
-	var pix2 = proj.fromLatLngToContainerPixel(p2);
-	var vector = new g.Point(pix2.x - pix1.x, pix2.y - pix1.y);
-	var length = Math.sqrt(vector.x * vector.x + vector.y * vector.y);
-	var normal = new g.Point(vector.x/length, vector.y/length);
-	var offset = new g.Point(pix2.x - dist * normal.x, pix2.y - dist * normal.y);
-	return proj.fromContainerPixelToLatLng(offset);
 };
 
 //Computes the length of a line segment in pixels
