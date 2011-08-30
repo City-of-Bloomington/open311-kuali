@@ -53,14 +53,28 @@ public class ToursController {
     	return "tours/edit";
     }
     
-    @RequestMapping(value = "/edit/{tourId}", method = RequestMethod.GET)
+    @SuppressWarnings("unchecked")
+	@RequestMapping(value = "/edit/{tourId}", method = RequestMethod.GET)
     public String editTour(Model uiModel, @PathVariable("tourId") long tourId) {
     	Tour tour = toursService.findTourById(tourId);
     	JsonConfig config = new JsonConfig();
     	config.registerPropertyExclusion(POI.class, "tour");
     	config.registerPropertyExclusion(POI.class, "versionNumber");
     	config.registerPropertyExclusion(POI.class, "tourId");
-    	net.sf.json.JSON json =  JSONSerializer.toJSON(tour, config);
+    	JSONObject json =  (JSONObject) JSONSerializer.toJSON(tour, config);
+    	JSONArray pointsOfInterest = json.getJSONArray("pointsOfInterest");
+    	for (Iterator<JSONObject> iter = pointsOfInterest.iterator(); iter.hasNext();) {
+    		try {
+    			JSONObject poi = iter.next();
+    			String mediaJson = poi.getString("media");
+    			if (!mediaJson.isEmpty()) {
+	    			JSONArray media = (JSONArray) JSONSerializer.toJSON(mediaJson);
+					poi.element("media", media);
+    			} else {
+    				poi.element("media", new JSONArray());
+    			}
+			} catch (Exception e) {}
+    	}
     	uiModel.addAttribute("tourJson", json.toString());
     	return "tours/edit";
     }
@@ -77,6 +91,12 @@ public class ToursController {
     	toursService.deleteTourById(tourId);
     	return index(uiModel);
     }
+    
+//    @RequestMapping(value = "kml", method = RequestMethod.POST)
+//    public String delete(@RequestBody() Long tourId, Model uiModel) {
+//    	toursService.deleteTourById(tourId);
+//    	return index(uiModel);
+//    }
     
     @SuppressWarnings("unchecked")
 	private Tour convertFromJson(String json) {
@@ -118,9 +138,11 @@ public class ToursController {
 			poi.setType(pointOfInterest.getString("type"));
 			
 			JSONObject location = pointOfInterest.getJSONObject("location");
-			poi.setLatitude(location.getDouble("Oa"));
-			poi.setLongitude(location.getDouble("Pa"));
-			
+			poi.setLatitude(location.getDouble("Pa"));
+			poi.setLongitude(location.getDouble("Qa"));
+			try {
+				poi.setMedia(pointOfInterest.getString("media"));
+			} catch (Exception e) {}
 			poi.setTourId(tour.getTourId());
 			poi.setTour(tour);
 			POIs.add(poi);

@@ -18,6 +18,8 @@ var showMarkers = true;
 var mediaList = [];
 var mediaIdCounter = 0;
 
+var contextPath;
+
 var tempMarker;
 var tempMarkerImage = new google.maps.MarkerImage('http://chart.apis.google.com/chart?chst=d_map_pin_icon&chld=home|FF7777');
 var buildingMarkerImage = new google.maps.MarkerImage('http://chart.apis.google.com/chart?chst=d_map_pin_icon&chld=home|88BBFF');
@@ -31,13 +33,18 @@ var iuBuildingType = 'I';
 var venueType = 'V';
 var customPointType = 'C';
 
+var imageType = 'I';
+var audioType = 'A';
+var videoType = 'V';
+
 function getNextMediaCount(){
 	var value = mediaIdCounter;
 	mediaIdCounter++;
 	return value;
 }
 
-function initializeMap() {
+function initializeMap(cntxtPath) {
+	contextPath = cntxtPath;
 	var latlng;
     var zoom = 15;
     latlng = new google.maps.LatLng(39.168486,-86.523455);
@@ -110,7 +117,8 @@ function initializeTour(json) {
 			place.name = poi.name;
 			place.location = new google.maps.LatLng(poi.latitude,poi.longitude);
 			place.id = poi.locationId;
-			place.type = iuBuildingType;
+			place.type = poi.type;
+			place.media = poi.media;
 			addPOI(place);
 		}
 		centerOverAllLocations();
@@ -136,18 +144,28 @@ function centerOverAllLocations() {
    
 function addToRoute(){
 	if (tempMarker){
+		var place = tempMarker.building;
 		if (isSelectingPoint){
 			var pointName = $('#pointName').val();
 			if (!pointName.length){
 				alert('Please name this location.');
 				return;
 			}
-			tempMarker.building.name = pointName;
+			place.name = pointName;
 		}
-		addPOI(tempMarker.building);
+		addSelectedMediaToPoi(place);
+		addPOI(place);
 		tempMarker.setMap(null);
 		tempMarker = null;
 	}
+}
+
+function addSelectedMediaToPoi(place) {
+	place.media = new Array();
+	$('#images li img').each(function (index) {
+		var media = mediaList[this.id];
+		place.media.push(media);
+	});
 }
 
 function addPoint(event) {
@@ -217,9 +235,12 @@ function addBuilding(number){
 
 function addWaypoint(latLng) {
 	var path = poly.getPath();
+	var currentEnd = path.getAt(path.getLength()-1);
 	// Because path is an MVCArray, we can simply append a new coordinate
 	// and it will automatically appear
 	path.push(latLng);
+	
+	arrows.create(currentEnd, latLng);
 	
 	updateStartEndMarkers();
 	updatePathDistance();
@@ -268,20 +289,24 @@ function stopEditingRoute() {
 }
 
 function fineTuneRoute(){
-	changeMode('tune');
-	$('#editStatus').text('Fine-Tuning');
-	poly.runEdit(true);
-	if (startMarker){
-		startMarker.setMap(null);
-	}
-	if (stopMarker){
-		stopMarker.setMap(null);
+	if (!isFineTuning){
+		changeMode('tune');
+		$('#editStatus').text('Fine-Tuning');
+		arrows.hideArrows();
+		poly.runEdit(true);
+		if (startMarker){
+			startMarker.setMap(null);
+		}
+		if (stopMarker){
+			stopMarker.setMap(null);
+		}
 	}
 }
 
 function stopFineTuning(){
 	poly.stopEdit();
 	updateStartEndMarkers();
+	arrows.load(poly.getPath().getArray());
 	changeMode();
 	$('#editStatus').text('Not Editing');
 	updatePathDistance();
@@ -350,43 +375,6 @@ function hideMarkers() {
 		}
 	}
 	showMarkers = false;
-}
-
-
-function generateRouteKML(){
-	var kmlData = '<?xml version="1.0" encoding="UTF-8"?>\n<kml xmlns="http://www.opengis.net/kml/2.2"><Document>';
-	
-	kmlData += '<Style id="Path"><LineStyle><color>FF0000FF</color><width>3</width></LineStyle></Style>';
-	//Get building markers
-	for (var i = 0; i < markers.length; i++) {
-		var marker = markers[i];
-		if (marker.building) {
-			kmlData += '<Placemark>';
-			kmlData += '<name>' + marker.building.name + '</name>';
-    		kmlData += '<description>' + marker.building.name + '</description>';
-    		kmlData += '<Point><coordinates>' + marker.building.location.lng() + ',' + marker.building.location.lat() + ',0</coordinates></Point>';
-  			kmlData += '</Placemark>';
-		}
-	}
-	
-	//Get route path
-	var path = poly.getPath();
-	kmlData += '<Placemark>';
-	kmlData += '<name>' + $('#routeName').val() + '</name>';
-	kmlData += '<description>' + $('#routeDesc').val() + '</description>';
-	kmlData += '<styleUrl>#Path</styleUrl>';
-	kmlData += '<LineString><tessellate>1</tessellate><altitudeMode>clampToGround</altitudeMode><coordinates>\n';
-	var array = path.getArray();
-	for (var i = 0; i < array.length; i++) {
-		var point = array[i];
-    	kmlData += point.lng() + ',' + point.lat() + ',0\n';
-	}
-	kmlData += '</coordinates></LineString></Placemark>';
-	
-	kmlData += '</Document></kml>';
-	
-	alert(kmlData);
-	return kmlData;
 }
 
 function saveTour(){
@@ -698,7 +686,7 @@ function addImageToList() {
 	var id = addMedia(url, title);
 	
 	var media = new Object();
-	media.type = 'image';
+	media.type = imageType;
 	media.url = url;
 	media.title = title;
 	media.caption = caption;
@@ -709,9 +697,6 @@ function addImageToList() {
 }
 
 function addVideoToList() {
-	var $tabs = $('#videoTabs').tabs();
-	var selected = $tabs.tabs('option', 'selected');
-	
 	var title = $('#videoTitle').val();
 	var caption = $('#videoCaption').val();
 	var youTubeUrl;
@@ -719,20 +704,17 @@ function addVideoToList() {
 	var mp4Url;
 	var webMUrl;
 	
-	if (selected == 0) { //files
-		oggUrl = $('#oggUrl').val();
-		mp4Url = $('#mp4Url').val();
-		webMUrl = $('#webMUrl').val();
-	} else if (selected == 1) { //youtube
-		youTubeUrl = $('#youTubeUrl').val();
-	}
+	oggUrl = $('#oggUrl').val();
+	mp4Url = $('#mp4Url').val();
+	webMUrl = $('#webMUrl').val();
+	youTubeUrl = $('#youTubeUrl').val();
 	
-	var iconUrl = '${pageContext.request.contextPath}/images/video.png';
+	var iconUrl = contextPath + '/images/video.png';
 	
 	var id = addMedia(iconUrl, title);
 	
 	var media = new Object();
-	media.type = 'video';
+	media.type = videoType;
 	media.oggUrl = oggUrl;
 	media.mp4Url = mp4Url;
 	media.webMUrl = webMUrl;
@@ -756,12 +738,12 @@ function addAudioToList() {
 	mp3Url = $('#mp3Url').val();
 	wavUrl = $('#wavUrl').val();
 	
-	var iconUrl = '${pageContext.request.contextPath}/images/audio.png';
+	var iconUrl = contextPath + '/images/audio.png';
 
 	var id = addMedia(iconUrl, title);
 	
 	var media = new Object();
-	media.type = 'audio';
+	media.type = audioType;
 	media.oggVorbisUrl = oggVorbisUrl;
 	media.mp3Url = mp3Url;
 	media.wavUrl = wavUrl;

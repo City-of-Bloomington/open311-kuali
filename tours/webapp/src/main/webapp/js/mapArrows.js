@@ -65,9 +65,24 @@ ArrowHandler.prototype.create = function(p1, p2) {
 };
 
 ArrowHandler.prototype.load = function (points) {
+	if (this.arrowheads.length > 0){
+		for (var i = 0; i < this.arrowheads.length-1; i++) {
+			this.arrowheads[i].setMap(null);
+			this.arrowheads[i] = null;
+		}
+	}
+	this.arrowheads = [];
 	for (var i = 0; i < points.length-1; i++) {
 		var p1 = points[i],
 		p2 = points[i + 1];
 		this.create(p1, p2);
+	}
+};
+
+ArrowHandler.prototype.hideArrows = function() {
+	if (this.arrowheads.length > 0){
+		for (var i = 0; i < this.arrowheads.length; i++) {
+			this.arrowheads[i].setMap(null);
+		}
 	}
 };

@@ -46,6 +46,9 @@ public class POI {
 	@Column(name="LNG")
 	private double longitude;
 	
+	@Column(name="MEDIA")
+	private String media;
+	
 	@Version
     @Column(name="VER_NBR")
     protected Long versionNumber;
@@ -120,5 +123,13 @@ public class POI {
 
 	public void setTour(Tour tour) {
 		this.tour = tour;
+	}
+
+	public String getMedia() {
+		return media;
+	}
+
+	public void setMedia(String media) {
+		this.media = media;
 	}
 }

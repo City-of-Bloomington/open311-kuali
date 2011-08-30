@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -9,12 +11,13 @@
         <script src="${pageContext.request.contextPath}/js/jquery.contextmenu.r2.packed.js" type="text/javascript"></script>
         <script src="${pageContext.request.contextPath}/js/math.js" type="text/javascript"></script>
         <script src="${pageContext.request.contextPath}/js/mapArrows.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/js/kml.js" type="text/javascript"></script>
 		<script src="${pageContext.request.contextPath}/js/tourMaps.js" type="text/javascript"></script>
         <link type="text/css" href="${pageContext.request.contextPath}/css/smoothness/jquery-ui-1.8.16.custom.css" rel="Stylesheet" />	
 
 		<script>
 			jQuery(window).load(function() {
-				initializeMap();
+				initializeMap('${pageContext.request.contextPath}');
 				$("#selector").tabs({
 					show: changeSelectorTabs
 				});
@@ -134,7 +137,8 @@
                         <div id="name">
                         	<input type="hidden" name="tourId" id ="tourId" value="" />
                         	<input type="hidden" name="tourVersion" id ="tourVersion" value="" />
-                        	<input type="hidden" name="tourJson" id="tourJson" value='${tourJson}' />
+                        	<c:set var="json"><c:out value="${tourJson}" escapeXml="true" /></c:set>
+                        	<input type="hidden" name="tourJson" id="tourJson" value="${json}" />
                             <table>
                                 <tr align="left" valign="top">
                                     <td>Name: </td>
@@ -339,7 +343,7 @@
                         <div id="save">
                         	<p>Review Selected Points of Interest</p>
                             <div id="selectedPOIs"></div><br />
-                        	<button type="button" onclick="saveTour();">Save</button><!--<button type="button" onclick="generateRouteKML();">Generate KML</button>-->
+                        	<button type="button" onclick="saveTour();">Save</button><button type="button" onclick="generateRouteKML(markers, poly.getPath());">Generate KML</button>
                         	<form id="postForm" action="${pageContext.request.contextPath}/tours/edit" method="post" >
                         		<input type="hidden" id="data" name="data" value="" />
                         	</form>
