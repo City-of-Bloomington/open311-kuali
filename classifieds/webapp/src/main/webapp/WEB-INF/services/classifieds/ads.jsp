@@ -16,7 +16,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <c:choose>
-	<c:when test="${selectedTab eq 'tab2'}">
+	<c:when test="${selectedTab eq 'tab2' or not empty searched}">
 		<c:set var="jsFilename" value="show-tab2" />
 	</c:when>
 	<c:otherwise>
@@ -54,96 +54,67 @@
 				</c:otherwise>
 			</c:choose>
 		</div>
-		<h3 class="title">
-			<c:choose>
-				<c:when test="${not empty searched}">
+		<div class="genericpanel">
+			<h3 class="title">
+				<c:choose>
+					<c:when test="${not empty searched}">
 	            Search Results: <c:out value="${searched}" />
-				</c:when>
-				<c:when test="${not empty categoryId and categoryId > 0}">
-					<c:out value="${categoryName}" />
-				</c:when>
-				<c:otherwise>
+					</c:when>
+					<c:when test="${not empty categoryId and categoryId > 0}">
+						<c:out value="${categoryName}" />
+					</c:when>
+					<c:otherwise>
                 All Ads
             </c:otherwise>
-			</c:choose>
-		</h3>
+				</c:choose>
+			</h3>
 
-		<kme:listView id="event" dataTheme="g">
-			<c:forEach var="ad" items="${ads}">
-				<kme:listItem>
-					<c:url var="adURL" value="/classifieds/ad">
-						<c:param name="adId" value="${ad.adId}" />
-						<c:param name="vcId" value="${categoryId}" />
-						<c:param name="searched" value="${searched}" />
-						<c:param name="pageNumber" value="${pageNumber}" />
-					</c:url>
-					<a href="${adURL}"> <c:out value="${ad.title}" /> </a>
-				</kme:listItem>
-			</c:forEach>
-		</kme:listView>
+			<kme:listView id="event" dataTheme="g">
+				<c:forEach var="ad" items="${ads}">
+					<kme:listItem>
+						<c:url var="adURL" value="/classifieds/ad">
+							<c:param name="adId" value="${ad.adId}" />
+							<c:param name="categoryId" value="${categoryId}" />
+							<c:param name="searched" value="${searched}" />
+							<c:param name="pageNumber" value="${pageNumber}" />
+						</c:url>
+						<a href="${adURL}"> <c:out value="${ad.title}" /> </a>
+					</kme:listItem>
+				</c:forEach>
+			</kme:listView>
 
-		<div class="pagination container_12">
-			<div class="grid_12" align="center">
-				Page
-				<c:if test="${not empty pageNumber}">${pageNumber} of ${maxPageNumber}</c:if>
-				<c:if test="${empty pageNumber}">1 of ${maxPageNumber}</c:if>
-			</div>
-			<c:choose>
-				<c:when test="${categoryId > 0}">
-					<div class="prev grid_6">
-						<c:if test="${not empty previousPage}">
-							<c:url var="adsURL" value="/classifieds/ads">
-								<c:param name="pageNumber" value="${previousPage}" />
-							</c:url>
-							<a href="${adsURL}" data-role="button" data-icon="arrow-l" data-theme="c" data-iconpos="">prev</a>
-						</c:if>
-					</div>
-					<div class="prev grid_6">
-						<c:if test="${not empty nextPage}">
-							<c:url var="adsURL" value="/classifieds/ads">
-								<c:param name="pageNumber" value="${nextPage}" />
-							</c:url>
-							<a href="${adsURL}" data-role="button" data-icon="arrow-r" data-theme="c" data-iconpos="right">next</a>
-						</c:if>
-					</div>
-				</c:when>
-				<c:otherwise>
-					<div class="prev grid_6">
-						<c:if test="${not empty previousPage}">
-							<c:url var="adsURL" value="/classifieds/ads">
-								<c:param name="pageNumber" value="${previousPage}" />
-								<c:param name="categoryId" value="${categoryId}" />
-							</c:url>
-							<a href="${adsURL}" data-role="button" data-icon="arrow-l" data-theme="c" data-iconpos="">prev</a>
-						</c:if>
-					</div>
-					<div class="prev grid_6">
-						<c:if test="${not empty nextPage}">
-							<c:url var="adsURL" value="/classifieds/ads">
-								<c:param name="pageNumber" value="${nextPage}" />
-								<c:param name="categoryId" value="${categoryId}" />
-							</c:url>
-							<a href="${adsURL}" data-role="button" data-icon="arrow-r" data-theme="c" data-iconpos="right">next</a>
-						</c:if>
-					</div>
-				</c:otherwise>
-			</c:choose>
-		</div>
-		<c:if test="${empty ads and not empty searched}">
-			<form:form method="post" action="/classifieds/search" commandName="search" id="form">
-				<form:input path="search" />
-				<div class="error">
-					<form:errors path="search" cssClass="error" />
+			<div class="pagination container_12">
+				<div class="grid_12" align="center">
+					Page
+					<c:if test="${not empty pageNumber}">${pageNumber} of ${maxPageNumber}</c:if>
+					<c:if test="${empty pageNumber}">1 of ${maxPageNumber}</c:if>
 				</div>
-				<input type="submit" value="search" />
-			</form:form>
-		</c:if>
-		<div align="center">
+
+				<div class="prev grid_6">
+					<c:if test="${not empty previousPage}">
+						<c:url var="adsURL" value="/classifieds/ads">
+							<c:param name="pageNumber" value="${previousPage}" />
+							<c:param name="categoryId" value="${categoryId}" />
+							<c:param name="searched" value="${searched}" />
+						</c:url>
+						<a href="${adsURL}" data-role="button" data-icon="arrow-l" data-theme="c" data-iconpos="">prev</a>
+					</c:if>
+				</div>
+				<div class="prev grid_6">
+					<c:if test="${not empty nextPage}">
+						<c:url var="adsURL" value="/classifieds/ads">
+							<c:param name="pageNumber" value="${nextPage}" />
+							<c:param name="categoryId" value="${categoryId}" />
+							<c:param name="searched" value="${searched}" />
+						</c:url>
+						<a href="${adsURL}" data-role="button" data-icon="arrow-r" data-theme="c" data-iconpos="right">next</a>
+					</c:if>
+				</div>
+			</div>
 			<c:if test="${empty ads}">
-				There are currently no ads to display.
+				<div align="center">There are currently no ads to display.</div>
 			</c:if>
 		</div>
-
 	</kme:content>
 </kme:page>
 

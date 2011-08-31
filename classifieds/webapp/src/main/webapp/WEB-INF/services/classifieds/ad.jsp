@@ -13,7 +13,9 @@
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility"%>
 
 <c:url var="backURL" value="ads">
-	<c:param name="categoryId" value="${ad.categoryId}" />
+	<c:param name="categoryId" value="${categoryId}" />
+	<c:param name="searched" value="${searched}" />
+	<c:param name="pageNumber" value="${pageNumber}" />
 </c:url>
 
 <kme:page title="Ad" id="Classified-ad" backButton="true" homeButton="true" cssFilename="events" backButtonURL="${backURL}">
@@ -23,8 +25,7 @@
 				<h3>Title:</h3>
 				<p class="wrap">
 					<c:out value="${ad.title}" />
-				</p>
-			</li>
+				</p></li>
 			<li>
 				<h3>Price:</h3>
 				<p class="wrap">
@@ -34,13 +35,13 @@
 						</c:when>
 						<c:otherwise> --- </c:otherwise>
 					</c:choose>
-				</p></li>
+				</p>
+			</li>
 			<li>
 				<h3>Description:</h3>
 				<p class="wrap">
 					<c:out value="${ad.description}" escapeXml="false" />
-				</p>
-			</li>
+				</p></li>
 			<li>
 				<h3>Contact:</h3>
 				<p class="wrap">
@@ -50,7 +51,8 @@
 						</c:when>
 						<c:otherwise> --- </c:otherwise>
 					</c:choose>
-				</p></li>
+				</p>
+			</li>
 			<li>
 				<h3>Email:</h3>
 				<p class="wrap">
@@ -60,13 +62,13 @@
 						</c:when>
 						<c:otherwise> --- </c:otherwise>
 					</c:choose>
-				</p>
-			</li>
+				</p></li>
 			<li>
 				<h3>Posted:</h3>
 				<p class="wrap">
 					<c:out value="${ad.postDate}" />
-				</p></li>
+				</p>
+			</li>
 		</ul>
 	</kme:content>
 </kme:page>

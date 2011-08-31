@@ -15,7 +15,9 @@
 
 package org.kuali.mobility.classifieds.controllers;
 
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -28,6 +30,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -42,7 +45,7 @@ public class ClassifiedsController {
 	private ClassifiedsService classifiedsService;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public String index(HttpServletRequest request, Model uiModel) {
+	public String index(HttpServletRequest request, Model uiModel, @RequestParam(required = false) String selectedTab) {
 		User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
 		String campus = null;
 		if (user.getViewCampus() == null) {
@@ -53,6 +56,9 @@ public class ClassifiedsController {
 		try {
 			uiModel.addAttribute("search", new Search());
 			uiModel.addAttribute("campus", campus);
+			if (selectedTab != null) {
+				uiModel.addAttribute("selectedTab", selectedTab);
+			}
 			uiModel.addAttribute("categories", classifiedsService.getCategories(user.getPrincipalName(), campus));
 		} catch (Exception e) {
 			LOG.error("Error in getting categories.", e);
@@ -61,14 +67,20 @@ public class ClassifiedsController {
 	}
 
 	@RequestMapping(value = "/ads", method = RequestMethod.GET)
-	public String ads(HttpServletRequest request, Model uiModel, @RequestParam(required = false) Long categoryId) {
+	public String ads(HttpServletRequest request, Model uiModel, @RequestParam(required = false) Long categoryId, @RequestParam(required = false) String searched) {
 		User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
 		try {
 			uiModel.addAttribute("campus", user.getViewCampus());
 			uiModel.addAttribute("search", new Search());
-
-			List<Ad> ads = classifiedsService.getAdsByCategoryId(user.getPrincipalName(), user.getViewCampus(), categoryId);
+			List<Ad> ads = null;
+			if (searched != null && !"".equals(searched.trim())) {
+				ads = classifiedsService.getSearchResults(user.getPrincipalName(), user.getViewCampus(), searched);
+			} else {
+				ads = classifiedsService.getAdsByCategoryId(user.getPrincipalName(), user.getViewCampus(), categoryId);
+			}
 			ads = setupPages(request, uiModel, ads);
+			uiModel.addAttribute("searched", searched);
+			uiModel.addAttribute("categoryId", categoryId);
 			uiModel.addAttribute("ads", ads);
 		} catch (Exception e) {
 			LOG.error("Error in getting ads.", e);
@@ -120,9 +132,12 @@ public class ClassifiedsController {
 	}
 
 	@RequestMapping(value = "/ad", method = RequestMethod.GET)
-	public String ad(HttpServletRequest request, Model uiModel, @RequestParam(required = true) Long adId) {
+	public String ad(HttpServletRequest request, Model uiModel, @RequestParam(required = true) Long adId, @RequestParam(required = false) Long categoryId, @RequestParam(required = false) String searched, @RequestParam(required = false) Long pageNumber) {
 		User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
 		try {
+			uiModel.addAttribute("pageNumber", pageNumber);
+			uiModel.addAttribute("categoryId", categoryId);
+			uiModel.addAttribute("searched", searched);
 			uiModel.addAttribute("ad", classifiedsService.getAdById(user.getPrincipalName(), user.getViewCampus(), adId));
 		} catch (Exception e) {
 			LOG.error("Error in getting ads.", e);
@@ -134,9 +149,23 @@ public class ClassifiedsController {
 	public String search(HttpServletRequest request, Model uiModel, @ModelAttribute("search") Search search, BindingResult result, SessionStatus status) {
 		User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
 		try {
+			Errors errors = ((Errors) result);
+			if (search.getText() == null || "".equals(search.getText().trim())) {
+				errors.rejectValue("text", "", "Please enter search criteria.");
+			} else if (search.getText().length() > 40) {
+				errors.rejectValue("text", "", "Please search using 40 characters or less.");
+			} else if (search.getText().length() < 3) {
+				errors.rejectValue("text", "", "Please search using three characters or more.");
+			}
+			if (errors.hasErrors()) {
+				uiModel.addAttribute("campus", user.getViewCampus());
+				uiModel.addAttribute("selectedTab", "tab2");
+				return "classifieds/index";
+			}
 			List<Ad> ads = classifiedsService.getSearchResults(user.getPrincipalName(), user.getViewCampus(), search.getText());
 			ads = setupPages(request, uiModel, ads);
-
+			uiModel.addAttribute("searched", search.getText());
+			uiModel.addAttribute("selectedTab", "tab2");
 			uiModel.addAttribute("ads", ads);
 		} catch (Exception e) {
 			LOG.error("Error in getting ads.", e);

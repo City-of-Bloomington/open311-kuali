@@ -54,7 +54,7 @@
 			<form:form method="post" action="${pageContext.request.contextPath}/classifieds/search" commandName="search" id="form">
 				<label for="name">Search for:</label>
 				<form:input path="text" />
-				<form:errors path="text" cssClass="error" />
+				<div class="error"><form:errors path="text" /></div>
 				<input type="submit" value="search" />
 			</form:form>
 		</div>
