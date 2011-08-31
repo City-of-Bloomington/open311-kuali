@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!--
-  Copyright 2011 The Kuali Foundation Licensed under the Educational Community
-  License, Version 2.0 (the "License"); you may not use this file except in
-  compliance with the License. You may obtain a copy of the License at
-  http://www.osedu.org/licenses/ECL-2.0 Unless required by applicable law or
-  agreed to in writing, software distributed under the License is distributed
-  on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-  express or implied. See the License for the specific language governing
-  permissions and limitations under the License.
--->
-<beans xmlns="http://www.springframework.org/schema/beans" 
-       xmlns:aop="http://www.springframework.org/schema/aop" 
-       xmlns:context="http://www.springframework.org/schema/context" 
-       xmlns:jee="http://www.springframework.org/schema/jee" 
-       xmlns:tx="http://www.springframework.org/schema/tx" 
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.springframework.org/schema/aop 
+<!-- Copyright 2011 The Kuali Foundation Licensed under the Educational Community License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.osedu.org/licenses/ECL-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. -->
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context" xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop 
 						http://www.springframework.org/schema/aop/spring-aop-3.0.xsd 
 						http://www.springframework.org/schema/beans 
 						http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
@@ -26,81 +12,95 @@
 						http://www.springframework.org/schema/tx 
 						http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
 
-    <import resource="classpath:DatabaseSpringBeans.xml" />
-    <import resource="classpath:ConfigSpringBeans.xml" />
-    <import resource="classpath:EntityManagerSpringBeans.xml" />
-    <import resource="classpath:RiceSpringBeans.xml" />
-	
-	<!-- 
-	https://performance.oncourse.iu.edu/
-	X-Mapping-bmipgloi
-	https://regression.oncourse.iu.edu
-	X-Mapping-jfafkpgg
-	-->
-    <bean id="oncourseOAuthService" class="edu.iu.es.espd.oauth.OAuth2LegServiceImpl">
-        <property name="providerPublicURL" value="${sakai.oauth.baseUrl}/direct/describe" />
-        <property name="providerRequestTokenURL" value="${sakai.oauth.baseUrl}/oauthdirect/oauth/request_token" />
-        <property name="providerAuthorizeURL" value="${sakai.oauth.baseUrl}/oauthdirect/oauth/authorize" />
-        <property name="providerAccessTokenURL" value="${sakai.oauth.baseUrl}/oauthdirect/oauth/access_token" />
-        <property name="consumerKey" value="${sakai.oauth.key}" />
-        <property name="consumerSecret" value="${sakai.oauth.secret}" />
-        <property name="resourceId" value="${sakai.oauth.resourceId}" />
-        <property name="cookieNames">
-            <list>
-                <value>${sakai.oauth.cookie}</value>
-                <value>JSESSIONID</value>
-            </list>
-        </property>
-    </bean>
-	
-     <bean id="calendarEventOAuthService" class="edu.iu.es.espd.ccl.oauth.CalendarEventOAuthServiceImpl">
-        <property name="calendarRestURL" value="${calendar.oauth.baseUrl}/rest/" />
-        <property name="providerPublicURL" value="${calendar.oauth.baseUrl}/session" />
-        <property name="providerRequestTokenURL" value="${calendar.oauth.baseUrl}/oauth/request_token" />
-        <property name="providerAuthorizeURL" value="${calendar.oauth.baseUrl}/oauth/authorize" />
-        <property name="providerAccessTokenURL" value="${calendar.oauth.baseUrl}/oauth/access_token" />
-        <property name="consumerKey" value="${calendar.oauth.key}" />
-        <property name="consumerSecret" value="${calendar.oauth.secret}" />
-        <property name="resourceId" value="${calendar.oauth.resourceId}" />
-        <property name="socketTimeout" value="30000" />
-        <property name="connectionManagerTimeout" value="10000" />
-        <property name="connectionTimeout" value="10000" />
-        <property name="cookieNames">
-            <list>
-                <value>JSESSIONID</value>
-            </list>
-        </property>
-    </bean>
-         
-    <bean class="org.kuali.mobility.athletics.service.AthleticsServiceImpl">
-        <property name="socketTimeout" value="30000" />
-        <property name="connectionManagerTimeout" value="10000" />
-        <property name="connectionTimeout" value="10000" />
-        <property name="athleticsURL" value="${athletics.baseUrl}" />
-    </bean>
-     
-    <bean class="org.kuali.mobility.knowledgebase.service.KnowledgeBaseServiceImpl">
-        <!-- inject any dependencies required by this bean -->
+	<import resource="classpath:DatabaseSpringBeans.xml" />
+	<import resource="classpath:ConfigSpringBeans.xml" />
+	<import resource="classpath:EntityManagerSpringBeans.xml" />
+	<import resource="classpath:RiceSpringBeans.xml" />
+
+	<!-- https://performance.oncourse.iu.edu/ X-Mapping-bmipgloi https://regression.oncourse.iu.edu X-Mapping-jfafkpgg -->
+	<bean id="oncourseOAuthService" class="edu.iu.es.espd.oauth.OAuth2LegServiceImpl">
+		<property name="providerPublicURL" value="${sakai.oauth.baseUrl}/direct/describe" />
+		<property name="providerRequestTokenURL" value="${sakai.oauth.baseUrl}/oauthdirect/oauth/request_token" />
+		<property name="providerAuthorizeURL" value="${sakai.oauth.baseUrl}/oauthdirect/oauth/authorize" />
+		<property name="providerAccessTokenURL" value="${sakai.oauth.baseUrl}/oauthdirect/oauth/access_token" />
+		<property name="consumerKey" value="${sakai.oauth.key}" />
+		<property name="consumerSecret" value="${sakai.oauth.secret}" />
+		<property name="resourceId" value="${sakai.oauth.resourceId}" />
+		<property name="cookieNames">
+			<list>
+				<value>${sakai.oauth.cookie}</value>
+				<value>JSESSIONID</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="classifiedsService" class="org.kuali.mobility.classifieds.service.ClassifiedsServiceImpl">
+		<property name="classifiedsURL" value="${classifieds.oauth.baseUrl}/rest/classifieds" />
+	</bean>
+
+	<bean id="classifiedsOAuthService" class="edu.iu.es.espd.oauth.OAuth2LegServiceImpl">
+		<property name="providerPublicURL" value="${classifieds.oauth.baseUrl}/session" />
+		<property name="providerRequestTokenURL" value="${classifieds.oauth.baseUrl}/oauth/request_token" />
+		<property name="providerAuthorizeURL" value="${classifieds.oauth.baseUrl}/oauth/authorize" />
+		<property name="providerAccessTokenURL" value="${classifieds.oauth.baseUrl}/oauth/access_token" />
+		<property name="consumerKey" value="${classifieds.oauth.key}" />
+		<property name="consumerSecret" value="${classifieds.oauth.secret}" />
+		<property name="resourceId" value="${classifieds.oauth.resourceId}" />
+		<property name="cookieNames">
+			<list>
+				<value>JSESSIONID</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="calendarEventOAuthService" class="edu.iu.es.espd.ccl.oauth.CalendarEventOAuthServiceImpl">
+		<property name="calendarRestURL" value="${calendar.oauth.baseUrl}/rest/" />
+		<property name="providerPublicURL" value="${calendar.oauth.baseUrl}/session" />
+		<property name="providerRequestTokenURL" value="${calendar.oauth.baseUrl}/oauth/request_token" />
+		<property name="providerAuthorizeURL" value="${calendar.oauth.baseUrl}/oauth/authorize" />
+		<property name="providerAccessTokenURL" value="${calendar.oauth.baseUrl}/oauth/access_token" />
+		<property name="consumerKey" value="${calendar.oauth.key}" />
+		<property name="consumerSecret" value="${calendar.oauth.secret}" />
+		<property name="resourceId" value="${calendar.oauth.resourceId}" />
+		<property name="socketTimeout" value="30000" />
+		<property name="connectionManagerTimeout" value="10000" />
+		<property name="connectionTimeout" value="10000" />
+		<property name="cookieNames">
+			<list>
+				<value>JSESSIONID</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean class="org.kuali.mobility.athletics.service.AthleticsServiceImpl">
+		<property name="socketTimeout" value="30000" />
+		<property name="connectionManagerTimeout" value="10000" />
+		<property name="connectionTimeout" value="10000" />
+		<property name="athleticsURL" value="${athletics.baseUrl}" />
+	</bean>
+
+	<bean class="org.kuali.mobility.knowledgebase.service.KnowledgeBaseServiceImpl">
+		<!-- inject any dependencies required by this bean -->
 		<property name="username" value="${kb.username}" />
 		<property name="password" value="${kb.password}" />
-    </bean>
-    
-    <bean class="org.kuali.mobility.email.service.IUEmailServiceImpl">
+	</bean>
+
+	<bean class="org.kuali.mobility.email.service.IUEmailServiceImpl">
 		<property name="username" value="${kerberos.username}" />
 		<property name="password" value="${kerberos.password}" />
-    </bean>
-    
-    <bean class="org.kuali.mobility.people.service.PeopleAdsServiceImpl">
-    	<property name="adsUsername" value="${ads.username}" />
-		<property name="adsPassword" value="${ads.password}" />
-    </bean>
-    
-    <bean class="edu.iu.m.auth.AdsServiceImpl">
-	    <property name="adsUsername" value="${ads.username}" />
+	</bean>
+
+	<bean class="org.kuali.mobility.people.service.PeopleAdsServiceImpl">
+		<property name="adsUsername" value="${ads.username}" />
 		<property name="adsPassword" value="${ads.password}" />
 	</bean>
-    
-    <bean class="edu.iu.m.news.service.RssCacheServiceImpl" />
-    
+
+	<bean class="edu.iu.m.auth.AdsServiceImpl">
+		<property name="adsUsername" value="${ads.username}" />
+		<property name="adsPassword" value="${ads.password}" />
+	</bean>
+
+	<bean class="edu.iu.m.news.service.RssCacheServiceImpl" />
+
 </beans>
  

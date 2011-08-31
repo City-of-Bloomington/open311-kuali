@@ -8,3 +8,27 @@
   express or implied. See the License for the specific language governing
   permissions and limitations under the License.
 */
+#classifieds-ad div p {
+	font-size:.8em;
+}
+#classifieds-ad div p a {
+	color:#900;
+	font-weight:normal;
+}
+.title {
+	padding-bottom:18px;
+}
+.title a {
+	color:#900;
+	font-weight:normal;
+	text-decoration:none;
+}
+.genericpanel {
+	margin-top:36px;
+}
+.pagination {
+	margin-top:30px;
+}
+.next {
+	text-align:right;
+}

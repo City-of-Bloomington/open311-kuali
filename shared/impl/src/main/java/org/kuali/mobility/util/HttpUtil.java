@@ -51,7 +51,8 @@ public class HttpUtil {
 				|| path.startsWith("/admin") 
 				|| path.startsWith("/publishing") 
 				|| path.startsWith("/myclasses") 
-				|| path.startsWith("/calendar")) {
+				|| path.startsWith("/calendar")
+				|| path.startsWith("/classifieds")) {
 			return true;
 		}
 		return false;
