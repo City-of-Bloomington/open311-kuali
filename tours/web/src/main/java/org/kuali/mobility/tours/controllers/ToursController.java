@@ -45,6 +45,7 @@ public class ToursController {
     @RequestMapping(method = RequestMethod.GET)
     public String index(Model uiModel) {
     	uiModel.addAttribute("tours", toursService.findAllTours());
+    	uiModel.addAttribute("pois", toursService.findAllCommonPOI());
     	return "tours/index";
     }
     
@@ -76,12 +77,28 @@ public class ToursController {
 			} catch (Exception e) {}
     	}
     	uiModel.addAttribute("tourJson", json.toString());
+    	
+    	List<POI> definedPois = toursService.findAllCommonPOI();
+    	pointsOfInterest =  (JSONArray) JSONSerializer.toJSON(definedPois, config);
+    	for (Iterator<JSONObject> iter = pointsOfInterest.iterator(); iter.hasNext();) {
+    		try {
+    			JSONObject poi = iter.next();
+    			String mediaJson = poi.getString("media");
+    			if (!mediaJson.isEmpty()) {
+	    			JSONArray media = (JSONArray) JSONSerializer.toJSON(mediaJson);
+					poi.element("media", media);
+    			} else {
+    				poi.element("media", new JSONArray());
+    			}
+			} catch (Exception e) {}
+    	}
+    	uiModel.addAttribute("pois", pointsOfInterest.toString());
     	return "tours/edit";
     }
     
     @RequestMapping(value = "edit", method = RequestMethod.POST)
     public String save(@RequestParam("data") String postData,  Model uiModel) {
-    	Tour tour = convertFromJson(postData);
+    	Tour tour = convertTourFromJson(postData);
     	toursService.saveTour(tour);
     	return index(uiModel);
     }
@@ -92,14 +109,46 @@ public class ToursController {
     	return index(uiModel);
     }
     
-//    @RequestMapping(value = "kml", method = RequestMethod.POST)
-//    public String delete(@RequestBody() Long tourId, Model uiModel) {
-//    	toursService.deleteTourById(tourId);
-//    	return index(uiModel);
-//    }
+    
+    @RequestMapping(value = "poi/new", method = RequestMethod.GET)
+    public String editPoi(Model uiModel) {
+    	return "tours/editPoi";
+    }
+    
+	@RequestMapping(value = "poi/edit/{poiId}", method = RequestMethod.GET)
+    public String editPoi(Model uiModel, @PathVariable("poiId") long poiId) {
+    	POI poi = toursService.findPoiById(poiId);
+    	JsonConfig config = new JsonConfig();
+    	config.registerPropertyExclusion(POI.class, "tour");
+    	config.registerPropertyExclusion(POI.class, "tourId");
+    	JSONObject json =  (JSONObject) JSONSerializer.toJSON(poi, config);
+		String mediaJson = json.getString("media");
+		if (!mediaJson.isEmpty()) {
+			JSONArray media = (JSONArray) JSONSerializer.toJSON(mediaJson);
+			json.element("media", media);
+		} else {
+			json.element("media", new JSONArray());
+		}
+    	uiModel.addAttribute("poiJson", json.toString());
+    	return "tours/editPoi";
+    }
+    
+    @RequestMapping(value = "poi/edit", method = RequestMethod.POST)
+    public String savePoi(@RequestParam("data") String postData,  Model uiModel) {
+    	POI poi = convertPoiFromJson(postData);
+    	toursService.savePoi(poi);
+    	return index(uiModel);
+    }
+    
+    @RequestMapping(value = "poi/delete/{poiId}", method = RequestMethod.GET)
+    public String deletePoi(@PathVariable("poiId") Long poiId, Model uiModel) {
+    	toursService.deletePoiById(poiId);
+    	return index(uiModel);
+    }
+    
     
     @SuppressWarnings("unchecked")
-	private Tour convertFromJson(String json) {
+	private Tour convertTourFromJson(String json) {
     	Tour tour = new Tour();
     	JSONObject tourJson = (JSONObject) JSONSerializer.toJSON(json);
     	
@@ -131,6 +180,11 @@ public class ToursController {
 			
 			poi.setName(pointOfInterest.getString("name"));
 			try {
+				poi.setDescription(pointOfInterest.getString("description"));
+	    	} catch (Exception e) {
+	    		poi.setDescription(null);
+	    	}
+			try {
 				poi.setLocationId(pointOfInterest.getString("id"));
 	    	} catch (Exception e) {
 	    		poi.setLocationId(null);
@@ -150,5 +204,50 @@ public class ToursController {
     	tour.setPointsOfInterest(POIs);
     	
     	return tour;
+    }
+    
+	private POI convertPoiFromJson(String json) {
+    	POI poi = new POI();
+    	JSONObject pointOfInterest = (JSONObject) JSONSerializer.toJSON(json);
+    	
+		try {
+			poi.setPoiId(pointOfInterest.getLong("id"));
+    	} catch (Exception e) {
+    		poi.setPoiId(null);
+    	}
+		try {
+			poi.setVersionNumber(pointOfInterest.getLong("version"));
+    	} catch (Exception e) {
+    		poi.setVersionNumber(null);
+    	}
+		
+		poi.setName(pointOfInterest.getString("name"));
+		try {
+			poi.setDescription(pointOfInterest.getString("description"));
+    	} catch (Exception e) {
+    		poi.setDescription(null);
+    	}
+		try {
+			poi.setLocationId(pointOfInterest.getString("locationId"));
+    	} catch (Exception e) {
+    		poi.setLocationId(null);
+    	}
+		try {
+			poi.setUrl(pointOfInterest.getString("url"));
+    	} catch (Exception e) {
+    		poi.setDescription(null);
+    	}
+		poi.setType(pointOfInterest.getString("type"));
+		poi.setTour(null);
+		poi.setTourId(null);
+		
+		JSONObject location = pointOfInterest.getJSONObject("location");
+		poi.setLatitude(location.getDouble("latitude"));
+		poi.setLongitude(location.getDouble("longitude"));
+		try {
+			poi.setMedia(pointOfInterest.getString("media"));
+		} catch (Exception e) {}
+
+    	return poi;
     }
 }

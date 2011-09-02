@@ -28,5 +28,16 @@
 			</tr>
 		</c:forEach>
 	</table>
+	<br />
+	<h2>Common Points of Interest</h2>
+	<a href="${pageContext.request.contextPath}/tours/poi/new">new</a><br /><br />
+	<table>
+		<c:forEach items="${pois}" var="poi" varStatus="status">
+			<tr>
+				<td>${poi.name}</td>
+				<td><a href="${pageContext.request.contextPath}/tours/poi/edit/${poi.poiId}">edit</a> <a href="${pageContext.request.contextPath}/tours/poi/delete/${poi.poiId}">delete</a></td>
+			</tr>
+		</c:forEach>
+	</table>
 </body>
 </html>

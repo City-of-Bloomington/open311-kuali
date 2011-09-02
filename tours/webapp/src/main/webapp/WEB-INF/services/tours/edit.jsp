@@ -12,6 +12,10 @@
         <script src="${pageContext.request.contextPath}/js/math.js" type="text/javascript"></script>
         <script src="${pageContext.request.contextPath}/js/mapArrows.js" type="text/javascript"></script>
         <script src="${pageContext.request.contextPath}/js/kml.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/js/foursquare.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/js/media.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/js/arcgis.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/js/toursBase.js" type="text/javascript"></script>
 		<script src="${pageContext.request.contextPath}/js/tourMaps.js" type="text/javascript"></script>
         <link type="text/css" href="${pageContext.request.contextPath}/css/smoothness/jquery-ui-1.8.16.custom.css" rel="Stylesheet" />	
 
@@ -24,8 +28,6 @@
 				$("#wizard").tabs({
 					show: changeWizardTabs
 				});
-				$("#mediaTabs").tabs();
-				$("#videoTabs").tabs();
 			});
 		</script>
         <style>
@@ -139,6 +141,8 @@
                         	<input type="hidden" name="tourVersion" id ="tourVersion" value="" />
                         	<c:set var="json"><c:out value="${tourJson}" escapeXml="true" /></c:set>
                         	<input type="hidden" name="tourJson" id="tourJson" value="${json}" />
+                        	<c:set var="json"><c:out value="${pois}" escapeXml="true" /></c:set>
+                        	<input type="hidden" name="definedPoisJson" id="tourJson" value="${json}" />
                             <table>
                                 <tr align="left" valign="top">
                                     <td>Name: </td>
@@ -151,6 +155,7 @@
                             </table>
                         </div>
                         <div id="poi">
+                        	<p id="editingPoi" style="color: red; display: none;"></p>
                             <table style="width:100%;">
                                 <tr>
                                     <th align="left">1. Select a location</th>
@@ -159,10 +164,14 @@
                                     <td>
                                         <div id="selector" style="height:300px;">
                                             <ul>
-                                                <li><a href="#building">Choose a Building</a></li>
-                                                <li><a href="#point">Choose a Point</a></li>
-                                                <li><a href="#foursquare">Select a Foursquare Venue</a></li>
+                                            	<li><a href="#defined">Pre-defined</a></li>
+                                                <li><a href="#building">IU Building</a></li>
+                                                <li><a href="#point">Custom Point</a></li>
+                                                <li><a href="#foursquare">Foursquare Venue</a></li>
                                             </ul>
+                                            <div id="defined">
+                                                <div id="definedPOIs"></div>
+                                            </div>
                                             <div id="building">
                                             	<p>Find a building.</p>
                                                 <input type="text" name="buildingName" id="buildingName" /><button type="button" onclick="searchBuildings();" id="findButton" disabled>Find</button><span id='busy' style="color:red;display:none;"> Searching...</span>
@@ -170,8 +179,6 @@
                                             </div>
                                             <div id="point">
                                                 <p>Click the map to select a location.</p>
-                                                Selected Location: <span id="selectedLocation"></span><br />
-                                                Location Name: <input type="text" name="pointName" id="pointName" />
                                             </div>
                                             <div id="foursquare">
                                                 <p>Click the map to find nearby venues.</p>
@@ -181,21 +188,25 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>2. Add A Text Description</th>
+                                    <th>2. Set Details</th>
                                 </tr>
                                 <tr>
                                     <td>
+                                    	<p>Location Name: <input type="text" name="poiName" id="poiName" size="40" /></p>
+										<p>Coordinates: <input type="text" name="latitude" id="latitude" />, <input type="text" name="longitude" id="longitude" /></p>
+										<p>Url: <input type="text" name="url" id="url" size="40" /></p>
+										<p>Description</p>
                                         <textarea rows="5" cols="50" id="description"></textarea>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>3. Add Media</th>
+                                    <th>3. Add Media <span id="editingMedia" style="color: red; display: none;"></span></th>
                                 </tr>
                                 <tr align="left" valign="top">
                                 	<td>
                                 		<div id="mediaTabs">
                                             <ul>
-                                                <li><a href="#imageTab">Images</a></li>
+                                                <li><a href="#imageTab">Image</a></li>
                                                 <li><a href="#videoTab">Video</a></li>
                                                 <li><a href="#audioTab">Audio</a></li>
                                             </ul>
@@ -214,7 +225,7 @@
 			                                			<td><textarea rows="5" cols="50" id="imageCaption"></textarea></td>
 			                                		</tr>
 			                                	</table>
-			                                	<button type="button" onclick="addImageToList();">Add Image</button>
+			                                	<button type="button" onclick="addImageToList();">Save Image</button><button type="button" onclick="stopEditingMedia();" class="mediaCancel">Cancel Edit</button>
                                             </div>
                                             <div id="videoTab">
                                             	<table>
@@ -261,7 +272,7 @@
 			                                			<td><textarea rows="5" cols="50" id="videoCaption"></textarea></td>
 			                                		</tr>
 			                                	</table>
-	                                            <button type="button" onclick="addVideoToList();">Add Video</button>
+	                                            <button type="button" onclick="addVideoToList();">Save Video</button><button type="button" onclick="stopEditingMedia();" class="mediaCancel">Cancel Edit</button>
                                             </div>
                                             <div id="audioTab">
                                             	<table>
@@ -297,7 +308,7 @@
 			                                			<td><textarea rows="5" cols="50" id="audioCaption"></textarea></td>
 			                                		</tr>
 			                                	</table>
-	                                            <button type="button" onclick="addAudioToList();">Add Audio</button>
+	                                            <button type="button" onclick="addAudioToList();">Save Audio</button><button type="button" onclick="stopEditingMedia();" class="mediaCancel">Cancel Edit</button>
                                             </div>
                                         </div>
                                 	</td>
@@ -317,7 +328,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <button type="button" onclick="addToRoute();">Add Point</button>
+                                        <button type="button" onclick="addToRoute();">Save Point</button><button type="button" onclick="stopEditingPoi();" class="poiCancel">Cancel Edit</button>
                                     </td>
                                 </tr>
                             </table>
@@ -343,7 +354,7 @@
                         <div id="save">
                         	<p>Review Selected Points of Interest</p>
                             <div id="selectedPOIs"></div><br />
-                        	<button type="button" onclick="saveTour();">Save</button><button type="button" onclick="generateRouteKML(markers, poly.getPath());">Generate KML</button>
+                        	<button type="button" onclick="saveTour();">Save</button><button type="button" onclick="generateRouteKml();">Generate KML</button>
                         	<form id="postForm" action="${pageContext.request.contextPath}/tours/edit" method="post" >
                         		<input type="hidden" id="data" name="data" value="" />
                         	</form>

@@ -53,4 +53,5 @@ public interface LocationService {
 	public void addMapsGroupChild(Long groupId, Long addGroupId);
 	public void removeMapsGroupChild(Long groupId, Long removeGroupId);
 	
+	public void saveKml();
 }

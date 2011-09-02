@@ -28,7 +28,7 @@ public class POI {
 	private Long tourId;
 
     @OneToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="TOUR_ID", nullable=false)
+    @JoinColumn(name="TOUR_ID", nullable=true)
 	protected Tour tour;
 	
 	@Column(name="NAME")
@@ -48,6 +48,12 @@ public class POI {
 	
 	@Column(name="MEDIA")
 	private String media;
+	
+	@Column(name="DESCRIPTION")
+	private String description;
+	
+	@Column(name="URL")
+	private String url;
 	
 	@Version
     @Column(name="VER_NBR")
@@ -131,5 +137,21 @@ public class POI {
 
 	public void setMedia(String media) {
 		this.media = media;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
 }

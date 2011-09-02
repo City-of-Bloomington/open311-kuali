@@ -1,47 +1,17 @@
-var map;
-var dynaMap;
-var mapService;
 var arrows;
 var markers = [];
-var searchResults = [];
 var startMarker, stopMarker;
-var selectedPlace;
-var places;
-var venues;
+
 var poly;
-var isEditing = false;
-var isFineTuning = false;
-var isSelectingPoint = false;
-var isSelectingVenue = false;
-var showMarkers = true;
 
-var mediaList = [];
-var mediaIdCounter = 0;
-
-var contextPath;
-
-var tempMarker;
-var tempMarkerImage = new google.maps.MarkerImage('http://chart.apis.google.com/chart?chst=d_map_pin_icon&chld=home|FF7777');
-var buildingMarkerImage = new google.maps.MarkerImage('http://chart.apis.google.com/chart?chst=d_map_pin_icon&chld=home|88BBFF');
-
-var arcGisServerUrl = 'http://maps.iu.edu/ArcGIS/rest/services/Bloomington/MapServer';
 var validationDistanceThresholdMeters = 100;
-var foursquareId = 'L323STPYRKMYU2RZAQ1RHF4FCGDYWEHZZB4XHDLM5B51JGVQ';
-var foursquareSecret = 'CZK5HSH4ZZBXMZ5LCZHM0SO320IBXW4REBDNVHM20D1S3FZY';
 
-var iuBuildingType = 'I';
-var venueType = 'V';
-var customPointType = 'C';
+var editingPoiIndex;
 
-var imageType = 'I';
-var audioType = 'A';
-var videoType = 'V';
+$(function() {
+	$('.poiCancel').hide();
+});
 
-function getNextMediaCount(){
-	var value = mediaIdCounter;
-	mediaIdCounter++;
-	return value;
-}
 
 function initializeMap(cntxtPath) {
 	contextPath = cntxtPath;
@@ -74,15 +44,23 @@ function initializeMap(cntxtPath) {
 	var polyOptions = {
 		strokeColor: '#0000FF',
 		strokeOpacity: 0.5,
-		strokeWeight: 3,
+		strokeWeight: 4,
 		clickable: false
 	}
 	poly = new google.maps.Polyline(polyOptions);
 	poly.setMap(map);
+	/*
+	google.maps.event.addListener(poly, 'mouseover', function() {
+		fineTuneRoute();
+	});
+	google.maps.event.addListener(poly, 'mouseout', function() {
+	    stopFineTuning();
+	});
+	*/
 	
 	arrows = new ArrowHandler();
 
-	google.maps.event.addListener(map, 'click', addPoint);
+	google.maps.event.addListener(map, 'click', selectPoint);
 	
 	mapService = new gmaps.ags.MapService(arcGisServerUrl);
 	var agsType = new  gmaps.ags.MapType(arcGisServerUrl,{name:'ArcGIS', opacity:1.0});
@@ -91,13 +69,16 @@ function initializeMap(cntxtPath) {
 		$('#findButton').removeAttr('disabled');
 	});
 	
-	var tourJson = $('#tourJson').val();
-	if (tourJson.length){
-		initializeTour(tourJson);
-	}
+	
 	google.maps.event.addListenerOnce(map, "tilesloaded", function() {
+		var tourJson = $('#tourJson').val();
+		if (tourJson.length){
+			initializeTour(tourJson);
+		}
 		arrows.load(poly.getPath().getArray());
 	}); 
+	
+	iw = new google.maps.InfoWindow();
 }
 
 function initializeTour(json) {
@@ -119,6 +100,7 @@ function initializeTour(json) {
 			place.id = poi.locationId;
 			place.type = poi.type;
 			place.media = poi.media;
+			place.description = poi.description;
 			addPOI(place);
 		}
 		centerOverAllLocations();
@@ -126,7 +108,6 @@ function initializeTour(json) {
 }
 
 function centerOverAllLocations() {
-	// TODO: Fix for non-visible markers
 	var bounds = new google.maps.LatLngBounds();
 	if (markers) {
 		for (i in markers) {
@@ -143,32 +124,54 @@ function centerOverAllLocations() {
 }
    
 function addToRoute(){
-	if (tempMarker){
-		var place = tempMarker.building;
-		if (isSelectingPoint){
-			var pointName = $('#pointName').val();
-			if (!pointName.length){
-				alert('Please name this location.');
-				return;
-			}
-			place.name = pointName;
+	var place;
+	if (editingPoiIndex) {
+		var marker = markers[editingPoiIndex];
+		if (tempMarker) {
+			place = tempMarker.place;
+		} else {
+			place = marker.place;
 		}
+		marker.setPosition(place.location);
+		marker.place = place;
+		marker.title = place.name;
+	} else {
+		if (tempMarker) {
+			place = tempMarker.place;
+		}
+	}
+	if (place){
+		var pointName = $('#poiName').val();
+		if (!pointName.length){
+			alert('Please name this location.');
+			return;
+		}
+		var latitude = $('#latitude').val();
+		var longitude = $('#longitude').val();
+		if (!(latitude && longitude && !(isNaN(latitude) || isNaN(longitude)))){
+			alert('Please ensure proper latitude and longitude coordinates are provided.');
+			return;
+		}
+		place.name = pointName;
+		place.location = new google.maps.LatLng(latitude,longitude);
+		place.description = $('#description').val();
+		place.url = $('#url').val();
 		addSelectedMediaToPoi(place);
-		addPOI(place);
-		tempMarker.setMap(null);
-		tempMarker = null;
+		clearSelectedMedia();
+		if (!editingPoiIndex) {
+			addPOI(place);
+		}
+		if (tempMarker){
+			tempMarker.setMap(null);
+			tempMarker = null;
+		}
+		stopEditingPoi();
+	} else {
+		alert('You must select a place to add/save.');
 	}
 }
 
-function addSelectedMediaToPoi(place) {
-	place.media = new Array();
-	$('#images li img').each(function (index) {
-		var media = mediaList[this.id];
-		place.media.push(media);
-	});
-}
-
-function addPoint(event) {
+function selectPoint(event) {
 	if (!isFineTuning && isEditing){
 		addWaypoint(event.latLng);
 	}
@@ -194,13 +197,6 @@ function updateSelectedPlace(latLng){
 	setTempMarker(selectedPlace);
 }
 
-function selectAVenue(index){
-	var venue = venues[index];
-	setTempMarker(venue);
-	map.panTo(venue.location);
-	selectedPlace = venue;
-}
-
 function selectBuilding(number){
 	if (number > 0) {
 		var place = places[number-1]; // 'select:' is index 0, so number 1 = places[0]
@@ -223,7 +219,11 @@ function setTempMarker(place){
 		tempMarker.setMap(map);
 	}
 	tempMarker.setTitle(place.name);
-	tempMarker.building = place;
+	tempMarker.place = place;
+	$('#latitude').val(place.location.lat());
+	$('#longitude').val(place.location.lng());
+	$('#poiName').val(place.name);
+	$('#url').val(place.url);
 }
 
 function addBuilding(number){
@@ -248,10 +248,7 @@ function addWaypoint(latLng) {
 
 function addPOI(place) {
 	// Add a new marker at the new plotted point on the polyline.
-	var markerMap = null;
-	if (showMarkers){
-		markerMap = map;
-	}
+	var markerMap = map;
 
 	var marker = new google.maps.Marker({
 		position: place.location,
@@ -261,7 +258,7 @@ function addPOI(place) {
 		icon: buildingMarkerImage
 	});
  
-	marker.building = place;
+	marker.place = place;
 	markers.push(marker);
 	
 	google.maps.event.addListener(marker, 'rightclick', function() {
@@ -359,24 +356,6 @@ function removeBuilding(marker){
 	updateSelectedPOIs();
 }
 
-function showMarkers2() {
-	if (markers) {
-		for (var i = 0; i < markers.length; i++) {
-			markers[i].setMap(map);
-		}
-	}
-	showMarkers = true;
-}
-
-function hideMarkers() {
-	if (markers) {
-		for (var i = 0; i < markers.length; i++) {
-			markers[i].setMap(null);
-		}
-	}
-	showMarkers = false;
-}
-
 function saveTour(){
 	if (validateRoute()){
 		var places = [];
@@ -454,9 +433,9 @@ function changeSelectorTabs(event, ui){
 	clearSearchResults();
 	var $tabs = $('#selector').tabs();
 	var selected = $tabs.tabs('option', 'selected');
-	if (selected == 1){ //Select A Point is the second tab
+	if (selected == 2){ //Select A Point is the second tab
 		changeMode('select');	
-	} else if (selected == 2){ //Select A Foursquare Venue is the third tab
+	} else if (selected == 3){ //Select A Foursquare Venue is the third tab
 		changeMode('venue');	
 	} else {
 		changeMode();
@@ -508,294 +487,60 @@ function updateSelectedPOIs(){
 	}
 }
 
-function searchBuildings(){
-	var query = $('#buildingName').val();	
-	findBuildings(query);
+function editPOI(marker){
+	$("#wizard").tabs('select', 1);
+	stopEditingPoi();
+	var place = marker.place;
+	editingPoiIndex = markers.indexOf(marker);
+	$('#editingPoi').text('Editing: ' + place.name);
+	$('#editingPoi').show();
+	$('.poiCancel').show();
+	populatePoi(place);
 }
 
-function findBuildings(query) {
-      $('#busy').show();
-	  clearSearchResults();
-	  $('#results').html('');
-      var params = {
-        returnGeometry: true,
-        searchText: query,
-        contains: true,
-        layerIds: [32, 36], // building names, frat names
-        searchFields: ["MAP_NAME"],
-        sr: 2966
-      };
-      mapService.find(params, processFindResults);
-}
-    
-    
-function processFindResults(rs) {
-	var html = '';
-	var x=0;
-	for (var i = 0, c = rs.results.length; i < c; i++) {
-		html += processResult(rs.results[i]);
-	}
-	$('#searchResults').html(html);
-	$('#busy').hide();
+function stopEditingPoi() {
+	stopEditingMedia();
+	$('#editingPoi').text('');
+	$('#editingPoi').hide();
+	$('.poiCancel').hide();
+	clearPoiForms();
+	editingPoiIndex = null;
 }
 
-function processResult(result){
-	var feat = result.feature;
-	var a = feat.attributes;
-	var title = result.value;
-	if (feat.geometry){
-		var poly = feat.geometry[0];
-		var b = new Object();
-		b.name = title;
-		b.location = new google.maps.LatLng(a['LATITUDE'],a['LONGITUDE']);
-		b.id = a['IU BLDG NUMBER'];
-		//b.street = a['ADDRESS'];
-		b.type = iuBuildingType;
-		//b.state = venue.location.state;
-		//b.city = venue.location.city;
-		//b.zip = venue.location.postalCode;
-		b.poly = poly;
-		poly.setMap(map);
-		searchResults.push(b);
-		//poly.place = b;
-		google.maps.event.addListener(poly, 'click', function() {
-			setTempMarker(b);
-		});
-		return '<div onclick="selectSearchResult(' + (searchResults.length - 1) + ')" onmouseover="this.style.backgroundColor=\'#AAAAEE\'" onmouseout="this.style.backgroundColor=\'#FFFFFF\'">' + title + '</div>';
-	}
-	return '';
+function clearPoiForms() {
+	$('#poiName').val('');
+	$('#latitude').val('');
+	$('#longitude').val('');
+	$('#url').val('');
+	$('#description').val('');
+	clearMediaForms();
+	clearSelectedMedia();
 }
 
-function selectSearchResult(index){
-	var place = searchResults[index];
-	setTempMarker(place);
-	map.panTo(place.location);
+function populatePoi(place) {
+	$('#poiName').val(place.name);
+	$('#latitude').val(place.location.lat());
+	$('#longitude').val(place.location.lng());
+	$('#url').val(place.url);
+	$('#description').val(place.description);
+	populateMedia(place.media);
 }
 
-function clearSearchResults() {
-	if (searchResults) {
-		for (var i = 0; i < searchResults.length; i++) {
-			searchResults[i].poly.setMap(null);
-		}
-		searchResults.length = 0;
-	}
-	$('#searchResults').html('');
-}
-
-function getPolyCenter(poly) {
-	var paths, path, latlng;
-	var lat = 0;
-	var lng = 0;
-	var c = 0;
-	paths = poly.getPaths();
-	for (var j = 0, jc = paths.getLength(); j < jc; j++) {
-		path = paths.getAt(j);
-		for (var k = 0, kc = path.getLength(); k < kc; k++) {
-			latlng = path.getAt(k);
-			lat += latlng.lat();
-			lng += latlng.lng();
-			c++;
-		}
-	}
-	if (c > 0) {
-		return new google.maps.LatLng(lat / c, lng / c);
-	}
-	return null;
-}
-
-function findFoursquareVenues(latlng){
-	var url = "https://test.uisapp2.iu.edu/ccl-unt/maps/markers/foursquare?lat="+ latlng.lat() + "&lng=" + latlng.lng();
-	url = "https://api.foursquare.com/v2/venues/search?v=20110627&ll="+ latlng.lat() + "," + latlng.lng() +"&limit=8&client_id=" + foursquareId + "&client_secret=" + foursquareSecret
-	var jqxhr = $.ajax({
-	  url: url,
-	  dataType: 'json',
-	  success: function (data) {parseVenues(data);},
-	  crossDomain: true
-	});
-	
-	//var jqxhr = jQuery.getJSON(url, parseVenues);
-	jqxhr.error(function() { $("#venues").html("There was an error contacting the Foursquare service."); })
-}
-
-function parseVenues(data){
-	var venuesHtml = "";
-	venues = new Array();
-	for (var i=0; i<data.response.venues.length; i++){
-		var venue = data.response.venues[i];
-		venuesHtml = venuesHtml + "<div onClick='javascript:selectAVenue(" + i + ")' class='venue " + (i%2==0? "even" : "odd") + (i+1==data.response.venues.length? " last" : "") + "'>";
-		venuesHtml = venuesHtml + "<div class='image'>";
-		if (venue.categories.length > 0){
-			var category = null;
-			for (var c=0; c<venue.categories.length; c++){
-				var cat = venue.categories[c];
-				if (cat.primary){
-					category = cat;
-					break;
-				}
+function populateMedia(mediaArray) {
+	if (mediaArray) {
+		for (var i=0; i< mediaArray.length; i++) {
+			var media = mediaArray[i];
+			if (media.type == imageType){
+				loadImageToList(media.url, media.title, media.caption);
+			} else if (media.type == audioType){
+				loadAudioToList(media.oggVorbisUrl, media.mp3Url, media.wavUrl, media.title, media.caption);
+			} else if (media.type == videoType){
+				loadVideoToList(media.oggUrl, media.mp4Url, media.webMUrl, media.youTubeUrl, media.title, media.caption);
 			}
-			venuesHtml = venuesHtml + "<img src='" + category.icon + "'></img>";
 		}
-		venuesHtml = venuesHtml + "</div>"; //close image
-		
-		venuesHtml = venuesHtml + "<div class='info'>";
-		venuesHtml = venuesHtml + "<div class='name'>" + venue.name + "</div>";
-		
-		venuesHtml = venuesHtml + "<div class='address'>";
-		if (venue.location.address){
-			venuesHtml = venuesHtml + "<span>" + venue.location.address + "</span><br/>";
-		}
-		if (venue.location.city){
-			venuesHtml = venuesHtml + "<span>" + venue.location.city + "</span>";
-		}
-		if (venue.location.state && venue.location.city){
-			venuesHtml = venuesHtml + ",&nbsp";
-		}
-		if (venue.location.state){
-			venuesHtml = venuesHtml + "<span>" + venue.location.state + "</span>";
-		}
-		if ((venue.location.city || venue.location.state) && venue.location.postalCode){
-			venuesHtml = venuesHtml + "&nbsp";
-		}
-		if (venue.location.postalCode){
-			venuesHtml = venuesHtml + "<span>" + venue.location.postalCode + "</span>";
-		}
-		venuesHtml = venuesHtml + "</div>"; //close address
-		
-		venuesHtml = venuesHtml + "</div>"; //close info
-		
-		venuesHtml = venuesHtml + "</div>"; //close venue
-		venues[i] = parseVenue(venue);
-	}
-	$("#venues").html(venuesHtml);
-}
-
-function parseVenue(venue){
-	var v = new Object();
-	v.name = venue.name;
-	v.location = new google.maps.LatLng(venue.location.lat,venue.location.lng);
-	v.id = venue.id;
-	v.type= venueType;
-	return v;
-}
-
-function addImageToList() {
-	var url = $('#imageUrl').val();
-	var title = $('#imageTitle').val();
-	var caption = $('#imageCaption').val();
-	
-	var id = addMedia(url, title);
-	
-	var media = new Object();
-	media.type = imageType;
-	media.url = url;
-	media.title = title;
-	media.caption = caption;
-	
-	mediaList[id] = media;
-	
-	return false;
-}
-
-function addVideoToList() {
-	var title = $('#videoTitle').val();
-	var caption = $('#videoCaption').val();
-	var youTubeUrl;
-	var oggUrl;
-	var mp4Url;
-	var webMUrl;
-	
-	oggUrl = $('#oggUrl').val();
-	mp4Url = $('#mp4Url').val();
-	webMUrl = $('#webMUrl').val();
-	youTubeUrl = $('#youTubeUrl').val();
-	
-	var iconUrl = contextPath + '/images/video.png';
-	
-	var id = addMedia(iconUrl, title);
-	
-	var media = new Object();
-	media.type = videoType;
-	media.oggUrl = oggUrl;
-	media.mp4Url = mp4Url;
-	media.webMUrl = webMUrl;
-	media.youTubeUrl = youTubeUrl;
-	media.title = title;
-	media.caption = caption;
-	
-	mediaList[id] = media;
-	
-	return false;
-}
-
-function addAudioToList() {				
-	var title = $('#audioTitle').val();
-	var caption = $('#audioCaption').val();
-	var oggVorbisUrl;
-	var mp3Url;
-	var wavUrl;
-	
-	oggVorbisUrl = $('#oggVorbisUrl').val();
-	mp3Url = $('#mp3Url').val();
-	wavUrl = $('#wavUrl').val();
-	
-	var iconUrl = contextPath + '/images/audio.png';
-
-	var id = addMedia(iconUrl, title);
-	
-	var media = new Object();
-	media.type = audioType;
-	media.oggVorbisUrl = oggVorbisUrl;
-	media.mp3Url = mp3Url;
-	media.wavUrl = wavUrl;
-	media.title = title;
-	media.caption = caption;
-	
-	mediaList[id] = media;
-	
-	return false;
-}
-
-function addMedia(imgSrc, title){
-	var li = $("<li></li>");
-	var img = $("<img />");
-	img.attr('src', imgSrc);
-	if (title){
-		img.attr('title', title);
-	}
-	li.append(img);
-	
-	var id = 'media' + getNextMediaCount();
-	img.attr('id', id);
-	
-	$('#images').append(li);
-	
-	img.contextMenu('myMenu', {
-		bindings: {
-			'move_left': moveUp,
-	        'move_right': moveDown,
-	        'remove': remove
-		}
-	});
-	
-	return id;
-}
-
-function moveUp(domElement) {
-	var element = $('img#' + domElement.id).parent(); //get the containing li
-	var prevElement = element.prev();
-	if (prevElement){
-		prevElement.before(element);
 	}
 }
 
-function moveDown(domElement) {
-	var element = $('img#' + domElement.id).parent(); //get the containing li
-	var nextElement = element.next();
-	if (nextElement){
-		nextElement.after(element);
-	}
-}
-
-function remove(domElement) {
-	var element = $('img#' + domElement.id).parent().remove();
+function generateRouteKml(){
+	generateKML(markers, poly.getPath());
 }

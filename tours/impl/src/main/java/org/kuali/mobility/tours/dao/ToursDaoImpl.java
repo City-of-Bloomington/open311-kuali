@@ -7,6 +7,7 @@ import javax.persistence.OptimisticLockException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import org.kuali.mobility.tours.entity.POI;
 import org.kuali.mobility.tours.entity.Tour;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -85,6 +86,56 @@ public class ToursDaoImpl implements ToursDao {
         query.setParameter("id", id);
         query.executeUpdate();
 	}
+	
+	@Override
+	public POI findPoiById(Long id) {
+		Query query = entityManager.createQuery("select t from POI t where t.poiId = :id");
+        query.setParameter("id", id);
+        try {
+        	return (POI) query.getSingleResult();
+        } catch (Exception e) {
+        	return null;
+        }
+	}
+	
+	@Override
+	@Transactional
+	public Long savePoi(POI poi) {
+		if (poi == null) {
+            return null;
+        }
+        if (poi.getName() != null) {
+        	poi.setName(poi.getName().trim());
+        }
+        if (poi.getDescription() != null) {
+        	poi.setDescription(poi.getDescription().trim());
+        }
+        try {
+	        if (poi.getPoiId() == null) {
+	            entityManager.persist(poi);
+	        } else {
+	            entityManager.merge(poi);
+	        }
+        } catch (OptimisticLockException oe) {
+            return null;
+        }
+        return poi.getPoiId();
+	}
+	
+	@Override
+	@Transactional
+	public void deletePoiById(Long poiId) {
+		Query query = entityManager.createQuery("delete from POI t where t.poiId = :id");
+        query.setParameter("id", poiId);
+        query.executeUpdate();
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<POI> findAllCommonPOI() {
+		Query query = entityManager.createQuery("select t from POI t where t.tourId is null");
+        return query.getResultList();
+	}
 
 	public EntityManager getEntityManager() {
 		return entityManager;
@@ -93,5 +144,4 @@ public class ToursDaoImpl implements ToursDao {
 	public void setEntityManager(EntityManager entityManager) {
 		this.entityManager = entityManager;
 	}
-
 }
