@@ -79,7 +79,12 @@ public class HomeController {
     	uiModel.addAttribute("ipAddress", ipAddress);
     	return "index";
     }
-
+  
+    @RequestMapping(value = "cachemanifest", method = RequestMethod.GET)
+    public String cachemanifest(HttpServletRequest request, Model uiModel) {      
+    	return "cacheManifest";
+    }
+    
     @RequestMapping(value = "logout", method = RequestMethod.GET)
     public String logout(HttpServletRequest request, Model uiModel) {      
     	return "logout";
