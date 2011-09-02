@@ -55,7 +55,9 @@ ${pageContext.request.contextPath}/images/service-icons/mcl-resources.png
 ${pageContext.request.contextPath}/images/service-icons/mcl-file.png
 ${pageContext.request.contextPath}/images/service-icons/mcl-messages.png
 
-FALLBACK:
-* ${pageContext.request.contextPath}/offline.html
+#FALLBACK:
+#* ${pageContext.request.contextPath}/offline.html
 
+NETWORK:
+*
 
