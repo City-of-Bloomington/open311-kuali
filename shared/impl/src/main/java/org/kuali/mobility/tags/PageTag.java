@@ -99,7 +99,7 @@ public class PageTag extends SimpleTagSupport {
         JspWriter out = pageContext.getOut();
         try {
             out.println("<!DOCTYPE html>");
-            out.println("<html manifest=\"" + contextPath + "/cache.manifest\">");
+            out.println("<html manifest=\"" + contextPath + "/iumobile.appcache\">");
             out.println("<head>");
             out.println("<title>" + title + "</title>");
             out.println("<link href=\"http://www.iu.edu/favicon.ico\" rel=\"icon\" />");

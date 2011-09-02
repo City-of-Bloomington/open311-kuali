@@ -80,7 +80,7 @@ public class HomeController {
     	return "index";
     }
   
-    @RequestMapping(value = "cache.manifest", method = RequestMethod.GET)
+    @RequestMapping(value = "iumobile.appcache", method = RequestMethod.GET)
     public String cachemanifest(HttpServletRequest request, HttpServletResponse response, Model uiModel) {      
     	//response.setContentType("text/cache-manifest");
     	return "cacheManifest";
