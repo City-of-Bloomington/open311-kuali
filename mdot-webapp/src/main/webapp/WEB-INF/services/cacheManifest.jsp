@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/cache-manifest; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>CACHE MANIFEST
+# 2011-09-02:v1
+
 <%--
   Copyright 2011 The Kuali Foundation Licensed under the Educational Community
   License, Version 2.0 (the "License"); you may not use this file except in
@@ -8,10 +11,6 @@
   express or implied. See the License for the specific language governing
   permissions and limitations under the License.
 --%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-
-CACHE MANIFEST
-# 2011-09-02:v1
 
 # Explicitly cached 'master entries'.
 CACHE:

@@ -80,8 +80,9 @@ public class HomeController {
     	return "index";
     }
   
-    @RequestMapping(value = "cachemanifest", method = RequestMethod.GET)
-    public String cachemanifest(HttpServletRequest request, Model uiModel) {      
+    @RequestMapping(value = "cache.manifest", method = RequestMethod.GET)
+    public String cachemanifest(HttpServletRequest request, HttpServletResponse response, Model uiModel) {      
+    	//response.setContentType("text/cache-manifest");
     	return "cacheManifest";
     }
     
