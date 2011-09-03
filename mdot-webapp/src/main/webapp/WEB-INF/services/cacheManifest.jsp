@@ -144,6 +144,8 @@ ${pageContext.request.contextPath}/images/team-purdue.png
 ${pageContext.request.contextPath}/images/video.png
 ${pageContext.request.contextPath}/offline.html
 
+http://maps.google.com/maps/api/js?sensor=true
+
 FALLBACK:
 / ${pageContext.request.contextPath}/offline.html
 
