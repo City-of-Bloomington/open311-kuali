@@ -16,6 +16,7 @@
 <kme:page title="Computer Labs" id="computerlabs" homeButton="true" backButton="true" cssFilename="computerlabs">
     <kme:content>
         <kme:listView id="computerlablist" dataTheme="c" dataDividerTheme="b" filter="false">
+<!-- 
             <c:forEach items="${lablocations}" var="location" varStatus="status">
                 <kme:listItem dataTheme="b" dataRole="list-divider">${location.name}</kme:listItem>
 	            <c:forEach items="${location.computerLabs}" var="computerlab" varStatus="status">
@@ -31,6 +32,46 @@
 	                </kme:listItem>
 	            </c:forEach>
             </c:forEach>
+-->
         </kme:listView>
+<script type="text/javascript">
+var campus = "${campus}";
+$('[data-role=page][id=computerlabs]').live('pagebeforeshow',function(event, ui){
+	//alert('test44');
+	$('#clListTemplate').template('clListTemplate');
+	refreshComputerLabs2();
+});
+function refreshComputerLabs2() {
+	//$.mobile.pageLoading();
+	$.mobile.showPageLoadingMsg();
+	$('#computerlablist').text('');
+	var dynamicDataResp = $.ajax({
+		url: "computerlabs?campus=" + campus,
+		dataType: 'json',
+		async: false,
+		cache: false           
+	});
+	if(dynamicDataResp.status == 200){
+		var dynamicDataObj = jQuery.parseJSON(dynamicDataResp.responseText);
+		$.tmpl('clListTemplate', dynamicDataObj).appendTo('#computerlablist');
+		$('#computerlablist').listview('refresh');
+		$.mobile.hidePageLoadingMsg();
+	} else {
+		$.mobile.hidePageLoadingMsg();
+		alert("An error has occurred. Make sure you have network connectivity.");
+	}
+}
+</script>
+<script id="clListTemplate" type="text/x-jquery-tmpl">
+<li data-role="list-divider">\${name}</li>
+{{each(i,lab) computerLabs}}
+      <li data-id="\${buildingCode}" detailId="\${labCode}">
+		<a href="/mdot/maps?id=\${buildingCode}">
+        <h3>\${labCode}</h3>
+        <p>\${availability}</p>
+		</a>
+      </li>
+{{/each}}
+</script>
     </kme:content>
 </kme:page>

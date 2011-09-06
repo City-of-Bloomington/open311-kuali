@@ -66,6 +66,7 @@ public class ComputerLabsController {
     	}
    		List<LabLocation> labLocations = computerLabsService.findAllLabLocationsByCampus(selectedCampus);
    		uiModel.addAttribute("lablocations", labLocations);
+   		uiModel.addAttribute("campus", selectedCampus);
     	return "computerlabs/list";
     }
 
