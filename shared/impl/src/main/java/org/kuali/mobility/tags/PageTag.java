@@ -34,11 +34,12 @@ public class PageTag extends SimpleTagSupport {
     private boolean preferencesButton;
     private String preferencesButtonURL;
     private boolean usesGoogleMaps;
+    private String appcacheFilename;
 	private String cssFilename;
     private String jsFilename;
     private boolean loginButton;
     private String loginButtonURL;
-    private String logoutButtonURL;
+	private String logoutButtonURL;
     
     public void setId(String id) {
         this.id = id;
@@ -71,7 +72,11 @@ public class PageTag extends SimpleTagSupport {
 	public void setUsesGoogleMaps(boolean usesGoogleMaps) {
 		this.usesGoogleMaps = usesGoogleMaps;
 	}
-
+	
+    public void setAppcacheFilename(String appcacheFilename) {
+    	this.appcacheFilename = appcacheFilename;
+    }
+	
 	public void setCssFilename(String cssFilename) {
 		this.cssFilename = cssFilename;
 	}
@@ -99,7 +104,12 @@ public class PageTag extends SimpleTagSupport {
         JspWriter out = pageContext.getOut();
         try {
             out.println("<!DOCTYPE html>");
-            out.println("<html manifest=\"" + contextPath + "/iumobile.appcache\">");
+            if (appcacheFilename != null && !appcacheFilename.trim().equals("")) {
+            	out.println("<html manifest=\"" + contextPath + "/" + appcacheFilename + "\">");
+            } else {
+            	out.println("<html>");
+            }
+            
             out.println("<head>");
             out.println("<title>" + title + "</title>");
             out.println("<link href=\"http://www.iu.edu/favicon.ico\" rel=\"icon\" />");
@@ -117,6 +127,7 @@ public class PageTag extends SimpleTagSupport {
             out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/jquery.tmpl.js\"></script>");
             out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/jquery.validate.js\"></script>");
             out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/jquery.validate.ready.js\"></script>");
+            out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/jquery.templates.js\"></script>");
             if (usesGoogleMaps) {
             	out.println("<script type=\"text/javascript\" src=\"http://maps.google.com/maps/api/js?sensor=true\"></script>");
             }
