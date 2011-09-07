@@ -17,22 +17,26 @@
 
 <c:choose>
 	<c:when test="${selectedTab eq 'tab2'}">
-		<c:set var="jsFilename" value="show-tab2" />
+		<c:set var="jsFilename" value="classifieds-show-tab2" />
+	</c:when>
+	<c:when test="${selectedTab eq 'tab3'}">
+		<c:set var="jsFilename" value="classifieds-show-tab3" />
+	</c:when>
+	<c:when test="${selectedTab eq 'tab4'}">
+		<c:set var="jsFilename" value="classifieds-show-tab4" />
 	</c:when>
 	<c:otherwise>
-		<c:set var="jsFilename" value="show-tab1" />
+		<c:set var="jsFilename" value="classifieds-show-tab1" />
 	</c:otherwise>
 </c:choose>
 
 <kme:page title="${campus} Classifieds" id="classifieds" cssFilename="classifieds" backButton="true" homeButton="true" jsFilename="${jsFilename}" backButtonURL="${pageContext.request.contextPath}/home">
 	<kme:content>
-		<div class="tabs-tabcontainer container_12">
-			<div class="grid_6">
-				<a class="tabs-tab1" name="tabs-tab1" href="#">Browse</a>
-			</div>
-			<div class="grid_6">
-				<a class="tabs-tab2" name="tabs-tab2" href="#">Search</a>
-			</div>
+		<div class="tabs-tabcontainer">
+			<a style="width: 24.5%;" class="tabs-tab1" name="tabs-tab1" href="#">Browse</a> 
+			<a style="width: 24.5%;" class="tabs-tab2" name="tabs-tab2" href="#">Search</a> 
+			<a style="width: 24.5%;" class="tabs-tab3" name="tabs-tab3" href="${pageContext.request.contextPath}/classifieds/myAds">Maintain Ads</a>
+			<a style="width: 24.5%;" class="tabs-tab4" name="tabs-tab4" href="${pageContext.request.contextPath}/classifieds/options">Options</a>
 		</div>
 		<div class="tabs-panel1" name="tabs-panel1">
 			<kme:listView id="ad" dataTheme="g">
@@ -52,13 +56,13 @@
 
 		<div class="tabs-panel2" name="tabs-panel2">
 			<form:form method="post" action="${pageContext.request.contextPath}/classifieds/search" commandName="search" id="form">
-				<label for="name">Search for:</label>
+				<label for="text">Search for:</label>
 				<form:input path="text" />
-				<div class="error"><form:errors path="text" /></div>
+				<div class="error">
+					<form:errors path="text" />
+				</div>
 				<input type="submit" value="search" />
 			</form:form>
 		</div>
 	</kme:content>
 </kme:page>
-</body>
-</html>

@@ -15,6 +15,9 @@
 	color:#900;
 	font-weight:normal;
 }
+
+div.floater { padding: 5px; } 
+
 .title {
 	padding-bottom:18px;
 }

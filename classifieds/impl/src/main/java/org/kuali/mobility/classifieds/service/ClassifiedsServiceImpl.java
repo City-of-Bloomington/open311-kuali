@@ -27,6 +27,7 @@ import org.springframework.stereotype.Service;
 
 import edu.iu.es.espd.oauth.OAuth2LegService;
 import flexjson.JSONDeserializer;
+import flexjson.JSONSerializer;
 
 @Service
 public class ClassifiedsServiceImpl implements ClassifiedsService {
@@ -53,6 +54,56 @@ public class ClassifiedsServiceImpl implements ClassifiedsService {
 		String json = IOUtils.toString(entity.getBody(), "UTF-8");
 		List<Ad> ads = new JSONDeserializer<List<Ad>>().use(null, ArrayList.class).use("values", Ad.class).deserialize(json);
 		return ads;
+	}
+
+	public List<Ad> getUsersAds(String userId) throws Exception {
+		ResponseEntity<InputStream> entity = classifiedsOAuthService.oAuthGetRequest(userId, classifiedsURL + "/usersAds", "application/json");
+		String json = IOUtils.toString(entity.getBody(), "UTF-8");
+		List<Ad> ads = new JSONDeserializer<List<Ad>>().use(null, ArrayList.class).use("values", Ad.class).deserialize(json);
+		return ads;
+	}
+
+	public Ad getAd(String userId, Long adId) throws Exception {
+		ResponseEntity<InputStream> entity = classifiedsOAuthService.oAuthGetRequest(userId, classifiedsURL + "/ad" + (adId != null ? "/" + adId : ""), "application/json");
+		String json = IOUtils.toString(entity.getBody(), "UTF-8");
+		Ad ad = new JSONDeserializer<Ad>().deserialize(json, Ad.class);
+		return ad;
+	}
+
+	public String getPolicy(String userId) throws Exception {
+		ResponseEntity<InputStream> entity = classifiedsOAuthService.oAuthGetRequest(userId, classifiedsURL + "/policy", "application/json");
+		String json = IOUtils.toString(entity.getBody(), "UTF-8");
+		return json;
+	}
+	
+
+	public List<Ad> getWatchList(String userId) throws Exception {
+		ResponseEntity<InputStream> entity = classifiedsOAuthService.oAuthGetRequest(userId, classifiedsURL + "/markAds", "application/json");
+		String json = IOUtils.toString(entity.getBody(), "UTF-8");
+		List<Ad> ads = new JSONDeserializer<List<Ad>>().use(null, ArrayList.class).use("values", Ad.class).deserialize(json);
+		return ads;
+	}
+
+	public Ad saveAd(String userId, Ad ad) throws Exception {
+		ad.setIpAddress("temp ip");
+		String sendJson = new JSONSerializer().exclude("class").deepSerialize(ad);
+		ResponseEntity<InputStream> entity = null;
+		if (ad.getAdId() != null && ad.getLockingNumber() != null) {
+			entity = classifiedsOAuthService.oAuthPostRequest(userId, classifiedsURL + "/ad/" + ad.getAdId(), "application/json", sendJson);
+		} else {
+			entity = classifiedsOAuthService.oAuthPutRequest(userId, classifiedsURL + "/ad", "application/json", sendJson);
+		}
+		String json = IOUtils.toString(entity.getBody(), "UTF-8");
+
+		int responseCode = entity.getStatusCode().value();
+		Ad returnedAd = null;
+		if (responseCode >= 200 && responseCode < 300) {
+			returnedAd = new Ad();
+		} else if (responseCode >= 400) {
+			returnedAd = new JSONDeserializer<Ad>().deserialize(json, Ad.class);
+		}
+		returnedAd.setResponseCode(responseCode);
+		return returnedAd;
 	}
 
 	public Ad getAdById(String userId, String campus, Long adId) throws Exception {

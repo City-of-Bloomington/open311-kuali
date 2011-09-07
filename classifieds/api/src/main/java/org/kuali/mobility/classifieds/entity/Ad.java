@@ -14,12 +14,19 @@
  */
 package org.kuali.mobility.classifieds.entity;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
 public class Ad {
 
 	private Long adId;
 
 	private String title;
-	
+
 	private String personId;
 
 	private String campus;
@@ -40,11 +47,57 @@ public class Ad {
 
 	private Long lockingNumber;
 
-	private Long expires;
+	private String expires;
 
 	private Long categoryId;
 
 	private String categoryName;
+
+	private Map<Long, String> categories;
+
+	private Map<Long, String> expireDays;
+
+	private Map<String, List<String>> errors;
+
+	private int responseCode;
+
+	public Map<Long, String> getCategories() {
+		Map<Long, String> linkedMap = new LinkedHashMap<Long, String>();
+		if (categories != null) {
+			List<String> valueList = new ArrayList<String>(categories.values());
+			Collections.sort(valueList);
+			for (String value : valueList) {
+				for (Iterator iterator = categories.entrySet().iterator(); iterator.hasNext();) {
+					Map.Entry<Long, String> entry = (Map.Entry<Long, String>) iterator.next();
+					if (entry.getValue().equals(value)) {
+						linkedMap.put(entry.getKey(), value);
+						break;
+					}
+				}
+			}
+		}
+		return linkedMap;
+	}
+
+	public void setCategories(Map<Long, String> categories) {
+		this.categories = categories;
+	}
+
+	public Map<Long, String> getExpireDays() {
+		Map<Long, String> linkedMap = new LinkedHashMap<Long, String>();
+		if (expireDays != null) {
+			List<Long> keyList = new ArrayList<Long>(expireDays.keySet());
+			Collections.sort(keyList);
+			for (Long key : keyList) {
+				linkedMap.put(key, expireDays.get(key));
+			}
+		}
+		return linkedMap;
+	}
+
+	public void setExpireDays(Map<Long, String> expireDays) {
+		this.expireDays = expireDays;
+	}
 
 	public Long getAdId() {
 		return adId;
@@ -142,11 +195,11 @@ public class Ad {
 		this.lockingNumber = lockingNumber;
 	}
 
-	public Long getExpires() {
+	public String getExpires() {
 		return expires;
 	}
 
-	public void setExpires(Long expires) {
+	public void setExpires(String expires) {
 		this.expires = expires;
 	}
 
@@ -164,5 +217,21 @@ public class Ad {
 
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
+	}
+
+	public Map<String, List<String>> getErrors() {
+		return errors;
+	}
+
+	public void setErrors(Map<String, List<String>> errors) {
+		this.errors = errors;
+	}
+
+	public int getResponseCode() {
+		return responseCode;
+	}
+
+	public void setResponseCode(int responseCode) {
+		this.responseCode = responseCode;
 	}
 }

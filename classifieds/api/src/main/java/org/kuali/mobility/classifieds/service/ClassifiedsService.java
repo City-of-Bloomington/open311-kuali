@@ -30,4 +30,14 @@ public interface ClassifiedsService {
 	public List<Ad> getSearchResults(String userId, String campus, String search) throws Exception;
 
 	public void saveCampus(String userId, String campus) throws Exception;
+
+	public List<Ad> getUsersAds(String userId) throws Exception;
+
+	public Ad getAd(String userId, Long adId) throws Exception;
+
+	public Ad saveAd(String userId, Ad ad) throws Exception;
+
+	public String getPolicy(String userId) throws Exception;
+
+	public List<Ad> getWatchList(String userId) throws Exception;
 }

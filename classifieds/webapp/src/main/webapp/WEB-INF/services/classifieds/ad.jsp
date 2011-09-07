@@ -11,64 +11,57 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-<c:url var="backURL" value="ads">
-	<c:param name="categoryId" value="${categoryId}" />
-	<c:param name="searched" value="${searched}" />
-	<c:param name="pageNumber" value="${pageNumber}" />
-</c:url>
-
-<kme:page title="Ad" id="Classified-ad" backButton="true" homeButton="true" cssFilename="events" backButtonURL="${backURL}">
+<kme:page title="Ad" id="Classified-ad" backButton="true" homeButton="true" cssFilename="classifieds" backButtonURL="${pageContext.request.contextPath}/classifieds/myAds">
 	<kme:content>
-		<ul data-role="listview" data-theme="g">
-			<li>
-				<h3>Title:</h3>
-				<p class="wrap">
-					<c:out value="${ad.title}" />
-				</p></li>
-			<li>
-				<h3>Price:</h3>
-				<p class="wrap">
-					<c:choose>
-						<c:when test="${not empty ad.price}">
-							<c:out value="${ad.price}" />
-						</c:when>
-						<c:otherwise> --- </c:otherwise>
-					</c:choose>
-				</p>
-			</li>
-			<li>
-				<h3>Description:</h3>
-				<p class="wrap">
-					<c:out value="${ad.description}" escapeXml="false" />
-				</p></li>
-			<li>
-				<h3>Contact:</h3>
-				<p class="wrap">
-					<c:choose>
-						<c:when test="${not empty ad.contact}">
-							<c:out value="${ad.contact}" />
-						</c:when>
-						<c:otherwise> --- </c:otherwise>
-					</c:choose>
-				</p>
-			</li>
-			<li>
-				<h3>Email:</h3>
-				<p class="wrap">
-					<c:choose>
-						<c:when test="${not empty ad.email}">
-							<c:out value="${ad.email}" />
-						</c:when>
-						<c:otherwise> --- </c:otherwise>
-					</c:choose>
-				</p></li>
-			<li>
-				<h3>Posted:</h3>
-				<p class="wrap">
-					<c:out value="${ad.postDate}" />
-				</p>
-			</li>
-		</ul>
+
+		<form:form method="post" action="${pageContext.request.contextPath}/classifieds/saveAd" commandName="ad" id="adform">
+			<fieldset>
+				<label for="campus">Campus:</label>
+				<form:select path="campus" cssClass="ui-widget-content ui-corner-all" data-native-menu="false" items="${campuses}" itemLabel="name" itemValue="code" />
+				<div class="error">
+					<form:errors path="campus" />
+				</div>
+				<br /> <label for="title">Title:</label>
+				<form:input path="title" />
+				<form:hidden path="adId" />
+				<form:hidden path="lockingNumber" />
+				<div class="error">
+					<form:errors path="title" />
+				</div>
+				<br /> <label for="contact">Contact:</label>
+				<form:input path="contact" />
+				<div class="error">
+					<form:errors path="contact" />
+				</div>
+				<br /> <label for="categoryId">Category:</label>
+				<form:select path="categoryId" cssClass="ui-widget-content ui-corner-all" data-native-menu="false">
+					<form:options items="${ad.categories}" />
+				</form:select>
+				<div class="error">
+					<form:errors path="categoryId" />
+				</div>
+				<br /> <label for="price">Price:</label>
+				<form:input path="price" />
+				<div class="error">
+					<form:errors path="price" />
+				</div>
+				<br /> <label for="expires">Expire date:</label>
+				<form:select path="expires" cssClass="ui-widget-content ui-corner-all" data-native-menu="false">
+					<form:options items="${ad.expireDays}" />
+				</form:select>
+				<div class="error">
+					<form:errors path="expires" />
+				</div>
+				<br /> <label for="description">Description:</label>
+				<form:textarea path="description" />
+				<div class="error">
+					<form:errors path="description" />
+				</div>
+				<br />
+			</fieldset>
+			<input data-theme="a" name="save" type="submit" value="Save" />
+		</form:form>
 	</kme:content>
 </kme:page>
