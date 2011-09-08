@@ -24,7 +24,7 @@
 		<c:forEach items="${tours}" var="tour" varStatus="status">
 			<tr>
 				<td>${tour.name}</td>
-				<td><a href="${pageContext.request.contextPath}/tours/edit/${tour.tourId}">edit</a> <a href="${pageContext.request.contextPath}/tours/delete/${tour.tourId}">delete</a></td>
+				<td><a href="${pageContext.request.contextPath}/tours/edit/${tour.tourId}">edit</a> <a href="${pageContext.request.contextPath}/tours/delete/${tour.tourId}">delete</a> <a href="${pageContext.request.contextPath}/tours/kml/${tour.tourId}">kml</a></td>
 			</tr>
 		</c:forEach>
 	</table>

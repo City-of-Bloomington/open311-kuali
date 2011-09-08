@@ -17,8 +17,6 @@ package org.kuali.mobility.maps.service;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
@@ -58,14 +56,6 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
-
-import de.micromata.opengis.kml.v_2_2_0.Feature;
-import de.micromata.opengis.kml.v_2_2_0.Folder;
-import de.micromata.opengis.kml.v_2_2_0.Kml;
-import de.micromata.opengis.kml.v_2_2_0.Placemark;
-import de.micromata.opengis.kml.v_2_2_0.Point;
-import de.micromata.opengis.kml.v_2_2_0.xal.AddressLine;
-import de.micromata.opengis.kml.v_2_2_0.xal.AddressLines;
 
 @Service
 public class LocationServiceImpl implements LocationService {
@@ -844,86 +834,5 @@ public class LocationServiceImpl implements LocationService {
 //			LOG.info("MapsGroup " + mapsGroup.getGroupId() + " " + mapsGroup.getGroupCode() + " has already been appended.");
 		}
 		return null;
-	}
-	
-	@Transactional
-	public void saveKml() {
-		Kml kml = buildKmlEntities();
-		try {
-			kml.marshal(new File("C:\\Dump.kml"));
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-	}
-
-	@Transactional
-	private Kml buildKmlEntities() {
-		Kml kml = new Kml();
-		List<MapsGroup> groups = getAllMapsGroups();
-		de.micromata.opengis.kml.v_2_2_0.Document document = new de.micromata.opengis.kml.v_2_2_0.Document();
-		kml.setFeature(document);
-		List<Feature> features = new ArrayList<Feature>();
-		document.setFeature(features);
-		for (MapsGroup group : groups) {
-			try {
-				if (group.getMapsGroupParent() == null) {
-					LOG.info("Saving group");
-					features.add(parseGroup(group));
-				}
-			} catch (Exception e) {
-				LOG.error("Error loading group");
-			}
-		}
-		return kml;
-	}
-	
-	private Folder parseGroup(MapsGroup group) {
-		Folder folder = new Folder();
-		folder.setId(group.getGroupCode());
-		folder.setName(group.getName());
-		folder.setVisibility(group.isActive());
-		List<Feature> features = new ArrayList<Feature>();
-		folder.setFeature(features);
-		for (Location location : group.getMapsLocations()) {
-			features.add(parseLocation(location));
-		}
-		for (MapsGroup subgroup : group.getMapsGroupChildren()) {
-			features.add(parseGroup(subgroup));
-		}
-		return folder;
-	}
-	
-	private Placemark parseLocation(Location location) {
-		Placemark placemark = new Placemark();
-		placemark.setId(location.getBuildingCode());
-		placemark.setVisibility(location.isActive());
-		placemark.setName(location.getShortName());
-		placemark.setDescription(location.getName());
-		
-		Point point = new Point();
-		point.addToCoordinates(location.getLongitude(), location.getLatitude());
-		placemark.setGeometry(point);
-		
-		List<AddressLine> addressLineList = new ArrayList<AddressLine>();
-		AddressLine addressLine = new AddressLine();
-		addressLine.setContent(location.getStreet());
-		addressLine.setUnderscore("Street");
-		addressLineList.add(addressLine);
-		addressLine = new AddressLine();
-		addressLine.setContent(location.getCity());
-		addressLine.setUnderscore("City");
-		addressLineList.add(addressLine);
-		addressLine = new AddressLine();
-		addressLine.setContent(location.getState());
-		addressLine.setUnderscore("State");
-		addressLineList.add(addressLine);
-		addressLine = new AddressLine();
-		addressLine.setContent(location.getZip());
-		addressLine.setUnderscore("Postal Code");
-		addressLineList.add(addressLine);
-		AddressLines addressLines = new AddressLines(addressLineList);
-		
-		placemark.createAndSetXalAddressDetails(null, addressLines, null, null, null, null);
-		return placemark;
 	}
 }

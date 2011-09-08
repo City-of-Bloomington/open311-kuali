@@ -15,9 +15,14 @@
 
 package org.kuali.mobility.tours.controllers;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -34,6 +39,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import de.micromata.opengis.kml.v_2_2_0.Kml;
 
 @Controller 
 @RequestMapping("/tours")
@@ -146,6 +153,40 @@ public class ToursController {
     	return index(uiModel);
     }
     
+    @RequestMapping(value = "kml/{tourId}", method = RequestMethod.GET)
+    public String downloadKml(@PathVariable("tourId") Long tourId, HttpServletResponse response) {
+    	Tour tour = toursService.findTourById(tourId);
+    	Kml kml = toursService.createTourKml(tour);
+    	OutputStream os = new ByteArrayOutputStream();
+    	try {
+			kml.marshal(os);
+		} catch (Exception e) {
+		}
+    	byte [] data = os.toString().getBytes();
+    	response.setContentType("application/vnd.google-earth.kml+xml");
+		response.setContentLength(data.length);
+		response.setHeader("Content-Disposition", "attachment; filename=\"" + tour.getName() + ".kml\"" );
+		try {
+			response.getOutputStream().write(data, 0, data.length);
+		} catch (IOException e) {
+		}
+    	return null;
+    }
+    
+    @RequestMapping(value = "kml", method = RequestMethod.POST)
+    public String downloadKml(@RequestParam("data") String postData, @RequestParam("name") String name, HttpServletResponse response) {
+    	String newline = System.getProperty("line.separator");
+    	byte [] data = postData.replace("<EOL>", newline).getBytes();
+    	response.setContentType("application/vnd.google-earth.kml+xml");
+		response.setContentLength(data.length);
+		response.setHeader("Content-Disposition", "attachment; filename=\"" + name + ".kml\"" );
+		try {
+			response.getOutputStream().write(data, 0, data.length);
+		} catch (IOException e) {
+		}
+    	return null;
+    }
+    
     
     @SuppressWarnings("unchecked")
 	private Tour convertTourFromJson(String json) {
@@ -196,6 +237,9 @@ public class ToursController {
 			poi.setLongitude(location.getDouble("Qa"));
 			try {
 				poi.setMedia(pointOfInterest.getString("media"));
+			} catch (Exception e) {}
+			try {
+				poi.setUrl(pointOfInterest.getString("url"));
 			} catch (Exception e) {}
 			poi.setTourId(tour.getTourId());
 			poi.setTour(tour);

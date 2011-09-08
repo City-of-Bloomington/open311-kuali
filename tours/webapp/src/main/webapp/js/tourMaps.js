@@ -1,6 +1,7 @@
 var arrows;
 var markers = [];
 var startMarker, stopMarker;
+var preDefinedPois = [];
 
 var poly;
 
@@ -32,7 +33,7 @@ function initializeMap(cntxtPath) {
     var myOptions = {
 		zoom: zoom,
 		center: latlng,
-		mapTypeId: google.maps.MapTypeId.ROADMAP,
+		mapTypeId: google.maps.MapTypeId.HYBRID,
 		streetViewControl: true,
 		zoomControl: true,
 		scaleControl: false,
@@ -71,39 +72,59 @@ function initializeMap(cntxtPath) {
 	
 	
 	google.maps.event.addListenerOnce(map, "tilesloaded", function() {
-		var tourJson = $('#tourJson').val();
-		if (tourJson.length){
-			initializeTour(tourJson);
-		}
-		arrows.load(poly.getPath().getArray());
+		initializeTour();
 	}); 
 	
 	iw = new google.maps.InfoWindow();
 }
 
-function initializeTour(json) {
-	var obj = jQuery.parseJSON(json);
-	if (obj) {
-		$('#tourId').val(obj.tourId);
-		$('#tourName').val(obj.name);
-		$('#tourDescription').val(obj.description);
-		$('#tourVersion').val(obj.versionNumber);
-		poly.setPath(google.maps.geometry.encoding.decodePath(obj.path));
-		updateStartEndMarkers();
-		updatePathDistance();
-		
-		for (var i=0; i<obj.pointsOfInterest.length; i++){
-			var poi = obj.pointsOfInterest[i];
-			place = new Object();
-			place.name = poi.name;
-			place.location = new google.maps.LatLng(poi.latitude,poi.longitude);
-			place.id = poi.locationId;
-			place.type = poi.type;
-			place.media = poi.media;
-			place.description = poi.description;
-			addPOI(place);
+function initializeTour() {
+	var tourJson = $('#tourJson').val();
+	if (tourJson.length){
+		var obj = jQuery.parseJSON(tourJson);
+		if (obj) {
+			$('#tourId').val(obj.tourId);
+			$('#tourName').val(obj.name);
+			$('#tourDescription').val(obj.description);
+			$('#tourVersion').val(obj.versionNumber);
+			poly.setPath(google.maps.geometry.encoding.decodePath(obj.path));
+			updateStartEndMarkers();
+			updatePathDistance();
+			
+			for (var i=0; i<obj.pointsOfInterest.length; i++){
+				var poi = obj.pointsOfInterest[i];
+				place = new Object();
+				place.name = poi.name;
+				place.location = new google.maps.LatLng(poi.latitude,poi.longitude);
+				place.id = poi.locationId;
+				place.type = poi.type;
+				place.media = poi.media;
+				place.description = poi.description;
+				place.url = poi.url;
+				addPOI(place);
+			}
+			centerOverAllLocations();
+			arrows.load(poly.getPath().getArray());
 		}
-		centerOverAllLocations();
+	}
+	var pois = $('#definedPoisJson').val();
+	if (pois.length){
+		var obj = jQuery.parseJSON(pois);
+		if (obj) {
+			for (var i=0; i<obj.length; i++){
+				var poi = obj[i];
+				place = new Object();
+				place.name = poi.name;
+				place.location = new google.maps.LatLng(poi.latitude,poi.longitude);
+				place.id = poi.locationId;
+				place.type = poi.type;
+				place.media = poi.media;
+				place.description = poi.description;
+				place.url = poi.url;
+				preDefinedPois[i] = place;
+				$('#definedPOIs').append('<div onclick="selectPreDefinedPoi(' + i + ')" onmouseover="this.style.backgroundColor=\'#AAAAEE\'" onmouseout="this.style.backgroundColor=\'#FFFFFF\'">' + place.name + '</div>');
+			}		
+		}
 	}
 }
 
@@ -181,7 +202,6 @@ function selectPoint(event) {
 	}
 	
 	if (isSelectingVenue){
-		selectedPlace = null;
 		if (tempMarker){
 			tempMarker.setMap(null);
 		}
@@ -189,19 +209,32 @@ function selectPoint(event) {
 	}
 }
 
-function updateSelectedPlace(latLng){
-	selectedPlace = new Object();
-	selectedPlace.location = latLng;
-	selectedPlace.type = customPointType;
-	$('#selectedLocation').text(selectedPlace.location.lat() + ', ' + selectedPlace.location.lng());
-	setTempMarker(selectedPlace);
+function selectPreDefinedPoi(index) {
+	var place = preDefinedPois[index];
+	setTempMarker(place);
+	stopEditingMedia();
+	clearSelectedMedia();
+	for (var i=0; i< place.media.length; i++){
+		var media = place.media[i];
+		if (media.type == imageType){
+			loadImageToList(media.url, media.title, media.caption);
+		} else if (media.type == audioType){
+			loadAudioToList(media.oggVorbisUrl, media.mp3Url, media.wavUrl, media.title, media.caption);
+		} else if (media.type == videoType){
+			loadVideoToList(media.oggUrl, media.mp4Url, media.webMUrl, media.youTubeUrl, media.title, media.caption);
+		}
+	}
+	map.panTo(place.location);
+}
+
+function updateSelectedPlace(latLng) {
+	geocodeLatLng(latLng, setAddress); 
 }
 
 function selectBuilding(number){
 	if (number > 0) {
 		var place = places[number-1]; // 'select:' is index 0, so number 1 = places[0]
 		setTempMarker(place)
-		selectedPlace = place;
 		map.panTo(place.location);
 	}
 }
@@ -224,6 +257,7 @@ function setTempMarker(place){
 	$('#longitude').val(place.location.lng());
 	$('#poiName').val(place.name);
 	$('#url').val(place.url);
+	$('#description').val(place.description);
 }
 
 function addBuilding(number){
@@ -265,8 +299,24 @@ function addPOI(place) {
 		removeBuilding(marker);
 	});
 	google.maps.event.addListener(marker, 'click', function() {
-		editPOI(marker); //does not exist yet
+		if (!isEditing && !isFineTuning) {
+			editPOI(marker);
+		}
 	});
+}
+
+function searchAddress() {
+	var address = $('#address').val();
+	if (address.length) {
+		geocodeAddress(address, setAddress);
+	} else {
+		alert('Please enter a valid address.');
+	}
+}
+
+function setAddress(place){
+	setTempMarker(place);
+	map.panTo(place.location);
 }
 
 function updatePathDistance() {
@@ -360,7 +410,7 @@ function saveTour(){
 	if (validateRoute()){
 		var places = [];
 		for (var i=0; i<markers.length; i++){
-			var place = markers[i].building;
+			var place = markers[i].place;
 			if (place.poly){
 				delete place.poly;
 			}
@@ -376,7 +426,6 @@ function saveTour(){
 		tour.POIs = places;
 		
 		$('#data').val(JSON.stringify(tour));
-		//save here	
 		$("#postForm").submit();
 	}
 }
@@ -405,7 +454,7 @@ function validateRoute(){
 			if (buildings != ''){
 				buildings += ', ';
 			}
-			buildings += markers[i].building.name;
+			buildings += markers[i].place.name;
 		}
 	}
 	if (buildings.length){
@@ -478,17 +527,17 @@ function changeMode(mode){
 function updateSelectedPOIs(){
 	var $tabs = $('#wizard').tabs();
 	var selected = $tabs.tabs('option', 'selected');
-	if (selected == 3){ //Save is the fourth tab
+	if (selected == 2){ //Save is the third tab
 		var list = '';
 		for (var i = 0; i < markers.length; i++) {
-			list += '<div>' + (i+1) + '. ' + markers[i].building.name + '</div>'
+			list += '<div>' + (i+1) + '. ' + markers[i].place.name + '</div>'
 		}
 		$('#selectedPOIs').html(list);
 	}
 }
 
 function editPOI(marker){
-	$("#wizard").tabs('select', 1);
+	$("#wizard").tabs('select', 0);
 	stopEditingPoi();
 	var place = marker.place;
 	editingPoiIndex = markers.indexOf(marker);

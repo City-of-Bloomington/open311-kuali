@@ -46,7 +46,7 @@
 				font-size: inherit;
 			}
 			
-			#searchResults {
+			#searchResults, #definedPOIs {
 				border: 1px solid #CCCCCC;
 				overflow:auto;
 				height:175px;
@@ -54,10 +54,14 @@
 				/*width: 600px;*/
 			}
 			
+			#definedPOIs {
+				height:223px;
+			}
+	
 			.venues, #selectedPOIs {
 				border: 1px solid #CCCCCC;
 				overflow:auto;
-				height:200px;
+				height:203px;
 				font-size:0.8em;
 				/*width: 600px;*/
 			}
@@ -109,7 +113,7 @@
 				height: 48px;
 			}
 			
-			div#selectedMedia {
+			div#selectedMedia, div.border {
 				border: 1px solid #AAAAAA;
 				border-radius: 4px;
 				padding: 4px;
@@ -126,34 +130,34 @@
 			</ul>		
 		</div>
 		<table border="0" style="width:100%px;">
+			<tr>
+				<td>
+					<input type="hidden" name="tourId" id ="tourId" value="" />
+	            	<input type="hidden" name="tourVersion" id ="tourVersion" value="" />
+	            	<c:set var="json"><c:out value="${tourJson}" escapeXml="true" /></c:set>
+	            	<input type="hidden" name="tourJson" id="tourJson" value="${json}" />
+	            	<c:set var="json"><c:out value="${pois}" escapeXml="true" /></c:set>
+	            	<input type="hidden" name="definedPoisJson" id="definedPoisJson" value="${json}" />
+	                <table>
+	                    <tr align="left" valign="top">
+	                        <td>Name: </td>
+	                        <td><input type="text" name="tourName" id="tourName" /></td>
+	                    </tr>
+	                    <tr align="left" valign="top">
+	                        <td>Description: </td>
+	                        <td><textarea rows="3" cols="50" name="tourDescription" id="tourDescription"></textarea></td>
+	                    </tr>
+	                </table>
+                </td>
+			</tr>
             <tr>
-				<td style="width:600px" valign="top"><div id="map_canvas" style="width:600px; height:400px"></div></td>
                 <td valign="top" align="left">
-                	<div id="wizard">
+                	<div id="wizard" style="width:650px">
                         <ul>
-                            <li><a href="#name">1. Name the Tour</a></li>
-                            <li><a href="#poi">2. Add Points of Interest</a></li>
-                            <li><a href="#route">3. Create the Route</a></li>
-                            <li><a href="#save">4. Save the Tour</a></li>
+                            <li><a href="#poi">1. Add Points of Interest</a></li>
+                            <li><a href="#route">2. Create the Route</a></li>
+                            <li><a href="#save">3. Save the Tour</a></li>
                         </ul>
-                        <div id="name">
-                        	<input type="hidden" name="tourId" id ="tourId" value="" />
-                        	<input type="hidden" name="tourVersion" id ="tourVersion" value="" />
-                        	<c:set var="json"><c:out value="${tourJson}" escapeXml="true" /></c:set>
-                        	<input type="hidden" name="tourJson" id="tourJson" value="${json}" />
-                        	<c:set var="json"><c:out value="${pois}" escapeXml="true" /></c:set>
-                        	<input type="hidden" name="definedPoisJson" id="tourJson" value="${json}" />
-                            <table>
-                                <tr align="left" valign="top">
-                                    <td>Name: </td>
-                                    <td><input type="text" name="tourName" id="tourName" /></td>
-                                </tr>
-                                <tr align="left" valign="top">
-                                    <td>Description: </td>
-                                    <td><textarea rows="3" cols="50" name="tourDescription" id="tourDescription"></textarea></td>
-                                </tr>
-                            </table>
-                        </div>
                         <div id="poi">
                         	<p id="editingPoi" style="color: red; display: none;"></p>
                             <table style="width:100%;">
@@ -178,7 +182,11 @@
                                                 <div id="searchResults"></div>
                                             </div>
                                             <div id="point">
-                                                <p>Click the map to select a location.</p>
+                                                <p>Click the map to select a location or search for an address.</p>
+                                                <div id="addressSearch">
+													<input id="address" type="text" value="" size="40" style="width:auto;" >
+													<button id="addressSearchButton" onclick="searchAddress();">Search</button>
+												</div>
                                             </div>
                                             <div id="foursquare">
                                                 <p>Click the map to find nearby venues.</p>
@@ -192,11 +200,26 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                    	<p>Location Name: <input type="text" name="poiName" id="poiName" size="40" /></p>
-										<p>Coordinates: <input type="text" name="latitude" id="latitude" />, <input type="text" name="longitude" id="longitude" /></p>
-										<p>Url: <input type="text" name="url" id="url" size="40" /></p>
-										<p>Description</p>
-                                        <textarea rows="5" cols="50" id="description"></textarea>
+                                    	<div class="border">
+                                    		<table>
+		                                		<tr align="left" valign="top">
+		                                			<td>Location Name: </td>
+		                                			<td><input type="text" name="poiName" id="poiName" size="40" /></td>
+		                                		</tr>
+		                                		<tr align="left" valign="top">
+		                                			<td>Coordinates: </td>
+		                                			<td><input type="text" name="latitude" id="latitude" />, <input type="text" name="longitude" id="longitude" /></td>
+		                                		</tr>
+		                                		<tr align="left" valign="top">
+		                                			<td>Url: </td>
+		                                			<td><input type="text" name="url" id="url" size="40" /></td>
+		                                		</tr>
+		                                		<tr align="left" valign="top">
+		                                			<td>Description: </td>
+		                                			<td><textarea rows="5" cols="50" id="description"></textarea></td>
+		                                		</tr>
+		                                	</table>
+                                        </div>
                                     </td>
                                 </tr>
                                 <tr>
@@ -361,6 +384,7 @@
                         </div>
                     </div>
                 </td>
+                <td style="width:600px" valign="top"><div id="map_canvas" style="width:600px; height:400px"></div></td>
 			</tr>
 <!--
             <tr>

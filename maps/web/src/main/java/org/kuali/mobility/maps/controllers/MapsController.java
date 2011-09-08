@@ -338,9 +338,4 @@ public class MapsController {
         }
         return null;
     }
-	
-	@RequestMapping(value = "/kml", method = RequestMethod.GET)
-	protected void getKml(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		locationService.saveKml();
-	}
 }
