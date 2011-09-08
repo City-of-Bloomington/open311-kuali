@@ -90,13 +90,6 @@
 					</a>
 				</kme:listItem>
 			</c:if>
-			<c:if test="${site.hasResourcesTool}">
-				<kme:listItem>
-					<a href="${pageContext.request.contextPath}/myclasses/${siteId}/resources" class="icon-RESOURCES">
-						Resources
-					</a>
-				</kme:listItem>
-			</c:if>
 			<c:if test="${site.hasMessagesTool}">
 				<kme:listItem>
 					<a href="${pageContext.request.contextPath}/myclasses/${site.id}/messages" class="icon-MESSAGES">
@@ -104,6 +97,20 @@
 						<c:if test="${messageCount > 0}">
 							<span class="ui-li-count">${messageCount}</span>
 						</c:if>
+					</a>
+				</kme:listItem>
+			</c:if>
+			<c:if test="${site.hasResourcesTool}">
+				<kme:listItem>
+					<a href="${pageContext.request.contextPath}/myclasses/${siteId}/resources" class="icon-RESOURCES">
+						Resources
+					</a>
+				</kme:listItem>
+			</c:if>
+			<c:if test="${site.hasSyllabusTool && false}">
+				<kme:listItem>
+					<a href="${pageContext.request.contextPath}/myclasses/${siteId}/syllabus" class="icon-RESOURCES">
+						Syllabus
 					</a>
 				</kme:listItem>
 			</c:if>

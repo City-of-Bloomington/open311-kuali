@@ -19,9 +19,13 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.activation.MimetypesFileTypeMap;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -74,6 +78,8 @@ public class SakaiController {
 	@Autowired
 	private SakaiPrivateTopicService sakaiPrivateTopicService;
 
+	private MimetypesFileTypeMap mimeTypes = new MimetypesFileTypeMap();
+	
 	@RequestMapping(method = RequestMethod.GET)
 	public String getSites(HttpServletRequest request, @RequestParam(value="date", required=false) String date, Model uiModel) {
 		User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
@@ -106,7 +112,7 @@ public class SakaiController {
 	public String getSite(HttpServletRequest request, @PathVariable("siteId") String siteId, Model uiModel) {
 		try {
 			User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
-			Site site = sakaiSiteService.findSite(siteId, user.getPrincipalName());
+			Site site = sakaiSiteService.findSite(user, siteId);
 			uiModel.addAttribute("site", site);
 			
 			List<Forum> forums = sakaiForumService.findForums(siteId, user.getPrincipalName());
@@ -261,7 +267,12 @@ public class SakaiController {
 	public String getRoster(HttpServletRequest request, @PathVariable("siteId") String siteId, Model uiModel) {
 		try {
 			User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
-			List<Roster> roster = sakaiSiteService.findRoster(siteId, user.getPrincipalName());
+			List<Roster> roster = sakaiSiteService.findRoster(user, siteId);
+			
+			for (Roster r : roster) {
+				r.setImageUrl(fixImageUrl(r.getImageUrl(), request.getContextPath()));
+			}
+			
 			uiModel.addAttribute("roster", roster);
 			uiModel.addAttribute("siteId", siteId);
 		} catch (Exception e) {
@@ -279,6 +290,9 @@ public class SakaiController {
 			String json = IOUtils.toString(is.getBody(), "UTF-8");
 
 			Roster roster = sakaiSiteService.findParticipantDetails(json, displayId);
+			
+			roster.setImageUrl(fixImageUrl(roster.getImageUrl(), request.getContextPath()));
+			
 			uiModel.addAttribute("roster", roster);
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
@@ -287,19 +301,41 @@ public class SakaiController {
 		return "sakai/rosterDetails";
 	}
 	
+	private String fixImageUrl(String url, String contextPath) {
+		try {
+			if (url != null && !"null".equals(url)) {
+				url = URLDecoder.decode(url, "UTF-8");
+				String prefix = contextPath + "/myclasses?imgUrl=";
+				
+				if (url.contains("oncourse.iu.edu/oauthdirect/participant/rosterImage")) {
+					if (url.startsWith(prefix)) {
+						url = url.replace(prefix, "");
+					}
+					return prefix + URLEncoder.encode(url, "UTF-8");
+				} else {
+					return url;
+				}
+			}
+		} catch (UnsupportedEncodingException e) {
+			LOG.error(e.getMessage(), e);
+		}
+		return null;
+	}
+	
+	
 	@RequestMapping(value="/{siteId}/resources", method = RequestMethod.GET)
 	public String getResources(HttpServletRequest request, HttpServletResponse response, @PathVariable("siteId") String siteId, @RequestParam(value="resId", required=false) String resId, @RequestParam(value="type", required=false) String type, Model uiModel) {
 	    try {
 	        //resId = URLEncoder.encode(resId, "UTF-8");
 			User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
 			if (resId == null || resId.isEmpty()) {
-				List<Resource> resources = sakaiSiteService.findSiteResources(siteId, user.getPrincipalName(), null);
+				List<Resource> resources = sakaiSiteService.findSiteResources(user, siteId, null);
 				uiModel.addAttribute("resources", resources);
 			} else {
 				char lastChar = resId.charAt(resId.length()-1);
     			if(lastChar == '/'){
     				//Go into a sub-folder
-    				List<Resource> resources = sakaiSiteService.findSiteResources(siteId, user.getPrincipalName(), resId);
+    				List<Resource> resources = sakaiSiteService.findSiteResources(user, siteId, resId);
     				uiModel.addAttribute("resources", resources);
     			} else {
     				//download the file
@@ -332,12 +368,79 @@ public class SakaiController {
 		return "sakai/resources";
 	}
 	
+	@RequestMapping(value="/{siteId}/syllabus", method = RequestMethod.GET)
+	public String getSyllabus(HttpServletRequest request, HttpServletResponse response, @PathVariable("siteId") String siteId, @RequestParam(value="resId", required=false) String resId, @RequestParam(value="type", required=false) String type, Model uiModel) {
+	    try {
+			User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
+			if (resId == null || resId.isEmpty()) {
+				List<Resource> resources = sakaiSiteService.findSiteSyllabus(user, siteId, null);
+				uiModel.addAttribute("resources", resources);
+			} else {
+//				char lastChar = resId.charAt(resId.length()-1);
+//    			if(lastChar == '/'){
+//    				//Go into a sub-folder
+//    				List<Resource> resources = sakaiSiteService.findSiteResources(user, siteId, resId);
+//    				uiModel.addAttribute("resources", resources);
+//    			} else {
+//    				//download the file
+//					byte [] fileData = sakaiSiteService.getResource(resId, user.getPrincipalName());
+//					if (fileData!= null) {
+//						String mimeType = type;
+//						
+//						if (mimeType.equals(Constants.URL_MIME_TYPE)) {
+//							String url = new String(fileData);
+//							response.sendRedirect(response.encodeRedirectURL(url));
+//						} else {
+//							response.setContentType(mimeType);
+//							response.setContentLength(fileData.length);
+//							response.setHeader("Content-Disposition", "attachment; filename=\"" + getFileName(resId) + "\"" );
+//							response.getOutputStream().write(fileData, 0, fileData.length);
+//							return null;
+//						}
+//	    			} else {
+//	    				//couldn't find the resource
+//	    				String referrer = request.getHeader("referer");
+//	    				response.sendRedirect(referrer);
+//	    				return null;
+//	    			}
+//    			}
+			}
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+		}
+		uiModel.addAttribute("syllabus", siteId);
+		return "sakai/syllabus";
+	}
+	
+	
 	private String getFileName(String resourceId) {
 		int index = resourceId.lastIndexOf("/");
 		if (index == -1) {
 			return resourceId;
 		} else {
 			return resourceId.substring(index +1 );
+		}
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, params = "imgUrl")
+	public void getImage(HttpServletRequest request, HttpServletResponse response, @RequestParam("imgUrl") String imageUrl) {
+		try {
+			User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
+			byte [] fileData = sakaiSiteService.getImage(imageUrl, user.getPrincipalName());
+			if (fileData != null) {
+				String type = mimeTypes.getContentType(imageUrl+".jpg");
+				response.setContentType(type);
+				response.setContentLength(fileData.length);
+				response.setHeader("Content-Disposition", "inline; filename=\"" + getFileName(imageUrl) + ".jpg\"" );
+				response.getOutputStream().write(fileData, 0, fileData.length);
+			
+			} else {
+				//couldn't find the resource
+				//String referrer = request.getHeader("referer");
+				//response.sendRedirect(referrer);
+			}
+		} catch (IOException e) {
+			LOG.error(e.getMessage(), e);
 		}
 	}
 	

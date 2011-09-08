@@ -27,7 +27,7 @@ import org.kuali.mobility.user.entity.User;
 
 public interface SakaiSiteService {
 	public Home findSakaiHome(User user, String shortDate);
-	public Site findSite(String siteId, String user);
+	public Site findSite(User user, String siteId);
 	
 	public Announcement findAnnouncementDetails(String json);
 	public List<Announcement> findAllAnnouncements(String siteId, String user);
@@ -37,9 +37,13 @@ public interface SakaiSiteService {
 	public List<Assignment> findAssignmentDetails(String json);
 	public String findCourseGrade(String json);
 	
-	public List<Roster> findRoster(String siteId, String userId);
+	public List<Roster> findRoster(User user, String siteId);
 	public Roster findParticipantDetails(String json, String displayId);
 	
-	public List<Resource> findSiteResources(String siteId, String userId, String resId);
+	public List<Resource> findSiteResources(User user, String siteId, String resId);
 	public byte[] getResource(String resId, String userId);
+	
+	public List<Resource> findSiteSyllabus(User user, String siteId, String resId);
+	
+	public byte[] getImage(String imgUrl, String userId);
 }

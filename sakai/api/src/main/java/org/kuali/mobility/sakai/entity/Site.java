@@ -41,10 +41,13 @@ public class Site implements Serializable, Comparable<Site> {
     private boolean hasRosterTool;
     private boolean hasResourcesTool;
     private boolean hasMessagesTool;
+    private boolean hasSyllabusTool;
     
     private String meetingTime;
     private String location;
     private String buildingCode;
+
+	
     
     public String getInstructorName() {
 		return instructorName;
@@ -226,5 +229,13 @@ public class Site implements Serializable, Comparable<Site> {
 
 	public void setBuildingCode(String buildingCode) {
 		this.buildingCode = buildingCode;
+	}
+
+	public void setHasSyllabusTool(boolean b) {
+		this.hasSyllabusTool = b;
+	}
+	
+	public boolean getHasSyllabusTool() {
+		return hasSyllabusTool;
 	}
 }
