@@ -54,4 +54,7 @@ public interface User {
     boolean isStaff();
     boolean isAlumnus();
     
+    UserCacheObject getFromCache(String key);
+    void removeFromCache(String key);
+    void putInCache(String key, Object item);
 }
