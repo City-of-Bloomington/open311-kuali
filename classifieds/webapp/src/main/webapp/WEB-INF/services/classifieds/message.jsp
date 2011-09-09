@@ -15,25 +15,12 @@
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-<kme:page title="${campus} Classifieds" id="classifieds" cssFilename="classifieds" backButton="true" homeButton="true" backButtonURL="${pageContext.request.contextPath}/classifieds/options">
+<kme:page title="${campus} Classifieds" id="classifieds" cssFilename="classifieds" backButton="true" homeButton="true" backButtonURL="${pageContext.request.contextPath}/classifieds">
 	<kme:content>
-		<h3>Watch List</h3>
-		<c:choose>
-			<c:when test="${not empty adWatchList}">
-				<kme:listView id="adWatchList" dataTheme="g">
-					<c:forEach var="ad" items="${adWatchList}">
-						<kme:listItem>
-							<c:url var="adURL" value="/classifieds/ad">
-								<c:param name="adId" value="${ad.adId}" />
-								<c:param name="watch" value="y" />
-							</c:url>
-							<a href="${adURL}"> <c:out value="${ad.title}" /> </a>
-						</kme:listItem>
-					</c:forEach>
-				</kme:listView>
-			</c:when>
-			<c:otherwise>There are no ads in your watch list.</c:otherwise>
-		</c:choose>
+		<c:forEach items="${messages}" var="message">
+			<c:out value="${message}" />
+			<br />
+		</c:forEach>
 	</kme:content>
 </kme:page>
 

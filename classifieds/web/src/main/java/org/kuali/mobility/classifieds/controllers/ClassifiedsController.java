@@ -15,6 +15,7 @@
 
 package org.kuali.mobility.classifieds.controllers;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -23,6 +24,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.kuali.mobility.campus.service.CampusService;
 import org.kuali.mobility.classifieds.entity.Ad;
+import org.kuali.mobility.classifieds.entity.ClassifiedsPageException;
 import org.kuali.mobility.classifieds.entity.Search;
 import org.kuali.mobility.classifieds.service.ClassifiedsService;
 import org.kuali.mobility.shared.Constants;
@@ -65,8 +67,13 @@ public class ClassifiedsController {
 				uiModel.addAttribute("selectedTab", selectedTab);
 			}
 			uiModel.addAttribute("categories", classifiedsService.getCategories(user.getPrincipalName(), campus));
+		} catch (ClassifiedsPageException e) {
+			uiModel.addAttribute("messages", e.getPageErrors().get("pageError"));
+			return "classifieds/message";
 		} catch (Exception e) {
-			LOG.error("Error in getting categories.", e);
+			LOG.error("Error getting categories.", e);
+			uiModel.addAttribute("messages", "Error getting categories");
+			return "classifieds/message";
 		}
 		return "classifieds/index";
 	}
@@ -86,8 +93,13 @@ public class ClassifiedsController {
 			uiModel.addAttribute("searched", searched);
 			uiModel.addAttribute("categoryId", categoryId);
 			uiModel.addAttribute("ads", ads);
+		} catch (ClassifiedsPageException e) {
+			uiModel.addAttribute("messages", e.getPageErrors().get("pageError"));
+			return "classifieds/message";
 		} catch (Exception e) {
-			LOG.error("Error in getting ads.", e);
+			LOG.error("Error getting ads.", e);
+			uiModel.addAttribute("messages", "Error getting ads");
+			return "classifieds/message";
 		}
 		return "classifieds/ads";
 	}
@@ -100,8 +112,13 @@ public class ClassifiedsController {
 			uiModel.addAttribute("campuses", campusService.getCampuses());
 			List<Ad> ads = classifiedsService.getUsersAds(user.getPrincipalName());
 			uiModel.addAttribute("ads", ads);
+		} catch (ClassifiedsPageException e) {
+			uiModel.addAttribute("messages", e.getPageErrors().get("pageError"));
+			return "classifieds/message";
 		} catch (Exception e) {
-			LOG.error("Error in getting ads.", e);
+			LOG.error("Error getting my ads.", e);
+			uiModel.addAttribute("messages", "Error getting my ads");
+			return "classifieds/message";
 		}
 		return "classifieds/myAds";
 	}
@@ -117,8 +134,13 @@ public class ClassifiedsController {
 				ad.setCampus(user.getViewCampus());
 			}
 			uiModel.addAttribute("ad", ad);
+		} catch (ClassifiedsPageException e) {
+			uiModel.addAttribute("messages", e.getPageErrors().get("pageError"));
+			return "classifieds/message";
 		} catch (Exception e) {
-			LOG.error("Error in getting ads.", e);
+			LOG.error("Error getting my ad.", e);
+			uiModel.addAttribute("messages", "Error getting my ad");
+			return "classifieds/message";
 		}
 		return "classifieds/ad";
 	}
@@ -127,6 +149,7 @@ public class ClassifiedsController {
 	public String saveAd(HttpServletRequest request, Model uiModel, @ModelAttribute("ad") Ad ad, BindingResult result) {
 		User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
 		try {
+			ad.setIpAddress(user.getIpAddress());
 			Ad returnedAd = classifiedsService.saveAd(user.getPrincipalName(), ad);
 			if (returnedAd.getResponseCode() == HttpStatus.UNPROCESSABLE_ENTITY.value()) {
 				Errors errors = ((Errors) result);
@@ -141,22 +164,100 @@ public class ClassifiedsController {
 				uiModel.addAttribute("campuses", campusService.getCampuses());
 				return "classifieds/ad";
 			}
+		} catch (ClassifiedsPageException e) {
+			uiModel.addAttribute("messages", e.getPageErrors().get("pageError"));
+			return "classifieds/message";
 		} catch (Exception e) {
-			LOG.error("error saving campus", e);
+			LOG.error("error saving ad", e);
+			uiModel.addAttribute("messages", "Error saving ad");
+			return "classifieds/message";
 		}
 		return "redirect:/classifieds/myAds";
 	}
 
+	@RequestMapping(value = "/deleteAd", method = RequestMethod.GET)
+	public String deleteAd(HttpServletRequest request, Model uiModel, @RequestParam(required = true) Long adId) {
+		User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
+		try {
+			Ad returnedAd = classifiedsService.deleteAd(user.getPrincipalName(), adId, user.getIpAddress());
+			if (returnedAd.getResponseCode() == HttpStatus.UNPROCESSABLE_ENTITY.value()) {
+				uiModel.addAttribute("campuses", campusService.getCampuses());
+				List<String> errors = new ArrayList<String>();
+				for (Iterator iterator = returnedAd.getErrors().entrySet().iterator(); iterator.hasNext();) {
+					Map.Entry<String, List<String>> entry = (Map.Entry<String, List<String>>) iterator.next();
+					for (String error : entry.getValue()) {
+						errors.add(error);
+					}
+				}
+				uiModel.addAttribute("messages", errors);
+				return "classifieds/message";
+			}
+		} catch (ClassifiedsPageException e) {
+			uiModel.addAttribute("messages", e.getPageErrors().get("pageError"));
+			return "classifieds/message";
+		} catch (Exception e) {
+			LOG.error("error deleting ad", e);
+			uiModel.addAttribute("messages", "Error deleting ad");
+			return "classifieds/message";
+		}
+		return "redirect:/classifieds/myAds";
+	}
+
+	@RequestMapping(value = "/watchAd", method = RequestMethod.GET)
+	public String watchAd(HttpServletRequest request, Model uiModel, @RequestParam(required = true) Long adId, @RequestParam(required = false) Long categoryId, @RequestParam(required = false) String searched, @RequestParam(required = false) Long pageNumber) {
+		User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
+		try {
+			classifiedsService.watchAd(user.getPrincipalName(), adId);
+			uiModel.addAttribute("confirmation", "This ad was added to your watch list.");
+			uiModel.addAttribute("pageNumber", pageNumber);
+			uiModel.addAttribute("categoryId", categoryId);
+			uiModel.addAttribute("searched", searched);
+			uiModel.addAttribute("ad", classifiedsService.getAdById(user.getPrincipalName(), user.getViewCampus(), adId));
+			return "classifieds/viewAd";
+		} catch (ClassifiedsPageException e) {
+			uiModel.addAttribute("messages", e.getPageErrors().get("pageError"));
+			return "classifieds/message";
+		} catch (Exception e) {
+			LOG.error("error watching ad", e);
+			uiModel.addAttribute("messages", "Error watching ad");
+			return "classifieds/message";
+		}
+	}
+
+	@RequestMapping(value = "/deleteWatchAd", method = RequestMethod.GET)
+	public String deleteWatchAd(HttpServletRequest request, Model uiModel, @RequestParam(required = true) Long adId) {
+		User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
+		try {
+			classifiedsService.deleteWatchAd(user.getPrincipalName(), adId);
+		} catch (ClassifiedsPageException e) {
+			uiModel.addAttribute("messages", e.getPageErrors().get("pageError"));
+			return "classifieds/message";
+		} catch (Exception e) {
+			LOG.error("error removing watch from ad", e);
+			uiModel.addAttribute("messages", "Error removing watch from ad");
+			return "classifieds/message";
+		}
+		return "redirect:/classifieds/adWatchList";
+	}
+
 	@RequestMapping(value = "/ad", method = RequestMethod.GET)
-	public String ad(HttpServletRequest request, Model uiModel, @RequestParam(required = true) Long adId, @RequestParam(required = false) Long categoryId, @RequestParam(required = false) String searched, @RequestParam(required = false) Long pageNumber) {
+	public String ad(HttpServletRequest request, Model uiModel, @RequestParam(required = true) Long adId, @RequestParam(required = false) Long categoryId, @RequestParam(required = false) String searched, @RequestParam(required = false) Long pageNumber, @RequestParam(required = false) String watch) {
 		User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
 		try {
 			uiModel.addAttribute("pageNumber", pageNumber);
 			uiModel.addAttribute("categoryId", categoryId);
 			uiModel.addAttribute("searched", searched);
+			if (watch != null) {
+				uiModel.addAttribute("watch", watch);
+			}
 			uiModel.addAttribute("ad", classifiedsService.getAdById(user.getPrincipalName(), user.getViewCampus(), adId));
+		} catch (ClassifiedsPageException e) {
+			uiModel.addAttribute("messages", e.getPageErrors().get("pageError"));
+			return "classifieds/message";
 		} catch (Exception e) {
-			LOG.error("Error in getting ads.", e);
+			LOG.error("Error getting ad.", e);
+			uiModel.addAttribute("messages", "Error getting ad");
+			return "classifieds/message";
 		}
 		return "classifieds/viewAd";
 	}
@@ -183,8 +284,13 @@ public class ClassifiedsController {
 			uiModel.addAttribute("searched", search.getText());
 			uiModel.addAttribute("selectedTab", "tab2");
 			uiModel.addAttribute("ads", ads);
+		} catch (ClassifiedsPageException e) {
+			uiModel.addAttribute("messages", e.getPageErrors().get("pageError"));
+			return "classifieds/message";
 		} catch (Exception e) {
-			LOG.error("Error in getting ads.", e);
+			LOG.error("Error searching ads.", e);
+			uiModel.addAttribute("messages", "Error searching ads");
+			return "classifieds/message";
 		}
 		return "classifieds/ads";
 	}
@@ -199,8 +305,13 @@ public class ClassifiedsController {
 		User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
 		try {
 			classifiedsService.saveCampus(user.getPrincipalName(), user.getViewCampus());
+		} catch (ClassifiedsPageException e) {
+			uiModel.addAttribute("messages", e.getPageErrors().get("pageError"));
+			return "classifieds/message";
 		} catch (Exception e) {
 			LOG.error("error saving campus", e);
+			uiModel.addAttribute("messages", "Error saving campus");
+			return "classifieds/message";
 		}
 		return "redirect:/classifieds/ads";
 	}
@@ -208,11 +319,7 @@ public class ClassifiedsController {
 	@RequestMapping(value = "/options", method = RequestMethod.GET)
 	public String options(HttpServletRequest request, Model uiModel) {
 		User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
-		try {
-			uiModel.addAttribute("campus", user.getViewCampus());
-		} catch (Exception e) {
-			LOG.error("Error in getting ads.", e);
-		}
+		uiModel.addAttribute("campus", user.getViewCampus());
 		return "classifieds/options";
 	}
 
@@ -222,21 +329,30 @@ public class ClassifiedsController {
 		try {
 			uiModel.addAttribute("campus", user.getViewCampus());
 			uiModel.addAttribute("adWatchList", classifiedsService.getWatchList(user.getPrincipalName()));
+		} catch (ClassifiedsPageException e) {
+			uiModel.addAttribute("messages", e.getPageErrors().get("pageError"));
+			return "classifieds/message";
 		} catch (Exception e) {
-			LOG.error("Error in getting ads.", e);
+			LOG.error("Error adding watch to ad.", e);
+			uiModel.addAttribute("messages", "Error adding watch to ad.");
+			return "classifieds/message";
 		}
 		return "classifieds/adWatchList";
 	}
-	
-	
+
 	@RequestMapping(value = "/policy", method = RequestMethod.GET)
 	public String policy(HttpServletRequest request, Model uiModel) {
 		User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
 		try {
 			uiModel.addAttribute("campus", user.getViewCampus());
 			uiModel.addAttribute("policy", classifiedsService.getPolicy(user.getPrincipalName()));
+		} catch (ClassifiedsPageException e) {
+			uiModel.addAttribute("messages", e.getPageErrors().get("pageError"));
+			return "classifieds/message";
 		} catch (Exception e) {
-			LOG.error("Error in getting ads.", e);
+			LOG.error("Error getting policy.", e);
+			uiModel.addAttribute("messages", "Error getting policy.");
+			return "classifieds/message";
 		}
 		return "classifieds/policy";
 	}

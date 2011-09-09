@@ -82,6 +82,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 				user.setFirstLogin(now);
 			}
 			user.setPrincipalName(CASFilter.getRemoteUser(request));
+			user.setIpAddress(request.getHeader("X-CLUSTER-CLIENT-IP"));
 			user.setLastLogin(now);
 			userService.saveUser(user);
 

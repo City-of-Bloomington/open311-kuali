@@ -29,6 +29,8 @@ public interface User {
 	Long getPrincipalId();
 	String getPrincipalName();
 	String getEmail();
+	public String getIpAddress();
+	public void setIpAddress(String ipAddress);
 	void setFirstLogin(Timestamp firstLogin);
 	void setLastLogin(Timestamp firstLogin);
 

@@ -40,4 +40,10 @@ public interface ClassifiedsService {
 	public String getPolicy(String userId) throws Exception;
 
 	public List<Ad> getWatchList(String userId) throws Exception;
+
+	public Ad deleteAd(String userId, Long adId, String ipAddress) throws Exception;
+	
+	public void watchAd(String userId, Long adId) throws Exception;
+	
+	public void deleteWatchAd(String userId, Long adId) throws Exception;
 }

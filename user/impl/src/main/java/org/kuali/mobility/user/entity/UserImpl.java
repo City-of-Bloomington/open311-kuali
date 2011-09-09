@@ -85,6 +85,9 @@ public class UserImpl implements User, Serializable {
 	@Transient
 	private UserCache cache;
 
+	@Transient
+	private String ipAddress;
+
 	public UserImpl() {
 		publicUser = false;
 		userAttributes = new HashMap<String, String>();
@@ -254,6 +257,16 @@ public class UserImpl implements User, Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	@Override
+	public String getIpAddress() {
+		return ipAddress;
+	}
+	
+	@Override
+	public void setIpAddress(String ipAddress) {
+		this.ipAddress = ipAddress;
 	}
 
 	@Override

@@ -11,12 +11,18 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility"%>
-
-<c:url var="backURL" value="ads">
-	<c:param name="categoryId" value="${categoryId}" />
-	<c:param name="searched" value="${searched}" />
-	<c:param name="pageNumber" value="${pageNumber}" />
-</c:url>
+<c:choose>
+	<c:when test="${not empty watch}">
+		<c:url var="backURL" value="adWatchList" />
+	</c:when>
+	<c:otherwise>
+		<c:url var="backURL" value="ads">
+			<c:param name="categoryId" value="${categoryId}" />
+			<c:param name="searched" value="${searched}" />
+			<c:param name="pageNumber" value="${pageNumber}" />
+		</c:url>
+	</c:otherwise>
+</c:choose>
 
 <kme:page title="Ad" id="Classified-ad" backButton="true" homeButton="true" cssFilename="classifieds" backButtonURL="${backURL}">
 	<kme:content>
@@ -25,8 +31,7 @@
 				<h3>Title:</h3>
 				<p class="wrap">
 					<c:out value="${ad.title}" />
-				</p>
-			</li>
+				</p></li>
 			<li>
 				<h3>Price:</h3>
 				<p class="wrap">
@@ -36,13 +41,13 @@
 						</c:when>
 						<c:otherwise> --- </c:otherwise>
 					</c:choose>
-				</p></li>
+				</p>
+			</li>
 			<li>
 				<h3>Description:</h3>
 				<p class="wrap">
 					<c:out value="${ad.description}" escapeXml="false" />
-				</p>
-			</li>
+				</p></li>
 			<li>
 				<h3>Contact:</h3>
 				<p class="wrap">
@@ -52,7 +57,8 @@
 						</c:when>
 						<c:otherwise> --- </c:otherwise>
 					</c:choose>
-				</p></li>
+				</p>
+			</li>
 			<li>
 				<h3>Category:</h3>
 				<p class="wrap">
@@ -62,7 +68,8 @@
 						</c:when>
 						<c:otherwise> --- </c:otherwise>
 					</c:choose>
-				</p></li>
+				</p>
+			</li>
 			<li>
 				<h3>Email:</h3>
 				<p class="wrap">
@@ -72,13 +79,41 @@
 						</c:when>
 						<c:otherwise> --- </c:otherwise>
 					</c:choose>
-				</p>
-			</li>
+				</p></li>
 			<li>
 				<h3>Posted:</h3>
 				<p class="wrap">
 					<c:out value="${ad.postDate}" />
-				</p></li>
+				</p>
+			</li>
 		</ul>
+		<c:if test="${not empty confirmation}">
+			<h3>
+				<c:out value="${confirmation}" />
+			</h3>
+		</c:if>
+		<div data-inline="true">
+			<div class="ui-grid-a">
+				<div class="ui-block-a">
+					<c:choose>
+						<c:when test="${not empty watch}">
+							<c:url var="watchURL" value="deleteWatchAd">
+								<c:param name="adId" value="${ad.adId}" />
+							</c:url>
+							<a data-theme="c" href="${watchURL}" data-role="button">Remove Watch</a>
+						</c:when>
+						<c:otherwise>
+							<c:url var="watchURL" value="watchAd">
+								<c:param name="adId" value="${ad.adId}" />
+								<c:param name="categoryId" value="${categoryId}" />
+								<c:param name="searched" value="${searched}" />
+								<c:param name="pageNumber" value="${pageNumber}" />
+							</c:url>
+							<a data-theme="c" href="${watchURL}" data-role="button">Watch</a>
+						</c:otherwise>
+					</c:choose>
+				</div>
+			</div>
+		</div>
 	</kme:content>
 </kme:page>
