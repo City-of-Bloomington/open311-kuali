@@ -19,7 +19,7 @@
 	        <script type="text/javascript">
 				$('[data-role=page][id=campusalerts]').live('pagebeforeshow', function(event, ui) {
 					$('#alertListTemplate').template('alertListTemplate');
-					refreshTemplate('alerts', '#alertlist', 'alertListTemplate', '<li>No Alerts</li>');
+					refreshTemplate('alerts', '#alertlist', 'alertListTemplate', '<li>No Alerts</li>', function() {$('#alertlist').listview('refresh');});
 				});
 			</script>
 			<script id="alertListTemplate" type="text/x-jquery-tmpl">

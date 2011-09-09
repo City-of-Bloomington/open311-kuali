@@ -137,7 +137,9 @@ public class NewsServiceImpl implements NewsService {
 		}
 		LinkFeed lf = this.getDynamicRssCacheService().getLinkFeed(articleId, rss);
 		if (lf != null) {
-			return convertLinkFeedToArticle(lf);
+			NewsArticle article = convertLinkFeedToArticle(lf);
+			article.setSourceId(sourceId);
+			return article;
 		}
 		return null;
 	}

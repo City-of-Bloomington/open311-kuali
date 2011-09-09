@@ -25,13 +25,13 @@ public class ContentTag extends SimpleTagSupport {
    
     private String dataTheme;
     private String cssClass;
-    
+    private String id;
     
     public void doTag() throws JspException {
         PageContext pageContext = (PageContext) getJspContext();
         JspWriter out = pageContext.getOut();
         try {
-            out.println("<div data-role=\"content\" data-theme=\"" + (dataTheme != null && !"".equals(dataTheme.trim()) ? dataTheme : "b") + "\"" + (cssClass != null && !"".equals(cssClass.trim()) ? " class=\"" + cssClass + "\"" : "") + ">");
+            out.println("<div data-role=\"content\" data-theme=\"" + (dataTheme != null && !"".equals(dataTheme.trim()) ? dataTheme : "b") + "\"" + (cssClass != null && !"".equals(cssClass.trim()) ? " class=\"" + cssClass + "\"" : "") + (id != null && !"".equals(id.trim()) ? " id=\"" + id + "\"" : "") + ">");
             getJspBody().invoke(out);          
             out.println("</div>");
         } catch (Exception e) {
@@ -46,5 +46,9 @@ public class ContentTag extends SimpleTagSupport {
     public void setCssClass(String cssClass) {
         this.cssClass = cssClass;
     }
+
+	public void setId(String id) {
+		this.id = id;
+	}
     
 }

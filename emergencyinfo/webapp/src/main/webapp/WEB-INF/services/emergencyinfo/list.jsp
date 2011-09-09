@@ -27,7 +27,7 @@
             <script type="text/javascript">
 				$('[data-role=page][id=emergencyinfo]').live('pagebeforeshow', function(event, ui) {
 					$('#emergencyListTemplate').template('emergencyListTemplate');
-					refreshTemplate('emergencycontacts', '#emergencylistdata', 'emergencyListTemplate', '<li>No Available Contacts</li>');
+					refreshTemplate('emergencycontacts', '#emergencylistdata', 'emergencyListTemplate', '<li>No Available Contacts</li>', function() {$('#emergencylistdata').listview('refresh');});
 				});
 			</script>
 			<script id="emergencyListTemplate" type="text/x-jquery-tmpl">

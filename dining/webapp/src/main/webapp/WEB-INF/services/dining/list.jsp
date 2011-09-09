@@ -20,7 +20,7 @@
 			<script type="text/javascript">
 				$('[data-role=page][id=dining]').live('pagebeforeshow', function(event, ui) {
 					$('#menuListTemplate').template('menuListTemplate');
-					refreshTemplate('dining', '#menulist', 'menuListTemplate', '<li>No Menus</li>');
+					refreshTemplate('dining', '#menulist', 'menuListTemplate', '<li>No Menus</li>', function() {$('#menulist').listview('refresh');});
 				});
 			</script>
 			<script id="menuListTemplate" type="text/x-jquery-tmpl">

@@ -13,16 +13,25 @@
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility" %>
 
 <kme:page title="${sourceTitle}" id="news" homeButton="true" backButton="true" cssFilename="news">
-    <kme:content cssClass="news-story">
+    <kme:content id="newsContent" cssClass="news-story">
+		<script type="text/javascript">			
+			$('[data-role=page][id=news]').live('pagebeforeshow', function(event, ui) {
+				$('#newsContentTemplate').template('newsContentTemplate');
+				refreshTemplate('${pageContext.request.contextPath}/news/${sourceId}?articleId=${articleId}', '#newsContent', 'newsContentTemplate', '<li>This article was not found</li>');
+			});
+		</script>
+		<script id="newsContentTemplate" type="text/x-jquery-tmpl">				
+			<h3>\${title}</h3>
+			<p>
+				{{html description}}
+			</p>
+		</script>
+		
+		<%--
 		<h3>${newsArticle.title}</h3>
 		<p>
-			<%-- <c:if test="${!empty topArticle.thumbnailImageUrl}">
-				<div class="image-caption">
-			    	<img src="${newsArticle.thumbnailImageUrl}" alt="pic">
-			    	<p><!-- Caption--!></p>
-			   	</div>
-		   	</c:if>--%>
 			${newsArticle.description}
 		</p>
+		--%>
 	</kme:content>
 </kme:page>

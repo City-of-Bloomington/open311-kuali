@@ -12,9 +12,33 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility" %>
 
-<kme:page title="${newsStream.title}" id="news" homeButton="true" backButton="true" cssFilename="news">
+<kme:page title="News" id="news" homeButton="true" backButton="true" cssFilename="news">
     <kme:content>
-		<ul data-role="listview" data-theme="c" class="news-index">
+		<ul id="newsList" data-role="listview" data-theme="c" class="news-index">
+			<script type="text/javascript">			
+			$('[data-role=page][id=news]').live('pagebeforeshow', function(event, ui) {
+				$('#newsListTemplate').template('newsListTemplate');
+				refreshTemplate('${pageContext.request.contextPath}/news/${sourceId}', '#newsList', 'newsListTemplate', '<li>No articles available at this time</li>', function() {$('#newsList').listview('refresh');});
+			});
+			</script>
+			<script id="newsListTemplate" type="text/x-jquery-tmpl">
+				\${ setPageTitle(title) }				
+				{{if articles}}
+					{{each articles}}
+      					{{each articles}}
+      						<li>
+								<a href="${pageContext.request.contextPath}/news/\${\$data.sourceId}?articleId=\${articleId}&referrer=stream">
+									<p class="news-title">\${title}</p>
+								</a>
+							</li>
+						{{/each}}
+					{{/each}}					
+				{{else}}
+					<li>No articles available at this time</li>
+				{{/if}}
+			</script>
+			
+			<%--
 			<c:choose>
 				<c:when test="${not empty newsStream.articles}">
 					<c:forEach items="${newsStream.articles}" var="day" varStatus="status">
@@ -30,7 +54,8 @@
 				<c:otherwise>
 					<kme:listItem>No articles available at this time</kme:listItem>
 				</c:otherwise>
-			</c:choose>	
+			</c:choose>
+			--%>	
 		</ul>
 	</kme:content>
 </kme:page>

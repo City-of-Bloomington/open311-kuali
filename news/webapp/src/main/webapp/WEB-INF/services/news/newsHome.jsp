@@ -15,11 +15,54 @@
 <kme:page title="News" id="news" homeButton="true" backButton="true" backButtonURL="${pageContext.request.contextPath}/home" cssFilename="news">
     <kme:content>
 		<!-- <ul data-role="listview" data-theme="c" class="news-index"> -->
-		<kme:listView dataTheme="c" cssClass="news-index">
+		<kme:listView id="topNewsList" filter="false" cssClass="news-index">
+			<script type="text/javascript">
+			$('[data-role=page][id=news]').live('pagebeforeshow', function(event, ui) {
+				$('#topNewsListTemplate').template('topNewsListTemplate');
+				refreshTemplate('${pageContext.request.contextPath}/news/topJson', '#topNewsList', 'topNewsListTemplate', '', function() {$('#topNewsList').listview('refresh');});
+				
+				$('#samplesListTemplate').template('samplesListTemplate');
+				refreshTemplate('${pageContext.request.contextPath}/news/samplesJson', '#samplesList', 'samplesListTemplate', '<li>No articles available at this time</li>', function() {$('#samplesList').listview('refresh');});
+			});
+			</script>
+			<script id="topNewsListTemplate" type="text/x-jquery-tmpl">
+				<li class="news-topstory">
+					<div class="bottom-fade"></div>
+					<a href="${pageContext.request.contextPath}/news/\${sourceId}?articleId=\${articleId}&referrer=home">
+					{{if thumbnailImageUrl}}
+						<img src="\${thumbnailImageUrl}" alt="topstory">
+					{{else}}
+						<img src="images/news-generic.png" alt="topstory">
+					{{/if}}
+					<div>
+				    	<p class="news-title">\${title}</p>
+				    	<p class="news-teaser">\${description}</p>
+				    </div>
+      			</li>
+			</script>
+		</kme:listView>
+		<kme:listView id="samplesList" filter="false" cssClass="news-index">
+			<script id="samplesListTemplate" type="text/x-jquery-tmpl">
+				<li data-role="list-divider" data-theme="b" data-icon="listview" class="streamTitle">
+					<a href="${pageContext.request.contextPath}/news/\${\$data.sourceId}">\${title}</a>
+				</li>
+				{{each articles}}
+      				{{each articles}}
+      					<li>
+							<a href="${pageContext.request.contextPath}/news/\${\$data.sourceId}?articleId=\${articleId}&referrer=home">
+				    	   		<p class="wrap">\${title}</p>
+				    	    </a>
+      					</li>
+					{{/each}}
+				{{/each}}
+			</script>
+		</kme:listView>
+			
+			<%--
 			<c:if test="${topArticle != null}">
 				<kme:listItem cssClass="news-topstory">
 			        <div class="bottom-fade"></div>
-			        <a href="${pageContext.request.contextPath}/news/${topArticleSourceId}?articleId=${topArticle.articleId}&referrer=home">
+			        <a href="${pageContext.request.contextPath}/news/${topArticle.sourceId}?articleId=${topArticle.articleId}&referrer=home">
 			        	<c:choose>
 			        		<c:when test="${!empty topArticle.thumbnailImageUrl}">
 						    	<img src="${topArticle.thumbnailImageUrl}" alt="topstory">
@@ -56,5 +99,6 @@
 				</c:forEach>
 			</c:forEach>
 		</kme:listView>
+		--%>
 	</kme:content>
 </kme:page>

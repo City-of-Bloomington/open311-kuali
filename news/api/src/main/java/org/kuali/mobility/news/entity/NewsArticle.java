@@ -13,6 +13,7 @@ public class NewsArticle implements Serializable, Comparable<NewsArticle> {
 	private String thumbnailImageUrl;
 	private Timestamp publishDate;
 	private String articleId;
+	private String sourceId;
 	
 	public NewsArticle copy() {
 		NewsArticle copy = new NewsArticle();
@@ -30,6 +31,9 @@ public class NewsArticle implements Serializable, Comparable<NewsArticle> {
 		}
 		if (articleId != null) {
 			copy.setArticleId(new String(articleId));
+		}
+		if (sourceId != null) {
+			copy.setSourceId(new String(sourceId));
 		}
 		copy.setPublishDate(new Timestamp(publishDate.getTime()));
 		
@@ -76,5 +80,13 @@ public class NewsArticle implements Serializable, Comparable<NewsArticle> {
 	@Override
 	public int compareTo(NewsArticle arg0) {
 		return publishDate.compareTo(arg0.publishDate);
+	}
+
+	public String getSourceId() {
+		return sourceId;
+	}
+
+	public void setSourceId(String sourceId) {
+		this.sourceId = sourceId;
 	}
 }
