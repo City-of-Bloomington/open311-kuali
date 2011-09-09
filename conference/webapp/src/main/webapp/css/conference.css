@@ -8,3 +8,9 @@
   express or implied. See the License for the specific language governing
   permissions and limitations under the License.
 */
+
+li p.ui-li-desc {
+	margin: 0;
+	padding: 0;
+	font-size: 14px;
+}

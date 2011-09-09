@@ -1,0 +1,39 @@
+[
+      {
+         "title":"WCMS Publishing Queue Best Practices",
+         "description":"When you should and shouldn't publish your pages in IU's Cascade Server WCMS",
+         "speakers":[
+         	{
+         		"firstName":"Amber",
+         		"lastName":"Harmon",
+         		"email":"alharmon@indiana.edu",
+         		"bio":"This is some test content for a speaker biography."
+         	},
+         	{
+         		"firstName":"Erick",
+         		"lastName":"Carballo",
+         		"email":"carballo@indiana.edu",
+         		"bio":"This is some test content for a speaker biography."
+         	}
+         ]
+      },
+      {
+      	 "title":"It's Time to Play in IU Mobile!",
+         "description":"IU Mobile is Indiana University's gateway for users of mobile devices, and you can get in on the fun!",
+      	 "speakers":[
+      	 	{
+      	 		"firstName":"Nate",
+      	 		"lastName":"Johnson",
+      	 		"email":"natjohns@indiana.edu",
+         		"bio":"This is some test content for a speaker biography."
+      	 		
+      	 	},
+      	 	{
+      	 		"firstName":"Zach",
+      	 		"lastName":"Collier",
+      	 		"email":"zcollier@indiana.edu",
+         		"bio":"This is some test content for a speaker biography."
+      	 	}
+      	 ]  
+      }      
+]

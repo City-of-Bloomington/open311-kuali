@@ -14,25 +14,20 @@
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility" %>
 
-<kme:page title="Statewide IT 2011" id="conference" backButton="true" homeButton="true">
+<kme:page title="Attendee List" id="conference" backButton="true" homeButton="true">
 	<kme:content>
 		<kme:listView>
-			<kme:listItem>
-	    		<a href="conference/sessions">
-	    			<h3 class="wrap">
-	    				Sessions
-	    			</h3>
-	    			<p>Keynotes and breakout sessions</p>
-	    		</a>
-	    	</kme:listItem>  
-	    	<kme:listItem>
-	    		<a href="conference/attendees">
-	    			<h3 class="wrap">
-	    				Attendee List
-	    			</h3>
-	    			<p>Who is attending Statewide IT</p>
-	    		</a>
-	    	</kme:listItem>
+			<!--<kme:listItem dataTheme="b" dataRole="list-divider">Conference Attendees</kme:listItem>-->
+			<c:forEach items="${attendees}" var="attendee" varStatus="status">
+		    	<kme:listItem>
+		    		<a href="attendeeDetails?id=${status.index}">
+		    			<h3 class="wrap">
+		    				${attendee.firstName} ${attendee.lastName}
+		    			</h3>
+		    			<p>${attendee.institution}</p>
+		    		</a>
+		    	</kme:listItem>            
+		    </c:forEach>
 		</kme:listView>
 	</kme:content>
 </kme:page>
