@@ -39,7 +39,7 @@ function processResult(result){
 		var b = new Object();
 		b.name = title;
 		b.location = new google.maps.LatLng(a['LATITUDE'],a['LONGITUDE']);
-		b.id = a['IU BLDG NUMBER'];
+		b.iuBuildingCode = a['IU BLDG NUMBER'];
 		//b.street = a['ADDRESS'];
 		b.type = iuBuildingType;
 		//b.state = venue.location.state;

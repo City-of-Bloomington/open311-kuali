@@ -1,5 +1,5 @@
 
-function refreshTemplate(ajaxUrl, htmlElement, templateName) {
+function refreshTemplate(ajaxUrl, htmlElement, templateName, emptyContentMessage) {
 	$.mobile.showPageLoadingMsg();
 	$(htmlElement).text('');
 	var dynamicDataResp = $.ajax({
@@ -11,6 +11,9 @@ function refreshTemplate(ajaxUrl, htmlElement, templateName) {
 	if (dynamicDataResp.status == 200) {
 		var dynamicDataObj = jQuery.parseJSON(dynamicDataResp.responseText);
 		$.tmpl(templateName, dynamicDataObj).appendTo(htmlElement);
+		if (!$(htmlElement).children().length) {
+			$(htmlElement).html(emptyContentMessage);
+		}
 		$(htmlElement).listview('refresh');
 		$.mobile.hidePageLoadingMsg();
 	} else {

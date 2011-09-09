@@ -96,7 +96,8 @@ function initializeTour() {
 				place = new Object();
 				place.name = poi.name;
 				place.location = new google.maps.LatLng(poi.latitude,poi.longitude);
-				place.id = poi.locationId;
+				place.iuBuildingCode = poi.locationId;
+				place.venueId = poi.venueId;
 				place.type = poi.type;
 				place.media = poi.media;
 				place.description = poi.description;
@@ -116,7 +117,8 @@ function initializeTour() {
 				place = new Object();
 				place.name = poi.name;
 				place.location = new google.maps.LatLng(poi.latitude,poi.longitude);
-				place.id = poi.locationId;
+				place.iuBuildingCode = poi.locationId;
+				place.venueId = poi.venueId;
 				place.type = poi.type;
 				place.media = poi.media;
 				place.description = poi.description;

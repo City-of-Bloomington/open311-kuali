@@ -17,6 +17,24 @@
 <kme:page title="Dining Services" id="dining" backButton="true" homeButton="true" cssFilename="dining">
 	<kme:content>
 		<kme:listView id="menulist" dataTheme="c" dataDividerTheme="b" filter="false">
+			<script type="text/javascript">
+				$('[data-role=page][id=dining]').live('pagebeforeshow', function(event, ui) {
+					$('#menuListTemplate').template('menuListTemplate');
+					refreshTemplate('dining', '#menulist', 'menuListTemplate', '<li>No Menus</li>');
+				});
+			</script>
+			<script id="menuListTemplate" type="text/x-jquery-tmpl">
+				<li data-role="list-divider">\${dateFormatted}</li>
+				{{each(i,item) items}}
+      				<li>
+        				<h3 class="wrap">\${name}</h3>
+						<p class="wrap">\${priceFormatted}</p>
+      				</li>
+				{{/each}}
+			</script>
+			
+			
+			<%--
 			<c:choose>
 				<c:when test="${not empty menus}">
 					<c:forEach items="${menus}" var="menu" varStatus="status">
@@ -35,6 +53,7 @@
 					</kme:listItem>
 				</c:otherwise>
 			</c:choose>
+			--%>
 		</kme:listView>
 	</kme:content>
 </kme:page>

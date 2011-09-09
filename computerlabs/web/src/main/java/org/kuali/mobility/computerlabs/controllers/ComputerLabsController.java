@@ -64,8 +64,9 @@ public class ComputerLabsController {
     	} else {
     		selectedCampus = user.getViewCampus();
     	}
-   		List<LabLocation> labLocations = computerLabsService.findAllLabLocationsByCampus(selectedCampus);
-   		uiModel.addAttribute("lablocations", labLocations);
+//    	Disable static rendering data source
+//   	List<LabLocation> labLocations = computerLabsService.findAllLabLocationsByCampus(selectedCampus);
+//   	uiModel.addAttribute("lablocations", labLocations);
    		uiModel.addAttribute("campus", selectedCampus);
     	return "computerlabs/list";
     }
