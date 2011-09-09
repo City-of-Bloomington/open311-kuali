@@ -17,11 +17,28 @@
     <kme:content>
         <kme:listView id="emergencylist" filter="false">
         	<kme:listItem cssClass="link-phone">
-        	<a href="tel:911">
-        		<h3>In a true emergency: <span style="color:red;">911</span></h3>
-        	</a>
+	        	<a href="tel:911">
+	        		<h3>In a true emergency: <span style="color:red;">911</span></h3>
+	        	</a>
         	</kme:listItem>
         	<kme:listItem dataTheme="b" dataRole="list-divider">Phone Numbers</kme:listItem>
+        </kme:listView>
+        <kme:listView id="emergencylistdata" filter="false">
+            <script type="text/javascript">
+				$('[data-role=page][id=emergencyinfo]').live('pagebeforeshow', function(event, ui) {
+					$('#emergencyListTemplate').template('emergencyListTemplate');
+					refreshTemplate('emergencycontacts', '#emergencylistdata', 'emergencyListTemplate', '<li>No Available Contacts</li>');
+				});
+			</script>
+			<script id="emergencyListTemplate" type="text/x-jquery-tmpl">
+				<li class="link-phone">
+					<a href="tel:\${link}">
+                		<h3>\${title}</h3>
+                    	<p>\${link}</p>
+               	 	</a>
+				</li>
+			</script>
+            <%--
             <c:forEach items="${emergencyinfos}" var="emergencyinfo" varStatus="status">
                 <kme:listItem cssClass="link-phone">
                 	<a href="tel:${emergencyinfo.link}">
@@ -30,6 +47,7 @@
                	 	</a>
                 </kme:listItem>
             </c:forEach>
+            --%>
         </kme:listView>
     </kme:content>
 </kme:page>

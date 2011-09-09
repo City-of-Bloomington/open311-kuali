@@ -16,12 +16,28 @@
 <kme:page title="Campus Alerts" id="campusalerts" backButton="true" homeButton="true" cssFilename="alerts" backButtonURL="${pageContext.request.contextPath}/home">
 	<kme:content>
 	    <kme:listView id="alertlist" filter="false">
+	        <script type="text/javascript">
+				$('[data-role=page][id=campusalerts]').live('pagebeforeshow', function(event, ui) {
+					$('#alertListTemplate').template('alertListTemplate');
+					refreshTemplate('alerts', '#alertlist', 'alertListTemplate', '<li>No Alerts</li>');
+				});
+			</script>
+			<script id="alertListTemplate" type="text/x-jquery-tmpl">
+				<li>
+					<h3 class="wrap"><c:out value="\${campus} - \${title}"/></h3>
+	            	<p class="wrap"><c:out value="\${mobileText}"/></p>
+				</li>
+			</script>
+	        
+	        
+	        <%--
 	        <c:forEach items="${alerts}" var="alert" varStatus="status">
 	            <kme:listItem>
 	            	<h3 class="wrap"><c:out value="${alert.campus} - ${alert.title}"/></h3>
 	            	<p class="wrap"><c:out value="${alert.mobileText}"/></p>
 	            </kme:listItem>
 			</c:forEach>
+			--%>
 	    </kme:listView>
 	</kme:content>
 </kme:page>

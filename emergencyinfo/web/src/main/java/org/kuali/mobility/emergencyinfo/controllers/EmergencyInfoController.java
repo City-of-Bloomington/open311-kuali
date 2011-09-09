@@ -47,14 +47,16 @@ public class EmergencyInfoController {
     @RequestMapping(method = RequestMethod.GET)
     public String getList(Model uiModel, HttpServletRequest request) {
     	User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
-		String selectedCampus = "UA";
+//    	String selectedCampus = "UA";
     	if (user.getViewCampus() == null) {
     		return "redirect:/campus?toolName=emergencycontacts";
     	} else {
-    		selectedCampus = user.getViewCampus();
+//    		selectedCampus = user.getViewCampus();
     	}
-    	List<EmergencyInfo> infos = emergencyInfoService.findAllEmergencyInfoByCampus(selectedCampus);
-    	uiModel.addAttribute("emergencyinfos", infos);
+    		
+//      Disable static rendering data source
+//    	List<EmergencyInfo> infos = emergencyInfoService.findAllEmergencyInfoByCampus(selectedCampus);
+//    	uiModel.addAttribute("emergencyinfos", infos);
     	return "emergencyinfo/list";
     }
     
@@ -70,8 +72,12 @@ public class EmergencyInfoController {
     
     @RequestMapping(headers = "Accept=application/json")
     @ResponseBody
-    public String getAll() {
-        return emergencyInfoService.toJson(emergencyInfoService.findAllEmergencyInfo());
+    public String getListJson(HttpServletRequest request) {
+        //return emergencyInfoService.toJson(emergencyInfoService.findAllEmergencyInfo());
+    	User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
+		String selectedCampus = user.getViewCampus();
+    	List<EmergencyInfo> infos = emergencyInfoService.findAllEmergencyInfoByCampus(selectedCampus);
+    	return emergencyInfoService.toJson(infos);
     } 
     
     @RequestMapping(method = RequestMethod.POST, headers = "Accept=application/json")

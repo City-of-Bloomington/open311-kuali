@@ -8,11 +8,6 @@
   express or implied. See the License for the specific language governing
   permissions and limitations under the License.
 */
-dl.emergencylist dt a {
-    color: #000 !important;
-}
-
-dl.emergencylist dd a {
-    color: #333 !important;
-    font-weight: normal;
+ul#emergencylistdata {
+	margin-top:15px;
 }

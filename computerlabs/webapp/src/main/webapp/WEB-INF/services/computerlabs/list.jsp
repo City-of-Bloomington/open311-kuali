@@ -26,10 +26,14 @@
 			<li data-role="list-divider">\${name}</li>
 			{{each(i,lab) computerLabs}}
       			<li data-id="\${buildingCode}" detailId="\${labCode}">
-					<a href="/mdot/maps?id=\${buildingCode}">
-        				<h3>jQuery: \${labCode}</h3>
-        				<p>\${availability}</p>
-					</a>
+					{{if buildingCode}}
+						<a href="/mdot/maps?id=\${buildingCode}">
+        					<h3>\${labCode}</h3>
+        					<p>\${availability} seats available</p>
+						</a>
+					{{else}}
+						<h3>\${labCode}</h3><p>\${availability} seats available</p>
+					{{/if}}
       			</li>
 			{{/each}}
 		</script>
