@@ -15,7 +15,9 @@
 
 package org.kuali.mobility.mdot.controllers;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.kuali.mobility.campus.service.CampusService;
 import org.kuali.mobility.shared.Constants;
@@ -44,9 +46,15 @@ public class CampusController {
 	}
 
 	@RequestMapping(value = "/select", method = RequestMethod.GET)
-	public String selectCampus(HttpServletRequest request, Model uiModel, @RequestParam(required = true) String campus, @RequestParam(required = true) String toolName) {
+	public String selectCampus(HttpServletRequest request, HttpServletResponse response, Model uiModel, @RequestParam(required = true) String campus, @RequestParam(required = true) String toolName) {
 		User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
 		user.setViewCampus(campus);
+		
+		Cookie cookie = new Cookie("campusSelection", campus);
+		cookie.setMaxAge(60*60*24*365); //one year
+		cookie.setPath(request.getContextPath());
+		response.addCookie(cookie);
+		
 		return "redirect:/" + toolName;
 	}
 
