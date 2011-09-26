@@ -74,6 +74,12 @@
             <type>boolean</type>
         </attribute>
         <attribute>
+            <name>usesGoogleMapsGeometry</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>boolean</type>
+        </attribute>
+        <attribute>
             <name>appcacheFilename</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>

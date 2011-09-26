@@ -8,3 +8,12 @@
   express or implied. See the License for the specific language governing
   permissions and limitations under the License.
 */
+
+.tightPadding {
+	padding:15px !important;
+}
+
+#mediaContainer img {
+	margin-right:3px;
+	height:75px;
+}

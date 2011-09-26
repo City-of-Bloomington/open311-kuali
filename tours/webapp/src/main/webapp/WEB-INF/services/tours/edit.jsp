@@ -150,6 +150,7 @@
 	                </table>
                 </td>
 			</tr>
+			<tr><td style="width:650px" valign="top"><div id="map_canvas" style="width:650px; height:400px"></div></td></tr>
             <tr>
                 <td valign="top" align="left">
                 	<div id="wizard" style="width:650px">
@@ -392,7 +393,6 @@
                         </div>
                     </div>
                 </td>
-                <td style="width:600px" valign="top"><div id="map_canvas" style="width:600px; height:400px"></div></td>
 			</tr>
 <!--
             <tr>

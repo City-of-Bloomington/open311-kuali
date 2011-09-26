@@ -34,6 +34,7 @@ public class PageTag extends SimpleTagSupport {
     private boolean preferencesButton;
     private String preferencesButtonURL;
     private boolean usesGoogleMaps;
+    private boolean usesGoogleMapsGeometry;
     private String appcacheFilename;
 	private String cssFilename;
     private String jsFilename;
@@ -71,6 +72,10 @@ public class PageTag extends SimpleTagSupport {
 	
 	public void setUsesGoogleMaps(boolean usesGoogleMaps) {
 		this.usesGoogleMaps = usesGoogleMaps;
+	}
+	
+	public void setUsesGoogleMapsGeometry(boolean usesGoogleMapsGeometry) {
+		this.usesGoogleMapsGeometry = usesGoogleMapsGeometry;
 	}
 	
     public void setAppcacheFilename(String appcacheFilename) {
@@ -129,7 +134,11 @@ public class PageTag extends SimpleTagSupport {
             out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/jquery.validate.ready.js\"></script>");
             out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/jquery.templates.js\"></script>");
             if (usesGoogleMaps) {
-            	out.println("<script type=\"text/javascript\" src=\"http://maps.google.com/maps/api/js?sensor=true\"></script>");
+            	if (usesGoogleMapsGeometry) {
+            		out.println("<script type=\"text/javascript\" src=\"http://maps.google.com/maps/api/js?libraries=geometry&v=3&sensor=true\"></script>");
+            	} else {
+            		out.println("<script type=\"text/javascript\" src=\"http://maps.google.com/maps/api/js?v=3&sensor=true\"></script>");
+            	}
             }
             if (jsFilename != null && !jsFilename.trim().equals("")) {
                 out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/" + jsFilename + ".js\"></script>");

@@ -416,6 +416,13 @@ function saveTour(){
 			if (place.poly){
 				delete place.poly;
 			}
+			
+			var gMapsLocation = place.location;
+			var location = new Object();
+			location.lat = gMapsLocation.lat();
+			location.lng = gMapsLocation.lng();
+			place.location = location;
+			
 			places.push(place);
 		}
 		

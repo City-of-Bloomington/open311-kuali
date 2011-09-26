@@ -9,6 +9,20 @@ function findFoursquareVenues(latlng){
 	jqxhr.error(function() { $("#venues").html("There was an error contacting the Foursquare service."); })
 }
 
+function findFoursquareVenue(id, callback){
+	var url = contextPath + "/maps/foursquare/" + id;
+	var jqxhr = $.ajax({
+	  url: url,
+	  dataType: 'json',
+	  success: function (data) {
+		  var venue = parseVenue(data.response.venue);
+		  callback(venue);
+		  },
+	  crossDomain: true
+	});
+	jqxhr.error(function() { callback(null); })
+}
+
 function parseVenues(data){
 	var venuesHtml = "";
 	venues = new Array();
@@ -68,6 +82,28 @@ function parseVenue(venue){
 	v.id = venue.id;
 	v.type= venueType;
 	v.url = venue.url;
+	var tips = [];
+	if (venue.tips){
+		for (var g=0; g<venue.tips.groups.length; g++){
+			var group = venue.tips.groups[g];
+			if (group.count > 0){
+				for (var t=0; t<group.items.length; t++){
+					var tip = group.items[t];
+					var myTip = new Object();
+					myTip.text = tip.text;
+					myTip.id = tip.id;
+					myTip.user = new Object();
+					myTip.user.name = tip.user.firstName;
+					if (tip.user.lastName){myTip.user.name += ' ' + tip.user.lastName;}
+					myTip.user.photo = tip.user.photo
+					var d = new Date(tip.createdAt*1000);
+					myTip.date = d.toLocaleDateString();
+					tips.push(myTip);
+				}
+			}
+		}
+		v.tips = tips;
+	}
 	return v;
 }
 
