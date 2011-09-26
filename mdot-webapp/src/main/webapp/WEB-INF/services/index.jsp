@@ -14,17 +14,15 @@
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility" %>
 
-<kme:page title="${title}" id="home" appcacheFilename="iumobile.appcache" cssFilename="home" backButton="false" homeButton="false" preferencesButton="true" preferencesButtonURL="campus?toolName=home" loginButton="true" loginButtonURL="home?login=yes">
+<kme:page title="${title}" id="home" cssFilename="home" backButton="false" homeButton="false" preferencesButton="true" preferencesButtonURL="campus?toolName=home" loginButton="true" loginButtonURL="home?login=yes">
 	<kme:content>
 	
 		<!-- <p><a id="manualUpdate" href="#">Check for an updated Cache</a></p> -->
 	
 		<div id="cacheProgressModal">
 			<div id="cacheProgressMessage">
-			<h3>Downloading resources to improve performance.  Please wait.</h3>
-			<p>
-				Progress: <span id="cacheProgress">&nbsp;</span>
-			</p>
+			<h3>Optimizing performance.  Please wait.</h3>
+			<p><span id="cacheProgress">&nbsp;</span></p>
 			
 			<input id="reloadButton" type="button" value="Reload" onClick="window.location.reload()">
 		 
@@ -228,7 +226,7 @@
 			function( event ){
 				logEvent( "Downloading cache" );
 				$('div#cacheProgressModal').fadeIn();
-				$('div#cacheProgressMessage').css('top','40px');
+				$('div#cacheProgressMessage').css('top','60px');
 				// Get the total number of files in our manifest.
 				getTotalFiles();
 			}

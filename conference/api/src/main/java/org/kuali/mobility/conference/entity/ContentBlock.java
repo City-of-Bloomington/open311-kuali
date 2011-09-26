@@ -13,19 +13,21 @@
  * permissions and limitations under the License.
  */
 
-package org.kuali.mobility.conference.service;
+package org.kuali.mobility.conference.entity;
 
-import java.util.List;
+import java.io.Serializable;
 
-import org.kuali.mobility.conference.entity.Attendee;
-import org.kuali.mobility.conference.entity.ContentBlock;
-import org.kuali.mobility.conference.entity.Session;
+public class ContentBlock implements Serializable {
 
-public interface ConferenceService {
+	private static final long serialVersionUID = -2826816981140315473L;
 
-	List<ContentBlock> findAllContentBlocks();
-	List<Attendee> findAllAttendees();
-	List<Session> findAllSessions(String date);
-	Attendee findAttendeeById(String id);
-	Session findSessionById(String id);
+	private String contentBlock;
+
+	public String getContentBlock() {
+    	return contentBlock;
+    }
+
+	public void setContentBlock(String contentBlock) {
+    	this.contentBlock = contentBlock;
+    }
 }

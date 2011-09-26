@@ -31,12 +31,13 @@ div#cacheProgressMessage {
 	padding:10px;
 	left:5%;
 	width:85%;
-	top:30%;
+	top:40%;
 }
 
 div#cacheProgressMessage h3 {
 	padding:0;
 	margin:3px 0 10px 0;
+	text-align:center;
 }
 
 div#cacheProgressMessage #reloadButton {

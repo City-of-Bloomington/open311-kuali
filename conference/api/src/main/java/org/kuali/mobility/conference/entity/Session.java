@@ -23,12 +23,66 @@ public class Session implements Serializable {
 	private static final long serialVersionUID = 4116516860696428892L;
 
 	private String title;
+	private String startTime;
+	private String endTime;
 	private String description;
+	private String location;
+	private String latitude;
+	private String longitude;
+	private String link;
 	private List<Attendee> speakers;
+	
+	public String getLatitude() {
+    	return latitude;
+    }
+
+	public void setLatitude(String latitude) {
+    	this.latitude = latitude;
+    }
+
+	public String getLongitude() {
+    	return longitude;
+    }
+
+	public void setLongitude(String longitude) {
+    	this.longitude = longitude;
+    }
+
+	public String getLink() {
+    	return link;
+    }
+
+	public void setLink(String link) {
+    	this.link = link;
+    }
 
 	public String getTitle() {
 		return title;
 	}
+
+	public String getStartTime() {
+    	return startTime;
+    }
+
+	public void setStartTime(String startTime) {
+    	this.startTime = startTime;
+    }
+
+	public String getEndTime() {
+    	return endTime;
+    }
+
+	public void setEndTime(String endTime) {
+    	this.endTime = endTime;
+    }
+
+	public String getLocation() {
+    	return location;
+    }
+
+	public void setLocation(String location) {
+    	this.location = location;
+    }
 
 	public void setTitle(String title) {
 		this.title = title;

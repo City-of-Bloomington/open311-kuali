@@ -13,21 +13,10 @@
 
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<kme:page title="Attendee List" id="conference" backButton="true" homeButton="true">
+<kme:page title="Session Feedback" id="conference" backButton="true" homeButton="true" cssFilename="conference">
 	<kme:content>
-		<kme:listView>
-			<!--<kme:listItem dataTheme="b" dataRole="list-divider">Conference Attendees</kme:listItem>-->
-			<c:forEach items="${attendees}" var="attendee" varStatus="status">
-		    	<kme:listItem>
-		    		<a href="attendeeDetails/${attendee.id}">
-		    			<h3 class="wrap">
-		    				${attendee.firstName} ${attendee.lastName}
-		    			</h3>
-		    			<p>${attendee.institution}</p>
-		    		</a>
-		    	</kme:listItem>            
-		    </c:forEach>
-		</kme:listView>
+		Thank you for your feedback! 
 	</kme:content>
 </kme:page>

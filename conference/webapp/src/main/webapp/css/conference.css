@@ -9,8 +9,43 @@
   permissions and limitations under the License.
 */
 
+
+
 li p.ui-li-desc {
-	margin: 0;
+	margin: 0 0 10px 0;
 	padding: 0;
 	font-size: 14px;
+	white-space: normal;
+}
+
+a.ui-link-inherit {
+	padding-right:35px !important;
+}
+
+p.tightPadding {
+	padding-right: 0 !important;
+}
+
+
+ul.statewideIT li {
+	padding: 15px !important;
+}
+
+ul.statewideIT .ui-li-thumb {
+	width: auto;
+	height: auto;
+	position: static;
+	float: right;
+	margin: 0 0 15px 15px;
+}
+
+div#daySelectTabs {
+	margin: -15px;
+	height: 30px;
+	padding: 5px;
+}
+
+div#daySelectTabs a {
+	padding:3px 5px;
+	margin:0;
 }

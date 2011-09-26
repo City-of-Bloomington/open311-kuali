@@ -15,68 +15,117 @@
 
 package org.kuali.mobility.conference.controllers;
 
+import java.sql.Timestamp;
 import java.util.List;
+import java.util.StringTokenizer;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.kuali.mobility.conference.entity.Attendee;
+import org.kuali.mobility.conference.entity.ContentBlock;
 import org.kuali.mobility.conference.entity.Session;
+import org.kuali.mobility.conference.entity.SessionFeedback;
 import org.kuali.mobility.conference.service.ConferenceService;
+import org.kuali.mobility.configparams.service.ConfigParamService;
+import org.kuali.mobility.email.service.EmailService;
+import org.kuali.mobility.shared.Constants;
+import org.kuali.mobility.user.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@Controller 
+@Controller
 @RequestMapping("/conference")
 public class ConferenceController {
 
 	@Autowired
 	private ConferenceService conferenceService;
-    public void setConferenceService(ConferenceService conferenceService) {
-    	this.conferenceService = conferenceService;
-    }
 
-    @RequestMapping(method = RequestMethod.GET)
-    public String index(Model uiModel) {
-		//List<Attendee> attendees = conferenceService.findAllAttendees();
-		//uiModel.addAttribute("attendees", attendees);
-    	return "conference/index";
-    }
-    
-    @RequestMapping(value = "/attendees", method = RequestMethod.GET)
-    public String attendees(Model uiModel) {
+	@Autowired
+	private ConfigParamService configParamService;
+
+	@Autowired
+	private EmailService emailService;
+
+	public void setConferenceService(ConferenceService conferenceService) {
+		this.conferenceService = conferenceService;
+	}
+
+	@RequestMapping(method = RequestMethod.GET)
+	public String index(Model uiModel) {
+		// List<Attendee> attendees = conferenceService.findAllAttendees();
+		// uiModel.addAttribute("attendees", attendees);
+		return "conference/index";
+	}
+
+	@RequestMapping(value = "/welcome", method = RequestMethod.GET)
+	public String welcome(Model uiModel) {
+		List<ContentBlock> contentBlocks = conferenceService.findAllContentBlocks();
+		uiModel.addAttribute("contentBlocks", contentBlocks);
+		return "conference/welcome";
+	}
+
+	@RequestMapping(value = "/attendees", method = RequestMethod.GET)
+	public String attendees(Model uiModel) {
 		List<Attendee> attendees = conferenceService.findAllAttendees();
 		uiModel.addAttribute("attendees", attendees);
-    	return "conference/attendees"; 
-    }
-	
-	@RequestMapping(value = "/attendeeDetails", method = RequestMethod.GET)
-	public String attendeeDetails(Model uiModel, @RequestParam(required = true) int id) {
-	    List<Attendee> attendees = conferenceService.findAllAttendees();
-	    uiModel.addAttribute("attendee", attendees.get(id));
-	    return "conference/attendeeDetails";
+		return "conference/attendees";
 	}
 
-    @RequestMapping(value = "/sessions", method = RequestMethod.GET)
-    public String sessions(Model uiModel) {
-		List<Session> sessions = conferenceService.findAllSessions();
+	@RequestMapping(value = "/attendeeDetails/{id}", method = RequestMethod.GET)
+	public String attendeeDetails(@PathVariable("id") String id, Model uiModel) {
+		Attendee attendee = conferenceService.findAttendeeById(id);
+		uiModel.addAttribute("attendee", attendee);
+		return "conference/attendeeDetails";
+	}
+
+	@RequestMapping(value = "/sessions", method = RequestMethod.GET)
+	public String sessions(@RequestParam(value="date", required=false) String date, Model uiModel) {
+		List<Session> sessions = conferenceService.findAllSessions(date);
 		uiModel.addAttribute("sessions", sessions);
-    	return "conference/sessions";
-    }
-	
+		return "conference/sessions";
+	}
+
 	@RequestMapping(value = "/sessionDetails", method = RequestMethod.GET)
 	public String sessionDetails(Model uiModel, @RequestParam(required = true) int id) {
-	    List<Session> sessions = conferenceService.findAllSessions();
-	    uiModel.addAttribute("session", sessions.get(id));
-	    return "conference/sessionDetails";
+		List<Session> sessions = conferenceService.findAllSessions("");
+		uiModel.addAttribute("session", sessions.get(id));
+		uiModel.addAttribute("sessionFeedback", new SessionFeedback());
+		return "conference/sessionDetails";
 	}
-	
+
+	@RequestMapping(value = "/sessionFeedback", method = RequestMethod.POST)
+	public String submitFeedback(Model uiModel, HttpServletRequest request, @ModelAttribute("sessionFeedback") SessionFeedback sessionFeedback) {
+		User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
+		sessionFeedback.setTimePosted(new Timestamp(System.currentTimeMillis()));
+		sessionFeedback.setPrincipalName(user.getPrincipalName());
+		sendEmail(sessionFeedback);
+		return "conference/sessionFeedbackThanks";
+	}
+
 	@RequestMapping(value = "/sessionSpeakerDetails", method = RequestMethod.GET)
 	public String sessionSpeakerDetails(Model uiModel, @RequestParam(required = true) int id) {
-	    List<Session> sessions = conferenceService.findAllSessions();
-	    uiModel.addAttribute("session", sessions.get(id));
-	    return "conference/sessionSpeakerDetails";
+		List<Session> sessions = conferenceService.findAllSessions("");
+		uiModel.addAttribute("session", sessions.get(id));
+		return "conference/sessionSpeakerDetails";
 	}
-	
+
+	private void sendEmail(SessionFeedback f) {
+		try {
+			String emailAddress = configParamService.findValueByName("Feedback.SendEmail.EmailAddress");
+			StringTokenizer stringTokenizer = new StringTokenizer(emailAddress);
+			while (stringTokenizer.hasMoreTokens()) {
+				String email = stringTokenizer.nextToken();
+				emailService.sendEmail(f.toString(), "SWITC Feedback", email, configParamService.findValueByName("Core.EmailAddress"));
+			}
+		} catch (Exception e) {
+		}
+		System.out.println(f.toString());
+	}
+
 }

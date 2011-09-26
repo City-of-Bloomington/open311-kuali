@@ -14,8 +14,10 @@
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility" %>
 
-<kme:page title="Sessions" id="conference" backButton="true" homeButton="true">
+<kme:page title="Sessions" id="conference" backButton="true" backButtonURL="${pageContext.request.contextPath}/conference" homeButton="true" cssFilename="conference">
 	<kme:content>
+	
+		<div id="daySelectTabs"><a href="?date=">All Days</a> - <a href="?date=092811">Wed</a> - <a href="?date=092911">Thu</a> - <a href="?date=093011">Fri</a> - <a href="?date=100111">Sat</a></div>
 		<kme:listView>
 			
 			<c:forEach items="${sessions}" var="session" varStatus="status">
@@ -24,8 +26,38 @@
 		    			<h3 class="wrap">
 		    				${session.title}
 		    			</h3>
-		    			<p class="wrap">${session.description}</p>
+		    			<p class="wrap">Time: 
+			    			<c:choose>
+			    				<c:when test="${not empty session.startTime && session.startTime != 'null'}">
+			    					${session.startTime}
+					    			<c:if test="${not empty session.endTime && session.endTime != 'null'}">
+					    				 - ${session.endTime}
+					    			</c:if>
+			    				</c:when>
+			    				<c:otherwise>
+			    					<c:choose>
+					    				<c:when test="${not empty session.endTime && session.endTime != 'null'}">
+					    					 Ends: ${session.endTime}
+					    				</c:when>
+					    				<c:otherwise>
+					    					TDB
+					    				</c:otherwise>
+				    				</c:choose>
+			    				</c:otherwise>
+			    			</c:choose>
+		    			</p>
+		    			<p class="wrap">Location: 
+		    				<c:choose>
+			    				<c:when test="${not empty session.location && session.location != 'null'}">
+			    					${session.location}
+			    				</c:when>
+			    				<c:otherwise>
+			    					TDB
+			    				</c:otherwise>
+			    			</c:choose>
+		    			</p>
 		    			
+		    			<%-- <p class="wrap">Description: ${session.description}</p> --%>
 		    		</a>
 		    	</kme:listItem>            
 		    </c:forEach>

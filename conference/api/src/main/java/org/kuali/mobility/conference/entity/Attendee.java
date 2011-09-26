@@ -21,6 +21,7 @@ public class Attendee implements Serializable, Comparable<Attendee> {
 
 	private static final long serialVersionUID = -2826816981140315473L;
 
+	private String id;
 	private String firstName;
 	private String lastName;
 	private String email;
@@ -33,6 +34,14 @@ public class Attendee implements Serializable, Comparable<Attendee> {
 	private String workState;
 	private String workZip;
 	private String country;
+
+	public String getId() {
+    	return id;
+    }
+
+	public void setId(String id) {
+    	this.id = id;
+    }
 
 	public String getFirstName() {
 		return firstName;

@@ -18,6 +18,14 @@
 	<kme:content>
 		<kme:listView>
 			<kme:listItem>
+	    		<a href="conference/welcome">
+	    			<h3 class="wrap">
+	    				Welcome
+	    			</h3>
+	    			<p>A message from Brad Wheeler</p>
+	    		</a>
+	    	</kme:listItem>
+			<kme:listItem>
 	    		<a href="conference/sessions">
 	    			<h3 class="wrap">
 	    				Sessions
