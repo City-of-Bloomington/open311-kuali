@@ -40,10 +40,10 @@ if (typeof(google.maps.Polyline.prototype.runEdit) === "undefined") {
     var self = this;
     if (flag) {
       var imgGhostVertex = new google.maps.MarkerImage(
-                '/mdot/css/ghostVertex.png', new google.maps.Size(11, 11),
+                contextPath + '/css/ghostVertex.png', new google.maps.Size(11, 11),
                 new google.maps.Point(0, 0), new google.maps.Point(6, 6));
       var imgGhostVertexOver = new google.maps.MarkerImage(
-                '/mdot/css/ghostVertexOver.png', new google.maps.Size(11, 11),
+    		    contextPath + '/css/ghostVertexOver.png', new google.maps.Size(11, 11),
                 new google.maps.Point(0, 0), new google.maps.Point(6, 6));
       var ghostPath = new google.maps.Polyline({
         map : this.getMap(),
@@ -118,10 +118,10 @@ if (typeof(google.maps.Polyline.prototype.runEdit) === "undefined") {
         return null;
       };
     }
-    var imgVertex = new google.maps.MarkerImage('/mdot/css/vertex.png',
+    var imgVertex = new google.maps.MarkerImage(contextPath + '/css/vertex.png',
       new google.maps.Size(11, 11), new google.maps.Point(0, 0),
       new google.maps.Point(6, 6));
-    var imgVertexOver = new google.maps.MarkerImage('/mdot/css/vertexOver.png',
+    var imgVertexOver = new google.maps.MarkerImage(contextPath + '/css/vertexOver.png',
       new google.maps.Size(11, 11), new google.maps.Point(0, 0),
       new google.maps.Point(6, 6));
     var vertexMouseOver = function () {

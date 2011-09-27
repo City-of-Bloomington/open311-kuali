@@ -121,7 +121,7 @@
 	    function updateStartEndMarkers() {
 	    	var path = poly.getPath();
 	    	if (path.getLength() > 0){
-    			var markerImage = new google.maps.MarkerImage('/mdot/images/start.png');
+    			var markerImage = new google.maps.MarkerImage('${pageContext.request.contextPath}/images/start.png');
     			startMarker = new google.maps.Marker({
     				position: path.getAt(0),
     				title: 'Start',
@@ -132,7 +132,7 @@
 	    	}
 	    	
 	    	if (path.getLength() > 1){
-    			var markerImage = new google.maps.MarkerImage('/mdot/images/end.png');
+    			var markerImage = new google.maps.MarkerImage('${pageContext.request.contextPath}/images/end.png');
     			stopMarker = new google.maps.Marker({
     				position: path.getAt(path.getLength()-1),
     				title: 'End',
