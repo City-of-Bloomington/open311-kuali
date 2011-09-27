@@ -83,7 +83,7 @@ public class UserImpl implements User, Serializable {
 	private boolean publicUser;
 	
 	@Transient
-	private UserCache cache;
+	private final UserCache cache = new UserCache();
 
 	@Transient
 	private String ipAddress;
@@ -93,7 +93,6 @@ public class UserImpl implements User, Serializable {
 		userAttributes = new HashMap<String, String>();
 		groups = new ArrayList<String>();
 		affiliations = new ArrayList<String>();
-		cache = new UserCache();
 	}
 
 	public UserImpl(boolean publicUser) {
