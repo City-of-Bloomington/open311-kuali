@@ -22,7 +22,7 @@
 			
 			<c:forEach items="${sessions}" var="session" varStatus="status">
 		    	<kme:listItem>
-		    		<a href="sessionDetails?id=${status.index}">
+		    		<a href="sessionDetails/${session.id}">
 		    			<h3 class="wrap">
 		    				${session.title}
 		    			</h3>

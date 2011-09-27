@@ -20,15 +20,16 @@
 	        </kme:listItem>
 	        <kme:listItem>
 	        	<p>
-	        	<c:if test="${not empty attendee.institution}" >${attendee.institution}<br/></c:if>
+	        	<c:if test="${not empty attendee.institution}" >Title: ${attendee.title}<br/></c:if>
+	        	<c:if test="${not empty attendee.institution}" >Organization: ${attendee.institution}<br/></c:if>
+	        	<c:if test="${not empty attendee.institution}" >Campus: ${attendee.campus}<br/></c:if>
 	        	<c:if test="${not empty attendee.workAddress1}" >${attendee.workAddress1}<br/></c:if>
 	        	<c:if test="${not empty attendee.workAddress2}" >${attendee.workAddress2}<br/></c:if>
 	        	<c:if test="${not empty attendee.workCity}" >${attendee.workCity} </c:if>
 	        	<c:if test="${not empty attendee.workState}" >${attendee.workState}</c:if>
 	        	<c:if test="${not empty attendee.workState && not empty attendee.workZip}" >, </c:if>
 	        	<c:if test="${not empty attendee.workZip}" >${attendee.workZip}</c:if>
-	        	<br/>
-	        	<c:if test="${not empty attendee.country}" >${attendee.country}</c:if>
+	        	<c:if test="${not empty attendee.country}" ><br/>${attendee.country}</c:if>
 	        	</p>
 	        </kme:listItem>
 	        

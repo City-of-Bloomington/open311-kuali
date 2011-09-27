@@ -73,6 +73,34 @@ public class ConferenceServiceImpl implements ConferenceService {
 	
 	@SuppressWarnings("unchecked")
 	@Override
+	public List<ContentBlock> findFeaturedSpeakers() {
+		List<ContentBlock> contentBlocks = new ArrayList<ContentBlock>();
+		try {
+			String json = retrieveJSON("http://www.indiana.edu/~spea/featuredSpeakers.json");
+
+			JSONArray simpleContentArray = (JSONArray) JSONSerializer.toJSON(json);
+			
+			for (Iterator<JSONObject> iter = simpleContentArray.iterator(); iter.hasNext();) {
+				try {
+					JSONObject contentBlockObject = iter.next();
+					
+					ContentBlock contentBlock = new ContentBlock();
+					contentBlock.setContentBlock(contentBlockObject.getString("welcome"));
+
+					contentBlocks.add(contentBlock);
+				} catch (Exception e) {
+					LOG.error(e.getMessage(), e);
+				}
+			}
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+		}
+
+		return contentBlocks;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
 	public List<Attendee> findAllAttendees() {
 		List<Attendee> attendees = new ArrayList<Attendee>();
 		try {
@@ -92,6 +120,8 @@ public class ConferenceServiceImpl implements ConferenceService {
 					attendee.setFirstName(attendeeObject.getString("firstName"));
 					attendee.setLastName(attendeeObject.getString("lastName"));
 					attendee.setInstitution(attendeeObject.getString("institution"));
+					attendee.setCampus(attendeeObject.getString("campus"));
+					attendee.setTitle(attendeeObject.getString("title"));
 					//attendee.setWorkAddress1(attendeeObject.getString("workAddress1"));
 					//attendee.setWorkAddress2(attendeeObject.getString("workAddress2"));
 					//attendee.setWorkCity(attendeeObject.getString("workCity"));
@@ -128,6 +158,7 @@ public class ConferenceServiceImpl implements ConferenceService {
 					JSONObject sessionObject = iter.next();
 					
 					Session session = new Session();
+					session.setId(sessionObject.getString("id"));
 					session.setTitle(sessionObject.getString("title"));
 					session.setDescription(sessionObject.getString("description"));
 					session.setLocation(sessionObject.getString("location"));
@@ -152,13 +183,9 @@ public class ConferenceServiceImpl implements ConferenceService {
 					} catch (ParseException e) {
 						//System.out.println("Exception :" + e);
 					}
-					
-					//System.out.println(session.getTitle());
+
 					
 					JSONArray tempSpeakers = sessionObject.getJSONArray("speakers");
-					//for (Object object : tempSpeakers) {
-	                //    System.out.println(object);	
-                    //}
 		
 					
 				List<Attendee> speakers = new ArrayList<Attendee>();
@@ -170,46 +197,12 @@ public class ConferenceServiceImpl implements ConferenceService {
 		            	speaker.setFirstName(speakersObject.getString("firstName"));
 		            	speaker.setLastName(speakersObject.getString("lastName"));
 		            	speaker.setEmail(speakersObject.getString("email"));
-		            	
-		       
-		            	//System.out.println(session.getTitle() + " - " + speaker.getFirstName() + " " + speaker.getLastName());
-		            	
-		            	
-		            	
-		                //Forum item = new Forum();
-		                //item.setForumId(object.getString("forumId"));
-		                //item.setTitle(object.getString("forumTitle"));
-		                
-		                /*
-		                JSONArray sessionSpeakersArray = object.getJSONArray("sessionSpeakers");
-		                int unreadCount = 0;
-		                for (int j = 0; j < topicsArray.size(); j++) {
-		                    unreadCount += topicsArray.getJSONObject(j).getInt("unreadMessagesCount");
-		                }
-		                */
-		                /*item.setUnreadCount(unreadCount);*/
-		                //forums.add(item);
-		            	
-	            	
+		            	speaker.setTitle(speakersObject.getString("title"));
+		            	speaker.setInstitution(speakersObject.getString("organization"));
 		            	speakers.add(speaker);
 		            }
 					
 					session.setSpeakers(speakers);
-				
-					/*for (int i = 0; i < itemArray.size(); i++) {
-		            	JSONObject object = itemArray.getJSONObject(i);
-		                Forum item = new Forum();
-		                item.setForumId(object.getString("forumId"));
-		                item.setTitle(object.getString("forumTitle"));
-		                
-		                JSONArray topicsArray = object.getJSONArray("topics");
-		                int unreadCount = 0;
-		                for (int j = 0; j < topicsArray.size(); j++) {
-		                    unreadCount += topicsArray.getJSONObject(j).getInt("unreadMessagesCount");
-		                }
-		                item.setUnreadCount(unreadCount);
-		                forums.add(item);
-		            }*/
 			
 				sessions.add(session);
 				} catch (Exception e) {
@@ -251,7 +244,12 @@ public class ConferenceServiceImpl implements ConferenceService {
 
 	@Override
     public Session findSessionById(String id) {
-	    // TODO Auto-generated method stub
+		List<Session> sessions = findAllSessions("");
+	    for (Session session : sessions) {
+	    	if (session.getId() != null && session.getId().equals(id)) {
+	    		return session;
+	    	}
+        }
 	    return null;
     }
 	

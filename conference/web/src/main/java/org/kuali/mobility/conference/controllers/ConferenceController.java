@@ -69,6 +69,13 @@ public class ConferenceController {
 		uiModel.addAttribute("contentBlocks", contentBlocks);
 		return "conference/welcome";
 	}
+	
+	@RequestMapping(value = "/featuredSpeakers", method = RequestMethod.GET)
+	public String featuredSpeakers(Model uiModel) {
+		List<ContentBlock> contentBlocks = conferenceService.findFeaturedSpeakers();
+		uiModel.addAttribute("contentBlocks", contentBlocks);
+		return "conference/featuredSpeakers";
+	}
 
 	@RequestMapping(value = "/attendees", method = RequestMethod.GET)
 	public String attendees(Model uiModel) {
@@ -91,10 +98,10 @@ public class ConferenceController {
 		return "conference/sessions";
 	}
 
-	@RequestMapping(value = "/sessionDetails", method = RequestMethod.GET)
-	public String sessionDetails(Model uiModel, @RequestParam(required = true) int id) {
-		List<Session> sessions = conferenceService.findAllSessions("");
-		uiModel.addAttribute("session", sessions.get(id));
+	@RequestMapping(value = "/sessionDetails/{id}", method = RequestMethod.GET)
+	public String sessionDetails(@PathVariable("id") String id, Model uiModel) {
+		Session session = conferenceService.findSessionById(id);
+		uiModel.addAttribute("session", session);
 		uiModel.addAttribute("sessionFeedback", new SessionFeedback());
 		return "conference/sessionDetails";
 	}

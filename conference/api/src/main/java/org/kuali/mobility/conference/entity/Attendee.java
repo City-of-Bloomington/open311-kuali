@@ -28,6 +28,8 @@ public class Attendee implements Serializable, Comparable<Attendee> {
 	private String workPhone;
 	private String cellPhone;
 	private String institution;
+	private String campus;
+	private String title;
 	private String workAddress1;
 	private String workAddress2;
 	private String workCity;
@@ -90,6 +92,22 @@ public class Attendee implements Serializable, Comparable<Attendee> {
 	public void setInstitution(String institution) {
 		this.institution = institution;
 	}
+	
+	public String getCampus() {
+    	return campus;
+    }
+	
+	public String getTitle() {
+    	return title;
+    }
+
+	public void setTitle(String title) {
+    	this.title = title;
+    }
+
+	public void setCampus(String campus) {
+    	this.campus = campus;
+    }
 
 	public String getWorkAddress1() {
 		return workAddress1;

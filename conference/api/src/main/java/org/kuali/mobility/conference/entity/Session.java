@@ -22,6 +22,7 @@ public class Session implements Serializable {
 
 	private static final long serialVersionUID = 4116516860696428892L;
 
+	private String id;
 	private String title;
 	private String startTime;
 	private String endTime;
@@ -32,6 +33,14 @@ public class Session implements Serializable {
 	private String link;
 	private List<Attendee> speakers;
 	
+	public String getId() {
+    	return id;
+    }
+
+	public void setId(String id) {
+    	this.id = id;
+    }
+
 	public String getLatitude() {
     	return latitude;
     }

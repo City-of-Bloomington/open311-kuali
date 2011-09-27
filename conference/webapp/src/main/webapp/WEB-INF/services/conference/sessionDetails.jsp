@@ -15,13 +15,13 @@
 
 <kme:page title="Session Details" id="sessiondetails" homeButton="true" backButton="true" cssFilename="conference">
 	<kme:content>
-	    <kme:listView id="sessionList" filter="false" dataTheme="c" dataInset="false">
+	    <kme:listView id="sessionList" filter="false" dataTheme="c" dataInset="false" cssClass="sessionDetails">
 			<kme:listItem dataRole="list-divider">
 	        	${session.title}
 	        </kme:listItem>
 	        
         	<c:if test="${not empty session.description}" >
-        		<kme:listItem cssClass="tightPadding">
+        		<kme:listItem>
         			<h3>About this Session:</h3>
         			<p class="wrap tightPadding">${session.description}</p>
         		</kme:listItem>
@@ -33,7 +33,6 @@
 	        	</kme:listItem>
 	        </c:if>
 	        
-	        
 	        <c:if test="${!empty session.speakers}">
 		        <kme:listItem dataRole="list-divider">Speakers</kme:listItem>   
 		        <c:forEach items="${session.speakers}" var="speaker" varStatus="status">
@@ -43,6 +42,8 @@
 			    				${speaker.firstName} ${speaker.lastName}
 			    			</h3>
 			    			<p class="wrap">${speaker.email}</p>
+			    			<p class="wrap">${speaker.title}</p>
+			    			<p class="wrap">${speaker.institution}</p>
 			    		<%-- </a> --%>
 			    	</kme:listItem>            
 			    </c:forEach>
@@ -50,47 +51,32 @@
 	        
 	        <kme:listItem dataRole="list-divider">Rate this Session:</kme:listItem>
 	        <kme:listItem>
-        		
-        		
-        		
-        	 	
+
 				<form:form action="${pageContext.request.contextPath}/conference/sessionFeedback" commandName="sessionFeedback" data-ajax="false" method="post">
-				
-					<%--<div class="ratingStar" id="star1" onclick="this.form.elements[\"rating\"].value = '1';">1</div>
-	        		<div class="ratingStar" id="star2" onclick="this.form.elements[\"rating\"].value = '2';">2</div>
-	        		<div class="ratingStar" id="star3" onclick="this.form.elements[\"rating\"].value = '3';">3</div>
-	        		<div class="ratingStar" id="star4" onclick="this.form.elements[\"rating\"].value = '4';">4</div>
-	        		<div class="ratingStar" id="star5" onclick="this.form.elements[\"rating\"].value = '5';">5</div>
-		            --%>
+					<div>
+						<div class="ratingStar" id="star1">1</div>
+		        		<div class="ratingStar" id="star2">2</div>
+		        		<div class="ratingStar" id="star3">3</div>
+		        		<div class="ratingStar" id="star4">4</div>
+		        		<div class="ratingStar" id="star5">5</div>
+		            </div>
 		            
-		            <fieldset>
-			            <form:radiobutton path="rating" value="1" label="1 Star" />
-			            <form:radiobutton path="rating" value="2" label="2 Stars" />
-			            <form:radiobutton path="rating" value="3" label="3 Stars" />
-			            <form:radiobutton path="rating" value="4" label="4 Stars" />
-			            <form:radiobutton path="rating" value="5" label="5 Stars" />
-		            </fieldset>
+		            <input type="hidden" id="rating" name="rating"/>
 		            
-		            <%-- <form:hidden path="rating"/>  --%>
-		            
-		            <fieldset>
-		               
+		            <div style="clear:left;">
+		            	<fieldset>
 		                    <label for="comments">Comments:</label>
 		                    <form:textarea path="comments" cols="40" rows="8" />
-		               
-		            </fieldset>
+		            	</fieldset>
+		            </div>
 		            
 		            <div data-inline="true">
 		                <div class="ui-grid-a">
-		                    <div class="ui-block-b">
-		                        <input data-theme="a" class="submit" type="submit" value="Submit" />
-		                    </div>
+		                    <input data-theme="a" class="submit" type="submit" value="Submit" />
 		                </div>
 		            </div>
 		        </form:form>
-		        		
-        		
-        			
+	
         	</kme:listItem>
 	        
 	        <c:if test="${not empty session.link}" >
@@ -100,5 +86,21 @@
 	        	</kme:listItem>
 	        </c:if>
 		</kme:listView>
+		
+		<script>
+		$(function() {
+			$('div.ratingStar').click(
+				function () {
+					clickedRating = parseInt($(this).html());
+					if (1 <= clickedRating) { $("div#star1").addClass("starOn"); } else { $("div#star1").removeClass("starOn"); }
+					if (2 <= clickedRating) { $("div#star2").addClass("starOn"); } else { $("div#star2").removeClass("starOn"); }
+					if (3 <= clickedRating) { $("div#star3").addClass("starOn"); } else { $("div#star3").removeClass("starOn"); }
+					if (4 <= clickedRating) { $("div#star4").addClass("starOn"); } else { $("div#star4").removeClass("starOn"); }
+					if (5 <= clickedRating) { $("div#star5").addClass("starOn"); } else { $("div#star5").removeClass("starOn"); }				
+					$("input#rating").val($(this).html());
+				}
+			);
+		});
+		</script>
 	</kme:content>
 </kme:page>

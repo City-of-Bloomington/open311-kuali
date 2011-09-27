@@ -31,13 +31,32 @@ ul.statewideIT li {
 	padding: 15px !important;
 }
 
-ul.statewideIT .ui-li-thumb {
-	width: auto;
-	height: auto;
-	position: static;
-	float: right;
-	margin: 0 0 15px 15px;
+ul.sessionDetails li {
+	padding-right: 15px !important;
 }
+
+
+ul.statewideIT .ui-li-thumb {
+	position: static;
+	float: none;
+	margin: 0;
+}
+
+.ui-li-thumb {
+	max-height: none;
+	max-width: none;
+}
+
+/*img.ui-li-thumb {*/
+p.ui-li-desc img {
+	/*float: right;*/
+	max-width: none;
+	max-height: none;
+	/*width: 100px;*/
+	padding: 0 0 15px 15px;
+	/*border:1px solid #f00;*/
+}
+
 
 div#daySelectTabs {
 	margin: -15px;
@@ -48,4 +67,19 @@ div#daySelectTabs {
 div#daySelectTabs a {
 	padding:3px 5px;
 	margin:0;
+}
+
+div.ratingStar {
+	float:left;
+	width: 50px;
+	height: 50px;
+	display: block;
+	padding: 0;
+	margin: 0 7px 0 0;
+	background: transparent url('../images/service-icons/starRating.png') top left no-repeat;
+	text-indent: -9999px;
+}
+
+div.starOn {
+	background-position: 0 -50px;
 }

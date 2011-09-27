@@ -22,23 +22,39 @@
 	    			<h3 class="wrap">
 	    				Welcome
 	    			</h3>
-	    			<p>A message from Brad Wheeler</p>
+	    			<p class="wrap">A message from Brad Wheeler</p>
 	    		</a>
 	    	</kme:listItem>
 			<kme:listItem>
 	    		<a href="conference/sessions">
 	    			<h3 class="wrap">
-	    				Sessions
+	    				Schedule
 	    			</h3>
-	    			<p>Keynotes and breakout sessions</p>
+	    			<p class="wrap">Keynotes, breakout sessions and events</p>
 	    		</a>
-	    	</kme:listItem>  
+	    	</kme:listItem>
+	    	<kme:listItem>
+	    		<a href="conference/featuredSpeakers">
+	    			<h3 class="wrap">
+	    				Featured Speakers
+	    			</h3>
+	    			<p class="wrap">Profiles of keynote speakers and panelists</p>
+	    		</a>
+	    	</kme:listItem>
 	    	<kme:listItem>
 	    		<a href="conference/attendees">
 	    			<h3 class="wrap">
 	    				Attendee List
 	    			</h3>
-	    			<p>Who is attending Statewide IT</p>
+	    			<p class="wrap">Who is attending Statewide IT</p>
+	    		</a>
+	    	</kme:listItem>
+	    	<kme:listItem>
+	    		<a href="http://statewideit.iu.edu/files/images/imumap10.jpg">
+	    			<h3 class="wrap">
+	    				Indiana Memorial Union Map
+	    			</h3>
+	    			<p class="wrap">Find the location of the different sessions taking place in the Union</p>
 	    		</a>
 	    	</kme:listItem>
 		</kme:listView>
