@@ -619,6 +619,12 @@ insert into CONFIG_PARAM_MAINT_T (CONFIG_PARAM_ID, NAME, VALUE, VER_NBR) values 
 /
 insert into CONFIG_PARAM_MAINT_T (CONFIG_PARAM_ID, NAME, VALUE, VER_NBR) values (SEQ_CONFIG_PARAM_MAINT_T.NEXTVAL, 'Sakai.Url.Base', 'https://oncourse.iu.edu/oauthdirect/', 0)
 /
+insert into CONFIG_PARAM_MAINT_T (CONFIG_PARAM_ID, NAME, VALUE, VER_NBR) values (SEQ_CONFIG_PARAM_MAINT_T.NEXTVAL, 'Sakai.Sites.Timeout', '30', 0)
+/
+insert into CONFIG_PARAM_MAINT_T (CONFIG_PARAM_ID, NAME, VALUE, VER_NBR) values (SEQ_CONFIG_PARAM_MAINT_T.NEXTVAL, 'Sakai.Site.Roster.Timeout', '30', 0)
+/
+insert into CONFIG_PARAM_MAINT_T (CONFIG_PARAM_ID, NAME, VALUE, VER_NBR) values (SEQ_CONFIG_PARAM_MAINT_T.NEXTVAL, 'Sakai.Site.Resources.Timeout', '30', 0)
+/
 insert into CONFIG_PARAM_MAINT_T (CONFIG_PARAM_ID, NAME, VALUE, VER_NBR) values (SEQ_CONFIG_PARAM_MAINT_T.NEXTVAL, 'SocialMedia.Twitter.TweetCount', '25', 0)
 /
 insert into CONFIG_PARAM_MAINT_T (CONFIG_PARAM_ID, NAME, VALUE, VER_NBR) values (SEQ_CONFIG_PARAM_MAINT_T.NEXTVAL, 'SocialMedia.Twitter.Feeds', 'IndianaUniv,idsnews,IDS_Opinion,IU_Health,IUBookstore,UITSNEWS,iumedschool,IUTraffic,IUEMC,OurIndiana,IUAA', 0)
