@@ -48,13 +48,13 @@ public class AlertsController {
     public String getList(HttpServletRequest request, Model uiModel) {
    	    //List<Alert> alerts = alertsService.findAllAlertsFromJson(request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/testdata/alerts.json");
    	 	
-    	User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
+//    	User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
 //    	String selectedCampus = "";
-    	if (user.getViewCampus() == null) {
-    		return "redirect:/campus?toolName=alerts";
-    	} else {
+//    	if (user.getViewCampus() == null) {
+//    		return "redirect:/campus?toolName=alerts";
+//    	} else {
 //    		selectedCampus = user.getViewCampus();
-    	}
+//    	}
     		
 //      Disable static rendering data source
 //    	Map<String, String> criteria = new HashMap<String, String>();
