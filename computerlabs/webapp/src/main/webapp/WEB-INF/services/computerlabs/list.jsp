@@ -27,7 +27,7 @@
 			{{each(i,lab) computerLabs}}
       			<li data-id="\${buildingCode}" detailId="\${labCode}">
 					{{if buildingCode}}
-						<a href="/mdot/maps?id=\${buildingCode}">
+						<a href="${pageContext.request.contextPath}/maps?id=\${buildingCode}">
         					<h3>\${labCode}</h3>
         					<p>\${availability} seats available</p>
 						</a>
