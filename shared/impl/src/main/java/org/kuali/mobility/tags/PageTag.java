@@ -109,11 +109,11 @@ public class PageTag extends SimpleTagSupport {
         JspWriter out = pageContext.getOut();
         try {
             out.println("<!DOCTYPE html>");
-            if (appcacheFilename != null && !appcacheFilename.trim().equals("")) {
-            	out.println("<html manifest=\"" + contextPath + "/" + appcacheFilename + "\">");
-            } else {
-            	out.println("<html>");
-            }
+            //if (appcacheFilename != null && !appcacheFilename.trim().equals("")) {
+            //	out.println("<html manifest=\"" + contextPath + "/" + appcacheFilename + "\">");
+            //} else {
+            out.println("<html>");
+            //}
             
             out.println("<head>");
             out.println("<title>" + title + "</title>");
