@@ -24,6 +24,7 @@ public class SessionFeedback implements Serializable {
 
 	private String rating;
 	private String comments;
+	private String sessionId;
 	private String sessionName;
 	private String principalName;
 	private Timestamp timePosted;
@@ -43,6 +44,14 @@ public class SessionFeedback implements Serializable {
 	public void setComments(String comments) {
 		this.comments = comments;
 	}
+
+	public String getSessionId() {
+    	return sessionId;
+    }
+
+	public void setSessionId(String sessionId) {
+    	this.sessionId = sessionId;
+    }
 
 	public String getSessionName() {
 		return sessionName;
@@ -71,8 +80,10 @@ public class SessionFeedback implements Serializable {
 	@Override
 	public String toString() {
 		String newline = "\r\n";
-		 String str = "Comments: "+ this.getComments();
+		 String str = "Session ID: "+ this.getSessionId();
+		 str = str + newline + "Session Name: " + this.getSessionName();
 		 str = str + newline + "Rating: " + this.getRating();
+		 str = str + newline + "Comments: " + this.getComments();
 		 str = str + newline + "Network ID: " + this.getPrincipalName();
 		 str = str + newline + "Time Posted: " + this.getTimePosted();
 		 return str;

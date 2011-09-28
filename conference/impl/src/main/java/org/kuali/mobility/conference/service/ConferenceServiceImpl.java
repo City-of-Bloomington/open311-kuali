@@ -101,7 +101,8 @@ public class ConferenceServiceImpl implements ConferenceService {
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Attendee> findAllAttendees() {
+	public List<Attendee> findAllAttendees(char start, char end) {
+		
 		List<Attendee> attendees = new ArrayList<Attendee>();
 		try {
 			String json = retrieveJSON("http://statewideit.iu.edu/program/sessions/attendeesfeed.php");
@@ -129,7 +130,10 @@ public class ConferenceServiceImpl implements ConferenceService {
 					//attendee.setWorkZip(attendeeObject.getString("workZip"));
 					//attendee.setCountry(attendeeObject.getString("country"));
 					
-					attendees.add(attendee);
+					char c = attendee.getLastName().toUpperCase().charAt(0);
+					if (c >= start && c <= end) {						
+						attendees.add(attendee);
+					}
 				} catch (Exception e) {
 					LOG.error(e.getMessage(), e);
 				}
@@ -233,7 +237,7 @@ public class ConferenceServiceImpl implements ConferenceService {
 
 	@Override
     public Attendee findAttendeeById(String id) {
-	    List<Attendee> attendees = findAllAttendees();
+	    List<Attendee> attendees = findAllAttendees('A', 'Z');
 	    for (Attendee attendee : attendees) {
 	    	if (attendee.getId() != null && attendee.getId().equals(id)) {
 	    		return attendee;

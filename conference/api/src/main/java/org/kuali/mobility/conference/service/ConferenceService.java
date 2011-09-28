@@ -25,7 +25,7 @@ public interface ConferenceService {
 
 	List<ContentBlock> findAllContentBlocks();
 	List<ContentBlock> findFeaturedSpeakers();
-	List<Attendee> findAllAttendees();
+	List<Attendee> findAllAttendees(char start, char end);
 	List<Session> findAllSessions(String date);
 	Attendee findAttendeeById(String id);
 	Session findSessionById(String id);

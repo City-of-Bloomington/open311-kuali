@@ -62,6 +62,8 @@
 		            </div>
 		            
 		            <input type="hidden" id="rating" name="rating"/>
+		            <input type="hidden" id="sessionId" name="sessionId" value="${session.id}"/>
+		            <input type="hidden" id="sessionName" name="sessionName" value="${session.title}"/>
 		            
 		            <div style="clear:left;">
 		            	<fieldset>

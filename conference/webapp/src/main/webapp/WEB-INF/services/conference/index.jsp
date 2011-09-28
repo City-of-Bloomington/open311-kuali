@@ -26,7 +26,7 @@
 	    		</a>
 	    	</kme:listItem>
 			<kme:listItem>
-	    		<a href="conference/sessions">
+	    		<a href="conference/sessions?date=${today}">
 	    			<h3 class="wrap">
 	    				Schedule
 	    			</h3>
@@ -42,11 +42,11 @@
 	    		</a>
 	    	</kme:listItem>
 	    	<kme:listItem>
-	    		<a href="conference/attendees">
+	    		<a href="conference/attendeeGroups">
 	    			<h3 class="wrap">
 	    				Attendee List
 	    			</h3>
-	    			<p class="wrap">Who is attending Statewide IT</p>
+	    			<p class="wrap">See who is attending Statewide IT</p>
 	    		</a>
 	    	</kme:listItem>
 	    	<kme:listItem>

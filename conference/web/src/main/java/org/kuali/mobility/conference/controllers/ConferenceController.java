@@ -16,6 +16,9 @@
 package org.kuali.mobility.conference.controllers;
 
 import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.StringTokenizer;
 
@@ -58,8 +61,14 @@ public class ConferenceController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String index(Model uiModel) {
-		// List<Attendee> attendees = conferenceService.findAllAttendees();
-		// uiModel.addAttribute("attendees", attendees);
+		Date d = new Date();
+		DateFormat formatter = new SimpleDateFormat("MMddyy");
+		String today = formatter.format(d);
+		if ("092811".equals(today) || "092911".equals(today) || "093011".equals(today) || "100111".equals(today)) {
+		} else { 
+			today = "";
+		}
+		uiModel.addAttribute("today", today);
 		return "conference/index";
 	}
 
@@ -76,10 +85,15 @@ public class ConferenceController {
 		uiModel.addAttribute("contentBlocks", contentBlocks);
 		return "conference/featuredSpeakers";
 	}
+	
+	@RequestMapping(value = "/attendeeGroups", method = RequestMethod.GET)
+	public String attendeeGroups(Model uiModel) {
+		return "conference/attendeeGroups";
+	}
 
 	@RequestMapping(value = "/attendees", method = RequestMethod.GET)
-	public String attendees(Model uiModel) {
-		List<Attendee> attendees = conferenceService.findAllAttendees();
+	public String attendees(@RequestParam(value="start", required=true) String start, @RequestParam(value="end", required=true) String end, Model uiModel) {
+		List<Attendee> attendees = conferenceService.findAllAttendees(start.charAt(0), end.charAt(0));
 		uiModel.addAttribute("attendees", attendees);
 		return "conference/attendees";
 	}
@@ -128,11 +142,11 @@ public class ConferenceController {
 			StringTokenizer stringTokenizer = new StringTokenizer(emailAddress);
 			while (stringTokenizer.hasMoreTokens()) {
 				String email = stringTokenizer.nextToken();
-				emailService.sendEmail(f.toString(), "SWITC Feedback", email, configParamService.findValueByName("Core.EmailAddress"));
+				emailService.sendEmail(f.toString(), "SWITC Feedback; "+f.getSessionId()+":"+f.getRating(), email, configParamService.findValueByName("Core.EmailAddress"));
 			}
 		} catch (Exception e) {
 		}
-		System.out.println(f.toString());
+		//System.out.println(f.toString());
 	}
 
 }

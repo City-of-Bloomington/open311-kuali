@@ -14,7 +14,7 @@
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility" %>
 
-<kme:page title="Attendee List" id="conference" backButton="true" homeButton="true">
+<kme:page title="Attendees ${param.start}-${param.end}" id="conference" backButton="true" homeButton="true">
 	<kme:content>
 		<kme:listView>
 			<!--<kme:listItem dataTheme="b" dataRole="list-divider">Conference Attendees</kme:listItem>-->

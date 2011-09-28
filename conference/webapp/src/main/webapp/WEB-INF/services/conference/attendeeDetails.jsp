@@ -14,7 +14,7 @@
 
 <kme:page title="Attendee Details" id="attendeedetails" homeButton="true" backButton="true" cssFilename="conference">
 	<kme:content>
-	    <kme:listView id="attendeeList" filter="false" dataTheme="c" dataInset="false">
+	    <kme:listView id="attendeeList" filter="false" dataTheme="c" dataInset="false" cssClass="attendeeDetails">
 			<kme:listItem dataRole="list-divider">
 	        	${attendee.firstName} ${attendee.lastName}
 	        </kme:listItem>

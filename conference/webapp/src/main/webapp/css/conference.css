@@ -12,7 +12,7 @@
 
 
 li p.ui-li-desc {
-	margin: 0 0 10px 0;
+	margin: 5px 0 5px 0;
 	padding: 0;
 	font-size: 14px;
 	white-space: normal;
@@ -35,6 +35,9 @@ ul.sessionDetails li {
 	padding-right: 15px !important;
 }
 
+ul.attendeeDetails li {
+	padding-right: 15px !important;
+}
 
 ul.statewideIT .ui-li-thumb {
 	position: static;
@@ -60,13 +63,27 @@ p.ui-li-desc img {
 
 div#daySelectTabs {
 	margin: -15px;
-	height: 30px;
+	height: 40px;
 	padding: 5px;
 }
 
 div#daySelectTabs a {
-	padding:3px 5px;
+	padding:4px 5px 8px 5px;
 	margin:0;
+	width:50px;
+	background-color:#ccc;
+	color:#777;
+	border:1px solid #aaa;
+	border-radius: 10px 10px 0 0;
+	-moz-border-radius: 10px 10px 0 0;
+	text-decoration:none;
+	display:inline-block;
+	text-align:center;
+}
+
+div#daySelectTabs a.selected {
+	color:#2F3E46;
+	background-color: #eee;
 }
 
 div.ratingStar {

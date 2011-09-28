@@ -17,7 +17,9 @@
 <kme:page title="Sessions" id="conference" backButton="true" backButtonURL="${pageContext.request.contextPath}/conference" homeButton="true" cssFilename="conference">
 	<kme:content>
 	
-		<div id="daySelectTabs"><a href="?date=">All Days</a> - <a href="?date=092811">Wed</a> - <a href="?date=092911">Thu</a> - <a href="?date=093011">Fri</a> - <a href="?date=100111">Sat</a></div>
+		<div id="daySelectTabs">
+			<a class="${param.date eq '092811' ? 'selected' : ''}" href="?date=092811">Wed</a><a class="${param.date eq '092911' ? 'selected' : ''}" href="?date=092911">Thu</a><a class="${param.date eq '093011' ? 'selected' : ''}" href="?date=093011">Fri</a><a class="${param.date eq '100111' ? 'selected' : ''}" href="?date=100111">Sat</a><a class="${empty param.date ? 'selected' : ''}" href="?date=">All</a>
+		</div>
 		<kme:listView>
 			
 			<c:forEach items="${sessions}" var="session" varStatus="status">
