@@ -96,9 +96,14 @@ function initializeTour() {
 				place = new Object();
 				place.name = poi.name;
 				place.location = new google.maps.LatLng(poi.latitude,poi.longitude);
-				place.iuBuildingCode = poi.locationId;
-				place.venueId = poi.venueId;
+				//place.iuBuildingCode = poi.locationId; - this is the way it should be done
+				//place.venueId = poi.venueId;
 				place.type = poi.type;
+				if (place.type == iuBuildingType) {
+					place.iuBuildingCode = poi.locationId;
+				} else if (place.type == venueType) {
+					place.venueId = poi.locationId;
+				} 
 				place.media = poi.media;
 				place.description = poi.description;
 				place.url = poi.url;
@@ -148,7 +153,7 @@ function centerOverAllLocations() {
    
 function addToRoute(){
 	var place;
-	if (editingPoiIndex) {
+	if (editingPoiIndex != null) {
 		var marker = markers[editingPoiIndex];
 		if (tempMarker) {
 			place = tempMarker.place;

@@ -207,14 +207,14 @@
 		                                			<td>Location Name: </td>
 		                                			<td><input type="text" name="poiName" id="poiName" size="40" /></td>
 		                                		</tr>
-		                                		<tr align="left" valign="top">
+		                                		<%--<tr align="left" valign="top">
 		                                			<td>IU Building Code: </td>
 		                                			<td><span name="iuBuildingCode" id="iuBuildingCode" ></span><button type="button" id="iuBuildingCodeClearButton" onclick="$('#iuBuildingCode').html('');$('#iuBuildingCodeClearButton').hide();">Clear</button></td>
 		                                		</tr>
 		                                		<tr align="left" valign="top">
 		                                			<td>Foursquare Venue Id: </td>
 		                                			<td><span name="venueId" id="venueId" ></span><button type="button" id="venueIdClearButton" onclick="$('#venueId').html('');$('#venueIdClearButton').hide();">Clear</button></td>
-		                                		</tr>
+		                                		</tr> --%>
 		                                		<tr align="left" valign="top">
 		                                			<td>Coordinates: </td>
 		                                			<td><input type="text" name="latitude" id="latitude" />, <input type="text" name="longitude" id="longitude" /></td>

@@ -79,7 +79,7 @@ function parseVenue(venue){
 	var v = new Object();
 	v.name = venue.name;
 	v.location = new google.maps.LatLng(venue.location.lat,venue.location.lng);
-	v.id = venue.id;
+	v.venueId = venue.id;
 	v.type= venueType;
 	v.url = venue.url;
 	var tips = [];

@@ -156,13 +156,13 @@ public class ToursController {
     public String save(@RequestParam("data") String postData,  Model uiModel) {
     	Tour tour = convertTourFromJson(postData);
     	toursService.saveTour(tour);
-    	return publish(uiModel);
+    	return "redirect:/tours/publish";
     }
     
     @RequestMapping(value = "delete/{tourId}", method = RequestMethod.GET)
     public String delete(@PathVariable("tourId") Long tourId, Model uiModel) {
     	toursService.deleteTourById(tourId);
-    	return index(uiModel);
+    	return "redirect:/tours/publish";
     }
     
     
@@ -193,13 +193,13 @@ public class ToursController {
     public String savePoi(@RequestParam("data") String postData,  Model uiModel) {
     	POI poi = convertPoiFromJson(postData);
     	toursService.savePoi(poi);
-    	return index(uiModel);
+    	return "redirect:/tours/publish";
     }
     
     @RequestMapping(value = "poi/delete/{poiId}", method = RequestMethod.GET)
     public String deletePoi(@PathVariable("poiId") Long poiId, Model uiModel) {
     	toursService.deletePoiById(poiId);
-    	return index(uiModel);
+    	return "redirect:/tours/publish";
     }
     
     @RequestMapping(value = "kml/{tourId}", method = RequestMethod.GET)
@@ -275,9 +275,13 @@ public class ToursController {
 	    		poi.setDescription(null);
 	    	}
 			try {
-				poi.setLocationId(pointOfInterest.getString("id"));
+				poi.setLocationId(pointOfInterest.getString("iuBuildingCode"));
 	    	} catch (Exception e) {
-	    		poi.setLocationId(null);
+	    		try {
+					poi.setLocationId(pointOfInterest.getString("venueId"));
+		    	} catch (Exception ex) {
+		    		poi.setLocationId(null);
+		    	}
 	    	}
 			poi.setType(pointOfInterest.getString("type"));
 			
