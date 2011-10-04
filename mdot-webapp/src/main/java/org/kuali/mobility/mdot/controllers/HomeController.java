@@ -16,14 +16,13 @@
 package org.kuali.mobility.mdot.controllers;
 
 import java.io.IOException;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -41,6 +40,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import flexjson.JSONSerializer;
 
 @Controller 
 @RequestMapping("/")
@@ -67,17 +69,49 @@ public class HomeController {
 	}
     
     @RequestMapping(value = "home", method = RequestMethod.GET)
-    public String home(HttpServletRequest request, Model uiModel) {      
-    	buildHomeScreen(request, uiModel);
+    public String home(HttpServletRequest request, HttpServletResponse response, Model uiModel) {      
+//    	buildHomeScreen(request, uiModel);
     	User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
-    	String ipAddress = "";
-    	if (user.isMember(configParamService.findValueByName("Admin.Group.Name"))) {
-    		try {
-				ipAddress = "<p><i><small>Server: " + InetAddress.getLocalHost().getHostName() + "</small></i></p>";
-			} catch (UnknownHostException e) {}
+
+    	if (user == null || user.getViewCampus() == null) {
+    		// TODO: Refactor out this specific IU feature
+            String ref = request.getParameter("ref");
+            if (ref != null) {
+            	ref = ref.trim();
+            	if (ref.indexOf("m.iub.edu") >= 0) {
+            		user.setViewCampus("BL");
+            	} else if (ref.indexOf("m.iupui.edu") >= 0) {
+            		user.setViewCampus("IN");
+            	} else if (ref.indexOf("m.iupuc.edu") >= 0) {
+            		user.setViewCampus("CO");
+            	} else if (ref.indexOf("m.iue.edu") >= 0) {
+            		user.setViewCampus("EA");
+            	} else if (ref.indexOf("m.iuk.edu") >= 0) {
+            		user.setViewCampus("KO");
+            	} else if (ref.indexOf("m.iun.edu") >= 0) {
+            		user.setViewCampus("NW");
+            	} else if (ref.indexOf("m.iusb.edu") >= 0) {
+            		user.setViewCampus("SB");
+            	} else if (ref.indexOf("m.ius.edu") >= 0) {
+            		user.setViewCampus("SE");
+            	}
+            	Cookie cookie = new Cookie("campusSelection", user.getViewCampus());
+    			cookie.setMaxAge(60*60*24*365); //one year
+    			cookie.setPath(request.getContextPath());
+    			response.addCookie(cookie);
+            }
     	}
-    	uiModel.addAttribute("ipAddress", ipAddress);
+    	
+    	uiModel.addAttribute("homeScreenMap", buildHomeScreenAliasJsonMap());
     	return "index";
+    }
+    
+    @RequestMapping(value = "home", method = RequestMethod.GET, headers = "Accept=application/json")
+    @ResponseBody
+    public String homeJson(HttpServletRequest request, Model uiModel) {  
+    	List<Tool> tools = buildHomeScreen(request, uiModel);
+    	String json = new JSONSerializer().exclude("*.class", "toolId", "versionNumber").serialize(tools);
+    	return json;
     }
   
     @RequestMapping(value = "iumobile.appcache", method = RequestMethod.GET)
@@ -111,44 +145,26 @@ public class HomeController {
     }
     */
 
-    private void buildHomeScreen(HttpServletRequest request, Model uiModel) {
+    private String buildHomeScreenAliasJsonMap() {
+    	String s = "{";
+    	List<HomeScreen> homeScreens = adminService.getAllCachedHomeScreens();
     	
+    	if (homeScreens.size() > 0) {
+	    	for (HomeScreen homeScreen : homeScreens) {
+	    		s += "\"" + homeScreen.getAlias() + "\":\"" + homeScreen.getTitle() + "\",";
+	    	}
+	    	s = s.substring(0, s.length()-1);
+    	}
+    	s += "}";
+    	return s;
+    }
+    
+    private List<Tool> buildHomeScreen(HttpServletRequest request, Model uiModel) {
     	User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
     	Backdoor backdoor = (Backdoor) request.getSession().getAttribute(Constants.KME_BACKDOOR_USER_KEY);
-    	 
-    	String alias = "PUBLIC";
-    	HomeScreen home = new HomeScreen();
-    	if (user != null && user.getViewCampus() != null) {
-    		alias = user.getViewCampus();
-    	} else {
-    		// TODO: Refactor out this specific IU feature
-            String ref = request.getParameter("ref");
-            if (ref != null) {
-            	ref = ref.trim();
-            	if (ref.indexOf("m.iub.edu") >= 0) {
-            		user.setViewCampus("BL");
-            	} else if (ref.indexOf("m.iupui.edu") >= 0) {
-            		user.setViewCampus("IN");
-            	} else if (ref.indexOf("m.iupuc.edu") >= 0) {
-            		user.setViewCampus("CO");
-            	} else if (ref.indexOf("m.iue.edu") >= 0) {
-            		user.setViewCampus("EA");
-            	} else if (ref.indexOf("m.iuk.edu") >= 0) {
-            		user.setViewCampus("KO");
-            	} else if (ref.indexOf("m.iun.edu") >= 0) {
-            		user.setViewCampus("NW");
-            	} else if (ref.indexOf("m.iusb.edu") >= 0) {
-            		user.setViewCampus("SB");
-            	} else if (ref.indexOf("m.ius.edu") >= 0) {
-            		user.setViewCampus("SE");
-            	}
-            }
-    	}
-    	
-    	home = adminService.getCachedHomeScreenByAlias(alias);
+    	HomeScreen home = adminService.getCachedHomeScreenByAlias(user.getViewCampus());
     	
     	List<HomeTool> copy = new ArrayList<HomeTool>(home.getHomeTools());
-    	
     	Tool tool = new Tool();
 
     	if (user.isMember(configParamService.findValueByName("Backdoor.Group.Name"))) {
@@ -161,7 +177,17 @@ public class HomeController {
 	    	tool.setIconUrl("images/service-icons/srvc-backdoor.png");
 	    	tool.setTitle("Backdoor");
 	    	tool.setUrl("backdoor");
-	    	copy.add(new HomeTool(home, tool, home.getHomeTools().size() + 1000));
+	    	copy.add(new HomeTool(home, tool, copy.size() + 1));
+    	}
+    	
+    	if (user.isMember(configParamService.findValueByName("Admin.Group.Name"))) {
+    		tool = new Tool();
+    		tool.setBadgeCount("");
+	    	tool.setDescription("View system informaiton.");
+	    	tool.setIconUrl("images/service-icons/srvc-backdoor.png");
+	    	tool.setTitle("System");
+	    	tool.setUrl("system");
+	    	copy.add(new HomeTool(home, tool, copy.size() + 1));
     	}
     	
     	// TODO: MOBILITY-53
@@ -187,12 +213,19 @@ public class HomeController {
 		    		tool.setIconUrl("images/service-icons/srvc-alerts-green.png");
 		    	}
 			}
+			break;
 		}
  	
     	Collections.sort(copy);
     	
-    	uiModel.addAttribute("title", home.getTitle());    
-    	uiModel.addAttribute("tools", copy);    
+    	List<Tool> tools = new ArrayList<Tool>();
+    	for (HomeTool homeTool : copy) {
+    		tools.add(homeTool.getTool());
+    	}
+    	
+    	return tools;
+//    	uiModel.addAttribute("title", home.getTitle());    
+//    	uiModel.addAttribute("tools", copy);    
     }
     
 }

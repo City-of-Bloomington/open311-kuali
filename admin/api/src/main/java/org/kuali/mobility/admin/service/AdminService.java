@@ -22,6 +22,7 @@ import org.kuali.mobility.admin.entity.Tool;
 
 public interface AdminService {
 	public HomeScreen getCachedHomeScreenByAlias(String alias);
+	public List<HomeScreen> getAllCachedHomeScreens();
 
 	public List<HomeScreen> getAllHomeScreens();
 	public HomeScreen getHomeScreenById(long layoutId);

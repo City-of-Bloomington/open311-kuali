@@ -20,13 +20,13 @@ function refreshTemplate(ajaxUrl, htmlElement, templateName, emptyContentMessage
 	});
 	dynamicDataResp.fail(function(){
 		$.mobile.hidePageLoadingMsg();
+		if (failCallback) {
+			failCallback();
+		}
 		alert("An error has occurred. Make sure you have network connectivity.");
 	});
 	dynamicDataResp.always(function(){
 		$.mobile.hidePageLoadingMsg();
-		if (failCallback) {
-			failCallback();
-		}
 	});
 }
 

@@ -14,7 +14,7 @@
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility" %>
 
-<kme:page title="${title}" id="home" cssFilename="home" backButton="false" homeButton="false" preferencesButton="true" preferencesButtonURL="campus?toolName=home" loginButton="true" loginButtonURL="home?login=yes">
+<kme:page title="IU Mobile" id="home" cssFilename="home" backButton="false" homeButton="false" preferencesButton="true" preferencesButtonURL="campus?toolName=home" loginButton="true" loginButtonURL="home?login=yes">
 	<kme:content>
 	
 		<!-- <p><a id="manualUpdate" href="#">Check for an updated Cache</a></p> -->
@@ -30,9 +30,52 @@
 			</ul> -->
 			</div>
 	 	</div>
+	 	<script type="text/javascript">
+	 		function setHomeScreenTitle() {
+	 			
+	 			var campusSelection = readCookie('campusSelection');
+	 			if (campusSelection) {
+		 			var titleMap = jQuery.parseJSON('${homeScreenMap}');
+		 			var title = titleMap[campusSelection];
+		 			if (title) {
+		 				setPageTitle(title);
+		 			}
+	 			}
+	 		}
+	 		
+	 		function readCookie(name) {
+	 			var nameEQ = name + "=";
+	 			var ca = document.cookie.split(';');
+	 			for(var i=0;i < ca.length;i++) {
+	 				var c = ca[i];
+	 				while (c.charAt(0)==' ') c = c.substring(1,c.length);
+	 				if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+	 			}
+	 			return null;
+	 		}
+	 	</script>
  	
 	    <kme:listView id="homeserviceslist" filter="false">
-	        <c:forEach items="${tools}" var="homeTool" varStatus="status">	            
+	        <script type="text/javascript">
+				$('[data-role=page][id=home]').live('pagebeforeshow', function(event, ui) {
+					$('#toolTemplate').template('toolTemplate');
+					refreshTemplate('home', '#homeserviceslist', 'toolTemplate', '<li>No Items</li>', function() {$('#homeserviceslist').listview('refresh');});
+					setHomeScreenTitle();
+				});
+			</script>
+			<script id="toolTemplate" type="text/x-jquery-tmpl">
+      			<li data-icon="false" data-theme="c">
+        			<a href="\${url}" style="background-image: url('\${iconUrl}');">
+				      	<h3>\${title}</h3>
+				      	<p class="wrap">\${description}</p>
+						{{if badgeCount}}
+							<span class="countBadge ui-btn-up-c ui-btn-corner-all">\${badgeCount}</span>
+						{{/if}}
+				     </a>
+      			</li>
+			</script>
+	        
+	        <%-- <c:forEach items="${tools}" var="homeTool" varStatus="status">	            
 	            <kme:listItem hideDataIcon="true">
 	            	<a href="${homeTool.tool.url}" style="background-image: url('${homeTool.tool.iconUrl}');">
 			      		<h3>${homeTool.tool.title}</h3>
@@ -42,9 +85,8 @@
 			      		</c:if>
 			      	</a>
 	            </kme:listItem>
-			</c:forEach>
+			</c:forEach>--%>
 	    </kme:listView>
-	    <c:if test="${not empty ipAddress}">${ipAddress}</c:if>
 	</kme:content>
 	
 	<!-- When the DOM is ready (ie. Now), run the scripts. -->

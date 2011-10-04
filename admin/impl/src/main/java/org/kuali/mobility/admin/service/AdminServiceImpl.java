@@ -15,6 +15,7 @@
 
 package org.kuali.mobility.admin.service;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -62,6 +63,7 @@ public class AdminServiceImpl implements AdminService {
     	homeScreenReloaderThread = null;
     }
 	
+	@Override
 	public HomeScreen getCachedHomeScreenByAlias(String alias) {
 		HomeScreen homeScreen = homeScreens.get(alias);
 		if (homeScreen == null) {
@@ -70,6 +72,11 @@ public class AdminServiceImpl implements AdminService {
 		}
 		return homeScreen;
  	}
+	
+	@Override
+	public List<HomeScreen> getAllCachedHomeScreens() {
+		return new ArrayList<HomeScreen>(homeScreens.values());
+	}
 
 	@Override
 	public List<HomeScreen> getAllHomeScreens() {

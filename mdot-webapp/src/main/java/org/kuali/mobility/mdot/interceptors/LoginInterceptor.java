@@ -43,9 +43,9 @@ public class LoginInterceptor implements HandlerInterceptor {
 
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 		if (HttpUtil.needsAuthenticated(request.getServletPath()) || "yes".equals(request.getParameter("login"))) {
-			login(request);
+			login(request, response);
 		} else {
-			publicLogin(request);
+			publicLogin(request, response);
 		}
 		User user = (User) request.getSession(true).getAttribute(Constants.KME_USER_KEY);
 
@@ -72,7 +72,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 		return null;
 	}
 
-	private void publicLogin(HttpServletRequest request) {
+	private void publicLogin(HttpServletRequest request, HttpServletResponse response) {
 		User user = (User) request.getSession(true).getAttribute(Constants.KME_USER_KEY);
 		if (user == null) {
 			user = new UserImpl(true);
@@ -82,11 +82,16 @@ public class LoginInterceptor implements HandlerInterceptor {
 		String cookieVal = getCampusCookieValue(request);
 		if (cookieVal != null && cookieVal.length() > 0) {
 			user.setViewCampus(cookieVal);
+		} else {
+			Cookie cookie = new Cookie("campusSelection", user.getViewCampus());
+			cookie.setMaxAge(60*60*24*365); //one year
+			cookie.setPath(request.getContextPath());
+			response.addCookie(cookie);
 		}
 	}
 
 	@SuppressWarnings("unchecked")
-	private User login(HttpServletRequest request) {
+	private User login(HttpServletRequest request, HttpServletResponse response) {
 		User user = (User) request.getSession(true).getAttribute(Constants.KME_USER_KEY);
 		if (user == null || user.isPublicUser()) {
 			Timestamp now = new Timestamp(new Date().getTime());
@@ -133,6 +138,11 @@ public class LoginInterceptor implements HandlerInterceptor {
 		String cookieVal = getCampusCookieValue(request);
 		if (cookieVal != null && cookieVal.length() > 0) {
 			user.setViewCampus(cookieVal);
+		} else {
+			Cookie cookie = new Cookie("campusSelection", user.getViewCampus());
+			cookie.setMaxAge(60*60*24*365); //one year
+			cookie.setPath(request.getContextPath());
+			response.addCookie(cookie);
 		}
 		return user;
 	}
