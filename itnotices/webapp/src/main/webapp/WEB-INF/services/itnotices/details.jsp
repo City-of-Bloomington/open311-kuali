@@ -18,14 +18,14 @@
     	<script type="text/javascript">
 			$('[data-role=page][id=itnoticedetails]').live('pagebeforeshow', function(event, ui) {
 				$('#noticeTemplate').template('noticeTemplate');
-				refreshTemplate('itnotices/details', '#details', 'noticeTemplate', '<p>Details unavailable</p>');
+				refreshTemplate('${pageContext.request.contextPath}/itnotices/details', '#details', 'noticeTemplate', '<p>Details unavailable</p>');
 			});
 		</script>
 		<script id="noticeTemplate" type="text/x-jquery-tmpl">
 			<section>
-				<h3>${title}</h3>
-	        	<p>${message}</p>
-	        	<p>${lastUpdated}</p>
+				<h3>\${title}</h3>
+	        	<p>\${message}</p>
+	        	<p>\${lastUpdated}</p>
 			</section>
 		</script>
 	    
