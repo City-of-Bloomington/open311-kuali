@@ -187,7 +187,7 @@ public class HomeController {
     		tool = new Tool();
     		tool.setBadgeCount("");
 	    	tool.setDescription("View system informaiton.");
-	    	tool.setIconUrl("images/service-icons/srvc-backdoor.png");
+	    	tool.setIconUrl("images/service-icons/srvc-settings.png");
 	    	tool.setTitle("System");
 	    	tool.setUrl("system");
 	    	copy.add(new HomeTool(home, tool, copy.size() + 1));
