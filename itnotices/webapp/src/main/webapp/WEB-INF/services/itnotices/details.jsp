@@ -13,11 +13,28 @@
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility" %>
 
 <kme:page title="IT Notice Details" id="itnoticedetails" homeButton="true" backButton="true" cssFilename="itnotices">
-	<kme:content>
+	<kme:content id="details">
+	    
+    	<script type="text/javascript">
+			$('[data-role=page][id=itnoticedetails]').live('pagebeforeshow', function(event, ui) {
+				$('#noticeTemplate').template('noticeTemplate');
+				refreshTemplate('itnotices/details', '#details', 'noticeTemplate', '<p>Details unavailable</p>');
+			});
+		</script>
+		<script id="noticeTemplate" type="text/x-jquery-tmpl">
+			<section>
+				<h3>${title}</h3>
+	        	<p>${message}</p>
+	        	<p>${lastUpdated}</p>
+			</section>
+		</script>
+	    
+	    <%-- 
 	    <kme:section>
 	        <h3>${notice.title}</h3>
 	        <p>${notice.message}</p>
 	        <p>${notice.lastUpdated}</p>
 	    </kme:section>
+	     --%>
 	</kme:content>
 </kme:page>

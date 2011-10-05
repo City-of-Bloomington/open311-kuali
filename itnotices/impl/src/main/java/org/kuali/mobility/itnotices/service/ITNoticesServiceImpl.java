@@ -70,7 +70,11 @@ public class ITNoticesServiceImpl implements ITNoticesService {
 					if (services.endsWith(", ")) {
 						services = services.substring(0, services.length() - 2);
 					}
-					ITNotice notice = new ITNotice(item.getChildTextTrim("lastUpdated"), item.getChildTextTrim("noticeType"), item.getChildTextTrim("title"), services, item.getChildTextTrim("message"));
+					String id = item.getChildTextTrim("link");
+					try {
+						id = id.split("=")[1];
+					} catch (Exception e) {}
+					ITNotice notice = new ITNotice(id, item.getChildTextTrim("lastUpdated"), item.getChildTextTrim("noticeType"), item.getChildTextTrim("title"), services, item.getChildTextTrim("message"));
 					determineImage(notice);
 					notices.add(notice);
 				}				

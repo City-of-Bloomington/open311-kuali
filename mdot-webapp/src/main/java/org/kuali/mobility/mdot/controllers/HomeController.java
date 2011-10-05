@@ -69,38 +69,8 @@ public class HomeController {
 	}
     
     @RequestMapping(value = "home", method = RequestMethod.GET)
-    public String home(HttpServletRequest request, HttpServletResponse response, Model uiModel) {      
+    public String home(HttpServletRequest request, Model uiModel) {      
 //    	buildHomeScreen(request, uiModel);
-    	User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
-
-    	if (user == null || user.getViewCampus() == null) {
-    		// TODO: Refactor out this specific IU feature
-            String ref = request.getParameter("ref");
-            if (ref != null) {
-            	ref = ref.trim();
-            	if (ref.indexOf("m.iub.edu") >= 0) {
-            		user.setViewCampus("BL");
-            	} else if (ref.indexOf("m.iupui.edu") >= 0) {
-            		user.setViewCampus("IN");
-            	} else if (ref.indexOf("m.iupuc.edu") >= 0) {
-            		user.setViewCampus("CO");
-            	} else if (ref.indexOf("m.iue.edu") >= 0) {
-            		user.setViewCampus("EA");
-            	} else if (ref.indexOf("m.iuk.edu") >= 0) {
-            		user.setViewCampus("KO");
-            	} else if (ref.indexOf("m.iun.edu") >= 0) {
-            		user.setViewCampus("NW");
-            	} else if (ref.indexOf("m.iusb.edu") >= 0) {
-            		user.setViewCampus("SB");
-            	} else if (ref.indexOf("m.ius.edu") >= 0) {
-            		user.setViewCampus("SE");
-            	}
-            	Cookie cookie = new Cookie("campusSelection", user.getViewCampus());
-    			cookie.setMaxAge(60*60*24*365); //one year
-    			cookie.setPath(request.getContextPath());
-    			response.addCookie(cookie);
-            }
-    	}
     	
     	uiModel.addAttribute("homeScreenMap", buildHomeScreenAliasJsonMap());
     	return "index";
@@ -108,8 +78,8 @@ public class HomeController {
     
     @RequestMapping(value = "home", method = RequestMethod.GET, headers = "Accept=application/json")
     @ResponseBody
-    public String homeJson(HttpServletRequest request, Model uiModel) {  
-    	List<Tool> tools = buildHomeScreen(request, uiModel);
+    public String homeJson(HttpServletRequest request, HttpServletResponse response, Model uiModel) {  
+    	List<Tool> tools = buildHomeScreen(request, response, uiModel);
     	String json = new JSONSerializer().exclude("*.class", "toolId", "versionNumber").serialize(tools);
     	return json;
     }
@@ -159,10 +129,43 @@ public class HomeController {
     	return s;
     }
     
-    private List<Tool> buildHomeScreen(HttpServletRequest request, Model uiModel) {
+    private List<Tool> buildHomeScreen(HttpServletRequest request, HttpServletResponse response, Model uiModel) {
     	User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
     	Backdoor backdoor = (Backdoor) request.getSession().getAttribute(Constants.KME_BACKDOOR_USER_KEY);
-    	HomeScreen home = adminService.getCachedHomeScreenByAlias(user.getViewCampus());
+
+    	String alias = "PUBLIC";
+    	if (user != null && user.getViewCampus() != null) {
+    		alias = user.getViewCampus();
+    	} else {
+    		// TODO: Refactor out this specific IU feature
+            String ref = request.getParameter("ref");
+            if (ref != null) {
+            	ref = ref.trim();
+            	if (ref.indexOf("m.iub.edu") >= 0) {
+            		user.setViewCampus("BL");
+            	} else if (ref.indexOf("m.iupui.edu") >= 0) {
+            		user.setViewCampus("IN");
+            	} else if (ref.indexOf("m.iupuc.edu") >= 0) {
+            		user.setViewCampus("CO");
+            	} else if (ref.indexOf("m.iue.edu") >= 0) {
+            		user.setViewCampus("EA");
+            	} else if (ref.indexOf("m.iuk.edu") >= 0) {
+            		user.setViewCampus("KO");
+            	} else if (ref.indexOf("m.iun.edu") >= 0) {
+            		user.setViewCampus("NW");
+            	} else if (ref.indexOf("m.iusb.edu") >= 0) {
+            		user.setViewCampus("SB");
+            	} else if (ref.indexOf("m.ius.edu") >= 0) {
+            		user.setViewCampus("SE");
+            	}
+            	Cookie cookie = new Cookie("campusSelection", user.getViewCampus());
+    			cookie.setMaxAge(60*60*24*365); //one year
+    			cookie.setPath(request.getContextPath());
+    			response.addCookie(cookie);
+            }
+    	}
+
+    	HomeScreen home = adminService.getCachedHomeScreenByAlias(alias);
     	
     	List<HomeTool> copy = new ArrayList<HomeTool>(home.getHomeTools());
     	Tool tool = new Tool();

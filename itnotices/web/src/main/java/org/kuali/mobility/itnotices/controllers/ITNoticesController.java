@@ -17,8 +17,12 @@ package org.kuali.mobility.itnotices.controllers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.kuali.mobility.itnotices.entity.ITNotice;
 import org.kuali.mobility.itnotices.service.ITNoticesService;
+import org.kuali.mobility.shared.Constants;
+import org.kuali.mobility.user.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,35 +31,58 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import flexjson.JSONSerializer;
+
 @Controller 
 @RequestMapping("/itnotices")
 public class ITNoticesController {
  
     @Autowired
     private ITNoticesService itNoticesService;
-    public void setComputerLabsService(ITNoticesService itNoticesService) {
-        this.itNoticesService = itNoticesService;
-    }
 	
     @RequestMapping(method = RequestMethod.GET, headers = "Accept=application/json")
     @ResponseBody
-    public String findAllComputerLabsByCampus(@RequestParam(value = "campus", required = true) String campus) {
+    public String getListJson() {
        	List<ITNotice> notices = itNoticesService.findAllITNotices();
 		return itNoticesService.toJson(notices);
     }
     
     @RequestMapping(method = RequestMethod.GET)
     public String getList(Model uiModel) {
-   		List<ITNotice> notices = itNoticesService.findAllITNotices();
-   		uiModel.addAttribute("notices", notices);
+//   		List<ITNotice> notices = itNoticesService.findAllITNotices();
+//   		uiModel.addAttribute("notices", notices);
     	return "itnotices/list";
     }
     
     @RequestMapping(value = "/details", method = RequestMethod.GET)
-    public String getDetails(Model uiModel, @RequestParam(required = true) int id) {
+    public String getDetails(Model uiModel, HttpServletRequest request, @RequestParam(required = true) String id) {
         List<ITNotice> notices = itNoticesService.findAllITNotices();
-        uiModel.addAttribute("notice", notices.get(id));
+//        uiModel.addAttribute("notice", notices.get(id));
+        
+        User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
+        
+        ITNotice itNotice = null;
+        for (ITNotice notice : notices) {
+        	if (notice.getId().equals(id)) {
+        		itNotice = notice;
+        		break;
+        	}
+        }
+        user.putInCache("ITNotices.Notice", itNotice);
+        
         return "itnotices/details";
+    }
+    
+    @RequestMapping(value = "/details", method = RequestMethod.GET, headers = "Accept=application/json")
+    @ResponseBody
+    public String getDetailsJson(Model uiModel, HttpServletRequest request) {
+    	User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
+    	ITNotice notice = (ITNotice)user.getFromCache("ITNotices.Notice").getItem();
+		if (notice != null) {
+			return new JSONSerializer().exclude("*.class").deepSerialize(notice);
+		} else {
+			return "";
+		}
     }
      
 }

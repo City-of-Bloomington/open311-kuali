@@ -15,7 +15,32 @@
 <kme:page title="IT Notices" id="itnotices" homeButton="true" backButton="true" cssFilename="itnotices">
 	<kme:content>
 	    <kme:listView id="itnoticeslist">
-	        <c:forEach items="${notices}" var="notice" varStatus="status">
+	        <script type="text/javascript">
+				$('[data-role=page][id=itnotices]').live('pagebeforeshow', function(event, ui) {
+					$('#noticeListTemplate').template('noticeListTemplate');
+					refreshTemplate('${pageContext.request.contextPath}/itnotices', '#itnoticeslist', 'noticeListTemplate', '<li>No Notices</li>', function() {$('#itnoticeslist').listview('refresh');});
+				});
+			</script>
+			<script id="noticeListTemplate" type="text/x-jquery-tmpl">
+      			<li>
+        			<a href="itnotices/details?id=\${id}">
+	            		<h3 class="wrap">
+	                	{{if title && noticeType}}
+						    {{if noticeType}}
+								<span class="itNoticeIcon-\${noticeType}">\${noticeType}: </span>
+		                    {{/if}}
+		                    {{if title}}
+		                        \${title}
+		                    {{/if}}
+						{{/if}}
+						</h3>
+	                    <p class="wrap">\${service}</p>
+	                    <p class="wrap">Last Updated: \${lastUpdated}</p>
+	                </a>
+      			</li>
+			</script>
+	        
+	        <%--<c:forEach items="${notices}" var="notice" varStatus="status">
 	            <kme:listItem>
 	            	<a href="itnotices/details?id=${status.index}">
 	            		<h3 class="wrap">
@@ -32,7 +57,7 @@
 	                    <p class="wrap">Last Updated: ${notice.lastUpdated}</p>
 	                </a>
 	            </kme:listItem>
-	        </c:forEach>
+	        </c:forEach> --%>
 	    </kme:listView>
 	</kme:content>
 </kme:page>

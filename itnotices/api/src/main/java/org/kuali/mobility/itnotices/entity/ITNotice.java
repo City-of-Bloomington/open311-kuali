@@ -27,8 +27,10 @@ public class ITNotice implements Serializable {
 	private String service;
 	private String message;
 	private String imageUrl;
+	private String id;
 	
-	public ITNotice(String lastUpdated, String noticeType, String title, String service, String message) {
+	public ITNotice(String id, String lastUpdated, String noticeType, String title, String service, String message) {
+		this.id = id;
 		this.lastUpdated = lastUpdated;
 		this.noticeType = noticeType;
 		this.title = title;
@@ -82,6 +84,14 @@ public class ITNotice implements Serializable {
 
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 	
 }
