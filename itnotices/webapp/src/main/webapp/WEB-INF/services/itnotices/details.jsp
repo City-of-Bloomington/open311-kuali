@@ -24,7 +24,7 @@
 		<script id="noticeTemplate" type="text/x-jquery-tmpl">
 			<section>
 				<h3>\${title}</h3>
-	        	<p>\${message}</p>
+	        	<p>{{html message}}</p>
 	        	<p>\${lastUpdated}</p>
 			</section>
 		</script>
