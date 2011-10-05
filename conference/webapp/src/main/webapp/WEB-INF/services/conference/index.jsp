@@ -14,7 +14,7 @@
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility" %>
 
-<kme:page title="Statewide IT 2011" id="conference" backButton="true" homeButton="true">
+<kme:page title="CTSI Retreat" id="conference" backButton="true" homeButton="true">
 	<kme:content>
 		<kme:listView>
 			<kme:listItem>
@@ -22,7 +22,7 @@
 	    			<h3 class="wrap">
 	    				Welcome
 	    			</h3>
-	    			<p class="wrap">A message from Brad Wheeler</p>
+	    			<p class="wrap">A message about the retreat</p>
 	    		</a>
 	    	</kme:listItem>
 			<kme:listItem>
@@ -30,7 +30,7 @@
 	    			<h3 class="wrap">
 	    				Schedule
 	    			</h3>
-	    			<p class="wrap">Keynotes, breakout sessions and events</p>
+	    			<p class="wrap">Session details and locations</p>
 	    		</a>
 	    	</kme:listItem>
 	    	<kme:listItem>
@@ -38,23 +38,23 @@
 	    			<h3 class="wrap">
 	    				Featured Speakers
 	    			</h3>
-	    			<p class="wrap">Profiles of keynote speakers and panelists</p>
+	    			<p class="wrap">Profiles of featured speakers</p>
 	    		</a>
 	    	</kme:listItem>
-	    	<kme:listItem>
+	    	<%-- <kme:listItem>
 	    		<a href="conference/attendeeGroups">
 	    			<h3 class="wrap">
 	    				Attendee List
 	    			</h3>
 	    			<p class="wrap">See who is attending Statewide IT</p>
 	    		</a>
-	    	</kme:listItem>
+	    	</kme:listItem> --%>
 	    	<kme:listItem>
-	    		<a href="http://statewideit.iu.edu/files/images/imumap10.jpg">
+	    		<a href="http://www.indiana.edu/~iumobile/CTSI-Retreat/imumap10.jpg">
 	    			<h3 class="wrap">
 	    				Indiana Memorial Union Map
 	    			</h3>
-	    			<p class="wrap">Find the location of the different sessions taking place in the Union</p>
+	    			<p class="wrap">Find your way around the Union</p>
 	    		</a>
 	    	</kme:listItem>
 		</kme:listView>

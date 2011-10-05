@@ -142,7 +142,8 @@ public class ConferenceController {
 			StringTokenizer stringTokenizer = new StringTokenizer(emailAddress);
 			while (stringTokenizer.hasMoreTokens()) {
 				String email = stringTokenizer.nextToken();
-				emailService.sendEmail(f.toString(), "SWITC Feedback; "+f.getSessionId()+":"+f.getRating(), email, configParamService.findValueByName("Core.EmailAddress"));
+				//emailService.sendEmail(f.toString(), "SWITC Feedback; "+f.getSessionId()+":"+f.getRating(), email, configParamService.findValueByName("Core.EmailAddress"));
+				emailService.sendEmail(f.toString(), "CTSI Retreat Feedback; "+f.getSessionId()+":"+f.getRating(), email, configParamService.findValueByName("Core.EmailAddress"));
 			}
 		} catch (Exception e) {
 		}

@@ -48,7 +48,8 @@ public class ConferenceServiceImpl implements ConferenceService {
 	public List<ContentBlock> findAllContentBlocks() {
 		List<ContentBlock> contentBlocks = new ArrayList<ContentBlock>();
 		try {
-			String json = retrieveJSON("http://statewideit.iu.edu/program/sessions/welcome.json");
+			//String json = retrieveJSON("http://statewideit.iu.edu/program/sessions/welcome.json");
+			String json = retrieveJSON("http://www.indiana.edu/~iumobile/CTSI-Retreat/CTSIwelcome.json");
 
 			JSONArray simpleContentArray = (JSONArray) JSONSerializer.toJSON(json);
 			
@@ -76,7 +77,8 @@ public class ConferenceServiceImpl implements ConferenceService {
 	public List<ContentBlock> findFeaturedSpeakers() {
 		List<ContentBlock> contentBlocks = new ArrayList<ContentBlock>();
 		try {
-			String json = retrieveJSON("http://www.indiana.edu/~spea/featuredSpeakers.json");
+			//String json = retrieveJSON("http://www.indiana.edu/~spea/featuredSpeakers.json");
+			String json = retrieveJSON("http://www.indiana.edu/~iumobile/CTSI-Retreat/CTSIspeakers.json");
 
 			JSONArray simpleContentArray = (JSONArray) JSONSerializer.toJSON(json);
 			
@@ -151,9 +153,9 @@ public class ConferenceServiceImpl implements ConferenceService {
 	
 		List<Session> sessions = new ArrayList<Session>();
 		try {
-			//String json = retrieveJSON("http://localhost:9999/mdot/testdata/conferenceSessions.json");
 			String dateString = (null == date ? "" : date);
-			String json = retrieveJSON("http://statewideit.iu.edu/program/sessions/programfeed.php?d=" + dateString);
+			//String json = retrieveJSON("http://statewideit.iu.edu/program/sessions/programfeed.php?d=" + dateString);
+			String json = retrieveJSON("http://www.indiana.edu/~iumobile/CTSI-Retreat/CTSIschedule.json");
 
 			JSONArray sessionArray = (JSONArray) JSONSerializer.toJSON(json);
 			

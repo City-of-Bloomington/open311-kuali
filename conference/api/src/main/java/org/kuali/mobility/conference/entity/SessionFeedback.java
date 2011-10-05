@@ -84,8 +84,8 @@ public class SessionFeedback implements Serializable {
 		 str = str + newline + "Session Name: " + this.getSessionName();
 		 str = str + newline + "Rating: " + this.getRating();
 		 str = str + newline + "Comments: " + this.getComments();
-		 str = str + newline + "Network ID: " + this.getPrincipalName();
 		 str = str + newline + "Time Posted: " + this.getTimePosted();
+		 //str = str + newline + "Network ID: " + this.getPrincipalName();
 		 return str;
 	}
 }
