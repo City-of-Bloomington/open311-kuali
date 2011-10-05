@@ -227,9 +227,9 @@
 	text-shadow: 0 1px 0 #fff;
 	/*background: #f0f0f0;*/
 	/*background-color: #E6E6E6;*/
-	background: #E6E6E6;
+	/*background: #E6E6E6;
 	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #eeeeee), color-stop(1, #dddddd));
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#eeeeee', EndColorStr='#dddddd')";
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#eeeeee', EndColorStr='#dddddd')";*/
 }
 .ui-body-c, .ui-body-c input, .ui-body-c select, .ui-body-c textarea, .ui-body-c button {
 	font-family: Helvetica, Arial, sans-serif;
@@ -544,6 +544,12 @@ dl p {
 	background-position: 1px 1px;
 }
 
+.link-edit .ui-icon.ui-icon-arrow-r {
+	background-image: url(images/icon-disclosure-edit-18.png);
+	background-color:#939393;
+	background-position: 1px 1px;
+}
+
 .ui-icon-lock {
 	background-image: url(images/icon-disclosure-lock-18.png);
 	background-position: 1px 1px;
@@ -597,6 +603,17 @@ dl p {
 		background-size: 18px 18px;
 		background-position: 0px 0px;
 	}
+	
+	
+		.link-edit .ui-icon.ui-icon-arrow-r {
+		background-image: url(images/icon-disclosure-edit-36.png);
+		-moz-background-size: 18px 18px;
+		-o-background-size: 18px 18px;
+		-webkit-background-size: 18px 18px;
+		background-size: 18px 18px;
+		background-position: 0px 0px;
+	}
+	
 }
 
 
@@ -680,7 +697,7 @@ div.ui-body-b {
 }
 
 
-/* Error Messaging
+/* Messaging
 -----------------------------------------------------------------------------------------------------------*/
 
 
@@ -695,9 +712,26 @@ div.error span {
 	border-radius: 10px;
 }
 
+
+
+div.confirmation span {
+	color: #000;
+	background: #FFC url(images/icon-visualaid-confirm-16.png) no-repeat 12px;
+	display:block;
+	padding:12px 12px 12px 32px;
+	margin-top:10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+}
+
+
 /* Misc Stuff
 -----------------------------------------------------------------------------------------------------------*/
 
 .wrap {
 	white-space:normal;
+}
+div.pagination {
+	margin-top:26px;
 }

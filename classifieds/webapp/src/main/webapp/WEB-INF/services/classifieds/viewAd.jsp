@@ -25,7 +25,12 @@
 </c:choose>
 
 <kme:page title="Ad" id="Classified-ad" backButton="true" homeButton="true" cssFilename="classifieds" backButtonURL="${backURL}">
-	<kme:content>
+	<kme:content>			
+	<c:if test="${not empty confirmation}">
+			<div class="confirmation" style="margin-bottom:12px"> <span>
+				<c:out value="${confirmation}" />
+			</span></div>
+		</c:if>
 		<ul data-role="listview" data-theme="g">
 			<li>
 				<h3>Title:</h3>
@@ -87,14 +92,9 @@
 				</p>
 			</li>
 		</ul>
-		<c:if test="${not empty confirmation}">
-			<h3>
-				<c:out value="${confirmation}" />
-			</h3>
-		</c:if>
+		
 		<div data-inline="true">
-			<div class="ui-grid-a">
-				<div class="ui-block-a">
+
 					<c:choose>
 						<c:when test="${not empty watch}">
 							<c:url var="watchURL" value="deleteWatchAd">
@@ -112,8 +112,8 @@
 							<a data-theme="c" href="${watchURL}" data-role="button">Watch</a>
 						</c:otherwise>
 					</c:choose>
-				</div>
-			</div>
+
+
 		</div>
 	</kme:content>
 </kme:page>

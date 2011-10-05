@@ -208,7 +208,7 @@ public class ClassifiedsController {
 		User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
 		try {
 			classifiedsService.watchAd(user.getPrincipalName(), adId);
-			uiModel.addAttribute("confirmation", "This ad was added to your watch list.");
+			uiModel.addAttribute("confirmation", "Added to your watch list.");
 			uiModel.addAttribute("pageNumber", pageNumber);
 			uiModel.addAttribute("categoryId", categoryId);
 			uiModel.addAttribute("searched", searched);

@@ -15,7 +15,7 @@
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-<kme:page title="${campus} Classifieds" id="classifieds" cssFilename="classifieds" backButton="true" homeButton="true" backButtonURL="${pageContext.request.contextPath}/classifieds/options">
+<kme:page title="${campus} Classifieds" id="classifieds" cssFilename="classifieds" backButton="true" homeButton="true" backButtonURL="${pageContext.request.contextPath}/classifieds/myAds">
 	<kme:content>
 		<c:out value="${policy}" escapeXml="false" />
 	</kme:content>

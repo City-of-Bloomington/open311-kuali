@@ -32,12 +32,17 @@
 
 <kme:page title="${campus} Classifieds" id="classifieds" cssFilename="classifieds" backButton="true" homeButton="true" jsFilename="${jsFilename}" backButtonURL="${pageContext.request.contextPath}/home">
 	<kme:content>
-		<div class="tabs-tabcontainer">
-			<a style="width: 24.5%;" class="tabs-tab1" name="tabs-tab1" href="#">Browse</a> 
-			<a style="width: 24.5%;" class="tabs-tab2" name="tabs-tab2" href="#">Search</a> 
-			<a style="width: 24.5%;" class="tabs-tab3" name="tabs-tab3" href="${pageContext.request.contextPath}/classifieds/myAds">Maintain Ads</a>
-			<a style="width: 24.5%;" class="tabs-tab4" name="tabs-tab4" href="${pageContext.request.contextPath}/classifieds/options">Options</a>
-		</div>
+	
+	
+	 <div class="tabs-tabcontainer">
+      <div class="container_12">
+        <div class="grid_3"> <a style="width:100%; " class="tabs-tab1" name="tabs-tab1" href="#">Browse</a> </div>
+        <div class="grid_3"><a style="width:100%; " class="tabs-tab2" name="tabs-tab2" href="#">Search</a> </div>
+        <div class="grid_3"> <a style="width:100%; " class="tabs-tab3" name="tabs-tab3" href="${pageContext.request.contextPath}/classifieds/myAds">My Ads</a></div>
+        <div class="grid_3"> <a style="width:100%; " class="tabs-tab4" name="tabs-tab4" href="${pageContext.request.contextPath}/classifieds/adWatchList">Watching</a></div>
+      </div>
+    </div>
+	
 		<div class="tabs-panel1" name="tabs-panel1">
 			<kme:listView id="ad" dataTheme="g">
 				<kme:listItem>

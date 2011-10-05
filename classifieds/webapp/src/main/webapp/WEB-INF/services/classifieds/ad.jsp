@@ -63,17 +63,22 @@
 			</fieldset>
 			<div data-inline="true">
 				<div class="ui-grid-a">
-					<div class="ui-block-a">
-						<input data-theme="a" class="submit" name="save" type="submit" value="Save" />
-					</div>
-					<c:if test="${not empty ad.adId}">
-						<div class="ui-block-b">
+				
+				
+				<c:if test="${not empty ad.adId}">
+						<div class="ui-block-a">
 							<c:url var="deleteURL" value="deleteAd">
 								<c:param name="adId" value="${ad.adId}" />
 							</c:url>
 							<a data-theme="c" href="${deleteURL}" data-role="button">Delete</a>
 						</div>
 					</c:if>
+				
+				
+					<div class="ui-block-b">
+						<input data-theme="a" class="submit" name="save" type="submit" value="Save" />
+					</div>
+					
 				</div>
 			</div>
 		</form:form>

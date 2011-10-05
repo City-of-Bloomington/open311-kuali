@@ -45,8 +45,8 @@
 					<a style="width: 24.5%;" class="tabs-tab2" name="tabs-tab2" href="${pageContext.request.contextPath}/classifieds?selectedTab=tab2">Search</a>
 				</c:otherwise>
 			</c:choose>
-			<a style="width:24.5%;" class="tabs-tab3" name="tabs-tab3" href="${pageContext.request.contextPath}/classifieds/myAds">Maintain Ads</a>
-			<a style="width: 24.5%;" class="tabs-tab4" name="tabs-tab4" href="${pageContext.request.contextPath}/classifieds/options">Options</a>
+			<a style="width:24.5%;" class="tabs-tab3" name="tabs-tab3" href="${pageContext.request.contextPath}/classifieds/myAds">My Ads</a>
+			<a style="width: 24.5%;" class="tabs-tab4" name="tabs-tab4" href="${pageContext.request.contextPath}/classifieds/adWatchList">Watching</a>
 		</div>
 		<div class="genericpanel">
 			<h3 class="title">

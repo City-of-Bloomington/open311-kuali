@@ -17,20 +17,26 @@
 
 <kme:page title="${campus} Classifieds" id="classifieds" cssFilename="classifieds" backButton="true" homeButton="true" jsFilename="classifieds-show-tab4" backButtonURL="${pageContext.request.contextPath}/home">
 	<kme:content>
-		<div class="tabs-tabcontainer">
-			<a style="width: 24.5%;" class="tabs-tab1" name="tabs-tab1" href="${pageContext.request.contextPath}/classifieds">Browse</a> 
-			<a style="width: 24.5%;" class="tabs-tab2" name="tabs-tab2" href="${pageContext.request.contextPath}/classifieds?selectedTab=tab2">Search</a>
-			<a style="width: 24.5%;" class="tabs-tab3" name="tabs-tab3" href="${pageContext.request.contextPath}/classifieds/myAds">Maintain Ads</a>
-			<a style="width: 24.5%;" class="tabs-tab4" name="tabs-tab4" href="#">Options</a>
-		</div>
+	
+	
+	
+	 <div class="tabs-tabcontainer">
+      <div class="container_12">
+        <div class="grid_3"> <a style="width:100%; " class="tabs-tab1" name="tabs-tab1" href="${pageContext.request.contextPath}/classifieds">Browse</a> </div>
+        <div class="grid_3"><a style="width:100%; " class="tabs-tab2" name="tabs-tab2" href="${pageContext.request.contextPath}/classifieds?selectedTab=tab2">Search</a></div>
+        <div class="grid_3"> <a style="width:100%; " class="tabs-tab3" name="tabs-tab3" href="${pageContext.request.contextPath}/classifieds/myAds">My Ads</a></div>
+        <div class="grid_3"> <a style="width:100%; " class="tabs-tab4 selected" name="tabs-tab4" href="#">Watching</a></div>
+      </div>
+    </div>
+	
+	
+
 		<div class="tabs-panel4" name="tabs-panel4">
 			<kme:listView id="options" dataTheme="g">
 				<kme:listItem>
 					<a href="${pageContext.request.contextPath}/classifieds/adWatchList">Watch List</a>
 				</kme:listItem>
-				<kme:listItem>
-					<a href="${pageContext.request.contextPath}/classifieds/policy">Classifieds Policy</a>
-				</kme:listItem>
+			
 			</kme:listView>
 		</div>
 	</kme:content>

@@ -15,8 +15,24 @@
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-<kme:page title="${campus} Classifieds" id="classifieds" cssFilename="classifieds" backButton="true" homeButton="true" backButtonURL="${pageContext.request.contextPath}/classifieds/options">
+<kme:page title="${campus} Classifieds" id="classifieds" cssFilename="classifieds" backButton="true" homeButton="true" jsFilename="classifieds-show-tab4" backButtonURL="${pageContext.request.contextPath}/home">
 	<kme:content>
+	
+	
+	 <div class="tabs-tabcontainer">
+      <div class="container_12">
+        <div class="grid_3"> <a style="width:100%; " class="tabs-tab1" name="tabs-tab1" href="${pageContext.request.contextPath}/classifieds">Browse</a> </div>
+        <div class="grid_3"><a style="width:100%; " class="tabs-tab2" name="tabs-tab2" href="${pageContext.request.contextPath}/classifieds?selectedTab=tab2">Search</a></div>
+        <div class="grid_3"> <a style="width:100%; " class="tabs-tab3" name="tabs-tab3" href="${pageContext.request.contextPath}/classifieds/myAds">My Ads</a></div>
+        <div class="grid_3"> <a style="width:100%; " class="tabs-tab4 selected" name="tabs-tab4" href="#">Watching</a></div>
+      </div>
+    </div>
+	
+	
+	
+
+		
+		    <div style=" margin-top:36px">
 		<h3>Watch List</h3>
 		<c:choose>
 			<c:when test="${not empty adWatchList}">
@@ -34,6 +50,8 @@
 			</c:when>
 			<c:otherwise>There are no ads in your watch list.</c:otherwise>
 		</c:choose>
+		</div>
 	</kme:content>
 </kme:page>
+
 
