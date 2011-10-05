@@ -17,9 +17,34 @@
 
 <kme:page title="Search Results" id="people" backButton="true" homeButton="true">
 	<kme:content>
-		<c:choose>
-			<c:when test="${not empty people}">
+		<%--<c:choose>
+			<c:when test="${not empty people}">--%>
 				<kme:listView id="peopleList" filter="false" dataTheme="c" dataInset="false">
+		            <script type="text/javascript">
+						$('[data-role=page][id=people]').live('pagebeforeshow', function(event, ui) {
+							$('#peopleTemplate').template('peopleTemplate');
+							refreshTemplate('people', '#peopleList', 'peopleTemplate', '<li>No people found.</li>', function() {$('#peopleList').listview('refresh');});
+						});
+					</script>
+					<script id="peopleTemplate" type="text/x-jquery-tmpl">
+						<li>
+        					<a href="${pageContext.request.contextPath}/people/\${hashedUserName}">
+								<h3>\${lastName}, \${firstName}</h3>
+								<p><strong>Location:</strong>
+								{{each(i,location) locations}}
+									\${location}{{if i+1 < locations.length}}, {{/if}}
+								{{/each}}
+								</p>
+								<p><strong>Affiliation:</strong>
+								{{each(i,affiliation) affiliations}}
+									\${affiliation}{{if i+1 < affiliations.length}}, {{/if}}
+								{{/each}}
+								</p>				    		  	
+				    		 </a>
+      					</li>
+					</script>
+		            
+		            <%--
 		            <c:forEach items="${people}" var="person" varStatus="status">
 		                <kme:listItem>
 		                	<c:url value="/people/${person.hashedUserName}" var="url">
@@ -29,7 +54,7 @@
 		                		<c:param name="exact" value="${search.exactness}" />
 		                		<c:param name="status" value="${search.status}" />
 		                		<c:param name="location" value="${search.location}" /> --%>
-		                	</c:url>
+		                	<%--</c:url>
 							<a href="${url}">
 								<h3><c:out value="${person.lastName}" />, <c:out value="${person.firstName}" /></h3>
 								<p><strong>Location:</strong>
@@ -44,12 +69,12 @@
 								</p>
 							</a>
 		                </kme:listItem>
-		            </c:forEach>
+		            </c:forEach>--%>
 		        </kme:listView>
-			</c:when>
+			<%--</c:when>
 			<c:otherwise>
 				<p>No people found.</p>
 			</c:otherwise>
-		</c:choose>
+		</c:choose>--%>
 	</kme:content>
 </kme:page>

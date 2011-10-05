@@ -41,6 +41,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import flexjson.JSONSerializer;
 
 @Controller
 @RequestMapping("/people")
@@ -68,14 +71,17 @@ public class PeopleController {
 	public String postSearchForm(Model uiModel, @ModelAttribute("search") Search search, BindingResult result, HttpServletRequest request) {
 		if (validateSearch(search, result)) {
 			List<Person> people = peopleService.performSearch(search);
-			uiModel.addAttribute("people", people);
-			uiModel.addAttribute("search", search);
+//			uiModel.addAttribute("people", people);
+//			uiModel.addAttribute("search", search);
 
 			Map<String, String> userNameHashes = new HashMap<String, String>();
 			for (Person p : people) {
 				userNameHashes.put(p.getHashedUserName(), p.getUserName());
 			}
 			request.getSession().setAttribute("People.UserNames.Hashes", userNameHashes);
+			
+			User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
+			user.putInCache("People.Search.Results", people);
 
 			return "people/list";
 		} else {
@@ -85,16 +91,22 @@ public class PeopleController {
 			return "people/form";
 		}
 	}
+	
+	@SuppressWarnings("unchecked")
+	@RequestMapping(method = RequestMethod.GET, headers = "Accept=application/json")
+    @ResponseBody
+    public String getListJson(HttpServletRequest request) {
+		User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
+		List<Person> people = (List<Person>)user.getFromCache("People.Search.Results").getItem();
+		
+		return new JSONSerializer().exclude("*.class").deepSerialize(people);
+    }
 
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/{userNameHash}", method = RequestMethod.GET)
 	public String getUserDetails(Model uiModel, HttpServletRequest request, @PathVariable("userNameHash") String userNameHash) {
 
 		User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
-		boolean isLoggedIn = false;
-		if (user != null) {
-			isLoggedIn = true;
-		}
 
 		/*
 		 * Search search = new Search(); search.setLastName(searchLastName);
@@ -103,6 +115,7 @@ public class PeopleController {
 		 * search.setExactness(searchExactness);
 		 * search.setLocation(searchLocation); search.setStatus(searchStatus);
 		 */
+		Map<String, Object> details = new HashMap<String, Object>();
 
 		Map<String, String> userNameHashes = (Map<String, String>) request.getSession().getAttribute("People.UserNames.Hashes");
 		Person p = null;
@@ -110,11 +123,13 @@ public class PeopleController {
 			String userName = userNameHashes.get(userNameHash);
 			p = peopleService.getUserDetails(userName);
 		}
-		uiModel.addAttribute("person", p);
-		// uiModel.addAttribute("search", search);
-		uiModel.addAttribute("loggedIn", isLoggedIn);
+//		uiModel.addAttribute("person", p);
+		details.put("person", p);
+//		// uiModel.addAttribute("search", search);
+//		uiModel.addAttribute("loggedIn", isLoggedIn);
+		details.put("loggedIn", !user.isPublicUser());
 
-		if (!isLoggedIn && p != null && p.getEmail() != null && !"".equals(p.getEmail())) {
+		if (user.isPublicUser() && p != null && p.getEmail() != null && !"".equals(p.getEmail())) {
 			BufferedImage bufferedImage = peopleService.generateObfuscatedImage(p.getEmail());
 			ByteArrayOutputStream os = new ByteArrayOutputStream();
 			try {
@@ -131,13 +146,27 @@ public class PeopleController {
 				}
 				key = key + hash;
 				request.getSession().setAttribute(key, os.toByteArray());
-				uiModel.addAttribute("imageKey", hash);
+//				uiModel.addAttribute("imageKey", hash);
+				details.put("imageKey", hash);
 			} catch (Exception ioException) {
 				LOG.error("Error generating email image: ", ioException);
 			}
 		}
+		
+		user.putInCache("People.Search.Results.Person", details);
+		
 		return "people/details";
 	}
+	
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/details", method = RequestMethod.GET, headers = "Accept=application/json")
+    @ResponseBody
+    public String getUserDetailsJson(HttpServletRequest request) {
+		User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
+		Map<String, Object> details = (Map<String, Object>)user.getFromCache("People.Search.Results.Person").getItem();
+		
+		return new JSONSerializer().exclude("*.class").deepSerialize(details);
+    }
 
 	@RequestMapping(value = "/image/{hash}", method = RequestMethod.GET)
 	public void getImage(@PathVariable("hash") String imageKeyHash, Model uiModel, HttpServletRequest request, HttpServletResponse response) throws Exception {
