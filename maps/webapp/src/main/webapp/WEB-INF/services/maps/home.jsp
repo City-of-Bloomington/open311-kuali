@@ -15,6 +15,7 @@
 
 <kme:page title="Campus Maps" id="maps" backButton="true" homeButton="true" cssFilename="mapsHome" jsFilename="maps" usesGoogleMaps="true">
 	<kme:content>
+		<script src="${pageContext.request.contextPath}/js/arcgislink.js" type="text/javascript"></script>
 		<form:form action="${pageContext.request.contextPath}/maps/building/search" commandName="mapsearchform" data-ajax="false">
 			<fieldset>
 			<!-- <label for="searchCampus">Campus:</label> -->
@@ -51,7 +52,7 @@ var markersArray = [];
 var userMarkersArray = [];
 
 $('#maps').live("pagebeforeshow", function() {
-	
+	configureArcGIS();
 	setContextPath("${pageContext.request.contextPath}");
 	deleteOverlays(markersArray);
 	map = initialize("map_canvas", 39.788, -86.165);
@@ -107,23 +108,103 @@ function mapSearch() {
 			// Remove previous results
 			$('#searchresults').html('');
 		} else {
-			var requestUrlString = '${pageContext.request.contextPath}/maps/building/searchassist?criteria=' + encodeURI(inputString) + '&groupCode=' + encodeURI(groupCode);
-			$.get(requestUrlString, function(data) {
-				//console.log("" + requestUrlString + " " + mapsRemoteCallCount + " " + mapsCurrentDisplayNumber);
+			if (groupCode == "BL") {
 				if (mapsRemoteCallCountAtStartOfRequest >= mapsCurrentDisplayNumber) {
 					mapsCurrentDisplayNumber = mapsRemoteCallCount;
-					// Show results
-					var pagehtml = '<div id="resultdata"></div>'
-					$('#searchresults').html(pagehtml);
-					$("#resultdata").html(data).page();
-					mapSearchPostProcess();
+					// Show Results
+					findBuildings(inputString, processFindResults);
 				}
-			});
+			} else {
+				var requestUrlString = '${pageContext.request.contextPath}/maps/building/searchassist?criteria=' + encodeURI(inputString) + '&groupCode=' + encodeURI(groupCode);
+				$.get(requestUrlString, function(data) {
+					//console.log("" + requestUrlString + " " + mapsRemoteCallCount + " " + mapsCurrentDisplayNumber);
+					if (mapsRemoteCallCountAtStartOfRequest >= mapsCurrentDisplayNumber) {
+						mapsCurrentDisplayNumber = mapsRemoteCallCount;
+						// Show results
+						var pagehtml = '<div id="resultdata"></div>'
+						$('#searchresults').html(pagehtml);
+						$("#resultdata").html(data).page();
+						mapSearchPostProcess();
+					}
+				});
+			}
 		}
 	}
 	previousSearchKey = searchKey;
 } // mapSearch
 
+/*
+ * ArcGIS
+ */
+ var iuBuildingType = 'I';
+ var venueType = 'V';
+ var customPointType = 'C';
+ var predefinedPointType = 'P';
+
+function processFindResults(rs) {
+	var html = '';
+	var x=0;
+	for (var i = 0, c = rs.results.length; i < c; i++) {
+		html += processResult(rs.results[i]);
+	}
+	var pagehtml = '<div id="resultdata"><ul id="mapsearchresults" data-role="listview" data-theme="c" data-inset="true" data-dividertheme="b" data-filter="false"></ul></div>'
+	$('#searchresults').html(pagehtml);
+	$("#mapsearchresults").html(html).page();
+	//$('#mapsearchresults').listview("refresh");
+	mapSearchPostProcessIUB();
+}
+
+function processResult(result){
+	var feat = result.feature;
+	var a = feat.attributes;
+	var title = result.value;
+	if (feat.geometry){
+		var poly = feat.geometry[0];
+		var b = new Object();
+		b.name = title;
+		b.location = new google.maps.LatLng(a['LATITUDE'],a['LONGITUDE']);
+		b.iuBuildingCode = a['IU BLDG NUMBER'];
+		//b.street = a['ADDRESS'];
+		b.type = iuBuildingType;
+		//b.state = venue.location.state;
+		//b.city = venue.location.city;
+		//b.zip = venue.location.postalCode;
+		b.poly = poly;
+		//poly.setMap(map);
+		searchResults.push(b);
+		//poly.place = b;
+/* 		google.maps.event.addListener(poly, 'click', function() {
+			setTempMarker(b);
+		}); */
+		// return '<div onclick="selectSearchResult(' + (searchResults.length - 1) + ')" onmouseover="this.style.backgroundColor=\'#AAAAEE\'" onmouseout="this.style.backgroundColor=\'#FFFFFF\'">' + title + '</div>';
+		return '<li data-theme="c"><a href="#" kmetype="quicksearchiub" kmeresult="' + (searchResults.length - 1) + '"><p class="wrap">' + title + '</p></a></li>';
+	}
+	return '';
+}
+
+function mapSearchPostProcessIUB() {
+    $('a[kmetype="quicksearchiub"]').click(function(event) {
+		event.preventDefault();
+		$('#searchresults').hide();
+		var index = $(this).attr("kmeresult");
+		var place = searchResults[index];
+		var name = place.name;
+		var latitude = place.location.Ma;
+		var longitude = place.location.Na;
+		//var latitude = $(this).attr("kmelatitude");
+		//var longitude = $(this).attr("kmelongitude");
+		//var name = $(this).attr("kmename");
+    	$('#searchText').val(name);
+		deleteOverlays(markersArray);
+		
+		showLocationByCoordinates(map, markersArray, latitude, longitude);		
+		//alert("Test");
+    });
+}
+
+/*
+ * Old System
+ */
 function mapSearchPostProcess() {
     $('a[kmetype="quicksearch"]').click(function(event) {
 		event.preventDefault();

@@ -34,6 +34,9 @@ function initialize(id, lat, lng) {
 	trackerControlDiv.index = 1;
 	newmap.controls[google.maps.ControlPosition.TOP_LEFT].push(trackerControlDiv);
 	
+	var agsType = new  gmaps.ags.MapType(arcGisServerUrl,{name:'ArcGIS', opacity:1.0});
+	newmap.overlayMapTypes.insertAt(0, agsType);
+	
 	google.maps.event.trigger(newmap, 'resize');
     return newmap;
 }
@@ -202,6 +205,48 @@ function showBuildingByCode(map, buildingCode) {
 	}
 }
 
+/*
+ * ArcGIS
+ */
+var mapService;
+var arcGisServerUrl = 'http://maps.iu.edu/ArcGIS/rest/services/Bloomington/MapServer';
+var searchResults = [];
+function configureArcGIS() {
+	mapService = new gmaps.ags.MapService(arcGisServerUrl);
+}
+function findBuildings(query, processFindResults) {
+//    $('#busy').show();
+//	  clearSearchResults();
+//	  $('#results').html('');
+    var params = {
+      returnGeometry: true,
+      searchText: query,
+      contains: true,
+      layerIds: [32, 36], // building names, frat names
+      searchFields: ["MAP_NAME"],
+      sr: 2966
+    };
+    mapService.find(params, processFindResults);
+}
+
+function selectSearchResult(index){
+	var place = searchResults[index];
+	setTempMarker(place);
+	map.panTo(place.location);
+}
+
+function clearSearchResults() {
+	if (searchResults) {
+		for (var i = 0; i < searchResults.length; i++) {
+			searchResults[i].poly.setMap(null);
+		}
+		searchResults.length = 0;
+	}
+}
+
+/*
+ * Old system
+ */
 function retrieveBuildingsForGroup(groupCode) {
 	// http://localhost:9999/mdot/maps/group/BL
 	$('#searchBuilding').empty();
