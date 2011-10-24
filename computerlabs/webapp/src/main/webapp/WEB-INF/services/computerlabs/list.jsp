@@ -13,7 +13,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility" %>
 
-<kme:page title="Computer Labs" id="computerlabs" homeButton="true" backButton="true" cssFilename="computerlabs">
+<kme:page title="Computer Labs" id="computerlabs" homeButton="true" backButton="true" cssFilename="computerlabs" appcacheFilename="iumobile.appcache">
     <kme:content>
         <kme:listView id="computerlablist" dataTheme="c" dataDividerTheme="b" filter="false">
 		<script type="text/javascript">
@@ -25,7 +25,7 @@
 		<script id="clListTemplate" type="text/x-jquery-tmpl">
 			<li data-role="list-divider">\${name}</li>
 			{{each(i,lab) computerLabs}}
-      			<li data-id="\${buildingCode}" detailId="\${labCode}">
+      			<li data-id="\${buildingCode}" class="link-gps" detailId="\${labCode}">
 					{{if buildingCode}}
 						<a href="${pageContext.request.contextPath}/maps/location?id=\${buildingCode}">
         					<h3>\${labCode}</h3>

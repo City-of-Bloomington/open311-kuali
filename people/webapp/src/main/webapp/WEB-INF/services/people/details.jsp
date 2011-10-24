@@ -15,7 +15,7 @@
 <%@ taglib prefix="kme"  uri="http://kuali.org/mobility" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<kme:page title="Search Results" id="people" backButton="true" homeButton="true" cssFilename="people">
+<kme:page title="Search Results" id="people" backButton="true" homeButton="true" cssFilename="people" appcacheFilename="iumobile.appcache">
 	<kme:content>
 		<kme:listView id="detailsList" filter="false" dataTheme="c" dataInset="false">
 			<script type="text/javascript">			

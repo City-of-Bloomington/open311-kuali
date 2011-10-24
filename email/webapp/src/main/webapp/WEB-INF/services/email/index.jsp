@@ -14,7 +14,7 @@
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility" %>
 
-<kme:page title="Email" id="email" backButton="true" homeButton="true">
+<kme:page title="Email" id="email" backButton="true" homeButton="true"  appcacheFilename="iumobile.appcache">
 	<kme:content>
     <p>Indiana University has partnered with Microsoft and Google to provide email and other online communications services for IU students.</p>
     <fieldset class="ui-grid-a">

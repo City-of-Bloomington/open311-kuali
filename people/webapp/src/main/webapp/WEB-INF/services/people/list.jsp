@@ -15,7 +15,7 @@
 <%@ taglib prefix="kme"  uri="http://kuali.org/mobility" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<kme:page title="Search Results" id="people" backButton="true" homeButton="true">
+<kme:page title="Search Results" id="people" backButton="true" homeButton="true" appcacheFilename="iumobile.appcache">
 	<kme:content>
 		<%--<c:choose>
 			<c:when test="${not empty people}">--%>

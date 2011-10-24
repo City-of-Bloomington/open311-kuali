@@ -60,11 +60,11 @@ ${pageContext.request.contextPath}/images/service-icons/srvc-alerts-green.png
 ${pageContext.request.contextPath}/images/service-icons/srvc-alerts-red.png
 ${pageContext.request.contextPath}/images/service-icons/srvc-twitter.png
 ${pageContext.request.contextPath}/images/service-icons/srvc-email.png
-${pageContext.request.contextPath}/offline.html
 http://maps.google.com/maps/api/js?sensor=true
+${pageContext.request.contextPath}/offline.html
 
 FALLBACK:
-/ ${pageContext.request.contextPath}/offline.html
+# / ${pageContext.request.contextPath}/offline.html
 
 NETWORK:
 *
