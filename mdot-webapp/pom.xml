@@ -48,6 +48,14 @@
             <version>1.11</version>
         </dependency>        
         <!-- Webapp dependencies -->
+		<dependency>
+		    <groupId>cglib</groupId>
+		    <artifactId>cglib</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>commons-dbcp</groupId>
+		    <artifactId>commons-dbcp</artifactId>
+		</dependency>
    		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
