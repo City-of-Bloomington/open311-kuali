@@ -19,6 +19,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.SocketTimeoutException;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -231,23 +232,6 @@ public class SakaiSiteServiceImpl implements SakaiSiteService {
         		}
             }
             
-            
-//            try {
-//				List<ViewDetailedEvent> listViewEvents = calendarEventOAuthService.retrieveCourseEvents(user, courseSiteIdList);
-//				for (ViewDetailedEvent event : listViewEvents) {
-//					Site site = courseSiteMap.get(event.getOncourseSiteId());
-//					if (event.getRecurrenceMessage() != null && !event.getRecurrenceMessage().isEmpty()) {
-//						site.setMeetingTime(event.getRecurrenceMessage());
-//					} else {
-//						site.setMeetingTime(event.getDisplayDate());
-//					}
-//					site.setLocation(event.getLocation());
-//					site.setBuildingCode(event.getLocationId());
-//				}
-//			} catch (Exception e) {
-//				LOG.error(e.getMessage(), e);
-//			}
-            
             for (Map.Entry<String, Term> entry : courseMap.entrySet()) {
             	courses.add(entry.getValue());
             }
@@ -257,9 +241,20 @@ public class SakaiSiteServiceImpl implements SakaiSiteService {
             user.putInCache(SAKAI_SITE, home);
             
 			return home;
+		} catch (OAuthException e) {
+			LOG.error(e.getMessage(), e);
+			Home h = new Home();
+			if (e.getCause() instanceof SocketTimeoutException) {
+				h.setErrorMessage("My Classes is currently experiencing high demand.  Please try again later.");
+			} else {
+				h.setErrorMessage("An error has occurred while retrieving your My Classes data.  Please try again later.");
+			}
+			return h;
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
-			return new Home();
+			Home h = new Home();
+			h.setErrorMessage("An error has occurred while retrieving your My Classes data.  Please try again later.");
+			return h;
 		}
 	}
 	

@@ -23,6 +23,7 @@ public class Home {
 	private List<Site> other;
 	private List<Site> todaysCourses;
 	private boolean showTodayTab = false;
+	private String errorMessage;
 
 	public Home() {
 		courses = new ArrayList<Term>();
@@ -69,5 +70,13 @@ public class Home {
 
 	public void setShowTodayTab(boolean showTodayTab) {
 		this.showTodayTab = showTodayTab;
+	}
+
+	public String getErrorMessage() {
+		return errorMessage;
+	}
+
+	public void setErrorMessage(String errorMessage) {
+		this.errorMessage = errorMessage;
 	}
 }

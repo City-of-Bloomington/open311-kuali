@@ -87,14 +87,14 @@
         
         <c:if test="${tabCount eq 1}">
         
-        <style type="text/css">
+        	<style type="text/css">
 			    <!--
 			    div.tabs-panel1, div.tabs-panel2, div.tabs-panel3, div.tabs-panel4 {
 			    	margin-top:-15px; 
 			    }		    
 			    -->
 		    </style>
-        <c:choose>
+        	<c:choose>
                 <c:when test="${!empty home.courses && home.showTodayTab}">
                     <script type="text/javascript">
                     $(window).load(function () {
@@ -127,10 +127,16 @@
                     });
                     </script>
                 </c:otherwise>
-                
             </c:choose>
-          </c:if>
+		</c:if>
         
+        <c:if test="${!empty home.errorMessage}">
+	    	<kme:listView dataTheme="c">
+	        	<kme:listItem>
+	            	<p class="wrap">${home.errorMessage}</p>
+	            </kme:listItem>
+	       </kme:listView>
+        </c:if>
         
         <c:if test="${!empty home.courses}">
 	         <div class="tabs-panel2" name="tabs-panel2">
