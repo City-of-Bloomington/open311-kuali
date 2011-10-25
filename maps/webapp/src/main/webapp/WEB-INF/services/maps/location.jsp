@@ -17,7 +17,7 @@
 
 <kme:page title="Maps" id="mapslocation" backButton="true" homeButton="true" cssFilename="location" jsFilename="maps" usesGoogleMaps="true">
 	<kme:content>
-	
+<script src="${pageContext.request.contextPath}/js/arcgislink.js" type="text/javascript"></script>
 <div id="map_canvas" style="height:300px;"></div>
 	
 <script type="text/javascript">
