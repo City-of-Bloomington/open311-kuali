@@ -12,7 +12,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility" %>
 
-<kme:page title="News" id="news" homeButton="true" backButton="true" backButtonURL="${pageContext.request.contextPath}/home" cssFilename="news">
+<kme:page title="News" id="news" homeButton="true" backButton="true" backButtonURL="${pageContext.request.contextPath}/home" cssFilename="news" appcacheFilename="iumobile.appcache">
     <kme:content>
 		<!-- <ul data-role="listview" data-theme="c" class="news-index"> -->
 		<kme:listView id="topNewsList" filter="false" cssClass="news-index">

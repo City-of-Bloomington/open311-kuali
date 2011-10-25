@@ -12,7 +12,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility" %>
 
-<kme:page title="${sourceTitle}" id="news" homeButton="true" backButton="true" cssFilename="news">
+<kme:page title="${sourceTitle}" id="news" homeButton="true" backButton="true" cssFilename="news" appcacheFilename="iumobile.appcache">
     <kme:content id="newsContent" cssClass="news-story">
 		<script type="text/javascript">			
 			$('[data-role=page][id=news]').live('pagebeforeshow', function(event, ui) {

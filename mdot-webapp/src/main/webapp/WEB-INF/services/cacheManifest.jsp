@@ -41,7 +41,6 @@ ${pageContext.request.contextPath}/images/service-icons/srvc-kb.png
 ${pageContext.request.contextPath}/images/itnotices/announcement-large.png
 ${pageContext.request.contextPath}/images/service-icons/srvc-people.png
 ${pageContext.request.contextPath}/css/sakai.css
-${pageContext.request.contextPath}/images/service-icons/srvc-itstatewide.png
 ${pageContext.request.contextPath}/images/service-icons/srvc-classcancel.png
 ${pageContext.request.contextPath}/images/service-icons/srvc-feedback.png
 ${pageContext.request.contextPath}/images/service-icons/srvc-myclasses.png
@@ -61,10 +60,6 @@ ${pageContext.request.contextPath}/images/service-icons/srvc-alerts-red.png
 ${pageContext.request.contextPath}/images/service-icons/srvc-twitter.png
 ${pageContext.request.contextPath}/images/service-icons/srvc-email.png
 http://maps.google.com/maps/api/js?sensor=true
-${pageContext.request.contextPath}/offline.html
-
-FALLBACK:
-# / ${pageContext.request.contextPath}/offline.html
 
 NETWORK:
 *

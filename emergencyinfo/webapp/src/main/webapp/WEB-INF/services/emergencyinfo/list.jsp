@@ -13,7 +13,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility" %>
 
-<kme:page title="Emergency Contacts" id="emergencyinfo" backButton="true" homeButton="true" cssFilename="emergencyinfo">
+<kme:page title="Emergency Contacts" id="emergencyinfo" backButton="true" homeButton="true" cssFilename="emergencyinfo" appcacheFilename="iumobile.appcache">
     <kme:content>
         <kme:listView id="emergencylist" filter="false">
         	<kme:listItem cssClass="link-phone">
