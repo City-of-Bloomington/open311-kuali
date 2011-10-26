@@ -189,8 +189,8 @@ function mapSearchPostProcessIUB() {
 		var index = $(this).attr("kmeresult");
 		var place = searchResults[index];
 		var name = place.name;
-		var latitude = place.location.Ma;
-		var longitude = place.location.Na;
+		var latitude = place.location.Na;
+		var longitude = place.location.Oa;
 		//var latitude = $(this).attr("kmelatitude");
 		//var longitude = $(this).attr("kmelongitude");
 		//var name = $(this).attr("kmename");

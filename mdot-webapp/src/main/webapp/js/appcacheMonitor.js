@@ -77,11 +77,16 @@ function displayProgress() {
         //cacheProperties.filesDownloaded + " of " + cacheProperties.totalFiles + " files downloaded.");
         var percentDownloaded = 0;
 
-        //if (cacheProperties.totalFiles > 0) {
         percentDownloaded = (cacheProperties.filesDownloaded / cacheProperties.totalFiles) * 100;
-        //}
+        if (percentDownloaded > 100) { percentDownloaded = 100; }
+        
         var progressBar = '<div id="appcacheProgressBar"><div id="appcacheProgressAmount" style="width:' + percentDownloaded.toFixed() + '%">&nbsp;' + percentDownloaded.toFixed() + '%</div></div>';
         cacheProgress.html(progressBar);
+        
+        if (percentDownloaded > 95) {
+        	$('div#cacheProgressModal').fadeOut();
+            $('div#cacheProgressMessage').fadeOut();
+        }
     } else {
         // If we don't know the total number of files, just output the running total.
         cacheProgress.text(cacheProperties.filesDownloaded + " files downloaded.");
