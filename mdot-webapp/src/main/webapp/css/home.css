@@ -49,6 +49,7 @@ div#appcacheProgressBar {
 	background-color:#ccc;
 	position:relative;
 	display:block;
+	overflow: hidden;
 }
 div#appcacheProgressAmount {
 	background-color:#900;

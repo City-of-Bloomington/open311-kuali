@@ -56,13 +56,7 @@
 	 	</script>
  	
 	    <kme:listView id="homeserviceslist" filter="false">
-	        <script type="text/javascript">
-				$('[data-role=page][id=home]').live('pagebeforeshow', function(event, ui) {
-					$('#toolTemplate').template('toolTemplate');
-					refreshTemplate('home', '#homeserviceslist', 'toolTemplate', '<li>No Items</li>', function() {$('#homeserviceslist').listview('refresh');});
-					setHomeScreenTitle();
-				});
-			</script>
+	        
 			<script id="toolTemplate" type="text/x-jquery-tmpl">
       			<li data-icon="false" data-theme="c">
         			<a href="\${url}" style="background-image: url('\${iconUrl}');">
@@ -88,6 +82,14 @@
 			</c:forEach>--%>
 	    </kme:listView>
 	</kme:content>
+	
+	<script type="text/javascript">
+		$('[data-role=page][id=home]').live('pagebeforeshow', function(event, ui) {
+			$('#toolTemplate').template('toolTemplate');
+			refreshTemplate('home', '#homeserviceslist', 'toolTemplate', '<li>No Items</li>', function() {$('#homeserviceslist').listview('refresh');});
+			setHomeScreenTitle();
+		});
+	</script>
 	
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/appcacheMonitor.js"></script>
 	
