@@ -23,6 +23,9 @@
 		<property name="providerRequestTokenURL" value="${sakai.oauth.baseUrl}/oauthdirect/oauth/request_token" />
 		<property name="providerAuthorizeURL" value="${sakai.oauth.baseUrl}/oauthdirect/oauth/authorize" />
 		<property name="providerAccessTokenURL" value="${sakai.oauth.baseUrl}/oauthdirect/oauth/access_token" />
+		<property name="socketTimeout" value="${sakai.oauth.socketTimeout}" />
+		<property name="connectionManagerTimeout" value="${sakai.oauth.connectionManagerTimeout}" />
+		<property name="connectionTimeout" value="${sakai.oauth.connectionTimeout}" />
 		<property name="consumerKey" value="${sakai.oauth.key}" />
 		<property name="consumerSecret" value="${sakai.oauth.secret}" />
 		<property name="resourceId" value="${sakai.oauth.resourceId}" />
