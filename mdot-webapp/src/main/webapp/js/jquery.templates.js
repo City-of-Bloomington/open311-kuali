@@ -6,7 +6,7 @@ function refreshTemplate(ajaxUrl, htmlElement, templateName, emptyContentMessage
 		url: ajaxUrl,
 		dataType: 'json',
 		async: false,
-		cache: false,
+		cache: false
 	});
 	dynamicDataResp.done(function(){
 		var dynamicDataObj = jQuery.parseJSON(dynamicDataResp.responseText);
