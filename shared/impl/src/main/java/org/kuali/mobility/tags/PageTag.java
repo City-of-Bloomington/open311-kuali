@@ -168,6 +168,9 @@ public class PageTag extends SimpleTagSupport {
             out.println("</div>");
             getJspBody().invoke(out);
             out.println("</div>");
+            
+            out.println("<script src=\"" + contextPath + "/js/urchin.js\" type=\"text/javascript\"></script>");
+            out.println("<script type=\"text/javascript\">_userv=0;urchinTracker();</script>");
             out.println("</body>");
             out.println("</html>");
         } catch (Exception e) {
