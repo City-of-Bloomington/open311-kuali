@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/cache-manifest; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>CACHE MANIFEST
-# 2011-10-25:v1.1
+# 2011-10-27:v1.3
 
 <%--
   Copyright 2011 The Kuali Foundation Licensed under the Educational Community
@@ -17,6 +17,7 @@ CACHE:
 ${pageContext.request.contextPath}/apple-touch-icon.png
 ${pageContext.request.contextPath}/js/arcgislink.js
 ${pageContext.request.contextPath}/js/jquery.js
+${pageContext.request.contextPath}/js/urchin.js
 ${pageContext.request.contextPath}/images/news-generic.png
 ${pageContext.request.contextPath}/js/jquery.mobile.js
 ${pageContext.request.contextPath}/css/jquery.mobile.css
