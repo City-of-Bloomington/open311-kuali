@@ -81,9 +81,7 @@ function savePoi(){
 		poi.name = $('#poiName').val();
 		poi.description = $('#description').val();
 		poi.version = $('#poiVersion').val();
-		poi.location = new Object();
-		poi.location.latitude = $('#latitude').val();
-		poi.location.longitude = $('#longitude').val();
+		place.location = new google.maps.LatLng($('#latitude').val(), $('#longitude').val());
 		poi.url = $('#url').val();	
 		addSelectedMediaToPoi(poi);
 
