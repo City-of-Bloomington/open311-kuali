@@ -150,7 +150,26 @@
 			<version>${tool.dining.version}</version>
             <type>war</type>
             <scope>runtime</scope>
-        </dependency>   
+        </dependency> 
+        <dependency>
+            <groupId>org.kuali.mobility</groupId>
+            <artifactId>coursedescriptions-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.kuali.mobility</groupId>
+            <artifactId>coursedescriptions-impl</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.kuali.mobility</groupId>
+            <artifactId>coursedescriptions-web</artifactId>
+        </dependency> 
+        <dependency> 
+            <groupId>org.kuali.mobility</groupId>
+            <artifactId>coursedescriptions-webapp</artifactId>
+			<version>${tool.coursedescriptions.version}</version>
+            <type>war</type>
+            <scope>runtime</scope>
+        </dependency>     
         <dependency>
             <groupId>org.kuali.mobility</groupId>
             <artifactId>conference-api</artifactId>

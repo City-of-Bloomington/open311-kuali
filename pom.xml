@@ -50,6 +50,7 @@
 		<tool.classifieds.version>1.0.0-BETA-1</tool.classifieds.version>
 		<tool.computerlabs.version>1.0.0-BETA-1</tool.computerlabs.version>
 		<tool.conference.version>1.0.0-BETA-1</tool.conference.version>
+		<tool.coursedescriptions.version>1.0.0-BETA-1</tool.coursedescriptions.version>
 		<tool.configparams.version>1.0.0-BETA-1</tool.configparams.version>
 		<tool.dining.version>1.0.0-BETA-1</tool.dining.version>
 		<tool.email.version>1.0.0-BETA-1</tool.email.version>
@@ -85,6 +86,7 @@
                 <module>classifieds</module>
 				<module>computerlabs</module>
                 <module>conference</module>
+                <module>coursedescriptions</module>
 				<module>configparams</module>
                 <module>dining</module>
                 <module>email</module>
@@ -117,6 +119,7 @@
                 <module>classifieds</module>
 				<module>computerlabs</module>
                 <module>conference</module>
+                <module>coursedescriptions</module>
 				<module>configparams</module>
                 <module>dining</module>
                 <module>email</module>
@@ -388,6 +391,27 @@
                 <groupId>org.kuali.mobility</groupId>
                 <artifactId>conference-webapp</artifactId>
                 <version>${tool.conference.version}</version>
+            </dependency>
+            <!-- CourseDescriptions Service -->
+			<dependency>
+				<groupId>org.kuali.mobility</groupId>
+				<artifactId>coursedescriptions-api</artifactId>
+				<version>${tool.coursedescriptions.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.kuali.mobility</groupId>
+				<artifactId>coursedescriptions-impl</artifactId>
+				<version>${tool.coursedescriptions.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.kuali.mobility</groupId>
+				<artifactId>coursedescriptions-web</artifactId>
+				<version>${tool.coursedescriptions.version}</version>
+			</dependency>
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>coursedescriptions-webapp</artifactId>
+                <version>${tool.coursedescriptions.version}</version>
             </dependency>
 			<!-- Configuration Parameters Service -->
 			<dependency>
