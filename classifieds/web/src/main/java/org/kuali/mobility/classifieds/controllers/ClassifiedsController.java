@@ -125,24 +125,29 @@ public class ClassifiedsController {
 
 	@RequestMapping(value = "/maintainAd", method = RequestMethod.GET)
 	public String myAd(HttpServletRequest request, Model uiModel, @RequestParam(required = false) Long adId) {
-		User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
-		try {
-			uiModel.addAttribute("campus", user.getViewCampus());
-			uiModel.addAttribute("campuses", campusService.getCampuses());
-			Ad ad = classifiedsService.getAd(user.getPrincipalName(), adId);
-			if (adId == null) {
-				ad.setCampus(user.getViewCampus());
+		String policyViewed = (String) request.getSession().getAttribute("classifieds.policy.viewed");
+		if (policyViewed != null && "true".equals(policyViewed)) {
+			User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
+			try {
+				uiModel.addAttribute("campus", user.getViewCampus());
+				uiModel.addAttribute("campuses", campusService.getCampuses());
+				Ad ad = classifiedsService.getAd(user.getPrincipalName(), adId);
+				if (adId == null) {
+					ad.setCampus(user.getViewCampus());
+				}
+				uiModel.addAttribute("ad", ad);
+			} catch (ClassifiedsPageException e) {
+				uiModel.addAttribute("messages", e.getPageErrors().get("pageError"));
+				return "classifieds/message";
+			} catch (Exception e) {
+				LOG.error("Error getting my ad.", e);
+				uiModel.addAttribute("messages", "Error getting my ad");
+				return "classifieds/message";
 			}
-			uiModel.addAttribute("ad", ad);
-		} catch (ClassifiedsPageException e) {
-			uiModel.addAttribute("messages", e.getPageErrors().get("pageError"));
-			return "classifieds/message";
-		} catch (Exception e) {
-			LOG.error("Error getting my ad.", e);
-			uiModel.addAttribute("messages", "Error getting my ad");
-			return "classifieds/message";
+			return "classifieds/ad";
+		} else {
+			return policy(request, uiModel, adId);
 		}
-		return "classifieds/ad";
 	}
 
 	@RequestMapping(value = "/saveAd", method = RequestMethod.POST)
@@ -247,6 +252,7 @@ public class ClassifiedsController {
 			uiModel.addAttribute("pageNumber", pageNumber);
 			uiModel.addAttribute("categoryId", categoryId);
 			uiModel.addAttribute("searched", searched);
+
 			if (watch != null) {
 				uiModel.addAttribute("watch", watch);
 			}
@@ -341,11 +347,15 @@ public class ClassifiedsController {
 	}
 
 	@RequestMapping(value = "/policy", method = RequestMethod.GET)
-	public String policy(HttpServletRequest request, Model uiModel) {
+	public String policy(HttpServletRequest request, Model uiModel, @RequestParam(required = false) Long adId) {
 		User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
 		try {
 			uiModel.addAttribute("campus", user.getViewCampus());
 			uiModel.addAttribute("policy", classifiedsService.getPolicy(user.getPrincipalName()));
+			request.getSession().setAttribute("classifieds.policy.viewed", "true");
+			if (adId != null) {
+				uiModel.addAttribute("adId", adId);
+			}
 		} catch (ClassifiedsPageException e) {
 			uiModel.addAttribute("messages", e.getPageErrors().get("pageError"));
 			return "classifieds/message";

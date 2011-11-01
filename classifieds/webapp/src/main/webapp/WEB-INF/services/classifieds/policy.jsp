@@ -18,5 +18,18 @@
 <kme:page title="${campus} Classifieds" id="classifieds" cssFilename="classifieds" backButton="true" homeButton="true" backButtonURL="${pageContext.request.contextPath}/classifieds/myAds">
 	<kme:content>
 		<c:out value="${policy}" escapeXml="false" />
+		<br />
+		<br />
+		<c:url var="adURL" value="/classifieds/maintainAd">
+			<c:if test="${not empty adId}">
+				<c:param name="adId" value="${adId}" />
+			</c:if>
+		</c:url>
 	</kme:content>
+		<div data-role="footer" data-id="events-footer" data-position="fixed" role="contentinfo" data-theme="b" class="ui-bar">
+			<div data-role="controlgroup" data-type="horizontal">
+				<a href="${adURL}" data-role="button" data-ajax="false"> I Agree</a>
+			</div>
+		</div>
+	
 </kme:page>

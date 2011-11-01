@@ -17,12 +17,6 @@
 
 <kme:page title="${campus} Classifieds" id="classifieds" cssFilename="classifieds" backButton="true" homeButton="true" jsFilename="classifieds-show-tab3" backButtonURL="${pageContext.request.contextPath}/home">
 	<kme:content>
-	
-	
-
-
-	
-	
 	<div class="tabs-tabcontainer">
           <div class="container_12">
             <div class="grid_3"> <a style="width:100%; " class="tabs-tab1" name="tabs-tab1" href="${pageContext.request.contextPath}/classifieds">Browse</a> </div>
@@ -31,59 +25,28 @@
             <div class="grid_3"> <a style="width:100%; " class="tabs-tab4" name="tabs-tab4" href="${pageContext.request.contextPath}/classifieds/adWatchList">Watching</a>
           </div>
         </div>
-	
 	</div>
-	
-	
-	
-	
 	    <div class="" name="tabs-panel1" style=" margin-top:36px">
-     
-     
-     
-     <c:choose>
-     <c:when test="${not empty ads}">
-     
+     <c:if test="${not empty ads}">
       <h3>My Current Ads</h3>
-      
-      
-      
-      
-      
-<kme:listView id="ads" dataTheme="c">
-			
-		
-			
+			<kme:listView id="ads" dataTheme="c">
 				<c:forEach var="ad" items="${ads}">
 				<li class="link-edit">
-						<c:url var="adURL" value="/classifieds/maintainAd">
+						<c:url var="adURL" value="/classifieds/policy">
 							<c:param name="adId" value="${ad.adId}" />
 						</c:url>
 						<a href="${adURL}"> <c:out value="${ad.title}" /> </a>
 					</li>
 				</c:forEach>
-				
-			
 			</kme:listView>
-			
-			</c:when>
-			<c:otherwise></c:otherwise>
-			</c:choose>
-			
+	</c:if>
       <div class="container_12" style="margin-top:26px">
-        <div class="prev grid_6"> <a href="${pageContext.request.contextPath}/classifieds/maintainAd" data-role="button" data-icon="plus" data-theme="a">Post Ad</a></div>
+        <div class="prev grid_6"> <a href="${pageContext.request.contextPath}/classifieds/policy" data-role="button" data-icon="plus" data-theme="a">Post Ad</a></div>
         <div class="prev grid_6"> </div>
       </div>
       <p><a href="${pageContext.request.contextPath}/classifieds/policy">Classifieds Policy</a></p>		
     </div>
-	
-	
-	
-	
-
 		<div class="genericpanel">
-			
 		</div>
 	</kme:content>
 </kme:page>
-
