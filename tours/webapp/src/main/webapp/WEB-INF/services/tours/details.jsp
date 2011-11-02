@@ -13,7 +13,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility" %>
 
-<kme:page title="POI Details" id="tours" backButton="true" homeButton="true" cssFilename="tours" usesGoogleMaps="true">
+<kme:page title="Location Details" id="tours" backButton="true" homeButton="true" cssFilename="tours" usesGoogleMaps="true">
     <script src="${pageContext.request.contextPath}/js/foursquare.js" type="text/javascript"></script>
     <script type="text/javascript">
 	    var imageType = 'I';
@@ -79,6 +79,12 @@
             <kme:listItem dataRole="list-divider" dataTheme="b" dataIcon="listview">
 				${poi.name}
 			</kme:listItem>
+			<kme:listItem cssClass="link-gps">
+               	<a href="${pageContext.request.contextPath}/maps/location?latitude=${poi.latitude}&longitude=${poi.longitude}">
+               		View Map<br />
+               		<span class="wrap" style="font-weight:normal; font-size:.8em">Show the location on a map.</span>
+               	</a>
+             </kme:listItem>
             <kme:listItem cssClass="tightPadding">
             	<p class="wrap">${poi.description}</p>
             	<c:if test="${not empty poi.url}">

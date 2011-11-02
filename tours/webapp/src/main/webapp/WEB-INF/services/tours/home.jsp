@@ -20,6 +20,7 @@
                 <kme:listItem>
                 	<a href="${pageContext.request.contextPath}/tours/view/${tour.tourId}">
                 		<h3>${tour.name}</h3>
+                		<p class="wrap">${tour.description}</p>
                	 	</a>
                 </kme:listItem>
             </c:forEach>
