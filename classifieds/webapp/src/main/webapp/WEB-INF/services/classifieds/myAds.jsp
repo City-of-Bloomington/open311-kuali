@@ -44,7 +44,11 @@
         <div class="prev grid_6"> <a href="${pageContext.request.contextPath}/classifieds/policy" data-role="button" data-icon="plus" data-theme="a">Post Ad</a></div>
         <div class="prev grid_6"> </div>
       </div>
-      <p><a href="${pageContext.request.contextPath}/classifieds/policy">Classifieds Policy</a></p>		
+      <p>
+      <c:url var="policyUrl" value="/classifieds/policy">
+		<c:param name="refer" value="policy" />
+	</c:url>
+      <a href="${policyUrl}">Classifieds Policy</a></p>		
     </div>
 		<div class="genericpanel">
 		</div>

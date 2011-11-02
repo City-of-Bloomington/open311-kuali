@@ -20,16 +20,18 @@
 		<c:out value="${policy}" escapeXml="false" />
 		<br />
 		<br />
+	</kme:content>
+
+	<c:if test="${empty policyOnly}">
 		<c:url var="adURL" value="/classifieds/maintainAd">
 			<c:if test="${not empty adId}">
 				<c:param name="adId" value="${adId}" />
 			</c:if>
 		</c:url>
-	</kme:content>
 		<div data-role="footer" data-id="events-footer" data-position="fixed" role="contentinfo" data-theme="b" class="ui-bar">
 			<div data-role="controlgroup" data-type="horizontal">
 				<a href="${adURL}" data-role="button" data-ajax="false"> I Agree</a>
 			</div>
 		</div>
-	
+	</c:if>
 </kme:page>

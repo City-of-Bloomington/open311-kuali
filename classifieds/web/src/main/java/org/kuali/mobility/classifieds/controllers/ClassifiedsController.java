@@ -353,6 +353,11 @@ public class ClassifiedsController {
 			uiModel.addAttribute("campus", user.getViewCampus());
 			uiModel.addAttribute("policy", classifiedsService.getPolicy(user.getPrincipalName()));
 			request.getSession().setAttribute("classifieds.policy.viewed", "true");
+			
+			String policyOnly = request.getParameter("refer");
+			if (policyOnly != null) {
+				uiModel.addAttribute("policyOnly", policyOnly);
+			}
 			if (adId != null) {
 				uiModel.addAttribute("adId", adId);
 			}
