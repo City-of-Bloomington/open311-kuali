@@ -19,6 +19,7 @@ import java.util.List;
 
 import org.kuali.mobility.conference.entity.Attendee;
 import org.kuali.mobility.conference.entity.ContentBlock;
+import org.kuali.mobility.conference.entity.MenuItem;
 import org.kuali.mobility.conference.entity.Session;
 
 public interface ConferenceService {
@@ -29,4 +30,5 @@ public interface ConferenceService {
 	List<Session> findAllSessions(String date);
 	Attendee findAttendeeById(String id);
 	Session findSessionById(String id);
+	List<MenuItem> findAllMenuItems();
 }

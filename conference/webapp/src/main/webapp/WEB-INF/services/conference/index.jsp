@@ -16,6 +16,23 @@
 
 <kme:page title="CTSI Retreat" id="conference" backButton="true" homeButton="true">
 	<kme:content>
+			<kme:listView id="menulist" dataTheme="c" dataDividerTheme="b" filter="false">
+			<script type="text/javascript">
+				$('[data-role=page][id=conference]').live('pagebeforeshow', function(event, ui) {
+					$('#menuListTemplate').template('menuListTemplate');
+					refreshTemplate('${pageContext.request.contextPath}/conference?lang=${localeCode}', '#menulist', 'menuListTemplate', '<li>No Menus</li>', function() {$('#menulist').listview('refresh');});
+				});
+			</script>
+			<script id="menuListTemplate" type="text/x-jquery-tmpl">
+      			<li>
+					<a href="${pageContext.request.contextPath}/\${linkURL}">
+        				<h3 class="wrap">\${title}</h3>
+						<p class="wrap">\${description}</p>
+					</a>
+      			</li>
+			</script>	
+		</kme:listView>
+	<%--
 		<kme:listView>
 			<kme:listItem>
 	    		<a href="conference/welcome">
@@ -41,14 +58,14 @@
 	    			<p class="wrap">Profiles of featured speakers</p>
 	    		</a>
 	    	</kme:listItem>
-	    	<%-- <kme:listItem>
+	    	<kme:listItem>
 	    		<a href="conference/attendeeGroups">
 	    			<h3 class="wrap">
 	    				Attendee List
 	    			</h3>
 	    			<p class="wrap">See who is attending Statewide IT</p>
 	    		</a>
-	    	</kme:listItem> --%>
+	    	</kme:listItem>
 	    	<kme:listItem>
 	    		<a href="http://www.indiana.edu/~iumobile/CTSI-Retreat/imumap10.jpg">
 	    			<h3 class="wrap">
@@ -58,5 +75,6 @@
 	    		</a>
 	    	</kme:listItem>
 		</kme:listView>
+	--%>
 	</kme:content>
 </kme:page>

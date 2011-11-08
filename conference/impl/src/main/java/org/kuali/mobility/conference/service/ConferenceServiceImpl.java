@@ -35,6 +35,7 @@ import net.sf.json.JSONSerializer;
 
 import org.kuali.mobility.conference.entity.Attendee;
 import org.kuali.mobility.conference.entity.ContentBlock;
+import org.kuali.mobility.conference.entity.MenuItem;
 import org.kuali.mobility.conference.entity.Session;
 import org.springframework.stereotype.Service;
 
@@ -99,6 +100,35 @@ public class ConferenceServiceImpl implements ConferenceService {
 		}
 
 		return contentBlocks;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<MenuItem> findAllMenuItems() {
+		List<MenuItem> menuItems = new ArrayList<MenuItem>();
+		try {
+			String json = retrieveJSON("http://www.indiana.edu/~iumobile/SWITC-2011/home_en.json");
+			
+			JSONArray menuItemArray = (JSONArray) JSONSerializer.toJSON(json);
+			for (Iterator<JSONObject> iter = menuItemArray.iterator(); iter.hasNext();) {
+				try {
+					JSONObject menuItemObject = iter.next();
+					
+					MenuItem menuItem = new MenuItem();
+					menuItem.setTitle(menuItemObject.getString("title"));
+					menuItem.setDescription(menuItemObject.getString("description"));
+					menuItem.setLinkURL(menuItemObject.getString("linkURL"));
+					menuItem.setIconURL(menuItemObject.getString("iconURL"));
+					menuItems.add(menuItem);
+				} catch (Exception e) {
+					LOG.error(e.getMessage(), e);
+				}
+				
+			}
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+		}
+		return menuItems;
 	}
 	
 	@SuppressWarnings("unchecked")
