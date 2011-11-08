@@ -17,9 +17,9 @@
 	<kme:content>
 		<form:form action="${pageContext.request.contextPath}/knowledgebase/search" commandName="kbsearchform" data-ajax="false">
 			<fieldset>
-            <label for="searchText">Search:</label>
+            <label for="searchText" style="position:absolute; left:-9999px;">Search:</label>
 			<%--<form:input path="searchText" cssClass="text ui-widget-content ui-corner-all" /> --%>
-			<input id="searchText" name="searchText" class="text ui-widget-content ui-corner-all" type="search" />
+			<input id="searchText" name="searchText" class="text ui-widget-content ui-corner-all" placeholder="Search" />
 			<form:errors path="searchText" />
 			</fieldset>
 		</form:form>
