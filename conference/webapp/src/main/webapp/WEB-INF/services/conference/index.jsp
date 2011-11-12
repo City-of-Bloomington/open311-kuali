@@ -14,13 +14,13 @@
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility" %>
 
-<kme:page title="CTSI Retreat" id="conference" backButton="true" homeButton="true">
+<kme:page title="Conference" id="conference" backButton="true" homeButton="true">
 	<kme:content>
 			<kme:listView id="menulist" dataTheme="c" dataDividerTheme="b" filter="false">
 			<script type="text/javascript">
 				$('[data-role=page][id=conference]').live('pagebeforeshow', function(event, ui) {
 					$('#menuListTemplate').template('menuListTemplate');
-					refreshTemplate('${pageContext.request.contextPath}/conference?lang=${localeCode}', '#menulist', 'menuListTemplate', '<li>No Menus</li>', function() {$('#menulist').listview('refresh');});
+					refreshTemplate('${pageContext.request.contextPath}/conference?lang=${localeCode}', '#menulist', 'menuListTemplate', '<li>No Items Found</li>', function() {$('#menulist').listview('refresh');});
 				});
 			</script>
 			<script id="menuListTemplate" type="text/x-jquery-tmpl">
