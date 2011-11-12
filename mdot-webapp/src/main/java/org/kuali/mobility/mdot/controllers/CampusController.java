@@ -53,6 +53,7 @@ public class CampusController {
 		Cookie cookie = new Cookie("campusSelection", campus);
 		cookie.setMaxAge(60*60*24*365); //one year
 		cookie.setPath(request.getContextPath());
+		cookie.setSecure(true);
 		response.addCookie(cookie);
 		
 		return "redirect:/" + toolName;

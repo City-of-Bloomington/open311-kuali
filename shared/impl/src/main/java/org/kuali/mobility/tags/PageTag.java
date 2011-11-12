@@ -117,8 +117,8 @@ public class PageTag extends SimpleTagSupport {
             
             out.println("<head>");
             out.println("<title>" + title + "</title>");
-            out.println("<link href=\"http://www.iu.edu/favicon.ico\" rel=\"icon\" />");
-            out.println("<link href=\"http://www.iu.edu/favicon.ico\" rel=\"shortcut icon\" />");
+            out.println("<link href=\"https://www.iu.edu/favicon.ico\" rel=\"icon\" />");
+            out.println("<link href=\"https://www.iu.edu/favicon.ico\" rel=\"shortcut icon\" />");
             out.println("<link rel=\"apple-touch-icon\" href=\"" + contextPath + "/apple-touch-icon.png\"/>");
             out.println("<link href=\"" + contextPath + "/css/jquery.mobile.css\" rel=\"stylesheet\" type=\"text/css\" />");
             out.println("<link href=\"" + contextPath + "/css/jquery-mobile-fluid960.css\" rel=\"stylesheet\" type=\"text/css\" />");
@@ -169,8 +169,8 @@ public class PageTag extends SimpleTagSupport {
             getJspBody().invoke(out);
             out.println("</div>");
             
-            out.println("<script src=\"" + contextPath + "/js/urchin.js\" type=\"text/javascript\"></script>");
-            out.println("<script type=\"text/javascript\">_userv=0;urchinTracker();</script>");
+            //out.println("<script src=\"" + contextPath + "/js/urchin.js\" type=\"text/javascript\"></script>");
+            //out.println("<script type=\"text/javascript\">_userv=0;urchinTracker();</script>");
             out.println("</body>");
             out.println("</html>");
         } catch (Exception e) {
