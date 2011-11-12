@@ -140,6 +140,16 @@ public class ConferenceController {
 		return "conference/sessionFeedbackThanks";
 	}
 
+	@RequestMapping(value = "/kualiDaysFeedback", method = RequestMethod.POST)
+	public String submitKualiDaysFeedback(Model uiModel, HttpServletRequest request, @ModelAttribute("sessionFeedback") SessionFeedback sessionFeedback) {
+		User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
+		sessionFeedback.setTimePosted(new Timestamp(System.currentTimeMillis()));
+		sessionFeedback.setPrincipalName(user.getPrincipalName());
+		sendEmail(sessionFeedback);
+		return "conference/kualiDaysSessionFeedbackThanks";
+	}
+
+	
 	@RequestMapping(value = "/sessionSpeakerDetails", method = RequestMethod.GET)
 	public String sessionSpeakerDetails(Model uiModel, @RequestParam(required = true) int id) {
 		List<Session> sessions = conferenceService.findAllSessions("");
@@ -154,7 +164,7 @@ public class ConferenceController {
 			while (stringTokenizer.hasMoreTokens()) {
 				String email = stringTokenizer.nextToken();
 				//emailService.sendEmail(f.toString(), "SWITC Feedback; "+f.getSessionId()+":"+f.getRating(), email, configParamService.findValueByName("Core.EmailAddress"));
-				emailService.sendEmail(f.toString(), "CTSI Retreat Feedback; "+f.getSessionId()+":"+f.getRating(), email, configParamService.findValueByName("Core.EmailAddress"));
+				emailService.sendEmail(f.toString(), "Conference Feedback; "+f.getSessionId()+":"+f.getRating(), email, configParamService.findValueByName("Core.EmailAddress"));
 			}
 		} catch (Exception e) {
 		}
