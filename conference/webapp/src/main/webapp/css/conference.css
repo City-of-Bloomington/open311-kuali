@@ -26,6 +26,23 @@ p.tightPadding {
 	padding-right: 0 !important;
 }
 
+ul.conferenceHome li a {
+	padding: 7px 35px 7px 75px !important;
+	background-repeat: no-repeat;
+	background-position: 8px 13px;
+}
+
+/* Retina display high resolution icons for home screen */
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+       only screen and (min--moz-device-pixel-ratio: 1.5),
+       only screen and (min-resolution: 240dpi) {
+       
+	ul.conferenceHome li a {
+    	background-position: 12px -35px;
+    	-webkit-background-size: 50px 100px;
+	}
+}
+
 
 ul.statewideIT li {
 	padding: 15px !important;
@@ -65,12 +82,13 @@ div#daySelectTabs {
 	margin: -15px;
 	height: 40px;
 	padding: 5px;
+	text-align: center;
 }
 
 div#daySelectTabs a {
 	padding:4px 5px 8px 5px;
 	margin:0;
-	width:50px;
+	width:30%;
 	background-color:#ccc;
 	color:#777;
 	border:1px solid #aaa;

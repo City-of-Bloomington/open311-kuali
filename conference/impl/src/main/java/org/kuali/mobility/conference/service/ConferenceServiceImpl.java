@@ -21,6 +21,7 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.net.URLEncoder;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -49,8 +50,7 @@ public class ConferenceServiceImpl implements ConferenceService {
 	public List<ContentBlock> findAllContentBlocks() {
 		List<ContentBlock> contentBlocks = new ArrayList<ContentBlock>();
 		try {
-			//String json = retrieveJSON("http://statewideit.iu.edu/program/sessions/welcome.json");
-			String json = retrieveJSON("http://www.indiana.edu/~iumobile/CTSI-Retreat/CTSIwelcome.json");
+			String json = retrieveJSON("http://pagr.iu.edu/annual-conference/mobile-feeds/json.php?m=welcome");
 
 			JSONArray simpleContentArray = (JSONArray) JSONSerializer.toJSON(json);
 			
@@ -79,7 +79,65 @@ public class ConferenceServiceImpl implements ConferenceService {
 		List<ContentBlock> contentBlocks = new ArrayList<ContentBlock>();
 		try {
 			//String json = retrieveJSON("http://www.indiana.edu/~spea/featuredSpeakers.json");
-			String json = retrieveJSON("http://www.indiana.edu/~iumobile/CTSI-Retreat/CTSIspeakers.json");
+			String json = retrieveJSON("http://pagr.iu.edu/annual-conference/mobile-feeds/json.php?m=featured-speakers");
+
+			JSONArray simpleContentArray = (JSONArray) JSONSerializer.toJSON(json);
+			
+			for (Iterator<JSONObject> iter = simpleContentArray.iterator(); iter.hasNext();) {
+				try {
+					JSONObject contentBlockObject = iter.next();
+					
+					ContentBlock contentBlock = new ContentBlock();
+					contentBlock.setContentBlock(contentBlockObject.getString("welcome"));
+
+					contentBlocks.add(contentBlock);
+				} catch (Exception e) {
+					LOG.error(e.getMessage(), e);
+				}
+			}
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+		}
+
+		return contentBlocks;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<ContentBlock> findTwitter() {
+		List<ContentBlock> contentBlocks = new ArrayList<ContentBlock>();
+		try {
+			//String json = retrieveJSON("http://www.indiana.edu/~spea/featuredSpeakers.json");
+			String json = retrieveJSON("http://pagr.iu.edu/annual-conference/mobile-feeds/json.php?m=twitter");
+
+			JSONArray simpleContentArray = (JSONArray) JSONSerializer.toJSON(json);
+			
+			for (Iterator<JSONObject> iter = simpleContentArray.iterator(); iter.hasNext();) {
+				try {
+					JSONObject contentBlockObject = iter.next();
+					
+					ContentBlock contentBlock = new ContentBlock();
+					contentBlock.setContentBlock(contentBlockObject.getString("welcome"));
+
+					contentBlocks.add(contentBlock);
+				} catch (Exception e) {
+					LOG.error(e.getMessage(), e);
+				}
+			}
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+		}
+
+		return contentBlocks;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<ContentBlock> findMap() {
+		List<ContentBlock> contentBlocks = new ArrayList<ContentBlock>();
+		try {
+			//String json = retrieveJSON("http://www.indiana.edu/~spea/featuredSpeakers.json");
+			String json = retrieveJSON("http://pagr.iu.edu/annual-conference/mobile-feeds/json.php?m=map");
 
 			JSONArray simpleContentArray = (JSONArray) JSONSerializer.toJSON(json);
 			
@@ -107,7 +165,8 @@ public class ConferenceServiceImpl implements ConferenceService {
 	public List<MenuItem> findAllMenuItems() {
 		List<MenuItem> menuItems = new ArrayList<MenuItem>();
 		try {
-			String json = retrieveJSON("http://www.indiana.edu/~iumobile/SWITC-2011/home_en.json");
+			//String json = retrieveJSON("http://www.indiana.edu/~iumobile/PAGR-2011/homeScreen.json");
+			String json = retrieveJSON("http://pagr.iu.edu/annual-conference/mobile-feeds/json.php?m=home");
 			
 			JSONArray menuItemArray = (JSONArray) JSONSerializer.toJSON(json);
 			for (Iterator<JSONObject> iter = menuItemArray.iterator(); iter.hasNext();) {
@@ -137,7 +196,8 @@ public class ConferenceServiceImpl implements ConferenceService {
 		
 		List<Attendee> attendees = new ArrayList<Attendee>();
 		try {
-			String json = retrieveJSON("http://statewideit.iu.edu/program/sessions/attendeesfeed.php");
+			String json = retrieveJSON("http://pagr.iu.edu/annual-conference/mobile-feeds/json.php?m=attendees");
+			//String json = retrieveJSON("http://www.indiana.edu/~iumobile/PAGR-2011/attendees.json");
 
 			JSONArray attendeeArray = (JSONArray) JSONSerializer.toJSON(json);
 			
@@ -146,7 +206,8 @@ public class ConferenceServiceImpl implements ConferenceService {
 					JSONObject attendeeObject = iter.next();
 					
 					Attendee attendee = new Attendee();
-					attendee.setId(attendeeObject.getString("id"));
+					//attendee.setId(attendeeObject.getString("id"));
+					attendee.setId(URLEncoder.encode(attendeeObject.getString("email").replaceAll("[^A-Za-z0-9 ]", ""), "UTF-8"));
 					//attendee.setCellPhone(attendeeObject.getString("cellPhone"));
 					//attendee.setWorkPhone(attendeeObject.getString("workPhone"));
 					attendee.setEmail(attendeeObject.getString("email"));
@@ -185,7 +246,8 @@ public class ConferenceServiceImpl implements ConferenceService {
 		try {
 			String dateString = (null == date ? "" : date);
 			//String json = retrieveJSON("http://statewideit.iu.edu/program/sessions/programfeed.php?d=" + dateString);
-			String json = retrieveJSON("http://www.indiana.edu/~iumobile/CTSI-Retreat/CTSIschedule.json");
+			//String json = retrieveJSON("http://www.indiana.edu/~iumobile/PAGR-2011/sessions.json");
+			String json = retrieveJSON("http://pagr.iu.edu/annual-conference/mobile-feeds/json.php?m=sessions&d=" + dateString);
 
 			JSONArray sessionArray = (JSONArray) JSONSerializer.toJSON(json);
 			

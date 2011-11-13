@@ -14,9 +14,9 @@
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility" %>
 
-<kme:page title="Conference" id="conference" backButton="true" homeButton="true">
+<kme:page title="Conference" id="conference" backButton="true" homeButton="true" cssFilename="conference">
 	<kme:content>
-			<kme:listView id="menulist" dataTheme="c" dataDividerTheme="b" filter="false">
+			<kme:listView id="menulist" cssClass="conferenceHome" dataTheme="c" dataDividerTheme="b" filter="false">
 			<script type="text/javascript">
 				$('[data-role=page][id=conference]').live('pagebeforeshow', function(event, ui) {
 					$('#menuListTemplate').template('menuListTemplate');
@@ -25,7 +25,7 @@
 			</script>
 			<script id="menuListTemplate" type="text/x-jquery-tmpl">
       			<li>
-					<a href="${pageContext.request.contextPath}/\${linkURL}">
+					<a href="${pageContext.request.contextPath}/\${linkURL}" style="background-image: url('\${iconURL}');">
         				<h3 class="wrap">\${title}</h3>
 						<p class="wrap">\${description}</p>
 					</a>

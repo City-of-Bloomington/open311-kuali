@@ -29,7 +29,8 @@
 
 	        <c:if test="${not empty session.latitude}" >
 	        	<kme:listItem cssClass="link-gps">
-	        		<a href="${pageContext.request.contextPath}/maps/location?latitude=${session.latitude}&longitude=${session.longitude}"><p class="wrap">Location: <strong>${session.location}</strong></p></a>
+	        		<%-- <a href="${pageContext.request.contextPath}/maps/location?latitude=${session.latitude}&longitude=${session.longitude}"><p class="wrap">Location: <strong>${session.location}</strong></p></a> --%>
+	        		<a href="${pageContext.request.contextPath}/conference/map"><p class="wrap">Location: <strong>${session.location}</strong></p></a>
 	        	</kme:listItem>
 	        </c:if>
 	        

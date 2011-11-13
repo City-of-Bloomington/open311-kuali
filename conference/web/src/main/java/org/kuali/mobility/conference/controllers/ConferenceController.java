@@ -97,6 +97,20 @@ public class ConferenceController {
 		return "conference/featuredSpeakers";
 	}
 	
+	@RequestMapping(value = "/twitter", method = RequestMethod.GET)
+	public String twitter(Model uiModel) {
+		List<ContentBlock> contentBlocks = conferenceService.findTwitter();
+		uiModel.addAttribute("contentBlocks", contentBlocks);
+		return "conference/twitter";
+	}
+	
+	@RequestMapping(value = "/map", method = RequestMethod.GET)
+	public String map(Model uiModel) {
+		List<ContentBlock> contentBlocks = conferenceService.findMap();
+		uiModel.addAttribute("contentBlocks", contentBlocks);
+		return "conference/map";
+	}
+	
 	@RequestMapping(value = "/attendeeGroups", method = RequestMethod.GET)
 	public String attendeeGroups(Model uiModel) {
 		return "conference/attendeeGroups";
