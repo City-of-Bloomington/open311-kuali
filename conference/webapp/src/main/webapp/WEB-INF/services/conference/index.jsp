@@ -14,7 +14,7 @@
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility" %>
 
-<kme:page title="Conference" id="conference" backButton="true" homeButton="true" cssFilename="conference">
+<kme:page title="IU Communications Conference" id="conference" backButton="true" homeButton="true" cssFilename="conference">
 	<kme:content>
 			<kme:listView id="menulist" cssClass="conferenceHome" dataTheme="c" dataDividerTheme="b" filter="false">
 			<script type="text/javascript">
