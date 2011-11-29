@@ -814,38 +814,24 @@ select name, value  from CONFIG_PARAM_MAINT_T where name = 'SocialMedia.Twitter.
 
 
 
-AskIU.Email.Validation.Regex
-AskIU.Send.EmailAddress
-CAMPUS_STATUS_XML_URL
-Core.CacheRSSXmlRemoteStartupDelayMinutes
-Core.EmailAddress
-Core.ReloadCacheMinutes
-Core.Rss.Server
-Data.XML.Replacement.Tokens
-Events.CCL.Parser.Header
-Events.CCL.Parser.Footer
-Events.Default.Parser.Header
-Events.Default.Parser.Footer
-Events.Url.Matcher.Regex
-Events.Url.Matcher.Format
-Feedback.SendEmail.On
-Feedback.SendEmail.EmailAddress
-Food.Url.SE
-KB.Url.Document
-KB.Url.Search
-Maps.Foursquare.Client.Id
-Maps.Foursquare.Client.Secret
-News.UITSQueryString
-NEWS_SAMPLE_COUNT
-News.Top.%
-PEOPLE_RESULT_LIMIT_ADS
-RSS.SOCKET.TIMEOUT.SECONDS
-Sakai.Url.Base
-SocialMedia.Twitter.TweetCount
-SocialMedia.Twitter.Feeds
 
 
 
-RSS.SOCKET.TIMEOUT.SECONDS
-SocialMedia.Twitter.Feeds
+
+insert into TOOL_T (TOOL_ID, ALIAS, TITLE, URL, DESCRIPTION, ICON_URL, VER_NBR) values (SEQ_TOOL_T.NEXTVAL, 'iub-dining', 'Dining Services', 'https://apps3.indiana.edu/RPS_Dining_V1_Mobile', 'Up to date menus, dining locations, nutrition information, and check your I-Bucks balance.', 'images/service-icons/srvc-dining.png', 0)
+/
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'BL'), (select TOOL_ID from TOOL_T where ALIAS = 'iub-dining'), 2, 0)
+/
+
+
+
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'BL'), (select TOOL_ID from TOOL_T where ALIAS = 'campus411'), 4, 0)
+/
+insert into HOME_TOOL_T (HOME_TOOL_ID, HOME_ID, TOOL_ID, ORDR, VER_NBR) values (SEQ_HOME_TOOL_T.NEXTVAL, (select HOME_ID from HOME_T where ALIAS = 'IN'), (select TOOL_ID from TOOL_T where ALIAS = 'campus411'), 4, 0)
+/
+
+
+
+
+
 

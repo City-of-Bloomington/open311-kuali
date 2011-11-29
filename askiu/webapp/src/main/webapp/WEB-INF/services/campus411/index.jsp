@@ -15,25 +15,24 @@
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<kme:page title="Campus 411" id="campus411" backButton="true" homeButton="true">
+<kme:page title="Campus 411" id="campus411" backButton="true" homeButton="true" cssFilename="campus411">
 	<kme:content>
-		<c:if test="${not empty title}">
-		<p>
-		Blah blah.
-		</p>
 		<kme:listView id="campus411listdata" filter="false">
-			<kme:listItem cssClass="link-phone">
-				<a href="tel:${phoneNumber}">
-				<h3>${title}</h3>
-				</a>
-			</kme:listItem>
-		
+			<c:if test="${not empty title}">
+				<kme:listItem>
+					Live Operators to help you with phone numbers, building codes, campus directions, and more!
+				</kme:listItem>
+				<kme:listItem cssClass="link-phone">
+					<a href="tel:${phoneNumber}">
+						${title}
+					</a>
+				</kme:listItem>
+			</c:if>
+			<c:if test="${empty title}">
+				<kme:listItem>
+					Campus 411 not supported on this campus.
+				</kme:listItem>
+			</c:if>
 		</kme:listView>
-		</c:if>
-		<c:if test="${empty title}">
-		<p>
-		Campus 411 not supported on this campus.
-		</p>
-		</c:if>
 	</kme:content>
 </kme:page>
