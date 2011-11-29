@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/cache-manifest; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>CACHE MANIFEST
-# 2011-10-27:v1.3
+# 2011-12-01:v1.0
 
 <%--
   Copyright 2011 The Kuali Foundation Licensed under the Educational Community
