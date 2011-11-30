@@ -23,7 +23,7 @@ import org.kuali.mobility.shared.Constants;
 import org.kuali.mobility.user.entity.User;
 
 public class PageTag extends SimpleTagSupport {
-
+ 
     private static org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(PageTag.class);
 
     private String id;
@@ -169,8 +169,8 @@ public class PageTag extends SimpleTagSupport {
             getJspBody().invoke(out);
             out.println("</div>");
             
-            //out.println("<script src=\"" + contextPath + "/js/urchin.js\" type=\"text/javascript\"></script>");
-            //out.println("<script type=\"text/javascript\">_userv=0;urchinTracker();</script>");
+            out.println("<script src=\"" + contextPath + "/js/urchin.js\" type=\"text/javascript\"></script>");
+            out.println("<script type=\"text/javascript\">_userv=0;urchinTracker();</script>");
             out.println("</body>");
             out.println("</html>");
         } catch (Exception e) {
