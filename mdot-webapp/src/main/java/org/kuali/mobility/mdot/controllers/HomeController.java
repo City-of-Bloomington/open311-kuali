@@ -95,6 +95,11 @@ public class HomeController {
     	return "logout";
     }
 
+    @RequestMapping(value = "privacy", method = RequestMethod.GET)
+    public String privacy(HttpServletRequest request, Model uiModel) {      
+    	return "privacy";
+    }
+    
     @RequestMapping(value = "yesLogout", method = RequestMethod.GET)
     public void fullLogout(HttpServletRequest request, HttpServletResponse response, Model uiModel) {      
     	request.getSession().setAttribute(Constants.KME_USER_KEY, null);

@@ -80,6 +80,9 @@
 			      	</a>
 	            </kme:listItem>
 			</c:forEach>--%>
+		</kme:listView>
+		<kme:listView cssClass="privacyStatement" filter="false">	
+			<kme:listItem dataIcon="false"><a href="privacy">Privacy Notice</a></kme:listItem>
 	    </kme:listView>
 	</kme:content>
 	
