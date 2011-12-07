@@ -80,7 +80,15 @@ public class HomeController {
     @ResponseBody
     public String homeJson(HttpServletRequest request, HttpServletResponse response, Model uiModel) {  
     	List<Tool> tools = buildHomeScreen(request, response, uiModel);
-    	String json = new JSONSerializer().exclude("*.class", "toolId", "versionNumber").serialize(tools);
+    	
+    	User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
+    	boolean loggedIn = !(user == null || user.isPublicUser());
+    	
+    	Map<String, Object> jsonMap = new HashMap<String, Object>();
+    	jsonMap.put("tools", tools);
+    	jsonMap.put("loggedIn", loggedIn);
+    	
+    	String json = new JSONSerializer().include("tools").exclude("*.class", "tools.toolId", "tools.versionNumber").serialize(jsonMap);
     	return json;
     }
   

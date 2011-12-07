@@ -53,21 +53,48 @@
 	 			}
 	 			return null;
 	 		}
+	 		
+	 		function showHideLoginButton(loggedIn) {
+	 			if (loggedIn){
+	 				$('.loginbutton').hide();
+	 				$('.logoutbutton').show();
+	 			} else {
+	 				$('.logoutbutton').hide();
+	 				$('.loginbutton').show();
+	 			}
+	 			return '';
+	 		}
 	 	</script>
- 	
-	    <kme:listView id="homeserviceslist" filter="false">
-	        
-			<script id="toolTemplate" type="text/x-jquery-tmpl">
+	 	
+	 	<script id="toolTemplate" type="text/x-jquery-tmpl">
+      		\${showHideLoginButton(\$data.loggedIn)}
+
+			{{each \$data.tools}}
       			<li data-icon="false" data-theme="c">
         			<a href="\${url}" style="background-image: url('\${iconUrl}');">
-				      	<h3>\${title}</h3>
-				      	<p class="wrap">\${description}</p>
+			    	  	<h3>\${title}</h3>
+			    	  	<p class="wrap">\${description}</p>
 						{{if badgeCount}}
 							<span class="countBadge ui-btn-up-c ui-btn-corner-all">\${badgeCount}</span>
 						{{/if}}
-				     </a>
+			    	 </a>
       			</li>
-			</script>
+			{{/each}}	
+
+				<%--<li data-icon="false" data-theme="c">
+       			<a href="\${url}" style="background-image: url('\${iconUrl}');">
+			      	<h3>\${title}</h3>
+			      	<p class="wrap">\${description}</p>
+					{{if badgeCount}}
+						<span class="countBadge ui-btn-up-c ui-btn-corner-all">\${badgeCount}</span>
+					{{/if}}
+			     </a>
+     			</li>--%>
+		</script>
+ 	
+	    <kme:listView id="homeserviceslist" filter="false">
+	        
+			
 	        
 	        <%-- <c:forEach items="${tools}" var="homeTool" varStatus="status">	            
 	            <kme:listItem hideDataIcon="true">

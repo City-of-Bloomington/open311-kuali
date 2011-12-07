@@ -150,9 +150,11 @@ public class PageTag extends SimpleTagSupport {
             out.println("<div data-role=\"header\">");
             if (loginButton) {
             	if (user == null || user.isPublicUser()) {
-                    out.println("<a href=\"" + (loginButtonURL != null ? loginButtonURL : contextPath + "/login") + "\" data-role=\"button\" data-icon=\"lock\">Login</a>");
+                    out.println("<a href=\"" + (loginButtonURL != null ? loginButtonURL : contextPath + "/login") + "\" data-role=\"button\" data-icon=\"lock\" class=\"ui-btn-left loginbutton\">Login</a>");
+                    out.println("<a href=\"" + (logoutButtonURL != null ? logoutButtonURL : contextPath + "/logout") + "\" data-role=\"button\" data-icon=\"unlock\" class=\"ui-btn-left logoutbutton\" style=\"display:none;\">Logout</a>");
             	} else {
-                    out.println("<a href=\"" + (logoutButtonURL != null ? logoutButtonURL : contextPath + "/logout") + "\" data-role=\"button\" data-icon=\"unlock\">Logout</a>");
+                    out.println("<a href=\"" + (logoutButtonURL != null ? logoutButtonURL : contextPath + "/logout") + "\" data-role=\"button\" data-icon=\"unlock\" class=\"ui-btn-left logoutbutton\">Logout</a>");
+                    out.println("<a href=\"" + (loginButtonURL != null ? loginButtonURL : contextPath + "/login") + "\" data-role=\"button\" data-icon=\"lock\" class=\"ui-btn-left loginbutton\" style=\"display:none;\">Login</a>");
             	}
             }
             if (backButton) {
