@@ -56,7 +56,8 @@ public class ComputerLabsSeatParser {
 			labs = getComputerLabsFromUrl("http://stcweb.stc.indiana.edu/public/Seatfinder/seatfinder.xml", campus, true);
 		} else if ("IN".equals(campus)) {
 			labs = getComputerLabsFromUrl("http://stc.iupui.edu/seatfinderxml.php", campus, false);
-			labs.addAll(getComputerLabsFromUrl("http://ulib.iupui.edu/utility/seats.php?show=locations&type=data", campus, false));
+			labs.addAll(getComputerLabsFromUrl("http://ulib.iupui.edu/utility/seats.php", campus, false));
+			// http://ulib.iupui.edu/utility/seats.php?show=locations&type=data
 		} else if ("CO".equals(campus)) {
 			labs = getComputerLabsFromUrl("http://www.iupuc.edu/SeatFinderService/Default.aspx", campus, false);
 		} else if ("EA".equals(campus)) {
