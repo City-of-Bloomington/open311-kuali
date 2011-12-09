@@ -19,7 +19,7 @@
 		<script type="text/javascript">
 			$('[data-role=page][id=computerlabs]').live('pagebeforeshow', function(event, ui) {
 				$('#clListTemplate').template('clListTemplate');
-				refreshTemplate('computerlabs?campus=${campus}', '#computerlablist', 'clListTemplate', '<li>No labs were found</li>', function() {$('#computerlablist').listview('refresh');});
+				refreshTemplate('computerlabs/feed', '#computerlablist', 'clListTemplate', '<li>No labs were found</li>', function() {$('#computerlablist').listview('refresh');});
 			});
 		</script>
 		<script id="clListTemplate" type="text/x-jquery-tmpl">

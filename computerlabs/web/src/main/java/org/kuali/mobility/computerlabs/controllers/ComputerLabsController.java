@@ -47,7 +47,17 @@ public class ComputerLabsController {
     	List<LabLocation> labLocations = computerLabsService.findAllLabLocationsByCampus(campus);
     	return computerLabsService.toJsonLabLocation(labLocations);
     }
-    
+
+    @RequestMapping(value = "/feed", method = RequestMethod.GET, headers = "Accept=application/json")
+    @ResponseBody
+    public String findAllComputerLabsByCampus(HttpServletRequest request) {
+        User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
+        String campus = user.getViewCampus();
+        if (campus == null) campus = "BL";
+        List<LabLocation> labLocations = computerLabsService.findAllLabLocationsByCampus(campus);
+        return computerLabsService.toJsonLabLocation(labLocations);
+    }
+
     @RequestMapping(method = RequestMethod.GET)
     public String getList(Model uiModel, HttpServletRequest request) {
     	User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
