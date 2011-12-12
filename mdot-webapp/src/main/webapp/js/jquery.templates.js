@@ -32,6 +32,7 @@ function refreshTemplate(ajaxUrl, htmlElement, templateName, emptyContentMessage
 
 function setPageTitle(title) {
 	$('div[data-role=page] div[data-role=header] h1').text(title);
-	$('title').text(title);
+	//$('title').text(title); // not compatible with IE7, done with vanilla JS below
+	document.title = title;
 	return "";
 }
