@@ -23,8 +23,8 @@
 								<c:if test="${not empty item.imageUrl && item.imageUrl != 'null'}">
 									<img src="${item.imageUrl}" alt="image">
 								</c:if> 
-								<h3>${item.displayName}</h3>
-								<p>${item.roleTitle}</p>
+								<h3 class="wrap">${item.displayName}</h3>
+								<p class="wrap">${item.roleTitle}</p>
 							</a>
 						</li>
 					</c:forEach>

@@ -22,7 +22,7 @@
 			Attachments:
 			<ul data-role="listview" data-inset="true">
 				<c:forEach items="${announcement.attachments}" var="attachment" varStatus="status">
-					<li>
+					<li class="wrap">
 						<a href="${pageContext.request.contextPath}/myclasses/${siteId}/attachment?attachmentId=${attachment.ref}&type=${attachment.mimeType}" class="icon-${attachment.fileType}" >
 							${attachment.title}
 						</a>

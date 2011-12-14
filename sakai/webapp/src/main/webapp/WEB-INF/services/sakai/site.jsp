@@ -21,8 +21,8 @@
 			<c:if test="${site.instructorName != null && site.instructorName != 'null'}">
 				<kme:listItem>
 					<a href="${pageContext.request.contextPath}/myclasses/${site.id}/roster/${site.instructorId}" class="icon-INSTRUCTOR">
-						Instructor<br />
-						<span class="wrap" style="font-weight:normal; font-size:.8em">${site.instructorName}</span>
+						<h3 style="margin-bottom:10px" class="wrap">Instructor</h3>
+						<p class="wrap">${site.instructorName}</p>
 					</a>
 				</kme:listItem>
 			</c:if>
@@ -32,19 +32,20 @@
 	                	<c:url value="/maps/location" var="url">
 	                		<c:param name="id" value="${site.buildingCode}" />
 	                	</c:url>
-						<a href="${url}" class="icon-MAPS">${site.location}
+						<a href="${url}" class="icon-MAPS"><h3 style="margin-bottom:10px" class="wrap">${site.location}</h3>
 						<c:if test="${not empty site.meetingTime}">
-                			<br/><span class="wrap" style="font-weight:normal; font-size:.8em; line-height:0.5em;">${site.meetingTime}</span>
+                			<p class="wrap">${site.meetingTime}</p>
 						</c:if>
 						</a>
 	            	</c:if>
 	            	<c:if test="${empty site.buildingCode}">
-	            		<p>
-	                	${site.location}
+	            		<h3 style="margin-bottom:10px" class="wrap">
+	                		${site.location}
+	                	</h3>
 	                	<c:if test="${not empty site.meetingTime}">
-                			<br/><span class="wrap" style="font-weight:normal; font-size:.8em; line-height:0.5em;">${site.meetingTime}</span>
+                			<p class="wrap">${site.meetingTime}</p>
 						</c:if>
-						</p>
+						
 	            	</c:if>
                 </kme:listItem>
             </c:if>

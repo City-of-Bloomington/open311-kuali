@@ -14,8 +14,6 @@
 }
 /* Match Info Display
 -----------------------------------------------------------------------------------------------------------*/
-
-
 .match-info {
 	padding-top:10px;
 	padding-bottom:10px;
@@ -54,16 +52,15 @@
 }
 .match-info .date-time {
 	display:block;
- font-weight:;
 	text-align: center;
 	font-size: 10px;
 }
 .match-info .location {
 	display:block;
- font-weight:;
 	text-align: center;
 	font-size: 10px;
 }
+
 /* News
 -----------------------------------------------------------------------------------------------------------*/
 .news-list li a p {
@@ -71,17 +68,12 @@
 }
 .news-list li a p img {
 }
-
-
 ul li a .datestamp {
 	color:#999;
 }
 
-
 /* Roster
 -----------------------------------------------------------------------------------------------------------*/
-/*does this belong in custom.css?*/
-
 .contentwrapper {
 	float: left;
 	width: 100%;
@@ -96,11 +88,23 @@ ul li a .datestamp {
 }
 .leftcolumn img {
 	width:100px;
-	height:100px;
+	/*height:100px;*/
 }
 .playername {
 	margin-top:0px;
 }
 .contentwrapper .contentcolumn {
 	padding-top:10px;
+}
+span.roster-label {
+	font-weight:bold;
+}
+ul#rosterList a {
+	height: 74px;
+	padding-top: 3px;
+	padding-right: 70px;
+	padding-bottom: 3px;
+	overflow: hidden;
+	display: table-cell;
+	vertical-align: middle;
 }

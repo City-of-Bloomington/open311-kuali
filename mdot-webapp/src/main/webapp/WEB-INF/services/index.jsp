@@ -16,18 +16,11 @@
 
 <kme:page title="IU Mobile" id="home" cssFilename="home" backButton="false" homeButton="false" preferencesButton="true" preferencesButtonURL="campus?toolName=home" loginButton="true" loginButtonURL="home?login=yes" appcacheFilename="iumobile.appcache">
 	<kme:content>
-	
-		<!-- <p><a id="manualUpdate" href="#">Check for an updated Cache</a></p> -->
-	
 		<div id="cacheProgressModal">
 			<div id="cacheProgressMessage">
-			<h3>Optimizing performance. Please wait.</h3>
+			<h3>Downloading Updates.<br/>Please wait.</h3>
 			<p><span id="cacheProgress">&nbsp;</span></p>
-			
 			<input id="reloadButton" type="button" value="Reload" onClick="window.location.reload()">
-		 
-			<!-- <ul id="applicationEvents">
-			</ul> -->
 			</div>
 	 	</div>
 	 	<script type="text/javascript">
@@ -124,5 +117,4 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/appcacheMonitor.js"></script>
 	
 </kme:page>
-
 

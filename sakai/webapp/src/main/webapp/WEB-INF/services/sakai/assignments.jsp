@@ -17,17 +17,17 @@
 		<ul data-role="listview">
 			<c:set var="lastCreatedDate" value=""/>
 			<li>
-				<h3>Course Grade: ${courseGrade}</h3>
+				<h3 class="wrap">Course Grade: ${courseGrade}</h3>
 			</li>
 			<c:forEach items="${sakaigrades}" var="item" varStatus="status">
 				<li data-role="list-divider">${item.title} - ${item.submittedStatus}</li>
 				<li>
-						<h3>Grade Scale</h3> <p> ${item.gradeScale}</p>
+						<h3>Grade Scale</h3> <p class="wrap"> ${item.gradeScale}</p>
 						<c:set var="graded" value="${item.submissionGraded}" />
 						<jsp:useBean id="graded" class="java.lang.String" />
 						
 						<c:if test='<%=graded.equalsIgnoreCase("true")%>'>
-						<h3>Grade: </h3> <p> ${item.submissionGrade}</p>
+						<h3>Grade: </h3> <p class="wrap"> ${item.submissionGrade}</p>
 						</c:if>
 				</li>
 			</c:forEach>

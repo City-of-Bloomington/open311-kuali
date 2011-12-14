@@ -15,11 +15,11 @@
 <kme:page title="Details" id="roster_details" backButton="true" homeButton="true" cssFilename="sakai">
 	<kme:content>
     	<ul data-role="listview" data-inset="true">
-			<li>
+			<li style="padding-right: 15px;">
 				<div class="container_12">
 					<c:if test="${not empty roster.imageUrl && roster.imageUrl != 'null'}">
 			        	<div class="grid_5">
-			        			<img src="${roster.imageUrl}" width="80px" alt="image">
+			        			<img src="${roster.imageUrl}" width="80px" alt="image"/>
 			        	</div>
 			        	<div class="grid_7">
 		        	</c:if>
@@ -28,23 +28,23 @@
 		        	</c:if>
 		            	<c:choose>
 			            	<c:when test="${not empty roster.lastName && roster.lastName != 'null' && not empty roster.firstName && roster.firstName != 'null'}">
-				            	<h3>${roster.lastName}, ${roster.firstName}</h3>
+				            	<h3 style="margin-top:0;" class="wrap">${roster.lastName}, ${roster.firstName}</h3>
 				            </c:when>
 				            <c:otherwise>
-				            	<h3>${roster.displayName}</h3>
+				            	<h3 style="margin-top:3px;"class="wrap">${roster.displayName}</h3>
 				            </c:otherwise>
 			            </c:choose>
 		            	<c:if test="${not empty roster.school && roster.school != 'null'}">
-			            	<p>${roster.school}</p>
+			            	<p class="wrap">${roster.school}</p>
 			            </c:if>
 			            <c:if test="${not empty roster.department && roster.department != 'null'}">
-			            	<p>${roster.department}</p>
+			            	<p class="wrap">${roster.department}</p>
 			            </c:if>
 			            <c:if test="${not empty roster.position && roster.position != 'null'}">
-			            	<p>${roster.position}</p>
+			            	<p class="wrap">${roster.position}</p>
 			            </c:if>
 			            <c:if test="${not empty roster.room && roster.room != 'null'}">
-			            	<p>${roster.room}</p>
+			            	<p class="wrap">${roster.room}</p>
 			            </c:if>
 			            <%--
 			            <c:if test="${not empty roster.otherInformation && roster.otherInformation != 'null'}">

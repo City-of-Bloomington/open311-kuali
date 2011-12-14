@@ -22,8 +22,6 @@ ul#kbsearchresults{
 }
 
 form#kbsearchform {
-	/*margin-top: 10px;
-	margin-bottom: 20px;*/
 	border-right: 15px;
 	padding: 10px 25px 10px 10px;
 	background-color: #333;

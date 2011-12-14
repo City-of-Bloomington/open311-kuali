@@ -21,14 +21,14 @@
 						<c:choose>
 							<c:when test="${item.fileType == 'FOLDER'}">
 							     <kme:listItem>
-		                            <a href="${pageContext.request.contextPath}/myclasses/${siteId}/resources?resId=${item.encodedId}&type=${item.mimeType}" class="icon-${item.fileType}">
+		                            <a class="wrap" href="${pageContext.request.contextPath}/myclasses/${siteId}/resources?resId=${item.encodedId}&type=${item.mimeType}" class="icon-${item.fileType}">
 		                                ${item.title}
 		                            </a>
 		                         </kme:listItem>
 							</c:when>
 							<c:otherwise>
 								<kme:listItem cssClass="link-view">
-                                    <a href="${pageContext.request.contextPath}/myclasses/${siteId}/resources?resId=${item.encodedId}&type=${item.mimeType}" class="icon-${item.fileType}">
+                                    <a class="wrap" href="${pageContext.request.contextPath}/myclasses/${siteId}/resources?resId=${item.encodedId}&type=${item.mimeType}" class="icon-${item.fileType}">
                                         ${item.title}
                                     </a>
                                 </kme:listItem>

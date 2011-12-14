@@ -12,30 +12,36 @@
 div.ui-content {
 	padding:0;
 }
+
+input#searchText{
+	width: 100%;
+}
+
 form#mapsearchform {
-	/*margin: 10px 15px 10px 15px;*/
-	padding: 10px;
+	border-right: 15px;
+	padding: 10px 25px 10px 10px;
 	background-color: #333;
 	background-image: -moz-linear-gradient(top, #484848, #000000);
 	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #484848), color-stop(1, #000000));
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#484848', EndColorStr='#000000')";
 }
+
 ul#mapsearchresults {
 	width:290px;
 	margin-left: 15px;
 }
+
 ul#mapsearchresults li a p {
 	font-size:14px;
 	margin:0.1em;
 }
+
 div.overlay {
 	position: absolute;
 	top:80px;
 	z-index: 99;
 }
-div.map {
 
-}
 div.gpsIconOff, div.gpsIconOn {
 	margin:0;
 	padding:0;
@@ -52,15 +58,14 @@ div.gpsIconOff, div.gpsIconOn {
 div.gpsIconOff {
 	background-image:url('images/button-compassOff-37.png');
 }
+
 div.gpsIconOn {
 	background-image:url('images/button-compassOn-37.png');
 }
 
-
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
         only screen and (min--moz-device-pixel-ratio: 1.5),
         only screen and (min-resolution: 240dpi) {
-            
            div.gpsIconOff {
                 background-image: url('images/button-compassOff-74.png');
                 -webkit-background-size: 37px 37px;

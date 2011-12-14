@@ -23,7 +23,7 @@ function refreshTemplate(ajaxUrl, htmlElement, templateName, emptyContentMessage
 		if (failCallback) {
 			failCallback();
 		}
-		alert("An error has occurred. Make sure you have network connectivity.");
+		alert("A network error has occurred. An Internet connection is required for IU Mobile.");
 	});
 	dynamicDataResp.always(function(){
 		$.mobile.hidePageLoadingMsg();
@@ -32,7 +32,7 @@ function refreshTemplate(ajaxUrl, htmlElement, templateName, emptyContentMessage
 
 function setPageTitle(title) {
 	$('div[data-role=page] div[data-role=header] h1').text(title);
-	//$('title').text(title); // not compatible with IE7, done with vanilla JS below
+	//$('title').text(title); // not compatible with IE7, done with normal JS below
 	document.title = title;
 	return "";
 }

@@ -19,23 +19,23 @@
 			<c:forEach items="${sakaiassignments}" var="item" varStatus="status">
 				<li data-role="list-divider">${item.title} - ${item.submittedStatus}</li>
 				<li>
-						<h3>Grade Scale</h3> <p> ${item.gradeScale}</p>
+						<h3>Grade Scale</h3> <p class="wrap"> ${item.gradeScale}</p>
 						<h3>Instructions</h3> 
-						<p> ${item.body}</p>
+						<p class="wrap"> ${item.body}</p>
 				</li>
 				<li>
 						<c:set var="submitted" value="${item.submittedStatus}" />
 						<jsp:useBean id="submitted" class="java.lang.String" />
 						<c:if test='<%=submitted.equalsIgnoreCase("Submitted")%>'>
 						<h3>Original submission text</h3> 
-						<p> ${item.submittedText}</p>
+						<p class="wrap"> ${item.submittedText}</p>
 						<h3>Submitted Attachments</h3> 
-						<p> ${item.submittedAttachments}</p>
+						<p class="wrap"> ${item.submittedAttachments}</p>
 						<c:set var="graded" value="${item.submissionGraded}" />
 						<jsp:useBean id="graded" class="java.lang.String" />
 						
 						<c:if test='<%=graded.equalsIgnoreCase("true")%>'>
-						<h3>Grade</h3> <p> ${item.submissionGrade}</p>
+						<h3>Grade</h3> <p class="wrap"> ${item.submissionGrade}</p>
 						</c:if>
 						</c:if>
 				</li>

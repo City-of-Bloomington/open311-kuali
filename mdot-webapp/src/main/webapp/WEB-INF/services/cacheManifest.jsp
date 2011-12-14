@@ -24,7 +24,6 @@ ${pageContext.request.contextPath}/css/jquery.mobile.css
 ${pageContext.request.contextPath}/js/jquery.validate.js
 ${pageContext.request.contextPath}/css/custom.css
 ${pageContext.request.contextPath}/images/service-icons/srvc-jag.png
-${pageContext.request.contextPath}/images/service-icons/srvc-backdoor.png
 ${pageContext.request.contextPath}/js/tourMaps.js
 ${pageContext.request.contextPath}/js/jquery.tmpl.js
 ${pageContext.request.contextPath}/js/maps.js
@@ -58,8 +57,13 @@ ${pageContext.request.contextPath}/css/jquery-mobile-fluid960.css
 ${pageContext.request.contextPath}/images/service-icons/srvc-stc.png
 ${pageContext.request.contextPath}/images/service-icons/srvc-alerts-green.png
 ${pageContext.request.contextPath}/images/service-icons/srvc-alerts-red.png
-${pageContext.request.contextPath}/images/service-icons/srvc-twitter.png
 ${pageContext.request.contextPath}/images/service-icons/srvc-email.png
+${pageContext.request.contextPath}/css/images/icons-18-white.png
+${pageContext.request.contextPath}/css/images/icons-36-white.png
+${pageContext.request.contextPath}/css/images/icon-disclosure-lock-18.png
+${pageContext.request.contextPath}/css/images/icon-disclosure-lock-36.png
+${pageContext.request.contextPath}/css/images/icon-disclosure-unlock-18.png
+${pageContext.request.contextPath}/css/images/icon-disclosure-unlock-36.png
 http://maps.google.com/maps/api/js?sensor=true
 
 NETWORK:

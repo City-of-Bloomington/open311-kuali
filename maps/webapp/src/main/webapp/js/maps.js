@@ -58,14 +58,9 @@ TrackerControl.prototype.setActive = function(boolean) {
   this.active_ = boolean;
   var test = this.controlDiv_;
   if (boolean) {
-	  //test.firstChild.style.backgroundColor = 'red';  // Look into toggle class
-	  //test.firstChild.style.backgroundImage="url('../css/images/compassOn.png')";
-	  //element.children(":first").toggleClass("redClass");
 	  test.firstChild.setAttribute("class", "gpsIconOn"); 
 	  test.firstChild.setAttribute("className", "gpsIconOn");
   } else {
-	  //test.firstChild.style.backgroundColor = 'blue';
-	  //test.firstChild.style.backgroundImage="url('../css/images/compassOff.png')";
 	  test.firstChild.setAttribute("class", "gpsIconOff"); 
 	  test.firstChild.setAttribute("className", "gpsIconOff");
   }
@@ -91,24 +86,16 @@ function TrackerControl(map, div) {
 
   // Set CSS for the control border
   var trackerToggleUI = document.createElement('DIV');
-  //trackerToggleUI.style.backgroundColor = 'white';
   
   trackerToggleUI.setAttribute("class", "gpsIconOff"); 
   trackerToggleUI.setAttribute("className", "gpsIconOff"); 
-  //trackerToggleUI.style.borderStyle = 'solid';
-  //trackerToggleUI.style.borderWidth = '2px';
   trackerToggleUI.style.padding = '0px';
   trackerToggleUI.style.cursor = 'pointer';
-  //trackerToggleUI.style.textAlign = 'center';
   trackerToggleUI.title = 'Click to show where you are';
   controlDiv.appendChild(trackerToggleUI);
 
   // Set CSS for the control interior
   var trackerToggleText = document.createElement('DIV');
-  //trackerToggleText.style.fontFamily = 'Arial,sans-serif';
-  //trackerToggleText.style.fontSize = '12px';
-  //trackerToggleText.style.paddingLeft = '4px';
-  //trackerToggleText.style.paddingRight = '4px';
   trackerToggleText.style.padding = '0px';
   trackerToggleText.innerHTML = 'My Location';
   trackerToggleUI.appendChild(trackerToggleText);
@@ -118,11 +105,9 @@ function TrackerControl(map, div) {
 	  if (control.getActive()) {
 		  control.setActive(false);
 		  stopTrackingUserLocation();
-		  //alert("Stop");
 	  } else {
 		  control.setActive(true);
 		  startTrackingUserLocation(map, markersArray, userMarkersArray);
-		  //alert("Start");
 	  }
   });
 }
@@ -323,7 +308,7 @@ function drawUserLocation(map, markersArray, userMarkersArray, position) {
 		}
 
 	} else {
-		alert("Unable to accurately determine your position.");
+		//alert("Unable to accurately determine your position.");
 	}
 	
 }
