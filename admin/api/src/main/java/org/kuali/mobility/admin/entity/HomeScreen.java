@@ -28,26 +28,28 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
-@Entity(name="HomeScreen")
-@Table(name="HOME_T")
+/**
+ * Defines a home screen with a collection of tools
+ * @author Kuali Mobility Team (moblitiy.collab@kuali.org)
+ */
+@Entity
+@Table(name="KME_HM_SCRN_T")
 public class HomeScreen implements Serializable {
 
 	private static final long serialVersionUID = 4947101996672004361L;
 
 	@Id
-    @SequenceGenerator(name="home_sequence", sequenceName="SEQ_HOME_T", initialValue=1000, allocationSize=1)
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="home_sequence")
-    @Column(name="HOME_ID")
+	@GeneratedValue(strategy = GenerationType.TABLE)
+    @Column(name="ID")
     private Long homeScreenId;
 	
 	@Column(name="ALIAS")
 	private String alias;
 
-	@Column(name="TITLE")
+	@Column(name="TTL")
 	private String title;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy="homeScreen")
@@ -61,14 +63,25 @@ public class HomeScreen implements Serializable {
 		homeTools = new ArrayList<HomeTool>();
 	}
 
+	/**
+	 * @return the HomeTool objects associated with this HomeScreen
+	 */
 	public List<HomeTool> getHomeTools() {
 		return homeTools;
 	}
 
+	/**
+	 * set the HomeTool objects
+	 * @param homeTools
+	 */
 	public void setHomeTools(List<HomeTool> homeTools) {
 		this.homeTools = homeTools;
 	}
 	
+	/**
+	 * set the HomeTools collection with an array
+	 * @param homeTools
+	 */
 	public void setHomeTools(HomeTool[] homeTools) {
 		this.homeTools = Arrays.asList(homeTools);
 	}

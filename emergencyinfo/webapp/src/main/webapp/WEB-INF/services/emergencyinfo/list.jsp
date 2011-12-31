@@ -9,19 +9,24 @@
   permissions and limitations under the License.
 --%>
 
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
-<kme:page title="Emergency Contacts" id="emergencyinfo" backButton="true" homeButton="true" cssFilename="emergencyinfo" appcacheFilename="iumobile.appcache">
+<spring:message code="emergencyinfo.title" var="title"/>
+<spring:message code="emergencyinfo.true" var="trueemer"/>
+<spring:message code="emergencyinfo.phonenumbers" var="phone"/>
+
+<kme:page title="${title}" id="emergencyinfo" backButton="true" homeButton="true" cssFilename="emergencyinfo">
     <kme:content>
         <kme:listView id="emergencylist" filter="false">
         	<kme:listItem cssClass="link-phone">
 	        	<a href="tel:911">
-	        		<h3>In a true emergency: <span style="color:red;">911</span></h3>
+	        		<h3>${trueemer}: <span style="color:red;">911</span></h3>
 	        	</a>
         	</kme:listItem>
-        	<kme:listItem dataTheme="b" dataRole="list-divider">Phone Numbers</kme:listItem>
+        	<kme:listItem dataTheme="b" dataRole="list-divider">${phone}</kme:listItem>
         </kme:listView>
         <kme:listView id="emergencylistdata" filter="false">
             <script type="text/javascript">

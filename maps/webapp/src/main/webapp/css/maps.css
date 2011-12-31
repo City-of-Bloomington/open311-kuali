@@ -12,6 +12,9 @@ form#mapsearchform {
 	margin-top: 10px;
 	margin-bottom: 20px;
 }
+
+div#maps, div#map_canvas, div.ui-content {height: 100%; padding: 0;}
+
 div.gpsIconOff, div.gpsIconOn {
 	margin:0;
 	padding:0;

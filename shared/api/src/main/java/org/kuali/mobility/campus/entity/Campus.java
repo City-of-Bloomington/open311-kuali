@@ -15,7 +15,13 @@
 package org.kuali.mobility.campus.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
+/**
+ * Defines a campus
+ * @author Kuali Mobility Team (moblitiy.collab@kuali.org)
+ */
 public class Campus implements Serializable {
 
 	private static final long serialVersionUID = -8000615503651726243L;
@@ -24,23 +30,44 @@ public class Campus implements Serializable {
 
 	private String code;
 
-	public Campus(String code, String name) {
-		this.name = name;
-		this.code = code;
+	private List<String> tools;
+
+	public Campus() {
+		tools = new ArrayList<String>();
 	}
 
+	public List<String> getTools() {
+		return tools;
+	}
+
+	public void setTools(List<String> tools) {
+		this.tools = tools;
+	}
+
+	/**
+	 * @return the name of the campus
+	 */
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * @param name the name of the campus
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	/**
+	 * @return the code that uniquely identifies this campus
+	 */
 	public String getCode() {
 		return code;
 	}
 
+	/**
+	 * @param code the code that uniquely identifies this campus
+	 */
 	public void setCode(String code) {
 		this.code = code;
 	}

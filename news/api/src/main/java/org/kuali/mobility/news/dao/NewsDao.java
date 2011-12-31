@@ -19,7 +19,39 @@ import java.util.List;
 
 import org.kuali.mobility.news.entity.NewsSource;
 
+/**
+ * An interface for persisting and retrieving NewsSource objects from a data store.
+ * 
+ * @author Kuali Mobility Team (moblitiy.collab@kuali.org)
+ */
 public interface NewsDao {
-	public List<NewsSource> getAllActiveNewsSourcesByLocationCode(String locationCode);
-	public NewsSource getNewsSourceById(String sourceId);
+	
+	/**
+	 * @return a list of active NewsSource objects
+	 */
+	public List<NewsSource> findAllActiveNewsSources();
+	
+	/**
+	 * @return a list of all NewsSource objects
+	 */
+	public List<NewsSource> findAllNewsSources();
+	
+	/**
+	 * @return a single NewsSource object matched by its id
+	 */
+	public NewsSource lookup(Long id);
+	
+	/**
+	 * saves a NewsSource object to the data store
+	 * 
+	 * @return the saved NewsSource
+	 */
+	public NewsSource save(NewsSource newsSource);
+	
+	/**
+	 * deletes a NewsSource object from the data store
+	 * 
+	 * @return the deleted NewsSource
+	 */
+	public NewsSource delete(NewsSource newsSource);
 }

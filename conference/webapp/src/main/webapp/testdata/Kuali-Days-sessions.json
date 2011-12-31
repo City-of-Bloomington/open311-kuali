@@ -1,0 +1,1919 @@
+[
+         {
+            "title":"Using Kuali Infrastructure and Tools",
+            "date":"14-Nov-2011",
+            "time":"8:00 AM",
+            "room":"White River I",
+            "track":"Other Topics",
+            "level":"Beginner",
+            "type":"Technical",
+            "presenters":[
+               "Sadiq, Farooq",
+               "Patterson, Shem",
+               "Schneeberger, Travis"
+            ],
+            "details":"This session will allow attendees to learn about Kuali Infrastructure Tools used by the community and see a demonstration of what a new developer needs to participate in a Kuali Project. Attendees will also learn tips and ticks as we demonstrate particular tools.\r\n\r\nA tentative outline of specific topics discussed includes:\r\n\r\n- Getting setup on Kuali Infrastructure\r\n-- Using Skype , Adobe Connect and other communication tools\r\n\r\n- Using Jira/GreenHopper and Confluence \r\n\r\n- Using Kuali Google Apps resources\r\n- Introduction to development tools \r\n\r\n-- EclipseIDE, Subversion, Fisheye, Crucible\r\n"
+         },
+         {
+            "title":"Everything you Want to Know About KPME",
+            "date":"14-Nov-2011",
+            "time":"8:00 AM",
+            "room":"White River H",
+            "track":"Other Topics",
+            "level":"Beginner",
+            "type":"Functional",
+            "presenters":[
+               "Neal, Aaron",
+               "Balmer, Mindi",
+               "Espinoza, Carla",
+               "Hope, Maury",
+               "Ozden, Randy"
+            ],
+            "details":"This session will provide a very detailed introduction to the Kuali People Management for the Enterprise Project, both functionally and technically.  KPME is a comprehensive HR/Payroll System; composed of both stand-alone and integrated modules. The components  include Payroll/Paycalc Engine, Time and Attendance, Leave Management, HR Core Transactions, Benefits Administration and Position Management. Release 1.0 was delivered in Summer 2011, and the full timeline and strategy for the remaining releases has been outlined.  Attendees will learn about the background and strategy for KPME, the functional design of current modules, how future modules will be deployed, integration points with other Kuali projects, and the technical architecture.  There will be time for questions, and a demo of the current release will be offered.  KPME like other Kuali systems will be released in phases.  Three institutions are already planning implementations.  See how your institution could take advantage of KPME now and plan for the future."
+         },
+         {
+            "title":"Implementing Kuali Identity Management",
+            "date":"14-Nov-2011",
+            "time":"8:00 AM",
+            "room":"White River J",
+            "track":"Kuali Rice",
+            "level":"Intermediate",
+            "type":"Implementation",
+            "presenters":[
+               "Westfall, Eric",
+               "David, Emerson",
+               "Elyea, David",
+               "Gibson, Scott",
+               "Hanson, Jeremy"
+            ],
+            "details":"This workshop will present options and strategies for Kuali Identity Management (KIM) implementation at an institution. This will include general strategies and approaches as well as including specific case studies from multiple institutions on actual KIM implementation work. We will focus on implementation of these KIM services from a primarily technical perspective.\r\n\r\nSpecific topics discussed include:\r\n\r\n* KIM design principles\r\n* Terminology\r\n* Approaches for the positioning of KIM technology within the enterprise\r\n* KIM Architecture and Service model\r\n* Technical discussion on implementing KIM services, including:\r\n** Identity\r\n** Group\r\n** Roles\r\n** Permissions\r\n* Strategies and case studies surrounding integration with existing solutions at your institution. Including:\r\n** LDAP\r\n** Grouper\r\n** Active Directory\r\n** CAS\r\n** Shibboleth\r\n* Strategies and tools for provisioning of KIM data\r\n** Including a case study on provisioning of KIM data using Microsoft's Identity Lifecycle Manager"
+         },
+         {
+            "title":"KFS Hands-On Developer Introduction",
+            "date":"14-Nov-2011",
+            "time":"9:00 AM",
+            "room":"White River C",
+            "track":"Kuali Financial System (KFS)",
+            "level":"Intermediate",
+            "type":"Technical",
+            "presenters":[
+               "Keller, Jonathan",
+               "Hollamon, Andrew"
+            ],
+            "details":"*Please See Pre-requisites Below* \r\nThis full-day pre-conference workshop will provide an overview of KFS from a technical perspective. We will discuss the system requirements and architecture, critical concepts and services, and customization mechanisms. This will be a hands-on session. We will download and configure the financial system, bootstrap the database, and run OLTP and exercise the customization options together.Pre-requisites: The attendees should be Java developers with experience with Ant, Spring, and web applications in general. Own laptop configured and setup. Limited seats available. Registration for this session will close when the maximum number of attendees has been reached. "
+         },
+         {
+            "title":"Java 102 Training-Kuali Stack Technology Condensed Version ",
+            "date":"14-Nov-2011",
+            "time":"9:00 AM",
+            "room":"White River D",
+            "track":"Other Topics",
+            "level":"Beginner",
+            "type":"Technical",
+            "presenters":[
+               "Griffin, Kyle"
+            ],
+            "details":"The purpose of this condensed training is to provide participants with beneficial information and hands on experience in Java and Kuali Stack Technology. Java 102 condensed session will consist of the following topics:\r\n\r\n?\tStruts \r\n?\tSpring Framework \r\n?\tOJB\r\n?\tAnd more\r\n\r\nParticipants should have some knowledge of Java programming language, object oriented programming, and HTML. Participants will come away from the session with knowledge of the technologies from which Kuali arises, as well as what these tools are, what they do, and how they fit into Kuali Rice applications."
+         },
+         {
+            "title":"Implementing Kuali Student Curriculum Management",
+            "date":"14-Nov-2011",
+            "time":"9:00 AM",
+            "room":"White River G",
+            "track":"Kuali Student (KS)",
+            "level":"Beginner",
+            "type":"Technical",
+            "presenters":[
+               "Kaushik, Rajiv"
+            ],
+            "details":"Nature: Hands-on technical sessions (using Java and XML)\r\nAudience: Technical staff (developers) responsible for configuring and customizing Kuali Student Curriculum Management\r\nPre-requisites: Registered attendees will receive instructions at least 1 week in advance of the workshop to set up and run CM code successfully on their laptops, which they will bring to the hands-on sessions. Set up will include installing the KS Development Platform (Eclipse, Maven, Oracle, etc), checking out CM code, running database scripts, and running CM successfully. Important: It is expected that the pre-requisites have been met ahead of the workshop because there will not be enough time at the workshop to walk through the environment set up.\r\nAgenda\r\nSet up a sample configuration project (1 hour)\r\nConfiguring the CM data dictionaries (2 hours)\r\nSome examples from the session:\r\nWorkflow validation: Make the campus location required before submitting for approval\r\nField Validation: Add a Cross Field Case Constraints that makes it required to have a fee justification if a fee has been entered\r\nSearch configuration: Restrict start terms to just Fall and Spring Semesters (exclude Summer and the rest of the sub-terms)\r\nConfiguring the GWT User Interface (UI), (3 hours). Some examples from the session:\r\nCSS: Replace the 'Kuali Student' header image with my school's image\r\nField labels: Rename \"Course Logistics\" section to be \"Course Details\"\r\nDynamic attributes: Add a field called \"Design Points\" to be captured in the logistics section\r\nAuthorization: Prevent user from editing a field"
+         },
+         {
+            "title":"Building the Case for Kuali",
+            "date":"14-Nov-2011",
+            "time":"1:00 PM",
+            "room":"Room 204",
+            "track":"Other Topics",
+            "level":"Beginner",
+            "type":"Implementation",
+            "presenters":[
+               "Thanos, Kim"
+            ],
+            "details":"Often a single champion or small group on campus sees the possibilities for Kuali. This workshop will assist the champion in creating the case for Kuali that can be used to build broader understanding and support across campus.\r\n\r\nThe session will focus on creating the elements of a customized strategic case, business case and communications plan to move from the early believers to broad support. The tools and approach are applicable to all Kuali projects.\r\n\r\nNote: Please bring a laptop or iPad to this working session."
+         },
+         {
+            "title":"Getting started with Rice: Stand Alone Server, eDocLite, and Application Demonstration & Discussion",
+            "date":"14-Nov-2011",
+            "time":"1:00 PM",
+            "room":"White River I",
+            "track":"Kuali Rice",
+            "level":"Advanced",
+            "type":"Technical",
+            "presenters":[
+               "Sargent, Matthew",
+               "Gibson, Scott",
+               "Schneeberger, Travis ",
+               "Westfall, Eric"
+            ],
+            "details":"Session will be a live demonstration of how to set up and utilize an instance of the Kuali Rice Standalone server.  Attendees will explore the various capabilities provided by Rice, including developing and configuring eDocLite applications, and a demonstration of setting up and integrating more complex client applications.\r\n\r\neDocLite is a framework for developing simple form-based applications which are backed by workflow routing and is a standard component of Rice.\r\n\r\nA tentative list of discussion topics includes:\r\n*Architectural overview of the Rice standalone server and what it provides\r\n*Live, walk through demonstration of the process of downloading and installing a Rice standalone server.\r\n*Introduction to eDocLite, it?s advantages and a discussion on the more technical process of building them.\r\n*Discussion centered on application integration in the Rice architecture.\r\n*Demonstration of creating a more complex, client application.\r\n*Discussion time, where could you go from here? "
+         },
+         {
+            "title":"KFS Basics",
+            "date":"14-Nov-2011",
+            "time":"1:00 PM",
+            "room":"White River H",
+            "track":"Kuali Financial System (KFS)",
+            "level":"Beginner",
+            "type":"Implementation",
+            "presenters":[
+               "Lyons, David",
+               "Dorsey, Damon",
+               "Overman, Bill",
+               "Rawleigh, Nicole",
+               "Schimizzi, Vince",
+               "Sutton, Barbara"
+            ],
+            "details":"This pre-conference session will give an overview of Kuali Financial System core programs and features including: Kuali portal, chart of accounts, general ledger, electronic transaction processing documents (e-docs), Kuali Enterprise Workflow (KEW) and Kuali Identity Management (KIM). There will be a description of the different modules including new ones in development. There will be a live demo and an opportunity to ask questions."
+         },
+         {
+            "title":"KC Basics",
+            "date":"14-Nov-2011",
+            "time":"1:00 PM",
+            "room":"White River J",
+            "track":"Kuali Coeus (KC)",
+            "level":"Beginner",
+            "type":"Functional",
+            "presenters":[
+               "Schultz, Lori Ann",
+               "Durkin, Terry"
+            ],
+            "details":"Get an in-depth look at Kuali Coeus, both functionally and technically, and a jump-start on the Kuali Coeus content that will be presented at Kuali Days.  This half-day pre-conference session will provide attendees with an overview of all modules currently released under KC, including proposal development, grants.gov submission, awards, and IRB-Human Participants; and will also include a preview of upcoming modules and convergence with the functionality of the current MIT Coeus system.  A demo of released KC modules will be provided.  A technical overview will also be included.  Both functional and technical team members will conduct this session and there will be plenty of time for questions and answers.  This session is ideal for those wanting to learn about all aspects of Kuali Coeus.  This pre-conference is the only opportunity to see detailed demonstrations of Kuali Coeus.  \r\n\r\nThis session is appropriate for functional and technical audiences at all levels. "
+         },
+         {
+            "title":"Newcomers Session",
+            "date":"14-Nov-2011",
+            "time":"5:00 PM",
+            "room":"Room 201/202",
+            "track":"Other Topics",
+            "level":"All",
+            "type":"Implementation",
+            "presenters":[
+               "Splittgerber, Ron"
+            ],
+            "details":"This session will match a seasoned Kuali Ambassador with those seeking to enhance their experience at Kuali days. We will help connect you with others seeking common session threads and network with colleagues having similar Kuali project interests.  At the conclusion of this ?Meet and Greet? session, we will adjourn to the Welcome Reception to continue introductions and networking.  If you are interested in this session or have questions, please email ron.splittgerber@colostate.edu\r\n \r\nTop Tips for those new to Kuali Days\r\n?  Introduce yourself. The Kuali community is a very social place and newcomers are most welcome!\r\n?  Share with your colleagues - it's the norm! Kuali Days provides a number of venues from sessions and meals to networking receptions for you to learn about the work of others with specific Kuali project members\r\n?  Enjoy yourself! Running from session to session can become overwhelming, so find some time each day to rest, go for a walk, or check out the local community.\r\n?  Don't be afraid to ask questions. Colleagues are happy to help and share their knowledge and Council staff members want to make your experience the very best. So don't be shy!\r\n?  For help organizing your Kuali Days schedule, contact your Ambassador and visit the Kuali Days Registration area, and use the online program to search, select and save the sessions of interest to you.\r\n?  Attend the Welcome Session Monday, November 11, 5:00p.m. Ambassadors will be on hand to give valuable information on navigating the sessions and social opportunities as well as answering your questions.\r\n?  Take advantage of networking opportunities such as the  Welcome Reception November 14 at 5:30 p.m. Such events are your opportunity to make personal connections between convention sessions."
+         },
+         {
+            "title":"General Session and Keynote from Joanne DeStefano",
+            "date":"15-Nov-2011",
+            "time":"8:00 AM",
+            "room":"White River E/F",
+            "track":"GENERAL SESSION",
+            "level":"All",
+            "type":"Functional",
+            "presenters":[
+               "DeStefano, Joanne",
+               "Allred, Mike",
+               "Deere, Emily",
+               "Foutty, Jennifer"
+            ],
+            "details":"This General Session will provide a brief welcome to Kuali Days, from the Executive Director and Conference Chair, and awards will be presented.  Our Keynote Speaker for today is Joanne M. DeStefano, Vice President and Chief Financial Officer at Cornell University. Joanne has been an advocate for the Kuali community since its inception in 2004, and she will be speaking about her experiences and support for Kuali and its projects, and the recent implementation of the Kuali Financial System at Cornell University. Joanne brings a unique historical perspective about the start-up phase of a robust community for Kuali and a fresh outlook about the future of Kuali as it embraces very diverse constituents. She will share her views, from a CFO perspective, of the success of the Kuali foundation governance model, the business case that sold Kuali to campus users, senior administration and ultimately the board of trustees, the model that will sustain Kuali for years to come, and will give us an update on the status of Cornell?s implementation.\r\n"
+         },
+         {
+            "title":"REFRESHMENT BREAK AND COLLABORATION SHOWCASE",
+            "date":"15-Nov-2011",
+            "time":"9:30 AM",
+            "room":"White River Foyer",
+            "track":"Other Topics",
+            "level":"All",
+            "type":"All",
+            "presenters":[
+               "presenters), (multiple"
+            ],
+            "details":"We are pleased to once again offer an opportunity to share contributions, mini projects and functionality: The Collaboration Showcase. The Collaboration Showcase is a place for Kuali Commercial Affiliates (KCAs) and Kuali Days sponsors to demonstrate how they can assist implementers or adopters with various solutions. In addition it is a time for higher education representatives to show apps that help to provide enhancements to the bigger picture. The Collaboration Showcase will be held on Tuesday and Wednesday during the refreshment breaks (9:30am-10:00am and 3:30pm-4:00pm), and one hour at the end Tuesday during a reception (5:15pm-6:15pm). "
+         },
+         {
+            "title":"KFS Intro Session",
+            "date":"15-Nov-2011",
+            "time":"10:00 AM",
+            "room":"White River E/F",
+            "track":"Kuali Financial System (KFS)",
+            "level":"Beginner",
+            "type":"Functional",
+            "presenters":[
+               "Eaton, Charles",
+               "Horn, Kymber ",
+               "Pavone, Annette",
+               "Rawleigh, Nicole",
+               "Sutton, Barbara"
+            ],
+            "details":"Selecting a New Financial System: UConn's Evaluation of KFS and the Decision-Making Process\r\n\r\nThis session will provide your university strategies to move toward replacing your current financial system with Kuali Financial System (KFS), as utilized by the University of Connecticut (UConn). It will provide insight into the evaluation process, which methods and tools were used to communicate, how UConn quantified the evaluation, and ultimately what sold its senior management team on KFS. \r\nMoreover, UConn will share details of its experience in both evaluating KFS and also how it convinced key decision makers to approve KFS as the replacement of its legacy system, Financial Records System (FRS). UConn spent about one and one-half years using a proof of concept, developing hands-on sessions, and communicating to various constituencies on its campus before presenting KFS as its financial system of choice to its senior management team. Consensus was achieved by including not only central administrative staff but also by engaging academic departments, student affairs, and athletics. Staff from all of these areas also attended a two-day intensive site visit of KFS at Colorado State University, a school that was previously an FRS school. \r\nFrom this session your school will gain valuable information on how to persuade your university to choose KFS, joining this sustainable and evolving open source community.\r\n\r\nA Day in the Life of a Typical KFS User\r\n\r\nThis session will give attendees a glimpse of how the KFS eDocs are used to accomplish some of the most common day-to-day financial transactions. A great compliment to the individual module sessions. In My Life will take attendees through several scenarios from start (which eDoc to use) to finish (final approval of the document).\r\n\r\n"
+         },
+         {
+            "title":"Overview of System Architecture: Coeus and KC",
+            "date":"15-Nov-2011",
+            "time":"10:00 AM",
+            "room":"White River I/J",
+            "track":"Kuali Coeus (KC)",
+            "level":"Intermediate",
+            "type":"Technical",
+            "presenters":[
+               "Durkin, Terry",
+               "Nair, Sabari"
+            ],
+            "details":"For existing MIT Coeus schools, understanding the technologies upon which both Coeus and KC are built is vital for understanding the work needed to move from one system to another.  In this moderated session, you will gain a greater understanding of the technologies used to build both Coeus and KC, and how the software layers within each interact with each other.  You will also understand the user interfaces in place for each, which will allow you to make educated decisions regarding deployment and end user training.  At the conclusion of this session, participants will: understand how Java Servlets, Java Swing, Java JSP, XML and the database layer comprise the basis for both Coeus and KC; compare the user interface architecture to identify KC user rollout and support tasks; understand KC options for the database layer and how this would affect migration strategies."
+         },
+         {
+            "title":"Moving from Coeus to KC - Proposal Development",
+            "date":"15-Nov-2011",
+            "time":"10:00 AM",
+            "room":"White River C/D",
+            "track":"Kuali Coeus (KC)",
+            "level":"Beginner",
+            "type":"Functional",
+            "presenters":[
+               "Oliva, Lisa",
+               "Hanlon, Rosemary",
+               "Schultz, Lori"
+            ],
+            "details":"In this session, watch as experts from Coeus and Kuali Coeus do a screen-by-screen comparison of the proposal development modules and discuss both the similarities and differences.  For members currently using Coeus or for those who aren't using Coeus but are familiar with its functionality, the idea of using the Kuali Coeus Proposal Development module can seem daunting.  Attendees will watch as experts from both sides walk through a typical proposal, highlighting the similarities and differences between the modules.  In addition, explorers of Kuali Coeus can see that it is steeped in the rich tradition and functionality of a proven research administration system."
+         },
+         {
+            "title":"RAD, Rules, and Compatibility: What\\'s Coming in Kuali Rice 2.0",
+            "date":"15-Nov-2011",
+            "time":"10:00 AM",
+            "room":"White River G/H",
+            "track":"Kuali Rice",
+            "level":"Intermediate",
+            "type":"Technical",
+            "presenters":[
+               "Westfall, Eric",
+               "Giles, Peter",
+               "Schneeberger, Travis"
+            ],
+            "details":"Kuali Rice version 2.0 will be a landmark release for the Kuali Rice project and the Kuali Foundation. It is intended to mark a point of stability and compatibility that Kuali projects and implementing institutions can build on into the future. It also adds some very compelling new features to the Kuali Rice platform as well as significant upgrades to various pieces of the Kuali technology stack.\r\n\r\nThere are four major deliverables being undertaken concurrently for Rice 2.0:\r\n\r\n* Version Compatibility\r\n* Modularity\r\n* Kuali Rapid Application Development (KRAD)\r\n* Kuali Rule Management System (KRMS)\r\n\r\nCome to this session and learn more about what is being planned for each of these projects and what it means for those who are implementing Kuali software or looking to take advantage of the Kuali Rice framework."
+         },
+         {
+            "title":"Implementation of a Master Data Management System based on the Kuali Software",
+            "date":"15-Nov-2011",
+            "time":"10:00 AM",
+            "room":"Room 201/202",
+            "track":"Other Topics",
+            "level":"Intermediate",
+            "type":"Implementation",
+            "presenters":[
+               "Domeyer, Jeff",
+               "Gedela, Shyam"
+            ],
+            "details":"\r\nMSU designed and implemented a master data management (MDM) system to handle organization related data with the Kuali software (internally referred to as Organization of Interest or OOI). This presentation covers system objectives, usage scenarios, experiences with customization of the Rice framework and implementation, and challenges with integration and reporting requirements. MSU is in the process of contributing these efforts to the foundation in the form of the software/code, design documentation, and knowledge sharing. MSU would like to use this presentation to obtain feedback related to these efforts.\r\nObjectives:\r\nUnderstand design and implementation challenges for an MDM system with the Kuali software.\r\nUnderstand challenges integrating an MDM system with existing systems, including the Kuali Financial System.\r\nA call to action in transforming an intra-institutional system into an incubation project and ultimately a part of a community-driven set of applications."
+         },
+         {
+            "title":"CM Overview with Demo",
+            "date":"15-Nov-2011",
+            "time":"10:00 AM",
+            "room":"Room 203/204",
+            "track":"Kuali Student (KS)",
+            "level":"Beginner",
+            "type":"Functional",
+            "presenters":[
+               "Passarella-George, Michael",
+               "Dew, Cathy",
+               "Symonds, Dan"
+            ],
+            "details":"This session will provide an overview of the Kuali Student Curriculum Management which was initially released in March, 2011. Institutions are adapting to serve a variety of learners and learning styles. They are developing curricular offerings that are vastly different and more complex than what traditional curriculum management software is capable of supporting. Learn about how Kuali Student is addressing these issues."
+         },
+         {
+            "title":"The Kuali OLE Story",
+            "date":"15-Nov-2011",
+            "time":"10:00 AM",
+            "room":"Room 209",
+            "track":"Kuali OLE",
+            "level":"Intermediate",
+            "type":"Implementation",
+            "presenters":[
+               "Pavlovsky, Taras",
+               "Agnew, Grace",
+               "Antelman, Kristin",
+               "McDonald, Robert",
+               "Schipper, Rachel",
+               "Wagner, Kurt"
+            ],
+            "details":"Going It Together: Vale's Plan to Implement Kuali OLE in a Consortial Environment\r\n\r\nThe VALE (Virtual Academic Library Environment of New Jersey) consortium is planning for a shared, single-instance implementation of Kuali OLE. This session will discuss the path that led the consortium to seek a shared OLS and eventually to OLE, the governance structure of the project, the tasks already accomplished, and the challenges that lie ahead. \r\n \r\nWhat are the challenges and opportunities that you would envision, implementing a shared set of policies and workflows across a large academic consortium with a long tradition of independence? We anticipate a lively discussion on approaches and expected outcomes.\r\n\r\nCreating Community Across Projects and Partners: The Kuali OLE Story\r\n\r\nLibraries rely on enterprise-level software to manage and provide access to items in their collections. They track interrelated transactions that range from ordering and paying for these items to loaning them to library patrons--a complex and costly undertaking. \r\n\r\nThe prevailing model of integrated library systems (ILS), offered by commercial vendors,  tracks physical books and other traditional formats such as journals and films. increasingly resources are electronic and diverse while users may be mobile and remote, in need of accessing information in new ways. Kuali OLE (Open Library Environment) is designed to scale up to connect with other enterprise technology systems within the academic and administrative computing environment. \r\n\r\nThe Kuali OLE  project is developing a community-source library management system  that is based on a re-examined model of library business operations.  It is designed to address current needs, identified and solved by the very people who daily use the systems.Further, the project establishes a  governance model in which the entire community can collaborate to own and govern the resulting intellectual property.\r\n\r\n\r\n"
+         },
+         {
+            "title":"Kuali Security Request",
+            "date":"15-Nov-2011",
+            "time":"10:00 AM",
+            "room":"Room 103/104",
+            "track":"Kuali Rice",
+            "level":"Beginner",
+            "type":"Functional",
+            "presenters":[
+               "Christen, Sarah",
+               "Potts, Tony ",
+               "Takahashi, Keiko"
+            ],
+            "details":"Kuali Security Request (KSR) is a Rice modification which allows an institution to create a self- service access request interface for campus users.  The tool provides a customizable interface with flexible workflow so an institution can display roles in logical collections and configure workflow to meet varying needs for different roles. With KSR, an institution can choose to only display a select group of roles to be requested, allowing for a simplified view for those requesting access.  In addition, workflow allows approvals to be obtained then user access grants committed eliminating the need for manual security maintenance by central staff.  KSR will help institutions minimize the maintenance costs of on-going access changes by automating the request, approval and grant processes.   This session will be a demonstration of KSR.  We will walk through a sample configuration then demo how configuration drives the user interface and workflow of KSR."
+         },
+         {
+            "title":"How to Conduct a Best Practices Assessment in a Post-Award Department",
+            "date":"15-Nov-2011",
+            "time":"10:00 AM",
+            "room":"White River A",
+            "track":"Other Topics",
+            "level":"Beginner",
+            "type":"Functional",
+            "presenters":[
+               "Bowers, Bill",
+               "Dolan, Renee"
+            ],
+            "details":"This panel discussion will seek to help audience members achieve a comfort level with the how-to's of assessing current practices with interviews, targeted discussions, evaluation of staffing, workflows, institutional goals and objectives, and more. Departmental interactions with client departments and those units creating and updating the policies and procedures under which you operate will also be addressed.\r\nPresenters will touch on finding the least invasive methods for gathering information, discovering the expectations of your post-award department leaders, and reconciling those with the scope and purpose of the assessment if ordered by others outside the department.\r\nA review of current processes that pertain to research administration to facilitate a smooth transition to the Kuali systems, find short-term solutions to pressing issues, and propose long-term solutions that will work well with future Kuali functionality. Policies and procedures for research administration should be reviewed holistically and wherever possible, simplified and standardized for uniform use of Kuali. In summary, Kuali is not a solution, but rather a tool to facilitate the changing business practices. "
+         },
+         {
+            "title":"Creating a \"Kuali Corps\" to Change the World",
+            "date":"15-Nov-2011",
+            "time":"10:00 AM",
+            "room":"White River B",
+            "track":"Other Topics",
+            "level":"Advanced",
+            "type":"Implementation",
+            "presenters":[
+               "Thanos, Kim"
+            ],
+            "details":"Africa, Haiti, and other developing regions desperately need access to open source systems to support their higher education and economic development goals. The implementation requirements of the Kuali systems prevent most of these regions from seeing benefit from our work.\r\n\r\nI would like to organize a group of volunteers that would be willing to travel to developing countries to assist with implementations. If there is sufficient interest then I will solicit grants to defray the travel costs. If you are interested in participating, please come to this BOF to support the planning process."
+         },
+         {
+            "title":"Kuali 101: Explaining the Economics, Operations, and Strategy of Kuali for Higher Education",
+            "date":"15-Nov-2011",
+            "time":"10:00 AM",
+            "room":"Room 101/102",
+            "track":"Other Topics",
+            "level":"Beginner",
+            "type":"Functional",
+            "presenters":[
+               "Wheeler, Brad"
+            ],
+            "details":"This session is targeted at newcomers, especially senior campus leaders, who would like greater insight into Kuali. Topics will include the flow of money, contracts, licensing rules, software design, quality assurance, public releases, foundation staff, institutional staff contributions, authority, conflict resolution, commercial affiliates, sustainability, boards, and overall governance. This session is presented by one of Kuali's co-founders and the Chair of the Kuali Foundation board of Directors."
+         },
+         {
+            "title":"Embracing Mobility, Aligning Strategy for Sustainable and Reproducible Results",
+            "date":"15-Nov-2011",
+            "time":"11:15 AM",
+            "room":"Room 101/102",
+            "track":"Other Topics",
+            "level":"Beginner",
+            "type":"Functional",
+            "presenters":[
+               "Dodds, Ted",
+               "McGough, Brian"
+            ],
+            "details":"Mobility has become an expectation at our institutions, this session will take a look at the barrage of mobile investment options, explore the merits and costs of different approaches, and explain where the Kuali Mobility approach fits in the spectrum of mobile investment options and why it makes sense for institutions to invest in this exciting project."
+         },
+         {
+            "title":"Build Rice Applications Graphically using XO Drag and Drop UI Tools and Rice 2.0 KRAD",
+            "date":"15-Nov-2011",
+            "time":"11:15 AM",
+            "room":"White River G/H",
+            "track":"Kuali Rice",
+            "level":"Intermediate",
+            "type":"Technical",
+            "presenters":[
+               "De Rosa, Christopher"
+            ],
+            "details":"At the last Kuali Days in November 2010 we introduced the XO framework being used to build eDocLite documents graphically using  a ?drag and drop? browser based user interface. In this presentation we will demonstrate the latest version which has been extended to create a variety of Rice artifacts implementing Rice 2.0 and KRAD.\r\n\r\nThe Rice artifacts discussed will include DataDictionaries, SpringBeans Definitions, BusinessObjects and WorkFlow Definitions required to build both transactional documents and maintenance screen applications.\r\n\r\nThis presentation is aimed at IT managers and programmers wishing to learn more about how to leverage the latest advances in Rice Rapid Application Development using KRAD and XO. The latest toolset is designed to facilitate collaboration and code sharing, reduce application development time, and extend the Rice development community to both programmers and non-programmers.\r\n\r\n\r\nTo learn more about the XO framework please visit\r\nhttp://xoframework.org "
+         },
+         {
+            "title":"Moving from Coeus to KC IRB",
+            "date":"15-Nov-2011",
+            "time":"11:15 AM",
+            "room":"Room 201/202",
+            "track":"Kuali Coeus (KC)",
+            "level":"Beginner",
+            "type":"Functional",
+            "presenters":[
+               "Dwyer, Dan",
+               "Abraham, Joseph",
+               "Merckle, Ryan"
+            ],
+            "details":"For members currently using Coeus or for those who are not using Coeus but are familiar with its functionality, the idea of migrating to the Kuali Coeus IRB module can seem daunting.  Attendees will watch as experts from Coeus and Kuali Coeus walk through a typical IRB protocol, highlighting the similarities and differences between the products.  In addition, explorers of Kuali Coeus can see that it is steeped in the rich tradition and functionality of a proven research administration system."
+         },
+         {
+            "title":"Kuali Coeus Implementation Experiences",
+            "date":"15-Nov-2011",
+            "time":"11:15 AM",
+            "room":"White River C/D",
+            "track":"Kuali Coeus (KC)",
+            "level":"Intermediate",
+            "type":"Implementation",
+            "presenters":[
+               "Fong, Yaa-Yin",
+               "Becker, James",
+               "Durkin, Terry",
+               "Gouldner, Ronald",
+               "Morita, Janis",
+               "Tefft, Andrew "
+            ],
+            "details":"The University of Hawaii Kuali Coeus Implementation Experiences\r\n\r\nThe University of Hawaii (UH) is implementing the Kuali-Coeus (KC)  3.1 proposal development and award modules in the Fall, 2011, using existing resources and with minimum customization.  The KC system is scheduled to go live on November 1, 2011. UH has ten campuses and receives  $489 M annually on extramural funds.  Currently, we use  the InfoEd proposal tracking module as our proposal and award database system.  The  InfoEd system is only used by the central sponsored office staff. \r\n\r\nIn 2009,  the decision was made to switch our research administration system to KC and to implement the proposal development and award modules for the end-users to create and submit proposals S2S in 2011.  We would like to share our experiences with the institutions that are getting ready to, or interested in, implementing the KC system in the near future. \r\n\r\nKuali Coeus Implementation Details at Indiana University\r\n\r\nKC at IU went live on July 23rd with Proposal Development, Budget, and Grants.gov.  This session will share both the initial plans and the reality of a large scale, faculty facing, multi-campus implementation of KC. Topics will include change management, multiple application environments, knowledge management, bug tracking, and customization/enhancements.\r\n\r\nThe First 100 Days: How Are We Doing So Far?\r\n\r\nIndiana University went live with Kuali Coeus 3.0.1 on July 23, 2011.  The implementation included Proposal Development and Budget, grants.gov system-to-system submissions, and workflow with central Rice 2.0.\r\nThis session will discuss the lead-up to implementation, the weekend switch-over from our legacy system to KC, and the first 100 days.  What went well?  What were the most critical issues that arose?  How was the system received by faculty and staff?  Was the support model successful?  What were the lessons learned?  \r\nThe goal of the session is to provide participants with information that may be helpful as they implement KC at their institution.\r\n\r\n   \r\n"
+         },
+         {
+            "title":"Enrollment Overview",
+            "date":"15-Nov-2011",
+            "time":"11:15 AM",
+            "room":"Room 203/204",
+            "track":"Kuali Student (KS)",
+            "level":"Intermediate",
+            "type":"Functional",
+            "presenters":[
+               "Bershad, Carol",
+               "Dew, Cathy",
+               "Symms, Larry",
+               "Washington, William"
+            ],
+            "details":"This session will provide an overview of the Kuali Student Enrollment Management module including course offering, registration, course assessment, academic record, etc. Enrollment Management is currently under development. The session will provide an overview of the scope of the initial release as well as future release cycles. "
+         },
+         {
+            "title":"Kuali OLE Data Management and Library Standards",
+            "date":"15-Nov-2011",
+            "time":"11:15 AM",
+            "room":"Room 209",
+            "track":"Kuali OLE",
+            "level":"Beginner",
+            "type":"Functional",
+            "presenters":[
+               "Reid, Lydia",
+               "Tamarkin, Molly"
+            ],
+            "details":"Traditional library data management has primarily stored data in highly structured relational database.  Introduction of new standards and the need for new types of metadata has required that libraries either create multiple databases for each format or export the data into other systems for reformatting, thereby creating ?silos? which are difficult to integrate.\r\n\r\nKuali OLE?s design includes both relational database and document store technologies.  OLE adopted the Kuali Financial System and extended its data structure to meet academic library needs.  The document store supports traditional and emerging cataloging standards by permitting a variety of XML formats and traditional linkages, enabling libraries to unify collections and to add new document types without requiring database restructuring.  OLE?s customizable XML editor permits data modification, and the editorial workflow leverages  RICE.  Solr/Lucene provides discovery indexing, as well as searching across multiple document types through the use of data crosswalks."
+         },
+         {
+            "title":"Getting Started with Kuali Rice 2.0",
+            "date":"15-Nov-2011",
+            "time":"11:15 AM",
+            "room":"Room 103/104",
+            "track":"Kuali Rice",
+            "level":"Intermediate",
+            "type":"Implementation",
+            "presenters":[
+               "Hanson, Jeremy",
+               "Przybylski, Leo",
+               "Schneeberger, Travis "
+            ],
+            "details":"This session will be two presentations in one.  First there will be a guide of the common problems and pitfalls of upgrading to Rice 2.0 from previous versions.  Second there will be a presentation of how to setup a new project from cradle to grave.    \r\n\r\nThe upgrade presentation will give the audience a basic understanding of new 2.0 features, show how to upgrade current 1.0.3.x rice instances, and get an understanding of API changes that will affect their current rice applications.  It will discuss common problems that may arise upgrading the server or local client applications. \r\n\r\nThe implementation presentation will show how to set up a new project including best practices for setting up their SVN project to pull in and structure the Rice codebase, how to setup a strong continuous integration environment, discuss developing with overlays, deploying to Tomcat and Jetty, and go over Maven best practices.\r\n"
+         },
+         {
+            "title":"Rice Case Study: Ohio State University",
+            "date":"15-Nov-2011",
+            "time":"11:15 AM",
+            "room":"White River A",
+            "track":"Kuali Rice",
+            "level":"Beginner",
+            "type":"Implementation",
+            "presenters":[
+               "Kieffer, David"
+            ],
+            "details":"Come hear about the business and technical drivers that led Ohio State to look for alternative mixes of technology and business processes to the traditional business processes supported by PeopleSoft. Business drivers behind this movement include audit findings that concluded that there was too many staff with the ability to affect HR records, a need to improve data consistency in the ERP systems to improve decision-making, and a desire to move to consolidated processing models for streamlining and simplification of business processes. Technical drivers included a need to lower the total cost of ownership of the ERP systems. Starting with the Financial Systems, compartmentalizing the system usage to fewer, more highly trained users in service centers will allow a move to more delivered installation of the system, lowering the cost of ownership significantly over time, and allowing the adoption of new functionality in a more flexible timeline. \r\nThe new request and approval systems created are simple to create and deploy and no longer put the majority of the user population in the path of upgrade cycles.\r\nWe'll also discuss at a high level the technology Ohio State has deployed to make this work. Using java and deploying some open source components of the Kuali foundation's RICE product, a lightweight, open source and simple platform was developed, called Buckeye OASIS.  In addition to Kuali Enterprise Workflow, the platform consists of the Jboss Seam web framework and Apache CXF web services, both highly regarded open source projects. Rice is deployed as a standalone server, and the Seam web applications use the Thin Client to integrate with the workflow engine. PeopleSoft data is accessed via CXF web services. All of the Oasis applications have a common look-and-feel and make extensive use of Ajax to provide an enhanced user experience. This interface was created with the use of the library of UI components available from the Seam community.  "
+         },
+         {
+            "title":"Give Back Your Code!",
+            "date":"15-Nov-2011",
+            "time":"11:15 AM",
+            "room":"White River B",
+            "track":"Kuali Rice",
+            "level":"Intermediate",
+            "type":"Technical",
+            "presenters":[
+               "Renfro, James",
+               "Scott, Keith ",
+               "Slabach, Pat"
+            ],
+            "details":"Give Back Your Code!\r\n\r\nHas your institution developed a new Kuali app or some new piece of functionality? Do you think others might want to use it? Come talk about the Kuali contribution process, and share your experience of contributing or your questions about how to contribute.\r\n "
+         },
+         {
+            "title":"Moving from Coeus to KC: The Awards Module",
+            "date":"15-Nov-2011",
+            "time":"11:15 AM",
+            "room":"White River I/J",
+            "track":"Kuali Coeus (KC)",
+            "level":"Beginner",
+            "type":"Functional",
+            "presenters":[
+               "Mundt, Susan",
+               "Hanlon, Rosemary ",
+               "Schultz, Lori "
+            ],
+            "details":"Watch as experts from Coeus and Kuali Coeus demonstrate the Awards module side-by-side and discuss the similarities and differences in the context of a typical award.  Coeus users can make sure KC measures up to the high standard of Coeus functionality.  Those exploring Research Administration software have the opportunity to see the proven past of Coeus and glimpse an emerging future in Kuali Coeus."
+         },
+         {
+            "title":"Kuali Coeus: The Basics",
+            "date":"15-Nov-2011",
+            "time":"1:15 PM",
+            "room":"White River E/F",
+            "track":"Kuali Coeus (KC)",
+            "level":"All",
+            "type":"Functional",
+            "presenters":[
+               "Schultz, Lori Ann",
+               "Conover, Carey",
+               "Paffrath, Dennis"
+            ],
+            "details":"Join our panel of Kuali Coeus functional, technical, and implementation experts as they walk you through:\r\n*Current project status\r\n*Features of modules in current release\r\n*Upcoming modules\r\n*Technical updates \r\n*Implementation progress\r\n*The case for Kuali Coeus"
+         },
+         {
+            "title":"Kuali OLE Project Update and Making the Case for an Open Source Library Management System",
+            "date":"15-Nov-2011",
+            "time":"1:15 PM",
+            "room":"Room 101/102",
+            "track":"Kuali OLE",
+            "level":"Beginner",
+            "type":"Functional",
+            "presenters":[
+               "Tamarkin, Molly",
+               "Camden, Beth",
+               "Johnson, Brenda",
+               "McDonald, Robert",
+               "Mouw, Jim",
+               "Skiles, Brad",
+               "Winkler, Michael"
+            ],
+            "details":"Making the Case for an Open Source Library Management System\r\n\r\nAlthough Kuali Foundation software has made tremendous strides over the past five years with increasing uptake in the academic community, Kuali OLE is just one of several library open source solutions providing competitive alternatives to the established commercial library systems. Library staff who participate in software selection, implementation, and maintenance should understand what the Kuali Foundation and Kuali OLE can offer their institution and be able to determine if OLE is an appropriate solution for their library.  In this session, experts from three different libraries will discuss the case for implementing Kuali OLE and will provide an overview of the current range of functionalities and address common misconceptions often associated with library systems software. We will review the selection process and will conclude by describing requirements for a successful deployment. By focusing on the evaluative, financial, and organizational aspects of selecting, implementing, and sustaining an open source system, we hope to communicate how to compare and contrast Kuali OLE and its development environment with other library management systems.\r\n\r\nKuali OLE Project Update\r\n\r\nKuali OLE intends to deliver nothing less than an enterprise-ready, community source software package for academic and research libraries and a governance model in which the entire library community can collaborate to own and govern the resulting intellectual property. Kuali OLE began development in February of 2011 and is progressing rapidly towards its version 1 release in July of 2012.  This presentation will highlight key milestones in the project, in addition to current and future roadmaps, governance and resource models, key technology decisions, and an overview of the project?s funding.\r\n\r\n"
+         },
+         {
+            "title":"Implementation of KFS at MSU: The development methodology, execution, and lessons learned",
+            "date":"15-Nov-2011",
+            "time":"1:15 PM",
+            "room":"White River I/J",
+            "track":"Kuali Financial System (KFS)",
+            "level":"Intermediate",
+            "type":"Technical",
+            "presenters":[
+               "Criswell, Michael",
+               "Gedela, Shyam"
+            ],
+            "details":"MSU implemented the Kuali Financial System version 3.0 on January 1 2011. This presentation discusses the technical processes adopted at MSU in the months leading to and after go-live of the Kuali Financial System. We cover development team resource usage, new feature development (MSU-customizations), bug fix processes, testing strategies (unit, regression, integration, end-to-end, and performance testing), a re-usable process to create new test installations of KFS for business teams using baselines, continuous integration, version control, and a re-usable database versioning process.  Additionally, we discuss the challenges of converting MSU legacy data into KFS, deploying KFS in a clustered environment using the JBoss application server, creating real-time and batch interfaces between KFS and external systems.  Furthermore, we cover post go-live activities such as production support using a help desk ticketing service, new feature introduction, plans for future Kuali products in the Kuali suite, such as Kuali Coeus, and the strategy to deploy a central Rice server."
+         },
+         {
+            "title":"Architecting Kuali\\'s User Interface Framework:  Best Practices for User Experience and Accessibility",
+            "date":"15-Nov-2011",
+            "time":"1:15 PM",
+            "room":"White River G/H",
+            "track":"Kuali Rice",
+            "level":"Intermediate",
+            "type":"Functional",
+            "presenters":[
+               "Soderston, Candace",
+               "Washington, William"
+            ],
+            "details":"Best practice in architecting a user interface to software includes several aspects involving 1) a multi-disciplinary, collaborative teamwork model, 2) user engagement, 3) an integrated design process and 4) use of common design widgets, templates, and models. Come hear how we?re using a classic User-Centered Design teamwork model, with methods of engaging users, collaborating, and building up the Kuali User Interface Model library so that in future it will be available to all Kuali applications to use. In this session we discuss the challenges of doing User-Centered Design within a large-scale distributed development environment and tips and techniques that can help.   \r\n\r\nAcross the software industry, we?ve collectively made significant progress in accessible design through code standards, education, user engagement, and focus on user interface architecture.    In this session we share our experience in building a strategy and best practice for Kuali.  The vision for Kuali Rice is that our middleware tools are fully accessible, but also that, through using the Kuali tools, the applications you build can inherit the benefit of this attention to accessibility.  Come hear our vision, tips, and techniques for best practice, and how your own projects can benefit.\r\n"
+         },
+         {
+            "title":"KFS one year later: Panel discussion with the early adopters of the Kuali Financial System",
+            "date":"15-Nov-2011",
+            "time":"1:15 PM",
+            "room":"White River C/D",
+            "track":"Kuali Financial System (KFS)",
+            "level":"Beginner",
+            "type":"Implementation",
+            "presenters":[
+               "Showers, Keith",
+               "Coombs, Matt",
+               "Haska, Christine",
+               "Johnson, Lynn"
+            ],
+            "details":"Colorado State University, Naval Postgraduate School, and San Joaquin Delta College have been running the Kuali Financial System for more than a year.  \r\n\r\nIn this panel discussion, a member from each institution will discuss how their strategy to invest in both Kuali software and the Kuali community has increased the effectiveness of their services for students, improved business processes and lowered their total cost of ownership.   \r\n\r\nEach panelist will also give advice on how to plan and prepare for a KFS implementation, including the staffing and resources needed to accomplish the project successfully.\r\n\r\nThey will also share lessons learned, best practices, and areas to focus on during each phase of the implementation. \r\n\r\nFinally, each institution will describe the anticipated and unanticipated benefits they are experiencing after implementing KFS.  \r\n"
+         },
+         {
+            "title":"Kuali Ready - A Higher Education Continuity Planning Tool",
+            "date":"15-Nov-2011",
+            "time":"1:15 PM",
+            "room":"Room 201/202",
+            "track":"Other Topics",
+            "level":"Beginner",
+            "type":"Functional",
+            "presenters":[
+               "Schroyer, Kenneth"
+            ],
+            "details":"Kuali Ready is a hosted system that can be accessed via any web browser making it platform independent. There are 65 current subscribers to Kuali Ready ranging from large state university systems to smaller colleges.\r\n\r\n Kuali Ready uses a unique ?self-guided? methodology where the user follows a series of six steps in developing a continuity plan. In most cases minimal or no user training is required, reducing the workload on the Administrator of the tool. Kuali Ready focuses on plan development at the department level, where the definition of department can vary from a classic organizational chart definition, to functions such as instruction, research, support, administration, clinical or maintenance. Kuali Ready is designed to collect only essential data and avoid overly detailed recovery strategies.\r\n \r\n"
+         },
+         {
+            "title":"KS Student Financials Overview",
+            "date":"15-Nov-2011",
+            "time":"1:15 PM",
+            "room":"Room 203/204",
+            "track":"Kuali Student (KS)",
+            "level":"Beginner",
+            "type":"Functional",
+            "presenters":[
+               "Landi, Mike",
+               "Heald, Paul",
+               "Ryan, Angela"
+            ],
+            "details":"This session will provide an overview of the Kuali Student - Student Financial Module. Student Financials is currently under development. The session will provide an overview of the scope of the initial release as well as future release cycles."
+         },
+         {
+            "title":"Loading Legacy Courses into Kuali Student",
+            "date":"15-Nov-2011",
+            "time":"1:15 PM",
+            "room":"Room 103/104",
+            "track":"Kuali Student (KS)",
+            "level":"Beginner",
+            "type":"Implementation",
+            "presenters":[
+               "Heidinger, Tim",
+               "O'Brien, Thomas"
+            ],
+            "details":"How do existing courses get into Kuali Student? The purpose of this technically focused, panel style session it to showcase different approaches and tools used to load legacy course data into Kuali Student Curriculum Management. UC Berkeley will share experiences of a full implementation of KS Curriculum Management 1.1 including interfaces back to it's legacy enrollment system .  Boston College will share their proof of concept effort and their use of the open source ETL tool Talend.  The University of Washington will share how they leveraged existing course web services to assist in populating Kuali Student."
+         },
+         {
+            "title":"Empowering the Research Community",
+            "date":"15-Nov-2011",
+            "time":"1:15 PM",
+            "room":"White River A",
+            "track":"Kuali Financial System (KFS)",
+            "level":"Intermediate",
+            "type":"Functional",
+            "presenters":[
+               "Breen, Neal",
+               "Becker, Jim",
+               "Schultz, Lori Ann"
+            ],
+            "details":"This session will demonstrate how the functionality of KC and KFS can improve or eliminate many of the operating and administrative challenges associated with sponsored project activity, from proposal inception to the closeout of an award.  We?ll demonstrate how workflow is used to route a proposal from the PI to a departmental administrator, to a Department Head or Dean for review, to a pre-award office and finally post-award.  We?ll demonstrate how sub-account and sub-object code functionality enables departmental administrators to more effectively ?manage the details? for PIs.  For sponsored program office personnel, we?ll demonstrate how KFS functionality can be used to prevent expenditures when an account does not have sufficient funds, prevent unallowable expenditures and route specified types of transactions to sponsored programs personnel for pre-approval.  Finally, we?ll demonstrate how pro-rate JE functionality can be used to allocate IDC to Deans, Department Heads and PIs)."
+         },
+         {
+            "title":"Enhancing EDocLite with jQuery and AJAX ",
+            "date":"15-Nov-2011",
+            "time":"1:15 PM",
+            "room":"Room 209",
+            "track":"Kuali Rice",
+            "level":"Intermediate",
+            "type":"Technical",
+            "presenters":[
+               "Scott, Keith",
+               "Renfro, James"
+            ],
+            "details":"In April we deployed a new EDocLite workflow to manage adding and updating tuition categories at the University of Washington. This required significant customization of the Rice functionality to accommodate business needs.  This session will demonstrate how EDocLite can be enhanced to provide a more flexible and responsive user experience by extending the default widgets library and replacing the default Javascript with a jQuery version.  \r\n\r\nThese enhancements include:\r\n  * updated look-and-feel\r\n  * widget for dynamic person lookup\r\n  * ?breadcrumbs? widget\r\n  * more responsive field validation using jQuery validation\r\n  * dynamic update of notes and attachments \r\n  * RESTful interface to the PersonService"
+         },
+         {
+            "title":"KFS Chart of Accounts, General Ledger, Financial Processing Roundtable",
+            "date":"15-Nov-2011",
+            "time":"1:15 PM",
+            "room":"White River B",
+            "track":"Kuali Financial System (KFS)",
+            "level":"Intermediate",
+            "type":"Functional",
+            "presenters":[
+               "Dorsey, Damon",
+               "Overman, Bill ",
+               "Schimizzi, Vince ",
+               "Smith, James"
+            ],
+            "details":"Every institution has some confounding elements in their chart, or perhaps some unique issues with general ledger feeds or user-initiated financial transactions. This session is aimed at KFS adopters (and possible adopters) who have some understanding of the basics but are struggling to represent some element of their chart, general ledger or financial processing processes within the KFS framework. \r\n\r\nParticipants should come with questions about their institutions:\r\n* Chart of accounts elements (accounts, object codes, sub-fund groups, etc.)\r\n* General ledger feeds (sources, timing, error handling)\r\n* Financial processing electronic documents (functions, business rules, workflow, permissions)\r\n\r\nThis is a chance to present problems related to these topics, discuss possible solutions and hear about how others might approach similar issues within KFS.\r\n"
+         },
+         {
+            "title":"OLE Document Store Overview and Demo",
+            "date":"15-Nov-2011",
+            "time":"2:30 PM",
+            "room":"Room 101/102",
+            "track":"Kuali OLE",
+            "level":"Beginner",
+            "type":"Technical",
+            "presenters":[
+               "Duvoor, Lakshmi Narasimhan",
+               "Subramanya, Peri ",
+               "Wadia, Percy"
+            ],
+            "details":"Doc Store Overview\r\nA critical component of the Kuali OLE system is its document store.  The doc store is the repository of record for all resources managed by the OLE system.  The primary function of a doc store is to support heterogeneous documents in their native format and to support customization, scalability and agility. The doc store architecture provides the flexibility to add new document types with minimal configuration to indexes for search & retrieval for a variety of document types.\r\n\r\nThe doc store will provide a unified repository to support ingest, storage, and retrieval for individual library bibliographic records. Content ingestion and creation encompasses the activities around importing, authoring, editing and committing new and existing records. Content includes several industry standard formats. This process will integrate closely with OLE workflow to support editing for metadata creation. \r\n\r\nHigh Level Architecture\r\nDoc store architecture leverages two major industry standard components, Jackrabbit for document storage and SOLR/Lucene for indexing and searching. This architecture is designed to scale to tens of millions of documents on commodity hardware. \r\n\r\nIndex Configuration\r\nSystem will provide default index configuration for standard document types such as MARC, Dublin Core, ONYX, etc., though, implementing organizations can easily add new document types, configure indexes for new document types and modify index configurations for existing document types.  Application specialists and staff users can configure the indexes, search fields, sort fields, default sort orders in XML configuration files.\r\n\r\nDoc Storage Configuration\r\nThe OLE Document store can be configured to support new document types, logical structuring of document types and linking of document types within the OLE application layer.\r\nContent Ingestion & Loading\r\nContent can be loaded from FTP, File System HTTP Service. One time bulk load is recommended from file system. Content is validated and verified before loading into the repository. Rules for content loading are applied to the content to de-dupe and overlay the documents. Based on the confidence level in matching the documents, the doc store can automatically de-dupe or overlay the content or route it through OLE workflow for approval.\r\n\r\nThe System Demo will cover the following tasks:\r\nIndex Configuration\r\nDocument Store Configuration\r\nDiscovery (Search, Browse, Faceted Navigation)\r\nDocument Retrieve\r\nDocument Management (Check-out, Edit, Check-in, Version)\r\nBib-Editors\r\nIngestion & Indexing (matching, de-duping, overlaying)\r\nDocument store would provide flexibility to add new document types with minimal configuration, index, and search & retrieve new document types.\r\n\r\nNote: This session will be repeated on Wednesday. Please check schedule for time and room."
+         },
+         {
+            "title":"Technical Overview of Kuali-based Materiel Management System",
+            "date":"15-Nov-2011",
+            "time":"2:30 PM",
+            "room":"White River I/J",
+            "track":"Kuali Financial System (KFS)",
+            "level":"Intermediate",
+            "type":"Technical",
+            "presenters":[
+               "Alavi, Naser",
+               "Schnepp, Devin"
+            ],
+            "details":"Michigan State University (MSU) and the University of California at Davis (UCD) have collaborated to create a Kuali Materiel Management (KMM) application that integrates with the Kuali Financial System (KFS). The application is based on the current UCD Materiel Management system.  KMM in conjunction with KFS is a full e-procurement and inventory management system with the added capability of hosted catalog and punch-out Business-to-Business (B2B) interactions with external vendors.  This application requires the ability to send and receive data from both KFS and KIM including looking up accounts and vendor contracts as well as creating KFS Requisitions, Pending Ledger transactions, and Internal Billing documents.  The KMM team would like to share how the Kuali Framework was used and how data and services interact between Kuali Rice, KFS, and KMM using the Kuali Service Bus.  Materiel Management jumped on the Kuali Bus and would like to share the ride with the rest of the Kuali community."
+         },
+         {
+            "title":"Modeling Business Processes in Kuali Enterprise Workflow",
+            "date":"15-Nov-2011",
+            "time":"2:30 PM",
+            "room":"White River G/H",
+            "track":"Kuali Rice",
+            "level":"Intermediate",
+            "type":"Technical",
+            "presenters":[
+               "Westfall, Eric",
+               "Niesen, Claus",
+               "Soderston, Candace"
+            ],
+            "details":"Come and learn how you can utilize the power of KEW to implement and improve your institution's business processes!  In this session you will get an in depth look at how Kuali Enterprise Workflow (KEW) works.  \r\n\r\nLearn how KEW provides numerous options for creating business processes. Get a brief overview of the various features of KEW that can be used to create workflow processes, including:\r\n\r\n* Sequential routing processes\r\n* Parallel branching\r\n* Custom node implementation\r\n* Dynamic processes\r\n* Simulation\r\n* Role-based routing via integration with Kuali Identity Management\r\n* Rule-based routing via integration with the Kuali Rule Management System\r\n* Using the KEW APIs for interacting with workflow documents"
+         },
+         {
+            "title":"Success Panel - Kuali Commercial Affilliates Discuss Successful Implementations   ",
+            "date":"15-Nov-2011",
+            "time":"2:30 PM",
+            "room":"Room 201/202",
+            "track":"Other Topics",
+            "level":"Beginner",
+            "type":"Implementation",
+            "presenters":[
+               "Slabach, Patricia",
+               "Casella, Marcelo",
+               "Merkel, Dirk",
+               "Mulligan, Meaghan",
+               "Ozden, Randy ",
+               "Shankar, Ravi",
+               "Showers, Keith",
+               "Staman, Matthew",
+               "Waggener, Shel",
+               "Webber, Erica"
+            ],
+            "details":"Kuali Commercial Affiliates have assisted with successful implementations at many Kuali Member Institutions.  Hear how Commercial Affiliates have engaged with institutions and how they work with the Kuali Projects to help install, implement, and support KC, KFS and Rice.  \r\n\r\nA panel of representatives from Kuali Commercial Affiliates will be on hand to answer questions and give feedback to attendees.  \r\n\r\nThis session will be moderated by Shel Waggener, Chief Information Officer, Information Services and Technology, UC Berkeley and panel will include VivanTech, rSmart, IBM, Navigator, Huron, and HTC Commercial Affiliates representatives.         "
+         },
+         {
+            "title":"Course Approval Using Kuali Student at UC Berkeley",
+            "date":"15-Nov-2011",
+            "time":"2:30 PM",
+            "room":"Room 203/204",
+            "track":"Kuali Student (KS)",
+            "level":"Beginner",
+            "type":"Implementation",
+            "presenters":[
+               "De Luca, Anne"
+            ],
+            "details":"UC Berkeley has recently moved from a completely paper- and hand-based \r\ncourse approval process to one that is fully automated, by implementing \r\nthe first software release from Kuali Student. In partnership with the \r\nAcademic Senate and Student Service Systems, the Office of the Registrar \r\nwas the functional lead on remapping the flow of information, \r\nidentifying pain points and how to eliminate them, using wireframe \r\nprototypes with end-users during development, mapping the data from the \r\nnew system back to our mainframe for downstream use and rolling out the \r\nsystem to campus departments. The session will provide a live \r\ndemonstration of the faceted search functionality and the process used \r\nto manage course proposals as they move from departmental submission to \r\nfaculty approval to inclusion in the official course database."
+         },
+         {
+            "title":"Kuali Ready\\'s Service Delivery Model and Its Benefits",
+            "date":"15-Nov-2011",
+            "time":"2:30 PM",
+            "room":"White River A",
+            "track":"Other Topics",
+            "level":"Intermediate",
+            "type":"Technical",
+            "presenters":[
+               "Tsai, Thomas",
+               "Boshoff, Frank",
+               "Schroyer, Ken"
+            ],
+            "details":"This presentation will focus on the technical aspects of Kuali Ready which is offered as a software service. A brief overview of what Kuali Ready is and why it is useful will be provided for those in the audience that didn't attend the Kuali Ready functional presentation. An architectural overview diagram will facilitate a high-level walkthrough of the main technical components and will include the target user groups, capacity and sizing design points, and expected performance. An overview of the infrastructure will be provided (using a processing diagram). The presentation will include a description of the application architecture with emphasis on the multi-tenant capability and the application attributes that support privacy and security. At the end of the session, the audience should have an understanding of the Kuali Ready architecture, an assurance that multi-tenant support is available and that the solution is now in production."
+         },
+         {
+            "title":"Who \\'Ya Gonna Call?  Supporting KFS on Go-Live",
+            "date":"15-Nov-2011",
+            "time":"2:30 PM",
+            "room":"White River B",
+            "track":"Kuali Financial System (KFS)",
+            "level":"Intermediate",
+            "type":"Implementation",
+            "presenters":[
+               "Sutton, Barbara",
+               "Horn, Kymber",
+               "Schmizzi, Vince"
+            ],
+            "details":"Cornell, MSU & UA share their experience after go-live supporting KFS end users."
+         },
+         {
+            "title":"Following a Course through its Lifecycle/Seeing Connections in Your Curriculum: Dependency Analysis",
+            "date":"15-Nov-2011",
+            "time":"2:30 PM",
+            "room":"Room 103/104",
+            "track":"Kuali Student (KS)",
+            "level":"Beginner",
+            "type":"Functional",
+            "presenters":[
+               "Passarella-George, Michael"
+            ],
+            "details":"Following a Course Through Its Lifecycle in Kuali Student\r\n\r\nKuali Student Curriculum Management (KS-CM) Release 1.2 introduces functionality to support the full lifecycle of creating, modifying, and retiring courses. This session will introduce attendees to the concept of course versioning and demonstrate how the system manages versions to maintain a course throughout its lifecycle. We will review what courses look like in KS-CM at various stages of the lifecycle and answer questions about the course lifecycle in action.\r\n\r\nSeeing the Connections in Your Curriculum: Dependency Analysis in Kuali Student\r\n\r\nOne of the exciting new features that has been developed for Kuali Student Curriculum Management (KS-CM) Release 1.2 is curriculum dependency analysis. This functionality allows users to see how modifying or retiring a course could impact other courses and academic programs that rely upon it. In this session, we will discuss the uses for dependency analysis functionality, learn about the relationships that KS-CM supports among courses and programs, and demonstrate the dependency analysis tool."
+         },
+         {
+            "title":"Organizing the Integration of Multiple Applications with a Stand-alone Rice Service",
+            "date":"15-Nov-2011",
+            "time":"2:30 PM",
+            "room":"Room 209",
+            "track":"Kuali Rice",
+            "level":"Intermediate",
+            "type":"Functional",
+            "presenters":[
+               "Sublett, Hampton",
+               "Bray, Curtis "
+            ],
+            "details":"This session will help campuses that are integrating multiple applications into a stand-alone Rice service (especially across multiple groups) organize and collaborate effectively. University of California/Davis's IT department has deployed a stand-alone Rice service with the goal of widespread integration with campus applications. The service is  currently integrated with a homegrown Merits and Promotions system and will integrate with KFS in August 2010, and a KC pilot in the ensuing months. This session will review the processes, organizational structures and documents used to help keep these efforts synchronized."
+         },
+         {
+            "title":"Kuali Identity Management in KFS for Functional Users",
+            "date":"15-Nov-2011",
+            "time":"2:30 PM",
+            "room":"White River C/D",
+            "track":"Kuali Financial System (KFS)",
+            "level":"Beginner",
+            "type":"Functional",
+            "presenters":[
+               "Christen, Sarah",
+               "Dorsey, Damon"
+            ],
+            "details":"Kuali Identity Management (KIM) can put a lot of power to control permissions and workflow into the hands of functional users. But such a powerful tool can be a bit daunting on first approach. This session will introduce functional users to the elements of KIM and provide examples showing how KIM can be used to change permissions and workflow within KFS. Attendees will gain a basic understanding of KIM terminology, learn how to modify permissions and workflow responsibilities, and how to assign and remove permissions and responsibilities to users. "
+         },
+         {
+            "title":"Kuali Student Project Update",
+            "date":"15-Nov-2011",
+            "time":"4:00 PM",
+            "room":"White River E/F",
+            "track":"Kuali Student (KS)",
+            "level":"Intermediate",
+            "type":"Technical",
+            "presenters":[
+               "McDevitt, Dan",
+               "Bershad, Carol",
+               "Kaushik, Rajiv"
+            ],
+            "details":"This session will provide an overview of the Kuali Student Program. Included will be a review of the KS roadmap highlighting planned high-level scope and related timelines. Come and learn about the KS community contributing to Kuali Student and the planned release cycles for Enrollment Management and future modules. We will devote a portion of the session to questions from participants, and hope to create a lively discussion."
+         },
+         {
+            "title":"Kuali People Managment for the Enterprise - Big Picture",
+            "date":"15-Nov-2011",
+            "time":"4:00 PM",
+            "room":"Room 101/102",
+            "track":"Other Topics",
+            "level":"Beginner",
+            "type":"Functional",
+            "presenters":[
+               "Espinoza, Carla",
+               "Byrde, Mary Margaret"
+            ],
+            "details":"KPME is a comprehensive human resource and payroll system designed and built for higher education by higher education and commercial partners using the proven Kuali collaborative model.  The system design is functionally driven and presumes good people management decisions begin with good and affordable tools and good data which are timely, accurate, integrated, and accessible.  Human resource and payroll management in higher education environments have typically relied on home grown systems or commercial systems that have been modified and customized to address the needs of higher education. In the discussion of the Big Picture and the modules that make up the Big Picture we will offer definitions of the modules and proposed timelines. We will also receive thoughts and input on our direction.  We will talk about our aspirations for a comprehensive, open source system and discuss the opportunities you and your institution to influence the design of each module based on your own needs and experiences.  \r\n\r\nKuali People Management for the Enterprise was launched in November 2010, and in 2011 at least three institutions will be implementing Timekeeping and Leave Management. The next modules for development in this comprehensive human resource payroll system are Position Management and HR Core Transactions, which include on-boarding and identity management.\r\n\r\nAn organization?s people represent 65% to 80% of the organization?s budget.  The best administrative tools are necessary for integrated and consistent tools to manage people.  People management involves management of their positions, their pay, their leave, and the payroll.  It involves informed and timely decision-making that is supported by accurate, up-to-the minute data.  It involves the most effective and efficient use of data and service-centered systems, and it involves compliance with relevant rules and regulations. \r\n\r\nTherefore, to satisfy the need, KPME must be comprehensive.  The functionality built into each module must be agile to accommodate different and changing needs within an organization and to accommodate integration with other modules.  Furthermore, the data models of each module must complement the business models of the organization.\r\n\r\nLast, but not least, KPME and the various modules that make up KPME are available on open source platform making it available to anyone with no licensing and no annual maintenance fees.\r\n\r\n"
+         },
+         {
+            "title":"Running KFS Batch Jobs: Various Strategies throughout the KFS Community",
+            "date":"15-Nov-2011",
+            "time":"4:00 PM",
+            "room":"White River I/J",
+            "track":"Kuali Financial System (KFS)",
+            "level":"Intermediate",
+            "type":"Technical",
+            "presenters":[
+               "Smith, James",
+               "Bartlett, Anne",
+               "Berg, Philip",
+               "Gao, Bin",
+               "Hollamon, Andrew",
+               "Keller, Jonathan",
+               "Kronenbitter, Kevin"
+            ],
+            "details":"Most KFS implementing institutions have needed to expand upon the batch scheduling framework provided in foundation KFS.  Panelists from a number of KFS implementing institutions will discuss the challenges they faced in this process and the surprisingly diverse solutions they?ve generated to run KFS batch.  Topics such how each solution utilizes Rice and manages or disables user access to the system will be explored.  A full spectrum of ideas about scheduling and running KFS batch schedules will be informatively presented."
+         },
+         {
+            "title":"RESTful Workflow and Web Forms in Rice",
+            "date":"15-Nov-2011",
+            "time":"4:00 PM",
+            "room":"White River G/H",
+            "track":"Kuali Rice",
+            "level":"Intermediate",
+            "type":"Technical",
+            "presenters":[
+               "Renfro, James",
+               "Scott, Keith"
+            ],
+            "details":"This session will focus on work done at the University of Washington to wrap Kuali Enterprise Workflow in a RESTful web service, demonstrating how this web service can be used to process the result of one or more web forms into a workflow, dynamically incorporating user input into institutional systems by communicating with databases, web services, and event infrastructure. \r\n\r\nRepresentational State Transfer (REST) provides a strategy for leveraging the capabilities of the Hypertext Transfer Protocol (HTTP) to reduce the overhead of remote communications for both producer and consumer. By limiting the vocabulary of actions that can be taken by a service to four fundamental verbs (create/read/update/delete), and by making full use of HTTP's authentication, caching, and content type negotiation, RESTful web services make it straightforward for developers working in programming languages like .NET, PHP, Java, Python, and Perl (or by using Javascript in the browser) to remotely manipulate resources in a variety of formats, including JSON, XML, and HTML. \r\n\r\nThe technologies used in this implementation include Kuali Rice, as well as:\r\n- the Java API for RESTful Services (JAX-RS)\r\n- JQuery\r\n- ActiveMQ"
+         },
+         {
+            "title":"A New Kuali Community in South Africa",
+            "date":"15-Nov-2011",
+            "time":"4:00 PM",
+            "room":"Room 201/202",
+            "track":"Other Topics",
+            "level":"Beginner",
+            "type":"Implementation",
+            "presenters":[
+               "Juyn, Adrianus"
+            ],
+            "details":"The North-West University is pioneering the establishment of a South African Kuali community. This presentation will describe the road we followed to:\r\no\tMotivation of and Adoption by NWU of Kuali as a strategic platform; \r\no\tNWU?s partnership in the Kuali Student project;\r\no\tThe establishment of a South African Kuali Commercial Affiliate;\r\no\tGrowing interest in Kuali among SA universities.\r\n\r\nThe presentation will also cover:  \r\no\tThe economic model of Kuali as strategic consideration, from a non-USA perspective;\r\no\tChallenges and solutions in day-to-day collaboration.\r\n\r\nA brief overview will be given of Kuali integration into NWU?s current systems architecture, illustrating practical benefits that can be derived even without major investments. \r\n\r\nObjectives of the information session:\r\no\tTo describe the establishment of a Kuali community in international context, starting from scratch;\r\no\tTo describe the process of internal motivation of Kuali as new strategy for a university;\r\no\tTo illustrate some practical benefits realised by Kuali integration at the NWU.\r\n"
+         },
+         {
+            "title":"Budget Construction - Fundamentals and Implementation Questions Answered ",
+            "date":"15-Nov-2011",
+            "time":"4:00 PM",
+            "room":"Room 203/204",
+            "track":"Kuali Financial System (KFS)",
+            "level":"Beginner",
+            "type":"Implementation",
+            "presenters":[
+               "Nielsen, Angela"
+            ],
+            "details":"The session is for anyone who wants to get a look at the budget construction module.  We will be discussing timelines, give an overview of the budget construction module and how Colorado State University was successful in implementing the system. In addition, we will be addressing the most frequently asked questions from institutions getting ready to implement BC. Get ready to see the system in action and get your questions answered!"
+         },
+         {
+            "title":"Administering a Production Kuali Rice Infrastructure",
+            "date":"15-Nov-2011",
+            "time":"4:00 PM",
+            "room":"Room 209",
+            "track":"Kuali Rice",
+            "level":"Advanced",
+            "type":"Technical",
+            "presenters":[
+               "Westfall, Eric",
+               "Bennett, James"
+            ],
+            "details":"Over the years, Indiana University has implemented an extensive Kuali Rice infrastructure which has been integrated with Human Resource, Student, Financial, Research, and many other enterprise and smaller systems.  This implementation boasts the handling of approximately 2 million new Kuali Enterprise Workflow documents involving nearly 70,000 unique users each year.\r\n\r\nCome to this session to see how this infrastructure is wired and hear what it takes to ?keep the wheels on?.  Topics covered will include:\r\n\r\n* Managing the Service Bus and Service Registry\r\n* Keystore Administration\r\n* Configuring and preparing client applications for integration\r\n* Migrating of data and configuration across environments\r\n* Customizing and patching the Rice Code base\r\n* Developing and managing eDocLites\r\n* Database Resource Management\r\n* Monitoring and Common Production Support Issues\r\n* Clustering and Load Balancing\r\n* Load Testing\r\n* Automated Functional Testing\r\n* Performing Upgrades"
+         },
+         {
+            "title":"Kuali Coeus Questionnaire",
+            "date":"15-Nov-2011",
+            "time":"4:00 PM",
+            "room":"Room 103/104",
+            "track":"Kuali Coeus (KC)",
+            "level":"Intermediate",
+            "type":"Functional",
+            "presenters":[
+               "Dwyer, Dan",
+               "Aldridge, Matt",
+               "Hanlon, Rosemary"
+            ],
+            "details":"The Kuali Coeus Questionnaire functionality is a powerful tool to allow an institution to collect unique information in a structured way without programming customizations. Questionnaires can be used in most KC modules and can even be associated with specific actions or sub-components of a module. Use of intelligent versioning allows a questionnaire to evolve over time while maintaining an audit trail. This presentation will primarily focus on the front-end administrator role as Questionnaire Maintainer. End-users of Protocol and Proposal Development will also gain an understanding of how and why Questionnaires appear in their records, and how and why the questions presented may vary."
+         },
+         {
+            "title":"Kuali Coeus Quality Assurance",
+            "date":"15-Nov-2011",
+            "time":"4:00 PM",
+            "room":"White River A",
+            "track":"Kuali Coeus (KC)",
+            "level":"Beginner",
+            "type":"Functional",
+            "presenters":[
+               "Flach, Jennifer",
+               "Peterson, Jon"
+            ],
+            "details":"This session will provide an overview of the Quality Assurance (QA) process and tools used by the Kuali Coeus Consortium and highlight what is new in KC's approach to quality.  Participants will learn about:  Changes in the QA process to facilitate KC's agile method of development; improvements in KC QA to address lessons learned in previous releases; and, how implementers can leverage the project-level QA documentation and other resources for local testing. "
+         },
+         {
+            "title":"Kuali Contract and Grant Billing (CGB) Overview and Project Update",
+            "date":"15-Nov-2011",
+            "time":"4:00 PM",
+            "room":"White River C/D",
+            "track":"Kuali Financial System (KFS)",
+            "level":"Intermediate",
+            "type":"Implementation",
+            "presenters":[
+               "Moynahan, Helena",
+               "Breen, Neal",
+               "Johnston, Steve"
+            ],
+            "details":"Kuali Contract & Grant Billing (CGB), which is a collection of enhancements for KFS Accounts Receivable, is nearing the release of its first phase.  This software will allow institutions to automate the production of invoices for grant and contracts (including recurring invoices and templates), facilitate letter-of-credit (LOC) draw downs, and support the collection of payments from slow-pay or no-pay sponsors.\r\n \r\nThis session will include an overview of CGB, including a demonstration of Phase I software.  You'll hear why one school chose to invest in CGB and how they plan to incorporate the software in their overall automation efforts.  Participants will also hear about the scope of work planned for Phase II and find out how their institutions can participate in the CGB effort."
+         },
+         {
+            "title":"Kuali Coeus from the Project Managers View",
+            "date":"15-Nov-2011",
+            "time":"4:00 PM",
+            "room":"White River B",
+            "track":"Kuali Coeus (KC)",
+            "level":"Beginner",
+            "type":"Implementation",
+            "presenters":[
+               "Reed, Lynn",
+               "Kissam, Ed",
+               "O'Connor, Lora"
+            ],
+            "details":"Kuali Coeus from the Porject Managers View - A Two-Year Review\r\n\r\nThe goal of this presentation is to compare and contrast implementation strategies at multiple institutions (Iowa State University, Colorado State University, and Indiana University) to give ideas for best practices to use and practices to avoid. The intent this year is to provide a summary of our presentation last year and add major things that we have learned in the last year. \r\n\r\nTopics and questions would include (but not limited to):\r\n\tWhat problems did your institution experience in this last year?\r\n\tWhat changes did you make to your project charter?\r\n\tAnything unanticipated happen? How was it resolved?\r\n\tWhat do you anticipate coming up in the next year?\r\n\r\nOutcomes:\r\n1)\tProvide institutions who are interested in Kuali Coeus an opportunity to listen to the progress of installation through-out the life cycle of the project.\r\n2)\tTips and tricks for implementation.\r\n3)\tJump-start to implementation of Kuali Coeus.\r\n\r\nKuali Coeus Project Manager Roundtable\r\n\r\nThis session provides Kuali Coeus project managers (KC PMs) an opportunity to meet with other KC PMs. Discussions will include (but not limited to): sharing project management issues, questions and answers, sharing examples of communications, technology options, and sharing examples of training materials.\r\n"
+         },
+         {
+            "title":"A President\\'s View of Kuali",
+            "date":"16-Nov-2011",
+            "time":"8:00 AM",
+            "room":"White River E/F",
+            "track":"GENERAL SESSION",
+            "level":"All",
+            "type":"Implementation",
+            "presenters":[
+               "McRobbie, Michael",
+               "Wheeler, Brad"
+            ],
+            "details":"Since Kuali's inception, Indiana University has labored to define a new path for big software investments and is now implementing many of those systems. As colleges and universities consider the rewards and risks for their essential systems, IU is in a particularly insightful position to assess the Kuali approach and its fit to this decade for higher education."
+         },
+         {
+            "title":"Purchasing/Accounts Payable Roundtable",
+            "date":"16-Nov-2011",
+            "time":"10:00 AM",
+            "room":"White River I/J",
+            "track":"Kuali Financial System (KFS)",
+            "level":"Beginner",
+            "type":"Functional",
+            "presenters":[
+               "Sinex, Charlie",
+               "Gottdenker, Jay"
+            ],
+            "details":"This Session will provide an opportunity for institutions that have implemented KFS-PURAP to share their experiences. It will also provide those partners in the midst of their implementation to discuss their challenges and concerns. The ultimate goal would be to develop a set of best practices that can be leveraged by the community."
+         },
+         {
+            "title":"Training Campus on KFS",
+            "date":"16-Nov-2011",
+            "time":"10:00 AM",
+            "room":"White River C/D",
+            "track":"Kuali Financial System (KFS)",
+            "level":"Beginner",
+            "type":"Functional",
+            "presenters":[
+               "Monahan, Valerie",
+               "Rawleigh, Nicole ",
+               "Silsby, Jo "
+            ],
+            "details":"Colorado State University, Cornell University, and Michigan State University will discuss how their Universities rolled out KFS to campus-how training to campus was planned and completed; what venues and sessions were provided to campus and what topics/documents were prioritized for training purposes.\r\n\r\n"
+         },
+         {
+            "title":"Contracting Consulting Services for Kuali Implementations",
+            "date":"16-Nov-2011",
+            "time":"10:00 AM",
+            "room":"White River G/H",
+            "track":"Other Topics",
+            "level":"Beginner",
+            "type":"Implementation",
+            "presenters":[
+               "Casella, Marcelo"
+            ],
+            "details":"This presentation will provide an overview on how to engage external consulting services to assist in the implementation of Kuali.  Topics covered will be techniques and approaches for developing an RFP, evaluating RFP responses, and selecting consulting services.  "
+         },
+         {
+            "title":"Proposal Development and Grants.gov S2S in Kuali Coeus",
+            "date":"16-Nov-2011",
+            "time":"10:00 AM",
+            "room":"Room 201/202",
+            "track":"Kuali Coeus (KC)",
+            "level":"Intermediate",
+            "type":"Functional",
+            "presenters":[
+               "Peck, Jessica"
+            ],
+            "details":"This session is intended to give intermediate to advanced users a crash course in the Kuali Coeus Grants.gov functional area from general use to navigating available resources & user guides.  We'll start by walking through a typical KC proposal to be submitted to Grants.gov via S2S (attaching an opportunity, form printing, passing GG validations, submission, etc).  After the brief demo there will be an introduction to form mapping and an overview of the available mapping resources that document what drives the field mapping in each form.  KC guides are based on the current Coeus S2S form guides and have been adapted and expanded for KC purposes.  We will also be discussing which GG forms are supported in the KC 3.1 release and the new questionnaire functionality that some GG forms now utilize.  Finally, we will go over the implementation concerns regarding Grants.gov and what elements should not be customized and/or removed due to GG mapping logic."
+         },
+         {
+            "title":"The Library as an Enterprise Asset",
+            "date":"16-Nov-2011",
+            "time":"10:00 AM",
+            "room":"Room 209",
+            "track":"Kuali OLE",
+            "level":"All",
+            "type":"Implementation",
+            "presenters":[
+               "McGeary, Timothy",
+               "Winkler, Michael"
+            ],
+            "details":"With Kuali OLE approaching its first public release, early efforts are underway to connect Kuali OLE to other enterprise systems on campus.  Michael Winkler and Timothy McGeary will discuss these efforts at the University of Pennsylvania and Lehigh University respectively.  Integrating OLE users with Identity Management Systems (Shibboleth, Oracle IDM, CoSign, and Grouper) using KIM, transferring financial data to Enterprise Financial Systems (Oracle and SungardHE Banner), and Learning Management Systems (Blackboard, Moodle, Sakai) will be discussed, as well as  independent applications built on Rice infrastructure to migrate current workflows into the Kuali OLE infrastructure.  There will be a strong emphasis on use cases, the process of identifying key integration points, and discussion of predicted functionality based on future Kuali OLE development."
+         },
+         {
+            "title":"Strategies for implementing Kuali Student\\'s Curriculum Management ",
+            "date":"16-Nov-2011",
+            "time":"10:00 AM",
+            "room":"Room 101/102",
+            "track":"Kuali Student (KS)",
+            "level":"Beginner",
+            "type":"Functional",
+            "presenters":[
+               "Muthuswamy, Kamal",
+               "McCarthy, Linda",
+               "Van Patten, Darcy"
+            ],
+            "details":"Different institutions can take different approaches to introducing Kuali Student Curriculum Management (KS CM) to their campus. This presentation will go into the details of two different approaches taken by Boston College and University of Washington around KS CM implementations. Boston College will be discussing how they went about planning and executing a KS CM proof of concept implementation of complete solution. University of Washington will be showing how they plan on rolling out KS CM in pieces starting with services and data migration and then eventually the user interface with workflow. Both institutions will be providing insights into integration strategies to their legacy systems and potential pitfalls to watch out for during planning and the execution."
+         },
+         {
+            "title":"Developing Services with Kuali Student Contracts: Back to the Future",
+            "date":"16-Nov-2011",
+            "time":"10:00 AM",
+            "room":"Room 103/104",
+            "track":"Kuali Student (KS)",
+            "level":"Intermediate",
+            "type":"Technical",
+            "presenters":[
+               "Wright, Norman",
+               "Muthuswamy, Kamal "
+            ],
+            "details":"The java service contracts for Kuali Student have a distinctive flavor -- a particular look and feel. Some are easy to understand like \"createCourse\" or \"updateOrg\" while others are abstract and hard to decipher, \"getLuiIdsInAtpByCluId.\" To understand why the Kuali Student contracts are the way they are you need to go back to the project founding an then look forward to the future that it envisions. This session will give an overview of the service contract objectives and then dive into the newly created contracts being developed for course registration and enrollment. It will end by discussing the standards developed by Kuali student for service contract usage and patterns. This is ideal for developers and system architects who will be or are thinking of working with the Kuali Student service contracts."
+         },
+         {
+            "title":"Go LIVE experiences at Arizona, Cornell, and Michigan State University",
+            "date":"16-Nov-2011",
+            "time":"10:00 AM",
+            "room":"White River A",
+            "track":"Kuali Financial System (KFS)",
+            "level":"Advanced",
+            "type":"Implementation",
+            "presenters":[
+               "Schimizzi, Vince",
+               "Horn, Kymber",
+               "Yeoh, Kim"
+            ],
+            "details":"During 2011, the University of Arizona, Cornell University, and Michigan State University all went live with KFS.  Each institution has a unique story to tell related to their pre go live plans and strategies, and also how their post go live experience has been for both their project teams as well as end users.  Please join this panel discussion to learn the plans used for implementation as well as lessons learned on what went well, and what could have gone better."
+         },
+         {
+            "title":"Institutional Reporting Using KFS Data",
+            "date":"16-Nov-2011",
+            "time":"10:00 AM",
+            "room":"White River B",
+            "track":"Kuali Financial System (KFS)",
+            "level":"Intermediate",
+            "type":"Functional",
+            "presenters":[
+               "Overman, William",
+               "Deppong, Greg",
+               "Fluharty, Troy",
+               "Harper, Carrie",
+               "Schimizzi, Vince",
+               "Yeoh, Kim"
+            ],
+            "details":"If you are implementing or considering implementing Kuali Financial System one of the biggest challenges after you get it running is how to do basic financial reporting. This session will discuss the experiences at Colorado State University, Cornell University, Indiana University and Michigan State University.   Some questions we hope to answer are: What tools are used? What parts of the process can be automated? How can the chart facilitate both institutional reporting and management reporting? Where and how does the financial statement reconcile to the general ledger? What do you find difficult in the reporting process? How best to introduce auditors to the KFS general ledger data?  What types of reports are being used? What is the process for developing financial reports?\r\n"
+         },
+         {
+            "title":"Demystifying Kuali Rice - Introduction, Executive Overview, and Panel Discussion ",
+            "date":"16-Nov-2011",
+            "time":"10:00 AM",
+            "room":"White River E/F",
+            "track":"Kuali Rice",
+            "level":"Beginner",
+            "type":"Functional",
+            "presenters":[
+               "Westfall, Eric",
+               "Coltrin, Jessica"
+            ],
+            "details":"The scope of the Kuali Rice project is large and the different pieces of functionality it provides are diverse.  It can sometimes be difficult to cut through the acronyms and technical language that permeates the project.  In this 2 hour session attendees will get an introduction to what Rice is, receive an executive overview of Kuali Rice and provide some insight into how it can be leveraged outside of the core Kuali projects to provide a lasting value to your institution, and hear from several panelists highlighting the unique ways they have implemented Rice.\r\n\r\nWe will look at Rice from two different perspectives to examine how it's different pieces can fit into the larger institutional ecosystem and architecture:\r\n\r\n1. How it?s various components can provide rapid benefit to your institution with little investment.\r\n2. How it can be leveraged in larger, long-term initiatives to provide valuable services to your enterprise.\r\n\r\nThis session will focus on Rice from a high level and should provide new and existing Kuali Days attendees with ideas on how they can utilize Rice to solve a wide array of challenges at their institution."
+         },
+         {
+            "title":"KC - KFS Integrations",
+            "date":"16-Nov-2011",
+            "time":"10:00 AM",
+            "room":"Room 203/204",
+            "track":"Kuali Coeus (KC)",
+            "level":"Intermediate",
+            "type":"Functional",
+            "presenters":[
+               "Dolan, Renee",
+               "Athreya, Gayathri",
+               "Becker, Jim",
+               "Dorsey, Damon",
+               "Lemus, Dan"
+            ],
+            "details":"This session will provide an update on the KC-KFS integration effort that was introduced at Kuali Days last year.  The panel will review the currently implemented features, including a demonstration of the functionality.  Technical representatives will give an overview of the technologies used to build the integrations, and walk through the required setup, such as using standalone Rice, setting configuration parameters, and creating data mappings.  Panelists will discuss tips, tricks and frequently asked questions they have encountered in the course of implementing these features, in addition to taking audience questions.  Plans for future integrations will also be presented."
+         },
+         {
+            "title":"Customizing the Kuali Financial System for Deployment",
+            "date":"16-Nov-2011",
+            "time":"11:15 AM",
+            "room":"White River I/J",
+            "track":"Kuali Financial System (KFS)",
+            "level":"Intermediate",
+            "type":"Technical",
+            "presenters":[
+               "Sonkin, Allan",
+               "Hollamon, Andrew"
+            ],
+            "details":"Customizing KFS for institutional deployment might seem like a daunting task, even to seasoned developers, but it needn't be. This presentation will introduce you to the most common tasks involved in KFS customization, including developing new modules, services, batch processes, data dictionaries, maintenance documents, extended attributes, and workflow modification. A basic knowledge of XML and Java (including Spring and Struts) is assumed."
+         },
+         {
+            "title":"Travel and Entertainment Module",
+            "date":"16-Nov-2011",
+            "time":"11:15 AM",
+            "room":"White River C/D",
+            "track":"Kuali Financial System (KFS)",
+            "level":"Beginner",
+            "type":"Functional",
+            "presenters":[
+               "Takahashi, Keiko",
+               "Osborne, Karen",
+               "Potts, Tony"
+            ],
+            "details":"The KFS TEM is an electronic document processing application for travel authorization and capturing expenses and reimbursements for travel, entertainment and moving & relocation. The module is integrated with Disbursement Voucher (DV), and Accounts Receivable (AR) and passes the post travel request processes to the existing KFS functionality.\r\n\r\nTravel Authorization is a process to request travel authorization and advances from the required approvers. When the Travel Authorization document is finalized, the encumbrance will be generated and the travel advance is paid to the traveler. If the user requests the advances, a Disbursement Voucher and AR Invoice document are spawned to request a payment and to track receivables.  The Entertainment tracking process will capture required data, route for approvals and populate data to reimbursement reports.\r\n\r\nTravel and Entertainment Reimbursement is a process to request reimbursement based on the travel or entertainment request. When the Reimbursement document is finalized, the encumbrance is liquidated and the reimbursement amounts are posted to AR. The DV can be generated from APP.\r\n\r\nThe development of the TEM module is broken down into three distinct milestones. When completed Kuali TEM will provide the following functionality:* Travel Authorization process\r\n\r\n    * Third-party payment (pre and post-trip)\r\n    * Generating travel and entertainment payments via Disbursement Voucher and PDP\r\n    * Corporate and CTS card imported data and  payment processes\r\n    * Refunding Overpayment\r\n    * Entertainment authorization and tracking\r\n    * Travel & Entertainment Reimbursement process\r\n    * Tracking of Travel using Accounts Receivable (AR) functionality\r\n    * Create and maintain traveler profiles\r\n    * Moving and Relocation authorization and tracking\r\n    * External Agency data import, i.e., Expedia, Orbitz "
+         },
+         {
+            "title":"Labor Ledger and Effort Certification: Introduction and Implementation",
+            "date":"16-Nov-2011",
+            "time":"11:15 AM",
+            "room":"White River G/H",
+            "track":"Kuali Financial System (KFS)",
+            "level":"Intermediate",
+            "type":"Implementation",
+            "presenters":[
+               "Villalobos, Marcel",
+               "Valencia, Lupe"
+            ],
+            "details":"This session will introduce the audience to the functions of the Labor Ledger and Effort Certification modules and explain how The University of Arizona has implemented the modules. These two modules are integrated and allow your institution to maintain labor accounting data in a dedicated labor ledger that is a subsidiary ledger to the KFS general ledger, and then use that data to create automated electronic effort certification documents for contracts and grants personnel. The audience will learn how Arizona setup and reconciled its labor feed process, along with functionally configuring the labor ledger and effort certification modules using the maintenance documents and parameters. The audience will be invited to share their business processes and compare and contrast to how KFS Labor Ledger and Effort Certification would be setup for them.\r\n\r\nGoals:\r\n-Introduce the module functions\r\n-Explain implementation process\r\n-Challenges and obstacles that may be encountered"
+         },
+         {
+            "title":"Kuali Coeus Panel: Technical Implementation and Upgrades",
+            "date":"16-Nov-2011",
+            "time":"11:15 AM",
+            "room":"Room 201/202",
+            "track":"Kuali Coeus (KC)",
+            "level":"Beginner",
+            "type":"Implementation",
+            "presenters":[
+               "Durkin, Terry",
+               "Kousheh, Mohammed"
+            ],
+            "details":"Managing KC Upgrades\r\n\r\nThe IU implementation started with KC 2.0.  We've managed upgrades from 2.0, 3.0, 3.0.1, and 3.1 including enhancements and local Rice integration.  This will be a discussion of what our upgrade experience has been and how we've managed multiple versions in test, train, and production environments.\r\n\r\nTechnical Implementation Panel Discussion (with other technical members of  KC implementers)\r\n\r\nA panel session where various KC technical resources from different schools who successfully implemented KC to discuss various topics that covers technical approaches to Data Conversion, Configuration, Enhancements, customization and support. "
+         },
+         {
+            "title":"Kuali Coeus Award Lifecycle and Features",
+            "date":"16-Nov-2011",
+            "time":"11:15 AM",
+            "room":"Room 203/204",
+            "track":"Kuali Coeus (KC)",
+            "level":"Advanced",
+            "type":"Functional",
+            "presenters":[
+               "Maxwell, Neil",
+               "Foster, Kathleen",
+               "Infurna, Phil",
+               "Mundt, Susan",
+               "Pace, Doug"
+            ],
+            "details":"Using the Award \"Synchronize Descendants\" feature in Kuali Coeus\r\n\r\nThe KC Awards module allows a user to synchronize data between awards that are created in a hierarchical format, using the Award Hierarchy features. Large hierarchies may require extensive data entry for simple corrections to data. Synchronize Descendants features let a user synchronize specific data items from a parent award to any child award in the hierarchy that the user chooses to update.\r\n\r\nThis will be an interactive session where Synchronize Descendants functionality will be demonstrated, including parameter settings impacting the functionality. Questions and discussion are encouraged. \r\n\r\nA Lifecycle View of the KC Awards Module\r\n\r\nThis session will walk attendees through the lifecycle of an award, focusing on how Boston University leverages Kuali Coeus to track and manage the various transactions throughout the life of an award.  This session will cover the use of Awards, Award Hierarchy, Time and Money, and Budget Versions.\r\n\r\nAll the major scenarios of an award lifecycle will be covered in the discussion including new awards, competitive renewals, continuations/increments, through to closeout.  The session will also touch on how the model used at Boston University supports the tracking of subcontracts and Clinical Trials.  This functional discussion will address how each of the documents within the award module (Award, Time and Money, Budget)  are  used in combination to track each of these transactions and how that information translates into reports targeted towards the research community and administration."
+         },
+         {
+            "title":"Contributing Functionality and Code to Kuali Student",
+            "date":"16-Nov-2011",
+            "time":"11:15 AM",
+            "room":"White River B",
+            "track":"Kuali Student (KS)",
+            "level":"Advanced",
+            "type":"Technical",
+            "presenters":[
+               "Clark, Ben"
+            ],
+            "details":"This session is for institutions interested in contributing to the Kuali Student functionality and code-base. Attendees will come away with an understanding of how to propose new functionality for Kuali Student at various levels, technical or functional, incubation or as part of the core KS code-base."
+         },
+         {
+            "title":"Learning Objective Categories in Kuali Student/Widget Library Adds Facets to Search",
+            "date":"16-Nov-2011",
+            "time":"11:15 AM",
+            "room":"Room 103/104",
+            "track":"Kuali Student (KS)",
+            "level":"Beginner",
+            "type":"Functional",
+            "presenters":[
+               "Appel, Michelle",
+               "Clement, Cindy",
+               "Heidinger, Tim ",
+               "Orasov, Boris"
+            ],
+            "details":"A Practical Approach to Using Learning Objective Categories in Kuali Student\r\n\r\nA variety of vendors market stand-alone software to manage learning outcomes assessment, including curricular mapping.  However these products often require additional data entry and are not integrated into curriculum management business processes.  KS's curriculum management module integrates this functionality into course and program approval processes.  The learning objective feature offers maximum flexibility for faculty while providing organizational structure via categories.  This presentation will demonstrate Maryland?s use of learning outcomes and learning outcome categories.  Session attendees will see a ?real life? example of how learning objectives, categories, and category types are being deployed.  They will understand the benefits of incorporating these elements into the course and program approval process and the decisions that need to be made to deploy it.  Finally, the issues surrounding ownership and governance of the categories and category types will be discussed.\r\n\r\nWidget Library Adds Facets to Search\r\n\r\nEarly in Berkeley's implementation of Kuali Student (KS) Curriculum Management 1.1, it was clear a new way to search the course catalog would be very useful. Taking a page from e-commerce websites, we explored faceted search techniques and developed a reusable library of Google Web Toolkit (GWT) widgets that can be used in a variable of applications to filter search results.  During the presentation, we will demonstrate how we used this widget library in a variety of ways to support our implementation of Kuali Student Curriculum Management 1.1.  We will also demonstrate a basic implementation of this widget library with a non-KS application and highlight the library's built-in accessibility features"
+         },
+         {
+            "title":"Capital Assets Is Live!",
+            "date":"16-Nov-2011",
+            "time":"11:15 AM",
+            "room":"White River A",
+            "track":"Kuali Financial System (KFS)",
+            "level":"Intermediate",
+            "type":"Functional",
+            "presenters":[
+               "Shumaker, Boyd",
+               "Todd, Theresa "
+            ],
+            "details":"Capital Asset Management (CAM) has now been implemented at several institutions with more following soon. We look at creation of assets through Capital Asset Builder (CAB) based on both Purchasing/Accounts Payable documents and the other Financial Processing documents that support CAMs as well as the direct creation of assets. We discuss the fabrication process. We show the maintenance of non-capital assets in the same system. We examine documents used to maintain assets during their life, both individually and globally. We discuss the role that our partners, Campus Asset Processors, play in maintaining assets for their units. We explain the loan process for both capital and non-capital assets. We cover Bar Code Scanning and processing of the error report to complete physical inventory requirements. Depreciation options will be shown. Powerful search capabilities will be explored. We will show the options to retire assets."
+         },
+         {
+            "title":"OLE Document Store Overview & Demo",
+            "date":"16-Nov-2011",
+            "time":"11:15 AM",
+            "room":"Room 209",
+            "track":"Kuali OLE",
+            "level":"Beginner",
+            "type":"Technical",
+            "presenters":[
+               "Duvoor, Lakshmi Narasimhan",
+               "Subramanya, Peri",
+               "Wadia, Percy"
+            ],
+            "details":"Doc Store Overview\r\nA critical component of the Kuali OLE system is its document store.  The doc store is the repository of record for all resources managed by the OLE system.  The primary function of a doc store is to support heterogeneous documents in their native format and to support customization, scalability and agility. The doc store architecture provides the flexibility to add new document types with minimal configuration to indexes for search & retrieval for a variety of document types.\r\n\r\nThe doc store will provide a unified repository to support ingest, storage, and retrieval for individual library bibliographic records. Content ingestion and creation encompasses the activities around importing, authoring, editing and committing new and existing records. Content includes several industry standard formats. This process will integrate closely with OLE workflow to support editing for metadata creation. \r\n\r\nHigh Level Architecture\r\nDoc store architecture leverages two major industry standard components, Jackrabbit for document storage and SOLR/Lucene for indexing and searching. This architecture is designed to scale to tens of millions of documents on commodity hardware. \r\n\r\nIndex Configuration\r\nSystem will provide default index configuration for standard document types such as MARC, Dublin Core, ONYX, etc., though, implementing organizations can easily add new document types, configure indexes for new document types and modify index configurations for existing document types.  Application specialists and staff users can configure the indexes, search fields, sort fields, default sort orders in XML configuration files.\r\n\r\nDoc Storage Configuration\r\nThe OLE Document store can be configured to support new document types, logical structuring of document types and linking of document types within the OLE application layer.\r\nContent Ingestion & Loading\r\nContent can be loaded from FTP, File System HTTP Service. One time bulk load is recommended from file system. Content is validated and verified before loading into the repository. Rules for content loading are applied to the content to de-dupe and overlay the documents. Based on the confidence level in matching the documents, the doc store can automatically de-dupe or overlay the content or route it through OLE workflow for approval.\r\n\r\nThe System Demo will cover the following tasks:\r\nIndex Configuration\r\nDocument Store Configuration\r\nDiscovery (Search, Browse, Faceted Navigation)\r\nDocument Retrieve\r\nDocument Management (Check-out, Edit, Check-in, Version)\r\nBib-Editors\r\nIngestion & Indexing (matching, de-duping, overlaying)\r\nDocument store would provide flexibility to add new document types with minimal configuration, index, and search & retrieve new document types."
+         },
+         {
+            "title":"Power Up! With Kuali Coeus Reporting",
+            "date":"16-Nov-2011",
+            "time":"11:15 AM",
+            "room":"Room 101/102",
+            "track":"Kuali Coeus (KC)",
+            "level":"Intermediate",
+            "type":"Functional",
+            "presenters":[
+               "Sandoval, Paul",
+               "Moore, Randy",
+               "Newlin, Liam"
+            ],
+            "details":"This panel will discuss Kuali Coeus reporting at Indiana University and at the University of Arizona.\r\n\r\n--Analysis of the reports and reporting objects needed\r\n--Interaction with the Enterprise Technical Team (i.e. use of pentaho)\r\n--Governance Structure used for reporting topics\r\n--Structure of IU's reporting environment\r\n--Types of Reports created for Phase I\r\n--Indiana University Phase II - What's in store?"
+         },
+         {
+            "title":"Kuali Financial System - Implementation Discipline",
+            "date":"16-Nov-2011",
+            "time":"1:15 PM",
+            "room":"White River I/J",
+            "track":"Kuali Financial System (KFS)",
+            "level":"Beginner",
+            "type":"Implementation",
+            "presenters":[
+               "Horn, Kymber",
+               "DeMaio, Cindy"
+            ],
+            "details":"This session will address the need to follow a formal implementation path even though the system was built for higher ed, by higher ed.  Building KFS is different from implementing KFS.  Reviewing business processes, configuring the system for your own needs, manage business requirements from end-to-end, etc.  AND  manage in such a way that you can answer questions from auditors and steering committees with confidence."
+         },
+         {
+            "title":"Introduction to Kuali Mobility Enterprise",
+            "date":"16-Nov-2011",
+            "time":"1:15 PM",
+            "room":"White River C/D",
+            "track":"Other Topics",
+            "level":"Beginner",
+            "type":"Technical",
+            "presenters":[
+               "Johnson, Nathaniel",
+               "McGough, Brian"
+            ],
+            "details":"Students, faculty, staff, alum, prospects, and friends of the University expect to be able to access their information and complete their everyday work on their mobile devices. In that light, the Kuali Foundation announced the launch of Kuali Mobility Enterprise (KMobility). KMobility is a mobile framework that will not only help mobilize Kuali applications, but a vast array of mobile applications and connectors to backend systems.  KMobility will provide a consistent development approach to building mobile applications, and provide a deployment and management framework for the mobile deployment.  KMobility will have application integrations and connectors from across the IT Portfolio including but not limited to (LMS, ERP, News, Calendar, etc). KMobility is being built with top open source technologies such as JQuery Mobile and PhoneGap. This session will introduce the community to Kuali Mobility Enterprise.\r\n"
+         },
+         {
+            "title":"Refining and Customizing KC Workflow Routing",
+            "date":"16-Nov-2011",
+            "time":"1:15 PM",
+            "room":"Room 201/202",
+            "track":"Kuali Coeus (KC)",
+            "level":"Intermediate",
+            "type":"Technical",
+            "presenters":[
+               "Wilson, Tyler",
+               "Denne, Chris"
+            ],
+            "details":"Now that you have a headache and a flat spot in your forehead from working with the Out of the Box KC Workflow. Give your head a rest and learn how to set up unit administrator based approvers and dynamically generated hierarchical approval route paths for Proposals at your institution.  Both workflow approaches leverage customized artifacts from the KC rather than directly relying on roles and responsibilities defined in the rice layer. The custom elements define who should be signing for the referenced node and, in the case of the hierarchical approval, are dynamically generated based on the unit hierarchy structure. An overview of the CSU approval map and requirements will be covered as well as a discussion of the code needed to accomplish the desired workflow."
+         },
+         {
+            "title":"UMCM: One Institution\\'s Implementation Experience with Kuali Curriculum Management",
+            "date":"16-Nov-2011",
+            "time":"1:15 PM",
+            "room":"Room 101/102",
+            "track":"Kuali Student (KS)",
+            "level":"Intermediate",
+            "type":"Implementation",
+            "presenters":[
+               "Appel, Michelle",
+               "Drasin, Joseph",
+               "Taylor, Garey"
+            ],
+            "details":"This session will provide a 'real world' implementation example including both the technical and functional challenges faced by the Maryland KS Implementation team. Presenters will discuss implementation strategies and challenges including an overview of team organization, implementation priorities, key milestones and tasks, and lessons learned. Attendees will learn strategies that have worked as well as pitfalls to avoid."
+         },
+         {
+            "title":"Creating Workflow & Rules: Share your Experience & Needs with the Rice team-Affect the Future! ",
+            "date":"16-Nov-2011",
+            "time":"1:15 PM",
+            "room":"White River B",
+            "track":"Kuali Rice",
+            "level":"Advanced",
+            "type":"Implementation",
+            "presenters":[
+               "Soderston, Candace",
+               "Sargent, Matt"
+            ],
+            "details":"Are you deeply involved in creating and managing workflow or rules today? Do you love and hate some aspects of the current way you have to go about your key tasks in this effort? If yes, this is a must-attend session for you!  Come and share your insights. Share the tasks that are most important to getting your work done, the obstacles you encounter and what faster paths you would you like to see in future workflow solutions to make your main tasks easier.  Connect with the Rice team who will synthesize usage requirements for Kuali's Enterprise Workflow support. And, optionally, sign up to be invited to participate in ongoing feedback and evaluation opportunities on this topic over the next year, enabling us to refine and validate directions. Keep us on your track! "
+         },
+         {
+            "title":"Kuali Rice: A Roadmap",
+            "date":"16-Nov-2011",
+            "time":"1:15 PM",
+            "room":"Room 209",
+            "track":"Kuali Rice",
+            "level":"Intermediate",
+            "type":"Technical",
+            "presenters":[
+               "Sublett, Hampton",
+               "Coltrin, Jessica",
+               "De Rosa, Christopher",
+               "Westfall, Eric"
+            ],
+            "details":"A look into Kuali Rice's Future. Come and learn about the community contributing to Rice, where we're at now with releases, application integration strategies and what the future holds for Kuali Rice!"
+         },
+         {
+            "title":"KC IRB Committee Maintenance and Online Review Management",
+            "date":"16-Nov-2011",
+            "time":"1:15 PM",
+            "room":"Room 203/204",
+            "track":"Kuali Coeus (KC)",
+            "level":"Intermediate",
+            "type":"Functional",
+            "presenters":[
+               "Sung, Weiwen",
+               "Abraham, Joseph"
+            ],
+            "details":"Committee/Member/Schedule Setup with Kuali Coeus IRB\r\n\r\nThis session will address how committee and member setup is performed within the KC IRB module. It will also cover how schedules are used to manage IRB meetings, attendance, minutes and agendas. In the future, the KC IACUC and KC COI modules will be leveraging the committee, member and schedule functions developed for IRB. The audience will get a good understanding of how an IRB administrator can manage all aspects of a committee. \r\n\r\nIRB Online Review Management\r\n\r\nThis session will address how review comments are managed within the KC system for the IRB module.  It will cover how KC IRB module allows for reviewer assignment, reviewer notification, reviewer comments entry, confidential review comments, the Online Review User Interface, processing of review comments by the IRB administrator, how to control review comments visibility and management of the online reviews as e-docs within KEW. The KC IACUC and KC COI modules will be leveraging the review comment management system developed for IRB. The audience will leave with an understanding of the User Interface for review comments, review comments visibility and how the IRB administrator and reviewers use the Online Review system to efficiently manage their comments about the protocol. "
+         },
+         {
+            "title":"Kuali OLE Implementations",
+            "date":"16-Nov-2011",
+            "time":"1:15 PM",
+            "room":"White River A",
+            "track":"Kuali OLE",
+            "level":"Intermediate",
+            "type":"Technical",
+            "presenters":[
+               "McGeary, Timothy",
+               "Baino, Juancho",
+               "Feddersen, Mark",
+               "McNamara, Frances",
+               "Mouw, James",
+               "Pillans, John",
+               "Ruschoff, Carlen"
+            ],
+            "details":"Tim McGeary (Lehigh University) will moderate this lightning talk session which will feature 10-minute presentations on implementation plans from Indiana Univeristy, the University of Chicago, and the University of Maryland.  \r\n\r\nThese presentations will discuss ongoing efforts to integrate next generation open-source catalog tools with OLE, such as Blacklight and Apache SOLR/Lucene, implementation of Kuali OLE with the system-wide use and integration with Kuali Finance (KFS), and integration with other enterprise applications, such as Identity Management.\r\n\r\nThey will outline current timetables for deployment, a reference configuration, and brief discussions of interface development between the various systems and OLE.\r\n"
+         },
+         {
+            "title":"KPME - Kuali Time and Attendance: Functional Overview",
+            "date":"16-Nov-2011",
+            "time":"1:15 PM",
+            "room":"White River G/H",
+            "track":"Other Topics",
+            "level":"Beginner",
+            "type":"Functional",
+            "presenters":[
+               "Neal, Aaron",
+               "Balmer, Mindi",
+               "Headdy, Lora"
+            ],
+            "details":"Kuali People Management for the Enterprise (KPME) has released its first module, Kuali Time and Attendance, for public download!  This presentation will provide an overview of the functionality delivered with KPME's Time and Attendance including a demonstration of key features within the system.  "
+         },
+         {
+            "title":"What Does the Blackboard/Sungard Acquisition have to do with Kuali Student and PESC?",
+            "date":"16-Nov-2011",
+            "time":"1:15 PM",
+            "room":"Room 103/104",
+            "track":"Kuali Student (KS)",
+            "level":"Beginner",
+            "type":"Functional",
+            "presenters":[
+               "Coombs, Matthew",
+               "Wright, Norm"
+            ],
+            "details":"The Blackboard acquisition by the same investment group that owns Sungard sent ripples of both horror and delight throughout the higher ed community.  Some view it as the harbinger of the next transformation in higher ed software -- The Enterprise Education Platform, or EEP.  Tight integration between Learning Management Systems (LMS) and Student Information Systems (ERP/SIS) promises great efficiencies and improved outcomes.  However achieving this integration requires more than technical tools it requires organizational alignment.  This discussion outlines the background and assumptions behind such thinking. It focuses particularly on Kuali Student's initiative to align with standards bodies such as PESC and IMS and how such alignment uniquely addresses this integration challenge."
+         },
+         {
+            "title":"Kuali Foundation Open Board Meeting",
+            "date":"16-Nov-2011",
+            "time":"1:15 PM",
+            "room":"White River E/F",
+            "track":"Other Topics",
+            "level":"Beginner",
+            "type":"Implementation",
+            "presenters":[
+               "Foutty, Jennifer",
+               "Wheeler, Bradley"
+            ],
+            "details":"This is the annual Kuali Foundation Board Meeting, open to all members of the community.  Most of the Kuali Foundation Board members will be in attendance, and the Board Chair will provide an update on the activities of the Foundation over the past year, our growth and plans for the future, and our financials."
+         },
+         {
+            "title":"Project Managers Panel",
+            "date":"16-Nov-2011",
+            "time":"2:30 PM",
+            "room":"White River C/D",
+            "track":"Other Topics",
+            "level":"Beginner",
+            "type":"Technical",
+            "presenters":[
+               "Foutty, Jennifer",
+               "Coltrin, Jessica",
+               "Kaushik, Rajiv",
+               "McDevitt, Dan",
+               "McGough, Brian",
+               "Mescher, Patty",
+               "Neal, Aaron",
+               "Schroyer, Ken",
+               "Skiles, Brad",
+               "Thomas, Jim"
+            ],
+            "details":"Meet the Kuali Project Managers and learn about how they manage these large complex projects.  The session will begin with introductions and sharing of some key aspects about effectiveness in Project Management in a virtual and leading edge development environment.  Most of the session will be open for Q&A with the audience.  Topics may include: the governance structure, managing remote development, managing a community that contributes, handling upgrade paths, etc.  Jennifer Foutty, Kuali Executive Director, will moderate."
+         },
+         {
+            "title":"Implementing Sophisticated Role-Based Routing in KFS ",
+            "date":"16-Nov-2011",
+            "time":"2:30 PM",
+            "room":"White River I/J",
+            "track":"Kuali Financial System (KFS)",
+            "level":"Intermediate",
+            "type":"Technical",
+            "presenters":[
+               "Keller, Jonathan"
+            ],
+            "details":"The underlying power of KFS is Workflow. This session will introduce functional and technical users to simple and ad hoc routing but also other routing methods such as split node conditional routing and return to initiator. We will use screen shots, workflow diagrams, and code segments in this session. The programming necessary to do sophisticated routing in KFS will be explained.Attendees will come away with knowledge of advanced role-based routing capabilities of KFS and how it might solve problems at their institution.This session touches the KFS, Rice and Implementer tracks. \r\nLevel of audience knowledge: Intermediate, Advanced \r\nTarget Audience: Functional and Technical "
+         },
+         {
+            "title":"KFS Procurement Card Module at Colorado State University",
+            "date":"16-Nov-2011",
+            "time":"2:30 PM",
+            "room":"Room 203/204",
+            "track":"Kuali Financial System (KFS)",
+            "level":"Beginner",
+            "type":"Functional",
+            "presenters":[
+               "Swaro, John"
+            ],
+            "details":"Colorado State University has integrated our PCard process into the Kuali Financial System. The result produced an environment where PCard stakeholders can review, reconcile, and approve PCard transactions electronically. This module allows the university to receive bank files daily and create electronic documents with workflow routing capabilities. This information session will discuss the integration and processing of procurement card transactions at Colorado State University."
+         },
+         {
+            "title":"KRAD in Action!",
+            "date":"16-Nov-2011",
+            "time":"2:30 PM",
+            "room":"White River E/F",
+            "track":"Kuali Rice",
+            "level":"Intermediate",
+            "type":"Technical",
+            "presenters":[
+               "Neal, Jerry",
+               "Elyea, David",
+               "Gibson, Scott",
+               "Holtzkampf, Samuel",
+               "Smith, Brian",
+               "Smith, James"
+            ],
+            "details":" The Kuali Rice Application Development (KRAD) framework takes from the Rice KNS framework and the Kuali Student UI framework to become the\r\nnext generation development framework for all Kuali and non-Kuali Rice applications. The framework expands on the rapid ability of the KNS to create screens with XML, along with providing a component framework that is very extensible, and bringing in rich UI features like those present in Kuali Student. In addition KRAD comes with a new look and feel (with theming capabilities) that can be used to give your Rice based application a modern Web 2.0 presence. This session will demonstrate many of the components and features that will be available in the first release of KRAD by building a sample application live! Multiple developers will be working together to develop functionality for the sample application, with the session host asking questions of the developers and guiding the sample application development. The application developed will demonstrate all layers of the application, with a special focus on the UI and various components available out of the box. In addition, the team will walk through creating custom components and custom use of the JQuery library.\r\nFinally, the sample application will be transformed to a mobile app with connection to the Kuali Mobility Framework! To finish the session we will look ahead to features coming up in subsequent releases of KRAD and take questions from the audience."
+         },
+         {
+            "title":"Roundtable Discussion on Choosing to Join KS",
+            "date":"16-Nov-2011",
+            "time":"2:30 PM",
+            "room":"Room 101/102",
+            "track":"Kuali Student (KS)",
+            "level":"Beginner",
+            "type":"Functional",
+            "presenters":[
+               "Gomez, Sara",
+               "Cook, Robert",
+               "Juyn, Attie",
+               "Van Patten, Darcy",
+               "Walsh, Barry"
+            ],
+            "details":"This session will provide conference attendees an opportunity to hear about the Kuali Student Program from representatives from contributing (partner) institutions. The focus of the discussion will be around the critical factors which influenced to their decisions to join Kuali Student as well as factors used to sustain their investments."
+         },
+         {
+            "title":"Help Shape the Future of Open Source Identity and Access Management for Higher Education",
+            "date":"16-Nov-2011",
+            "time":"2:30 PM",
+            "room":"White River B",
+            "track":"Kuali Rice",
+            "level":"Advanced",
+            "type":"Implementation",
+            "presenters":[
+               "Westfall, Eric",
+               "Sargent, Matt",
+               "Soderston, Candace"
+            ],
+            "details":"Help Shape the Future of Open Source Identity and Access Management for Higher Ed \r\n\r\nThis will be a two part presentation.  First, join us to hear about collaborative work efforts that are in progress across multiple higher education and open source communities, including Kuali, Internet2 and Jasig.   The goals of these efforts are to make progress on a comprehensive set of Identity and Access Management solutions that meet the needs and requirements of our collective constituencies.  Learn about how Kuali is getting involved (and how you can get involved too!) and what it might mean for the Kuali Identity Management (KIM) module of Kuali Rice down the road.\r\n\r\nThen, share your own experiences using KIM and provide input to help shape its future.  Meet with the Kuali Rice Lead Architect, and the new Business Analyst and User Experience team members, to give them your insights on how to take KIM to the next level.  See the results of a requirements gathering survey to be sent in advance of the Kuali Days conference.  Ask questions and provide your input on best practices and new requirements.    \r\n"
+         },
+         {
+            "title":"Implementation and Migration Strategies for Kuali Rice at UCONN",
+            "date":"16-Nov-2011",
+            "time":"2:30 PM",
+            "room":"White River G/H",
+            "track":"Kuali Rice",
+            "level":"Beginner",
+            "type":"Implementation",
+            "presenters":[
+               "Potts, Anthony",
+               "Oatley, Michael"
+            ],
+            "details":"The University of Connecticut has had several Kuali Workflow applications in production based on Workflow version .0.9.3. Recently the university started a KFS implementation process and as part of that process is migrating, porting, and re-creating old applications as fully-fledged Rice applications using KRAD.\r\nDuring this presentation, we will discuss the issues, problems, and successes experienced during this process."
+         },
+         {
+            "title":"Kuali People Management for the Enterprise - Position, Job, and Leave Management",
+            "date":"16-Nov-2011",
+            "time":"2:30 PM",
+            "room":"Room 209",
+            "track":"Other Topics",
+            "level":"Beginner",
+            "type":"Functional",
+            "presenters":[
+               "Espinoza, Carla",
+               "Espinoza, Carla "
+            ],
+            "details":"There is tremendous variation across institutions in how human resource and payroll activities are managed. Many institutions have spent considerable resources modifying commercial HR packages or developing homegrown systems in order to satisfy requirements related to managing positions, employee job actions, benefits, and payroll. Kuali People Management for the Enterprise (KPME) will provide an alternative for institutions by delivering functionality based on a sustainable model of software developed by higher education for higher education. \r\n\r\nTo satisfy the diversity of needs within higher education, KPME must be comprehensive.  The functionality built into each module must be agile to accommodate different and changing needs within an organization and to accommodate integration with other modules.  Furthermore, the data models of each module must complement the business models of the organization.\r\n\r\nKuali People Management for the Enterprise will be a robust system flexible enough to accommodate the range of policies and practices employed at a diverse set of institutions. Some examples of the variety of requirements seen from institutions include:\r\n\r\nLeave Management \r\n?\tAutomatic payout of unspent leave\r\n?\tCarry-forward of unused holidays\r\n?\tLeave taken in day increments rather than hours\r\n?\tUnique formulas for calculation of partial leave accrual\r\n\r\nPosition Management\r\n?\tSingle or multiple concurrent jobs within a position\r\n?\tPay-base driven classification codes and titles \r\n?\tHead count tracking by position\r\n\r\nRole Management and Affiliation\r\n?\tEmployees with multiple affiliations (eg. rank faculty in one or more units, administrator in another unit)\r\n?\tOversees faculty included as instructors for course offerings\r\n\r\n\r\n\r\nIn this roundtable discussion we will review the current capabilities planned for the Leave Management, Position Management, and HR Core Transactions modules and solicit input about additional functionality that is desired. You can help shape this Kuali project by sharing your vision for what an ideal HR and Payroll system would provide. \r\n"
+         },
+         {
+            "title":"Kuali-Coeus IACUC Module ",
+            "date":"16-Nov-2011",
+            "time":"2:30 PM",
+            "room":"White River A",
+            "track":"Kuali Coeus (KC)",
+            "level":"Intermediate",
+            "type":"Functional",
+            "presenters":[
+               "Ekstrand, Alan",
+               "Hollander, Melinda",
+               "Tompkins, Chris "
+            ],
+            "details":"Kuali  Coeus is developing a module that will permit an institution to move to an online system of animal care and use protocol submission and committee review. The panel will review the existing Coeus module, highlight similarities and differences with the Kuali module that is under development, and demonstrate how KC IACUC can meet most institution?s needs."
+         },
+         {
+            "title":"Kuali Coeus Training",
+            "date":"16-Nov-2011",
+            "time":"2:30 PM",
+            "room":"Room 201/202",
+            "track":"Kuali Coeus (KC)",
+            "level":"Intermediate",
+            "type":"Implementation",
+            "presenters":[
+               "Levy, Tracey",
+               "Athey, Rochelle",
+               "Conover, Carey",
+               "Hanlon, Rosemary",
+               "Reed, Lynn"
+            ],
+            "details":"Conducting Model Office Training for Kuali Coeus\r\n\r\nThis session will provide detailed information regarding the execution of Kuali Coeus (KC) Model Office (MO)* at Indiana University.  More than 100 users committed 2 hrs/wk for 14 weeks to test KC Proposal Development, Proposal Budget and Grants.gov functionality. \r\n \r\nParticipants will receive information about steps they can take to create an MO type- environment; specific mechanisms for recruitment, training, and follow-up with participants; and experience a frank discussion about creating a pre-implementation testing environment.\r\n\r\n* MO was a working prototype of the KC system that reflected the production environment as closely as possible. In MO, users created production-like data and validated the effectiveness of the system. By engaging key-stakeholders, MO provided a mechanism to obtain feedback, allowing users time to try out the system.  Additionally, it allowed the project team to gather user feedback and FAQs, address problems and provide solutions before release.\r\n\r\nKuali Coeus Implementing a Training Plan\r\n\r\nSession presenting options available for training, including technology, resources, and methods. Iowa State University will share their plans for training office staff and new users during their phased implementation and ask participants to share their plans. Discussion will include training manuals, setting up \"test\" teams, introduction meetings for campus-wide roll-out, and Just-In-Time training videos. Outcomes include generating new ideas and examples for training.\r\n\r\nCreating Training Materials for a Kuali Coeus Implementation\r\n\r\nIndiana University (IU) implemented the Kuali Coeus Proposal Development, Proposal Budget and Grants.Gov System-To-System functionality in July 2011.  As a part of the training process, the Kuali Coeus User Guides were customized to better fit the specific needs of IU.  \r\n\r\nIU developed three main approaches for providing training:  Classroom based training sessions, eLearning videos, and printed materials that included customized User Guides, Quick Start Guides and Supplemental Guides targeted for specific functionality.  \r\n\r\nThis session will provide an overview for identifying, creating and disseminating a variety of learning tools in a unified web portal.  In conclusion, we will discuss lessons learned and hold an open discussion where participants can share experiences or seek guidance.\r\n"
+         },
+         {
+            "title":"Multi-Campus Configuration for KC IRB",
+            "date":"16-Nov-2011",
+            "time":"2:30 PM",
+            "room":"Room 103/104",
+            "track":"Kuali Coeus (KC)",
+            "level":"Intermediate",
+            "type":"Functional",
+            "presenters":[
+               "Dwyer, Dan",
+               "Aldridge, Matt"
+            ],
+            "details":"The Kuali Coeus compliance committee system is structured to be flexible, through use of the unit hierarchy, to allow an institution to configure committees spanning the entire university system or independent committees for different colleges or campuses.  In a multi-campus environment the researchers can be restricted to only submit to a committee on their campus and compliance administrators can only act on protocols submitted to their campus.  This session will demonstrate a committee setup for multi-campus use."
+         },
+         {
+            "title":"Implementing Kuali Products - An Agile Approach",
+            "date":"16-Nov-2011",
+            "time":"4:00 PM",
+            "room":"White River C/D",
+            "track":"Other Topics",
+            "level":"Beginner",
+            "type":"Implementation",
+            "presenters":[
+               "Winter, Adam",
+               "Simpson, Michael"
+            ],
+            "details":"This presentation will cover tools, techniques, and processes for agile implementations of Kuali products.\r\n\r\nWe will cover:\r\n\tEmpirical / agile development methodologies, including Scrum and Kanban\r\n\tAutomated functional testing approaches\r\n\tAutomated code quality / Technical debt assessments\r\n\tDistributed source code control systems\r\n"
+         },
+         {
+            "title":"KFS YearEnd",
+            "date":"16-Nov-2011",
+            "time":"4:00 PM",
+            "room":"White River I/J",
+            "track":"Kuali Financial System (KFS)",
+            "level":"Intermediate",
+            "type":"Functional",
+            "presenters":[
+               "Hunter, John",
+               "Deppong, Greg "
+            ],
+            "details":"This session is an overview of the year-end process, year-end documents and the main year-end programs; Fiscal Year Maker, Encumbrance Carryforward, Nominal Balance Closing, and the Balance forwards for the Balance Sheet and Project account balances.\r\nThis presentation will take the functional user through the yearend process, reviewing the documents, programs & supporting parameters and reports for each year-end program.\r\nThis session will also include a quick overview of the major dates on CSU's and MSU's year-end calendar and the enhancements we've made."
+         },
+         {
+            "title":"Kuali Mobility Enterprise Demo",
+            "date":"16-Nov-2011",
+            "time":"4:00 PM",
+            "room":"Room 203/204",
+            "track":"Other Topics",
+            "level":"Beginner",
+            "type":"Technical",
+            "presenters":[
+               "Johnson, Nathaniel",
+               "McGough, Brian"
+            ],
+            "details":"Functional/Technical demo of Kuali Mobility Enterprise (KMobility).\r\n\r\nKMobility is the newest Kuali project.  It creates a mobile framework that will not only help mobilize Kuali applications, but a vast array of mobile applications and connectors to backend systems. KMobility will provide a consistent development approach to building mobile applications, and provide a deployment and management framework for the mobile deployment.\r\n\r\nCome to this session to see a demo from both the technical and functional perspectives."
+         },
+         {
+            "title":"KCA Panel: Preparing for a Kuali Coeus Implementation",
+            "date":"16-Nov-2011",
+            "time":"4:00 PM",
+            "room":"Room 201/202",
+            "track":"Kuali Coeus (KC)",
+            "level":"Beginner",
+            "type":"Implementation",
+            "presenters":[
+               "Usher, David",
+               "Bowers, Bill",
+               "Dufalla, David",
+               "Harrington, Margaret"
+            ],
+            "details":"Preparing for a Kuali Coeus Implementation: West Virgina University Shares Its Story\r\n\r\nWest Virginia University is currently implementing Kuali Coeus as its research administration.  This session will focus on the reason's behind WVU's decision to choose Kuali Coeus, its implementation approach and strategy, its implementation experience and associated costs, and the benefits and improvements the University anticipates.  At the end of the session, attendees will hear lessons learned and best practices from an institution who is currently implementing Kuali Coeus, gain a better understanding of the needed internal and external resources, and begin to estimate the associated costs when preparing for a Kuali Coeus implementation. \r\n\r\nPlanning Kuali Coeus Implementations\r\n\r\nYour institution has decided to pursue a KC implementation. Now what? This presentation will go in depth on how VivanTech and USC ?did it?. Audience members will learn about the processes leading to USC?s decision to implement KC and will leave the session with a sampling of checklists, outlines, and approach options that supported the major decisions about sequencing and the project plan that emerged."
+         },
+         {
+            "title":"KS Project Roundtable",
+            "date":"16-Nov-2011",
+            "time":"4:00 PM",
+            "room":"White River B",
+            "track":"Kuali Student (KS)",
+            "level":"Intermediate",
+            "type":"Technical",
+            "presenters":[
+               "McDevitt, Dan",
+               "Bershad, Carol",
+               "Clark, Ben",
+               "Dew, Cathy",
+               "Kaushik, Rajiv",
+               "Symms, Larry",
+               "Washington, William"
+            ],
+            "details":"This session provides attendees an opportunity to discuss the Kuali Student project with the senior project team members. The session will include an initial brief overview of the project followed with much of the session devoted to question and answers."
+         },
+         {
+            "title":"Managing Institutional Customizations for KFS",
+            "date":"16-Nov-2011",
+            "time":"4:00 PM",
+            "room":"Room 103/104",
+            "track":"Kuali Financial System (KFS)",
+            "level":"Intermediate",
+            "type":"Technical",
+            "presenters":[
+               "Smith, James",
+               "Byrne, Ailish",
+               "Hollamon, Andrew",
+               "Potts, Anthony"
+            ],
+            "details":"KFS was designed to allow heavy customization by implementing institutions: messages can be modified, web pages can be rearranged, rule can be replaced, business logic can be extended to change business logic.  However, how do institutions manage all of the customizations they are putting in place?  A range of panelists will discuss how different KFS implementing institutions manage code standards and documentation, how they separate core and institution code, and how they plan to handle KFS upgrades.  A wide range of excellent change management ideas will be discussed during this sometimes overlooked portion of implementing KFS."
+         },
+         {
+            "title":"Customizing KC at your Institution",
+            "date":"16-Nov-2011",
+            "time":"4:00 PM",
+            "room":"Room 209",
+            "track":"Kuali Coeus (KC)",
+            "level":"Intermediate",
+            "type":"Implementation",
+            "presenters":[
+               "Denne, Chris"
+            ],
+            "details":"This session will address the technical details for customizing and enhancing Kuali Coeus (KC) to fulfill your institutional requirements. We'll discuss: sample development environment for creating custom KC code, mechanisms for customizing out of the box behavior, some of the more common enhancements, suggested strategies for managing local changes and while easily accepting Kuali Foundation updates.\r\n"
+         },
+         {
+            "title":"Kuali Coeus 4.5 Conflict of Interest Module",
+            "date":"16-Nov-2011",
+            "time":"4:00 PM",
+            "room":"White River A",
+            "track":"Kuali Coeus (KC)",
+            "level":"Beginner",
+            "type":"Functional",
+            "presenters":[
+               "O'Banion, Amber",
+               "Abraham, Joseph",
+               "Roberts, Stephanie"
+            ],
+            "details":"Kuali Coeus is developing a module that will permit an institution to receive and manage outside financial interest disclosures from its investigators. The system will be designed to satisfy current and future federal regulations on conflicts of interest, as well as unique state law requirements and other institution policies that may vary from institution to institution. The panel will review the planned functionality for this module that is currently under development, highlight features of the Coeus 4.5 COI module and present case studies to demonstrate how KC COI can meet most institutional COI needs."
+         },
+         {
+            "title":"Complex/Advanced Rice/KEW Implementations",
+            "date":"16-Nov-2011",
+            "time":"4:00 PM",
+            "room":"White River G/H",
+            "track":"Kuali Rice",
+            "level":"Advanced",
+            "type":"Technical",
+            "presenters":[
+               "Mico, Brian",
+               "Oz, Yavuz",
+               "Saitoh, Kent"
+            ],
+            "details":"Join this informational session as VivanTech and USC discuss a variety of the KEW projects that they have implemented together. Participants will learn about the lifecycle of the process from requirements gathering (functional) to actual development (technical). Participants will come away from this session with knowledge of lessons learned and best practices used along the way."
+         },
+         {
+            "title":"Exploring the Possibilities of Kuali in Smaller Institutions",
+            "date":"16-Nov-2011",
+            "time":"4:00 PM",
+            "room":"Room 101/102",
+            "track":"Other Topics",
+            "level":"Beginner",
+            "type":"Functional",
+            "presenters":[
+               "Coombs, Matthew",
+               "Ozden, Rnady"
+            ],
+            "details":"Small to medium size universities and colleges (SMUs) have many of the same needs as large institutions.  However, in some cases they face a different set of challenges.  Their IT staff may already be stretched to its limits in terms of size and the service they have to provide.  Additionally, many of these institutions run commercial software packages that are common in small higher education institutions. Migrating away from these packages and/or interfacing with them to leverage Kuali requires careful planning and execution.  The takeaways from this session will be:\r\n?        The statistics and the types of systems being run at SMUs\r\n?\tThe approaches to proof of concept studies\r\n?\tDetermining how to migrate to Kuali modules from commercial packages with minimum disruption"
+         },
+         {
+            "title":"WELCOME RECEPTION",
+            "date":"14-Nov-2011",
+            "time":"5:30 PM",
+            "room":"White River E/F",
+            "track":"Unknown",
+            "level":"Unknown",
+            "type":"Unknown",
+            "presenters":[
+
+            ],
+            "details":""
+         },
+         {
+            "title":"BREAKFAST",
+            "date":"15-Nov-2011",
+            "time":"7:00 AM",
+            "room":"Griffin Hall",
+            "track":"Unknown",
+            "level":"Unknown",
+            "type":"Unknown",
+            "presenters":[
+
+            ],
+            "details":""
+         },
+         {
+            "title":"LUNCH",
+            "date":"15-Nov-2011",
+            "time":"12:15 PM",
+            "room":"Griffin Hall",
+            "track":"Unknown",
+            "level":"Unknown",
+            "type":"Unknown",
+            "presenters":[
+
+            ],
+            "details":""
+         },
+         {
+            "title":"REFRESHMENT BREAK AND COLLABORATION SHOWCASE",
+            "date":"15-Nov-2011",
+            "time":"3:30 PM",
+            "room":"White River Foyer",
+            "track":"Unknown",
+            "level":"Unknown",
+            "type":"Unknown",
+            "presenters":[
+
+            ],
+            "details":""
+         },
+         {
+            "title":"COLLABORATION SHOWCASE RECEPTION",
+            "date":"15-Nov-2011",
+            "time":"5:15 PM",
+            "room":"White River Foyer",
+            "track":"Unknown",
+            "level":"Unknown",
+            "type":"Unknown",
+            "presenters":[
+
+            ],
+            "details":""
+         },
+         {
+            "title":"BREAKFAST",
+            "date":"16-Nov-2011",
+            "time":"7:00 AM",
+            "room":"Griffin Hall",
+            "track":"Unknown",
+            "level":"Unknown",
+            "type":"Unknown",
+            "presenters":[
+
+            ],
+            "details":""
+         },
+         {
+            "title":"REFRESHMENT BREAK AND COLLABORATION SHOWCASE",
+            "date":"16-Nov-2011",
+            "time":"9:30 AM",
+            "room":"White River Foyer",
+            "track":"Unknown",
+            "level":"Unknown",
+            "type":"Unknown",
+            "presenters":[
+
+            ],
+            "details":""
+         },
+         {
+            "title":"LUNCH",
+            "date":"16-Nov-2011",
+            "time":"12:15 PM",
+            "room":"Griffin Hall",
+            "track":"Unknown",
+            "level":"Unknown",
+            "type":"Unknown",
+            "presenters":[
+
+            ],
+            "details":""
+         },
+         {
+            "title":"REFRESHMENT BREAK AND COLLABORATION SHOWCASE",
+            "date":"16-Nov-2011",
+            "time":"3:30 PM",
+            "room":"White River Foyer",
+            "track":"Unknown",
+            "level":"Unknown",
+            "type":"Unknown",
+            "presenters":[
+
+            ],
+            "details":""
+         },
+         {
+            "title":"CLOSING RECEPTION",
+            "date":"16-Nov-2011",
+            "time":"5:15 PM",
+            "room":"Griffin Hall",
+            "track":"Unknown",
+            "level":"Unknown",
+            "type":"Unknown",
+            "presenters":[
+
+            ],
+            "details":""
+         }
+   ]

@@ -8,97 +8,57 @@
   express or implied. See the License for the specific language governing
   permissions and limitations under the License.
 --%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<kme:page title="News" id="news" homeButton="true" backButton="true" backButtonURL="${pageContext.request.contextPath}/home" cssFilename="news" appcacheFilename="iumobile.appcache">
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<spring:message code="news.title" var="title"/>
+<spring:message code="news.expand" var="expand"/>
+<spring:message code="news.collapse" var="collapse"/>
+
+<kme:page title="${title}" id="news" homeButton="true" backButton="true" backButtonURL="${pageContext.request.contextPath}/home" cssFilename="news" jsFilename="news">
     <kme:content>
 		<!-- <ul data-role="listview" data-theme="c" class="news-index"> -->
-		<kme:listView id="topNewsList" filter="false" cssClass="news-index">
-			<script type="text/javascript">
-			$('[data-role=page][id=news]').live('pagebeforeshow', function(event, ui) {
-				$('#topNewsListTemplate').template('topNewsListTemplate');
-				refreshTemplate('${pageContext.request.contextPath}/news/topJson', '#topNewsList', 'topNewsListTemplate', '', function() {$('#topNewsList').listview('refresh');});
-				
-				$('#samplesListTemplate').template('samplesListTemplate');
-				refreshTemplate('${pageContext.request.contextPath}/news/samplesJson', '#samplesList', 'samplesListTemplate', '<li>No articles available at this time</li>', function() {$('#samplesList').listview('refresh');});
-			});
-			</script>
-			<script id="topNewsListTemplate" type="text/x-jquery-tmpl">
-				<li class="news-topstory">
-					<div class="bottom-fade"></div>
-					<a href="${pageContext.request.contextPath}/news/\${sourceId}?articleId=\${articleId}&referrer=home">
-					{{if thumbnailImageUrl}}
-						<img src="\${thumbnailImageUrl}" alt="topstory">
-					{{else}}
-						<img src="images/news-generic.png" alt="topstory">
-					{{/if}}
-					<div>
-				    	<p class="news-title">\${title}</p>
-				    	<p class="news-teaser">\${description}</p>
-				    </div>
-      			</li>
-			</script>
-		</kme:listView>
-		<kme:listView id="samplesList" filter="false" cssClass="news-index">
-			<script id="samplesListTemplate" type="text/x-jquery-tmpl">
-				<li data-role="list-divider" data-theme="b" data-icon="listview" class="streamTitle">
-					<a href="${pageContext.request.contextPath}/news/\${\$data.sourceId}">\${title}</a>
-				</li>
-				{{each articles}}
-      				{{each articles}}
-      					<li>
-							<a href="${pageContext.request.contextPath}/news/\${\$data.sourceId}?articleId=\${articleId}&referrer=home">
-				    	   		<p class="wrap">\${title}</p>
-				    	    </a>
-      					</li>
-					{{/each}}
-				{{/each}}
-			</script>
-		</kme:listView>
-			
-			<%--
-			<c:if test="${topArticle != null}">
-				<kme:listItem cssClass="news-topstory">
-			        <div class="bottom-fade"></div>
-			        <a href="${pageContext.request.contextPath}/news/${topArticle.sourceId}?articleId=${topArticle.articleId}&referrer=home">
-			        	<c:choose>
-			        		<c:when test="${!empty topArticle.thumbnailImageUrl}">
-						    	<img src="${topArticle.thumbnailImageUrl}" alt="topstory">
-						    </c:when>
-						    <c:otherwise>
-						    	<img src="images/news-generic.png" alt="topstory">
-						    </c:otherwise>
-						</c:choose>
-				        <div>
-				          <p class="news-title">${topArticle.title}</p>
-				          <p class="news-teaser">${topArticle.description}</p>
-				        </div>
-			        </a> 
-		        </kme:listItem>
-	        </c:if>
-		
-			<c:forEach items="${newsStreams}" var="stream" varStatus="status">
+		<kme:listView dataTheme="c" cssClass="news-index">
+			<c:forEach items="${newsFeeds}" var="feed" varStatus="status">
 			
 				<!-- <li data-role="" class="" data-theme="b" data-icon="listview" > -->
 				<kme:listItem dataRole="list-divider" dataTheme="b" dataIcon="listview" cssClass="streamTitle">
-					<a href="${pageContext.request.contextPath}/news/${stream.sourceId}">${stream.title}</a>
+					<a href="${pageContext.request.contextPath}/news/${feed.sourceId}">${feed.title}</a>
 				</kme:listItem>
 				<!-- </li> --> 
 				
-				<c:forEach items="${stream.articles}" var="day" varStatus="status">
-					<c:forEach items="${day.articles}" var="article" varStatus="status">
-						<kme:listItem>
-							<a href="${pageContext.request.contextPath}/news/${stream.sourceId}?articleId=${article.articleId}&referrer=home">
-				        		<!-- <p class="news-title">${article.title}</p>-->
-				        		<p class="wrap">${article.title}</p>
-				        	</a>
-				        </kme:listItem>
-					</c:forEach>
+				<c:forEach items="${feed.articles}" var="article" varStatus="status">
+					<c:choose>
+						<c:when test="${status.index < sampleSize}">
+							<kme:listItem cssClass="sample">
+								<a href="${pageContext.request.contextPath}/news/${feed.sourceId}?articleId=${article.articleId}&referrer=home">
+					        		<!-- <p class="news-title">${article.title}</p>-->
+					        		<p class="wrap">${article.title}</p>
+					        	</a>
+					        </kme:listItem>
+						</c:when>
+						<c:otherwise>
+							<kme:listItem cssClass="extra feed${feed.sourceId}">
+								<a href="${pageContext.request.contextPath}/news/${feed.sourceId}?articleId=${article.articleId}&referrer=home">
+					        		<!-- <p class="news-title">${article.title}</p>-->
+					        		<p class="wrap">${article.title}</p>
+					        	</a>
+					        </kme:listItem>
+						</c:otherwise>
+					</c:choose>
 				</c:forEach>
+				<c:if test="${fn:length(feed.articles) > sampleSize}">
+					<kme:listItem cssClass="expander feed${feed.sourceId} collapsed" dataIcon="arrow-d">
+																			<!-- These added to support passing of i18n words -->
+						<a onclick="javascript:toggleVisibility('feed${feed.sourceId}', '${expand}', '${collapse}')">
+			        		<p><strong>${expand}</strong></p>
+			        	</a>
+					</kme:listItem>
+				</c:if>
 			</c:forEach>
 		</kme:listView>
-		--%>
 	</kme:content>
 </kme:page>

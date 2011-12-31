@@ -1,0 +1,1540 @@
+[
+   {
+      "id":"1",
+      "title":"Statewide IT Training pre-conference",
+      "startTime":"2011-09-28 08:00:00",
+      "endTime":"2011-09-28 16:30:00",
+      "location":"Kelley School of Business, IUB Kelley School Graduate Building",
+      "latitude":"39.172185",
+      "longitude":"-86.518477",
+      "description":"<p>Take part in this daylong, hands-on workshop covering the hottest topics in technology at IU. Topics include SharePoint, UniCom, Microsoft Project, virtual desktops, web content creation tools, digital magazine publishing, and HTML5 and other innovations in web design.</p>",
+      "link":"http://statewideit.iu.edu/program/pre-conference.php",
+      "speakers":[
+
+      ]
+   },
+   {
+      "id":"2",
+      "title":"Technology Roundtables",
+      "startTime":"2011-09-28 09:30:00",
+      "endTime":"2011-09-28 12:30:00",
+      "location":"Cyberinfrastructure Building",
+      "latitude":"39.172343",
+      "longitude":"-86.501708",
+      "description":"<p>Gather with IT professionals from across the university to discuss current issues and challenges in an informal setting. Come for the whole series, or pick and choose. The series includes discussions covering Student Technology Center (STC) management; IU's Web Content Management System (WCMS) and web design; collaborative learning; sustainable computing; and the cultural and technical issues related to the move to Lync, and other telephony and communications issues.</p>",
+      "link":"",
+      "speakers":[
+
+      ]
+   },
+   {
+      "id":"3",
+      "title":"IT leaders mini boot camp",
+      "startTime":"2011-09-28 13:00:00",
+      "endTime":"2011-09-28 17:00:00",
+      "location":"Dogwood, Indiana Memorial Union",
+      "latitude":"39.167793",
+      "longitude":"-86.523542",
+      "description":"<p>This half-day session brings together IT professionals from across the organization who have been identified as emerging leaders. Attendees will have opportunities to develop their leadership potential through presentations, workshops, and team-building activities in a small-group environment ideal for establishing and building peer relationships.</p>",
+      "link":"",
+      "speakers":[
+
+      ]
+   },
+   {
+      "id":"27",
+      "title":"Statewide Shuttle departs",
+      "startTime":"2011-09-29 08:00:00",
+      "endTime":"2011-09-29 08:00:00",
+      "location":"ICTC Circle Drive, IUPUI, ICTC",
+      "latitude":"39.774147",
+      "longitude":"-86.167947",
+      "description":"",
+      "link":"",
+      "speakers":[
+
+      ]
+   },
+   {
+      "id":"4",
+      "title":"Breakfast",
+      "startTime":"2011-09-29 09:00:00",
+      "endTime":"2011-09-29 10:00:00",
+      "location":"Solarium, Indiana Memorial Union",
+      "latitude":"39.167793",
+      "longitude":"-86.523542",
+      "description":"",
+      "link":"",
+      "speakers":[
+
+      ]
+   },
+   {
+      "id":"5",
+      "title":"Keynote Address",
+      "startTime":"2011-09-29 10:00:00",
+      "endTime":"2011-09-29 11:00:00",
+      "location":"Alumni Hall, Indiana Memorial Union",
+      "latitude":"39.167793",
+      "longitude":"-86.523542",
+      "description":"<a href=&quot;http://www.indiana.edu/~video/stream/launchflash.html?folder=vic&filename=switc_keynote_20110929.mp4&quot;>Watch Video</a><p>Join IU Vice President for Information Technology Brad Wheeler as he opens the 2011 Statewide Conference with his annual State-of-IT-at-IU address. The talk promises to be informative, lively, and provocative, so look forward to some engaging dialogue on the ever-evolving digital life of IU's faculty, staff, and students.</p>",
+      "link":"",
+      "speakers":[
+         {
+            "id":"1",
+            "firstName":"Bradley C.",
+            "lastName":"Wheeler",
+            "title":"Vice President for Information Technology & CIO, Professor of Information Systems, IU Kelley School of Business",
+            "organization":"UITS",
+            "bio":"Dr. Brad Wheeler, Indiana University's vice president for information technology and chief information officer, leads IT services for IU's eight campuses. These services include research, educational, administrative, networking, and other shared IT services. He has co-founded some of higher education's most transformative software and service collaborations including the Sakai Project for teaching and learning software, Kuali for financial and other administrative systems, and the HathiTrust for digital copies of scanned books as part of the Google Book Project. These projects are a blend of both open source and traditional development models that have grown to an ecosystem encompassing over $60M of pooled investments from 50 institutions and 22 commercial firms. He is a professor of information systems in IU's Kelley School of Business, and has taught executive programs for corporate and MBA audiences on six continents.",
+            "email":"",
+            "link":"http://www.iu.edu/~ovpit/bios/bwheeler.html"
+         }
+      ]
+   },
+   {
+      "id":"6",
+      "title":"Break",
+      "startTime":"2011-09-29 11:00:00",
+      "endTime":"2011-09-29 11:15:00",
+      "location":"Solarium, Indiana Memorial Union",
+      "latitude":"39.167793",
+      "longitude":"-86.523542",
+      "description":"",
+      "link":"",
+      "speakers":[
+
+      ]
+   },
+   {
+      "id":"7",
+      "title":"Panel Discussion - Sexting, Privacy, and I Agreed to What?",
+      "startTime":"2011-09-29 11:15:00",
+      "endTime":"2011-09-29 12:30:00",
+      "location":"Alumni Hall, Indiana Memorial Union",
+      "latitude":"39.167793",
+      "longitude":"-86.523542",
+      "description":"<p><a href=&quot;http://www.indiana.edu/~video/stream/launchflash.html?folder=vic&filename=switc_panel_20110929.mp4&quot;>Watch Video</a></p><p>Part two of the opening session explores the world of online privacy. Have you ever experienced a moment of panic in a chat room, had your personal information shared with the world, or encountered unexpected content in a text message? If so, this session is not to be missed. Join Vice President Wheeler and special guests, Kinsey Confidential author Debby Hebernick and noted information privacy and security law expert Fred Cate, for a broad discussion of current privacy issues. Topics include sexting and click-through agreements, and how they relate to students' online activities and expectations of privacy. Be prepared for a lively debate with contrasting views amongst the audience and panelists.</p>",
+      "link":"",
+      "speakers":[
+
+      ]
+   },
+   {
+      "id":"8",
+      "title":"Lunch",
+      "startTime":"2011-09-29 12:30:00",
+      "endTime":"2011-09-29 14:15:00",
+      "location":"Various Locations",
+      "latitude":"",
+      "longitude":"",
+      "description":"<h3>Lunch Locations</h3><ul><li>Solarium</li><li>Frangipani (with breakout session)</li><li>Georgian</li><li>State Room East (with breakout session)</li><li>Federal</li></ul>",
+      "link":"",
+      "speakers":[
+
+      ]
+   },
+   {
+      "id":"20b",
+      "title":"Breakout Session: Getting Carded on the Net: Maintaining the Magic",
+      "startTime":"2011-09-29 13:00:00",
+      "endTime":"2011-09-29 14:15:00",
+      "location":"Frangipani, Indiana Memorial Union",
+      "latitude":"39.167793",
+      "longitude":"-86.523542",
+      "description":"The age of the 'one size fits all' Internet is long behind us. Our digital lives and experiences -- at IU and elsewhere -- are individually tailored based on preferences, trends, and other data about us. What's more, access to services, features, opportunities, and more are, these days, largely based on our roles, our identities -- in essence -- our digital selves.<br/><br/>In most cases, it's as simple as typing a password, swiping a card, or turning a key. But we have multiple keys, various passwords, and different cards -- all corresponding to various roles in life.<br/><br/>Join representatives from UITS' Identity Management Systems group and the University Information Security Office for a lighthearted, entertaining but informative exploration of issues like: how all this affects our digital lives, what's really going on under the hood, how all this customization occurs, and most importantly, where it's all going and the sorts of personal and organizational privacy- and security-related caveats for which you should be watching out.<br/><br/>Arthur C. Clarke states that: 'Any sufficiently advanced technology is indistinguishable from magic.' This session asserts that, as we login to the future, knowing the mechanics of 'getting carded on the Net' makes it no less mystical.",
+      "link":"http://statewideit.iu.edu/program/sessions/details.php?sessionID=20",
+      "speakers":[
+         {
+            "id":"37",
+            "firstName":"Jacob",
+            "lastName":"Farmer",
+            "title":"",
+            "organization":"UITS Identity Management Systems",
+            "bio":"",
+            "email":"jpfarmer@indiana.edu",
+            "link":""
+         },
+         {
+            "id":"10",
+            "firstName":"Scott",
+            "lastName":"Wilson",
+            "title":"",
+            "organization":"University Information Security Office",
+            "bio":"",
+            "email":"szw@iu.edu",
+            "link":""
+         }
+      ]
+   },
+   {
+      "id":"22b",
+      "title":"Breakout Session: iPads for Teaching and Learning",
+      "startTime":"2011-09-29 13:00:00",
+      "endTime":"2011-09-29 14:15:00",
+      "location":"State Room East, Indiana Memorial Union",
+      "latitude":"39.167793",
+      "longitude":"-86.523542",
+      "description":"What is the potential for the mobile tablet to improve student learning outcomes in higher education? How might the IU teaching centers facilitate and support an investigation into the effective use of iPads in the classroom?<br/><br/>During the 2010-11 academic year, three Faculty Learning Communities (FLC) at IUB and IUPUI were created to study and document the use of a set of iPads during class sessions. The FLCs were composed of 8 faculty members who meet very two to three weeks to work in a collaborative community exploring the use of iPads and to share their findings. Each member was provided with an iPad, a stipend for purchasing apps and other research purposes, and access to a kit of 25 iPads.<br/><br/>The teaching centers facilitated the meetings and maintained the iPads. The presenters will describe the process of purchasing apps for the student iPads, synching 25 iPads to one iTunes account, and the logistics of scheduling the checkout of the classroom set. We will also highlight some of the findings of the iPad FLC and directions for this year.<br /><br /><strong>Resources</strong><ul> <li><a href=&quot;http://citl.indiana.edu&quot; target=&quot;_blank&quot;>IUB Center for Innovative Teaching and Learning</a></li> <li><a href=&quot;http://ctl.iupui.edu/&quot; target=&quot;_blank&quot;>IUPUI Center for Teaching and Learning</a></li> <li><a href=&quot;http://images.apple.com/education/docs/20110727_IOS_4_Education_Deployment_Guide.pdf&quot; target=&quot;_blank&quot;>Apple iOS 4 Education Deployment Guide</a></li></ul>",
+      "link":"http://statewideit.iu.edu/program/sessions/details.php?sessionID=22",
+      "speakers":[
+         {
+            "id":"15",
+            "firstName":"Kate",
+            "lastName":"Ellis",
+            "title":"",
+            "organization":"Center for Innovative Teaching and Learning, IUB",
+            "bio":"",
+            "email":"kdellis@indiana.edu",
+            "link":""
+         },
+         {
+            "id":"63",
+            "firstName":"Rod",
+            "lastName":"Geno",
+            "title":"",
+            "organization":"School of Medicine, IUPUI",
+            "bio":"",
+            "email":"rgeno@iupui.edu",
+            "link":""
+         },
+         {
+            "id":"55",
+            "firstName":"Tom",
+            "lastName":"Janke",
+            "title":"",
+            "organization":"Center for Teaching and Learning, IUPUI",
+            "bio":"",
+            "email":"tomjanke@iupui.edu",
+            "link":""
+         },
+         {
+            "id":"66",
+            "firstName":"Lisa",
+            "lastName":"Kurz",
+            "title":"",
+            "organization":"Center for Innovative Teaching and Learning, IUB",
+            "bio":"",
+            "email":"kurz@indiana.edu",
+            "link":""
+         },
+         {
+            "id":"40",
+            "firstName":"Maggie",
+            "lastName":"Ricci",
+            "title":"",
+            "organization":"Center for Innovative Teaching and Learning, IUB",
+            "bio":"",
+            "email":"mricci@indiana.edu",
+            "link":""
+         }
+      ]
+   },
+   {
+      "id":"8b",
+      "title":"Breakout Session: How SharePoint has made access to My Digital information at IU more convenient.",
+      "startTime":"2011-09-29 14:15:00",
+      "endTime":"2011-09-29 15:30:00",
+      "location":"Dogwood, Indiana Memorial Union",
+      "latitude":"39.167793",
+      "longitude":"-86.523542",
+      "description":"<p>SharePoint My Site technologies provides tools to access rapidly respond to University business needs, enrich collaborative interaction by empowering the user the ability to share, create, and connect with University constituents more effectively.</p><p>This session will focus on the various ways we have used SharePoint to solve our University business needs and how we view this as one component of the IU Cloud.  The presentation will cover topics that include and are not limited to the following.</p><ul>  <li>My Sites    <ul>      <li>My digital store for personal and shared work</li>      <li>Access form anywhere with Internet</li>    </ul>  </li>  <li>How we envision SharePoint's role in the IU Cloud     <ul>      <li>Office WebApps </li>      <li>Data Storage</li>      <li>Integrations into existing infrastructure         <ul>          <li>Office, Exchange, UniCom, Active Directory, and beyond</li>        </ul>      </li>    </ul>  </li>  <li>Solutions we have built on SharePoint</li></ul><p>More information at: http://kb.iu.edu/data/axpg.html</p>",
+      "link":"http://statewideit.iu.edu/program/sessions/details.php?sessionID=8",
+      "speakers":[
+         {
+            "id":"39",
+            "firstName":"Richard",
+            "lastName":"LeBeau",
+            "title":"",
+            "organization":"Kelley School of Business",
+            "bio":"",
+            "email":"rilebeau@indiana.edu",
+            "link":""
+         },
+         {
+            "id":"12",
+            "firstName":"Cory",
+            "lastName":"Retherford",
+            "title":"",
+            "organization":"Student Enrollment Services",
+            "bio":"",
+            "email":"cprether@indiana.edu",
+            "link":""
+         }
+      ]
+   },
+   {
+      "id":"15b",
+      "title":"Breakout Session: Next Generation Knowledge Management at IU with Kuali KMS",
+      "startTime":"2011-09-29 14:15:00",
+      "endTime":"2011-09-29 15:30:00",
+      "location":"Dogwood, Indiana Memorial Union",
+      "latitude":"39.167793",
+      "longitude":"-86.523542",
+      "description":"The Kuali IT Support - Knowledge Management System will provide a content repository that holds structured help content for institutions. Through use of metadata about the content, context sensitive calls can be made from application screens or web pages to deliver relevant, just-in-time, context sensitive support content to users. In addition to content from the KMS repository, the tool could deliver content from other repositories. The content could be text, or multimedia content, making it possible to offer how-to steps, screen-casts, videos, or links to resources (system notices, training offerings, request forms, etc.). The model can be extended for use beyond Kuali applications, to any web based application used by an institution. The session will be part presentation and demonstration, with audience interaction and discussion encouraged. Attendees will leave with a greater understanding for the vision of a drop-in tool/widget to provide online support within an application and seeds for thought of how this could potentially become part of the core Kuali infrastructure 'baked-in' while applications are being developed.",
+      "link":"http://statewideit.iu.edu/program/sessions/details.php?sessionID=15",
+      "speakers":[
+         {
+            "id":"20",
+            "firstName":"Chuck",
+            "lastName":"Aikman",
+            "title":"",
+            "organization":"UITS",
+            "bio":"",
+            "email":"caikman@indiana.edu",
+            "link":""
+         }
+      ]
+   },
+   {
+      "id":"7b",
+      "title":"Breakout Session: Geospatial revolution:  map-making for everyone",
+      "startTime":"2011-09-29 14:15:00",
+      "endTime":"2011-09-29 15:30:00",
+      "location":"Maple, Indiana Memorial Union",
+      "latitude":"39.167793",
+      "longitude":"-86.523542",
+      "description":"Data looks better on a map. Join us to discuss making maps, to learn about the available university resources, and to discuss your GIS needs. See a demonstration of the new IU Mobile map application, and see how to display spreadsheet data on a map.<br/><br/>UITS GIS support staff administer the University Site license for various GIS software packages.  In addition, UITS GIS Staff maintain the Indiana Spatial Data Portal (ISDP), an enterprise geographic information system (GIS) designed to provide online access to aerial photos, topographic maps, and LiDAR data of Indiana. The system uses an Oracle database and server-based GIS software (ArcSDE and ArcGIS Server) to output maps and data to a variety of GIS software packages, web, and mobile clients. The ISDP is hosted by UITS at Indiana University and is an application component of the Research Database Complex (RDC).<br/><br/>The Indiana Geological Survey hosts IndianaMap, a compendium of statewide GIS data, the Indiana Historical Aerial Photo Index, the Indiana Coal Mine Information System, and the Indiana Petroleum Database Management System. Staff maintain IndianaMap Framework Data used in Google Maps, and host statewide basemap, weather, and radar layers. <br/><br/>Statewide, Indiana University units such as UITS, the Indiana Geological Survey, Polis Center at IUPUI, the Indiana Business Research Center and IU Northwest Library are institutional members of the Indiana Geographic Information Council, the official statewide coordinating body for Indiana geographic information.",
+      "link":"http://statewideit.iu.edu/program/sessions/details.php?sessionID=7",
+      "speakers":[
+         {
+            "id":"9",
+            "firstName":"Justin",
+            "lastName":"Peters",
+            "title":"",
+            "organization":"UITS",
+            "bio":"",
+            "email":"jppeters@iu.edu",
+            "link":""
+         },
+         {
+            "id":"36",
+            "firstName":"Paul",
+            "lastName":"Rohwer",
+            "title":"",
+            "organization":"Indiana Geological Survey",
+            "bio":"",
+            "email":"prohwer@indiana.edu",
+            "link":""
+         }
+      ]
+   },
+   {
+      "id":"27b",
+      "title":"Breakout Session: Streamlined Delivery of Desktop Computing at Indiana University",
+      "startTime":"2011-09-29 14:15:00",
+      "endTime":"2011-09-29 15:30:00",
+      "location":"Oak, Indiana Memorial Union",
+      "latitude":"39.167793",
+      "longitude":"-86.523542",
+      "description":"Centrally configured and installation of Windows and security updates, coupled with virtualized applications or desktops, and file service will lower the cost of desktop support and free local support staff to provider higher value functions to their departments ",
+      "link":"http://statewideit.iu.edu/program/sessions/details.php?sessionID=27",
+      "speakers":[
+         {
+            "id":"7",
+            "firstName":"Duane",
+            "lastName":"Schau",
+            "title":"",
+            "organization":"UITS",
+            "bio":"",
+            "email":"dschau@iu.edu",
+            "link":""
+         },
+         {
+            "id":"58",
+            "firstName":"Tim",
+            "lastName":"Spears",
+            "title":"",
+            "organization":"UITS",
+            "bio":"",
+            "email":"tspears@indiana.edu",
+            "link":""
+         },
+         {
+            "id":"27",
+            "firstName":"Tom",
+            "lastName":"Zeller",
+            "title":"",
+            "organization":"UITS",
+            "bio":"",
+            "email":"zeller@indiana.edu",
+            "link":""
+         }
+      ]
+   },
+   {
+      "id":"28b",
+      "title":"Breakout Session: The Future Skill Sets for LSPs",
+      "startTime":"2011-09-29 14:15:00",
+      "endTime":"2011-09-29 15:30:00",
+      "location":"Oak, Indiana Memorial Union",
+      "latitude":"39.167793",
+      "longitude":"-86.523542",
+      "description":"Over the next few years, as the delivery of desktop computing becomes more centralized and commoditized, local support providers will have many opportunities to create high-value services to their departments, such as workflow, advanced web design an implementations, streamlined web content management, collaboration tools support, and so on.",
+      "link":"http://statewideit.iu.edu/program/sessions/details.php?sessionID=28",
+      "speakers":[
+         {
+            "id":"7",
+            "firstName":"Duane",
+            "lastName":"Schau",
+            "title":"",
+            "organization":"UITS",
+            "bio":"",
+            "email":"dschau@iu.edu",
+            "link":""
+         },
+         {
+            "id":"27",
+            "firstName":"Tom",
+            "lastName":"Zeller",
+            "title":"",
+            "organization":"UITS",
+            "bio":"",
+            "email":"zeller@indiana.edu",
+            "link":""
+         }
+      ]
+   },
+   {
+      "id":"21b",
+      "title":"Breakout Session: User-Centered Design in Practice: Usability Testing the IT Training Website",
+      "startTime":"2011-09-29 14:15:00",
+      "endTime":"2011-09-29 15:30:00",
+      "location":"Persimmon, Indiana Memorial Union",
+      "latitude":"39.167793",
+      "longitude":"-86.523542",
+      "description":"The presentation will highlight the long-term partnership between the IT Training team and the User Experience Group in a major site redesign project of a popular IU website (http://ittraining.iu.edu/). <br/><br/>Between 2009 and 2011, the User Experience Group (UXG) conducted three usability tests of the IT Training site at various stages of redesign. A total of 31 unique users who were representative of the site's audience &emdash; IU students, faculty, staff, as well as community users not affiliated with IU &emdash; participated in the studies.<br/><br/>During the presentation, members from each team will present the project from their unique perspective, focusing on what was learned from usability testing and user feedback and how that was reflected on the next iteration of redesign. Video clips from the usability testing sessions will also be presented.<br/><br/>This is a unique case study that exemplifies IU's Strategic Plan for IT in action.. Recommendation 8 of the Empowering People states:<br/><br/>Indiana University should implement a variety of approaches to IT education, skills acquisition, support, and communication that enable any willing learner to efficiently acquire desired IT skills.<br/><br/>The services provided by the IT Training team, and by extension its website, is a crucial component in supporting this key recommendation. Our presentation will show a behind-the-scenes effort to incorporate users' feedback in order to provide the best possible user experience.",
+      "link":"http://statewideit.iu.edu/program/sessions/details.php?sessionID=21",
+      "speakers":[
+         {
+            "id":"62",
+            "firstName":"Greg",
+            "lastName":"Hanek",
+            "title":"",
+            "organization":"UITS IT Training",
+            "bio":"",
+            "email":"ghanek@indiana.edu",
+            "link":""
+         },
+         {
+            "id":"51",
+            "firstName":"Jenny",
+            "lastName":"Hertel",
+            "title":"",
+            "organization":"UITS User Experience Group",
+            "bio":"",
+            "email":"jlb3@indiana.edu",
+            "link":""
+         },
+         {
+            "id":"30",
+            "firstName":"Jae",
+            "lastName":"Kim",
+            "title":"",
+            "organization":"UITS User Experience Group",
+            "bio":"",
+            "email":"jahkim@indiana.edu",
+            "link":""
+         },
+         {
+            "id":"65",
+            "firstName":"Tom",
+            "lastName":"Mason",
+            "title":"",
+            "organization":"UITS IT Training",
+            "bio":"",
+            "email":"tlmason@indiana.edu",
+            "link":""
+         },
+         {
+            "id":"68",
+            "firstName":"Chris",
+            "lastName":"Payne",
+            "title":"",
+            "organization":"UITS IT Training",
+            "bio":"",
+            "email":"paynec@indiana.edu",
+            "link":""
+         }
+      ]
+   },
+   {
+      "id":"12b",
+      "title":"Breakout Session: Extending the Classroom with Online Collaboration Tools",
+      "startTime":"2011-09-29 14:15:00",
+      "endTime":"2011-09-29 15:30:00",
+      "location":"Walnut, Indiana Memorial Union",
+      "latitude":"39.167793",
+      "longitude":"-86.523542",
+      "description":"The IUPUI Center for Teaching and Learning has received grants from the National Science Foundation (NSF) and Next Generation Learning Challenges (NGLC) to explore the viability of offering online,  Peer-Led Team Learning (PLTL) sessions done in Introductory Chemistry.  These sessions are normally done in a face-to-face format in a classroom setting.PLTL is a model of teaching that preserves the lecture and replaces recitation in science courses with a weekly two-hour session. During these interactive sessions (workshops), six to eight students work as a team to solve carefully constructed problems under the guidance of a peer leader. <br/><br/>This session will describe how Adobe Connect makes it possible to adapt this face-to-face pedagogy to a synchronous online environment that we are calling cyber Peer-Led Team Learning (cPLTL).  During the session, we will also describe the technology roadblocks and glitches that were experienced along the way as well as the changes that will be implemented for the fall semester to address some of these initial problems. We will also highlight some of the early feedback that we have received from the students and Peer Leaders from the first semester of using this format.<br /><br />Extending the learning experience beyond the physical classroom is a promise of pervasive technologies, but logistics and overall time constraints often limit such possibilities in face-to-face courses. Still, evidence suggests that experiential learning is a key ingredient in educating the twenty-first century student; therefore, seeking out learning opportunities beyond the traditional class meeting time should be considered in the most effective technology-enhanced pedagogy. Through use of the Oncourse Blog tool, students in an IUPUI undergraduate American Studies course took a semester-long virtual road trip across the United States. Along with other assignments, students utilized the Blog tool as a way of recording their own experiences, and responding to those of their classmates. This presentation will explore these virtual road trips and argue that, through the use of the Blog tool, students achieved a richer understanding of the course material versus traditional lecture format. ",
+      "link":"http://statewideit.iu.edu/program/sessions/details.php?sessionID=12",
+      "speakers":[
+         {
+            "id":"8",
+            "firstName":"John",
+            "lastName":"Gosney",
+            "title":"",
+            "organization":"Indiana University",
+            "bio":"",
+            "email":"jgosney@iupui.edu",
+            "link":""
+         },
+         {
+            "id":"35",
+            "firstName":"Randy",
+            "lastName":"Newbrough",
+            "title":"",
+            "organization":"IUPUI Center for Teaching and Learning",
+            "bio":"",
+            "email":"rnewbrou@iupui.edu",
+            "link":""
+         },
+         {
+            "id":"54",
+            "firstName":"Lorie",
+            "lastName":"Shuck",
+            "title":"",
+            "organization":"IUPUI Center for Teaching and Learning",
+            "bio":"",
+            "email":"lshuck@iupui.edu",
+            "link":""
+         }
+      ]
+   },
+   {
+      "id":"6b",
+      "title":"Breakout Session: It's Time for You to Play in IU Mobile",
+      "startTime":"2011-09-29 14:15:00",
+      "endTime":"2011-09-29 15:30:00",
+      "location":"Whittenberger Auditorium, Indiana Memorial Union",
+      "latitude":"39.167793",
+      "longitude":"-86.523542",
+      "description":"Students, faculty, staff, alumni, prospects, and friends of the University expect to be able to access their information and complete their everyday work on their mobile devices. The Kuali Foundation announced the launch of Kuali Mobility Enterprise (KME) with Indiana University as a core partner. IU Mobile powered by Kuali Mobility features new services such as Oncourse and personal calendaring.<br /><br />KME is a flexible, standards-based, open-source, cross-platform environment that allows for more responsive development and has created an opportunity for greater participation from the IU community. A series of working groups have been established to help guide application and web development for mobile at IU as well as recommend integration points for social media tools. A panel of representatives of these working groups will be on hand to discuss their early findings and get you involved.",
+      "link":"http://statewideit.iu.edu/program/sessions/details.php?sessionID=6",
+      "speakers":[
+         {
+            "id":"70",
+            "firstName":"Heather",
+            "lastName":"Beery",
+            "title":"Assistance Director of Interactive Communications",
+            "organization":"Public Affairs and Government Relations",
+            "bio":"",
+            "email":"hbeery@iu.edu",
+            "link":""
+         },
+         {
+            "id":"41",
+            "firstName":"Zach",
+            "lastName":"Collier",
+            "title":"Principal Systems Analyst, IU Mobile",
+            "organization":"Indiana University",
+            "bio":"",
+            "email":"zcollier@indiana.edu",
+            "link":""
+         },
+         {
+            "id":"71",
+            "firstName":"Allison",
+            "lastName":"Cooke",
+            "title":"Social Media Strategist",
+            "organization":"Public Affairs and Government Relations",
+            "bio":"",
+            "email":"acooke@indiana.edu",
+            "link":""
+         },
+         {
+            "id":"16",
+            "firstName":"Nathaniel",
+            "lastName":"Johnson",
+            "title":"Manager, Enterprise Service Presentation & Delivery",
+            "organization":"Indiana University",
+            "bio":"",
+            "email":"natjohns@indiana.edu",
+            "link":""
+         }
+      ]
+   },
+   {
+      "id":"11",
+      "title":"Break",
+      "startTime":"2011-09-29 15:30:00",
+      "endTime":"2011-09-29 15:45:00",
+      "location":"Tree Suites Conference Lounge, Indiana Memorial Union",
+      "latitude":"39.167793",
+      "longitude":"-86.523542",
+      "description":"",
+      "link":"",
+      "speakers":[
+
+      ]
+   },
+   {
+      "id":"29b",
+      "title":"Breakout Session: Software as a Service (SaaS) - Delivering Virtual Applications Anytime, Anywhere with IUanyWARE",
+      "startTime":"2011-09-29 15:45:00",
+      "endTime":"2011-09-29 17:00:00",
+      "location":"Dogwood, Indiana Memorial Union",
+      "latitude":"39.167793",
+      "longitude":"-86.523542",
+      "description":"The IUanyWare web portal is Indiana University's implementation of virtualization technologies utilizing the Citrix XenApp, XenDesktop, XenServer and Provisioning services integrated with the Citrix virtualization architecture, Microsoft's App-V, and VMware's ESX Hypervisor technologies.  IUanyWare will provide faculty, staff, and students access to applications from a web-based application portal through any web-enabled device with a browser - anytime, anywhere.<br/><br/>This highly technical briefing provides an overview and assessment of role based delivery of software as a service (SaaS) to Indiana University student, staff and faculty through IUanyWare.   Additionally, we will discuss the core virtualization architecture considerations necessary to deliver applications securely with compliance to institutions outside Indiana University.",
+      "link":"http://statewideit.iu.edu/program/sessions/details.php?sessionID=29",
+      "speakers":[
+         {
+            "id":"57",
+            "firstName":"Emily",
+            "lastName":"Adams",
+            "title":"",
+            "organization":"Indiana University",
+            "bio":"",
+            "email":"ekadams@indiana.edu",
+            "link":""
+         },
+         {
+            "id":"45",
+            "firstName":"Stephen",
+            "lastName":"Jeffers",
+            "title":"",
+            "organization":"UITS",
+            "bio":"",
+            "email":"sdjeffer@iupui.edu",
+            "link":""
+         },
+         {
+            "id":"7",
+            "firstName":"Duane",
+            "lastName":"Schau",
+            "title":"",
+            "organization":"UITS",
+            "bio":"",
+            "email":"dschau@iu.edu",
+            "link":""
+         }
+      ]
+   },
+   {
+      "id":"11b",
+      "title":"Breakout Session: OpenFlow, InCNTRE and the Future of Networking",
+      "startTime":"2011-09-29 15:45:00",
+      "endTime":"2011-09-29 17:00:00",
+      "location":"Maple, Indiana Memorial Union",
+      "latitude":"39.167793",
+      "longitude":"-86.523542",
+      "description":"For the first time in nearly two decades, IP networks are being opened to innovation by the broader networking community thanks to the advent of Software Defined Networking (SDN).  At Indiana University, the Indiana Center for Network Translational Research and Education (InCNTRE) has recently been formed to help advance the SDN approach to networking and to catalyze researchers, students, and IT staff within the academic community to fully realize the opportunities for innovation enabled by SDN.  Come learn about the exciting new advances in networking and how faculty, students, and UITS staff are collaborating to lead the next major wave of network innovation.",
+      "link":"http://statewideit.iu.edu/program/sessions/details.php?sessionID=11",
+      "speakers":[
+         {
+            "id":"21",
+            "firstName":"Matthew",
+            "lastName":"Davy",
+            "title":"",
+            "organization":"OVPIT",
+            "bio":"",
+            "email":"mpd@iu.edu",
+            "link":""
+         }
+      ]
+   },
+   {
+      "id":"31b",
+      "title":"Breakout Session: Supporting Collaboration across the Campus and the World",
+      "startTime":"2011-09-29 15:45:00",
+      "endTime":"2011-09-29 17:00:00",
+      "location":"Oak, Indiana Memorial Union",
+      "latitude":"39.167793",
+      "longitude":"-86.523542",
+      "description":"Balancing security and ease of access is a traditional challenge for IT shops, particularly on university campuses.  Services are thus campus restricted, and security perimeters are erected, for instance via unique university network ID's, firewalls, etc.  Collaboration technologies in this &quot;local&quot; space have for some time been enabling students and research teams to collaborate and share IT resources with others on the campus.  However, funding agencies are increasingly stressing, and in some cases even requiring, collaborative research and data sharing. PIs must bring together people from across the state, country, or the world, often within days, even hours. They want to be able to create shared workspaces for team members, (a) without regard to user location, (b) right now, and (c) without interference from campus IT bureaucracy.  This talk will discuss how we reconcile the two use cases today using two different technologies at IU, and speculate on what lies ahead.",
+      "link":"http://statewideit.iu.edu/program/sessions/details.php?sessionID=31",
+      "speakers":[
+         {
+            "id":"47",
+            "firstName":"Rick",
+            "lastName":"Jackson",
+            "title":"",
+            "organization":"UITS, IUB",
+            "bio":"",
+            "email":"jacksonr@indiana.edu",
+            "link":""
+         },
+         {
+            "id":"25",
+            "firstName":"Anurag",
+            "lastName":"Shankar",
+            "title":"",
+            "organization":"UITS, IUB",
+            "bio":"",
+            "email":"ashankar@indiana.edu",
+            "link":""
+         }
+      ]
+   },
+   {
+      "id":"32b",
+      "title":"Breakout Session: Enterprise solutions supporting student success",
+      "startTime":"2011-09-29 15:45:00",
+      "endTime":"2011-09-29 17:00:00",
+      "location":"Persimmon, Indiana Memorial Union",
+      "latitude":"39.167793",
+      "longitude":"-86.523542",
+      "description":"In a world where   technology meets us more than halfway, users, students have become accustomed   to online sites and services -- news, entertainment, banking, and more --   whose success is built on offering a personalized, tailored, and often social   experience. The higher ed classroom is no exception. As 21st century pedagogy   evolves, so too must the software and underlying infrastructure on which it's   built.<br />      <br />      Come learn how UITS has partnered with departments and other high education   institutions to provide next generation of academic systems that support a   more student-centered approach to learning and collaboration. <br />      <br />      In this session presenters will provide overviews on a number of   initiatives:      <ul>        <li>How the Personal Development Plan fosters individual student development   through self-assessment, exploration, evaluation and goal setting</li>        <li>How the IU FLAGS Early Alert System is being designed to provide data for   those who implement and perform student retention and success programs</li>        <li>How the user autonomy lens and related feature in the Sakai Open Academic   Environment will provide a re-imagined platform for collaboration, teaching   and learning</li>        <li>How IU Mobility is mashing up data from disparate systems to provide a   personalized experience at students fingertips        </li>    </ul>",
+      "link":"http://statewideit.iu.edu/program/sessions/details.php?sessionID=32",
+      "speakers":[
+         {
+            "id":"33",
+            "firstName":"David",
+            "lastName":"Goodrum",
+            "title":"",
+            "organization":"UITS - Instructional Technology Systems and Services",
+            "bio":"",
+            "email":"goodrum@indiana.edu",
+            "link":""
+         },
+         {
+            "id":"6",
+            "firstName":"Megan",
+            "lastName":"May",
+            "title":"",
+            "organization":"UITS - Enterprise Academic Software",
+            "bio":"",
+            "email":"mmmay@indiana.edu",
+            "link":""
+         },
+         {
+            "id":"53",
+            "firstName":"Lynn",
+            "lastName":"Ward",
+            "title":"",
+            "organization":"UITS - Instructional Technology Systems and Services",
+            "bio":"",
+            "email":"leward@iupui.edu",
+            "link":""
+         }
+      ]
+   },
+   {
+      "id":"33b",
+      "title":"Breakout Session: NOC Integration Project for Regional Campuses (by invitation only)",
+      "startTime":"2011-09-29 15:45:00",
+      "endTime":"2011-09-29 17:00:00",
+      "location":"Sassafras, Indiana Memorial Union",
+      "latitude":"39.167793",
+      "longitude":"-86.523542",
+      "description":"TBD",
+      "link":"http://statewideit.iu.edu/program/sessions/details.php?sessionID=33",
+      "speakers":[
+
+      ]
+   },
+   {
+      "id":"17b",
+      "title":"Breakout Session: A New Model for the Delivery of Technology Skill Training to Students to Drive Academic Success!",
+      "startTime":"2011-09-29 15:45:00",
+      "endTime":"2011-09-29 17:00:00",
+      "location":"Walnut, Indiana Memorial Union",
+      "latitude":"39.167793",
+      "longitude":"-86.523542",
+      "description":"Every student in today's academic environment needs training to keep up with the fast changing world of technology. More and more often, changes in technology are occurring faster than training solutions can be developed and provided. The world is quickly moving from a desktop environment to a mobile environment.<br /><br />Gone are the days where students focused solely on a textbook and lectures and then used paper and pencil, markers and crayons, tape, glue sticks and typewriters to create their assignments and papers. Today, students find themselves in a classroom environment that relies heavily on technology. Online course management systems, digital textbooks, research papers, multimedia presentations, podcasts and vodcasts, online collaboration and messaging, laptop computers, and mobile devices now comprise the majority of a student's toolset. Many campuses are offering totally online courses that rely exclusively on technology; these students may not have local technical support. Pressure is building to move these activities to a mobile environment. In reality, it is a preparation for the future!<br /><br />Many students are not engaged enough with technology to keep up. Some find themselves behind before they even start a course. We see others who are creating homework assignments by the &quot;old methods.&quot; Other students find a way to get the job done with computer tools but evidence shows that their documents may be more &quot;hacked&quot; together rather than having been created correctly. When students are equipped with the proper skills, the task of preparing a professional-looking electronic assignment is much easier.<br /><br />IT Training at IU Kokomo has identified three major issues that apply directly to the success of our training mission: We remove technology road blocks to enable student success!<br /><br/>1. What technology training &quot;topics&quot; are important to students?<br />2. What delivery &quot;channel&quot; do students prefer to receive their training?<br />3. What delivery &quot;format&quot; is most effective for training?<br /><br/>Through a new training process model, IT Training at IU Kokomo is aggressively attacking these issues because we believe they are important for the delivery of training solutions at the college level. We are encouraging students, and also faculty and staff, to take advantage of our training opportunities. The current options available are instructor-led training sessions, one-on-one tutoring sessions, faculty-requested classroom training, online tutorials, and Lynda.com. We are considering online multimedia tutorials in the future. To be proactive, we recognize that we must remain flexible to develop new delivery methods and topics. As a result, we are seeing growth in the number of students taking advantage of our training and their satisfaction with our processes. <br /><br />IT Training at IU Kokomo Is On The Move to Drive Student Success!<br />",
+      "link":"http://statewideit.iu.edu/program/sessions/details.php?sessionID=17",
+      "speakers":[
+         {
+            "id":"4",
+            "firstName":"Gregory",
+            "lastName":"Ogle",
+            "title":"",
+            "organization":"IU Kokomo IT Training (UITS)",
+            "bio":"",
+            "email":"gmogle@iuk.edu",
+            "link":""
+         }
+      ]
+   },
+   {
+      "id":"3b",
+      "title":"Breakout Session: SharePoint 2010 as a Tool for Managing your Records",
+      "startTime":"2011-09-29 15:45:00",
+      "endTime":"2011-09-29 17:00:00",
+      "location":"Whittenberger Auditorium, Indiana Memorial Union",
+      "latitude":"39.167793",
+      "longitude":"-86.523542",
+      "description":"Sharepoint 2010 coupled with the KnowledgeLake software has the potential to provide IU with a powerful tool to manage its documents at the enterprise level.   However, to achieve this users must understand and be able to deploy the records management functionality built into SharePoint.   This session will review and demonstrate the essential features of Sharepoint's suite of tools that allow users to archive documents and then to manage them over the long-term.  More specifically the presenters will examine the following topics:  1) Declaring documents as records that need to be retained and moving them to the secure records center; 2) Assigning descriptive metadata to the documents so that they can be easily accessed; and 3) Managing the process of automatically assigning retention and disposal values to records, so that documents with long-term value are preserved and those records with short-term value are destroyed at the appropriate time.",
+      "link":"http://statewideit.iu.edu/program/sessions/details.php?sessionID=3",
+      "speakers":[
+         {
+            "id":"23",
+            "firstName":"Philip",
+            "lastName":"Bantin",
+            "title":"",
+            "organization":"Indiana University, Libraries, Office of University Archives and Records Management",
+            "bio":"",
+            "email":"bantin@indiana.edu",
+            "link":""
+         },
+         {
+            "id":"44",
+            "firstName":"Mark",
+            "lastName":"Niswander",
+            "title":"",
+            "organization":"Indiana University, Information Technology",
+            "bio":"",
+            "email":"mniswand@indiana.edu",
+            "link":""
+         }
+      ]
+   },
+   {
+      "id":"13",
+      "title":"CIB Tours",
+      "startTime":"2011-09-29 17:00:00",
+      "endTime":"2011-09-29 19:30:00",
+      "location":"Cyberinfrastructure Building",
+      "latitude":"39.172343",
+      "longitude":"-86.501708",
+      "description":"",
+      "link":"",
+      "speakers":[
+
+      ]
+   },
+   {
+      "id":"14",
+      "title":"Staff Recognition and Networking Reception",
+      "startTime":"2011-09-29 17:00:00",
+      "endTime":"2011-09-29 19:30:00",
+      "location":"Cyberinfrastructure Building",
+      "latitude":"39.172343",
+      "longitude":"-86.501708",
+      "description":"<p>Join with colleagues from across the university in celebrating the year�s many achievements, including the completion of the Cyberinfrastructure Building � IT�s new home on the Bloomington campus. Take a tour of the new facility, check out the many technology displays and poster sessions, and enjoy a taste of Indiana�s seasonal bounty. Come prepared for a fun, engaging evening with old and new friends.</p><p><em>Transportation from the Indiana Memorial Union to the Cyberinfrastructure Building will begin at 5pm. Return trips will include stops in downtown Bloomington for those who wish to participate in ad hoc Birds-of-a-Feather dinners.</em></p>",
+      "link":"",
+      "speakers":[
+
+      ]
+   },
+   {
+      "id":"15",
+      "title":"Return transportation to IMU and downtown Bloomington begins (multiple trips, as needed)",
+      "startTime":"2011-09-29 18:30:00",
+      "endTime":"2011-09-29 19:30:00",
+      "location":"Cyberinfrastructure Building",
+      "latitude":"39.172343",
+      "longitude":"-86.501708",
+      "description":"",
+      "link":"",
+      "speakers":[
+
+      ]
+   },
+   {
+      "id":"29",
+      "title":"Statewide Shuttle departs",
+      "startTime":"2011-09-29 19:00:00",
+      "endTime":"2011-09-29 19:00:00",
+      "location":"Indiana Memorial Union, Indiana Memorial Union",
+      "latitude":"39.167793",
+      "longitude":"-86.523542",
+      "description":"",
+      "link":"",
+      "speakers":[
+
+      ]
+   },
+   {
+      "id":"26",
+      "title":"Birds-of-a-Feather Dinners",
+      "startTime":"2011-09-29 20:00:00",
+      "endTime":"2011-09-29 22:00:00",
+      "location":"Various Locations",
+      "latitude":"",
+      "longitude":"",
+      "description":"Be sure to sign up for topical dinners scheduled for 8pm on Thursday -- the sign-up board will be in the Solarium, which is adjacent to Alumni Hall. Join other conference attendees at various locations in downtown Bloomington (each participant will need to pay for their own dinner). The Networking Reception shuttle will also run from the CIB to downtown BOF dinner locations.</p>\t<li  class='link-gps' data-theme='c'>\t<a href=/kme-prd/maps/location?latitude=39.166522&longitude=-86.533375><h3 class='wrap'>Topic: What are ''Commodity Services''?</h3><p>Host: Duane Schau</p><p class='wrap'>Venue: <strong>Uptown Cafe</strong></p></a></li><li  class='link-gps' data-theme='c'>\t<a href=/kme-prd/maps/location?latitude=39.173324066263085&longitude=-86.53743982315063><h3 class='wrap'>Topic: Trends in the Use of Social Media</h3><p>Host: Brian Hawkins</p><p class='wrap'>Venue: <strong>Upland Brewing Company</strong> (American)</p></a></li><li  class='link-gps' data-theme='c'>\t<a href=/kme-prd/maps/location?latitude=39.16664487001083&longitude=-86.53510093688965><h3 class='wrap'>Identity and Access Management in the Age of the Cloud</h3><p>Host: Jacob Farmer</p><p class='wrap'>Venue: <strong>Irish Lion</strong> (Irish)</p></a></li><li  class='link-gps' data-theme='c'>\t<a href=/kme-prd/maps/location?latitude=39.17161897683579&longitude=-86.51120781898499><h3 class='wrap'>Topic: Adapting services to meet rapidly changing research needs</h3><p>Hosts: Eric Wernert and Bill Barnett</p><p class='wrap'>Venue: <strong>Lennie's</strong> (Gourmet)</p></a></li><li  class='link-gps' data-theme='c'>\t<a href=/kme-prd/maps/location?latitude=39.16758897920809&longitude=-86.53385102748871><h3 class='wrap'>Topic: iLight and Higher Education in Indiana</h3><p>Host: Marianne Chitwood</p><p class='wrap'>Venue: <strong>Samira's</strong> (Afghanistan)</p></a></li><li  class='link-gps' data-theme='c'>\t<a href=/kme-prd/maps/location?latitude=39.1655506&longitude=-86.529456><h3 class='wrap'>Topic: Openflow and the Future of Networking</h3><p>Host: Matt Davy</p><p class='wrap'>Venue: <strong>Puccini's</strong> (Italian)</p></a></li><li data-theme='c'><p>",
+      "link":"",
+      "speakers":[
+
+      ]
+   },
+   {
+      "id":"31",
+      "title":"Statewide Shuttle departs",
+      "startTime":"2011-09-30 07:30:00",
+      "endTime":"2011-09-30 07:30:00",
+      "location":"ICTC Circle Drive, IUPUI, ICTC",
+      "latitude":"39.774147",
+      "longitude":"-86.167947",
+      "description":"",
+      "link":"",
+      "speakers":[
+
+      ]
+   },
+   {
+      "id":"16",
+      "title":"Leading In Times of Change",
+      "startTime":"2011-09-30 09:00:00",
+      "endTime":"2011-09-30 10:15:00",
+      "location":"Alumni Hall, Indiana Memorial Union",
+      "latitude":"39.167793",
+      "longitude":"-86.523542",
+      "description":"<p><a href=&quot;http://www.indiana.edu/~video/stream/launchflash.html?folder=vic&filename=switc_mcdonald_20110930.mp4&quot;>Watch Video</a></p><p>Some call him a guru, and others call him a rock star or the chairman, but by any name, Brian McDonald has the market cornered on emerging trends and best practices for developing leaders in today�s higher education arena. Whether you are leading from the executive suite or the front-line support desk, Brian has insights, best practices, and in-the-trenches tactics for developing organizational and individual strategies to help you navigate the changing landscape. This session is for everyone, from the seasoned ITLP grad to the emerging leader beginning a new professional journey.</p>",
+      "link":"",
+      "speakers":[
+         {
+            "id":"3",
+            "firstName":"Brian",
+            "lastName":"McDonald",
+            "title":"President, Maximizing Organizational Resources (MOR) Associates",
+            "organization":"MOR Associates",
+            "bio":"<p>Brian McDonald is President of MOR Associates. Maximizing  Organizational Resources (MOR) was created in 1983 to assist clients in  developing strategies designed to elicit the contributions employees  want to make to enhance the success of their enterprise.</p><p>Brian has increasingly focused his practice on developing leaders,  enhancing strategic thinking and consulting on continuous improvement  efforts.</p><p>Brian's expertise in designing and delivering leadership development  has resulted in his facilitating MIT's Leader to Leader program, New  England Business Service (NEBS) Leadership Development Program, and New  York State Education Department's Leadership Academy while participating  in programs such as GE Capital Leadership Symposium in Europe. Brian is  also working with Tufts University School of Engineering to integrate  leadership and teamwork into the curriculum.</p>",
+            "email":"morbrian@aol.com",
+            "link":"http://www.morassociates.com/brian_mcdonald_bio.html"
+         }
+      ]
+   },
+   {
+      "id":"17",
+      "title":"Break",
+      "startTime":"2011-09-30 10:15:00",
+      "endTime":"2011-09-30 10:30:00",
+      "location":"Solarium, Indiana Memorial Union",
+      "latitude":"39.167793",
+      "longitude":"-86.523542",
+      "description":"",
+      "link":"",
+      "speakers":[
+
+      ]
+   },
+   {
+      "id":"14b",
+      "title":"Breakout Session: Compliance and Security at IU",
+      "startTime":"2011-09-30 10:30:00",
+      "endTime":"2011-09-30 12:00:00",
+      "location":"Dogwood, Indiana Memorial Union",
+      "latitude":"39.167793",
+      "longitude":"-86.523542",
+      "description":"IU has taken significant steps toward better compliance, but there are still improvements to be made.  Kevin Keough will explain what types of controls Internal Audit is looking for, and Todd Herring will explain what kind of services are available to schools and departments who are seeking to better secure their IT resources.",
+      "link":"http://statewideit.iu.edu/program/sessions/details.php?sessionID=14",
+      "speakers":[
+         {
+            "id":"5",
+            "firstName":"Todd",
+            "lastName":"Herring",
+            "title":"",
+            "organization":"UITS",
+            "bio":"",
+            "email":"therring@iupui.edu",
+            "link":""
+         },
+         {
+            "id":"32",
+            "firstName":"Kevin",
+            "lastName":"Keough",
+            "title":"",
+            "organization":"Internal Audit",
+            "bio":"",
+            "email":"kkeough@indiana.edu",
+            "link":""
+         }
+      ]
+   },
+   {
+      "id":"4b",
+      "title":"Breakout Session: High Performance Computing as a Service",
+      "startTime":"2011-09-30 10:30:00",
+      "endTime":"2011-09-30 12:00:00",
+      "location":"Maple, Indiana Memorial Union",
+      "latitude":"39.167793",
+      "longitude":"-86.523542",
+      "description":"Indiana University has a long history of open access to centrally provided high performance computing systems and services. The Research Technologies division of UITS is operating high performance computing and storage systems and is proving consulting services, designed to make IU faculty and staff more competitive.This talk will provide an overview of the supercomputing landscape at IU and examples of how this advanced cyberinfrastructure can be put to good use to boost the productivity of IU researchers. Details of the available hardware will be outlined, as well as the variety of services that are offered to utilize them efficiently.",
+      "link":"http://statewideit.iu.edu/program/sessions/details.php?sessionID=4",
+      "speakers":[
+         {
+            "id":"13",
+            "firstName":"David",
+            "lastName":"Hancock",
+            "title":"",
+            "organization":"Indiana University",
+            "bio":"",
+            "email":"dyhancoc@iu.edu",
+            "link":""
+         },
+         {
+            "id":"11",
+            "firstName":"Robert",
+            "lastName":"Henschel",
+            "title":"",
+            "organization":"IU University Information Technology Services",
+            "bio":"",
+            "email":"henschel@iu.edu",
+            "link":""
+         }
+      ]
+   },
+   {
+      "id":"13b",
+      "title":"Breakout Session: HPC Cloud: Penguin on Demand @IU",
+      "startTime":"2011-09-30 10:30:00",
+      "endTime":"2011-09-30 12:00:00",
+      "location":"Maple, Indiana Memorial Union",
+      "latitude":"39.167793",
+      "longitude":"-86.523542",
+      "description":"IU has entered into a partnership with Penguin Computing to host a university research cloud at IU. The Penguin on Demand service at IU will offer researchers the benefits of a high performance computing cluster with the flexibility of an on demand cloud service. Details of the POD architecture, management, and applications will be explored. This session will explain how the new POD service fits into IU's broad research cyberinfrastructure, and how it compliments research systems and storage at IU.",
+      "link":"http://statewideit.iu.edu/program/sessions/details.php?sessionID=13",
+      "speakers":[
+         {
+            "id":"13",
+            "firstName":"David",
+            "lastName":"Hancock",
+            "title":"",
+            "organization":"Indiana University",
+            "bio":"",
+            "email":"dyhancoc@iu.edu",
+            "link":""
+         }
+      ]
+   },
+   {
+      "id":"25b",
+      "title":"Breakout Session: IU's Digital Signage Solution",
+      "startTime":"2011-09-30 10:30:00",
+      "endTime":"2011-09-30 12:00:00",
+      "location":"Oak, Indiana Memorial Union",
+      "latitude":"39.167793",
+      "longitude":"-86.523542",
+      "description":"IU enterprise-wide digital signage system went into production in May.  It allows IU units to manage multiple communications via a variety of digital signage solutions ranging from small touch screens to large digital signage walls. It interfaces with Emergency Management and other enterprise systems and feeds. See how IU units are taking advantage of this medium, what the benefits of Digital Signage are, and how to get started.",
+      "link":"http://statewideit.iu.edu/program/sessions/details.php?sessionID=25",
+      "speakers":[
+         {
+            "id":"17",
+            "firstName":"Greg",
+            "lastName":"Polit",
+            "title":"",
+            "organization":"IU Public Affairs",
+            "bio":"",
+            "email":"Gpolit@Iu.edu",
+            "link":""
+         }
+      ]
+   },
+   {
+      "id":"19b",
+      "title":"Breakout Session: The Benefits of Peer Coaching:  Opportunity to Improve",
+      "startTime":"2011-09-30 10:30:00",
+      "endTime":"2011-09-30 12:00:00",
+      "location":"Persimmon, Indiana Memorial Union",
+      "latitude":"39.167793",
+      "longitude":"-86.523542",
+      "description":"Effective leadership hinges on continuous self improvement.  Both giving and getting feedback provide insight and develop relationships.  What is coaching, how do you do it effectively and how can you benefit from having a peer coach? This session will present coaching techniques including role playing. Participants will also pair with a peer to 'coach' each other, possibly on achieving a hard to reach goal, resolving a challengingissue or other objective. Peer coaching can have both immediate and long-lasting benefits, for the participants and those who work with them!",
+      "link":"http://statewideit.iu.edu/program/sessions/details.php?sessionID=19",
+      "speakers":[
+         {
+            "id":"26",
+            "firstName":"Deb",
+            "lastName":"Allmayer",
+            "title":"",
+            "organization":"OVPIT",
+            "bio":"",
+            "email":"dallmaye@iu.edu",
+            "link":""
+         },
+         {
+            "id":"3",
+            "firstName":"Brian",
+            "lastName":"McDonald",
+            "title":"President, Maximizing Organizational Resources (MOR) Associates",
+            "organization":"MOR Associates",
+            "bio":"<p>Brian McDonald is President of MOR Associates. Maximizing  Organizational Resources (MOR) was created in 1983 to assist clients in  developing strategies designed to elicit the contributions employees  want to make to enhance the success of their enterprise.</p><p>Brian has increasingly focused his practice on developing leaders,  enhancing strategic thinking and consulting on continuous improvement  efforts.</p><p>Brian's expertise in designing and delivering leadership development  has resulted in his facilitating MIT's Leader to Leader program, New  England Business Service (NEBS) Leadership Development Program, and New  York State Education Department's Leadership Academy while participating  in programs such as GE Capital Leadership Symposium in Europe. Brian is  also working with Tufts University School of Engineering to integrate  leadership and teamwork into the curriculum.</p>",
+            "email":"morbrian@aol.com",
+            "link":"http://www.morassociates.com/brian_mcdonald_bio.html"
+         },
+         {
+            "id":"48",
+            "firstName":"Heather",
+            "lastName":"Stapleton",
+            "title":"",
+            "organization":"UITS",
+            "bio":"",
+            "email":"hstaplet@indiana.edu",
+            "link":""
+         }
+      ]
+   },
+   {
+      "id":"10b",
+      "title":"Breakout Session: Variations Mobile: Developing an iOS Audio Streaming App",
+      "startTime":"2011-09-30 10:30:00",
+      "endTime":"2011-09-30 12:00:00",
+      "location":"Walnut, Indiana Memorial Union",
+      "latitude":"39.167793",
+      "longitude":"-86.523542",
+      "description":"Variations is a digital music library system developed and supported at IU in a partnership between the Digital Library Program (jointly supported by the Libraries and UITS), Cook Music Library, and the Jacobs School of Music over the course of the past fifteen years. The current implementation, put into production in 2005, used a desktop Java client for Windows and Mac, relying on QuickTime for Java for audio streaming and DjVu for score page presentation. In addition to media presentation, Variations also includes teaching and learning tools, as well as methods for authorization and authentication.<br/><br/>Although the desktop client is still in heavy use, the changing needs of our users prompted the Variations team to develop and deliver a web-based client for audio listening, and, in the spring of this year, a pilot iOS app for iPhone, iPad, and iPod Touch users.  The pilot app focused on delivering a tool for audio listening, with other features to be phased in in the future.<br/><br/>In this talk, we will discuss the evolution and challenges of this pilot development, including the choice of a native iOS app versus a web app (or a different mobile platform), the specific challenges to mobile audio delivery, and how our past technology choices influenced decisions. We will also discuss the future plans for this project in the context of our users’ needs, technology and resource constraints, and the direction of mobile development, both at large and here at IU.",
+      "link":"http://statewideit.iu.edu/program/sessions/details.php?sessionID=10",
+      "speakers":[
+         {
+            "id":"31",
+            "firstName":"Mark",
+            "lastName":"Notess",
+            "title":"",
+            "organization":"IU Digital Library Program",
+            "bio":"",
+            "email":"mnotess@indiana.edu",
+            "link":""
+         },
+         {
+            "id":"52",
+            "firstName":"Sarah",
+            "lastName":"Schmiechen",
+            "title":"",
+            "organization":"IU Digital Library Program",
+            "bio":"",
+            "email":"schmiecs@indiana.edu",
+            "link":""
+         }
+      ]
+   },
+   {
+      "id":"16b",
+      "title":"Breakout Session: Mobile Technology and the Future of Learning",
+      "startTime":"2011-09-30 10:30:00",
+      "endTime":"2011-09-30 12:00:00",
+      "location":"Whittenberger Auditorium, Indiana Memorial Union",
+      "latitude":"39.167793",
+      "longitude":"-86.523542",
+      "description":"The growing use of mobile technology on college campuses suggests the future of the classroom including learning activities, research, and even student-faculty communications will rely heavily on mobile technology. Since fall 2010, an interdisciplinary team of faculty from IUPUI has experimented with the use of iPads in the classroom. This presentation includes the preliminary results of their study on student impressions of mobile technology in the classroom. The presentation will report both best practices and cautions and will include time for hands-on iPad activity.",
+      "link":"http://statewideit.iu.edu/program/sessions/details.php?sessionID=16",
+      "speakers":[
+         {
+            "id":"42",
+            "firstName":"EJ",
+            "lastName":"Choe",
+            "title":"",
+            "organization":"Department of Music and Arts Technology, IUPUI",
+            "bio":"",
+            "email":"echoe@iupui.edu",
+            "link":""
+         },
+         {
+            "id":"56",
+            "firstName":"Willie",
+            "lastName":"Millier",
+            "title":"",
+            "organization":"IUPUI",
+            "bio":"",
+            "email":"wmmiller@iupui.edu",
+            "link":""
+         },
+         {
+            "id":"19",
+            "firstName":"Jonathan",
+            "lastName":"Rossing",
+            "title":"",
+            "organization":"IUPUI",
+            "bio":"",
+            "email":"jrossing@iupui.edu",
+            "link":""
+         },
+         {
+            "id":"67",
+            "firstName":"Suzan",
+            "lastName":"Stamper",
+            "title":"",
+            "organization":"IUPUI",
+            "bio":"",
+            "email":"stampers@iupui.edu",
+            "link":""
+         },
+         {
+            "id":"64",
+            "firstName":"Jake",
+            "lastName":"Streepey",
+            "title":"",
+            "organization":"IUPUI",
+            "bio":"",
+            "email":"jwstreep@iupui.edu",
+            "link":""
+         }
+      ]
+   },
+   {
+      "id":"36",
+      "title":"Tech Expo",
+      "startTime":"2011-09-30 10:30:29",
+      "endTime":"2011-09-30 15:30:29",
+      "location":"Georgian Room, Indiana Memorial Union",
+      "latitude":"39.167793",
+      "longitude":"-86.523542",
+      "description":"<p>Vendor sponsors, preferred partners, and UITS and other IU departments.</p>",
+      "link":"",
+      "speakers":[
+
+      ]
+   },
+   {
+      "id":"19",
+      "title":"Lunch",
+      "startTime":"2011-09-30 12:00:00",
+      "endTime":"2011-09-30 14:00:00",
+      "location":"Various Locations",
+      "latitude":"",
+      "longitude":"",
+      "description":"<h3>Lunch Locations</h3><ul><li>Solarium</li><li>Frangipani (with breakout session)</li><li>U Club - President�s Room</li><li>State Room East (with breakout session)</li><li>Federal</li></ul>",
+      "link":"",
+      "speakers":[
+
+      ]
+   },
+   {
+      "id":"18b",
+      "title":"Breakout Session: Leading from the Balcony",
+      "startTime":"2011-09-30 12:30:00",
+      "endTime":"2011-09-30 14:00:00",
+      "location":"Frangipani, Indiana Memorial Union",
+      "latitude":"39.167793",
+      "longitude":"-86.523542",
+      "description":"Have you ever   felt so busy that you don't have time to think? Do you work harder than ever   but still feel like you aren't making as much progress as you'd like? Do the   adaptive challenges of IT seem insurmountable?� If any of these situations sound familiar,   perhaps you need to step out onto the balcony.<br />      <br />      In this informal and interactive session, you will have the opportunity to   talk about adaptive challenges and leadership opportunities we face in IT.   Some helpful tips for navigating in these challenging times by &quot;Leading   from the Balcony&quot; will be provided.�   You'll also get the opportunity to apply what you've learned in a   short group exercise.<br />",
+      "link":"http://statewideit.iu.edu/program/sessions/details.php?sessionID=18",
+      "speakers":[
+         {
+            "id":"18",
+            "firstName":"Jim",
+            "lastName":"Thomas",
+            "title":"",
+            "organization":"UITS Enterprise Software",
+            "bio":"",
+            "email":"jthomas@indiana.edu",
+            "link":""
+         }
+      ]
+   },
+   {
+      "id":"26b",
+      "title":"Breakout Session: IU Libris and more: Tablet publications for marketing, teaching and research",
+      "startTime":"2011-09-30 12:30:00",
+      "endTime":"2011-09-30 14:00:00",
+      "location":"State Room East, Indiana Memorial Union",
+      "latitude":"39.167793",
+      "longitude":"-86.523542",
+      "description":"Indiana University is the first higher education institution to partner with Adobe Systems Inc. to make university publications available for download to tablet devices through the Apple iTunes store.<br /><br />Using Adobe's Digital Publishing Suite (DPS), IU's Libris application makes a number of IU magazines and other DPS publications available through the store for distribution to the iPad and other tablet devices.<br /><br />Other institutions have used the DPS technology for teaching and research. Learn how IU, Case Western Reserve University, University of Oregon and others are taking advantage of this new medium. Find out how you can leverage this technology for your school or unit's needs.",
+      "link":"http://statewideit.iu.edu/program/sessions/details.php?sessionID=26",
+      "speakers":[
+         {
+            "id":"69",
+            "firstName":"Bob",
+            "lastName":"Flynn",
+            "title":"Manager, IT Community Partnerships",
+            "organization":"UITS",
+            "bio":"",
+            "email":"reflynn@iu.edu",
+            "link":""
+         },
+         {
+            "id":"17",
+            "firstName":"Greg",
+            "lastName":"Polit",
+            "title":"",
+            "organization":"IU Public Affairs",
+            "bio":"",
+            "email":"Gpolit@Iu.edu",
+            "link":""
+         }
+      ]
+   },
+   {
+      "id":"9b",
+      "title":"Breakout Session: The Next Generation of UniCom and Fax Services",
+      "startTime":"2011-09-30 14:00:00",
+      "endTime":"2011-09-30 15:00:00",
+      "location":"Dogwood, Indiana Memorial Union",
+      "latitude":"39.167793",
+      "longitude":"-86.523542",
+      "description":"This session will cover the latest version of UniCom called Lync and the new electonic based document environment for fax services.  The UniCom discussion will cover the progress of the Lync migration, new features of Lync, known issues, LSP training, and the new IP phones.  We will also discuss the new fax environment that replaces legacy fax machines.",
+      "link":"http://statewideit.iu.edu/program/sessions/details.php?sessionID=9",
+      "speakers":[
+         {
+            "id":"60",
+            "firstName":"Matt",
+            "lastName":"Dixon",
+            "title":"",
+            "organization":"UITS",
+            "bio":"",
+            "email":"madixon@indiana.edu",
+            "link":""
+         },
+         {
+            "id":"49",
+            "firstName":"Mark",
+            "lastName":"Spencer",
+            "title":"",
+            "organization":"UITS",
+            "bio":"",
+            "email":"maespenc@indiana.edu",
+            "link":""
+         },
+         {
+            "id":"28",
+            "firstName":"Jennifer",
+            "lastName":"Van Horn",
+            "title":"",
+            "organization":"UITS",
+            "bio":"",
+            "email":"jvh@indiana.edu",
+            "link":""
+         }
+      ]
+   },
+   {
+      "id":"24b",
+      "title":"Breakout Session: UITS-supported synchronous collaboration tools",
+      "startTime":"2011-09-30 14:00:00",
+      "endTime":"2011-09-30 15:00:00",
+      "location":"Dogwood, Indiana Memorial Union",
+      "latitude":"39.167793",
+      "longitude":"-86.523542",
+      "description":"UITS has formed a new Collaboration Technologies Group to unite diverse entities into a team under the leadership of the Learning Technologies division. Focused on the academic application of innovative collaborative environments, the new group has responsibilities for videoconferencing and telepresence, as well as online synchronous tools such as Adobe Connect and video streaming. This session will introduce the people and goals of the group and then move on to discuss the current set of UITS-supported synchronous collaboration tools with a focus on comparing these technologies to the vast array of unsupported collaboration options. By providing descriptive information, the goal of this session is to help the audience understand the significant differences of the various solutions, as well as describing when and why to choose a particular tool set.",
+      "link":"http://statewideit.iu.edu/program/sessions/details.php?sessionID=24",
+      "speakers":[
+         {
+            "id":"29",
+            "firstName":"Steve",
+            "lastName":"Egyhazi",
+            "title":"",
+            "organization":"UITS",
+            "bio":"",
+            "email":"segyhazi@indiana.edu",
+            "link":""
+         },
+         {
+            "id":"50",
+            "firstName":"Chris",
+            "lastName":"Golden",
+            "title":"",
+            "organization":"UITS",
+            "bio":"",
+            "email":"cjgolden@indiana.edu",
+            "link":""
+         },
+         {
+            "id":"61",
+            "firstName":"James",
+            "lastName":"McGookey",
+            "title":"",
+            "organization":"UITS",
+            "bio":"",
+            "email":"jmcgooke@indiana.edu",
+            "link":""
+         }
+      ]
+   },
+   {
+      "id":"1b",
+      "title":"Breakout Session: REDCap: A simple, flexible tool for inexpensively building secure data capture systems",
+      "startTime":"2011-09-30 14:00:00",
+      "endTime":"2011-09-30 15:00:00",
+      "location":"Maple, Indiana Memorial Union",
+      "latitude":"39.167793",
+      "longitude":"-86.523542",
+      "description":"Managing data means many different things to different people. REDCap (Research Electronic Data Capture) is a simple, flexible tool for inexpensively building secure, web-based data capture systems. It was originally designed for supporting clinical research, but is general enough to help in many areas. With REDCap you can quickly create a reliable data entry and reporting system, either for use by internal staff or as a survey to be distributed to a particular community or the entire public, without doing any programming. Data entry forms and reports are built dynamically from a readily-understood metadata format, which can be created through either a graphical or spreadsheet interface. REDCap also provides a variety of other features including double-data entry, branching logic, detailed logging, hiding protected identifiers, graphical statistics, and more. <br/><br/>REDCap was developed by and is actively maintained by Vanderbilt University (http://www.project-redcap.org). It is in use by more than two hundred institutions worldwide, including the Indiana Clinical and Translational Sciences Institute (Indiana CTSI), which makes REDCap available to all partner institutions. Within the Indiana CTSI, REDCap has more than 230 active users working in more than sixty active projects, primarily on the IUPUI campus. REDCap is available for little or no cost to all Indiana University faculty and staff and is an excellent tool for leveraging shared resources for increased efficiency.",
+      "link":"http://statewideit.iu.edu/program/sessions/details.php?sessionID=1",
+      "speakers":[
+         {
+            "id":"22",
+            "firstName":"Andy",
+            "lastName":"Arenson",
+            "title":"",
+            "organization":"UITS",
+            "bio":"",
+            "email":"aarenson@iupui.edu",
+            "link":""
+         },
+         {
+            "id":"43",
+            "firstName":"Bob",
+            "lastName":"Davis",
+            "title":"",
+            "organization":"Department of Biostatistics",
+            "bio":"",
+            "email":"davisrol@iupui.edu",
+            "link":""
+         }
+      ]
+   },
+   {
+      "id":"5b",
+      "title":"Breakout Session: INBOX ZERO - Master your email inbox using GTD principles",
+      "startTime":"2011-09-30 14:00:00",
+      "endTime":"2011-09-30 15:00:00",
+      "location":"Oak, Indiana Memorial Union",
+      "latitude":"39.167793",
+      "longitude":"-86.523542",
+      "description":"Master your digital life by controlling your inbox. In this interactive workshop, you will learn how to implement Merlin Mann's method for tagging, organizing, and getting your email inbox to zero every day. Martin builds on David Allen's Getting Things Done principles and applies them to your email inbox. You will create email buckets, a schedule for checking, and asking yourself &quot;Is this actionable?&quot;. You will need your laptop. This method will work on any email application that allows tagging and the creation of folders. Gmail will be used in this workshop.",
+      "link":"http://statewideit.iu.edu/program/sessions/details.php?sessionID=5",
+      "speakers":[
+         {
+            "id":"14",
+            "firstName":"Martin J.",
+            "lastName":"Wagner",
+            "title":"",
+            "organization":"UITS",
+            "bio":"",
+            "email":"mjwagner@indiana.edu",
+            "link":""
+         }
+      ]
+   },
+   {
+      "id":"23b",
+      "title":"Breakout Session: SuperBowl Super Service - Developing an Online Video-enhanced Training Program for Indiana Service Workers",
+      "startTime":"2011-09-30 14:00:00",
+      "endTime":"2011-09-30 15:00:00",
+      "location":"Persimmon, Indiana Memorial Union",
+      "latitude":"39.167793",
+      "longitude":"-86.523542",
+      "description":"Video-enhanced training program for Indiana service workers.",
+      "link":"http://statewideit.iu.edu/program/sessions/details.php?sessionID=23",
+      "speakers":[
+         {
+            "id":"24",
+            "firstName":"Michael",
+            "lastName":"Jasiak",
+            "title":"",
+            "organization":"Indiana University UITS - Media Design & Production",
+            "bio":"",
+            "email":"mjasiak@indiana.edu",
+            "link":""
+         },
+         {
+            "id":"46",
+            "firstName":"Erik",
+            "lastName":"Scull",
+            "title":"",
+            "organization":"Indiana University UITS - HELPnet",
+            "bio":"",
+            "email":"escull@iupui.edu",
+            "link":""
+         }
+      ]
+   },
+   {
+      "id":"30b",
+      "title":"Breakout Session: Extending Software Access for Graduate Students: Delivering Math-Stat Software to Graduate Student Populations",
+      "startTime":"2011-09-30 14:00:00",
+      "endTime":"2011-09-30 15:00:00",
+      "location":"Walnut, Indiana Memorial Union",
+      "latitude":"39.167793",
+      "longitude":"-86.523542",
+      "description":"This presentation will highlight a new approach for delivering software to enhance the academic mission. Come see how IUanyWare provides secure and reliable software access for SPEA's 650 graduate students on any device anywhere. ",
+      "link":"http://statewideit.iu.edu/program/sessions/details.php?sessionID=30",
+      "speakers":[
+         {
+            "id":"34",
+            "firstName":"Chris",
+            "lastName":"England",
+            "title":"",
+            "organization":"UITS - SPEA",
+            "bio":"",
+            "email":"chenglan@indiana.edu",
+            "link":""
+         },
+         {
+            "id":"7",
+            "firstName":"Duane",
+            "lastName":"Schau",
+            "title":"",
+            "organization":"UITS",
+            "bio":"",
+            "email":"dschau@iu.edu",
+            "link":""
+         }
+      ]
+   },
+   {
+      "id":"35",
+      "title":"Break",
+      "startTime":"2011-09-30 15:00:00",
+      "endTime":"2011-09-30 15:30:00",
+      "location":"Whittenberger Auditorium, Indiana Memorial Union",
+      "latitude":"39.167793",
+      "longitude":"-86.523542",
+      "description":"",
+      "link":"",
+      "speakers":[
+
+      ]
+   },
+   {
+      "id":"22",
+      "title":"Connected Learning in a Networked Age",
+      "startTime":"2011-09-30 15:15:00",
+      "endTime":"2011-09-30 16:45:00",
+      "location":"Whittenberger Auditorium, Indiana Memorial Union",
+      "latitude":"39.167793",
+      "longitude":"-86.523542",
+      "description":"<p>Today's young people are growing up in a very different ecology of culture and knowledge than that experienced by earlier generations. The Internet, digital media production tools, portable media, and immersive social gaming environments are part of broad-based shifts in how we express ourselves, produce and access knowledge, and connect with others. This new media ecology can be a powerful driver of meaningful, demand-driven, and socially connected learning, but in our research, we found that very few young people, parents, and educators were taking advantage of this potential. Really tapping into the learning potential of today's new media environment requires building more robust connections between formal and informal learning environments, and across social, recreational, and academic activities. This talk will describe what our research has taught us about the broad shifts in how young people are learning and engaging with new media, and suggest areas of opportunity for supporting learning keyed to a networked age.</p>",
+      "link":"",
+      "speakers":[
+         {
+            "id":"2",
+            "firstName":"Mimi",
+            "lastName":"Ito",
+            "title":"Professor in Residence, Department of Anthropology and Department of Informatics at the University of California, Irvine",
+            "organization":"",
+            "bio":"<p>Mimi Ito is an international expert on how people use mobile technologies and new digital media in their everyday lives. A cultural anthropologist of technology use, she also is a leading authority on how social network technologies are shaping society.</p><p>Dr. Ito has been named the John D. and Catherine T. MacArthur Foundation Chair in Digital Media and Learning. Created in 2009 from an endowment fund originally established by the MacArthur Foundation at the University of California, Berkeley, the digital media and learning initiative aims to determine how digital media are changing the way young people learn, play, socialize and participate in civic life.</p>",
+            "email":"",
+            "link":"http://www.leighbureau.com/speaker.asp?id=421"
+         }
+      ]
+   },
+   {
+      "id":"33",
+      "title":"Statewide Shuttle departs",
+      "startTime":"2011-09-30 17:00:00",
+      "endTime":"2011-09-30 17:00:00",
+      "location":"Indiana Memorial Union, Indiana Memorial Union",
+      "latitude":"39.167793",
+      "longitude":"-86.523542",
+      "description":"",
+      "link":"",
+      "speakers":[
+
+      ]
+   },
+   {
+      "id":"23",
+      "title":"IU Cinema Screening",
+      "startTime":"2011-09-30 17:30:00",
+      "endTime":"2011-09-30 20:00:00",
+      "location":"IU Cinema",
+      "latitude":"39.168737",
+      "longitude":"-86.517544",
+      "description":"<p>Two great Indiana traditions -- basketball and cutting-edge technology -- come together for this special networking opportunity at the new Indiana University Cinema. Don�t miss the thrill of experiencing the re-mastered cut of Angelo Pizzo�s Oscar-nominated film Hoosiers in this historic setting, which features a state-of-the-art THX-certified sound system and Sony 4K and Barco 3D projection systems. Before the feature film, IU's Advanced Visualization Lab will present several short films in 3D produced by students in the university's Department of Telecommunications.</p><p><em>Complimentary tickets are limited to the first 260 attendees. Visit the SWITC web site to make reservations. </em></p><p><strong>Introduction:</strong></p><ul><li>Little 500 in 3D</li></ul><p><strong>Student 3-D shorts:</strong></p><ul><li>Manila Envelopes</li><li>The Future is a Better Place</li><li>Paco</li></ul><p><strong>Feature film:</strong></p><ul><li>Hoosiers</li></ul>",
+      "link":"",
+      "speakers":[
+
+      ]
+   },
+   {
+      "id":"24",
+      "title":"Tailgate Cookout",
+      "startTime":"2011-10-01 10:00:00",
+      "endTime":"2011-10-01 12:00:00",
+      "location":"Memorial Stadium Tailgate Lot #2-3",
+      "latitude":"39.180019",
+      "longitude":"-86.523748",
+      "description":"<p>Nothing says fall like a football weekend in Big Ten country. Extend your visit to the Bloomington campus by cheering on Coach Kevin Wilson and the Hoosiers as they battle Coach Joe Paterno and the Nittany Lions.  Gather prior to kickoff with colleagues, friends, and family for tailgate festivities hosted by Honorary Tailgate Grand Marshall Dennis Cromwell.</p><p><em>Make reservations for the complimentary tailgate cookout and arrangements for discounted tickets through the SWITC website. The tailgate cookout will begin two hours prior to game time.</em></p>",
+      "link":"",
+      "speakers":[
+
+      ]
+   },
+   {
+      "id":"25",
+      "title":"Football Game",
+      "startTime":"2011-10-01 12:00:00",
+      "endTime":"2011-10-01 16:00:00",
+      "location":"Memorial Stadium",
+      "latitude":"39.181841",
+      "longitude":"-86.526568",
+      "description":"<p>Nothing says fall like a football weekend in Big Ten country. Extend your visit to the Bloomington campus by cheering on Coach Kevin Wilson and the Hoosiers as they battle Coach Joe Paterno and the Nittany Lions.  Gather prior to kickoff with colleagues, friends, and family for tailgate festivities hosted by Honorary Tailgate Grand Marshall Dennis Cromwell.</p><p><em>Make reservations for the complimentary tailgate cookout and arrangements for discounted tickets through the SWITC website. The tailgate cookout will begin two hours prior to game time.</em></p>",
+      "link":"",
+      "speakers":[
+
+      ]
+   }
+]

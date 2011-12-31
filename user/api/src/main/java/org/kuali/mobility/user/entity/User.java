@@ -19,22 +19,18 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
 
-public interface User {
+public interface User extends org.kuali.mobility.security.authn.entity.User {
 
 	String getViewCampus();
 	void setViewCampus(String campus);
 
-	boolean isPublicUser();
-
 	Long getPrincipalId();
-	String getPrincipalName();
 	String getEmail();
 	public String getIpAddress();
 	public void setIpAddress(String ipAddress);
 	void setFirstLogin(Timestamp firstLogin);
 	void setLastLogin(Timestamp firstLogin);
 
-	void setPrincipalName(String userId);
 	void setEmail(String email);
 
     List<String> getGroups();
@@ -50,7 +46,6 @@ public interface User {
     void setUserAttribute(String key, String value);
     void removeUserAttribute(String key);
     
-    boolean isMember(String groupName);
     boolean isStudent();
     boolean isFaculty();
     boolean isStaff();
@@ -59,4 +54,5 @@ public interface User {
     UserCacheObject getFromCache(String key);
     void removeFromCache(String key);
     void putInCache(String key, Object item);
+    
 }

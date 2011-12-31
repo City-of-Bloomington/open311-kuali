@@ -26,7 +26,6 @@ public class SessionFeedback implements Serializable {
 	private String comments;
 	private String sessionId;
 	private String sessionName;
-	private String principalName;
 	private Timestamp timePosted;
 
 	public String getRating() {
@@ -61,14 +60,6 @@ public class SessionFeedback implements Serializable {
 		this.sessionName = sessionName;
 	}
 
-	public String getPrincipalName() {
-		return principalName;
-	}
-
-	public void setPrincipalName(String principalName) {
-		this.principalName = principalName;
-	}
-
 	public Timestamp getTimePosted() {
 		return timePosted;
 	}
@@ -85,7 +76,6 @@ public class SessionFeedback implements Serializable {
 		 str = str + newline + "Rating: " + this.getRating();
 		 str = str + newline + "Comments: " + this.getComments();
 		 str = str + newline + "Time Posted: " + this.getTimePosted();
-		 //str = str + newline + "Network ID: " + this.getPrincipalName();
 		 return str;
 	}
 }

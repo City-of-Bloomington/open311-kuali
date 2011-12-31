@@ -15,130 +15,66 @@
 
 package org.kuali.mobility.alerts.service;
 
-import java.io.IOException;
 import java.net.URL;
-import java.net.URLConnection;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
-import org.jdom.Document;
-import org.jdom.Element;
-import org.jdom.JDOMException;
-import org.jdom.input.SAXBuilder;
 import org.kuali.mobility.alerts.entity.Alert;
-import org.kuali.mobility.alerts.entity.CampusAlerts;
-import org.kuali.mobility.configparams.service.ConfigParamService;
-import org.kuali.mobility.util.HttpUtil;
+import org.kuali.mobility.alerts.entity.Alerts;
+import org.kuali.mobility.campus.entity.Campus;
+import org.kuali.mobility.campus.service.CampusService;
+import org.kuali.mobility.util.mapper.DataMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-import flexjson.JSONDeserializer;
-
-@Service
 public class AlertsServiceImpl implements AlertsService {
 
 	private static org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(AlertsServiceImpl.class);
 
-	private static ConcurrentMap<String, CampusAlerts> cachedAlerts;
+	private ConcurrentMap<String, Alerts> cachedAlerts;
 
-	// private static final String CP_JSON_ALERTS_URL = "Alerts.Json.Url";
+	private Map<String, List<String>> alertUrls;
 
-	private static final ConcurrentMap<String, String> campusCodeMap;
+	private String cacheMinutes;
+
+	private String dataMappingUrl;
 
 	@Autowired
-	private ConfigParamService configParamService;
+	private CampusService campusService;
 
-	static {
-		cachedAlerts = new ConcurrentHashMap<String, CampusAlerts>();
-		campusCodeMap = new ConcurrentHashMap<String, String>();
-		campusCodeMap.put("UA", "IU");
-		campusCodeMap.put("BL", "IUB");
-		campusCodeMap.put("IN", "IUPUI");
-		campusCodeMap.put("CO", "IUPUC");
-		campusCodeMap.put("EA", "IUE");
-		campusCodeMap.put("KO", "IUK");
-		campusCodeMap.put("NW", "IUN");
-		campusCodeMap.put("SE", "IUS");
-		campusCodeMap.put("SB", "IUSB");
-	}
+	@Autowired
+	private DataMapper dataMapper;
 
-	/**
-	 * @see org.kuali.mobility.alerts.service.AlertsService#findAllAlertsByCriteria(java.util.Map)
-	 */
-	@Override
-	public int findAlertCountByCriteria(Map<String, String> criteria) {
-		List<Alert> alerts = findAllAlertsByCriteria(criteria);
-		if (alerts != null && alerts.size() == 1) {
-			if (isAlertToReport(alerts.get(0))) {
-				return 1;
-			} else {
-				return 0;
-			}
-		}
-		if (alerts != null) {
-			return alerts.size();
-		}
-		return 0;
+	public AlertsServiceImpl() {
+		cachedAlerts = new ConcurrentHashMap<String, Alerts>();
 	}
 
 	@Override
-	public List<Alert> findAllAlertsByCriteria(Map<String, String> criteria) {
-		// Note: RI does not use the criteria parameter
-
-		if (criteria != null) {
-			String campus = criteria.get("campus");
-			if (campus != null && !"".equals(campus)) {
-				return findAllAlertsByCampus(campus);
-			} else {
-				return findAllAlertsByCampus("ALL");
-			}
-		} else {
-			return findAllAlertsByCampus("ALL");
-		}
-		// return
-		// findAllAlertsFromJson(configParamService.findConfigParamByName(CP_JSON_ALERTS_URL).getValue());
-	}
-
-	@Override
-	public List<Alert> findAllAlertsFromJson(String url) {
-		String json = HttpUtil.stringFromUrl(url);
-
-		if (json == null || "".equals(json)) {
-			return new ArrayList<Alert>();
+	public List<Alert> findAlertsByCampus(String campus) {
+		String selectedCampus = "ALL";
+		if (campus != null && !"".equals(campus.trim())) {
+			selectedCampus = campus;
 		}
 
-		return new JSONDeserializer<ArrayList<Alert>>().deserialize(json);
-	}
-
-	private List<Alert> findAllAlertsByCampus(String campus) {
-		List<Alert> campusStatuses = this.getAlertsByCode(campus);
+		List<Alert> campusStatuses = this.getAlertsByCode(selectedCampus);
 		if (campusStatuses != null && campusStatuses.size() > 1) {
-			List<Alert> uaStatuses = new ArrayList<Alert>();
 			List<Alert> filteredStatuses = new ArrayList<Alert>();
 			Iterator<Alert> iter = campusStatuses.iterator();
 			while (iter.hasNext()) {
 				Alert status = (Alert) iter.next();
 				if (isAlertToReport(status) && !filteredStatuses.contains(status)) {
 					filteredStatuses.add(status);
-					// } else if
-					// (campusCodeMap.get("UA").equals(status.getCampus())) {
-					// uaStatuses.add(status);
 				}
-			}
-			if (filteredStatuses.size() < 1) {
-				filteredStatuses.addAll(uaStatuses);
 			}
 			campusStatuses = filteredStatuses;
 		}
 		if (campusStatuses == null || campusStatuses.isEmpty()) {
 			List<Alert> alerts = new ArrayList<Alert>();
 			Alert alert = new Alert();
-			alert.setCampus("IU");
+			alert.setCampus("ALL");
 			alert.setKey(-1);
 			alert.setMobileText("Status is normal.");
 			alert.setPriority("1");
@@ -150,40 +86,65 @@ public class AlertsServiceImpl implements AlertsService {
 		}
 		return campusStatuses;
 	}
+	
+	@Override
+	public int findAlertCountByCampus(String campus) {
+		String selectedCampus = "ALL";
+		if (campus != null && !"".equals(campus.trim())) {
+			selectedCampus = campus;
+		}
 
-	private List<Alert> getAlertsByCode(String code) {
-		if ("ALL".equals(code)) {
-			List<Alert> foundAlerts = new ArrayList<Alert>();
-			for (String campus : campusCodeMap.keySet()) {
-				foundAlerts.addAll(getAlerts(campus));
+		List<Alert> campusStatuses = this.getAlertsByCode(selectedCampus);
+		if (campusStatuses != null && campusStatuses.size() > 1) {
+			List<Alert> filteredStatuses = new ArrayList<Alert>();
+			Iterator<Alert> iter = campusStatuses.iterator();
+			while (iter.hasNext()) {
+				Alert status = (Alert) iter.next();
+				if (isAlertToReport(status) && !filteredStatuses.contains(status)) {
+					filteredStatuses.add(status);
+				}
 			}
-			return foundAlerts;
+			campusStatuses = filteredStatuses;
+		}
+		if (campusStatuses == null || campusStatuses.isEmpty()) {
+			return 0;
 		} else {
-			return getAlerts(code);
+			return campusStatuses.size();
 		}
 	}
 
-	private List<Alert> getAlerts(String code) {
-		CampusAlerts alerts = cachedAlerts.get(code);
+	private List<Alert> getAlertsByCode(String campus) {
+		if ("ALL".equals(campus)) {
+			List<Alert> foundAlerts = new ArrayList<Alert>();
+			for (Campus toolCampus : campusService.findCampusesByTool("alerts")) {
+				foundAlerts.addAll(getAlerts(toolCampus.getCode()));
+			}
+			return foundAlerts;
+		} else {
+			return getAlerts(campus);
+		}
+	}
+
+	private List<Alert> getAlerts(String campus) {
+		Alerts alerts = cachedAlerts.get(campus);
 		if (alerts == null) {
-			// Entry does not yet exist.
-			alerts = new CampusAlerts();
-			CampusAlerts existing = cachedAlerts.putIfAbsent(code, alerts);
+			alerts = new Alerts();
+			Alerts existing = cachedAlerts.putIfAbsent(campus, alerts);
 			if (existing != null) {
 				alerts = existing;
 			}
 		}
-		Calendar now = Calendar.getInstance();
-		long updateInterval = 1000 * 60 * 5;
+		long updateInterval = 0;
 		try {
-			updateInterval = 1000 * 60 * Long.parseLong(configParamService.findValueByName("Alerts.CacheUpdate.Minute"));
+			if (cacheMinutes != null && !"".equals(cacheMinutes.trim())) {
+				updateInterval = 1000 * 60 * Long.parseLong(cacheMinutes);
+			}
 		} catch (Exception e) {
-			LOG.error("Update Interval for alerts cache is missing or not a number.  Using default of 5 minutes.", e);
+			updateInterval = 0;
 		}
-		if (alerts.getUpdateTime() + updateInterval < now.getTimeInMillis()) {
-			alerts.setAlerts(parseAlerts(code, false));
-			Calendar cal = Calendar.getInstance();
-			alerts.setUpdateTime(cal.getTimeInMillis());
+		if (alerts.getUpdateTime() + updateInterval < System.currentTimeMillis()) {
+			alerts.setAlerts(parseAlerts(campus));
+			alerts.setUpdateTime(System.currentTimeMillis());
 		}
 		return alerts.getAlerts();
 	}
@@ -192,69 +153,40 @@ public class AlertsServiceImpl implements AlertsService {
 		return alert.getType() != null && !alert.getType().equalsIgnoreCase("normal");
 	}
 
-	@SuppressWarnings("unchecked")
-	public List<Alert> parseAlerts(String campus, boolean ignoreXmlCampus) {
+	private List<Alert> parseAlerts(String campus) {
 		List<Alert> alerts = new ArrayList<Alert>();
-		try {
-			String url = configParamService.findValueByName("CAMPUS_STATUS_XML_URL") + campus;
-			if ("IN".equals(campus)) {
-				url = "http://www.iupui.edu/rss/jagalert_iu.xml";
-			} else if ("EA".equals(campus)) {
-				url = "http://www.iue.edu/emergency/feed.php";
-			}
-
-			Document doc = retrieveDocumentFromUrl(url, 5000, 5000);
-			if (doc != null) {
-				Element root = doc.getRootElement();
-				List<Element> items = root.getChildren("status");
-				for (Iterator<Element> iterator = items.iterator(); iterator.hasNext();) {
-					Element item = iterator.next();
-					String campusXml = item.getChildTextTrim("campus");
-					String compareCampus = campusCodeMap.get(campus);
-					if (ignoreXmlCampus || compareCampus.equalsIgnoreCase(campusXml) || campusCodeMap.get("UA").equals(campusXml)) {
-						Alert alert = new Alert();
-						alert.setCampus(item.getChildTextTrim("campus"));
-						alert.setMobileText(item.getChildTextTrim("mobile-text"));
-						alert.setPriority(item.getChildTextTrim("priority"));
-						alert.setTitle(item.getChildTextTrim("title"));
-						alert.setType(item.getChildTextTrim("type"));
-						alert.setUrl(item.getChildTextTrim("url"));
-						String keyStr = item.getChildTextTrim("key");
-						int key = -1;
-						if (keyStr != null && keyStr.length() > 0 && !keyStr.equals("null")) {
-							try {
-								key = Integer.parseInt(keyStr);
-							} catch (NumberFormatException e) {
-								LOG.error("Error parsing Alert key: (" + keyStr + ") for Alert: " + alert.getTitle(), e);
-							}
-						}
-						alert.setKey(key);
-						alerts.add(alert);
-					}
-				}
-			}
-		} catch (JDOMException e) {
-			LOG.error(e.getMessage(), e);
-		} catch (IOException e) {
-			LOG.error(e.getMessage(), e);
+		if (alertUrls == null || alertUrls.get(campus) == null) {
+			return alerts;
 		}
-
+		for (String sourceUrl : alertUrls.get(campus)) {
+			try {
+				URL url = new URL(sourceUrl);
+				if (dataMappingUrl != null && !"".equals(dataMappingUrl.trim())) {
+					alerts.addAll(dataMapper.mapData(alerts, url, new URL(dataMappingUrl)));
+				} else {
+					alerts.addAll(dataMapper.mapData(alerts, url, "alertMapping.xml"));
+				}
+			} catch (Exception e) {
+				LOG.error("errors", e);
+			}
+		}
 		return alerts;
 	}
 
-	protected Document retrieveDocumentFromUrl(String urlStr, int connectTimeout, int readTimeout) throws IOException, JDOMException {
-		SAXBuilder builder = new SAXBuilder();
-		Document doc = null;
-		URL urlObj = new URL(urlStr);
-		URLConnection urlConnection = urlObj.openConnection();
-		urlConnection.setConnectTimeout(connectTimeout);
-		urlConnection.setReadTimeout(readTimeout);
-
-		doc = builder.build(urlConnection.getInputStream());
-		return doc;
+	public void setAlertUrls(Map<String, List<String>> alertUrls) {
+		this.alertUrls = alertUrls;
 	}
 
-	public void setConfigParamService(ConfigParamService configParamService) {
-		this.configParamService = configParamService;
+	public void setCacheMinutes(String cacheMinutes) {
+		this.cacheMinutes = cacheMinutes;
 	}
+
+	public void setDataMappingUrl(String dataMappingUrl) {
+		this.dataMappingUrl = dataMappingUrl;
+	}
+
+	public void setDataMapper(DataMapper dataMapper) {
+		this.dataMapper = dataMapper;
+	}
+
 }

@@ -9,14 +9,18 @@
   permissions and limitations under the License.
 --%>
 
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
-<kme:page title="Session Feedback" id="conference" backButton="true" homeButton="true" cssFilename="conference">
+<spring:message code="session.feedbacktitle" var="title"/>
+<spring:message code="session.feedbackthanks" var="thanks"/>
+
+<kme:page title="${title}" id="conference" backButton="true" homeButton="true" cssFilename="conference">
 	<kme:content>
-		Thank you for your feedback! 
+		${thanks}
 	</kme:content>
 </kme:page>

@@ -8,11 +8,19 @@
   express or implied. See the License for the specific language governing
   permissions and limitations under the License.
 --%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
-<kme:page title="Attendee Details" id="attendeedetails" homeButton="true" backButton="true" cssFilename="conference">
+<spring:message code="attendeedetails.title" var="title"/>
+<spring:message code="label.mobile" var="mobile"/>
+<spring:message code="label.work" var="work"/>
+<spring:message code="label.jobtitle" var="jobtitle"/>
+<spring:message code="label.organization" var="org"/>
+<spring:message code="label.campus" var="campus"/>
+
+<kme:page title="${title}" id="attendeedetails" homeButton="true" backButton="true" cssFilename="conference">
 	<kme:content>
 	    <kme:listView id="attendeeList" filter="false" dataTheme="c" dataInset="false" cssClass="attendeeDetails">
 			<kme:listItem dataRole="list-divider">
@@ -20,9 +28,9 @@
 	        </kme:listItem>
 	        <kme:listItem>
 	        	<p>
-	        	<c:if test="${not empty attendee.institution}" >Title: ${attendee.title}<br/></c:if>
-	        	<c:if test="${not empty attendee.institution}" >Organization: ${attendee.institution}<br/></c:if>
-	        	<c:if test="${not empty attendee.institution}" >Campus: ${attendee.campus}<br/></c:if>
+	        	<c:if test="${not empty attendee.institution}" >${jobtitle}: ${attendee.title}<br/></c:if>
+	        	<c:if test="${not empty attendee.institution}" >${org}: ${attendee.institution}<br/></c:if>
+	        	<c:if test="${not empty attendee.institution}" >${campus}: ${attendee.campus}<br/></c:if>
 	        	<c:if test="${not empty attendee.workAddress1}" >${attendee.workAddress1}<br/></c:if>
 	        	<c:if test="${not empty attendee.workAddress2}" >${attendee.workAddress2}<br/></c:if>
 	        	<c:if test="${not empty attendee.workCity}" >${attendee.workCity} </c:if>
@@ -36,13 +44,13 @@
 	        <c:if test="${not empty attendee.cellPhone}" >
 				<kme:listItem cssClass="link-phone">
 					<c:set var="cellPhone"><c:out value="${attendee.cellPhone}" /></c:set>
-					<a href="tel:${cellPhone}">Mobile: <c:out value="${cellPhone}" /></a>
+					<a href="tel:${cellPhone}">${mobile}: <c:out value="${cellPhone}" /></a>
 				</kme:listItem>
 			</c:if>
 			 <c:if test="${not empty attendee.workPhone}" >
 				<kme:listItem cssClass="link-phone">
 					<c:set var="workPhone"><c:out value="${attendee.workPhone}" /></c:set>
-					<a href="tel:${workPhone}">Work: <c:out value="${workPhone}" /></a>
+					<a href="tel:${workPhone}">${work}: <c:out value="${workPhone}" /></a>
 				</kme:listItem>
 			</c:if>
 	        <c:if test="${not empty attendee.email}" >

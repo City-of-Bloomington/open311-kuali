@@ -15,7 +15,7 @@
 	<packaging>pom</packaging>
 	<url>http://kuali.org/mobility</url>
 	<inceptionYear>2011</inceptionYear>
-	<version>1.0.0-BETA-1</version>
+	<version>1.0.0-M2-RELEASE</version>
 	<scm>
 		<connection>scm:svn:https://svn.kuali.org/repos/mobility/trunk</connection>
 		<developerConnection>scm:svn:https://svn.kuali.org/repos/mobility/trunk</developerConnection>
@@ -24,50 +24,37 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<spring.version>3.0.5.RELEASE</spring.version>
+		<spring.version>3.1.0.RC1</spring.version>
 		<spring.security.version>3.0.5.RELEASE</spring.security.version>
-		<spring.security.oauth.version>1.0.0.M3</spring.security.oauth.version>
-		<rice.version>1.0.3-iu</rice.version>
-		<hsqldb.version>1.8.0.10</hsqldb.version>
 		<jetty.version>6.1.26</jetty.version>
 		<jdom.version>1.1</jdom.version>
 		<persistence-api.version>1.0</persistence-api.version>
 		<flexjson.version>2.1</flexjson.version>
+		<json-lib.version>2.3</json-lib.version>
 		<commons-httpclient.version>3.1</commons-httpclient.version>
 		<httpclient.version>4.0.1</httpclient.version>
 		<slf4j.version>1.5.6</slf4j.version>
 		<log4j.version>1.2.14</log4j.version>
 		<commons-logging.version>1.1.1</commons-logging.version>
 		<junit.version>4.8.2</junit.version>
+		<net.sf.ehcache.version>1.6.2</net.sf.ehcache.version> <!-- 2.4.6 is most recent but seems not to be in mvn repo -->
 		
-		<tool.shared.version>1.0.0-BETA-1</tool.shared.version>
-		<tool.user.version>1.0.0-BETA-1</tool.user.version>
-		<tool.admin.version>1.0.0-BETA-1</tool.admin.version>
-		<tool.alerts.version>1.0.0-BETA-1</tool.alerts.version>
-		<tool.askiu.version>1.0.0-BETA-1</tool.askiu.version>
-		<tool.athletics.version>1.0.0-BETA-1</tool.athletics.version>
-		<tool.bus.version>1.0.0-BETA-1</tool.bus.version>
-		<tool.classifieds.version>1.0.0-BETA-1</tool.classifieds.version>
-		<tool.computerlabs.version>1.0.0-BETA-1</tool.computerlabs.version>
-		<tool.conference.version>1.0.0-BETA-1</tool.conference.version>
-		<tool.coursedescriptions.version>1.0.0-BETA-1</tool.coursedescriptions.version>
-		<tool.configparams.version>1.0.0-BETA-1</tool.configparams.version>
-		<tool.dining.version>1.0.0-BETA-1</tool.dining.version>
-		<tool.email.version>1.0.0-BETA-1</tool.email.version>
-		<tool.emergencyinfo.version>1.0.0-BETA-1</tool.emergencyinfo.version>
-		<tool.events.version>1.0.0-BETA-1</tool.events.version>
-		<tool.feedback.version>1.0.0-BETA-1</tool.feedback.version>
-		<tool.itnotices.version>1.0.0-BETA-1</tool.itnotices.version>
-		<tool.knowledgebase.version>1.0.0-BETA-1</tool.knowledgebase.version>
-		<tool.maps.version>1.0.0-BETA-1</tool.maps.version>
-		<tool.news.version>1.0.0-BETA-1</tool.news.version>
-		<tool.people.version>1.0.0-BETA-1</tool.people.version>
-		<tool.sakai.version>1.0.0-BETA-1</tool.sakai.version>
-		<tool.socialmedia.version>1.0.0-BETA-1</tool.socialmedia.version>	
-		<tool.tours.version>1.0.0-BETA-1</tool.tours.version>
+		<tool.shared.version>1.0.0-M2-RELEASE</tool.shared.version>
+		<tool.admin.version>1.0.0-M2-RELEASE</tool.admin.version>
+		<tool.alerts.version>1.0.0-M2-RELEASE</tool.alerts.version>
+		<tool.computerlabs.version>1.0.0-M2-RELEASE</tool.computerlabs.version>
+		<tool.conference.version>1.0.0-M2-RELEASE</tool.conference.version>
+		<tool.configparams.version>1.0.0-M2-RELEASE</tool.configparams.version>
+		<tool.dining.version>1.0.0-M2-RELEASE</tool.dining.version>
+		<tool.emergencyinfo.version>1.0.0-M2-RELEASE</tool.emergencyinfo.version>
+		<tool.feedback.version>1.0.0-M2-RELEASE</tool.feedback.version>
+		<tool.maps.version>1.0.0-M2-RELEASE</tool.maps.version>
+		<tool.news.version>1.0.0-M2-RELEASE</tool.news.version>
 		
-		<iu.edu.es.espd.oauth-consumer.version>1.0.0</iu.edu.es.espd.oauth-consumer.version>
-		<ccl-oauth-consumer.version>1.0.0</ccl-oauth-consumer.version>
+		<security.authentication>1.0.0-M2-RELEASE</security.authentication>
+
+        <util.testing>1.0.0-M2-RELEASE</util.testing>
+        <util.webservice.adapter>1.0.0-M2-RELEASE</util.webservice.adapter>
 	</properties>
 	<profiles>
 		<profile>
@@ -76,68 +63,25 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<modules>
+                <!-- <module>util.testing</module> -->
+                <module>security.authentication</module>
+                <module>util.webservice.adapter</module>
 				<module>shared</module>
-				<module>user</module>
                 <module>admin</module>
 				<module>alerts</module>
-				<module>askiu</module>
-				<module>athletics</module>
-                <module>bus</module>
-                <module>classifieds</module>
 				<module>computerlabs</module>
                 <module>conference</module>
-                <module>coursedescriptions</module>
 				<module>configparams</module>
                 <module>dining</module>
-                <module>email</module>
 				<module>emergencyinfo</module>
-				<module>events</module>
                 <module>feedback</module>
-				<module>itnotices</module>
-				<module>knowledgebase</module>
 				<module>maps</module>
 				<module>news</module>
-				<module>people</module>
-				<module>sakai</module>
-				<module>socialmedia</module>
-				<module>tours</module>
 				<module>mdot-webapp</module>
 			</modules>
 		</profile>
-		<profile>
-			<id>mdot-admin</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-			<modules>
-				<module>shared</module>
-				<module>user</module>
-				<module>alerts</module>
-				<module>askiu</module>
-				<module>athletics</module>
-                <module>bus</module>
-                <module>classifieds</module>
-				<module>computerlabs</module>
-                <module>conference</module>
-                <module>coursedescriptions</module>
-				<module>configparams</module>
-                <module>dining</module>
-                <module>email</module>
-				<module>emergencyinfo</module>
-				<module>events</module>
-                <module>feedback</module>
-				<module>itnotices</module>
-				<module>knowledgebase</module>
-				<module>maps</module>
-				<module>news</module>
-				<module>people</module>
-				<module>sakai</module>
-				<module>socialmedia</module>
-				<module>tours</module>
-				<module>mdotadmin-webapp</module>
-			</modules>
-		</profile>
-	</profiles>
+	</profiles> 
+	  
     <repositories>
         <repository>
             <id>kuali.nexus</id>
@@ -151,6 +95,7 @@
             </snapshots>
         </repository>
     </repositories>
+    
 	<licenses>
 		<license>
 			<name>Educational Community License, Version 2.0</name>
@@ -160,22 +105,32 @@
 	</licenses>
 	<dependencyManagement>
 		<dependencies>
+			<!-- Cache dependencies -->
+			<dependency>
+			    <groupId>net.sf.ehcache</groupId>
+			    <artifactId>ehcache</artifactId>
+			    <version>${net.sf.ehcache.version}</version>
+			</dependency>
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>util.testing</artifactId>
+                <version>${util.testing}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>security.authentication</artifactId>
+                <version>${security.authentication}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>util.webservice.adapter</artifactId>
+                <version>${util.webservice.adapter}</version>
+            </dependency>
 			<!-- Persistence dependencies -->
 			<dependency>
 				<groupId>javax.persistence</groupId>
 				<artifactId>persistence-api</artifactId>
 				<version>${persistence-api.version}</version>
-			</dependency>
-			<!-- IU OAuth dependencies -->
-			<dependency>
-				<groupId>edu.iu.es.espd</groupId>
-				<artifactId>oauth-consumer</artifactId>
-				<version>${iu.edu.es.espd.oauth-consumer.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>edu.iu.es.espd</groupId>
-				<artifactId>ccl-oauth-consumer</artifactId>
-				<version>${ccl-oauth-consumer.version}</version>
 			</dependency>
 			<!-- Service dependencies -->
 			<dependency>
@@ -195,13 +150,13 @@
 			</dependency>
 			<dependency>
 				<groupId>org.kuali.mobility</groupId>
-				<artifactId>user-api</artifactId>
-				<version>${tool.user.version}</version>
+				<artifactId>shared-web</artifactId>
+				<version>${tool.shared.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.kuali.mobility</groupId>
-				<artifactId>user-impl</artifactId>
-				<version>${tool.user.version}</version>
+				<artifactId>shared-webapp</artifactId>
+				<version>${tool.shared.version}</version>
 			</dependency>
             <!-- Admin Service -->
             <dependency>
@@ -245,111 +200,6 @@
 				<artifactId>alerts-webapp</artifactId>
 				<version>${tool.alerts.version}</version>
 			</dependency>
-			<!-- AskIU Service -->
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>askiu-api</artifactId>
-				<version>${tool.askiu.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>askiu-impl</artifactId>
-				<version>${tool.askiu.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>askiu-web</artifactId>
-				<version>${tool.askiu.version}</version>
-			</dependency>
-            <dependency>
-                <groupId>org.kuali.mobility</groupId>
-                <artifactId>askiu-webapp</artifactId>
-                <version>${tool.askiu.version}</version>
-            </dependency>
-            <!-- Athletics Service -->
-            <dependency>
-                <groupId>org.kuali.mobility</groupId>
-                <artifactId>athletics-api</artifactId>
-                <version>${tool.athletics.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.kuali.mobility</groupId>
-                <artifactId>athletics-impl</artifactId>
-                <version>${tool.athletics.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.kuali.mobility</groupId>
-                <artifactId>athletics-web</artifactId>
-                <version>${tool.athletics.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.kuali.mobility</groupId>
-                <artifactId>athletics-webapp</artifactId>
-                <version>${tool.athletics.version}</version>
-            </dependency>
-   			<!-- Bus Service -->
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>bus-api</artifactId>
-				<version>${tool.bus.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>bus-impl</artifactId>
-				<version>${tool.bus.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>bus-web</artifactId>
-				<version>${tool.bus.version}</version>
-			</dependency>
-            <dependency>
-                <groupId>org.kuali.mobility</groupId>
-                <artifactId>bus-webapp</artifactId>
-                <version>${tool.bus.version}</version>
-            </dependency>
-   			<!-- Classifieds Service -->
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>classifieds-api</artifactId>
-				<version>${tool.classifieds.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>classifieds-impl</artifactId>
-				<version>${tool.classifieds.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>classifieds-web</artifactId>
-				<version>${tool.classifieds.version}</version>
-			</dependency>
-            <dependency>
-                <groupId>org.kuali.mobility</groupId>
-                <artifactId>classifieds-webapp</artifactId>
-                <version>${tool.classifieds.version}</version>
-            </dependency>
-   			<!-- Email Service -->
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>email-api</artifactId>
-				<version>${tool.email.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>email-impl</artifactId>
-				<version>${tool.email.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>email-web</artifactId>
-				<version>${tool.email.version}</version>
-			</dependency>
-            <dependency>
-                <groupId>org.kuali.mobility</groupId>
-                <artifactId>email-webapp</artifactId>
-                <version>${tool.email.version}</version>
-            </dependency>            
 			<!-- Computer Labs Service -->
 			<dependency>
 				<groupId>org.kuali.mobility</groupId>
@@ -391,27 +241,6 @@
                 <groupId>org.kuali.mobility</groupId>
                 <artifactId>conference-webapp</artifactId>
                 <version>${tool.conference.version}</version>
-            </dependency>
-            <!-- CourseDescriptions Service -->
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>coursedescriptions-api</artifactId>
-				<version>${tool.coursedescriptions.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>coursedescriptions-impl</artifactId>
-				<version>${tool.coursedescriptions.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>coursedescriptions-web</artifactId>
-				<version>${tool.coursedescriptions.version}</version>
-			</dependency>
-            <dependency>
-                <groupId>org.kuali.mobility</groupId>
-                <artifactId>coursedescriptions-webapp</artifactId>
-                <version>${tool.coursedescriptions.version}</version>
             </dependency>
 			<!-- Configuration Parameters Service -->
 			<dependency>
@@ -471,27 +300,6 @@
                 <artifactId>emergencyinfo-webapp</artifactId>
                 <version>${tool.emergencyinfo.version}</version>
             </dependency>
-			<!-- Events Service -->
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>events-api</artifactId>
-				<version>${tool.events.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>events-impl</artifactId>
-				<version>${tool.events.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>events-web</artifactId>
-				<version>${tool.events.version}</version>
-			</dependency>
-            <dependency>
-                <groupId>org.kuali.mobility</groupId>
-                <artifactId>events-webapp</artifactId>
-                <version>${tool.events.version}</version>
-            </dependency>
             <!-- Feedback Service -->
             <dependency>
                 <groupId>org.kuali.mobility</groupId>
@@ -512,48 +320,6 @@
                 <groupId>org.kuali.mobility</groupId>
                 <artifactId>feedback-webapp</artifactId>
                 <version>${tool.feedback.version}</version>
-            </dependency>
-			<!-- IT Notices Service -->
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>itnotices-api</artifactId>
-				<version>${tool.itnotices.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>itnotices-impl</artifactId>
-				<version>${tool.itnotices.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>itnotices-web</artifactId>
-				<version>${tool.itnotices.version}</version>
-			</dependency>
-			<dependency>
-                <groupId>org.kuali.mobility</groupId>
-                <artifactId>itnotices-webapp</artifactId>
-                <version>${tool.itnotices.version}</version>
-            </dependency>
-			<!-- Knowledge Base Service -->
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>knowledgebase-api</artifactId>
-				<version>${tool.knowledgebase.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>knowledgebase-impl</artifactId>
-				<version>${tool.knowledgebase.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>knowledgebase-web</artifactId>
-				<version>${tool.knowledgebase.version}</version>
-			</dependency>
-            <dependency>
-                <groupId>org.kuali.mobility</groupId>
-                <artifactId>knowledgebase-webapp</artifactId>
-                <version>${tool.knowledgebase.version}</version>
             </dependency>
 			<!-- Maps Service -->
 			<dependency>
@@ -596,90 +362,6 @@
                 <groupId>org.kuali.mobility</groupId>
                 <artifactId>news-webapp</artifactId>
                 <version>${tool.news.version}</version>
-            </dependency>
-			<!-- People Service -->
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>people-api</artifactId>
-				<version>${tool.people.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>people-impl</artifactId>
-				<version>${tool.people.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>people-web</artifactId>
-				<version>${tool.people.version}</version>
-			</dependency>
-            <dependency>
-                <groupId>org.kuali.mobility</groupId>
-                <artifactId>people-webapp</artifactId>
-                <version>${tool.people.version}</version>
-            </dependency>
-			<!-- Sakai Service -->
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>sakai-api</artifactId>
-				<version>${tool.sakai.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>sakai-impl</artifactId>
-				<version>${tool.sakai.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>sakai-web</artifactId>
-				<version>${tool.sakai.version}</version>
-			</dependency>
-            <dependency>
-                <groupId>org.kuali.mobility</groupId>
-                <artifactId>sakai-webapp</artifactId>
-                <version>${tool.sakai.version}</version>
-            </dependency>
-			<!-- Social Media Service -->
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>socialmedia-api</artifactId>
-				<version>${tool.socialmedia.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>socialmedia-impl</artifactId>
-				<version>${tool.socialmedia.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>socialmedia-web</artifactId>
-				<version>${tool.socialmedia.version}</version>
-			</dependency>
-            <dependency>
-                <groupId>org.kuali.mobility</groupId>
-                <artifactId>socialmedia-webapp</artifactId>
-                <version>${tool.socialmedia.version}</version>
-            </dependency>
-			<!-- Tours Service -->
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>tours-api</artifactId>
-				<version>${tool.tours.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>tours-impl</artifactId>
-				<version>${tool.tours.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>tours-web</artifactId>
-				<version>${tool.tours.version}</version>
-			</dependency>
-            <dependency>
-                <groupId>org.kuali.mobility</groupId>
-                <artifactId>tours-webapp</artifactId>
-                <version>${tool.tours.version}</version>
             </dependency>
 			<!-- Spring dependencies -->
 			<dependency>
@@ -725,12 +407,12 @@
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-web</artifactId>
-				<version>${spring.version}</version>
+				<version>3.0.5.RELEASE</version>
 			</dependency>
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-webmvc</artifactId>
-				<version>${spring.version}</version>
+				<version>3.0.5.RELEASE</version>
 			</dependency>
 			<dependency>
 				<groupId>org.springframework</groupId>
@@ -752,323 +434,21 @@
 				<artifactId>spring-security-oauth</artifactId>
 				<version>${spring.security.oauth.version}</version>
 			</dependency>
-			<!-- Rice dependencies -->
+			<!-- Database dependencies -->
 			<dependency>
 				<groupId>hibernate</groupId>
 				<artifactId>hibernate-entitymanager</artifactId>
 				<version>3.4.0.GA</version>
 			</dependency>
 			<dependency>
-				<groupId>com.experlog</groupId>
-				<artifactId>xapool</artifactId>
-				<version>1.5.0</version>
-			</dependency>
+			    <groupId>org.apache.derby</groupId>
+			    <artifactId>derby</artifactId>
+			    <version>10.8.1.2</version>
+			</dependency>			 
 			<dependency>
-				<groupId>commons-fileupload</groupId>
-				<artifactId>commons-fileupload</artifactId>
-				<version>1.2.1</version>
-			</dependency>
-			<dependency>
-				<groupId>quartz</groupId>
-				<artifactId>quartz</artifactId>
-				<version>1.8.3</version>
-			</dependency>
-			<dependency>
-				<groupId>dwr</groupId>
-				<artifactId>dwr</artifactId>
-				<version>1.1.3</version>
-			</dependency>
-			<dependency>
-				<groupId>com.oracle</groupId>
-				<artifactId>ojdbc6</artifactId>
-				<version>11.2.0.1.0</version>
-			</dependency>
-			<dependency>
-				<groupId>javax.transaction</groupId>
-				<artifactId>jta</artifactId>
-				<version>1.1</version>
-			</dependency>
-			<dependency>
-				<groupId>jotm</groupId>
-				<artifactId>jotm</artifactId>
-				<version>2.0.10</version>
-			</dependency>
-			<dependency>
-				<groupId>org.kuali.rice</groupId>
-				<artifactId>rice-extras</artifactId>
-				<version>${rice.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.kuali.rice</groupId>
-				<artifactId>rice-api</artifactId>
-				<version>${rice.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>javax.resource</groupId>
-				<artifactId>connector-api</artifactId>
-				<version>1.5</version>
-			</dependency>
-			<dependency>
-				<groupId>springmodules</groupId>
-				<artifactId>springmodules</artifactId>
-				<version>0.8</version>
-			</dependency>
-			<dependency>
-			    <groupId>cglib</groupId>
-			    <artifactId>cglib</artifactId>
-			    <version>2.2.2</version>
-			</dependency>
-			<dependency>
-			    <groupId>commons-dbcp</groupId>
-			    <artifactId>commons-dbcp</artifactId>
-			    <version>1.4</version>
-			</dependency>
-			<dependency>
-				<groupId>org.kuali.rice</groupId>
-				<artifactId>rice-impl</artifactId>
-				<version>${rice.version}</version>
-				<exclusions>
-					<exclusion>
-						<groupId>opensymphony</groupId>
-						<artifactId>oscache</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>bouncycastle</groupId>
-						<artifactId>bcprov-jdk15</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>org.apache.cxf</groupId>
-						<artifactId>cxf-rt-frontend-jaxws</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>org.apache.cxf</groupId>
-						<artifactId>cxf-rt-frontend-simple</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>org.apache.cxf</groupId>
-						<artifactId>cxf-rt-transports-http</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>org.apache.cxf</groupId>
-						<artifactId>cxf-rt-databinding-jaxb</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>org.apache.cxf</groupId>
-						<artifactId>cxf-rt-ws-security</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>org.apache.cxf</groupId>
-						<artifactId>cxf-rt-databinding-aegis</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>org.acegisecurity</groupId>
-						<artifactId>acegi-security</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>org.acegisecurity</groupId>
-						<artifactId>acegi-security-cas</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>cas</groupId>
-						<artifactId>casclient</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>org.jasig.cas</groupId>
-						<artifactId>cas-client-core</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>org.codehaus.groovy</groupId>
-						<artifactId>groovy-all-minimal</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>org.apache.derby</groupId>
-						<artifactId>derbynet</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>org.apache.derby</groupId>
-						<artifactId>derbyclient</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>javax.mail</groupId>
-						<artifactId>mail</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>jmeter</groupId>
-						<artifactId>jmeter</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>org.mortbay.jetty</groupId>
-						<artifactId>jetty</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>javax.servlet</groupId>
-						<artifactId>jstl</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>taglibs</groupId>
-						<artifactId>standard</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>tomcat</groupId>
-						<artifactId>jasper-compiler</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>tomcat</groupId>
-						<artifactId>jasper-runtime</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>tomcat</groupId>
-						<artifactId>jasper-compiler-jdt</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>xalan</groupId>
-						<artifactId>xalan</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>junit</groupId>
-						<artifactId>junit</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>commons-logging</groupId>
-						<artifactId>commons-logging</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>org.springframework</groupId>
-						<artifactId>spring-aop</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>org.springframework</groupId>
-						<artifactId>spring-beans</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>org.springframework</groupId>
-						<artifactId>spring-context</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>org.springframework</groupId>
-						<artifactId>spring-core</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>org.springframework</groupId>
-						<artifactId>spring-support</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>org.springframework</groupId>
-						<artifactId>spring-dao</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>org.springframework</groupId>
-						<artifactId>spring-jdbc</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>org.springframework</groupId>
-						<artifactId>spring-jpa</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>org.springframework</groupId>
-						<artifactId>spring-jmx</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>org.springframework</groupId>
-						<artifactId>spring-web</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>org.springframework</groupId>
-						<artifactId>spring-webmvc</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>org.springframework</groupId>
-						<artifactId>spring-mock</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>commons-lang</groupId>
-						<artifactId>commons-lang</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>commons-beanutils</groupId>
-						<artifactId>commons-beanutils</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>commons-httpclient</groupId>
-						<artifactId>commons-httpclient</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>commons-io</groupId>
-						<artifactId>commons-io</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>backport-util-concurrent</groupId>
-						<artifactId>backport-util-concurrent</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>log4j</groupId>
-						<artifactId>log4j</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>org.apache.derby</groupId>
-						<artifactId>derby</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>mysql</groupId>
-						<artifactId>mysql-connector-java</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>struts</groupId>
-						<artifactId>struts</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>struts</groupId>
-						<artifactId>struts-el</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>displaytag</groupId>
-						<artifactId>displaytag</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>com.thoughtworks.xstream</groupId>
-						<artifactId>xstream</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>dwr</groupId>
-						<artifactId>dwr</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>htmlunit</groupId>
-						<artifactId>htmlunit</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>opensymphony</groupId>
-						<artifactId>quartz</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>bsf</groupId>
-						<artifactId>bsf</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>bcel</groupId>
-						<artifactId>bcel</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>xerces</groupId>
-						<artifactId>xercesImpl</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>xml-apis</groupId>
-						<artifactId>xml-apis</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>jdom</groupId>
-						<artifactId>jdom</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>commons-codec</groupId>
-						<artifactId>commons-codec</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>javax.servlet</groupId>
-						<artifactId>servlet-api</artifactId>
-					</exclusion>
-				</exclusions>
+			    <groupId>mysql</groupId>
+			    <artifactId>mysql-connector-java</artifactId>
+			    <version>5.1.18</version>
 			</dependency>
 			<!-- JSON dependencies -->
 			<dependency>
@@ -1076,6 +456,11 @@
 				<artifactId>flexjson</artifactId>
 				<version>${flexjson.version}</version>
 			</dependency>
+	        <dependency>
+		        <groupId>net.sf.json-lib</groupId>
+		        <artifactId>json-lib</artifactId>
+				<version>${json-lib.version}</version>
+	        </dependency>
 			<!-- XML dependencies -->
 			<dependency>
 				<groupId>org.jdom</groupId>
@@ -1092,12 +477,6 @@
 				<groupId>org.apache.httpcomponents</groupId>
 				<artifactId>httpclient</artifactId>
 				<version>${httpclient.version}</version>
-			</dependency>
-			<!-- Testdrive dependencies -->
-			<dependency>
-				<groupId>hsqldb</groupId>
-				<artifactId>hsqldb</artifactId>
-				<version>${hsqldb.version}</version>
 			</dependency>
 			<!-- Logging dependencies -->
 			<dependency>
@@ -1242,6 +621,5 @@
 	</reporting>
 	<modules>
 		<module>mdot-webapp</module>
-		<!-- <module>mdotadmin-webapp</module> -->
 	</modules>
 </project>

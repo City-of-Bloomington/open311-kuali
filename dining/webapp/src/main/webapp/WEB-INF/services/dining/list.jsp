@@ -9,12 +9,15 @@
   permissions and limitations under the License.
 --%>
 
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
-<kme:page title="Dining Services" id="dining" backButton="true" homeButton="true" cssFilename="dining">
+<spring:message code="dining.title" var="title"/>
+
+<kme:page title="${title}" id="dining" backButton="true" homeButton="true" cssFilename="dining">
 	<kme:content>
 		<kme:listView id="menulist" dataTheme="c" dataDividerTheme="b" filter="false">
 			<script type="text/javascript">
@@ -31,9 +34,7 @@
 						<p class="wrap">\${priceFormatted}</p>
       				</li>
 				{{/each}}
-			</script>
-			
-			
+			</script>			
 			<%--
 			<c:choose>
 				<c:when test="${not empty menus}">

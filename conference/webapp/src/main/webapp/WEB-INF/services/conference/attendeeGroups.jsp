@@ -13,8 +13,11 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
-<kme:page title="Attendee List" id="conference" backButton="true"
+<spring:message code="attendeelist.title" var="title"/>
+
+<kme:page title="${title}" id="conference" backButton="true"
 	homeButton="true">
 	<kme:content>
 		<kme:listView>

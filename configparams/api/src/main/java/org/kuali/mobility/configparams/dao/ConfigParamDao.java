@@ -19,12 +19,35 @@ import java.util.List;
 
 import org.kuali.mobility.configparams.entity.ConfigParam;
 
+/**
+ * Interface for a contract for manipulating configuration parameters
+ * @author Kuali Mobility Team (moblitiy.collab@kuali.org)
+ *
+ */
 public interface ConfigParamDao {
 	
+	/**
+	 * @param id the id of the ConfigParam to retrieve
+	 * @return the ConfigParam matching the id
+	 */
     public ConfigParam findConfigParamById(Long id);
+    /**
+     * @param name the name of the ConfigParam to retrieve
+     * @return the ConfigParam matching the name
+     */
     public ConfigParam findConfigParamByName(String name);
+    /**
+     * @param configParam the ConfigParam to save
+     * @return the id of the saved ConfigParam
+     */
     public Long saveConfigParam(ConfigParam configParam);
+    /**
+     * @return a list of all configuration parameters
+     */
     public List<ConfigParam> findAllConfigParam();
+    /**
+     * @param id the id of the ConfigParam to delete
+     */
     public void deleteConfigParamById(Long id);
     
 }

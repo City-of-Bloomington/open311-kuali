@@ -45,7 +45,6 @@ public class Constants {
 	}
 	
 	public enum DateFormat {
-		
 		queryStringDateFormat("yyyyMMdd"),
 		displayDateFormat("MMMM dd, yyyy"),
 		buttonDateFormat("MMM dd");
@@ -59,13 +58,10 @@ public class Constants {
 		public SimpleDateFormat getFormat() {
 			return new SimpleDateFormat(format);
 		}
-		
 	}
 	
 	public enum FileType {
-		
 		GENERIC, IMAGE, VIDEO, TEXT, PRESENTATION, SPREADSHEET, PDF, AUDIO, LINK, FOLDER, COMPRESSED;
-	
 	}
 		
 	public enum FileTypes {
@@ -122,7 +118,6 @@ public class Constants {
 		public FileType getFileType() {
 			return fileType;
 		}
-		
 	}
 	
 }

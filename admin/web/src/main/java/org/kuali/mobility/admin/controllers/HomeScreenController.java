@@ -31,15 +31,11 @@ public class HomeScreenController {
     
     @Autowired
     private AdminService adminService;
-    public void setAdminService(AdminService adminService) {
-        this.adminService = adminService;
-    }
     
     @RequestMapping(value = "home.json", method = RequestMethod.GET, headers = "Accept=application/json")
     @ResponseBody
     public String getHomeScreenJson() {
-    	HomeScreen home = new HomeScreen();
-    	
+    	HomeScreen home = new HomeScreen();    	
     	return new JSONSerializer().exclude("*.class").include("tools").serialize(home);
     }
 

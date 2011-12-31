@@ -22,37 +22,35 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
 import flexjson.JSONSerializer;
 
-@Entity(name="MaintEmergencyInfo")
-@Table(name="EM_INFO_MAINT_T")
+@Entity
+@Table(name="KME_EM_INFO_T")
 public class EmergencyInfo implements Serializable {
 
     private static final long serialVersionUID = 8753764116073085733L;
 
     @Id
-    @SequenceGenerator(name="em_info_maint_sequence", sequenceName="SEQ_EM_INFO_MAINT_T", initialValue=1000, allocationSize=1)
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="em_info_maint_sequence")
-    @Column(name="EM_INFO_ID")
+	@GeneratedValue(strategy = GenerationType.TABLE)
+    @Column(name="ID")
     private Long emergencyInfoId;
 
-    @Column(name="EM_INFO_TYPE")
+    @Column(name="TYP")
 	private String type;
 
-    @Column(name="TITLE")
+    @Column(name="TTL")
     private String title;
 
-    @Column(name="LINK")
+    @Column(name="LNK")
 	private String link;
 
-    @Column(name="CAMPUS")
+    @Column(name="CMPS")
     private String campus;
     
-    @Column(name="EM_INFO_ORDER")
+    @Column(name="ORDR")
     private int order;
 
     @Version

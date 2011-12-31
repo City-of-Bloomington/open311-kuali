@@ -24,46 +24,46 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
-@Entity(name="HomeTool")
-@Table(name="HOME_TOOL_T")
+/**
+ * Defines an object to link HomeScreen objects with Tool objects
+ * @author Kuali Mobility Team (moblitiy.collab@kuali.org)
+ */
+@Entity
+@Table(name="KME_HM_TL_T")
 public class HomeTool implements Serializable, Comparable<HomeTool> {
 	
 	private static final long serialVersionUID = -8942674782383943102L;
 
 	@Id
-    @SequenceGenerator(name="home_tool_sequence", sequenceName="SEQ_HOME_TOOL_T", initialValue=1000, allocationSize=1)
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="home_tool_sequence")
-    @Column(name="HOME_TOOL_ID")
+	@GeneratedValue(strategy = GenerationType.TABLE)
+    @Column(name="ID")
     private Long homeToolId;
 	
-    @Column(name="HOME_ID", insertable=false, updatable=false)
+    @Column(name="HM_SCRN_ID", insertable=false, updatable=false)
     private Long homeScreenId;
 	
-    @Column(name="TOOL_ID", insertable=false, updatable=false)
+    @Column(name="TL_ID", insertable=false, updatable=false)
     private Long toolId;
 	
 	@Column(name="ORDR")
 	private int order;
+		
+	@ManyToOne
+	@JoinColumn(name="HM_SCRN_ID")
+	private HomeScreen homeScreen;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name="TL_ID")
+	private Tool tool;
 	
 	@Version
     @Column(name="VER_NBR")
     private Long versionNumber;
-	
-	@ManyToOne
-	@JoinColumn(name="HOME_ID")
-	private HomeScreen homeScreen;
-	
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name="TOOL_ID")
-	private Tool tool;
-	
-	public HomeTool() {
-		
-	}
+
+	public HomeTool() {}
 	
 	public HomeTool(HomeScreen homeScreen, Tool tool, int order) {
 		this.homeScreen = homeScreen;
@@ -89,10 +89,17 @@ public class HomeTool implements Serializable, Comparable<HomeTool> {
 		this.toolId = toolId;
 	}
 
+	/**
+	 * @return the display order of the Tool for the associated HomeScreen
+	 */
 	public int getOrder() {
 		return order;
 	}
 
+	/**
+	 * set the display order of the Tool for the associated HomeScreen
+	 * @param order
+	 */
 	public void setOrder(int order) {
 		this.order = order;
 	}
@@ -113,24 +120,45 @@ public class HomeTool implements Serializable, Comparable<HomeTool> {
 		this.homeToolId = homeToolId;
 	}
 
+	/**
+	 * @return the HomeScreen associated with the Tool
+	 */
 	public HomeScreen getHomeScreen() {
 		return homeScreen;
 	}
 
+	/**
+	 * set the HomeScreen to associate with the Tool
+	 * @param homeScreen
+	 */
 	public void setHomeScreen(HomeScreen homeScreen) {
 		this.homeScreen = homeScreen;
 	}
 
+	/**
+	 * @return the Tool associated with the HomeScreen
+	 */
 	public Tool getTool() {
 		return tool;
 	}
 
+	/**
+	 * set the Tool to associate with the HomeScreen
+	 * @param tool
+	 */
 	public void setTool(Tool tool) {
 		this.tool = tool;
 	}
 
 	@Override
-	public int compareTo(HomeTool arg0) {
-		return order - arg0.order;
+	public int compareTo(HomeTool that) {
+		if (that == null) {
+			return -1;
+		}
+		if (this.order == that.order) {
+			return 0;
+		}
+		return this.order < that.order ? -1 : 1;
 	}	
+	
 }

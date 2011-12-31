@@ -30,9 +30,6 @@ public class NotificationServiceImpl implements NotificationService {
 
 	@Autowired
 	private NotificationDao notificationDao;	
-	public void setNotificationDao(NotificationDao notificationDao) {
-		this.notificationDao = notificationDao;
-	}
 
 	@Override
 	@Transactional

@@ -34,15 +34,11 @@ public class DiningController {
     
     @Autowired
     private DiningService diningService;
-	public void setDiningService(DiningService diningService) {
-        this.diningService = diningService;
-    }
     
     @RequestMapping(method = RequestMethod.GET)
     public String getList(Model uiModel) {
-//    	Disable static rendering data source
-//    	List<Menu> menus = diningService.getMenus("SE");
-//    	uiModel.addAttribute("menus", menus);
+    	List<Menu> menus = diningService.getMenus("SE");
+    	uiModel.addAttribute("menus", menus);
     	return "dining/list";
     }
     
@@ -52,4 +48,5 @@ public class DiningController {
     	List<Menu> menus = diningService.getMenus("SE");
     	return new JSONSerializer().exclude("*.class").deepSerialize(menus);
     }
+
 }

@@ -19,48 +19,18 @@
 	<parent>
         <artifactId>mobility</artifactId>
         <groupId>org.kuali.mobility</groupId>
-        <version>1.0.0-BETA-1</version>
+        <version>1.0.0-M2-RELEASE</version>
    	</parent>
 	<dependencies>
-		<!-- IU OAuth dependencies -->
-		<dependency>
-			<groupId>edu.iu.es.espd</groupId>
-			<artifactId>oauth-consumer</artifactId>
+		<dependency> 
+		    <groupId>net.sf.ehcache</groupId>
+		    <artifactId>ehcache</artifactId>
 		</dependency>
-        <dependency>
-            <groupId>edu.iu.es.espd</groupId>
-            <artifactId>ccl-oauth-consumer</artifactId>
-        </dependency>
-		<!-- CAS dependencies -->
-		<dependency>
-    	<groupId>org.springframework.security</groupId>
-    		<artifactId>spring-security-cas-client</artifactId>
-    		<version>3.0.5.RELEASE</version>
-		</dependency>
-		<dependency>
-			<groupId>org.jasig.cas</groupId>
-			<artifactId>cas-client-core</artifactId>
-			<version>3.1.10</version>
-		</dependency>
-        <dependency>
-            <groupId>edu.iu.es.esi</groupId>
-            <artifactId>casfilter</artifactId>
-            <version>1.11</version>
-        </dependency>        
         <!-- Webapp dependencies -->
-		<dependency>
-		    <groupId>cglib</groupId>
-		    <artifactId>cglib</artifactId>
-		</dependency>
-		<dependency>
-		    <groupId>commons-dbcp</groupId>
-		    <artifactId>commons-dbcp</artifactId>
-		</dependency>
    		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 			<version>1.1.0</version>
-			<!-- <scope>provided</scope> -->
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet.jsp</groupId>
@@ -71,21 +41,18 @@
 		<dependency>
 			<groupId>taglibs</groupId>
 			<artifactId>standard</artifactId>
-			<!-- <scope>provided</scope> -->
 			<version>1.1.1</version>
 		</dependency>
 		<dependency>
 			<groupId>taglibs</groupId>
 			<artifactId>c</artifactId>
 			<version>1.1.1</version>
-			<!-- <scope>provided</scope> -->
 			<type>tld</type>
 		</dependency>
 		<dependency>
 			<groupId>taglibs</groupId>
 			<artifactId>fmt</artifactId>
 			<version>1.1.1</version>
-			<!-- <scope>provided</scope> -->
 			<type>tld</type>
 		</dependency>
 		<dependency>
@@ -95,6 +62,41 @@
 			<scope>provided</scope>
 			<type>jar</type>
 		</dependency>
+		<dependency>
+		    <groupId>org.apache.cxf</groupId>
+		    <artifactId>cxf-bundle</artifactId>
+		    <version>2.4.2</version>
+		</dependency>
+		<dependency>
+		    <groupId>commons-dbcp</groupId>
+		    <artifactId>commons-dbcp</artifactId>
+		    <version>1.4</version>
+		</dependency>
+		<dependency>
+			<groupId>hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>3.4.0.GA</version>
+		</dependency>
+		<dependency>
+		    <groupId>mysql</groupId>
+		    <artifactId>mysql-connector-java</artifactId>
+		    <version>5.1.18</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.apache.derby</groupId>
+		    <artifactId>derby</artifactId>
+		    <version>10.8.1.2</version>
+		</dependency>
+		<dependency>
+		    <groupId>cglib</groupId>
+		    <artifactId>cglib</artifactId>
+		    <version>2.2.2</version>
+		</dependency>		
+		<dependency>
+		    <groupId>commons-fileupload</groupId>
+		    <artifactId>commons-fileupload</artifactId>
+		    <version>1.2.2</version>
+		</dependency>
         <!-- Logging dependencies -->
         <dependency>
             <groupId>log4j</groupId>
@@ -103,11 +105,19 @@
         <!-- Service dependencies -->
 		<dependency>
 			<groupId>org.kuali.mobility</groupId>
+			<artifactId>security.authentication</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.kuali.mobility</groupId>
 			<artifactId>shared-api</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.kuali.mobility</groupId>
 			<artifactId>shared-impl</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.kuali.mobility</groupId>
+			<artifactId>shared-web</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.kuali.mobility</groupId>
@@ -125,13 +135,6 @@
             <groupId>org.kuali.mobility</groupId>
             <artifactId>admin-web</artifactId>
         </dependency>
-        <dependency> 
-            <groupId>org.kuali.mobility</groupId>
-            <artifactId>admin-webapp</artifactId>
-			<version>${tool.admin.version}</version>
-            <type>war</type>
-            <scope>runtime</scope>
-        </dependency>   
         <dependency>
             <groupId>org.kuali.mobility</groupId>
             <artifactId>dining-api</artifactId>
@@ -144,32 +147,6 @@
             <groupId>org.kuali.mobility</groupId>
             <artifactId>dining-web</artifactId>
         </dependency> 
-        <dependency> 
-            <groupId>org.kuali.mobility</groupId>
-            <artifactId>dining-webapp</artifactId>
-			<version>${tool.dining.version}</version>
-            <type>war</type>
-            <scope>runtime</scope>
-        </dependency> 
-        <dependency>
-            <groupId>org.kuali.mobility</groupId>
-            <artifactId>coursedescriptions-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.kuali.mobility</groupId>
-            <artifactId>coursedescriptions-impl</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.kuali.mobility</groupId>
-            <artifactId>coursedescriptions-web</artifactId>
-        </dependency> 
-        <dependency> 
-            <groupId>org.kuali.mobility</groupId>
-            <artifactId>coursedescriptions-webapp</artifactId>
-			<version>${tool.coursedescriptions.version}</version>
-            <type>war</type>
-            <scope>runtime</scope>
-        </dependency>     
         <dependency>
             <groupId>org.kuali.mobility</groupId>
             <artifactId>conference-api</artifactId>
@@ -182,51 +159,6 @@
             <groupId>org.kuali.mobility</groupId>
             <artifactId>conference-web</artifactId>
         </dependency> 
-        <dependency> 
-            <groupId>org.kuali.mobility</groupId>
-            <artifactId>conference-webapp</artifactId>
-			<version>${tool.conference.version}</version>
-            <type>war</type>
-            <scope>runtime</scope>
-        </dependency>   
-        <dependency>
-            <groupId>org.kuali.mobility</groupId>
-            <artifactId>classifieds-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.kuali.mobility</groupId>
-            <artifactId>classifieds-impl</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.kuali.mobility</groupId>
-            <artifactId>classifieds-web</artifactId>
-        </dependency> 
-        <dependency> 
-            <groupId>org.kuali.mobility</groupId>
-            <artifactId>classifieds-webapp</artifactId>
-			<version>${tool.classifieds.version}</version>
-            <type>war</type>
-            <scope>runtime</scope>
-        </dependency>   
-        <dependency>
-            <groupId>org.kuali.mobility</groupId>
-            <artifactId>socialmedia-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.kuali.mobility</groupId>
-            <artifactId>socialmedia-impl</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.kuali.mobility</groupId>
-            <artifactId>socialmedia-web</artifactId>
-        </dependency>
-        <dependency> 
-            <groupId>org.kuali.mobility</groupId>
-            <artifactId>socialmedia-webapp</artifactId>
-			<version>${tool.socialmedia.version}</version>
-            <type>war</type>
-            <scope>runtime</scope>
-        </dependency>   
         <dependency>
             <groupId>org.kuali.mobility</groupId>
             <artifactId>feedback-api</artifactId>
@@ -239,51 +171,6 @@
             <groupId>org.kuali.mobility</groupId>
             <artifactId>feedback-web</artifactId>
         </dependency>
-        <dependency> 
-            <groupId>org.kuali.mobility</groupId>
-            <artifactId>feedback-webapp</artifactId>
-			<version>${tool.feedback.version}</version>
-            <type>war</type>
-            <scope>runtime</scope>
-        </dependency>   
-        <dependency>
-            <groupId>org.kuali.mobility</groupId>
-            <artifactId>email-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.kuali.mobility</groupId>
-            <artifactId>email-impl</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.kuali.mobility</groupId>
-            <artifactId>email-web</artifactId>
-        </dependency>
-        <dependency> 
-            <groupId>org.kuali.mobility</groupId>
-            <artifactId>email-webapp</artifactId>
-			<version>${tool.email.version}</version>
-            <type>war</type>
-            <scope>runtime</scope>
-        </dependency> 
-        <dependency>
-            <groupId>org.kuali.mobility</groupId>
-            <artifactId>bus-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.kuali.mobility</groupId>
-            <artifactId>bus-impl</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.kuali.mobility</groupId>
-            <artifactId>bus-web</artifactId>
-        </dependency>
-        <dependency> 
-            <groupId>org.kuali.mobility</groupId>
-            <artifactId>bus-webapp</artifactId>
-			<version>${tool.bus.version}</version>
-            <type>war</type>
-            <scope>runtime</scope>
-        </dependency>   
         <dependency>
 			<groupId>org.kuali.mobility</groupId>
 			<artifactId>emergencyinfo-api</artifactId>
@@ -296,13 +183,6 @@
 			<groupId>org.kuali.mobility</groupId>
 			<artifactId>emergencyinfo-web</artifactId>
 		</dependency>
-        <dependency> 
-            <groupId>org.kuali.mobility</groupId>
-            <artifactId>emergencyinfo-webapp</artifactId>
-			<version>${tool.emergencyinfo.version}</version>
-            <type>war</type>
-            <scope>runtime</scope>
-        </dependency>   
 		<dependency>
 			<groupId>org.kuali.mobility</groupId>
 			<artifactId>computerlabs-api</artifactId>
@@ -315,32 +195,6 @@
 			<groupId>org.kuali.mobility</groupId>
 			<artifactId>computerlabs-web</artifactId>
 		</dependency>
-        <dependency> 
-            <groupId>org.kuali.mobility</groupId>
-            <artifactId>computerlabs-webapp</artifactId>
-			<version>${tool.computerlabs.version}</version>
-            <type>war</type>
-            <scope>runtime</scope>
-        </dependency>   
-		<dependency>
-			<groupId>org.kuali.mobility</groupId>
-			<artifactId>itnotices-api</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.kuali.mobility</groupId>
-			<artifactId>itnotices-impl</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.kuali.mobility</groupId>
-			<artifactId>itnotices-web</artifactId>
-		</dependency>
-		<dependency> 
-			<groupId>org.kuali.mobility</groupId>
-			<artifactId>itnotices-webapp</artifactId>
-			<version>${tool.itnotices.version}</version>
-      		<type>war</type>
-      		<scope>runtime</scope>
-    	</dependency>   
    		<dependency>
 			<groupId>org.kuali.mobility</groupId>
 			<artifactId>alerts-api</artifactId>
@@ -353,32 +207,6 @@
 			<groupId>org.kuali.mobility</groupId>
 			<artifactId>alerts-web</artifactId>
 		</dependency>
-		<dependency> 
-			<groupId>org.kuali.mobility</groupId>
-			<artifactId>alerts-webapp</artifactId>
-			<version>${tool.alerts.version}</version>
-      		<type>war</type>
-      		<scope>runtime</scope>
-    	</dependency>    	
-		<dependency>
-			<groupId>org.kuali.mobility</groupId>
-			<artifactId>events-api</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.kuali.mobility</groupId>
-			<artifactId>events-impl</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.kuali.mobility</groupId>
-			<artifactId>events-web</artifactId>
-		</dependency>
-        <dependency> 
-            <groupId>org.kuali.mobility</groupId>
-            <artifactId>events-webapp</artifactId>
-			<version>${tool.events.version}</version>
-            <type>war</type>
-            <scope>runtime</scope>
-        </dependency>   
 		<dependency>
 			<groupId>org.kuali.mobility</groupId>
 			<artifactId>news-api</artifactId>
@@ -391,108 +219,6 @@
 			<groupId>org.kuali.mobility</groupId>
 			<artifactId>news-web</artifactId>
 		</dependency>
-        <dependency> 
-            <groupId>org.kuali.mobility</groupId>
-            <artifactId>news-webapp</artifactId>
-			<version>${tool.news.version}</version>
-            <type>war</type>
-            <scope>runtime</scope>
-        </dependency>   
-		<dependency>
-			<groupId>org.kuali.mobility</groupId>
-			<artifactId>athletics-api</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.kuali.mobility</groupId>
-			<artifactId>athletics-impl</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.kuali.mobility</groupId>
-			<artifactId>athletics-web</artifactId>
-		</dependency>
-        <dependency> 
-            <groupId>org.kuali.mobility</groupId>
-            <artifactId>athletics-webapp</artifactId>
-			<version>${tool.athletics.version}</version>
-            <type>war</type>
-            <scope>runtime</scope>
-        </dependency>   
-		<dependency>
-			<groupId>org.kuali.mobility</groupId>
-			<artifactId>askiu-api</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.kuali.mobility</groupId>
-			<artifactId>askiu-impl</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.kuali.mobility</groupId>
-			<artifactId>askiu-web</artifactId>
-		</dependency>
-        <dependency> 
-            <groupId>org.kuali.mobility</groupId>
-            <artifactId>askiu-webapp</artifactId>
-			<version>${tool.askiu.version}</version>
-            <type>war</type>
-            <scope>runtime</scope>
-        </dependency>   
-		<dependency>
-			<groupId>org.kuali.mobility</groupId>
-			<artifactId>knowledgebase-api</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.kuali.mobility</groupId>
-			<artifactId>knowledgebase-impl</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.kuali.mobility</groupId>
-			<artifactId>knowledgebase-web</artifactId>
-		</dependency>
-        <dependency> 
-            <groupId>org.kuali.mobility</groupId>
-            <artifactId>knowledgebase-webapp</artifactId>
-			<version>${tool.knowledgebase.version}</version>
-            <type>war</type>
-            <scope>runtime</scope>
-        </dependency>   
-		<dependency>
-			<groupId>org.kuali.mobility</groupId>
-			<artifactId>people-api</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.kuali.mobility</groupId>
-			<artifactId>people-impl</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.kuali.mobility</groupId>
-			<artifactId>people-web</artifactId>
-		</dependency>
-        <dependency> 
-            <groupId>org.kuali.mobility</groupId>
-            <artifactId>people-webapp</artifactId>
-			<version>${tool.people.version}</version>
-            <type>war</type>
-            <scope>runtime</scope>
-        </dependency>   
-		<dependency>
-			<groupId>org.kuali.mobility</groupId>
-			<artifactId>sakai-api</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.kuali.mobility</groupId>
-			<artifactId>sakai-impl</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.kuali.mobility</groupId>
-			<artifactId>sakai-web</artifactId>
-		</dependency>
-        <dependency> 
-            <groupId>org.kuali.mobility</groupId>
-            <artifactId>sakai-webapp</artifactId>
-			<version>${tool.sakai.version}</version>
-            <type>war</type>
-            <scope>runtime</scope>
-        </dependency>   
 		<dependency>
 			<groupId>org.kuali.mobility</groupId>
 			<artifactId>configparams-api</artifactId>
@@ -517,49 +243,86 @@
 			<groupId>org.kuali.mobility</groupId>
 			<artifactId>maps-web</artifactId>
 		</dependency>
+		
+		
+		<dependency> 
+            <groupId>org.kuali.mobility</groupId>
+            <artifactId>shared-webapp</artifactId>
+			<version>${tool.shared.version}</version>
+            <type>war</type>
+            <scope>runtime</scope>
+        </dependency>   
+        <dependency> 
+            <groupId>org.kuali.mobility</groupId>
+            <artifactId>admin-webapp</artifactId>
+			<version>${tool.admin.version}</version>
+            <type>war</type>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency> 
+            <groupId>org.kuali.mobility</groupId>
+            <artifactId>dining-webapp</artifactId>
+			<version>${tool.dining.version}</version>
+            <type>war</type>
+            <scope>runtime</scope>
+        </dependency>   
+        <dependency> 
+            <groupId>org.kuali.mobility</groupId>
+            <artifactId>conference-webapp</artifactId>
+			<version>${tool.conference.version}</version>
+            <type>war</type>
+            <scope>runtime</scope>
+        </dependency>   
+        <dependency> 
+            <groupId>org.kuali.mobility</groupId>
+            <artifactId>feedback-webapp</artifactId>
+			<version>${tool.feedback.version}</version>
+            <type>war</type>
+            <scope>runtime</scope>
+        </dependency>   
+        <dependency> 
+            <groupId>org.kuali.mobility</groupId>
+            <artifactId>emergencyinfo-webapp</artifactId>
+			<version>${tool.emergencyinfo.version}</version>
+            <type>war</type>
+            <scope>runtime</scope>
+        </dependency>   
+        <dependency> 
+            <groupId>org.kuali.mobility</groupId>
+            <artifactId>computerlabs-webapp</artifactId>
+			<version>${tool.computerlabs.version}</version>
+            <type>war</type>
+            <scope>runtime</scope>
+        </dependency>   
+		<dependency> 
+			<groupId>org.kuali.mobility</groupId>
+			<artifactId>alerts-webapp</artifactId>
+			<version>${tool.alerts.version}</version>
+      		<type>war</type>
+      		<scope>runtime</scope>
+    	</dependency>    	
+        <dependency> 
+            <groupId>org.kuali.mobility</groupId>
+            <artifactId>news-webapp</artifactId>
+			<version>${tool.news.version}</version>
+            <type>war</type>
+            <scope>runtime</scope>
+        </dependency>   
         <dependency> 
             <groupId>org.kuali.mobility</groupId>
             <artifactId>maps-webapp</artifactId>
 			<version>${tool.maps.version}</version>
             <type>war</type>
             <scope>runtime</scope>
-        </dependency> 
-   		<dependency>
-			<groupId>org.kuali.mobility</groupId>
-			<artifactId>tours-api</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.kuali.mobility</groupId>
-			<artifactId>tours-impl</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.kuali.mobility</groupId>
-			<artifactId>tours-web</artifactId>
-		</dependency>
-        <dependency> 
-            <groupId>org.kuali.mobility</groupId>
-            <artifactId>tours-webapp</artifactId>
-			<version>${tool.tours.version}</version>
-            <type>war</type>
-            <scope>runtime</scope>
         </dependency>   
-		<dependency>
-			<groupId>org.kuali.mobility</groupId>
-			<artifactId>user-api</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.kuali.mobility</groupId>
-			<artifactId>user-impl</artifactId>
-		</dependency>
+		
+		
+		
 		<!-- Spring dependencies -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
 			<version>3.0.5.RELEASE</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.security.oauth</groupId>
-			<artifactId>spring-security-oauth</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -602,7 +365,7 @@
 	</dependencies>
 	<build>
         <filters>
-            <filter>${user.home}/kme-filters.properties</filter>
+            <!-- <filter>${user.home}/kme-filters.properties</filter> -->
         </filters>
         <resources>
 			<resource>
@@ -623,14 +386,42 @@
 			<plugin>
 				<groupId>org.mortbay.jetty</groupId>
 				<artifactId>maven-jetty-plugin</artifactId>
-				<version>6.1H.14.1</version>				
 				<configuration>
-					<contextPath>/mdot</contextPath>
+				    <scanIntervalSeconds>5</scanIntervalSeconds>
+				    <webAppConfig>
+						<contextPath>/mdot</contextPath>
+		              	<extraClasspath>target/classes;../admin/webapp/target/classes;../alerts/webapp/target/classes;../computerlabs/webapp/target/classes;../conference/webapp/target/classes;../dining/webapp/target/classes;../emergencyinfo/webapp/target/classes;../feedback/webapp/target/classes;../maps/webapp/target/classes;../news/webapp/target/classes;../shared/webapp/target/classes</extraClasspath>
+					    <baseResource implementation="org.mortbay.resource.ResourceCollection">
+			              	<resourcesAsCSV>src/main/webapp,../admin/webapp/src/main/webapp,../alerts/webapp/src/main/webapp,../computerlabs/webapp/src/main/webapp,../conference/webapp/src/main/webapp,../dining/webapp/src/main/webapp,../emergencyinfo/webapp/src/main/webapp,../feedback/webapp/src/main/webapp,../maps/webapp/src/main/webapp,../news/webapp/src/main/webapp,../shared/webapp/src/main/webapp</resourcesAsCSV>
+			            </baseResource>
+				    </webAppConfig>
+				    <scanTargets>
+				   		<scanTarget>../admin/api/target/classes;../admin/impl/target/classes;../admin/web/target/classes;../admin/webapp/target/classes</scanTarget>
+				   		<scanTarget>../alerts/api/target/classes;../alerts/impl/target/classes;../alerts/web/target/classes;../alerts/webapp/target/classes</scanTarget>
+				   		<scanTarget>../computerlabs/api/target/classes;../computerlabs/impl/target/classes;../computerlabs/web/target/classes;../computerlabs/webapp/target/classes</scanTarget>
+				   		<scanTarget>../conference/api/target/classes;../conference/impl/target/classes;../conference/web/target/classes;../conference/webapp/target/classes</scanTarget>
+				   		<scanTarget>../configparams/api/target/classes;../configparams/impl/target/classes;../configparams/web/target/classes;../configparams/webapp/target/classes</scanTarget>
+				   		<scanTarget>../dining/api/target/classes;../dining/impl/target/classes;../dining/web/target/classes;../dining/webapp/target/classes</scanTarget>
+				   		<scanTarget>../emergencyinfo/api/target/classes;../emergencyinfo/impl/target/classes;../emergencyinfo/web/target/classes;../emergencyinfo/webapp/target/classes</scanTarget>
+				   		<scanTarget>../feedback/api/target/classes;../feedback/impl/target/classes;../feedback/web/target/classes;../feedback/webapp/target/classes</scanTarget>
+				   		<scanTarget>../maps/api/target/classes;../maps/impl/target/classes;../maps/web/target/classes;../maps/webapp/target/classes</scanTarget>
+				   		<scanTarget>../news/api/target/classes;../news/impl/target/classes;../news/web/target/classes;../news/webapp/target/classes</scanTarget>
+				   		<scanTarget>../shared/api/target/classes;../shared/impl/target/classes;../shared/web/target/classes;../shared/webapp/target/classes</scanTarget>
+				   		<scanTarget>../user/api/target/classes;../user/impl/target/classes;../user/web/target/classes;../user/webapp/target/classes</scanTarget>
+				    </scanTargets>
 					<connectors>
 						<connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
 							<port>9999</port>
 						</connector>
 					</connectors>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.0</version>
+				<configuration>
+					<dependentWarExcludes>WEB-INF/web.xml,META-INF/persistence.xml</dependentWarExcludes>
 				</configuration>
 			</plugin>
 		</plugins>

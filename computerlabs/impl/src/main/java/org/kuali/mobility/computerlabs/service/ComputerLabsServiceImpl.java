@@ -15,90 +15,71 @@
 
 package org.kuali.mobility.computerlabs.service;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
-import org.kuali.mobility.computerlabs.entity.ComputerLab;
-import org.kuali.mobility.computerlabs.entity.LabLocation;
-import org.kuali.mobility.maps.entity.Location;
-import org.kuali.mobility.maps.entity.MapsGroup;
-import org.kuali.mobility.maps.service.LocationService;
+import org.kuali.mobility.computerlabs.entity.Lab;
+import org.kuali.mobility.computerlabs.entity.Location;
+import org.kuali.mobility.util.mapper.DataMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import flexjson.JSONSerializer;
-
-@Service
 public class ComputerLabsServiceImpl implements ComputerLabsService {
 
-    @Autowired
-    private LocationService locationService;
-    public void setLocationService(LocationService locationService) {
-        this.locationService = locationService;
-    }
-	
-    @Transactional
-	public List<ComputerLab> findAllComputerLabsByCampus(String campus) {
-		ComputerLabsSeatParser parser = new ComputerLabsSeatParser();
-		List<ComputerLab> labs = parser.parseSeats(campus);
-		
-		MapsGroup group = locationService.getMapsGroupByCode("BL");
-		Set<Location> locations = group.getMapsLocations();
-		Map<String, Location> locationMap = new HashMap<String, Location>();
-		for (Location loc : locations) {
-			if (loc.getShortCode() != null) {
-				locationMap.put(loc.getShortCode(), loc);	
-			}
-		}
+	private static org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(ComputerLabsServiceImpl.class);
 
-		for (ComputerLab lab : labs) {
-			if (lab.getBuildingShortCode() != null) {
-				Location loc = locationMap.get(lab.getBuildingShortCode());
-				if (loc != null) {
-					lab.setBuildingCode(loc.getBuildingCode());
+	private Map<String, List<String>> labUrls;
+
+	@Autowired
+	private DataMapper dataMapper;
+
+	private String dataMappingUrl;
+
+	public Collection<Location> findAllLabsByCampus(String campus) {
+		Map<String, Location> locations = new HashMap<String, Location>();
+		for (String sourceUrl : labUrls.get(campus)) {
+			try {
+				URL url = new URL(sourceUrl);
+				List<Lab> labs = new ArrayList<Lab>();
+				if (dataMappingUrl != null && !"".equals(dataMappingUrl.trim())) {
+					labs = dataMapper.mapData(labs, url, new URL(dataMappingUrl));
+				} else {
+					labs = dataMapper.mapData(labs, url, "labMapping.xml");
 				}
+				for (Lab lab : labs) {
+					Location location = null;
+					if (locations.get(lab.getBuildingCode()) != null) {
+						location = locations.get(lab.getBuildingCode());
+					} else {
+						location = new Location(lab.getBuilding());
+						locations.put(lab.getBuildingCode(), location);
+					}
+					location.getLabs().add(lab);
+				}
+			} catch (Exception e) {
+				LOG.error("errors", e);
 			}
 		}
-		
-		return labs;
-//		return new ArrayList<ComputerLab>();
+		return locations.values();
 	}
-    
-    @Transactional
-	public List<LabLocation> findAllLabLocationsByCampus(String campus) {
-		List<ComputerLab> labs = this.findAllComputerLabsByCampus(campus);
-		Map<String, LabLocation> labMap = new HashMap<String, LabLocation>();
-		for (ComputerLab lab : labs) {
-			LabLocation labLocation = labMap.get(lab.getBuildingNameOnly());
-			if (labLocation == null) {
-//				Location location = this.getStcLocation(campus, lab.getBuildingCode(), lab.getBuildingShortCode());
-				// Location can be null
-				labLocation = new LabLocation(lab.getBuildingNameOnly());
-				labMap.put(lab.getBuildingNameOnly(), labLocation);
-			}
-			labLocation.getComputerLabs().add(lab);	
-		}
-		List<LabLocation> labLocations = new ArrayList<LabLocation>();
-		labLocations.addAll(labMap.values());
-		Collections.sort(labLocations);
-		return labLocations;
+
+	public String getDataMappingUrl() {
+		return dataMappingUrl;
 	}
-	
-    public String toJson(Collection<ComputerLab> collection) {
-        return new JSONSerializer().exclude("*.class").include("avList").serialize(collection);
-//    	return new JSONSerializer().include("", "").serialize(collection);
-    }
-    
-    public String toJsonLabLocation(Collection<LabLocation> collection) {
-    	return new JSONSerializer().exclude("*.class").deepSerialize(collection);
-//        return new JSONSerializer().exclude("*.class").include("labs").serialize(collection);
-//    	return new JSONSerializer().include("", "").serialize(collection);
-    }
-	
+
+	public void setDataMappingUrl(String dataMappingUrl) {
+		this.dataMappingUrl = dataMappingUrl;
+	}
+
+	public Map<String, List<String>> getLabUrls() {
+		return labUrls;
+	}
+
+	public void setLabUrls(Map<String, List<String>> labUrls) {
+		this.labUrls = labUrls;
+	}
+
 }

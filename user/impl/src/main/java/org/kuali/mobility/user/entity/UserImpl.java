@@ -28,33 +28,31 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.persistence.Version;
 
 @Entity(name = "User")
-@Table(name = "USR_T")
+@Table(name = "KME_USR_T")
 public class UserImpl implements User, Serializable {
 
 	private static final long serialVersionUID = -2720266083487368287L;
 
 	@Id
-	@SequenceGenerator(name = "user_sequence", sequenceName = "SEQ_USR_T", initialValue = 1000, allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_sequence")
-	@Column(name = "PERSON_ID")
+	@GeneratedValue(strategy = GenerationType.TABLE)
+	@Column(name = "ID")
 	private Long principalId;
 
-	@Column(name = "USER_ID")
+	@Column(name = "PRNCPL_NM")
 	private String principalName;
 
-	@Column(name = "FIRST_LOGIN_DATE")
+	@Column(name = "FRST_LGN_DT")
 	private Timestamp firstLogin;
 
-	@Column(name = "LAST_LOGIN_DATE")
+	@Column(name = "LST_LGN_DT")
 	private Timestamp lastLogin;
 
-	@Column(name = "DEVICE_ID")
+	@Column(name = "DEV_ID")
 	private String deviceId;
 
 	@Version
@@ -81,7 +79,7 @@ public class UserImpl implements User, Serializable {
 
 	@Transient
 	private boolean publicUser;
-	
+
 	@Transient
 	private final UserCache cache = new UserCache();
 
@@ -254,10 +252,11 @@ public class UserImpl implements User, Serializable {
 		return email;
 	}
 
+	@Override
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 	@Override
 	public String getIpAddress() {
 		return ipAddress;
@@ -281,5 +280,20 @@ public class UserImpl implements User, Serializable {
 	@Override
 	public void removeFromCache(String key) {
 		cache.remove(key);
+	}
+
+	@Override
+	public void invalidateUser() {
+		// TODO: Implement this method to invalidate the active user object in the session, purging all data.
+	}
+
+	@Override
+	public void setRequestURL(String url) {
+		this.setUserAttribute( "service", url );
+	}
+
+	@Override
+	public String getRequestURL() {
+		return this.getUserAttribute( "service" );
 	}
 }

@@ -10,23 +10,33 @@
 --%>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Publishing :: Layout</title>
-</head>
-<body>
-	<h2>Layout</h2>
-	<a href="${pageContext.request.contextPath}/publishing/layout/new">new</a><br /><br />
-	<table>
-		<c:forEach items="${layouts}" var="layout" varStatus="status">
-			<tr>
-				<td>${layout.homeScreenName}</td>
-				<td><a href="${pageContext.request.contextPath}/publishing/layout/edit/${layout.homeScreenId}">edit</a> <a href="${pageContext.request.contextPath}/publishing/layout/delete/${layout.homeScreenId}">delete</a></td>
-			</tr>
-		</c:forEach>
-	</table>
-</body>
-</html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="kme" uri="http://kuali.org/mobility" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+
+<spring:message code="layout.title" var="title"/>
+<kme:page title="${title}" id="layout" backButton="true" homeButton="true">
+	<kme:content>
+		<kme:listView id="layoutlist" dataTheme="c" dataDividerTheme="b" filter="false">
+			<kme:listItem>
+				<h3 class="wrap">
+					<spring:message code="layout.new.title"/>
+				</h3>
+				<p class="wrap">
+					<a href="${pageContext.request.contextPath}/publishing/layout/new"><spring:message code="common.new"/></a>
+				</p>
+			</kme:listItem>
+			<c:forEach items="${layouts}" var="layout" varStatus="status">
+				<kme:listItem>
+					<h3 class="wrap">
+						${layout.title}
+					</h3>
+					<p class="wrap">
+						<a href="${pageContext.request.contextPath}/publishing/layout/edit/${layout.homeScreenId}"><spring:message code="common.edit"/></a> <a href="${pageContext.request.contextPath}/publishing/layout/delete/${layout.homeScreenId}"><spring:message code="common.delete"/></a>
+					</p>
+				</kme:listItem>
+			</c:forEach>
+		</kme:listView>
+	</kme:content>
+</kme:page>

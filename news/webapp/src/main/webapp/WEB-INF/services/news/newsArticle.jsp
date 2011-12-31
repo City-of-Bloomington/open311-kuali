@@ -8,30 +8,27 @@
   express or implied. See the License for the specific language governing
   permissions and limitations under the License.
 --%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility" %>
 
-<kme:page title="${sourceTitle}" id="news" homeButton="true" backButton="true" cssFilename="news" appcacheFilename="iumobile.appcache">
-    <kme:content id="newsContent" cssClass="news-story">
-		<script type="text/javascript">			
-			$('[data-role=page][id=news]').live('pagebeforeshow', function(event, ui) {
-				$('#newsContentTemplate').template('newsContentTemplate');
-				refreshTemplate('${pageContext.request.contextPath}/news/${sourceId}?articleId=${articleId}', '#newsContent', 'newsContentTemplate', '<li>This article was not found</li>');
-			});
-		</script>
-		<script id="newsContentTemplate" type="text/x-jquery-tmpl">				
-			<h3>\${title}</h3>
-			<p>
-				{{html description}}
-			</p>
-		</script>
-		
-		<%--
-		<h3>${newsArticle.title}</h3>
+
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<spring:message code="news.fullarticle" var="fullarticle"/>
+
+<kme:page title="${feedTitle}" id="news" homeButton="true" backButton="true" cssFilename="news">
+    <kme:content cssClass="news-story">
+		<h3>${article.title}</h3>
+		<h4>${article.publishDateDisplay}</h4>
 		<p>
-			${newsArticle.description}
+			<%-- <c:if test="${!empty topArticle.thumbnailImageUrl}">
+				<div class="image-caption">
+			    	<img src="${newsArticle.thumbnailImageUrl}" alt="pic">
+			    	<p><!-- Caption--!></p>
+			   	</div>
+		   	</c:if>--%>
+			${article.description}
 		</p>
-		--%>
+		<p><a href="${article.link}">${fullarticle}</a></p>
 	</kme:content>
 </kme:page>

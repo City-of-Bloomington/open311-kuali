@@ -26,32 +26,30 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
 @Entity
-@Table(name="USR_PREF_VAL_T")
+@Table(name="KME_USR_PRF_VAL_T")
 public class UserPreferenceValue implements Serializable {
 
 	private static final long serialVersionUID = -4767899922710427387L;
 
     @Id
-    @SequenceGenerator(name="pref_sequence", sequenceName="SEQ_PREF_T", initialValue=1000, allocationSize=1)
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="pref_sequence")
-    @Column(name="PREF_VAL_ID")
+	@GeneratedValue(strategy = GenerationType.TABLE)
+    @Column(name="ID")
 	private Long preferenceValueId;
 
-    @Column(name="PREF_VAL")
+    @Column(name="VAL")
 	private String value;
 
     @Basic
-    @Column(name="PREF_ID", insertable=false, updatable=false)
+    @Column(name="PRF_ID", insertable=false, updatable=false)
 	private Long preferenceId;
 
     @OneToOne(fetch=FetchType.LAZY)
     @JoinColumn(
-    	name="PREF_ID", nullable=false
+    	name="PRF_ID", nullable=false
     )
 	protected UserPreference preference;
 	

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<faqs title="Kuali Mobility Enterprise Framework">
+	<part id="What is this package?">
+		<faq>
+			<question>What is KME security.authentication?</question>
+			<answer>
+				<p>The security.authentication module for KME provides a flexible framework for identity tracking within KME based applications.  It can be used as provided out of the box to support REMOTE_USER based authentication or can be extended in the User tool to provide customized authentication and identity tracking.</p>
+			</answer>
+		</faq>
+		<faq>
+			<question>What is REMOTE_USER based authentication?</question>
+			<answer>
+				<p>Authentication with REMOTE_USER is a time tested process for passing identity to a web application.  The authentication itself is handled outside of the KME application by some other service.  That service passes the ID of the authenticated user to KME in a CGI variable named REMOTE_USER.  This is commonly used with single sign-on solutions such as IIS and Integrated Windows Authentication or Apache with mod_authnz_ldap, CAS, CoSign, WebAuth, mod_auth_sspi, and others.</p>
+			</answer>
+		</faq>
+	</part>
+</faqs> 

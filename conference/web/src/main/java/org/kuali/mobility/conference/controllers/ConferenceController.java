@@ -15,14 +15,12 @@
 
 package org.kuali.mobility.conference.controllers;
 
+import java.io.UnsupportedEncodingException;
 import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.StringTokenizer;
-
-import javax.servlet.http.HttpServletRequest;
 
 import org.kuali.mobility.conference.entity.Attendee;
 import org.kuali.mobility.conference.entity.ContentBlock;
@@ -30,10 +28,7 @@ import org.kuali.mobility.conference.entity.MenuItem;
 import org.kuali.mobility.conference.entity.Session;
 import org.kuali.mobility.conference.entity.SessionFeedback;
 import org.kuali.mobility.conference.service.ConferenceService;
-import org.kuali.mobility.configparams.service.ConfigParamService;
 import org.kuali.mobility.email.service.EmailService;
-import org.kuali.mobility.shared.Constants;
-import org.kuali.mobility.user.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -54,9 +49,6 @@ public class ConferenceController {
 	private ConferenceService conferenceService;
 
 	@Autowired
-	private ConfigParamService configParamService;
-
-	@Autowired
 	private EmailService emailService;
 
 	public void setConferenceService(ConferenceService conferenceService) {
@@ -72,14 +64,16 @@ public class ConferenceController {
 		} else { 
 			today = "";
 		}
+		//List<MenuItem> menuItems = conferenceService.findAllMenuItems();
+		//uiModel.addAttribute("menuItems", menuItems);
 		//uiModel.addAttribute("today", today);
 		return "conference/index";
 	}
 	
     @RequestMapping(method = RequestMethod.GET, headers = "Accept=application/json")
     @ResponseBody
-    public String getMenuJson() {
-    	List<MenuItem> menuItems = conferenceService.findAllMenuItems();
+    public String getMenuJson(@RequestParam(value="lang", required = false) String lang) {
+    	List<MenuItem> menuItems = conferenceService.findAllMenuItems(lang);
     	return new JSONSerializer().exclude("*.class").deepSerialize(menuItems);
     }
 
@@ -97,23 +91,10 @@ public class ConferenceController {
 		return "conference/featuredSpeakers";
 	}
 	
-	@RequestMapping(value = "/twitter", method = RequestMethod.GET)
-	public String twitter(Model uiModel) {
-		List<ContentBlock> contentBlocks = conferenceService.findTwitter();
-		uiModel.addAttribute("contentBlocks", contentBlocks);
-		return "conference/twitter";
-	}
-	
-	@RequestMapping(value = "/map", method = RequestMethod.GET)
-	public String map(Model uiModel) {
-		List<ContentBlock> contentBlocks = conferenceService.findMap();
-		uiModel.addAttribute("contentBlocks", contentBlocks);
-		return "conference/map";
-	}
-	
 	@RequestMapping(value = "/attendeeGroups", method = RequestMethod.GET)
 	public String attendeeGroups(Model uiModel) {
-		return "conference/attendeeGroups";
+		return attendees("A", "Z", uiModel);
+		//return "conference/attendeeGroups";
 	}
 
 	@RequestMapping(value = "/attendees", method = RequestMethod.GET)
@@ -138,7 +119,7 @@ public class ConferenceController {
 	}
 
 	@RequestMapping(value = "/sessionDetails/{id}", method = RequestMethod.GET)
-	public String sessionDetails(@PathVariable("id") String id, Model uiModel) {
+	public String sessionDetails(@PathVariable("id") String id, Model uiModel) throws UnsupportedEncodingException {
 		Session session = conferenceService.findSessionById(id);
 		uiModel.addAttribute("session", session);
 		uiModel.addAttribute("sessionFeedback", new SessionFeedback());
@@ -146,24 +127,12 @@ public class ConferenceController {
 	}
 
 	@RequestMapping(value = "/sessionFeedback", method = RequestMethod.POST)
-	public String submitFeedback(Model uiModel, HttpServletRequest request, @ModelAttribute("sessionFeedback") SessionFeedback sessionFeedback) {
-		User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
+	public String submitFeedback(Model uiModel, @ModelAttribute("sessionFeedback") SessionFeedback sessionFeedback) {
 		sessionFeedback.setTimePosted(new Timestamp(System.currentTimeMillis()));
-		sessionFeedback.setPrincipalName(user.getPrincipalName());
 		sendEmail(sessionFeedback);
 		return "conference/sessionFeedbackThanks";
 	}
 
-	@RequestMapping(value = "/kualiDaysFeedback", method = RequestMethod.POST)
-	public String submitKualiDaysFeedback(Model uiModel, HttpServletRequest request, @ModelAttribute("sessionFeedback") SessionFeedback sessionFeedback) {
-		User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
-		sessionFeedback.setTimePosted(new Timestamp(System.currentTimeMillis()));
-		sessionFeedback.setPrincipalName(user.getPrincipalName());
-		sendEmail(sessionFeedback);
-		return "conference/kualiDaysSessionFeedbackThanks";
-	}
-
-	
 	@RequestMapping(value = "/sessionSpeakerDetails", method = RequestMethod.GET)
 	public String sessionSpeakerDetails(Model uiModel, @RequestParam(required = true) int id) {
 		List<Session> sessions = conferenceService.findAllSessions("");
@@ -173,16 +142,8 @@ public class ConferenceController {
 
 	private void sendEmail(SessionFeedback f) {
 		try {
-			String emailAddress = configParamService.findValueByName("Feedback.SendEmail.EmailAddress");
-			StringTokenizer stringTokenizer = new StringTokenizer(emailAddress);
-			while (stringTokenizer.hasMoreTokens()) {
-				String email = stringTokenizer.nextToken();
-				//emailService.sendEmail(f.toString(), "SWITC Feedback; "+f.getSessionId()+":"+f.getRating(), email, configParamService.findValueByName("Core.EmailAddress"));
-				emailService.sendEmail(f.toString(), "Conference Feedback; "+f.getSessionId()+":"+f.getRating(), email, configParamService.findValueByName("Core.EmailAddress"));
-			}
-		} catch (Exception e) {
-		}
-		//System.out.println(f.toString());
+			emailService.sendEmail(f.toString(), "SWITC Feedback; "+f.getSessionId()+":"+f.getRating(), conferenceService.getToEmailAddress(), conferenceService.getFromEmailAddress());
+		} catch (Exception e) {}
 	}
 
 }

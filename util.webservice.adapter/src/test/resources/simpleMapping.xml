@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataMapping id="simple"
+	className="org.kuali.mobility.util.mapper.domain.SimpleDomain">
+	<mapping name="id" />
+	<mapping name="givenName" attribute="firstName" />
+	<mapping name="surname" attribute="lastName" />
+	<mapping name="displayName" />
+	<mapping name="aliases" attribute="alias" list="true" />
+</dataMapping>

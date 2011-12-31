@@ -25,6 +25,10 @@ import javax.persistence.Query;
 import org.kuali.mobility.configparams.entity.ConfigParam;
 import org.springframework.stereotype.Repository;
 
+/**
+ * DAO to actually perform manipulation of ConfigParam objects
+ * @author Kuali Mobility Team (moblitiy.collab@kuali.org)
+ */
 @Repository
 public class ConfigParamDaoImpl implements ConfigParamDao {
 

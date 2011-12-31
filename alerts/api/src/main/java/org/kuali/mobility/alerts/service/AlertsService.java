@@ -16,7 +16,6 @@
 package org.kuali.mobility.alerts.service;
 
 import java.util.List;
-import java.util.Map;
 
 import org.kuali.mobility.alerts.entity.Alert;
 
@@ -28,19 +27,16 @@ import org.kuali.mobility.alerts.entity.Alert;
 public interface AlertsService {
 
 	/**
-	 * A finder that returns all <code>Alert</code> instances that match the
-	 * given criteria.
+	 * A finder that returns all <code>Alert</code> instances for the campus passed.
+	 * .
 	 * 
-	 * @param criteria 
-	 * 			- <code>Map&lt;String&gt;, &lt;String&gt;</code> of key-value 
-	 * 			pairs used in determining the <code>Alert</code> instances returned. 
-	 * 			Any criteria not valid will be ignored.
-	 * @return <code>List&lt;Alert&gt;</code> filtered by the criteria or an empty 
+	 * @param campus 
+	 * 			- <code>String</code> campus code.
+	 * @return <code>List&lt;Alert&gt;</code> filtered by the campus or an empty 
 	 * 			<code>List</code>. 
 	 */
-	List<Alert> findAllAlertsByCriteria(Map<String, String> criteria);
-	
-    List<Alert> findAllAlertsFromJson(String url);
+	public List<Alert> findAlertsByCampus(String campus);
 
-    int findAlertCountByCriteria(Map<String, String> criteria);
+	int findAlertCountByCampus(String campus);
+	
 }

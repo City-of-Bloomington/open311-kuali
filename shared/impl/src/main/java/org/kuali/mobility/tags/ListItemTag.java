@@ -19,6 +19,12 @@ import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
 
+/**
+ * The backing class for the ListItem JSP tag.  Renders an li appropriate for the mobile framework.
+ * 
+ * @author Kuali Mobility Team (moblitiy.collab@kuali.org)
+ *
+ */
 public class ListItemTag extends SimpleTagSupport {
     
     private static org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(ListItemTag.class);
@@ -33,7 +39,7 @@ public class ListItemTag extends SimpleTagSupport {
         PageContext pageContext = (PageContext) getJspContext();
         JspWriter out = pageContext.getOut();
         try {
-            out.println("<li " + (dataRole != null && !"".equals(dataRole.trim()) ? " data-role=\"" + dataRole.trim() + "\"" : "") + (hideDataIcon ? " data-icon=\"false\"" : (dataIcon != null && !"".equals(dataIcon.trim()) ? "data-icon=\"" + dataIcon.trim() + "\"" : "")) + (cssClass != null && !"".equals(cssClass.trim()) ? " class=\"" + cssClass.trim() + "\"" : "") + " data-theme=\"" + (dataTheme != null && !"".equals(dataTheme.trim()) ? dataTheme : "c") + "\">");
+            out.println("<li " + (dataRole != null && !"".equals(dataRole.trim()) ? " data-role=\"" + dataRole.trim() + "\"" : "") + (hideDataIcon ? " data-icon=\"false\"" : (dataIcon != null && !"".equals(dataIcon.trim()) ? " data-icon=\"" + dataIcon.trim() + "\"" : "")) + (cssClass != null && !"".equals(cssClass.trim()) ? " class=\"" + cssClass.trim() + "\"" : "") + " data-theme=\"" + (dataTheme != null && !"".equals(dataTheme.trim()) ? dataTheme : "c") + "\">");
             getJspBody().invoke(out);          
             out.println("</li>");
         } catch (Exception e) {

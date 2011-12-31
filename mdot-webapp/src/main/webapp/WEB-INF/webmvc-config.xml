@@ -9,51 +9,48 @@
   express or implied. See the License for the specific language governing
   permissions and limitations under the License.
 -->
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context" xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:p="http://www.springframework.org/schema/p" xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:security="http://www.springframework.org/schema/security" xmlns:oauth="http://www.springframework.org/schema/security/oauth"
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context" xmlns:cache="http://www.springframework.org/schema/cache" xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:p="http://www.springframework.org/schema/p" xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:security="http://www.springframework.org/schema/security" xmlns:oauth="http://www.springframework.org/schema/security/oauth"
     xsi:schemaLocation="http://www.springframework.org/schema/beans 
-						http://www.springframework.org/schema/beans/spring-beans-3.0.xsd     
+						http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+						http://www.springframework.org/schema/cache 
+						http://www.springframework.org/schema/cache/spring-cache-3.1.xsd     
 						http://www.springframework.org/schema/context 
-						http://www.springframework.org/schema/context/spring-context-3.0.xsd     
+						http://www.springframework.org/schema/context/spring-context-3.1.xsd     
 						http://www.springframework.org/schema/mvc 
 						http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
 						http://www.springframework.org/schema/jee 
-						http://www.springframework.org/schema/jee/spring-jee-3.0.xsd 
+						http://www.springframework.org/schema/jee/spring-jee-3.1.xsd 
 						http://www.springframework.org/schema/security 
-						http://www.springframework.org/schema/security/spring-security-3.0.xsd
+						http://www.springframework.org/schema/security/spring-security-3.1.xsd
 						http://www.springframework.org/schema/security/oauth 
 						http://www.springframework.org/schema/security/spring-security-oauth.xsd
 						http://www.springframework.org/schema/tx 
-						http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+						http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
 
     <context:component-scan base-package="org.kuali.mobility" />
-    <context:component-scan base-package="edu.iu.m" />
+
+	<cache:annotation-driven />
 
     <mvc:annotation-driven />
     <mvc:interceptors>
-    	<bean class="org.kuali.mobility.mdot.interceptors.LoginInterceptor" />
+	    <bean id="remoteUserInterceptor" class="org.kuali.mobility.security.authn.interceptors.RemoteUserInterceptor"/>
+	    <bean id="authenticationInterceptor" class="org.kuali.mobility.security.authn.interceptors.AuthenticationInterceptor">
+	    	<property name="authenticationMapper" ref="authenticationMapper"/>
+	    </bean>
+	    <!-- 
+    	<bean class="org.kuali.mobility.shared.interceptors.LoginInterceptor" />
+    	 -->
+		<bean id="localeChangeInterceptor"
+		    class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+		    <property name="paramName" value="lang" />
+		</bean>
     </mvc:interceptors>
     <mvc:default-servlet-handler />
 	
     <tx:annotation-driven proxy-target-class="true" transaction-manager="jpaTransactionManager" />
 
     <bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver" />
-        
-    <bean name="oauthProcessingFilterEntryPoint" class="org.springframework.security.oauth.provider.OAuthProcessingFilterEntryPoint" />
 
-    <security:http auto-config='true' entry-point-ref="oauthProcessingFilterEntryPoint">
-        <security:intercept-url access="ROLE_USER" pattern="/oauth/**" />
-        <security:intercept-url access="ROLE_USER" pattern="/myclasses/**" />
-        <security:intercept-url access="ROLE_USER" pattern="/calendar/**" />
-        <security:intercept-url pattern="/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
-        <security:anonymous granted-authority="ROLE_USER" />
-    </security:http>
-
-    <security:authentication-manager>
-        <security:authentication-provider user-service-ref="MobileUserDetailsService" />
-    </security:authentication-manager>
-   
-    <bean name="MobileUserDetailsService" class="org.kuali.mobility.mdot.userdetails.MobileUserDetailsService" />
-    
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
         <property name="prefix" value="/WEB-INF/services/" />
@@ -61,6 +58,10 @@
         <property name="order">
             <value>1</value>
         </property>
+    </bean>
+    
+    <bean id="authenticationMapper" class="org.kuali.mobility.security.authn.util.AuthenticationMapper">
+    	<constructor-arg type="java.lang.String"><value>/authentication.xml</value></constructor-arg>
     </bean>
     
 </beans>

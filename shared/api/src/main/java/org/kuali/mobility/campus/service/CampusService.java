@@ -18,8 +18,19 @@ import java.util.List;
 
 import org.kuali.mobility.campus.entity.Campus;
 
+/**
+ * Interface for a contract for interacting with Campus objects
+ * @author Kuali Mobility Team (moblitiy.collab@kuali.org)
+ */
 public interface CampusService {
     
-    public List<Campus> getCampuses();
+	/**
+	 * @return a list of all available Campus objects
+	 */
+    public List<Campus> findCampusesByTool(String toolName);
     
+	/**
+	 * @return a boolean if this tool needs a different campus selected.  If a tool has no campuses, true is always returned.
+	 */
+    public boolean needToSelectDifferentCampusForTool(String tool, String campus);
 }

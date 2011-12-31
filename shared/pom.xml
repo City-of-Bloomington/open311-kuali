@@ -19,7 +19,7 @@
 	<parent>
         <artifactId>mobility</artifactId>
         <groupId>org.kuali.mobility</groupId>
-        <version>1.0.0-BETA-1</version>
+        <version>1.0.0-M2-RELEASE</version>
 	</parent>
 	<profiles>
 		<profile>
@@ -31,6 +31,8 @@
 				<module>api</module>
 				<module>impl</module>
 				<module>config</module>
+				<module>web</module>
+                <module>webapp</module>
 			</modules>
 		</profile>
         <profile>
@@ -51,7 +53,19 @@
                 <module>config</module>
             </modules>
         </profile>
-	</profiles>	
+        <profile>
+            <id>web</id>
+            <modules>
+                <module>web</module>
+            </modules>
+        </profile>
+        <profile>
+            <id>webapp</id>
+            <modules>
+                <module>webapp</module>
+            </modules>
+        </profile>
+   	</profiles>	
 	<build>
 		<pluginManagement>
 			<plugins>

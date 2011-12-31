@@ -14,8 +14,21 @@
  */
 package org.kuali.mobility.email.service;
 
+/**
+ * Interface for a contract for sending emails
+ * 
+ * @author Kuali Mobility Team (moblitiy.collab@kuali.org)
+ */
 public interface EmailService {
     
+	/**
+	 * Send an email to a single recipient
+	 * @param body
+	 * @param subject
+	 * @param emailAddressTo the recipient
+	 * @param emailAddressFrom the sender
+	 * @return true if successful
+	 */
     boolean sendEmail(String body, String subject, String emailAddressTo, String emailAddressFrom);
     
 }

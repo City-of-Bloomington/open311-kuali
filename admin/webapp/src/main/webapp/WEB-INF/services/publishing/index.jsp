@@ -10,19 +10,29 @@
 --%>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="kme" uri="http://kuali.org/mobility" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Publishing</title>
-</head>
-<body>
-<h2>Publishing</h2>
-
-<a href="tool">Tools</a><br/>
-<a href="layout">Home Screens</a><br/>
-<a href="notifications">Notifications</a><br/>
-
-</body>
-</html>
+<spring:message code="publishing.title" var="title"/>
+<kme:page title="${title}" id="publishing" backButton="true" homeButton="true">
+	<kme:content>
+		<kme:listView id="publishinglist" dataTheme="c" dataDividerTheme="b" filter="false">
+			<kme:listItem>
+				<a href="tool">
+					<h3 class="wrap">
+						<spring:message code="tools.title"/>
+					</h3>
+				</a>
+			</kme:listItem>
+			<kme:listItem>
+				<a href="layout">
+					<h3 class="wrap">
+						<spring:message code="layout.title"/>
+					</h3>
+				</a>
+			</kme:listItem>
+		</kme:listView>
+	</kme:content>
+</kme:page>

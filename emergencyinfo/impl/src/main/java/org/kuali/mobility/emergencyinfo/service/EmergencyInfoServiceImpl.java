@@ -28,9 +28,12 @@ import org.springframework.transaction.annotation.Transactional;
 import flexjson.JSONDeserializer;
 import flexjson.JSONSerializer;
 
-@Service
+@Service(value="EmergencyInfoService")
 public class EmergencyInfoServiceImpl implements EmergencyInfoService {
   
+    @Autowired
+    private EmergencyInfoDao emergencyInfoDao;
+
     @Transactional
     public void deleteEmergencyInfoById(Long id) {
         emergencyInfoDao.deleteEmergencyInfoById(id);
@@ -78,10 +81,4 @@ public class EmergencyInfoServiceImpl implements EmergencyInfoService {
         return new JSONDeserializer<List<EmergencyInfo>>().use(null, ArrayList.class).use("values", EmergencyInfo.class).deserialize(json);
     } 
     
-    @Autowired
-    private EmergencyInfoDao emergencyInfoDao;
-    public void setEmergencyInfoDao(EmergencyInfoDao emergencyInfoDao) {
-        this.emergencyInfoDao = emergencyInfoDao;
-    }
-
 }

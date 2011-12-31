@@ -24,24 +24,20 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
-import org.kuali.mobility.configparams.service.ConfigParamService;
 import org.kuali.mobility.dining.entity.FoodItem;
 import org.kuali.mobility.dining.entity.Menu;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-@Service
 public class DiningServiceImpl implements DiningService {
-
-	@Autowired
-	private ConfigParamService configParamService;
 	
 	private static org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(DiningServiceImpl.class);
+	
+	private Map<String, List<String>> diningUrls;
 	
 	@Override
 	public List<Menu> getMenus(String location) {
@@ -54,20 +50,11 @@ public class DiningServiceImpl implements DiningService {
 	
 	private String getXmlUrl(String campusCode) {
 		String url = null;
-		if (campusCode.toUpperCase().equals("SE")) {
-			url = this.getUrlSoutheast();
+		List<String> urls = diningUrls.get(campusCode);
+		if (urls != null && urls.size() > 0) {
+			url = urls.get(0);
 		}
 		return url;
-	}
-	
-	private String getUrlSoutheast() {
-		String url = null;
-        try {
-            url = configParamService.findValueByName("Food.Url.SE");
-        } catch (Exception e) {
-            LOG.error("Config Param: Food.Url.Southeast does not exist.", e);
-        }
-        return url;
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -121,9 +108,14 @@ public class DiningServiceImpl implements DiningService {
 		return doc;
 	}
 
-	public void setConfigParamService(ConfigParamService configParamService) {
-		this.configParamService = configParamService;
+	public Map<String, List<String>> getDiningUrls() {
+		return diningUrls;
 	}
+
+	public void setDiningUrls(Map<String, List<String>> diningUrls) {
+		this.diningUrls = diningUrls;
+	}
+
 }
 
 

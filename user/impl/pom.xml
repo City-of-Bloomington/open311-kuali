@@ -19,10 +19,14 @@
     <parent>
         <artifactId>user</artifactId>
         <groupId>org.kuali.mobility</groupId>
-        <version>1.0.0-BETA-1</version>
+        <version>1.0.0-M2-RELEASE</version>
     </parent>
     <dependencies>
         <!-- Internal dependencies -->
+		<dependency>
+			<groupId>org.kuali.mobility</groupId>
+			<artifactId>security.authentication</artifactId>
+		</dependency>
         <dependency>
             <groupId>org.kuali.mobility</groupId>
             <artifactId>user-api</artifactId>

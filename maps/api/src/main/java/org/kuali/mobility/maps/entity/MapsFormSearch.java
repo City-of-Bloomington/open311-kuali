@@ -32,12 +32,6 @@ public class MapsFormSearch {
 		this.searchCampus = searchCampus;
 	}
 
-	private MapsGroup mapsGroup;
-	
-	public MapsGroup getMapsGroup() {
-		return mapsGroup;
-	}
-
 	public String getLocationName() {
 		return locationName;
 	}
@@ -52,10 +46,6 @@ public class MapsFormSearch {
 
 	public void setVenueId(String venueId) {
 		this.venueId = venueId;
-	}
-
-	public void setMapsGroup(MapsGroup mapsGroup) {
-		this.mapsGroup = mapsGroup;
 	}
 
 	public String getSearchLatitude() {

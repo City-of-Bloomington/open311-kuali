@@ -10,22 +10,33 @@
 --%>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Publishing :: Tool</title>
-</head>
-<body>
-	<h2>Tool</h2>
-	<a href="${pageContext.request.contextPath}/publishing/tool/new">new</a><br /><br />
-	<table>
-		<c:forEach items="${tools}" var="tool" varStatus="status">
-			<tr>
-				<td><c:out value="${tool.title}"/></td><td><a href="${pageContext.request.contextPath}/publishing/tool/edit/${tool.toolId}">edit</a> <a href="${pageContext.request.contextPath}/publishing/tool/delete/${tool.toolId}">delete</a></td>
-			</tr>
-		</c:forEach>
-	</table>
-</body>
-</html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="kme" uri="http://kuali.org/mobility" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+
+<spring:message code="tools.title" var="title"/>
+<kme:page title="${title}" id="layout" backButton="true" homeButton="true">
+	<kme:content>
+		<kme:listView id="layoutlist" dataTheme="c" dataDividerTheme="b" filter="false">
+			<kme:listItem>
+				<h3 class="wrap">
+					<spring:message code="tools.new.title"/>
+				</h3>
+				<p class="wrap">
+					<a href="${pageContext.request.contextPath}/publishing/tool/new"><spring:message code="common.new"/></a>
+				</p>
+			</kme:listItem>
+			<c:forEach items="${tools}" var="tool" varStatus="status">
+				<kme:listItem>
+					<h3 class="wrap">
+						${tool.title}
+					</h3>
+					<p class="wrap">
+						<a href="${pageContext.request.contextPath}/publishing/tool/edit/${tool.toolId}"><spring:message code="common.edit"/></a> <a href="${pageContext.request.contextPath}/publishing/tool/delete/${tool.toolId}"><spring:message code="common.delete"/></a>
+					</p>
+				</kme:listItem>
+			</c:forEach>
+		</kme:listView>
+	</kme:content>
+</kme:page>

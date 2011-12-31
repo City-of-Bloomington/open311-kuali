@@ -15,16 +15,15 @@
 
 package org.kuali.mobility.alerts.controllers;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.kuali.mobility.alerts.entity.Alert;
 import org.kuali.mobility.alerts.service.AlertsService;
+import org.kuali.mobility.campus.service.CampusService;
+import org.kuali.mobility.security.authn.entity.User;
 import org.kuali.mobility.shared.Constants;
-import org.kuali.mobility.user.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,48 +33,34 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import flexjson.JSONSerializer;
 
-@Controller 
+@Controller
 @RequestMapping("/alerts")
 public class AlertsController {
-    
-    @Autowired
-    private AlertsService alertsService;
-    public void setAlertsService(AlertsService alertsService) {
-        this.alertsService = alertsService;
-    }
-    
-    @RequestMapping(method = RequestMethod.GET)
-    public String getList(HttpServletRequest request, Model uiModel) {
-   	    //List<Alert> alerts = alertsService.findAllAlertsFromJson(request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/testdata/alerts.json");
-   	 	
-//    	User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
-//    	String selectedCampus = "";
-//    	if (user.getViewCampus() == null) {
-//    		return "redirect:/campus?toolName=alerts";
-//    	} else {
-//    		selectedCampus = user.getViewCampus();
-//    	}
-    		
-//      Disable static rendering data source
-//    	Map<String, String> criteria = new HashMap<String, String>();
-//    	criteria.put("campus", selectedCampus);
-//    	List<Alert> alerts = alertsService.findAllAlertsByCriteria(criteria);
-// 
-//   	    uiModel.addAttribute("alerts", alerts);
-    	return "alerts/list";
-    }
-    
-    @RequestMapping(method = RequestMethod.GET, headers = "Accept=application/json")
-    @ResponseBody
-    public String getListJson(HttpServletRequest request, Model uiModel) {
-    	User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
-    	String selectedCampus = user.getViewCampus();
-    	
-    	Map<String, String> criteria = new HashMap<String, String>();
-    	criteria.put("campus", selectedCampus);
-    	List<Alert> alerts = alertsService.findAllAlertsByCriteria(criteria);
- 
-   		return new JSONSerializer().exclude("*.class").deepSerialize(alerts);
-    }
-    
+
+	@Autowired
+	private AlertsService alertsService;
+
+	@Autowired
+	private CampusService campusService;
+
+	@RequestMapping(method = RequestMethod.GET)
+	public String getList(HttpServletRequest request, Model uiModel) {
+		User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
+		if (user.getViewCampus() != null) {
+			if (campusService.needToSelectDifferentCampusForTool("alerts", user.getViewCampus())) {
+				return "redirect:/campus?toolName=alerts";
+			}
+		}
+		return "alerts/list";
+	}
+
+	@RequestMapping(method = RequestMethod.GET, headers = "Accept=application/json")
+	@ResponseBody
+	public String getListJson(HttpServletRequest request, Model uiModel) {
+		User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
+		List<Alert> alerts = alertsService.findAlertsByCampus(user.getViewCampus());
+
+		return new JSONSerializer().exclude("*.class").deepSerialize(alerts);
+	}
+
 }

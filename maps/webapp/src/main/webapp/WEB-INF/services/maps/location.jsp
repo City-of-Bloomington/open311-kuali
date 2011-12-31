@@ -10,15 +10,22 @@
 --%>
 
 
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
-<kme:page title="Maps" id="mapslocation" backButton="true" homeButton="true" cssFilename="location" jsFilename="maps" usesGoogleMaps="true">
+
+
+<spring:message code="maps.title" var="title"/>
+<c:set var="localeCode" value="${pageContext.response.locale}" />
+
+
+<kme:page title="${title}" id="mapslocation" backButton="true" homeButton="true" cssFilename="location" jsFilename="maps" usesGoogleMaps="true" mapLocale="${localeCode}">
 	<kme:content>
-<script src="${pageContext.request.contextPath}/js/arcgislink.js" type="text/javascript"></script>
-<div id="map_canvas" style="height:300px;"></div>
+	
+<div id="map_canvas"></div>
 	
 <script type="text/javascript">
 /* Maps */
@@ -26,14 +33,18 @@
 var markersArray = [];
 var userMarkersArray = [];
 
+$(window).resize(function(){resizeMap();});
+$(window).load(function(){resizeMap();});
+
 $('#mapslocation').live("pageshow", function() {
 	setContextPath("${pageContext.request.contextPath}");
 /* 	$('#map_canvas').gmap({'center': getLatLng(), 'callback': function() {
-		
+	
 	}); */
 	//var buildingCode = $('#map_canvas').jqmData('code');
 	var map = initialize("map_canvas", 39.17, -86.5);
 	deleteOverlays(markersArray);
+	resizeMap();
 	var buildingCode = getParameterByName("id");
 	if (buildingCode) {
 		showBuildingByCode(map, buildingCode);	

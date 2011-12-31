@@ -19,7 +19,7 @@
     <parent>
 		<artifactId>dining</artifactId>
 		<groupId>org.kuali.mobility</groupId>
-        <version>1.0.0-BETA-1</version>
+        <version>1.0.0-M2-RELEASE</version>
     </parent>
     <dependencies>
         <!-- Internal dependencies -->
@@ -66,6 +66,11 @@
             <groupId>net.sf.flexjson</groupId>
             <artifactId>flexjson</artifactId>
         </dependency>
+        <!-- XML dependencies -->
+        <dependency>
+			<groupId>org.jdom</groupId>
+			<artifactId>jdom</artifactId>
+		</dependency>
         <!-- Testing dependencies -->
         <dependency>
             <groupId>org.mortbay.jetty</groupId>

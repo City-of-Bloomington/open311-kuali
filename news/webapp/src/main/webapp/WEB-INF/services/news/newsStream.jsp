@@ -8,54 +8,30 @@
   express or implied. See the License for the specific language governing
   permissions and limitations under the License.
 --%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility" %>
 
-<kme:page title="News" id="news" homeButton="true" backButton="true" cssFilename="news" appcacheFilename="iumobile.appcache">
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<spring:message code="news.noarticles" var="noarticles"/>
+
+<kme:page title="${feed.title}" id="news" homeButton="true" backButton="true" cssFilename="news">
     <kme:content>
-		<ul id="newsList" data-role="listview" data-theme="c" class="news-index">
-			<script type="text/javascript">			
-			$('[data-role=page][id=news]').live('pagebeforeshow', function(event, ui) {
-				$('#newsListTemplate').template('newsListTemplate');
-				refreshTemplate('${pageContext.request.contextPath}/news/${sourceId}', '#newsList', 'newsListTemplate', '<li>No articles available at this time</li>', function() {$('#newsList').listview('refresh');});
-			});
-			</script>
-			<script id="newsListTemplate" type="text/x-jquery-tmpl">
-				\${ setPageTitle(title) }				
-				{{if articles}}
-					{{each articles}}
-      					{{each articles}}
-      						<li>
-								<a href="${pageContext.request.contextPath}/news/\${\$data.sourceId}?articleId=\${articleId}&referrer=stream">
-									<p class="news-title">\${title}</p>
-								</a>
-							</li>
-						{{/each}}
-					{{/each}}					
-				{{else}}
-					<li>No articles available at this time</li>
-				{{/if}}
-			</script>
-			
-			<%--
+		<ul data-role="listview" data-theme="c" class="news-index">
 			<c:choose>
-				<c:when test="${not empty newsStream.articles}">
-					<c:forEach items="${newsStream.articles}" var="day" varStatus="status">
-						<c:forEach items="${day.articles}" var="article" varStatus="status">
-							<li>
-								<a href="${pageContext.request.contextPath}/news/${sourceId}?articleId=${article.articleId}&referrer=stream">
-									<p class="news-title">${article.title}</p>
-								</a>
-							</li>
-						</c:forEach>
+				<c:when test="${not empty feed.articles}">
+					<c:forEach items="${feed.articles}" var="article" varStatus="status">
+						<li>
+							<a href="${pageContext.request.contextPath}/news/${feed.sourceId}?articleId=${article.articleId}&referrer=stream">
+								<p class="news-title">${article.title}</p>
+							</a>
+						</li>
 					</c:forEach>
 				</c:when>
 				<c:otherwise>
-					<kme:listItem>No articles available at this time</kme:listItem>
+					<kme:listItem>${noarticles}</kme:listItem>
 				</c:otherwise>
-			</c:choose>
-			--%>	
+			</c:choose>	
 		</ul>
 	</kme:content>
 </kme:page>

@@ -34,7 +34,7 @@ public class EmergencyInfoDaoImpl implements EmergencyInfoDao {
     
     @SuppressWarnings("unchecked")
     public List<EmergencyInfo> findAllEmergencyInfo() {
-        Query query = entityManager.createQuery("select ei from MaintEmergencyInfo ei order by ei.order");
+        Query query = entityManager.createQuery("select ei from EmergencyInfo ei order by ei.order");
         try {
             return query.getResultList();
         } catch (NoResultException e) {
@@ -43,7 +43,7 @@ public class EmergencyInfoDaoImpl implements EmergencyInfoDao {
     }
 
     public EmergencyInfo findEmergencyInfoById(Long id) {
-        Query query = entityManager.createQuery("select ei from MaintEmergencyInfo ei where ei.emergencyInfoId = :id");
+        Query query = entityManager.createQuery("select ei from EmergencyInfo ei where ei.emergencyInfoId = :id");
         query.setParameter("id", id);
         try {
             return (EmergencyInfo) query.getSingleResult();
@@ -55,7 +55,7 @@ public class EmergencyInfoDaoImpl implements EmergencyInfoDao {
     @SuppressWarnings("unchecked")
     public List<EmergencyInfo> findAllEmergencyInfoByCampus(String campus) {
         try {
-            Query query = entityManager.createQuery("select ei from MaintEmergencyInfo ei where ei.campus like :campus order by ei.order");
+            Query query = entityManager.createQuery("select ei from EmergencyInfo ei where ei.campus like :campus order by ei.order");
             query.setParameter("campus", campus);
             return query.getResultList();
         } catch (NoResultException e) {
@@ -80,7 +80,7 @@ public class EmergencyInfoDaoImpl implements EmergencyInfoDao {
     }
 
     public void deleteEmergencyInfoById(Long id) {
-        Query query = entityManager.createQuery("delete from MaintEmergencyInfo ei where ei.emergencyInfoId = :id");
+        Query query = entityManager.createQuery("delete from EmergencyInfo ei where ei.emergencyInfoId = :id");
         query.setParameter("id", id);
         query.executeUpdate();
     }

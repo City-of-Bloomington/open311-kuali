@@ -8,12 +8,18 @@
   express or implied. See the License for the specific language governing
   permissions and limitations under the License.
 --%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
-<kme:page title="Campus Maps" id="maps" backButton="true" homeButton="true" cssFilename="mapsHome" jsFilename="maps" usesGoogleMaps="true">
+
+
+<spring:message code="maps.title" var="title"/>
+<c:set var="localeCode" value="${pageContext.response.locale}" />
+
+<kme:page title="${title}" id="maps" backButton="true" homeButton="true" cssFilename="mapsHome" jsFilename="maps" usesGoogleMaps="true" mapLocale="${localeCode}">
 	<kme:content>
 		<script src="${pageContext.request.contextPath}/js/arcgislink.js" type="text/javascript"></script>
 		<form:form action="${pageContext.request.contextPath}/maps/building/search" commandName="mapsearchform" data-ajax="false">
@@ -35,8 +41,7 @@
 			</fieldset>
 			<fieldset>
             <label for="searchText" style="position:absolute; left:-9999px;">Search:</label>
-            <%-- <form:input path="searchText" cssClass="text ui-widget-content ui-corner-all" /> --%>
-            <input id="searchText" name="searchText" class="text ui-widget-content ui-corner-all" placeholder="Search" />
+            <form:input path="searchText" cssClass="text ui-widget-content ui-corner-all" placeholder="Search" />
 			<!-- <input id="searchText" name="searchText" class="text ui-widget-content ui-corner-all" type="search" /> -->
 			<form:errors path="searchText" />
 			</fieldset>
@@ -44,7 +49,7 @@
 		<div id="searchresults" class="overlay">
 		<jsp:include page="search.jsp" />
 		</div>
-		<div id="map_canvas" style="height:300px;" class="map"></div>
+		<div id="map_canvas" class="map"></div>
 
 	    
 <script type="text/javascript">
@@ -52,11 +57,14 @@ var map;
 var markersArray = [];
 var userMarkersArray = [];
 
+$(window).resize(function(){resizeMap();});
+$(window).load(function(){resizeMap();});
+
 $('#maps').live("pagebeforeshow", function() {
-	configureArcGIS();
+	
 	setContextPath("${pageContext.request.contextPath}");
 	deleteOverlays(markersArray);
-	map = initialize("map_canvas", 39.788, -86.165);
+	map = initialize("map_canvas", 39.788, -86.165, "${arcGisUrl}");
 	var campus = $("#searchCampus").val();
 	// Bounds will be for the state of Indiana for anything other than the valid values.
 	var bounds = getCampusBounds(campus);
@@ -109,103 +117,23 @@ function mapSearch() {
 			// Remove previous results
 			$('#searchresults').html('');
 		} else {
-			if (groupCode == "BL") {
+			var requestUrlString = '${pageContext.request.contextPath}/maps/building/searchassist?criteria=' + encodeURI(inputString) + '&groupCode=' + encodeURI(groupCode);
+			$.get(requestUrlString, function(data) {
+				//console.log("" + requestUrlString + " " + mapsRemoteCallCount + " " + mapsCurrentDisplayNumber);
 				if (mapsRemoteCallCountAtStartOfRequest >= mapsCurrentDisplayNumber) {
 					mapsCurrentDisplayNumber = mapsRemoteCallCount;
-					// Show Results
-					findBuildings(inputString, processFindResults);
+					// Show results
+					var pagehtml = '<div id="resultdata"></div>'
+					$('#searchresults').html(pagehtml);
+					$("#resultdata").html(data).page();
+					mapSearchPostProcess();
 				}
-			} else {
-				var requestUrlString = '${pageContext.request.contextPath}/maps/building/searchassist?criteria=' + encodeURI(inputString) + '&groupCode=' + encodeURI(groupCode);
-				$.get(requestUrlString, function(data) {
-					//console.log("" + requestUrlString + " " + mapsRemoteCallCount + " " + mapsCurrentDisplayNumber);
-					if (mapsRemoteCallCountAtStartOfRequest >= mapsCurrentDisplayNumber) {
-						mapsCurrentDisplayNumber = mapsRemoteCallCount;
-						// Show results
-						var pagehtml = '<div id="resultdata"></div>'
-						$('#searchresults').html(pagehtml);
-						$("#resultdata").html(data).page();
-						mapSearchPostProcess();
-					}
-				});
-			}
+			});
 		}
 	}
 	previousSearchKey = searchKey;
 } // mapSearch
 
-/*
- * ArcGIS
- */
- var iuBuildingType = 'I';
- var venueType = 'V';
- var customPointType = 'C';
- var predefinedPointType = 'P';
-
-function processFindResults(rs) {
-	var html = '';
-	var x=0;
-	for (var i = 0, c = rs.results.length; i < c; i++) {
-		html += processResult(rs.results[i]);
-	}
-	var pagehtml = '<div id="resultdata"><ul id="mapsearchresults" data-role="listview" data-theme="c" data-inset="true" data-dividertheme="b" data-filter="false"></ul></div>'
-	$('#searchresults').html(pagehtml);
-	$("#mapsearchresults").html(html).page();
-	//$('#mapsearchresults').listview("refresh");
-	mapSearchPostProcessIUB();
-}
-
-function processResult(result){
-	var feat = result.feature;
-	var a = feat.attributes;
-	var title = result.value;
-	if (feat.geometry){
-		var poly = feat.geometry[0];
-		var b = new Object();
-		b.name = title;
-		b.location = new google.maps.LatLng(a['LATITUDE'],a['LONGITUDE']);
-		b.iuBuildingCode = a['IU BLDG NUMBER'];
-		//b.street = a['ADDRESS'];
-		b.type = iuBuildingType;
-		//b.state = venue.location.state;
-		//b.city = venue.location.city;
-		//b.zip = venue.location.postalCode;
-		b.poly = poly;
-		//poly.setMap(map);
-		searchResults.push(b);
-		//poly.place = b;
-/* 		google.maps.event.addListener(poly, 'click', function() {
-			setTempMarker(b);
-		}); */
-		// return '<div onclick="selectSearchResult(' + (searchResults.length - 1) + ')" onmouseover="this.style.backgroundColor=\'#AAAAEE\'" onmouseout="this.style.backgroundColor=\'#FFFFFF\'">' + title + '</div>';
-		return '<li data-theme="c"><a href="#" kmetype="quicksearchiub" kmeresult="' + (searchResults.length - 1) + '"><p class="wrap">' + title + '</p></a></li>';
-	}
-	return '';
-}
-
-function mapSearchPostProcessIUB() {
-    $('a[kmetype="quicksearchiub"]').click(function(event) {
-		event.preventDefault();
-		$('#searchresults').hide();
-		var index = $(this).attr("kmeresult");
-		var place = searchResults[index];
-		var name = place.name;
-		var latitude = place.location.lat();
-		var longitude = place.location.lng();
-		//var latitude = $(this).attr("kmelatitude");
-		//var longitude = $(this).attr("kmelongitude");
-		//var name = $(this).attr("kmename");
-    	$('#searchText').val(name);
-		deleteOverlays(markersArray);
-		
-		showLocationByCoordinates(map, markersArray, latitude, longitude);		
-		//alert("Test");
-    });
-}
-
-/*
- * Old System
- */
 function mapSearchPostProcess() {
     $('a[kmetype="quicksearch"]').click(function(event) {
 		event.preventDefault();
@@ -220,18 +148,7 @@ function mapSearchPostProcess() {
     });
 }
 
-/* resize map to full height after page load */
-$(window).load(function () {
-	var newHeight = 500;
-	if ($('div#maps').height() > 1000) {
-		newHeight = $('div#maps').height()/2;
-		newHeight = newHeight - 140;
-	} else {
-		newHeight = $('div#maps').height();
-		newHeight = newHeight - 70;
-	}
-	$('div#map_canvas').height(newHeight);
-});
+
 </script>
 
 	</kme:content>

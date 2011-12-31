@@ -15,33 +15,18 @@
 	<parent>
 		<artifactId>shared</artifactId>
 		<groupId>org.kuali.mobility</groupId>
-		<version>1.0.0-BETA-1</version>
+		<version>1.0.0-M2-RELEASE</version>
 	</parent>
 	<dependencies>
 		<dependency>
-			<groupId>org.kuali.rice</groupId>
-			<artifactId>rice-api</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.kuali.rice</groupId>
-			<artifactId>rice-impl</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>javax.transaction</groupId>
-			<artifactId>jta</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>jotm</groupId>
-			<artifactId>jotm</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.oracle</groupId>
-			<artifactId>ojdbc6</artifactId>
-		</dependency>
+		    <groupId>org.apache.derby</groupId>
+		    <artifactId>derby</artifactId>
+		    <version>10.8.1.2</version>
+		</dependency>		
 	</dependencies>
 	<build>
         <filters>
-            <filter>${user.home}/kme-filters.properties</filter>
+            <!-- <filter>${user.home}/kme-filters.properties</filter> -->
         </filters>
 		<resources>
 			<resource>

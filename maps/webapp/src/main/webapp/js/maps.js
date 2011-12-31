@@ -17,7 +17,7 @@ function setContextPath(path) {
 	contextPath = path;
 }
 
-function initialize(id, lat, lng) {
+function initialize(id, lat, lng, arcGisServerUrl) {
 	var latlng = new google.maps.LatLng(lat, lng);
 	var myOptions = {
 		zoom: 13,
@@ -34,10 +34,13 @@ function initialize(id, lat, lng) {
 	trackerControlDiv.index = 1;
 	newmap.controls[google.maps.ControlPosition.TOP_LEFT].push(trackerControlDiv);
 	
-	var agsType = new  gmaps.ags.MapType(arcGisServerUrl,{name:'ArcGIS', opacity:1.0});
-	newmap.overlayMapTypes.insertAt(0, agsType);
-	
 	google.maps.event.trigger(newmap, 'resize');
+	
+	if (arcGisServerUrl) {
+		var agsType = new  gmaps.ags.MapType(arcGisServerUrl,{name:'ArcGIS', opacity:1.0});
+		newmap.overlayMapTypes.insertAt(0, agsType);
+	}
+    
     return newmap;
 }
 
@@ -58,9 +61,14 @@ TrackerControl.prototype.setActive = function(boolean) {
   this.active_ = boolean;
   var test = this.controlDiv_;
   if (boolean) {
+	  //test.firstChild.style.backgroundColor = 'red';  // Look into toggle class
+	  //test.firstChild.style.backgroundImage="url('../css/images/compassOn.png')";
+	  //element.children(":first").toggleClass("redClass");
 	  test.firstChild.setAttribute("class", "gpsIconOn"); 
 	  test.firstChild.setAttribute("className", "gpsIconOn");
   } else {
+	  //test.firstChild.style.backgroundColor = 'blue';
+	  //test.firstChild.style.backgroundImage="url('../css/images/compassOff.png')";
 	  test.firstChild.setAttribute("class", "gpsIconOff"); 
 	  test.firstChild.setAttribute("className", "gpsIconOff");
   }
@@ -86,16 +94,24 @@ function TrackerControl(map, div) {
 
   // Set CSS for the control border
   var trackerToggleUI = document.createElement('DIV');
+  //trackerToggleUI.style.backgroundColor = 'white';
   
   trackerToggleUI.setAttribute("class", "gpsIconOff"); 
   trackerToggleUI.setAttribute("className", "gpsIconOff"); 
+  //trackerToggleUI.style.borderStyle = 'solid';
+  //trackerToggleUI.style.borderWidth = '2px';
   trackerToggleUI.style.padding = '0px';
   trackerToggleUI.style.cursor = 'pointer';
+  //trackerToggleUI.style.textAlign = 'center';
   trackerToggleUI.title = 'Click to show where you are';
   controlDiv.appendChild(trackerToggleUI);
 
   // Set CSS for the control interior
   var trackerToggleText = document.createElement('DIV');
+  //trackerToggleText.style.fontFamily = 'Arial,sans-serif';
+  //trackerToggleText.style.fontSize = '12px';
+  //trackerToggleText.style.paddingLeft = '4px';
+  //trackerToggleText.style.paddingRight = '4px';
   trackerToggleText.style.padding = '0px';
   trackerToggleText.innerHTML = 'My Location';
   trackerToggleUI.appendChild(trackerToggleText);
@@ -105,9 +121,11 @@ function TrackerControl(map, div) {
 	  if (control.getActive()) {
 		  control.setActive(false);
 		  stopTrackingUserLocation();
+		  //alert("Stop");
 	  } else {
 		  control.setActive(true);
 		  startTrackingUserLocation(map, markersArray, userMarkersArray);
+		  //alert("Start");
 	  }
   });
 }
@@ -190,50 +208,7 @@ function showBuildingByCode(map, buildingCode) {
 	}
 }
 
-/*
- * ArcGIS
- */
-var mapService;
-var arcGisServerUrl = 'http://maps.iu.edu/ArcGIS/rest/services/Bloomington/MapServer';
-var searchResults = [];
-function configureArcGIS() {
-	mapService = new gmaps.ags.MapService(arcGisServerUrl);
-}
-function findBuildings(query, processFindResults) {
-//    $('#busy').show();
-//	  clearSearchResults();
-//	  $('#results').html('');
-    var params = {
-      returnGeometry: true,
-      searchText: query,
-      contains: true,
-      layerIds: [32, 36], // building names, frat names
-      searchFields: ["MAP_NAME"],
-      sr: 2966
-    };
-    mapService.find(params, processFindResults);
-}
-
-function selectSearchResult(index){
-	var place = searchResults[index];
-	setTempMarker(place);
-	map.panTo(place.location);
-}
-
-function clearSearchResults() {
-	if (searchResults) {
-		for (var i = 0; i < searchResults.length; i++) {
-			searchResults[i].poly.setMap(null);
-		}
-		searchResults.length = 0;
-	}
-}
-
-/*
- * Old system
- */
 function retrieveBuildingsForGroup(groupCode) {
-	// http://localhost:9999/mdot/maps/group/BL
 	$('#searchBuilding').empty();
 	$('#searchBuilding').append($("<option></option>").attr("value", "").text(""));
 	$.getJSON('${pageContext.request.contextPath}/maps/group/' + groupCode, function(data) {
@@ -308,7 +283,7 @@ function drawUserLocation(map, markersArray, userMarkersArray, position) {
 		}
 
 	} else {
-		//alert("Unable to accurately determine your position.");
+		alert("Unable to accurately determine your position.");
 	}
 	
 }
@@ -524,8 +499,17 @@ function buildAddress(place, long){
 	return message;
 }
 
+function resizeMap () {
+	
+	window.scrollTo(0, 1);
+	var aboveMap = $('div#map_canvas').offset().top;
+	var aboveSearch = $('.ui-content').offset().top;
+	var totalHeight = window.innerHeight ? window.innerHeight : $(window).height();
+    $('.ui-content').height(totalHeight - aboveSearch);
+    $('div#map_canvas').height(totalHeight - aboveMap);
+}
 
-/* resize map to full height after page load */
+/* resize map to full height after page load
 $(window).load(function () {
 	$('div#map_canvas').height($('div#mapslocation').height()-77);
-});
+});*/

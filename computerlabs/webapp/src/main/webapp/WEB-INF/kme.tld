@@ -83,6 +83,11 @@
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
         </attribute>
+        <attribute>
+            <name>appcacheFilename</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
     </tag>
 
     <tag>
@@ -98,23 +103,6 @@
         <attribute>
             <name>dataTheme</name>
             <required>false</required>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
-    </tag>
-
-	<tag>
-        <name>forEach</name>
-        <tag-class>org.kuali.mobility.tags.ForEachTag</tag-class>
-        <body-content>scriptless</body-content>
-        <description>This tag is for forEach</description>
-        <attribute>
-            <name>var</name>
-            <required>true</required>
-            <rtexprvalue>false</rtexprvalue>
-        </attribute>
-        <attribute>
-            <name>items</name>
-            <required>true</required>
             <rtexprvalue>true</rtexprvalue>
         </attribute>
     </tag>

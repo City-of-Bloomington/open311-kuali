@@ -20,21 +20,53 @@ import java.util.List;
 import org.kuali.mobility.admin.entity.HomeScreen;
 import org.kuali.mobility.admin.entity.Tool;
 
+/**
+ * Interface for a contract for administrative tasks
+ * @author Kuali Mobility Team (moblitiy.collab@kuali.org)
+ */
 public interface AdminService {
-	public HomeScreen getCachedHomeScreenByAlias(String alias);
-	public List<HomeScreen> getAllCachedHomeScreens();
-
+	
+	/**
+	 * @return all defined home screens
+	 */
 	public List<HomeScreen> getAllHomeScreens();
+	/**
+	 * @param layoutId the id of the home screen to retrieve
+	 * @return the home screen matching the id
+	 */
 	public HomeScreen getHomeScreenById(long layoutId);
+	/**
+	 * @param alias the alias of the home screen to retrieve
+	 * @return the home screen matching the alias
+	 */
 	public HomeScreen getHomeScreenByAlias(String alias);
+	/**
+	 * @param homeScreen the HomeScreen to save
+	 * @return the id of the saved HomeScreen
+	 */
 	public Long saveHomeScreen(HomeScreen homeScreen);
+	/**
+	 * @param layoutId the id of the HomeScreen to delete
+	 */
 	public void deleteHomeScreenById(long layoutId);
 	
+	/**
+	 * @return all defined Tool objects
+	 */
 	public List<Tool> getAllTools();
+	/**
+	 * @param tool the Tool to save
+	 * @return the id of the saved Tool
+	 */
 	public Long saveTool(Tool tool);
+	/**
+	 * @param toolId the id of the tool to retrieve
+	 * @return the Tool matching the id
+	 */
 	public Tool getToolById(long toolId);
+	/**
+	 * @param toolId the id of the Tool to delete
+	 */
 	public void deleteToolById(long toolId);
-	
-	public void stopCache();
-	public void startCache();
+
 }

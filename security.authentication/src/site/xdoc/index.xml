@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document>
+	<properties>
+		<title>Welcome to Kuali Mobility : Security.Authentication</title>
+	</properties>
+	<body>
+		<section name="Introduction">
+			<p>The security.authentication module of KME provides for both the protection of application resources and the tracking of a user's identity.</p>
+		</section>
+		<section name="Single Sign On Authentication">
+			<p>The KME project does not provide an authentication system of its own.  Instead it supports most major single sign on systems provided they utilize the REMOTE_USER CGI variable to pass a user's identity to protected systems.  This is a standard practice among SSO systems and provides us with the ability to support a wide range of organizational authentication systems without having to account for the implementation details of each one individually.</p>
+			<p>KME supports REMOTE_USER based identity without any configuration changes to the base product.  If a REMOTE_USER is present it will be tracked within the web application's session and be available to the base web application and all of its constituent tool applications.</p>
+		</section>
+	</body>
+</document>

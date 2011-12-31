@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataMapping id="status" className="org.kuali.mobility.alerts.entity.Alert" list="true" rootElement="statuses" >
+	<mapping mapTo="campus" attribute="false" />
+	<mapping mapTo="type" attribute="true" />
+	<mapping mapTo="url" attribute="false" />
+	<mapping mapTo="key" attribute="false" />
+	<mapping mapTo="title" attribute="false" />
+	<mapping mapTo="priority" attribute="false" />
+	<mapping mapTo="mobileText" mapFrom="mobile-text" attribute="false" />
+</dataMapping>

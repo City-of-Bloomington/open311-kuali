@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataMapping id="seat" className="org.kuali.mobility.computerlabs.entity.Lab" list="true" rootElement="seats">
+	<mapping mapTo="lab" attribute="true" />
+	<mapping mapTo="floor" attribute="true" />
+	<mapping mapTo="buildingCode" mapFrom="building-code" attribute="true" />
+	<mapping mapTo="building" attribute="true" />
+	<mapping mapTo="availability" attribute="true" />
+	<mapping mapTo="windowsAvailability" mapFrom="windows-availability" attribute="true" />
+	<mapping mapTo="macAvailability" mapFrom="mac-availability" attribute="true" />
+</dataMapping>

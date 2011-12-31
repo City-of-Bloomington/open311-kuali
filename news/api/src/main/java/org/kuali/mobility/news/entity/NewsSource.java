@@ -1,61 +1,129 @@
+/**
+ * Copyright 2011 The Kuali Foundation Licensed under the
+ * Educational Community License, Version 2.0 (the "License"); you may
+ * not use this file except in compliance with the License. You may
+ * obtain a copy of the License at
+ *
+ * http://www.osedu.org/licenses/ECL-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an "AS IS"
+ * BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
+ */
+
 package org.kuali.mobility.news.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Version;
+
+/**
+ * Represents a source for a news feed.  Each NewsSource has an associated NewsFeed.  
+ * A NewsSource contains the URL and display order for a feed, whereas the NewsFeed contains the actual feed data.
+ * 
+ * @author Kuali Mobility Team (moblitiy.collab@kuali.org)
+ *
+ */
+@Entity
+@Table(name="NEWS_SRC_T")
 public class NewsSource {
 
-	private String locationCode;
-	private String sourceUrl;
-	private String sourceName;
-	private String sourceId;
-	private NewsStream newsStream;
+	@Id
+	@GeneratedValue(strategy = GenerationType.TABLE)
+	@Column(name="ID")
+	private Long id;
 	
-	public NewsSource copy() {
-		NewsSource copy = new NewsSource();
-		if (locationCode!=null) {
-			copy.setLocationCode(new String(locationCode));
-		}
-		if (sourceUrl!=null) {
-			copy.setSourceUrl(new String(sourceUrl));
-		}
-		if (sourceName!=null) {
-			copy.setSourceName(new String(sourceName));
-		}
-		if (sourceId!=null) {
-			copy.setSourceId(new String(sourceId));
-		}
-		if (newsStream != null) {
-			copy.setNewsStream(newsStream.copy());
-		}
-		return copy;
+	@Column(name="NAME")
+	private String name;
+	
+	@Column(name="URL")
+	private String url;
+	
+	@Column(name="ACTIVE")
+	private boolean active;
+	
+	@Column(name="ORDR")
+	private int order;
+	
+	@Version
+    @Column(name="VER_NBR")
+    private Long versionNumber;
+	
+	public Long getId() {
+		return id;
 	}
 	
-	public String getLocationCode() {
-		return locationCode;
+	public void setId(Long id) {
+		this.id = id;
 	}
-	public void setLocationCode(String locationCode) {
-		this.locationCode = locationCode;
+	
+	/**
+	 * @return the URL of the feed
+	 */
+	public String getUrl() {
+		return url;
 	}
-	public String getSourceUrl() {
-		return sourceUrl;
+	
+	/**
+	 * @param url the URL of the feed
+	 */
+	public void setUrl(String url) {
+		this.url = url;
 	}
-	public void setSourceUrl(String sourceUrl) {
-		this.sourceUrl = sourceUrl;
+	
+	public Long getVersionNumber() {
+		return versionNumber;
 	}
-	public String getSourceName() {
-		return sourceName;
+	
+	public void setVersionNumber(Long versionNumber) {
+		this.versionNumber = versionNumber;
 	}
-	public void setSourceName(String sourceName) {
-		this.sourceName = sourceName;
+
+	/**
+	 * @return whether the feed is active or not
+	 */
+	public boolean isActive() {
+		return active;
 	}
-	public String getSourceId() {
-		return sourceId;
+
+	/**
+	 * @param active set this feed active or inactive
+	 */
+	public void setActive(boolean active) {
+		this.active = active;
 	}
-	public void setSourceId(String sourceId) {
-		this.sourceId = sourceId;
+
+	/**
+	 * @return the name assigned to this feed
+	 */
+	public String getName() {
+		return name;
 	}
-	public NewsStream getNewsStream() {
-		return newsStream;
+
+	/**
+	 * @param name the name to set for this feed.  It is not displayed to end users.
+	 */
+	public void setName(String name) {
+		this.name = name;
 	}
-	public void setNewsStream(NewsStream newsStream) {
-		this.newsStream = newsStream;
+
+	/**
+	 * @return the display order
+	 */
+	public int getOrder() {
+		return order;
+	}
+
+	/**
+	 * @param order the display order
+	 */
+	public void setOrder(int order) {
+		this.order = order;
 	}
 }

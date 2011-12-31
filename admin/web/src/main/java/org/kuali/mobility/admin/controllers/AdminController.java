@@ -28,25 +28,19 @@ public class AdminController {
     
     @Autowired
     private AdminService adminService;
-    public void setAdminService(AdminService adminService) {
-        this.adminService = adminService;
-    }
     
     @RequestMapping(value = "index", method = RequestMethod.GET)
     public String index(Model uiModel) {
-
     	return "admin/index";
     }
 
     @RequestMapping(value = "node", method = RequestMethod.GET)
     public String tool(Model uiModel) {
-
     	return "admin/node";
     }
 
     @RequestMapping(value = "nodelayout", method = RequestMethod.GET)
     public String layout(Model uiModel) {
-
     	return "admin/nodelayout";
     }
     

@@ -15,36 +15,49 @@
 package org.kuali.mobility.campus.service;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.kuali.mobility.campus.entity.Campus;
 import org.springframework.stereotype.Service;
 
+/**
+ * A service for doing the actual work of interacting with Campus objects.
+ * 
+ * @author Kuali Mobility Team (moblitiy.collab@kuali.org)
+ */
 @Service
 public class CampusServiceImpl implements CampusService {
 
-	@Override
-	public List<Campus> getCampuses() {
-		List<Campus> campuses = new ArrayList<Campus>();
+	private List<Campus> campuses;
 
-		Campus campus = new Campus("BL", "IU Bloomington");
-		campuses.add(campus);
-		campus = new Campus("IN", "IUPUI");
-		campuses.add(campus);
-		campus = new Campus("CO", "IUPUC");
-		campuses.add(campus);
-		campus = new Campus("EA", "IU East");
-		campuses.add(campus);
-		campus = new Campus("KO", "IU Kokomo");
-		campuses.add(campus);
-		campus = new Campus("NW", "IU Northwest");
-		campuses.add(campus);
-		campus = new Campus("SB", "IU South Bend");
-		campuses.add(campus);
-		campus = new Campus("SE", "IU Southeast");
-		campuses.add(campus);
+	public List<Campus> findCampusesByTool(String toolName) {
+		List<Campus> toolCampuses = new ArrayList<Campus>();
 
-		return campuses;
+		for (Iterator<Campus> iterator = campuses.iterator(); iterator.hasNext();) {
+			Campus campus = iterator.next();
+			if (campus.getTools().contains(toolName)) {
+				toolCampuses.add(campus);
+			}
+		}
+		return toolCampuses;
+	}
+
+	public boolean needToSelectDifferentCampusForTool(String tool, String campus) {
+		List<Campus> campuses = findCampusesByTool(tool);
+		boolean needDifferentCampus = true;
+		if (campuses != null && !campuses.isEmpty()) {
+			for (Campus foundCampus : campuses) {
+				if (foundCampus.getCode().equals(campus)) {
+					needDifferentCampus = false;
+				}
+			}
+		}
+		return needDifferentCampus;
+	}
+
+	public void setCampuses(List<Campus> campuses) {
+		this.campuses = campuses;
 	}
 
 }

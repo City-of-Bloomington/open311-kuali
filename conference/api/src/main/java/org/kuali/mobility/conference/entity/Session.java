@@ -17,6 +17,7 @@ package org.kuali.mobility.conference.entity;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Date;
 
 public class Session implements Serializable {
 
@@ -26,72 +27,98 @@ public class Session implements Serializable {
 	private String title;
 	private String startTime;
 	private String endTime;
+	private Date dstartTime;
+	private Date dendTime;
 	private String description;
 	private String location;
 	private String latitude;
 	private String longitude;
 	private String link;
+	private String track;
+	private String trackCSSClass;
+	private String level;
+	private String type;
 	private List<Attendee> speakers;
-	
+
 	public String getId() {
-    	return id;
-    }
+		return id;
+	}
 
 	public void setId(String id) {
-    	this.id = id;
-    }
+		this.id = id;
+	}
 
 	public String getLatitude() {
-    	return latitude;
-    }
+		return latitude;
+	}
 
 	public void setLatitude(String latitude) {
-    	this.latitude = latitude;
-    }
+		this.latitude = latitude;
+	}
 
 	public String getLongitude() {
-    	return longitude;
-    }
+		return longitude;
+	}
 
 	public void setLongitude(String longitude) {
-    	this.longitude = longitude;
-    }
+		this.longitude = longitude;
+	}
 
 	public String getLink() {
-    	return link;
-    }
+		return link;
+	}
 
 	public void setLink(String link) {
-    	this.link = link;
-    }
+		this.link = link;
+	}
 
 	public String getTitle() {
 		return title;
 	}
 
+	public Date getdStartTime() {
+		// System.out.println("getdstartDate");
+		return dstartTime;
+	}
+
+	public void setdStartTime(Date dstartTime) {
+		this.dstartTime = dstartTime;
+		// System.out.println("setdstartDate");
+	}
+
+	public Date getdEndTime() {
+		// System.out.println("getdendDate");
+		return dendTime;
+	}
+
+	public void setdEndTime(Date dendTime) {
+		this.dendTime = dendTime;
+		// System.out.println("setdendDate");
+	}
+
 	public String getStartTime() {
-    	return startTime;
-    }
+		return startTime;
+	}
 
 	public void setStartTime(String startTime) {
-    	this.startTime = startTime;
-    }
+		this.startTime = startTime;
+	}
 
 	public String getEndTime() {
-    	return endTime;
-    }
+		return endTime;
+	}
 
 	public void setEndTime(String endTime) {
-    	this.endTime = endTime;
-    }
+		this.endTime = endTime;
+	}
 
 	public String getLocation() {
-    	return location;
-    }
+		return location;
+	}
 
 	public void setLocation(String location) {
-    	this.location = location;
-    }
+		this.location = location;
+	}
 
 	public void setTitle(String title) {
 		this.title = title;
@@ -105,6 +132,38 @@ public class Session implements Serializable {
 		this.description = description;
 	}
 
+	public String getTrack() {
+		return track;
+	}
+
+	public void setTrack(String track) {
+		this.track = track;
+	}
+
+	public String getTrackCSSClass() {
+		return trackCSSClass;
+	}
+
+	public void setTrackCSSClass(String trackCSSClass) {
+		this.trackCSSClass = trackCSSClass;
+	}
+
+	public String getLevel() {
+		return level;
+	}
+
+	public void setLevel(String level) {
+		this.level = level;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
 	public List<Attendee> getSpeakers() {
 		return speakers;
 	}
@@ -112,5 +171,5 @@ public class Session implements Serializable {
 	public void setSpeakers(List<Attendee> speakers) {
 		this.speakers = speakers;
 	}
-	
+
 }

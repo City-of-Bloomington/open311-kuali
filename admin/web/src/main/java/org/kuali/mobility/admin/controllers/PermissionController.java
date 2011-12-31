@@ -28,13 +28,9 @@ public class PermissionController {
     
     @Autowired
     private AdminService adminService;
-    public void setAdminService(AdminService adminService) {
-        this.adminService = adminService;
-    }
     
     @RequestMapping(method = RequestMethod.GET)
     public String getList(Model uiModel) {
-
     	return "permission/list";
     }
     

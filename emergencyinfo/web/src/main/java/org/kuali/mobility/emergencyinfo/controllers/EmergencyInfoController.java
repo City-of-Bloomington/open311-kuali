@@ -21,8 +21,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.kuali.mobility.emergencyinfo.entity.EmergencyInfo;
 import org.kuali.mobility.emergencyinfo.service.EmergencyInfoService;
+import org.kuali.mobility.security.authn.entity.User;
 import org.kuali.mobility.shared.Constants;
-import org.kuali.mobility.user.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,29 +34,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+
 @Controller 
 @RequestMapping("/emergencycontacts")
 public class EmergencyInfoController {
     
     @Autowired
     private EmergencyInfoService emergencyInfoService;
-    public void setEmergencyInfoService(EmergencyInfoService emergencyInfoService) {
-        this.emergencyInfoService = emergencyInfoService;
-    }
 
     @RequestMapping(method = RequestMethod.GET)
     public String getList(Model uiModel, HttpServletRequest request) {
     	User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
-//    	String selectedCampus = "UA";
+		String selectedCampus = "UA";
     	if (user.getViewCampus() == null) {
     		return "redirect:/campus?toolName=emergencycontacts";
     	} else {
-//    		selectedCampus = user.getViewCampus();
+    		selectedCampus = user.getViewCampus();
     	}
-    		
-//      Disable static rendering data source
-//    	List<EmergencyInfo> infos = emergencyInfoService.findAllEmergencyInfoByCampus(selectedCampus);
-//    	uiModel.addAttribute("emergencyinfos", infos);
+    	List<EmergencyInfo> infos = emergencyInfoService.findAllEmergencyInfoByCampus(selectedCampus);
+    	uiModel.addAttribute("emergencyinfos", infos);
     	return "emergencyinfo/list";
     }
     
@@ -73,7 +69,6 @@ public class EmergencyInfoController {
     @RequestMapping(headers = "Accept=application/json")
     @ResponseBody
     public String getListJson(HttpServletRequest request) {
-        //return emergencyInfoService.toJson(emergencyInfoService.findAllEmergencyInfo());
     	User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
 		String selectedCampus = user.getViewCampus();
     	List<EmergencyInfo> infos = emergencyInfoService.findAllEmergencyInfoByCampus(selectedCampus);

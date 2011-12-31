@@ -15,14 +15,15 @@
 
 package org.kuali.mobility.computerlabs.controllers;
 
-import java.util.List;
+import java.util.Collection;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.kuali.mobility.computerlabs.entity.LabLocation;
+import org.kuali.mobility.campus.service.CampusService;
+import org.kuali.mobility.computerlabs.entity.Location;
 import org.kuali.mobility.computerlabs.service.ComputerLabsService;
+import org.kuali.mobility.security.authn.entity.User;
 import org.kuali.mobility.shared.Constants;
-import org.kuali.mobility.user.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,47 +32,36 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-@Controller 
+import flexjson.JSONSerializer;
+
+@Controller
 @RequestMapping("/computerlabs")
 public class ComputerLabsController {
 
-    @Autowired
-    private ComputerLabsService computerLabsService;
-    public void setComputerLabsService(ComputerLabsService computerLabsService) {
-        this.computerLabsService = computerLabsService;
-    }
-    
-    @RequestMapping(method = RequestMethod.GET, headers = "Accept=application/json")
-    @ResponseBody
-    public String findAllComputerLabsByCampus(@RequestParam(value = "campus", required = true) String campus, HttpServletRequest request) {
-    	List<LabLocation> labLocations = computerLabsService.findAllLabLocationsByCampus(campus);
-    	return computerLabsService.toJsonLabLocation(labLocations);
-    }
+	@Autowired
+	private ComputerLabsService computerLabsService;
 
-    @RequestMapping(value = "/feed", method = RequestMethod.GET, headers = "Accept=application/json")
-    @ResponseBody
-    public String findAllComputerLabsByCampus(HttpServletRequest request) {
-        User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
-        String campus = user.getViewCampus();
-        if (campus == null) campus = "BL";
-        List<LabLocation> labLocations = computerLabsService.findAllLabLocationsByCampus(campus);
-        return computerLabsService.toJsonLabLocation(labLocations);
-    }
+	@Autowired
+	private CampusService campusService;
 
-    @RequestMapping(method = RequestMethod.GET)
-    public String getList(Model uiModel, HttpServletRequest request) {
-    	User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
-		String selectedCampus = "UA";
-    	if (user.getViewCampus() == null) {
-    		return "redirect:/campus?toolName=computerlabs";
-    	} else {
-    		selectedCampus = user.getViewCampus();
-    	}
-//    	Disable static rendering data source
-//   	List<LabLocation> labLocations = computerLabsService.findAllLabLocationsByCampus(selectedCampus);
-//   	uiModel.addAttribute("lablocations", labLocations);
-   		uiModel.addAttribute("campus", selectedCampus);
-    	return "computerlabs/list";
-    }
+	@RequestMapping(method = RequestMethod.GET)
+	public String getList(Model uiModel, HttpServletRequest request) {
+		User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
+		if (user.getViewCampus() == null) {
+			return "redirect:/campus?toolName=computerlabs";
+		} else {
+			if (campusService.needToSelectDifferentCampusForTool("computerlabs", user.getViewCampus())) {
+				return "redirect:/campus?toolName=computerlabs";
+			}
+		}
+		return "computerlabs/list";
+	}
 
+	@RequestMapping(method = RequestMethod.GET, headers = "Accept=application/json")
+	@ResponseBody
+	public String findAllComputerLabsByCampus(@RequestParam(value = "campus", required = true) String campus, HttpServletRequest request) {
+		User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
+		Collection<Location> labs = computerLabsService.findAllLabsByCampus(user.getViewCampus());
+		return new JSONSerializer().exclude("*.class").deepSerialize(labs);
+	}
 }
