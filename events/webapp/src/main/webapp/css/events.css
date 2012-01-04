@@ -1,0 +1,215 @@
+/*
+  Copyright 2011 The Kuali Foundation Licensed under the Educational Community
+  License, Version 2.0 (the "License"); you may not use this file except in
+  compliance with the License. You may obtain a copy of the License at
+  http://www.osedu.org/licenses/ECL-2.0 Unless required by applicable law or
+  agreed to in writing, software distributed under the License is distributed
+  on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+  express or implied. See the License for the specific language governing
+  permissions and limitations under the License.
+*/
+.container_16 .grid_cal {
+	width: 14.28%;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	float: left;
+}
+.monthgrid .daysofweek {
+	font-size:0.65em;
+	text-align: center;
+	padding-top: 0.1em;
+	padding-bottom: 0.1em;
+	background: #666666;
+	border-bottom: 1px solid #CCC;
+ color:#fff;
+	text-shadow: 0px 0px 0px #000000;
+	filter: dropshadow(color=#000000, offx=0, offy=0);
+}
+.daysofweek {
+	-webkit-border-top-left-radius: 5px;
+-moz-border-radius-topleft: 5px;
+border-top-left-radius: 5px;
+}
+.daysofweek+.daysofweek {
+	-webkit-border-top-left-radius: 0px;
+-webkit-border-top-right-radius: 0px;
+-moz-border-radius-topleft: 0px;
+-moz-border-radius-topright: 0px;
+border-top-left-radius: 0px;
+border-top-right-radius: 0px;
+}
+.daysofweek+.daysofweek+.daysofweek+.daysofweek+.daysofweek+.daysofweek+.daysofweek {
+	-webkit-border-top-right-radius: 5px;
+-moz-border-radius-topright: 5px;
+border-top-right-radius: 5px;
+}
+.monthgrid .datebox-true {
+	border-bottom: 1px solid #D6D6D6;
+	/* [disabled]border-left: 1px solid #D6D6D6;
+*/
+	background-image: -moz-linear-gradient(top, #ffffff, #f6f6f6);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #ffffff), color-stop(1, #f6f6f6));
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#f6f6f6')";
+	font-weight:bold;
+	text-align: center;
+	font-size: 1.2em;
+	text-shadow: 0px 1px 0px #e5e5ee;
+}
+.monthgrid .datebox-true .event-true-selected {
+	border-bottom:none;
+	border-left:none;
+	font-weight: normal;
+	text-align: center;
+	border-top: none;
+	border-right:none;
+	color: #FFF;
+	padding-top: 0.27em;
+	padding-bottom: 0.35em;
+	-moz-box-shadow: none;
+	-webkit-box-shadow:none;
+	box-shadow: none;
+	font-weight:normal;
+	background:#900 url(../images/eventdot-current.png) no-repeat center 1.45em;
+}
+.monthgrid .datebox-true .event-false-selected {
+	border-bottom:none;
+	border-left:none;
+	font-weight: normal;
+	text-align: center;
+	border-top: none;
+	border-right:none;
+	color: #FFF;
+	padding-top: 0.27em;
+	padding-bottom: 0.35em;
+	-moz-box-shadow: none;
+	-webkit-box-shadow:none;
+	box-shadow: none;
+	font-weight:normal;
+	background:#900;
+}
+.monthgrid .datebox-false {
+	/* [disabled]border-left: 1px solid #D6D6D6;
+*/
+	background-image: -moz-linear-gradient(top, #ffffff, #f6f6f6);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #ffffff), color-stop(1, #f6f6f6));
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#f6f6f6')";
+	font-weight:bold;
+	text-align: center;
+	font-size: 1.2em;
+	border-bottom: 1px solid #CCC;
+	/* [disabled]border-right: 1px solid #FFF;
+*/
+	filter: alpha(opacity=50);
+	-moz-opacity:0.5;
+	opacity: 0.5;
+}
+.monthgrid .event-true {
+	padding-top: 0.27em;
+	padding-bottom: 0.35em;
+	border-right: 1px solid #CCC;
+	background: url(../images/eventdot.png) no-repeat center 1.45em;
+}
+.monthgrid .event-true-today {
+	padding-top: 0.27em;
+	padding-bottom: 0.35em;
+	background: url(../images/eventdot.png) no-repeat center 1.45em;
+	background-color:#FFF7D5;
+	-moz-box-shadow: inset 0 0 6px #DDD;
+	-webkit-box-shadow: inset 0px 0px 6px #DDD;
+	box-shadow: inner 0 0 6px #DDD;
+}
+.monthgrid .event-false-today {
+	padding-top: 0.27em;
+	padding-bottom: 0.35em;
+	background-color:#FFF7D5;
+	-moz-box-shadow: inset 0 0 6px #DDD;
+	-webkit-box-shadow: inset 0px 0px 6px #DDD;
+	box-shadow: inner 0 0 6px #DDD;
+}
+.monthgrid .event-false {
+	padding-top: 0.27em;
+	padding-bottom: 0.35em;
+	border-right: 1px solid #CCC;
+}
+.monthgrid .month-year {
+	font-size:1.2em;
+	font-weight: bold;
+	padding-top: 0.2em;
+	padding-bottom: 0em;
+	text-align: center;
+}
+.monthgrid .cal-arrow-left {
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	padding-left: 1em;
+	float:right
+}
+.monthgrid .cal-arrow-right {
+	float:left;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	padding-right: 1em;
+}
+.monthgrid .cal-header {
+	background-image: -moz-linear-gradient(top, #ffffff, #f6f6f6);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #ffffff), color-stop(1, #f6f6f6));
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#f6f6f6')";
+	border-bottom:1px solid #CCC
+}
+.monthgrid a:link {
+	color:#000;
+	text-decoration: none;
+}
+.monthgrid a:visited {
+	color:#000;
+	text-decoration: none;
+}
+.event-list {
+	display: block;
+	padding-left:15px;
+	padding-right:15px;
+}
+.listload {
+	padding-top:12px;
+}
+.listload a {
+	text-decoration:none;
+}
+.month-nav {
+	/* [disabled]background: #CCC;
+*/
+}
+.month-grid {
+	padding:0px;
+	border-left: 1px solid #CCC;
+}
+
+
+/* temporary hack to maintain checkbox styling when an onclick event is used (wait for jquery mobile to address?) */ 
+
+div#allDayCheckboxSection {
+	margin-bottom:20px;
+}
+
+div#allDayCheckboxSection span {
+	margin-left:40px;
+}
+.temp-checkbox-hack input {
+	margin-top:8px;
+	margin-left: 0;
+}
+.temp-checkbox-hack .ui-btn.ui-btn-icon-left.ui-corner-top.ui-corner-bottom.ui-controlgroup-last.ui-btn-up-c .ui-btn-inner.ui-corner-top.ui-corner-bottom.ui-controlgroup-last {
+	text-align:left;
+}
+
+.temp-checkbox-hack .ui-btn.ui-btn-icon-left.ui-corner-top.ui-corner-bottom.ui-controlgroup-last.ui-btn-hover-c .ui-btn-inner.ui-corner-top.ui-corner-bottom.ui-controlgroup-last {
+	text-align:left;
+}
+.temp-checkbox-hack .ui-btn.ui-btn-icon-left.ui-corner-top.ui-corner-bottom.ui-controlgroup-last.ui-btn-up-c .ui-btn-inner.ui-corner-top.ui-corner-bottom.ui-controlgroup-last .ui-btn-text {
+	padding-left:12px;
+}
+
+.temp-checkbox-hack .ui-btn.ui-btn-icon-left.ui-corner-top.ui-corner-bottom.ui-controlgroup-last.ui-btn-hover-c .ui-btn-inner.ui-corner-top.ui-corner-bottom.ui-controlgroup-last .ui-btn-text {
+	padding-left:12px;
+}

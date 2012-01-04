@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataMapping id="events" className="org.kuali.mobility.events.entity.Event" list="true" rootElement="eventss">
+    <mapping mapTo="eventId" mapFrom="id"/>
+    <mapping mapTo="title" mapFrom="title"/>
+    <mapping mapTo="displayStartTime" mapFrom="time"/>
+    <mapping mapTo="displayStartDate" mapFrom="group"/>
+</dataMapping>
