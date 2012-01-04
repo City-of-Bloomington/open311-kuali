@@ -38,6 +38,7 @@
 		<commons-logging.version>1.1.1</commons-logging.version>
 		<junit.version>4.8.2</junit.version>
 		<net.sf.ehcache.version>1.6.2</net.sf.ehcache.version> <!-- 2.4.6 is most recent but seems not to be in mvn repo -->
+		<commons-collections.version>3.2.1</commons-collections.version>	
 		
 		<tool.shared.version>1.0.0-M2-RELEASE</tool.shared.version>
 		<tool.admin.version>1.0.0-M2-RELEASE</tool.admin.version>
@@ -47,6 +48,7 @@
 		<tool.configparams.version>1.0.0-M2-RELEASE</tool.configparams.version>
 		<tool.dining.version>1.0.0-M2-RELEASE</tool.dining.version>
 		<tool.emergencyinfo.version>1.0.0-M2-RELEASE</tool.emergencyinfo.version>
+		<tool.events.version>1.0.0-M2-RELEASE</tool.events.version>
 		<tool.feedback.version>1.0.0-M2-RELEASE</tool.feedback.version>
 		<tool.maps.version>1.0.0-M2-RELEASE</tool.maps.version>
 		<tool.news.version>1.0.0-M2-RELEASE</tool.news.version>
@@ -74,6 +76,7 @@
 				<module>configparams</module>
                 <module>dining</module>
 				<module>emergencyinfo</module>
+				<module>events</module>
                 <module>feedback</module>
 				<module>maps</module>
 				<module>news</module>
@@ -300,6 +303,27 @@
                 <artifactId>emergencyinfo-webapp</artifactId>
                 <version>${tool.emergencyinfo.version}</version>
             </dependency>
+            <!-- Events Service -->
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>events-api</artifactId>
+                <version>${tool.events.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>events-impl</artifactId>
+                <version>${tool.events.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>events-web</artifactId>
+                <version>${tool.events.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>events-webapp</artifactId>
+                <version>${tool.events.version}</version>
+            </dependency>
             <!-- Feedback Service -->
             <dependency>
                 <groupId>org.kuali.mobility</groupId>
@@ -434,6 +458,12 @@
 				<artifactId>spring-security-oauth</artifactId>
 				<version>${spring.security.oauth.version}</version>
 			</dependency>
+            <!-- List manipulation support -->
+            <dependency>
+                <groupId>commons-collections</groupId>
+                <artifactId>commons-collections</artifactId>
+                <version>${commons-collections.version}</version>
+            </dependency>
 			<!-- Database dependencies -->
 			<dependency>
 				<groupId>hibernate</groupId>
