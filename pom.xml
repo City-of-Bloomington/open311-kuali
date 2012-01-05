@@ -15,7 +15,7 @@
 	<packaging>pom</packaging>
 	<url>http://kuali.org/mobility</url>
 	<inceptionYear>2011</inceptionYear>
-	<version>1.0.0-M2-RELEASE</version>
+	<version>2.0.0-SNAPSHOT</version>
 	<scm>
 		<connection>scm:svn:https://svn.kuali.org/repos/mobility/trunk</connection>
 		<developerConnection>scm:svn:https://svn.kuali.org/repos/mobility/trunk</developerConnection>
@@ -40,23 +40,23 @@
 		<net.sf.ehcache.version>1.6.2</net.sf.ehcache.version> <!-- 2.4.6 is most recent but seems not to be in mvn repo -->
 		<commons-collections.version>3.2.1</commons-collections.version>	
 		
-		<tool.shared.version>1.0.0-M2-RELEASE</tool.shared.version>
-		<tool.admin.version>1.0.0-M2-RELEASE</tool.admin.version>
-		<tool.alerts.version>1.0.0-M2-RELEASE</tool.alerts.version>
-		<tool.computerlabs.version>1.0.0-M2-RELEASE</tool.computerlabs.version>
-		<tool.conference.version>1.0.0-M2-RELEASE</tool.conference.version>
-		<tool.configparams.version>1.0.0-M2-RELEASE</tool.configparams.version>
-		<tool.dining.version>1.0.0-M2-RELEASE</tool.dining.version>
-		<tool.emergencyinfo.version>1.0.0-M2-RELEASE</tool.emergencyinfo.version>
-		<tool.events.version>1.0.0-M2-RELEASE</tool.events.version>
-		<tool.feedback.version>1.0.0-M2-RELEASE</tool.feedback.version>
-		<tool.maps.version>1.0.0-M2-RELEASE</tool.maps.version>
-		<tool.news.version>1.0.0-M2-RELEASE</tool.news.version>
+		<tool.shared.version>2.0.0-SNAPSHOT</tool.shared.version>
+		<tool.admin.version>2.0.0-SNAPSHOT</tool.admin.version>
+		<tool.alerts.version>2.0.0-SNAPSHOT</tool.alerts.version>
+		<tool.computerlabs.version>2.0.0-SNAPSHOT</tool.computerlabs.version>
+		<tool.conference.version>2.0.0-SNAPSHOT</tool.conference.version>
+		<tool.configparams.version>2.0.0-SNAPSHOT</tool.configparams.version>
+		<tool.dining.version>2.0.0-SNAPSHOT</tool.dining.version>
+		<tool.emergencyinfo.version>2.0.0-SNAPSHOT</tool.emergencyinfo.version>
+		<tool.events.version>2.0.0-SNAPSHOT</tool.events.version>
+		<tool.feedback.version>2.0.0-SNAPSHOT</tool.feedback.version>
+		<tool.maps.version>2.0.0-SNAPSHOT</tool.maps.version>
+		<tool.news.version>2.0.0-SNAPSHOT</tool.news.version>
 		
-		<security.authentication>1.0.0-M2-RELEASE</security.authentication>
+		<security.authentication>2.0.0-SNAPSHOT</security.authentication>
 
-        <util.testing>1.0.0-M2-RELEASE</util.testing>
-        <util.webservice.adapter>1.0.0-M2-RELEASE</util.webservice.adapter>
+        <util.testing>2.0.0-SNAPSHOT</util.testing>
+        <util.webservice.adapter>2.0.0-SNAPSHOT</util.webservice.adapter>
 	</properties>
 	<profiles>
 		<profile>
