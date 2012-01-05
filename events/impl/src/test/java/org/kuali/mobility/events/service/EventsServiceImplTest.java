@@ -71,14 +71,14 @@ public class EventsServiceImplTest {
 //    /**
 //     * Test of getCategoriesByCampus method, of class EventsServiceImpl.
 //     */
-//    @Test
-//    public void testGetCategoriesByCampus() {
+    @Test
+    public void testGetCategoriesByCampus() {
 //        
 //        String campus = null;
 //        EventsServiceImpl instance = (EventsServiceImpl)getApplicationContext().getBean("eventService");
 //        List result = instance.getCategoriesByCampus(campus);
 //        assertTrue( "Failed to load categories.", result != null && result.size() > 0 );
-//    }
+    }
 
     /**
      * @return the applicationContext
