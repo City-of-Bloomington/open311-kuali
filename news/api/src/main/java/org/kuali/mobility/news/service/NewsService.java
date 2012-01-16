@@ -16,6 +16,8 @@ package org.kuali.mobility.news.service;
 
 import java.util.List;
 
+import org.kuali.mobility.news.dao.NewsCache;
+import org.kuali.mobility.news.dao.NewsDao;
 import org.kuali.mobility.news.entity.NewsArticle;
 import org.kuali.mobility.news.entity.NewsFeed;
 import org.kuali.mobility.news.entity.NewsSource;
@@ -98,4 +100,8 @@ public interface NewsService {
 	 */
 	public NewsArticle getNewsArticle(String articleId, long sourceId);
 	
+	public void setDao( NewsDao dao );
+	public NewsDao getDao();
+	public void setCache( NewsCache cache );
+	public NewsCache getCache();
 }

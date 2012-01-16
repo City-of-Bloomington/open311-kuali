@@ -1,107 +1,146 @@
-/**
- * Copyright 2011 The Kuali Foundation Licensed under the
- * Educational Community License, Version 2.0 (the "License"); you may
- * not use this file except in compliance with the License. You may
- * obtain a copy of the License at
- *
- * http://www.osedu.org/licenses/ECL-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an "AS IS"
- * BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing
- * permissions and limitations under the License.
- */
-
 package org.kuali.mobility.news.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-import javax.persistence.EntityManager;
-import javax.persistence.OptimisticLockException;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-
+import org.apache.log4j.Logger;
 import org.kuali.mobility.news.entity.NewsSource;
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
+import org.kuali.mobility.util.mapper.DataMapper;
+import org.springframework.context.ApplicationContext;
 
-/**
- * DAO for actually persisting and retrieving NewsSource objects
- * 
- * @author Kuali Mobility Team (moblitiy.collab@kuali.org)
- * @see org.kuali.mobility.news.dao.NewsDao
- */
-@Repository
 public class NewsDaoImpl implements NewsDao {
 
-	@PersistenceContext
-    private EntityManager entityManager;
+	public static Logger LOG = Logger.getLogger( NewsDaoImpl.class );
+
+	private ApplicationContext applicationContext;
+	private NewsCache cache;
+	private DataMapper mapper;
 	
-	@SuppressWarnings("unchecked")
+	private String newsSourceFile;
+	private String newsSourceUrl;
+	private String newsMappingFile;
+	private String newsMappingUrl;
+
 	@Override
-	@Transactional
 	public List<NewsSource> findAllActiveNewsSources() {
-		Query query = entityManager.createQuery("select s from NewsSource s where s.active = :active order by s.order");
-		query.setParameter("active", true);
-        try { 
-        	return query.getResultList();
-        } catch (Exception e) {        	
-        	return new ArrayList<NewsSource>();
-        }
+		initData();
+		
+		return new ArrayList<NewsSource>(getCache().getNewsSources().values());
 	}
-	
-	@SuppressWarnings("unchecked")
+
 	@Override
-	@Transactional
 	public List<NewsSource> findAllNewsSources() {
-		Query query = entityManager.createQuery("select s from NewsSource s order by s.order");
-        try { 
-        	return query.getResultList();
-        } catch (Exception e) {        	
-        	return new ArrayList<NewsSource>();
-        }
+		initData();
+		return new ArrayList<NewsSource>(getCache().getNewsSources().values());
 	}
 
 	@Override
-	@Transactional
 	public NewsSource lookup(Long id) {
-		Query query = entityManager.createQuery("select s from NewsSource s where s.id = :id");
-        query.setParameter("id", id);
-        try {
-        	NewsSource s = (NewsSource)query.getSingleResult();
-        	return s;
-        } catch (Exception e) {
-        	return null;
-        }
+		initData();
+		NewsSource source = null;
+		source = getCache().getNewsSources().get(id);
+		return source;
+	}
+
+	@Override
+	public NewsSource save(NewsSource newsSource) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public NewsSource delete(NewsSource newsSource) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@SuppressWarnings("unchecked")
+	private void initData()
+	{
+		Map<Long, NewsSource> source = getCache().getNewsSources();
+		if( source == null || source.isEmpty() )
+		{
+			try
+			{
+				source = new HashMap<Long, NewsSource>();
+				List<NewsSource> sources = new ArrayList<NewsSource>();
+				sources = (List<NewsSource>)mapper.mapData( source, getNewsSourceFile(), getNewsMappingFile() );
+				int i = 0;
+				for( NewsSource s : sources )
+				{
+					s.setActive(true);
+					if( s.getId() == null )
+					{
+						s.setId( new Long( i ) );
+					}
+					source.put( s.getId(), s );
+					i++;
+				}
+				getCache().setNewsSources( source );
+			}
+			catch( ClassNotFoundException cnfe )
+			{
+				LOG.error( cnfe.getMessage() );
+			}
+		}
 	}
 	
-	@Override
-	@Transactional
-	public NewsSource save(NewsSource newsSource) {
-		if (newsSource == null) {
-            return null;
-        }
-        try {
-	        if (newsSource.getId() == null) {
-	            entityManager.persist(newsSource);
-	        } else {
-	            entityManager.merge(newsSource);
-	        }
-        } catch (OptimisticLockException oe) {
-            return null;
-        }
-        return newsSource;
+	public ApplicationContext getApplicationContext() {
+		return applicationContext;
 	}
 
-	@Override
-	@Transactional
-	public NewsSource delete(NewsSource newsSource) {
-		Query query = entityManager.createQuery("delete from NewsSource ns where ns.id = :id");
-        query.setParameter("id", newsSource.getId());
-        query.executeUpdate();
-        return newsSource;
+	public void setApplicationContext(ApplicationContext applicationContext) {
+		this.applicationContext = applicationContext;
+	}
+
+	public NewsCache getCache() {
+		return cache;
+	}
+
+	public void setCache(NewsCache cache) {
+		this.cache = cache;
+	}
+
+	public DataMapper getMapper() {
+		return mapper;
+	}
+
+	public void setMapper(DataMapper mapper) {
+		this.mapper = mapper;
+	}
+
+	public String getNewsSourceFile() {
+		return newsSourceFile;
+	}
+
+	public void setNewsSourceFile(String newsSourceFile) {
+		this.newsSourceFile = newsSourceFile;
+	}
+
+	public String getNewsSourceUrl() {
+		return newsSourceUrl;
+	}
+
+	public void setNewsSourceUrl(String newsSourceUrl) {
+		this.newsSourceUrl = newsSourceUrl;
+	}
+
+	public String getNewsMappingFile() {
+		return newsMappingFile;
+	}
+
+	public void setNewsMappingFile(String newsMappingFile) {
+		this.newsMappingFile = newsMappingFile;
+	}
+
+	public String getNewsMappingUrl() {
+		return newsMappingUrl;
+	}
+
+	public void setNewsMappingUrl(String newsMappingUrl) {
+		this.newsMappingUrl = newsMappingUrl;
 	}
 
 }

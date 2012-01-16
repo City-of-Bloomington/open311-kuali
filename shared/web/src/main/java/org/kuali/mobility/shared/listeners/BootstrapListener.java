@@ -150,36 +150,36 @@ public abstract class BootstrapListener implements ServletContextListener {
 		param.setValue("http://gus.ius.edu/dining-services/feed/?format=xml");
 		configParamService.saveConfigParam(param);
 		
-		NewsSource newsSource = new NewsSource();
-		newsSource.setActive(true);
-		newsSource.setOrder(4);
-		newsSource.setUrl("http://rss.cnn.com/rss/cnn_allpolitics.rss");
-		newsService.saveNewsSource(newsSource);
-		
-		newsSource = new NewsSource();
-		newsSource.setActive(true);
-		newsSource.setOrder(3);
-		newsSource.setUrl("http://rss.cnn.com/rss/cnn_tech.rss");
-		newsService.saveNewsSource(newsSource);
-		
-		newsSource = new NewsSource();
-		newsSource.setActive(true);
-		newsSource.setOrder(0);
-		newsSource.setUrl("http://feeds.bbci.co.uk/news/rss.xml");
-		newsService.saveNewsSource(newsSource);
-		
-		newsSource = new NewsSource();
-		newsSource.setActive(true);
-		newsSource.setOrder(1);
-		newsSource.setUrl("http://rss.cnn.com/rss/cnn_world.rss");
-		newsService.saveNewsSource(newsSource);
-		
-		newsSource = new NewsSource();
-		newsSource.setActive(true);
-		newsSource.setOrder(2);
-		newsSource.setUrl("http://rss.cnn.com/rss/cnn_health.rss");
-		newsService.saveNewsSource(newsSource);					
-		
+//		NewsSource newsSource = new NewsSource();
+//		newsSource.setActive(true);
+//		newsSource.setOrder(4);
+//		newsSource.setUrl("http://rss.cnn.com/rss/cnn_allpolitics.rss");
+//		newsService.saveNewsSource(newsSource);
+//		
+//		newsSource = new NewsSource();
+//		newsSource.setActive(true);
+//		newsSource.setOrder(3);
+//		newsSource.setUrl("http://rss.cnn.com/rss/cnn_tech.rss");
+//		newsService.saveNewsSource(newsSource);
+//		
+//		newsSource = new NewsSource();
+//		newsSource.setActive(true);
+//		newsSource.setOrder(0);
+//		newsSource.setUrl("http://feeds.bbci.co.uk/news/rss.xml");
+//		newsService.saveNewsSource(newsSource);
+//		
+//		newsSource = new NewsSource();
+//		newsSource.setActive(true);
+//		newsSource.setOrder(1);
+//		newsSource.setUrl("http://rss.cnn.com/rss/cnn_world.rss");
+//		newsService.saveNewsSource(newsSource);
+//		
+//		newsSource = new NewsSource();
+//		newsSource.setActive(true);
+//		newsSource.setOrder(2);
+//		newsSource.setUrl("http://rss.cnn.com/rss/cnn_health.rss");
+//		newsService.saveNewsSource(newsSource);					
+//		
 		LOG.info("Count: " + adminService.getAllHomeScreens().size());
 		
 		LOG.info("BootstrapListener finished initializing.");

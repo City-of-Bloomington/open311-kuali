@@ -15,20 +15,13 @@
 
 package org.kuali.mobility.news.service;
 
-import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.net.URLDecoder;
-import java.net.URLEncoder;
-import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.kuali.mobility.configparams.service.ConfigParamService;
+import org.kuali.mobility.news.dao.NewsCache;
 import org.kuali.mobility.news.dao.NewsDao;
 import org.kuali.mobility.news.entity.NewsArticle;
 import org.kuali.mobility.news.entity.NewsFeed;
@@ -36,12 +29,9 @@ import org.kuali.mobility.news.entity.NewsSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.sun.syndication.feed.synd.SyndEntryImpl;
-import com.sun.syndication.feed.synd.SyndFeed;
-import com.sun.syndication.io.SyndFeedInput;
 
 /**
  * Service for actually doing the work of interacting with the nedws entity objects
@@ -54,39 +44,42 @@ public class NewsServiceImpl implements NewsService {
 
 	private static org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(NewsServiceImpl.class);
 	
-	@Autowired
-	private NewsDao newsDao;
-	
-	@Autowired
-	private ConfigParamService configParamService;
+	private ApplicationContext applicationContext;
+	private NewsDao dao;
+	private NewsCache cache;
 	
 	@Override
 	public List<NewsSource> getAllNewsSources() {
-		return newsDao.findAllNewsSources();
+		LOG.debug( "Called getAllNewsSources web service." );
+		return getDao().findAllNewsSources();
 	}
 	
 	@Override
 	public List<NewsSource> getAllActiveNewsSources() {
-		return newsDao.findAllActiveNewsSources();
+		LOG.debug( "Called getAllActiveNewsSources web service." );
+		return getDao().findAllActiveNewsSources();
 	}
 
 	@Override
 	@Cacheable(value="newsSource", key="#id")
 	public NewsSource getNewsSourceById(Long id) {
-		return newsDao.lookup(id);
+		LOG.debug( "Called getNewsSourceById web service." );
+		return getDao().lookup(id);
 	}
 	
 	@Override
 	@CacheEvict(value = "newsSource", key="#id", allEntries=false)
 	public NewsSource deleteNewsSourcebyId(long id) {
-		return newsDao.delete(newsDao.lookup(id));
+		LOG.debug( "Called deleteNewsSourceById web service." );
+		return getDao().delete(getDao().lookup(id));
 	}
 
 	@Override
 	@CacheEvict(value = "newsSource", key="#newsSource.id", allEntries=false)
 	public NewsSource saveNewsSource(NewsSource newsSource) {
-		newsDao.save(newsSource);
-		updateCache(newsSource);
+		LOG.debug( "Called saveNewsSourceById web service." );
+		getDao().save(newsSource);
+		getCache().updateCache(newsSource);
 		return newsSource;
 	}
 	
@@ -161,106 +154,107 @@ public class NewsServiceImpl implements NewsService {
     	}
 	}
 	
-	private Map<Long, NewsFeed> cachedFeeds = new HashMap();
-	private Map<Long, NewsSource> cachedSources = new HashMap();
-	
 	@Override
 	public List<NewsFeed> getAllActiveNewsFeeds() {
-		List<NewsFeed> feeds = new ArrayList<NewsFeed>(cachedFeeds.values());
-		Collections.sort(feeds);
+		LOG.debug( "Entering getAllActiveNewsFeeds()." );
+		List<NewsFeed> feeds = new ArrayList<NewsFeed>(getCache().getNewsFeeds().values());
+		if( feeds == null || feeds.isEmpty() )
+		{
+			LOG.debug( "No feeds found, refreshing cache." );
+			for( NewsSource source : getDao().findAllNewsSources() )
+			{
+				LOG.debug( "Updating cache for "+source.getName() );
+				getCache().updateCache( source );
+			}
+		}
+//		Collections.sort(feeds);
+		feeds = new ArrayList<NewsFeed>(getCache().getNewsFeeds().values());
 		return feeds;
 	}
 
 	@Override
 	public NewsFeed getNewsFeed(long newsSourceId) {
-		return cachedFeeds.get(newsSourceId);
+		NewsFeed feed = null;
+		Long sourceId = new Long( newsSourceId );
+		
+		if( getCache().getNewsFeeds() == null )
+		{
+			LOG.debug( "News feeds were not loaded.  Loading now...." );
+			getAllActiveNewsFeeds();
+		}
+		
+		feed = getCache().getNewsFeeds().get( sourceId );
+		
+		if( feed == null )
+		{
+			NewsSource source = getCache().getNewsSources().get( sourceId );
+			if( source == null )
+			{
+				LOG.debug( "News source is not found. Loading news sources now...." );
+				getDao().findAllNewsSources();
+				source = getCache().getNewsSources().get( sourceId );
+				if( source == null )
+				{
+					LOG.debug( "News source is not present in bootstrap data." );
+				}
+			}
+			
+			LOG.debug( "News feed for source "+sourceId+" was not found, loading now...." );
+			getCache().updateCache(source);
+			
+			feed = getCache().getNewsFeeds().get( sourceId );
+		}
+		
+		return feed;
 	}
 	
 	@Override
 	public NewsArticle getNewsArticle(String articleId, long sourceId) {
+		NewsArticle foundArticle = null;
+		LOG.debug( "Looking for article id "+articleId );
 		NewsFeed feed = getNewsFeed(sourceId);
 		for (NewsArticle article : feed.getArticles()) {
+			LOG.debug( "Comparing with: "+article.getArticleId() );
 			String id;
 			try {
 				id = URLDecoder.decode(article.getArticleId(), "UTF-8");
-				if (articleId.equals(id)) {
-					return article.copy();
+//				if (articleId.equals(id)) {
+//					return article.copy();
+//				}
+				if( articleId.equalsIgnoreCase( id ) || articleId.equalsIgnoreCase( article.getArticleId() ) )
+				{
+					foundArticle = article.copy();
+					break;
 				}
 			} catch (UnsupportedEncodingException e) {
+				LOG.error( e.getLocalizedMessage() );
 			}
 		}
-		return null;
+		return foundArticle;
 	}
 	
-	/**
-	 * Update the cache for a single NewsSource. Called when a NewsSource is saved.
-	 * 
-	 * @param source the NewsSource that was saved
-	 */
-	private void updateCache(NewsSource source) {
-		if (source.isActive()) {
-			cachedSources.put(source.getId(), source);
-			NewsFeed feed = cachedFeeds.get(source.getId());
-			if (feed == null) {
-				feed = new NewsFeed();
-				cachedFeeds.put(source.getId(), feed);
-			}
-			updateFeed(feed, source);
-		} else {
-			cachedSources.remove(source.getId());
-			cachedFeeds.remove(source.getId());
-		}
+	public ApplicationContext getApplicationContext() {
+		return applicationContext;
 	}
-	
-	/**
-	 * Does the actual work of updating a news feed and its articles
-	 * 
-	 * @param feed the NewsFeed to update
-	 * @param source the NewsSource that defines the feed to update
-	 */
-	@SuppressWarnings("unchecked")
-	private void updateFeed(NewsFeed feed, NewsSource source) {
-		feed.setOrder(source.getOrder());
-		
-		URL feedUrl = null;
-		try {
-			feedUrl = new URL(source.getUrl());
-		} catch (MalformedURLException e) {
-			LOG.error("Bad feed url: " + source.getUrl(), e);
-		}
-		SyndFeedInput input = new SyndFeedInput();
-		SyndFeed syndFeed = null;
-		try {
-			syndFeed = input.build(new InputStreamReader(feedUrl.openStream()));
-		} catch (Exception e) {
-			LOG.error("Error reading feed: " + source.getName(), e);
-		}
-		
-		if (syndFeed != null) {
-			feed.setTitle(syndFeed.getTitle());
-			feed.setAuthor(syndFeed.getAuthor());
-			feed.setDescription(syndFeed.getDescription());
-			feed.setSourceId(source.getId());
-			
-			List<NewsArticle> articles = new ArrayList<NewsArticle>();
-			for (SyndEntryImpl entry : (List<SyndEntryImpl>)syndFeed.getEntries()) {
-				NewsArticle article = new NewsArticle();
-				
-				article.setTitle(entry.getTitle());
-				article.setDescription(entry.getDescription().getValue());
-				article.setLink(entry.getLink());
-				article.setPublishDate(new Timestamp(entry.getPublishedDate().getTime()));
-				article.setSourceId(source.getId());
-				try {
-					article.setArticleId(URLEncoder.encode(entry.getUri(), "UTF-8"));
-				} catch (UnsupportedEncodingException e) {
-					article.setArticleId(entry.getUri());
-				}
-				
-				articles.add(article);
-			}
-			feed.setArticles(articles);
-		}
+
+	public void setApplicationContext(ApplicationContext applicationContext) {
+		this.applicationContext = applicationContext;
+	}
+
+	public NewsDao getDao() {
+		return dao;
+	}
+
+	public void setDao(NewsDao dao) {
+		this.dao = dao;
+	}
+
+	public NewsCache getCache() {
+		return cache;
+	}
+
+	public void setCache(NewsCache cache) {
+		this.cache = cache;
 	}
 
     /**

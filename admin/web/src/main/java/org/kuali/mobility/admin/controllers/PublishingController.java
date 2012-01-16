@@ -28,6 +28,7 @@ import org.kuali.mobility.admin.entity.HomeTool;
 import org.kuali.mobility.admin.entity.Tool;
 import org.kuali.mobility.admin.service.AdminService;
 import org.kuali.mobility.news.entity.NewsSource;
+import org.kuali.mobility.news.entity.NewsSourceDBImpl;
 import org.kuali.mobility.news.service.NewsService;
 import org.kuali.mobility.notification.entity.Notification;
 import org.kuali.mobility.notification.service.NotificationService;
@@ -462,7 +463,7 @@ public class PublishingController {
      */
     @RequestMapping(value = "news/add", method = RequestMethod.GET)
     public String editNews(Model uiModel) {
-    	NewsSource source = new NewsSource();
+    	NewsSource source = new NewsSourceDBImpl();
     	source.setOrder(newsService.getAllNewsSources().size());
     	source.setActive(true);
     	uiModel.addAttribute("source", source);
