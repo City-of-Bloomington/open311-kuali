@@ -15,6 +15,9 @@
 
 package org.kuali.mobility.news.dao;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -75,30 +78,60 @@ public class NewsDaoImpl implements NewsDao {
 	private void initData()
 	{
 		Map<Long, NewsSource> source = getCache().getNewsSources();
-		if( source == null || source.isEmpty() )
-		{
-			try
-			{
-				source = new HashMap<Long, NewsSource>();
-				List<NewsSource> sources = new ArrayList<NewsSource>();
-				sources = (List<NewsSource>)mapper.mapData( source, getNewsSourceFile(), getNewsMappingFile() );
-				int i = 0;
-				for( NewsSource s : sources )
-				{
-					s.setActive(true);
-					if( s.getId() == null )
-					{
-						s.setId( new Long( i ) );
+		if (source == null || source.isEmpty()) {
+			source = new HashMap<Long, NewsSource>();
+			List<NewsSource> sources = new ArrayList<NewsSource>();
+
+			boolean isNewsSourceUrlAvailable = (getNewsSourceUrl() != null ? true : false);
+			boolean isNewsMappingUrlAvailable = (getNewsMappingUrl() != null ? true : false);
+
+			try {
+				if (isNewsSourceUrlAvailable) {
+					if (isNewsMappingUrlAvailable) {
+						sources = (List<NewsSource>) mapper.mapData(source,
+								new URL(getNewsSourceUrl()), 
+								new URL(getNewsMappingUrl()));
+					} else {
+						sources = (List<NewsSource>) mapper.mapData(source,
+								new URL(getNewsSourceUrl()),
+								getNewsMappingFile());
+
 					}
-					source.put( s.getId(), s );
+				} else {
+					if (isNewsMappingUrlAvailable) {
+						// not supported in mapper.mapData
+						LOG.error("DataMapper does NOT support this case!");
+						return;
+					} else {
+						sources = (List<NewsSource>) mapper.mapData(source,
+								getNewsSourceFile(), getNewsMappingFile());
+					}
+
+				}
+
+				int i = 0;
+				for (NewsSource s : sources) {
+					s.setActive(true);
+					if (s.getId() == null) {
+						s.setId(new Long(i));
+					}
+					source.put(s.getId(), s);
 					i++;
 				}
-				getCache().setNewsSources( source );
+				
+				getCache().setNewsSources(source);
+
+			} catch (MalformedURLException e) {
+				LOG.error(e.getMessage());
+				// e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				LOG.error(e.getMessage());
+				// e.printStackTrace();
+			} catch (IOException e) {
+				LOG.error(e.getMessage());
+				// e.printStackTrace();
 			}
-			catch( ClassNotFoundException cnfe )
-			{
-				LOG.error( cnfe.getMessage() );
-			}
+
 		}
 	}
 	
