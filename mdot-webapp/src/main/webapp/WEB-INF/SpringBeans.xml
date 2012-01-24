@@ -38,6 +38,7 @@
 	<import resource="classpath:ComputerLabsSpringBeans.xml" />
     <import resource="classpath:ConferenceSpringBeans.xml" />
     <import resource="classpath:FeedbackSpringBeans.xml" />
+    <import resource="classpath:NewsSpringBeans.xml" />
     
     <!-- 
 	This is where the basenames for the i18n files are defined. The files themselves

@@ -21,7 +21,7 @@
 
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/SpringBeans.xml /WEB-INF/webmvc-config.xml /WEB-INF/newsSpringBeans.xml</param-value> 
+		<param-value>/WEB-INF/SpringBeans.xml /WEB-INF/webmvc-config.xml</param-value> 
 	</context-param>
 	
 	<listener>

@@ -78,7 +78,10 @@ public class NewsServiceImpl implements NewsService {
 	@CacheEvict(value = "newsSource", key="#newsSource.id", allEntries=false)
 	public NewsSource saveNewsSource(NewsSource newsSource) {
 		LOG.debug( "Called saveNewsSourceById web service." );
+		LOG.debug( "Dao is "+(null == getDao() ? "" : "not")+" null." );
+		LOG.debug( "NewsSourceDBImpl is "+(null == newsSource ? "" : "not")+" null." );
 		getDao().save(newsSource);
+		LOG.debug( "After saving, sourceId = "+newsSource.getId() );
 		getCache().updateCache(newsSource);
 		return newsSource;
 	}

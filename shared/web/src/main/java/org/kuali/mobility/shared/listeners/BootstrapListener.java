@@ -25,8 +25,10 @@ import org.kuali.mobility.configparams.service.ConfigParamService;
 import org.kuali.mobility.emergencyinfo.entity.EmergencyInfo;
 import org.kuali.mobility.emergencyinfo.service.EmergencyInfoService;
 import org.kuali.mobility.news.entity.NewsSource;
+import org.kuali.mobility.news.entity.NewsSourceDBImpl;
 import org.kuali.mobility.news.service.NewsService;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 
 public abstract class BootstrapListener implements ServletContextListener {
 
@@ -44,7 +46,7 @@ public abstract class BootstrapListener implements ServletContextListener {
 		adminService.saveHomeScreen(home);
 		
 		ConfigParamService configParamService = (ConfigParamService) ctx.getBean("ConfigParamService");
-		NewsService newsService = (NewsService) ctx.getBean("NewsService");
+		NewsService newsService = (NewsService) ctx.getBean("newsService");
 		EmergencyInfoService emergencyInfoService = (EmergencyInfoService) ctx.getBean("EmergencyInfoService");
 		
 		EmergencyInfo ei = new EmergencyInfo();
@@ -150,36 +152,46 @@ public abstract class BootstrapListener implements ServletContextListener {
 		param.setValue("http://gus.ius.edu/dining-services/feed/?format=xml");
 		configParamService.saveConfigParam(param);
 		
-//		NewsSource newsSource = new NewsSource();
-//		newsSource.setActive(true);
-//		newsSource.setOrder(4);
-//		newsSource.setUrl("http://rss.cnn.com/rss/cnn_allpolitics.rss");
-//		newsService.saveNewsSource(newsSource);
-//		
-//		newsSource = new NewsSource();
-//		newsSource.setActive(true);
-//		newsSource.setOrder(3);
-//		newsSource.setUrl("http://rss.cnn.com/rss/cnn_tech.rss");
-//		newsService.saveNewsSource(newsSource);
-//		
-//		newsSource = new NewsSource();
-//		newsSource.setActive(true);
-//		newsSource.setOrder(0);
-//		newsSource.setUrl("http://feeds.bbci.co.uk/news/rss.xml");
-//		newsService.saveNewsSource(newsSource);
-//		
-//		newsSource = new NewsSource();
-//		newsSource.setActive(true);
-//		newsSource.setOrder(1);
-//		newsSource.setUrl("http://rss.cnn.com/rss/cnn_world.rss");
-//		newsService.saveNewsSource(newsSource);
-//		
-//		newsSource = new NewsSource();
-//		newsSource.setActive(true);
-//		newsSource.setOrder(2);
-//		newsSource.setUrl("http://rss.cnn.com/rss/cnn_health.rss");
-//		newsService.saveNewsSource(newsSource);					
-//		
+		NewsSource newsSource = new NewsSourceDBImpl();
+		newsSource.setId( Long.valueOf( (long)4 ) );
+		newsSource.setActive(true);
+		newsSource.setOrder(4);
+		newsSource.setUrl("http://rss.cnn.com/rss/cnn_allpolitics.rss");
+		LOG.debug( "Creating news source for "+newsSource.getUrl() );
+		newsService.saveNewsSource(newsSource);
+		
+		newsSource = new NewsSourceDBImpl();
+		newsSource.setId( Long.valueOf( (long)3 ) );
+		newsSource.setActive(true);
+		newsSource.setOrder(3);
+		newsSource.setUrl("http://rss.cnn.com/rss/cnn_tech.rss");
+		LOG.debug( "Creating news source for "+newsSource.getUrl() );
+		newsService.saveNewsSource(newsSource);
+		
+		newsSource = new NewsSourceDBImpl();
+		newsSource.setId( Long.valueOf( (long)0 ) );
+		newsSource.setActive(true);
+		newsSource.setOrder(0);
+		newsSource.setUrl("http://feeds.bbci.co.uk/news/rss.xml");
+		LOG.debug( "Creating news source for "+newsSource.getUrl() );
+		newsService.saveNewsSource(newsSource);
+		
+		newsSource = new NewsSourceDBImpl();
+		newsSource.setId( Long.valueOf( (long)1 ) );
+		newsSource.setActive(true);
+		newsSource.setOrder(1);
+		newsSource.setUrl("http://rss.cnn.com/rss/cnn_world.rss");
+		LOG.debug( "Creating news source for "+newsSource.getUrl() );
+		newsService.saveNewsSource(newsSource);
+		
+		newsSource = new NewsSourceDBImpl();
+		newsSource.setId( Long.valueOf( (long)2 ) );
+		newsSource.setActive(true);
+		newsSource.setOrder(2);
+		newsSource.setUrl("http://rss.cnn.com/rss/cnn_health.rss");
+		LOG.debug( "Creating news source for "+newsSource.getUrl() );
+		newsService.saveNewsSource(newsSource);					
+		
 		LOG.info("Count: " + adminService.getAllHomeScreens().size());
 		
 		LOG.info("BootstrapListener finished initializing.");
