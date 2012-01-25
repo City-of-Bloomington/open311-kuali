@@ -112,7 +112,15 @@ public class NewsCacheImpl implements NewsCache, ApplicationContextAware {
 				article.setTitle(entry.getTitle());
 				article.setDescription(entry.getDescription().getValue());
 				article.setLink(entry.getLink());
-				article.setPublishDate(new Timestamp(entry.getPublishedDate().getTime()));
+				try
+				{
+					article.setPublishDate(new Timestamp(entry.getPublishedDate().getTime()));
+				}
+				catch( Exception e )
+				{
+					LOG.error( "Error creating timestamp for article: "+entry.getTitle() );
+					LOG.error( e.getLocalizedMessage() );
+				}
 				article.setSourceId(source.getId());
 				try {
 					article.setArticleId(URLEncoder.encode(entry.getUri(), "UTF-8"));
