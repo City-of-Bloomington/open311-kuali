@@ -152,45 +152,45 @@ public abstract class BootstrapListener implements ServletContextListener {
 		param.setValue("http://gus.ius.edu/dining-services/feed/?format=xml");
 		configParamService.saveConfigParam(param);
 		
-		NewsSource newsSource = new NewsSourceDBImpl();
-		newsSource.setId( Long.valueOf( (long)4 ) );
-		newsSource.setActive(true);
-		newsSource.setOrder(4);
-		newsSource.setUrl("http://rss.cnn.com/rss/cnn_allpolitics.rss");
-		LOG.debug( "Creating news source for "+newsSource.getUrl() );
-		newsService.saveNewsSource(newsSource);
-		
-		newsSource = new NewsSourceDBImpl();
-		newsSource.setId( Long.valueOf( (long)3 ) );
-		newsSource.setActive(true);
-		newsSource.setOrder(3);
-		newsSource.setUrl("http://rss.cnn.com/rss/cnn_tech.rss");
-		LOG.debug( "Creating news source for "+newsSource.getUrl() );
-		newsService.saveNewsSource(newsSource);
-		
-		newsSource = new NewsSourceDBImpl();
-		newsSource.setId( Long.valueOf( (long)0 ) );
-		newsSource.setActive(true);
-		newsSource.setOrder(0);
-		newsSource.setUrl("http://feeds.bbci.co.uk/news/rss.xml");
-		LOG.debug( "Creating news source for "+newsSource.getUrl() );
-		newsService.saveNewsSource(newsSource);
-		
-		newsSource = new NewsSourceDBImpl();
-		newsSource.setId( Long.valueOf( (long)1 ) );
-		newsSource.setActive(true);
-		newsSource.setOrder(1);
-		newsSource.setUrl("http://rss.cnn.com/rss/cnn_world.rss");
-		LOG.debug( "Creating news source for "+newsSource.getUrl() );
-		newsService.saveNewsSource(newsSource);
-		
-		newsSource = new NewsSourceDBImpl();
-		newsSource.setId( Long.valueOf( (long)2 ) );
-		newsSource.setActive(true);
-		newsSource.setOrder(2);
-		newsSource.setUrl("http://rss.cnn.com/rss/cnn_health.rss");
-		LOG.debug( "Creating news source for "+newsSource.getUrl() );
-		newsService.saveNewsSource(newsSource);					
+//		NewsSource newsSource = new NewsSourceDBImpl();
+//		newsSource.setId( Long.valueOf( (long)4 ) );
+//		newsSource.setActive(true);
+//		newsSource.setOrder(4);
+//		newsSource.setUrl("http://rss.cnn.com/rss/cnn_allpolitics.rss");
+//		LOG.debug( "Creating news source for "+newsSource.getUrl() );
+//		newsService.saveNewsSource(newsSource);
+//		
+//		newsSource = new NewsSourceDBImpl();
+//		newsSource.setId( Long.valueOf( (long)3 ) );
+//		newsSource.setActive(true);
+//		newsSource.setOrder(3);
+//		newsSource.setUrl("http://rss.cnn.com/rss/cnn_tech.rss");
+//		LOG.debug( "Creating news source for "+newsSource.getUrl() );
+//		newsService.saveNewsSource(newsSource);
+//		
+//		newsSource = new NewsSourceDBImpl();
+//		newsSource.setId( Long.valueOf( (long)0 ) );
+//		newsSource.setActive(true);
+//		newsSource.setOrder(0);
+//		newsSource.setUrl("http://feeds.bbci.co.uk/news/rss.xml");
+//		LOG.debug( "Creating news source for "+newsSource.getUrl() );
+//		newsService.saveNewsSource(newsSource);
+//		
+//		newsSource = new NewsSourceDBImpl();
+//		newsSource.setId( Long.valueOf( (long)1 ) );
+//		newsSource.setActive(true);
+//		newsSource.setOrder(1);
+//		newsSource.setUrl("http://rss.cnn.com/rss/cnn_world.rss");
+//		LOG.debug( "Creating news source for "+newsSource.getUrl() );
+//		newsService.saveNewsSource(newsSource);
+//		
+//		newsSource = new NewsSourceDBImpl();
+//		newsSource.setId( Long.valueOf( (long)2 ) );
+//		newsSource.setActive(true);
+//		newsSource.setOrder(2);
+//		newsSource.setUrl("http://rss.cnn.com/rss/cnn_health.rss");
+//		LOG.debug( "Creating news source for "+newsSource.getUrl() );
+//		newsService.saveNewsSource(newsSource);					
 		
 		LOG.info("Count: " + adminService.getAllHomeScreens().size());
 		
