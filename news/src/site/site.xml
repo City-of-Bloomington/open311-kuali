@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Kuali Mobility Enterprise">
+	<bannerLeft>
+		<name>News Tool</name>
+		<src>/images/logo.png</src>
+		<href>https://kuali.org/mobility</href>
+	</bannerLeft>
+<!--
+ 	<bannerRight></bannerRight>
+ -->
+ 	<body>
+		<links>
+			<item name="Kuali Mobility Home" href="https://kuali.org/mobility"/>
+			<item name="Kuali Foundation Home" href="https://kuali.org/"/>
+			<item name="KME Wiki" href="https://wiki.kuali.org/display/MOBILITY/Mobility+Home"/>
+		</links>
+		
+		<menu name="News Tool">
+			<item name="Introduction" href="index.html"/>
+			<item name="FAQ" href="faq.html"/>
+			<item name="Configuration" href="configuration.html"/>
+		</menu>
+		
+		<menu ref="modules"/>
+		<menu ref="reports"/>
+	</body>
+
+</project>

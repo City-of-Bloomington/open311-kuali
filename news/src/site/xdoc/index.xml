@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document>
+	<properties>
+		<title>News Tool</title>
+	</properties>
+	<body>
+		<section name="Introduction">
+			<p>The News Tool is an aggregating RSS reader for use in the Kuali Mobility Enterprise framework.
+			The tool can be configured for multiple RSS feeds that will all be presented to the user in a 
+			consistent user interface.  The tool also provides a caching mechanism to minimize the need for
+			data retrieval and parsing during use.</p>
+			<p>The News Tool has a straightforward configuration for most use 
+			cases requiring only the information about the RSS feeds to be
+			used.  The News Tool is pre-installed into the KME framework as
+			part of the base distribution making it quick and easy to get up
+			and running for most users.</p>
+		</section>
+	</body>
+</document>

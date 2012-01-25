@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document>
+	<properties>
+		<title>News Tool</title>
+	</properties>
+	<body>
+		<section name="Configuration">
+			<p>The News Tool currently supports three means of defining RSS 
+			feed information for use: file based configuration, web service 
+			based configuration, and database configuration.
+			</p>
+		</section>
+		<section name="File Based Configuration">
+			<p>The News Tool comes preconfigured with several sample RSS feeds
+			for use in testing.  These feeds are configured using a simple
+			XML file.  A sample file named newsSources.xml can be found in 
+			the news-impl project in src/test/resources/.  A sample is shown 
+			below:</p>
+			<source><![CDATA[
+<?xml version="1.0" encoding="UTF-8"?>
+<newsSources>
+	<newsSource>
+		<name>BBC - News</name>
+		<url>http://feeds.bbci.co.uk/news/rss.xml</url>
+		<order>0</order>
+		<active>true</active>
+	</newsSource>
+	<newsSource>
+		<name>CNN.com - World</name>
+		<url>http://rss.cnn.com/rss/cnn_world.rss</url>
+		<order>1</order>
+		<active>true</active>
+	</newsSource>
+</newsSources>]]>
+			</source>
+			<p>This file may be included anywhere within the web application's 
+			classpath.</p>
+			<p>To use the newsSources.xml file, you must update the 
+			NewsSpringBeans.xml in the news-webapp project's src/main/resources/
+			directory as shown below.</p>
+			<source><![CDATA[
+    <bean id="newsDao" class="org.kuali.mobility.news.dao.NewsDaoImpl">
+        <property name="mapper" ref="mapper"/>
+        <property name="newsSourceFile" value="newsSources.xml"/>
+        <property name="newsMappingFile" value="newsSourcesMapping.xml"/>
+        <property name="cache" ref="newsCache"/>
+    </bean>
+			]]></source>
+			<p>The above configuration of the DAO will look for newsSources.xml
+			in the web application's WEB-INF/classes/ directory and load the 
+			RSS feeds from it.</p>
+		</section>
+	</body>
+</document>

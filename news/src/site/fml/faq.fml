@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<faqs title="News Tool">
+	<part id="What is it?">
+		<faq>
+			<question>What is the News Tool?</question>
+			<answer>
+				<p>The KME News Tool is a simple RSS reader that allows you to configure multiple RSS feeds for your organization that are delivered to users in a single, consistent format.</p>
+			</answer>
+		</faq>
+		<faq>
+			<question>Does the News Tool support other news sources besides RSS?</question>
+			<answer>
+				<p>No, the News Tool currently only supports RSS feeds.  Using data in other formats or from other sources is not supported at this time.</p>
+			</answer>
+		</faq>
+	</part>
+</faqs> 

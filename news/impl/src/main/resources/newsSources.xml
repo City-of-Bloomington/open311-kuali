@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<newsSources>
+	<newsSource>
+		<name>Record Update</name>
+		<url>http://ur.umich.edu/update/feeds/rss</url>
+		<order>1</order>
+		<group>1</group>
+	</newsSource>
+	<newsSource>
+		<name>U-M News Services</name>
+		<url><![CDATA[http://www.ns.umich.edu/new/releases?format=feed&type=rss]]></url>
+		<order>2</order>
+		<group>1</group>
+	</newsSource>
+	<newsSource>
+		<name>Michigan Radio - Top Stories</name>
+		<url>http://www.publicbroadcasting.net/michigan/news/rss/13.xml</url>
+		<order>3</order>
+		<group>1</group>
+	</newsSource>
+	<newsSource>
+		<name>Athletics News - MGoBlue</name>
+		<order>4</order>
+		<group>1</group>
+	</newsSource>
+	<newsSource>
+		<name>Top Stories</name>
+		<url>http://www.mgoblue.com/headline-rss.xml</url>
+		<order>1</order>
+		<parent>Athletics News - MGoBlue</parent>
+	</newsSource>
+	<newsSource>
+		<name><![CDATA[Men's Sports]]></name>
+		<order>2</order>
+		<parent>Athletics News - MGoBlue</parent>
+	</newsSource>
+	<newsSource>
+		<name>Baseball</name>
+		<url>http://www.mgoblue.com/sports/m-basebl/headline-rss.xml</url>
+		<order>1</order>
+		<parent><![CDATA[Men's Sports]]></parent>
+	</newsSource>
+	<newsSource>
+		<name>Basketball</name>
+		<url>http://www.mgoblue.com/sports/m-baskbl/headline-rss.xml</url>
+		<order>2</order>
+		<parent><![CDATA[Men's Sports]]></parent>
+	</newsSource>
+	<newsSource>
+		<name>Cross Country</name>
+		<url>http://www.mgoblue.com/sports/m-xc/headline-rss.xml</url>
+		<order>3</order>
+		<parent><![CDATA[Men's Sports]]></parent>
+	</newsSource>
+	<newsSource>
+		<name>Football</name>
+		<url>http://www.mgoblue.com/sports/m-footbl/headline-rss.xml</url>
+		<order>4</order>
+		<parent><![CDATA[Men's Sports]]></parent>
+	</newsSource>
+	<newsSource>
+		<name>Golf</name>
+		<url>http://www.mgoblue.com/sports/m-golf/headline-rss.xml</url>
+		<order>5</order>
+		<parent><![CDATA[Men's Sports]]></parent>
+	</newsSource>
+	<newsSource>
+		<name>Gymnastics</name>
+		<url>http://www.mgoblue.com/sports/m-gym/headline-rss.xml</url>
+		<order>6</order>
+		<parent><![CDATA[Men's Sports]]></parent>
+	</newsSource>
+	<newsSource>
+		<name>Ice Hockey</name>
+		<url>http://www.mgoblue.com/sports/m-hockey/headline-rss.xml</url>
+		<order>7</order>
+		<parent><![CDATA[Men's Sports]]></parent>
+	</newsSource>
+	<newsSource>
+		<name>Soccer</name>
+		<url>http://www.mgoblue.com/sports/m-soccer/headline-rss.xml</url>
+		<order>8</order>
+		<parent><![CDATA[Men's Sports]]></parent>
+	</newsSource>
+	<newsSource>
+		<name>Swimming and Diving</name>
+		<url>http://www.mgoblue.com/sports/m-swim/headline-rss.xml</url>
+		<order>9</order>
+		<parent><![CDATA[Men's Sports]]></parent>
+	</newsSource>
+	<newsSource>
+		<name>Tennis</name>
+		<url>http://www.mgoblue.com/sports/m-tennis/headline-rss.xml</url>
+		<order>10</order>
+		<parent><![CDATA[Men's Sports]]></parent>
+	</newsSource>
+	<newsSource>
+		<name>Track and Field</name>
+		<url>http://www.mgoblue.com/sports/m-track/headline-rss.xml</url>
+		<order>11</order>
+		<parent><![CDATA[Men's Sports]]></parent>
+	</newsSource>
+	<newsSource>
+		<name>Wrestling</name>
+		<url>http://www.mgoblue.com/sports/m-wrestl/headline-rss.xml</url>
+		<order>12</order>
+		<parent><![CDATA[Men's Sports]]></parent>
+	</newsSource>				
+	<newsSource>
+		<name><![CDATA[Women's Sports]]></name>
+		<order>3</order>
+		<parent>Athletics News - MGoBlue</parent>
+	</newsSource>
+	<newsSource>
+		<name>Basketball</name>
+		<url>http://www.mgoblue.com/sports/w-baskbl/headline-rss.xml</url>
+		<order>1</order>
+		<parent><![CDATA[Women's Sports]]></parent>
+	</newsSource>
+	<newsSource>
+		<name>Cross Country</name>
+		<url>http://www.mgoblue.com/sports/w-xc/headline-rss.xml</url>
+		<order>2</order>
+		<parent><![CDATA[Women's Sports]]></parent>
+	</newsSource>
+	<newsSource>
+		<name>Field Hockey</name>
+		<url>http://www.mgoblue.com/sports/w-fieldh/headline-rss.xml</url>
+		<order>3</order>
+		<parent><![CDATA[Women's Sports]]></parent>
+	</newsSource>
+	<newsSource>
+		<name>Golf</name>
+		<url>http://www.mgoblue.com/sports/w-golf/headline-rss.xml</url>
+		<order>4</order>
+		<parent><![CDATA[Women's Sports]]></parent>
+	</newsSource>
+	<newsSource>
+		<name>Gymnastics</name>
+		<url>http://www.mgoblue.com/sports/w-gym/headline-rss.xml</url>
+		<order>5</order>
+		<parent><![CDATA[Women's Sports]]></parent>
+	</newsSource>
+	<newsSource>
+		<name>Rowing</name>
+		<url>http://www.mgoblue.com/sports/w-rowing/headline-rss.xml</url>
+		<order>6</order>
+		<parent><![CDATA[Women's Sports]]></parent>
+	</newsSource>
+	<newsSource>
+		<name>Soccer</name>
+		<url>http://www.mgoblue.com/sports/w-soccer/headline-rss.xml</url>
+		<order>7</order>
+		<parent><![CDATA[Women's Sports]]></parent>
+	</newsSource>
+	<newsSource>
+		<name>Softball</name>
+		<url>http://www.mgoblue.com/sports/w-softbl/headline-rss.xml</url>
+		<order>8</order>
+		<parent><![CDATA[Women's Sports]]></parent>
+	</newsSource>	
+	<newsSource>
+		<name>Swimming and Diving</name>
+		<url>http://www.mgoblue.com/sports/w-swim/headline-rss.xml</url>
+		<order>9</order>
+		<parent><![CDATA[Women's Sports]]></parent>
+	</newsSource>
+	<newsSource>
+		<name>Tennis</name>
+		<url>http://www.mgoblue.com/sports/w-tennis/headline-rss.xml</url>
+		<order>10</order>
+		<parent><![CDATA[Women's Sports]]></parent>
+	</newsSource>
+	<newsSource>
+		<name>Track and Field</name>
+		<url>http://www.mgoblue.com/sports/w-track/headline-rss.xml</url>
+		<order>11</order>
+		<parent><![CDATA[Women's Sports]]></parent>
+	</newsSource>
+	<newsSource>
+		<name>Volleyball</name>
+		<url>http://www.mgoblue.com/sports/w-volley/headline-rss.xml</url>
+		<order>12</order>
+		<parent><![CDATA[Women's Sports]]></parent>
+	</newsSource>	
+	<newsSource>
+		<name>Water Polo</name>
+		<url>http://www.mgoblue.com/sports/w-wpolo/headline-rss.xml</url>
+		<order>13</order>
+		<parent><![CDATA[Women's Sports]]></parent>
+	</newsSource>					
+	<newsSource>
+		<name>The Michigan Daily</name>
+		<order>5</order>
+		<group>1</group>
+	</newsSource>
+	<newsSource>
+		<name>All Headlines</name>
+		<url>http://www.michigandaily.com/rss</url>
+		<order>1</order>
+		<parent>The Michigan Daily</parent>
+	</newsSource>
+	<newsSource>
+		<name>UM Admin News</name>
+		<url>http://www.michigandaily.com/rss/news/administration</url>
+		<order>2</order>
+		<parent>The Michigan Daily</parent>
+	</newsSource>
+	<newsSource>
+		<name>Campus Life</name>
+		<url>http://www.michigandaily.com/rss/news/campus</url>
+		<order>3</order>
+		<parent>The Michigan Daily</parent>
+	</newsSource>
+	<newsSource>
+		<name>City News</name>
+		<url>http://www.michigandaily.com/rss/news/city</url>
+		<order>4</order>
+		<parent>The Michigan Daily</parent>
+	</newsSource>
+	<newsSource>
+		<name>Opinion</name>
+		<order>5</order>
+		<parent>The Michigan Daily</parent>
+	</newsSource>
+	<newsSource>
+		<name>All Opinion</name>
+		<url>http://www.michigandaily.com/rss/opinion</url>
+		<order>1</order>
+		<parent>Opinion</parent>
+	</newsSource>
+	<newsSource>
+		<name>Editorials</name>
+		<url>http://www.michigandaily.com/rss/opinion/editorials</url>
+		<order>2</order>
+		<parent>Opinion</parent>
+	</newsSource>
+	<newsSource>
+		<name>Columns</name>
+		<url>http://www.michigandaily.com/rss/opinion/columns</url>
+		<order>3</order>
+		<parent>Opinion</parent>
+	</newsSource>
+	<newsSource>
+		<name>Letters</name>
+		<url>http://www.michigandaily.com/rss/opinion/letters</url>
+		<order>4</order>
+		<parent>Opinion</parent>
+	</newsSource>
+	<newsSource>
+		<name>Viewpoints</name>
+		<url>http://www.michigandaily.com/rss/opinion/viewpoints</url>
+		<order>5</order>
+		<parent>Opinion</parent>
+	</newsSource>
+	<newsSource>
+		<name>Cartoons</name>
+		<url>http://www.michigandaily.com/rss/opinion/cartoons</url>
+		<order>6</order>
+		<parent>Opinion</parent>
+	</newsSource>
+	<newsSource>
+		<name>Sports</name>
+		<order>6</order>
+		<parent>The Michigan Daily</parent>
+	</newsSource>
+	<newsSource>
+		<name>All Sports</name>
+		<url>http://www.michigandaily.com/rss/sports</url>
+		<order>1</order>
+		<parent>Sports</parent>
+	</newsSource>
+	<newsSource>
+		<name>Football</name>
+		<url>http://www.michigandaily.com/rss/sports/football</url>
+		<order>1</order>
+		<parent>Sports</parent>
+	</newsSource>
+	<newsSource>
+		<name>Hockey</name>
+		<url>http://www.michigandaily.com/rss/sports/hockey</url>
+		<order>1</order>
+		<parent>Sports</parent>
+	</newsSource>
+	<newsSource>
+		<name>Men&apos;s Basketball</name>
+		<url>http://www.michigandaily.com/rss/sports/mbball</url>
+		<order>1</order>
+		<parent>Sports</parent>
+	</newsSource>
+	<newsSource>
+		<name>Women&apos;s Basketball</name>
+		<url>http://www.michigandaily.com/rss/sports/mbball</url>
+		<order>1</order>
+		<parent>Sports</parent>
+	</newsSource>
+	<newsSource>
+		<name>Baseball</name>
+		<url>http://www.michigandaily.com/rss/sports/baseball</url>
+		<order>1</order>
+		<parent>Sports</parent>
+	</newsSource>
+	<newsSource>
+		<name>Softball</name>
+		<url>http://www.michigandaily.com/rss/sports/softball</url>
+		<order>1</order>
+		<parent>Sports</parent>
+	</newsSource>
+	<newsSource>
+		<name>Arts</name>
+		<order>7</order>
+		<parent>The Michigan Daily</parent>
+	</newsSource>
+	<newsSource>
+		<name>All Arts</name>
+		<url>http://www.michigandaily.com/rss/arts</url>
+		<order>1</order>
+		<parent>Arts</parent>
+	</newsSource>
+	<newsSource>
+		<name>Film</name>
+		<url>http://www.michigandaily.com/rss/film</url>
+		<order>2</order>
+		<parent>Arts</parent>
+	</newsSource>
+	<newsSource>
+		<name>Music</name>
+		<url>http://www.michigandaily.com/rss/music</url>
+		<order>3</order>
+		<parent>Arts</parent>
+	</newsSource>
+	<newsSource>
+		<name>TV/New media</name>
+		<url>http://www.michigandaily.com/rss/tv</url>
+		<order>4</order>
+		<parent>Arts</parent>
+	</newsSource>
+	<newsSource>
+		<name>Fine-arts</name>
+		<url>http://www.michigandaily.com/rss/fine-arts</url>
+		<order>5</order>
+		<parent>Arts</parent>
+	</newsSource>
+	<newsSource>
+		<name>The B-side</name>
+		<url>http://www.michigandaily.com/rss/b-side</url>
+		<order>6</order>
+		<parent>Arts</parent>
+	</newsSource>
+	<newsSource>
+		<name>Blog</name>
+		<order>8</order>
+		<parent>The Michigan Daily</parent>
+	</newsSource>
+	<newsSource>
+		<name>The Game</name>
+		<url>http://www.michigandaily.com/rss/blogs/the-game</url>
+		<order>1</order>
+		<parent>Blog</parent>
+	</newsSource>
+	<newsSource>
+		<name>The Wire</name>
+		<url>http://www.michigandaily.com/rss/blogs/the-wire</url>
+		<order>2</order>
+		<parent>Blog</parent>
+	</newsSource>
+	<newsSource>
+		<name>The Filter</name>
+		<url>http://www.michigandaily.com/rss/blogs/the-filter</url>
+		<order>3</order>
+		<parent>Blog</parent>
+	</newsSource>
+	<newsSource>
+		<name>The Editor&apos;s Page</name>
+		<url>http://www.michigandaily.com/rss/blogs/the-editors</url>
+		<order>4</order>
+		<parent>Blog</parent>
+	</newsSource>
+	<newsSource>
+		<name>The Statement</name>
+		<url>http://www.michigandaily.com/rss/the-statement</url>
+		<order>9</order>
+		<parent>The Michigan Daily</parent>
+	</newsSource>
+	<newsSource>
+		<name>Multimedia</name>
+		<url>http://www.michigandaily.com/rss/multimedia</url>
+		<order>10</order>
+		<parent>The Michigan Daily</parent>
+	</newsSource>
+	<newsSource>
+		<name>U-M Health System News</name>
+		<url><![CDATA[http://www.uofmhealth.org/cs/Satellite?c=eHA_Content_C&cid=1264130250539&pagename=um/eHA_Content_C/um/Template/RSS_feed&taxonomy_id=1270229260748&format=news]]></url>
+		<order>6</order>
+		<group>1</group>
+	</newsSource>
+	<newsSource>
+		<name>University Record</name>
+		<url>http://feeds.feedburner.com/TheUniversityRecordOnline?format=xml</url>
+		<order>1</order>
+		<group>2</group>
+	</newsSource>
+	<newsSource>
+		<name>Michigan Today</name>
+		<url>http://michigantoday.umich.edu/rss.php</url>
+		<order>2</order>
+		<group>2</group>
+	</newsSource>
+	<newsSource>
+		<name>MLibrary News</name>
+		<url>http://www.lib.umich.edu/mlibrary/all/news/feed</url>
+		<order>3</order>
+		<group>2</group>
+	</newsSource>
+</newsSources>
