@@ -16,48 +16,48 @@ package org.kuali.mobility.people.entity;
 
 import java.util.List;
 
-public interface Person {
+public interface Person extends DirectoryEntry {
 
-	public abstract String getHashedUserName();
+	public String getHashedUserName();
 
-	public abstract String getFirstName();
+	public String getFirstName();
 
-	public abstract void setFirstName(String firstName);
+	public void setFirstName(String firstName);
 
-	public abstract String getLastName();
+	public String getLastName();
 
-	public abstract void setLastName(String lastName);
+	public void setLastName(String lastName);
 
-	public abstract String getUserName();
+	public String getUserName();
 
-	public abstract void setUserName(String userName);
+	public void setUserName(String userName);
 
-	public abstract String getDisplayName();
+	public String getDisplayName();
 
-	public abstract void setDisplayName(String displayName);
+	public void setDisplayName(String displayName);
 
-	public abstract String getEmail();
+	public String getEmail();
 
-	public abstract void setEmail(String email);
+	public void setEmail(String email);
 
-	public abstract String getPhone();
+	public String getPhone();
 
-	public abstract void setPhone(String phone);
+	public void setPhone(String phone);
 
-	public abstract String getAddress();
+	public String getAddress();
 
-	public abstract void setAddress(String address);
+	public void setAddress(String address);
 
-	public abstract List<String> getLocations();
+	public List<String> getLocations();
 
-	public abstract void setLocations(List<String> locations);
+	public void setLocations(List<String> locations);
 
-	public abstract List<String> getAffiliations();
+	public List<String> getAffiliations();
 
-	public abstract void setAffiliations(List<String> affiliations);
+	public void setAffiliations(List<String> affiliations);
 
-	public abstract List<String> getDepartments();
+	public List<String> getDepartments();
 
-	public abstract void setDepartments(List<String> departments);
+	public void setDepartments(List<String> departments);
 
 }

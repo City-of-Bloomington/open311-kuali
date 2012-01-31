@@ -17,6 +17,7 @@ package org.kuali.mobility.people.controllers;
 
 import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -25,10 +26,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.kuali.mobility.people.entity.DirectoryEntry;
 import org.kuali.mobility.people.entity.Person;
-import org.kuali.mobility.people.entity.Search;
-import org.kuali.mobility.people.entity.SearchImpl;
-import org.kuali.mobility.people.service.PeopleService;
+import org.kuali.mobility.people.entity.SearchCriteria;
+import org.kuali.mobility.people.entity.SearchCriteria;
+import org.kuali.mobility.people.service.DirectoryService;
 import org.kuali.mobility.shared.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -50,28 +52,29 @@ public class PeopleController {
 	private static org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(PeopleController.class);
 
 	@Autowired
-	private PeopleService peopleService;
+	private DirectoryService peopleService;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String viewSearchForm(Model uiModel) {
-		Search s = new SearchImpl();
+		SearchCriteria s = new SearchCriteria();
 		s.setStatus("Any");
 		uiModel.addAttribute("search", s);
 		uiModel.addAttribute("locations", Constants.CAMPUS_NAMES);
 
-		Map<String, String> statusTypes = peopleService.getStatusTypes();
+		Map<String, String> statusTypes = getStatusTypes();
 		uiModel.addAttribute("statusTypes", statusTypes);
 
 		return "people/form";
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String postSearchForm(Model uiModel, @ModelAttribute("search") SearchImpl search, BindingResult result, HttpServletRequest request) {
+	public String postSearchForm(Model uiModel, @ModelAttribute("search") SearchCriteria search, BindingResult result, HttpServletRequest request) {
 		if (validateSearch(search, result)) {
-			List<Person> people = peopleService.performSearch(search);
+			List<DirectoryEntry> people = peopleService.findEntries(search);
 
 			Map<String, String> userNameHashes = new HashMap<String, String>();
-			for (Person p : people) {
+			for (DirectoryEntry d : people) {
+				Person p = (Person)d;
 				userNameHashes.put(p.getHashedUserName(), p.getUserName());
 			}
 			request.getSession().setAttribute("People.UserNames.Hashes", userNameHashes);
@@ -80,7 +83,7 @@ public class PeopleController {
 
 			return "people/list";
 		} else {
-			Map<String, String> statusTypes = peopleService.getStatusTypes();
+			Map<String, String> statusTypes = getStatusTypes();
 			uiModel.addAttribute("statusTypes", statusTypes);
 			uiModel.addAttribute("locations", Constants.CAMPUS_NAMES);
 			return "people/form";
@@ -113,7 +116,7 @@ public class PeopleController {
 		Person p = null;
 		if (userNameHashes != null) {
 			String userName = userNameHashes.get(userNameHash);
-			p = peopleService.getUserDetails(userName);
+			p = peopleService.lookupPerson(userName);
 		}
 //		uiModel.addAttribute("person", p);
 		details.put("person", p);
@@ -188,7 +191,7 @@ public class PeopleController {
 		}
 	}
 
-	private boolean validateSearch(Search search, BindingResult result) {
+	private boolean validateSearch(SearchCriteria search, BindingResult result) {
 		boolean hasErrors = false;
 		Errors errors = ((Errors) result);
 		if ((search.getLastName() == null || search.getLastName().trim().isEmpty()) && (search.getFirstName() == null || search.getFirstName().trim().isEmpty()) && (search.getUserName() == null || search.getUserName().trim().isEmpty())) {
@@ -198,7 +201,7 @@ public class PeopleController {
 		return !hasErrors;
 	}
 
-	public void setPeopleService(PeopleService peopleService) {
+	public void setPeopleService(DirectoryService peopleService) {
 		this.peopleService = peopleService;
 	}
 
@@ -214,5 +217,15 @@ public class PeopleController {
 	private void removeFromCache(HttpSession session, String key) {
 		session.removeAttribute(key);
 	}
+	
+	private Map<String, String> getStatusTypes() {
+		Map<String, String> statusTypes = new LinkedHashMap<String, String>();
+		statusTypes.put("Any", "Any Status");
+		statusTypes.put("Student", "Student");
+		statusTypes.put("Faculty", "Faculty");
+		statusTypes.put("Employee", "Employee");
+		return statusTypes;
+	}
+
 
 }

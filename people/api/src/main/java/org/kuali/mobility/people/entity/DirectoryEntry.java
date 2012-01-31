@@ -12,35 +12,8 @@
  * or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 package org.kuali.mobility.people.entity;
 
-public interface Search {
-
-	public abstract boolean isExactLastName();
-
-	public abstract String getFirstName();
-
-	public abstract void setFirstName(String firstName);
-
-	public abstract String getLastName();
-
-	public abstract void setLastName(String lastName);
-
-	public abstract String getUserName();
-
-	public abstract void setUserName(String userName);
-
-	public abstract String getExactness();
-
-	public abstract void setExactness(String exactness);
-
-	public abstract String getStatus();
-
-	public abstract void setStatus(String status);
-
-	public abstract String getLocation();
-
-	public abstract void setLocation(String location);
+public interface DirectoryEntry {
 
 }

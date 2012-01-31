@@ -13,18 +13,19 @@
  * permissions and limitations under the License.
  */
  
-package org.kuali.mobility.people.service;
+package org.kuali.mobility.people.dao;
 
-import java.awt.image.BufferedImage;
 import java.util.List;
-import java.util.Map;
 
+import org.kuali.mobility.people.entity.DirectoryEntry;
+import org.kuali.mobility.people.entity.Group;
 import org.kuali.mobility.people.entity.Person;
-import org.kuali.mobility.people.entity.Search;
+import org.kuali.mobility.people.entity.SearchCriteria;
 
-public interface PeopleService {
-	List<Person> performSearch(Search search);
-	Person getUserDetails(String userName);
-	public Map<String, String> getStatusTypes();
-	BufferedImage generateObfuscatedImage(String text);
+public interface DirectoryDao {
+	
+	public List<DirectoryEntry> findEntries(SearchCriteria search);
+	public Person lookupPerson(String personId);
+	public Group lookupGroup(String groupId);
+	
 }
