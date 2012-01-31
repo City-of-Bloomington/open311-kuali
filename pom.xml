@@ -52,6 +52,7 @@
 		<tool.feedback.version>2.0.0-SNAPSHOT</tool.feedback.version>
 		<tool.maps.version>2.0.0-SNAPSHOT</tool.maps.version>
 		<tool.news.version>2.0.0-SNAPSHOT</tool.news.version>
+		<tool.people.version>2.0.0-SNAPSHOT</tool.people.version>
 		
 		<security.authentication>2.0.0-SNAPSHOT</security.authentication>
 
@@ -80,6 +81,7 @@
                 <module>feedback</module>
 				<module>maps</module>
 				<module>news</module>
+				<module>people</module>
 				<module>mdot-webapp</module>
 			</modules>
 		</profile>
@@ -387,7 +389,28 @@
                 <artifactId>news-webapp</artifactId>
                 <version>${tool.news.version}</version>
             </dependency>
-			<!-- Spring dependencies -->
+            <!-- People Service -->
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>people-api</artifactId>
+                <version>${tool.people.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>people-impl</artifactId>
+                <version>${tool.people.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>people-web</artifactId>
+                <version>${tool.people.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>people-webapp</artifactId>
+                <version>${tool.people.version}</version>
+            </dependency>
+   			<!-- Spring dependencies -->
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-core</artifactId>

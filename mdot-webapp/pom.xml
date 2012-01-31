@@ -243,7 +243,18 @@
 			<groupId>org.kuali.mobility</groupId>
 			<artifactId>maps-web</artifactId>
 		</dependency>
-		
+		<dependency>
+			<groupId>org.kuali.mobility</groupId>
+			<artifactId>people-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.kuali.mobility</groupId>
+			<artifactId>people-impl</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.kuali.mobility</groupId>
+			<artifactId>people-web</artifactId>
+		</dependency>		
 		
 		<dependency> 
             <groupId>org.kuali.mobility</groupId>
@@ -315,7 +326,13 @@
             <type>war</type>
             <scope>runtime</scope>
         </dependency>   
-		
+        <dependency> 
+            <groupId>org.kuali.mobility</groupId>
+            <artifactId>people-webapp</artifactId>
+			<version>${tool.people.version}</version>
+            <type>war</type>
+            <scope>runtime</scope>
+        </dependency>  		
 		
 		
 		<!-- Spring dependencies -->
