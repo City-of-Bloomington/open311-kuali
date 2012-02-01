@@ -35,7 +35,6 @@ import org.springframework.stereotype.Repository;
 import edu.iu.uis.sit.util.directory.AdsPerson;
 import edu.iu.uis.sit.util.directory.IUEduJob;
 
-@Repository
 public class DirectoryIUADDaoImpl implements DirectoryDao {
 
 	private static org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(DirectoryIUADDaoImpl.class);
@@ -84,6 +83,7 @@ public class DirectoryIUADDaoImpl implements DirectoryDao {
 		throw new UnsupportedOperationException();
 	}
 
+	
 	private PeopleAdsService getPeopleAdsService() {
 		return adsService;
 	}
@@ -235,7 +235,7 @@ public class DirectoryIUADDaoImpl implements DirectoryDao {
 
 		private String adsUsername = "";
 		private String adsPassword = "";
-		
+
 		private static AddressBookAdsHelper adsHelper;
 		private int defaultResultLimit;
 

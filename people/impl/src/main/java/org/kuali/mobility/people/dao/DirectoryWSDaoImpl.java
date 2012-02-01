@@ -12,43 +12,31 @@
  * or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
-package org.kuali.mobility.people.service;
+ 
+package org.kuali.mobility.people.dao;
 
 import java.util.List;
 
-import org.kuali.mobility.people.dao.DirectoryDao;
 import org.kuali.mobility.people.entity.DirectoryEntry;
 import org.kuali.mobility.people.entity.Group;
 import org.kuali.mobility.people.entity.Person;
 import org.kuali.mobility.people.entity.SearchCriteria;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
-public class DirectoryServiceImpl implements DirectoryService {
+public class DirectoryWSDaoImpl implements DirectoryDao {
 
-	private static org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(DirectoryServiceImpl.class);
+	private static org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(DirectoryWSDaoImpl.class);
 
-	private DirectoryDao directoryDao;
-	
+	public List<DirectoryEntry> findEntries(SearchCriteria search) {
+		throw new UnsupportedOperationException();
+	}
+
 	public Person lookupPerson(String personId) {
-		return directoryDao.lookupPerson(personId);
+		throw new UnsupportedOperationException();
 	}
 
 	public Group lookupGroup(String groupId) {
-		return directoryDao.lookupGroup(groupId);
-	}
-
-	public List<DirectoryEntry> findEntries(SearchCriteria search) {
-		return directoryDao.findEntries(search);
-	}
-
-	public DirectoryDao getDirectoryDao() {
-		return directoryDao;
-	}
-
-	public void setDirectoryDao(DirectoryDao directoryDao) {
-		this.directoryDao = directoryDao;
+		throw new UnsupportedOperationException();
 	}
 
 }
