@@ -17,6 +17,7 @@ package org.kuali.mobility.people.dao;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -28,9 +29,7 @@ import org.kuali.mobility.people.entity.Person;
 import org.kuali.mobility.people.entity.PersonImpl;
 import org.kuali.mobility.people.entity.SearchCriteria;
 import org.kuali.mobility.people.service.AddressBookAdsHelper;
-import org.kuali.mobility.people.service.PersonSort;
 import org.kuali.mobility.shared.Constants;
-import org.springframework.stereotype.Repository;
 
 import edu.iu.uis.sit.util.directory.AdsPerson;
 import edu.iu.uis.sit.util.directory.IUEduJob;
@@ -328,4 +327,33 @@ public class DirectoryIUADDaoImpl implements DirectoryDao {
 		
 	}
 	
+	private class PersonSort implements Comparator<Person> {
+
+		private final String EMPTY_STRING = "";
+		
+		public int compare(Person o1, Person o2) {
+		    int comparison = this.compareString(o1.getLastName(), o2.getLastName());
+		    if (comparison == 0) {
+		    	comparison = this.compareString(o1.getFirstName(), o2.getFirstName());
+		    	if (comparison == 0) {
+		    		comparison = this.compareString(o1.getDisplayName(), o2.getDisplayName());
+			    	if (comparison == 0) {
+			    		comparison = this.compareString(o1.getUserName(), o2.getUserName());
+			    	}
+		    	}
+		    }
+		    return comparison;
+		}
+		
+		private int compareString(String s1, String s2) {
+			if (s1 == null) {
+				s1 = EMPTY_STRING;
+			}
+			if (s2 == null) {
+				s2 = EMPTY_STRING;
+			}
+			return s1.compareTo(s2);
+		}
+	}
+
 }
