@@ -32,8 +32,11 @@
     
     <bean id="newsCache" class="org.kuali.mobility.news.dao.NewsCacheImpl"/>
     -->
-    
-    <bean id="directoryDao" class="org.kuali.mobility.people.dao.DirectoryIUADDaoImpl" />
+
+    <bean id="directoryDao" class="org.kuali.mobility.people.dao.DirectoryIUADDaoImpl">
+    	<constructor-arg index="0" value="${ads.username}"/>
+  		<constructor-arg index="1" value="${ads.password}"/>
+    </bean>
     
     <bean id="directoryService" class="org.kuali.mobility.people.service.DirectoryServiceImpl">
         <property name="directoryDao" ref="directoryDao"/>

@@ -50,9 +50,11 @@ public class DirectoryIUADDaoImpl implements DirectoryDao {
 	private static org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(DirectoryIUADDaoImpl.class);
 
 	private PeopleAdsService adsService;
+	private String adsUsername;
+	private String adsPassword;
 
-	public DirectoryIUADDaoImpl() {
-		adsService = new PeopleAdsService();
+	public DirectoryIUADDaoImpl(String adsUsername, String adsPassword) {
+		adsService = new PeopleAdsService(adsUsername, adsPassword);
 	}
  	
 	public List<DirectoryEntry> findEntries(SearchCriteria search) {
@@ -96,6 +98,22 @@ public class DirectoryIUADDaoImpl implements DirectoryDao {
 	
 	private PeopleAdsService getPeopleAdsService() {
 		return adsService;
+	}
+
+	public String getAdsUsername() {
+		return adsUsername;
+	}
+
+	public void setAdsUsername(String adsUsername) {
+		this.adsUsername = adsUsername;
+	}
+
+	public String getAdsPassword() {
+		return adsPassword;
+	}
+
+	public void setAdsPassword(String adsPassword) {
+		this.adsPassword = adsPassword;
 	}
 
 	private List<Person> findPeople(SearchCriteria search) {
@@ -243,14 +261,16 @@ public class DirectoryIUADDaoImpl implements DirectoryDao {
 
 	private static class PeopleAdsService {
 
-		private String adsUsername = "";
-		private String adsPassword = "";
+		private String adsUsername;
+		private String adsPassword;
 
 		private static AddressBookAdsHelper adsHelper;
 		private int defaultResultLimit;
 
-		public PeopleAdsService() {
+		public PeopleAdsService(String adsUsername, String adsPassword) {
 			this.defaultResultLimit = 75;
+			this.adsUsername = adsUsername;
+			this.adsPassword = adsPassword;
 		}
 
 		private AddressBookAdsHelper getAdsHelper() {
