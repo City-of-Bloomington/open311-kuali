@@ -29,7 +29,6 @@ import javax.servlet.http.HttpSession;
 import org.kuali.mobility.people.entity.DirectoryEntry;
 import org.kuali.mobility.people.entity.Person;
 import org.kuali.mobility.people.entity.SearchCriteria;
-import org.kuali.mobility.people.entity.SearchCriteria;
 import org.kuali.mobility.people.service.DirectoryService;
 import org.kuali.mobility.shared.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -103,13 +102,6 @@ public class PeopleController {
 	@RequestMapping(value = "/{userNameHash}", method = RequestMethod.GET)
 	public String getUserDetails(Model uiModel, HttpServletRequest request, @PathVariable("userNameHash") String userNameHash) {
 
-		/*
-		 * Search search = new Search(); search.setLastName(searchLastName);
-		 * search.setFirstName(searchFirstName);
-		 * search.setUserName(searchUserName);
-		 * search.setExactness(searchExactness);
-		 * search.setLocation(searchLocation); search.setStatus(searchStatus);
-		 */
 		Map<String, Object> details = new HashMap<String, Object>();
 
 		Map<String, String> userNameHashes = (Map<String, String>) request.getSession().getAttribute("People.UserNames.Hashes");
@@ -118,38 +110,10 @@ public class PeopleController {
 			String userName = userNameHashes.get(userNameHash);
 			p = peopleService.lookupPerson(userName);
 		}
-//		uiModel.addAttribute("person", p);
-		details.put("person", p);
-//		// uiModel.addAttribute("search", search);
-//		uiModel.addAttribute("loggedIn", isLoggedIn);
-		//details.put("loggedIn", !user.isPublicUser());
-		details.put("loggedIn", false);
-		/*
-		if (user.isPublicUser() && p != null && p.getEmail() != null && !"".equals(p.getEmail())) {
-			BufferedImage bufferedImage = peopleService.generateObfuscatedImage(p.getEmail());
-			ByteArrayOutputStream os = new ByteArrayOutputStream();
-			try {
-				ImageIO.write(bufferedImage, "png", os);
-				String key = "People.Image.Email.";
-				// Add an identifier to the key so heavily cached browsers do
-				// not reuse the same image for different people
-				String hash = null;
-				if (p.getUserName() != null) {
-					hash = "" + Math.abs(p.getUserName().hashCode());
-				} else {
-					Date now = new Date();
-					hash = "" + now.getTime();
-				}
-				key = key + hash;
-				request.getSession().setAttribute(key, os.toByteArray());
-//				uiModel.addAttribute("imageKey", hash);
-				details.put("imageKey", hash);
-			} catch (Exception ioException) {
-				LOG.error("Error generating email image: ", ioException);
-			}
-		}
-		*/
 		
+		details.put("person", p);
+		details.put("loggedIn", false);
+
 		putInCache(request.getSession(), "People.Search.Results.Person", details);
 		
 		return "people/details";
