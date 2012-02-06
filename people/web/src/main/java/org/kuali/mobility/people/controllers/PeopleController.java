@@ -16,6 +16,7 @@
 package org.kuali.mobility.people.controllers;
 
 import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -71,9 +72,11 @@ public class PeopleController {
 				Person p = (Person)d;
 				userNameHashes.put(p.getHashedUserName(), p.getUserName());
 			}
+			
 			request.getSession().setAttribute("People.UserNames.Hashes", userNameHashes);
 			
 			putInCache(request.getSession(), "People.Search.Results", people);
+			putInCache(request.getSession(), "People.Search.Criteria", search);
 
 			return "people/index";
 		} else {
@@ -87,8 +90,30 @@ public class PeopleController {
     @ResponseBody
     public String getListJson(HttpServletRequest request) {
 		List<Person> people = (List<Person>) getFromCache(request.getSession(), "People.Search.Results");
+		if (people == null) return null;
 		
-		return new JSONSerializer().exclude("*.class").deepSerialize(people);
+		List<Map<String, Object>> results = new ArrayList<Map<String, Object>>();
+		SearchCriteria s = (SearchCriteria)getFromCache(request.getSession(), "People.Search.Criteria");
+		if (!people.isEmpty() && people.get(0) != null && people.get(0).getUserName() != null && s != null && s.getSearchText() != null) {
+			if (people.get(0).getUserName().trim().equals(s.getSearchText().trim())) {
+				Person p1 = people.remove(0);
+				List<Person> u = new ArrayList<Person>();
+				u.add(p1);
+				Map<String, Object> m = new HashMap<String, Object>();
+				m.put("heading", "Exact network id match");
+				m.put("directoryEntries", u);
+				results.add(m);
+			}
+		}
+
+		if (people.size() > 0) {
+			Map<String, Object> m = new HashMap<String, Object>();
+			m.put("heading", "People");
+			m.put("directoryEntries", people);
+			results.add(m);
+		}
+		//return new JSONSerializer().exclude("*.class").deepSerialize(people);
+		return new JSONSerializer().exclude("*.class").deepSerialize(results);
     }
 
 	

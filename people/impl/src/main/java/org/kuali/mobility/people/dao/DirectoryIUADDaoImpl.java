@@ -22,6 +22,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.StringTokenizer;
 
 import javax.naming.AuthenticationException;
 import javax.naming.NamingEnumeration;
@@ -185,12 +186,48 @@ public class DirectoryIUADDaoImpl implements DirectoryDao {
 		List<Person> persons = null;
 		int resultLimit = adsService.getResultLimit();
 		try {
-			List<AdsPerson> adsPersons = new ArrayList<AdsPerson>();
-			adsPersons = getPeopleAdsService().getAdsPersons(search.getSearchText(), null, "Any", "Any", false, resultLimit, false);
-			this.filterAdsPersons(adsPersons);
-			persons = this.convertAdsPersons(adsPersons);
+			String last = null;
+			String first = null;
+			if (search.getSearchText().trim().indexOf(",") >= 0) {
+				StringTokenizer st = new StringTokenizer(search.getSearchText().trim(), ","); 
+				if (st.countTokens() <= 2) { 
+					while(st.hasMoreTokens()) { 
+						last = st.nextToken().trim(); 
+						first = st.nextToken().trim(); 
+					} 
+					List<AdsPerson> adsPersons = new ArrayList<AdsPerson>();
+					adsPersons = getPeopleAdsService().getAdsPersons(last, first, "Any", "Any", false, resultLimit, false);
+					this.filterAdsPersons(adsPersons);
+					persons = this.convertAdsPersons(adsPersons);
+				}
+			} else if (search.getSearchText().trim().indexOf(" ") >= 0) {
+				StringTokenizer st = new StringTokenizer(search.getSearchText().trim(), " "); 
+				if (st.countTokens() <= 2) { 
+					while(st.hasMoreTokens()) { 
+						first = st.nextToken().trim(); 
+						last = st.nextToken().trim(); 
+					} 				
+					List<AdsPerson> adsPersons = new ArrayList<AdsPerson>();
+					adsPersons = getPeopleAdsService().getAdsPersons(last, first, "Any", "Any", false, resultLimit, false);
+					this.filterAdsPersons(adsPersons);
+					persons = this.convertAdsPersons(adsPersons);
+				}
+			} else {
+				// do two searches
+				List<AdsPerson> adsPersons = new ArrayList<AdsPerson>();
+				adsPersons = getPeopleAdsService().getAdsPersons(search.getSearchText().trim(), null, "Any", "Any", false, resultLimit, false);
+				this.filterAdsPersons(adsPersons);
+				persons = this.convertAdsPersons(adsPersons);
+				adsPersons = new ArrayList<AdsPerson>();
+				adsPersons = getPeopleAdsService().getAdsPersons(null, search.getSearchText().trim(), "Any", "Any", false, resultLimit, false);
+				this.filterAdsPersons(adsPersons);
+				persons.addAll(this.convertAdsPersons(adsPersons));
+			}			
 		} catch (Exception e) {
 			LOG.error("Could not find users: " + search.getSearchText(), e);
+		}
+		if (persons == null) {
+			return new ArrayList<Person>();
 		}
 		Collections.sort(persons, new PersonSort());
 		if (persons.size() > resultLimit) {

@@ -18,13 +18,12 @@
 	<kme:content>
 		<form:form action="${pageContext.request.contextPath}/people" method="post" commandName="search" data-ajax="false">
 			<fieldset>
-            <label for="searchText" style="position:absolute; left:-9999px;">Search:</label>
-            <form:input path="searchText" cssClass="text ui-widget-content ui-corner-all" placeholder="Search" />
+            <label for="searchText" style="position:absolute; left:-9999px;">Search Usage: Keyword | Last, First | First Last</label>
+            <form:input path="searchText" cssClass="text ui-widget-content ui-corner-all" placeholder="[Keyword] or [Last, First] or [First Last]" />
 			<form:errors path="searchText" />
 			</fieldset>
 		</form:form>
 		<div id="searchresults">
-
 				<kme:listView id="peopleList" filter="false" dataTheme="c" dataInset="false">
 		            <script type="text/javascript">
 						$('[data-role=page][id=directory]').live('pagebeforeshow', function(event, ui) {
@@ -33,6 +32,9 @@
 						});
 					</script>
 					<script id="peopleTemplate" type="text/x-jquery-tmpl">
+						{{if heading}}
+						<li data-role="list-divider" data-theme="b" data-icon="listview" >\${heading}</li>
+  	  					{{each directoryEntries}}
 						<li>
         					<a href="${pageContext.request.contextPath}/people/\${hashedUserName}">
 								<h3>\${lastName}, \${firstName}</h3>
@@ -48,6 +50,8 @@
 								</p>				    		  	
 				    		 </a>
       					</li>
+						{{/each}}
+						{{/if}}
 					</script>
 		        </kme:listView>
 
