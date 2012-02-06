@@ -54,6 +54,45 @@ public class PeopleController {
 	private DirectoryService peopleService;
 
 	@RequestMapping(method = RequestMethod.GET)
+	public String index(Model uiModel, HttpServletRequest request) {
+		SearchCriteria s = new SearchCriteria();
+		uiModel.addAttribute("search", s);
+		//removeFromCache(request.getSession(), "People.Search.Results");
+		return "people/index";
+	}
+
+	@RequestMapping(method = RequestMethod.POST)
+	public String postSimpleSearch(Model uiModel, @ModelAttribute("search") SearchCriteria search, BindingResult result, HttpServletRequest request) {
+		if (validateSimpleSearch(search, result)) {
+			List<DirectoryEntry> people = peopleService.findEntries(search);
+
+			Map<String, String> userNameHashes = new HashMap<String, String>();
+			for (DirectoryEntry d : people) {
+				Person p = (Person)d;
+				userNameHashes.put(p.getHashedUserName(), p.getUserName());
+			}
+			request.getSession().setAttribute("People.UserNames.Hashes", userNameHashes);
+			
+			putInCache(request.getSession(), "People.Search.Results", people);
+
+			return "people/index";
+		} else {
+
+			return "people/index";
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	@RequestMapping(method = RequestMethod.GET, headers = "Accept=application/json")
+    @ResponseBody
+    public String getListJson(HttpServletRequest request) {
+		List<Person> people = (List<Person>) getFromCache(request.getSession(), "People.Search.Results");
+		
+		return new JSONSerializer().exclude("*.class").deepSerialize(people);
+    }
+
+	
+	@RequestMapping(value = "/advanced", method = RequestMethod.GET)
 	public String viewSearchForm(Model uiModel) {
 		SearchCriteria s = new SearchCriteria();
 		s.setStatus("Any");
@@ -66,9 +105,9 @@ public class PeopleController {
 		return "people/form";
 	}
 
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(value = "/advanced", method = RequestMethod.POST)
 	public String postSearchForm(Model uiModel, @ModelAttribute("search") SearchCriteria search, BindingResult result, HttpServletRequest request) {
-		if (validateSearch(search, result)) {
+		if (validateAdvancedSearch(search, result)) {
 			List<DirectoryEntry> people = peopleService.findEntries(search);
 
 			Map<String, String> userNameHashes = new HashMap<String, String>();
@@ -89,15 +128,6 @@ public class PeopleController {
 		}
 	}
 	
-	@SuppressWarnings("unchecked")
-	@RequestMapping(method = RequestMethod.GET, headers = "Accept=application/json")
-    @ResponseBody
-    public String getListJson(HttpServletRequest request) {
-		List<Person> people = (List<Person>) getFromCache(request.getSession(), "People.Search.Results");
-		
-		return new JSONSerializer().exclude("*.class").deepSerialize(people);
-    }
-
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/{userNameHash}", method = RequestMethod.GET)
 	public String getUserDetails(Model uiModel, HttpServletRequest request, @PathVariable("userNameHash") String userNameHash) {
@@ -155,7 +185,17 @@ public class PeopleController {
 		}
 	}
 
-	private boolean validateSearch(SearchCriteria search, BindingResult result) {
+	private boolean validateSimpleSearch(SearchCriteria search, BindingResult result) {
+		boolean hasErrors = false;
+		Errors errors = ((Errors) result);
+		if ((search.getSearchText() == null || search.getSearchText().trim().isEmpty())) {
+			errors.rejectValue("searchText", "", "You must provide at least one letter to search.");
+			hasErrors = true;
+		}
+		return !hasErrors;
+	}
+
+	private boolean validateAdvancedSearch(SearchCriteria search, BindingResult result) {
 		boolean hasErrors = false;
 		Errors errors = ((Errors) result);
 		if ((search.getLastName() == null || search.getLastName().trim().isEmpty()) && (search.getFirstName() == null || search.getFirstName().trim().isEmpty()) && (search.getUserName() == null || search.getUserName().trim().isEmpty())) {

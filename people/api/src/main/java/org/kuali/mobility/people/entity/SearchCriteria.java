@@ -24,6 +24,16 @@ public class SearchCriteria {
 	private String exactness = "starts";
 	private String status;
 	private String location;
+	
+	private String searchText;
+
+	public String getSearchText() {
+		return searchText;
+	}
+
+	public void setSearchText(String searchText) {
+		this.searchText = searchText;
+	}
 
 	public boolean isExactLastName() {
 		return "exact".equals(exactness);

@@ -59,16 +59,26 @@ public class DirectoryIUADDaoImpl implements DirectoryDao {
  	
 	public List<DirectoryEntry> findEntries(SearchCriteria search) {
 		List<DirectoryEntry> de = new ArrayList<DirectoryEntry>();
-		
-		// Find a unique entry
-		
+			
 		// Find the people
-		for (Person p : findPeople(search)) {
-			de.add(p);
+		if (search.getSearchText() == null || search.getSearchText().trim().isEmpty()) {
+			for (Person p : findPeople(search)) {
+				de.add(p);
+			}
+		} else {
+			// Find a unique entry
+			Person up = findUniquePerson(search);
+			if (up != null) {
+				de.add(up);
+			}
+			// Find the people
+			for (Person p : findSimplePeople(search)) {
+				de.add(p);
+			}
+			// Find the groups
+			// TODO: Add this
 		}
-		
-		// Find the groups
-	
+
 		return de;
 	}
 
@@ -144,6 +154,52 @@ public class DirectoryIUADDaoImpl implements DirectoryDao {
 		return persons;
 	}
 
+	private Person findUniquePerson(SearchCriteria search) {
+		List<Person> persons = null;
+
+		try {
+			List<AdsPerson> adsPersons = new ArrayList<AdsPerson>();
+			if (search.getSearchText() != null && !search.getSearchText().trim().isEmpty()) {
+				AdsPerson adsPerson = getPeopleAdsService().getAdsPerson(search.getSearchText());
+				if (adsPerson != null) {
+					if (ferpaRestricted(adsPerson)) {
+						return null;
+					}
+					adsPersons.add(adsPerson);
+				}
+			}
+			this.filterAdsPersons(adsPersons);
+			persons = this.convertAdsPersons(adsPersons);
+		} catch (Exception e) {
+			LOG.warn("No unique result for search: " + search.getSearchText(), e);
+		}
+		
+		if (persons.size() > 0) {
+			return persons.get(0);
+		} 
+		
+		return null;
+	}
+
+	private List<Person> findSimplePeople(SearchCriteria search) {
+		List<Person> persons = null;
+		int resultLimit = adsService.getResultLimit();
+		try {
+			List<AdsPerson> adsPersons = new ArrayList<AdsPerson>();
+			adsPersons = getPeopleAdsService().getAdsPersons(search.getSearchText(), null, "Any", "Any", false, resultLimit, false);
+			this.filterAdsPersons(adsPersons);
+			persons = this.convertAdsPersons(adsPersons);
+		} catch (Exception e) {
+			LOG.error("Could not find users: " + search.getSearchText(), e);
+		}
+		Collections.sort(persons, new PersonSort());
+		if (persons.size() > resultLimit) {
+			return persons.subList(0, resultLimit - 1);
+		}
+		return persons;
+	}
+
+	
 	private void filterAdsPersons(List<AdsPerson> adsPersons) {
 		AdsPerson adsPerson = null;
 		boolean remove;
@@ -321,6 +377,15 @@ public class DirectoryIUADDaoImpl implements DirectoryDao {
 		}
 
 		public List<AdsPerson> getAdsPersons(String last, String first, String status, String campus, boolean isExactLastName, int resultLimit) throws Exception {
+			return getAdsPersons(last, first, status, campus, isExactLastName, resultLimit, false);
+		}
+		
+		public List<AdsPerson> getAdsPersons(String last, String first, String status, String campus, boolean isExactLastName, int resultLimit, boolean useFullWidcard) throws Exception {
+			String wild = "";
+			if (useFullWidcard) {
+				wild = "*";
+			}
+			
 			AddressBookAdsHelper helper = getAdsHelper();
 			String[] returnedAttributes = { "cn", "iuEduPersonAffiliation", "displayName", "ou", "iuEduPSEMPLID", "iuEduCurrentlyEnrolled", "iuEduPrimaryStudentAffiliation", "iuEduFERPAMask", "givenName", "sn" };
 			Map<String, String> keyValues = new HashMap<String, String>();
@@ -328,11 +393,11 @@ public class DirectoryIUADDaoImpl implements DirectoryDao {
 				if (isExactLastName) {
 					keyValues.put("sn", last);
 				} else {
-					keyValues.put("sn", last + "*");
+					keyValues.put("sn", wild + last + "*");
 				}
 			}
 			if (first != null && first.length() > 0) {
-				keyValues.put("givenName", first + "*");
+				keyValues.put("givenName", wild + first + "*");
 			}
 			if (campus != null && !campus.equals("Any")) {
 				keyValues.put("ou", campus);
