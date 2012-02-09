@@ -26,7 +26,11 @@
 			</script>
 			<script id="detailsTemplate" type="text/x-jquery-tmpl">			
 				{{if person}}
+					{{if person.lastName}}
 					<li data-role="list-divider">\${person.lastName}, \${person.firstName}</li>
+					{{else}}
+					<li data-role="list-divider">\${person.displayName}</li>
+					{{/if}}
       				<li>
 						{{if person.locations && person.locations.length > 0}}
 							<h3 class="wrap">Campus:
