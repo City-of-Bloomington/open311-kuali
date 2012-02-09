@@ -25,6 +25,40 @@
 		</form:form>
 		<div id="searchresults">
 				<kme:listView id="peopleList" filter="false" dataTheme="c" dataInset="false">
+
+					<%-- doT Stuff
+		            <script type="text/javascript">
+						$('[data-role=page][id=directory]').live('pagebeforeshow', function(event, ui) {
+							$('#peopleTemplate').template('peopleTemplate');
+							refreshDoTTemplate('people', 'peopleList', 'peopleTemplate', '<li>No people found.</li>', function() {$('#peopleList').listview('refresh');});
+						});
+					</script>
+					
+					<script id="peopleTemplate" type="text/x-jquery-tmpl">
+						{{if heading}}
+						<li data-role="list-divider" data-theme="b" data-icon="listview" >\${heading}</li>
+  	  					{{each directoryEntries}}
+						<li>
+        					<a href="${pageContext.request.contextPath}/people/\${hashedUserName}">
+								<h3>\${lastName}, \${firstName}</h3>
+								<p><strong>Location:</strong>
+								{{each(i,location) locations}}
+									\${location}{{if i+1 < locations.length}}, {{/if}}
+								{{/each}}
+								</p>
+								<p><strong>Affiliation:</strong>
+								{{each(i,affiliation) affiliations}}
+									\${affiliation}{{if i+1 < affiliations.length}}, {{/if}}
+								{{/each}}
+								</p>				    		  	
+				    		 </a>
+      					</li>
+						{{/each}}
+						{{/if}}
+					</script>
+					--%>
+
+					<%-- JQM Stuff --%> 
 		            <script type="text/javascript">
 						$('[data-role=page][id=directory]').live('pagebeforeshow', function(event, ui) {
 							$('#peopleTemplate').template('peopleTemplate');
@@ -53,6 +87,7 @@
 						{{/each}}
 						{{/if}}
 					</script>
+					
 		        </kme:listView>
 
 

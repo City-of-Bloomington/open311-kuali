@@ -211,7 +211,8 @@ public class PageTag extends SimpleTagSupport {
             out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/jquery.validate.js\"></script>");
             out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/jquery.validate.ready.js\"></script>");
             out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/jquery.templates.js\"></script>");
-            
+            out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/doT.js\"></script>");
+
             String profileId = coreService.findGoogleAnalyticsProfileId().trim();
             if (!disableGoogleAnalytics && profileId.length() > 0) {
             	out.println("<script type=\"text/javascript\">");
