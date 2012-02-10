@@ -15,13 +15,148 @@
 <%@ taglib prefix="kme"  uri="http://kuali.org/mobility" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<kme:page title="Search Results" id="people" backButton="true" homeButton="true" cssFilename="people" appcacheFilename="iumobile.appcache">
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<c:if test="${fn:contains(header['User-Agent'],'iPhone') || fn:contains(header['User-Agent'],'iPad') || fn:contains(header['User-Agent'],'iPod')}">
+	<c:set var="platform" value="iOS"/>
+</c:if>
+<c:if test="${fn:contains(header['User-Agent'],'Android')}">
+	<c:set var="platform" value="Android"/>
+</c:if>
+
+
+
+<kme:page title="Search Results" id="people" backButton="true" homeButton="true" cssFilename="people" appcacheFilename="iumobile.appcache" onBodyLoad="init()" platform="${platform}">
+<script type="text/javascript" charset="utf-8">
+
+// Wait for PhoneGap to load
+//
+function init() {
+	// alert($('#savecontact').html());
+	document.addEventListener("deviceready", onDeviceReady, false);
+}
+
+// PhoneGap is ready
+//
+function onDeviceReady() {
+
+}
+
+
+var IsiPhone 		= navigator.userAgent.indexOf("iPhone") != -1 ;
+var IsiPod 			= navigator.userAgent.indexOf("iPod") != -1 ;
+var IsiPad 			= navigator.userAgent.indexOf("iPad") != -1 ;
+var IsiOS			= IsiPhone || IsiPod || IsiPad;
+var IsAndroid 		= navigator.userAgent.indexOf("Android") != -1 ;
+
+var fname 		= "";
+var lname 		= "";
+var contactID 	= "";
+var newContact 	= "";
+
+
+// Passing the arguments rather than scanning the DOM. It would require re-write of the template below. 
+function saveContact(firstname, lastname, dept, email, phone){
+	
+	fname = firstname;
+	lname = lastname;
+	
+	
+	/* Android/iOS Block */
+	if(IsAndroid || IsiOS){ 
+		/*
+		if(existing contact)
+			add missing info	
+		else
+			add new contact
+		*/
+
+
+		
+		// find all contacts with 'Bob' in any name field
+		var options 		= new ContactFindOptions();
+		options.filter 		= lastname;
+		options.multiple 	= true;
+		var fields 			= ["displayName", "name", "emails"];
+		navigator.contacts.find(fields, onFindSuccess, onFindError, options);
+		
+		var myContact = navigator.contacts.create();
+		myContact.displayName = firstname + " " + lastname;	
+
+	    var name = new ContactName();
+    	name.givenName = firstname;
+    	name.familyName = lastname;
+    	myContact.name = name; 
+    
+    	var phoneNumbers = [];
+    	phoneNumbers[0] = new ContactField('IU', phone, true);
+    	myContact.phoneNumbers = phoneNumbers;
+
+    	var emails = [];
+    	emails[0] = new ContactField('IU', email, true);
+    	myContact.emails = emails;
+    
+    	// Saves the Contact to Android. 
+
+    	newContact = myContact;
+    	
+/*
+    	if(confirm("Add New Contact")){		
+	    	myContact.save(onSaveSuccess, onSaveError);
+    	}else{
+    		
+    	}
+*/
+	}
+    /* End Android/iOS Block */
+
+    
+	/* Blackberry Block */
+	// TODO
+	/* End Black Berry Block */
+}
+
+function onFindSuccess(contacts) {
+
+	c = 0;
+	for(i = 0; i < contacts.length; i++){
+		if(contacts[i].name.formatted.indexOf(fname) != -1){
+			c++;
+			contactID = contacts[i].id;
+		}
+	}
+	
+	if(contactID != ""){
+		alert('This Contact might already exist in your address book. ID is ' + contactID);
+	}else{
+		if(confirm('Add as New Contact.')){
+			newContact.save(onSaveSuccess, onSaveError);
+		}
+	}
+	
+};
+
+
+function onFindError(contactError) {
+    alert('onError!');
+};
+
+function onSaveSuccess(contact) {
+	//Only Displays on Android.
+    alert("Saved Contact");
+};
+
+function onSaveError(contactError) {
+    alert("Save Error = " + contactError.code);
+};
+
+
+</script>
 	<kme:content>
 		<kme:listView id="detailsList" filter="false" dataTheme="c" dataInset="false">
 			<script type="text/javascript">			
 				$('[data-role=page][id=people]').live('pagebeforeshow', function(event, ui) {
 					$('#detailsTemplate').template('detailsTemplate');
-					refreshTemplate('${pageContext.request.contextPath}/people/details', '#detailsList', 'detailsTemplate', '<li>The person was not found.</li>', function() {$('#detailsList').listview('refresh');});
+					refreshTemplate('${pageContext.request.contextPath}/people/details', '#detailsList', 'detailsTemplate', '<li>The person was not found.</li>', function() {$('#detailsList').listview('refresh');});				
 				});
 			</script>
 			<script id="detailsTemplate" type="text/x-jquery-tmpl">			
@@ -72,12 +207,24 @@
 					{{if person.phone}}
 						<li class="link-phone"><a href="tel:\${person.phone}">\${person.phone}</a></li>
 					{{/if}}				
+					
+					<li>
+						<a id="savecontact" data-icon="plus" href="#" data-role="button" onclick="saveContact('\${person.firstName}', '\${person.lastName}', '\${person.departments}', '\${person.email}', '\${person.phone}')" data-theme="c">
+							Save Contact
+						</a>
+					</li>
 				{{else}}
 					<li>The person was not found.</li>
 				{{/if}}
+
 			</script>
 		</kme:listView>
-		
+
+
+
+
+
+
 		<%-- 
 			{{if person.email}}
 				<li class="link-email">
@@ -144,5 +291,7 @@
 				The person was not found.
 			</c:otherwise>
 		</c:choose>--%>
+		
+
 	</kme:content>
 </kme:page>

@@ -49,8 +49,10 @@ public class PageTag extends SimpleTagSupport {
     private boolean usesGoogleMaps;
     private String appcacheFilename;
 	private String cssFilename;
+	private String onBodyLoad;
+	private String platform;
+    private String jsFilename;
 	private String mapLocale;
-	private String jsFilename;
     private boolean loginButton;
     private String loginButtonURL;
 	private String logoutButtonURL;
@@ -63,6 +65,10 @@ public class PageTag extends SimpleTagSupport {
         this.id = id;
     }
 
+    public void setPlatform(String platform) {
+        this.platform = platform;
+    }    
+    
     /**
      * @param title the title that will appear in the the header bar
      */
@@ -76,6 +82,10 @@ public class PageTag extends SimpleTagSupport {
     public void setMapLocale(String mapLocale) {
         this.mapLocale = mapLocale;
     }    
+    
+    public void setOnBodyLoad(String onBodyLoad) {
+        this.onBodyLoad = onBodyLoad;
+    }
     
     /**
      * Enable the home button
@@ -140,7 +150,7 @@ public class PageTag extends SimpleTagSupport {
 	public void setCssFilename(String cssFilename) {
 		this.cssFilename = cssFilename;
 	}
-    
+	
 	/**
 	 * the name of the javascript file without the .js extension
 	 * @param jsFilename
@@ -184,6 +194,7 @@ public class PageTag extends SimpleTagSupport {
         JspWriter out = pageContext.getOut();
         try {
             out.println("<!DOCTYPE html>");
+
             if (appcacheFilename != null && !appcacheFilename.trim().equals("")) {
             	out.println("<html manifest=\"" + contextPath + "/" + appcacheFilename + "\">");
             } else {
@@ -213,6 +224,24 @@ public class PageTag extends SimpleTagSupport {
             out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/jquery.templates.js\"></script>");
             out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/doT.js\"></script>");
 
+            
+            if(platform != null && platform.equals("iOS")){
+                out.println("<script type=\"text/javascript\" src=\"http://mtwagner.dyndns.org:8888/js/iOS/applicationPreferences.js\"></script>");
+            	out.println("<script type=\"text/javascript\" src=\"http://mtwagner.dyndns.org:8888/js/iOS/phonegap-1.4.1.js\"></script>");
+                out.println("<script type=\"text/javascript\" src=\"http://mtwagner.dyndns.org:8888/js/iOS/ChildBrowser.js\"></script>");
+                out.println("<script type=\"text/javascript\" src=\"http://mtwagner.dyndns.org:8888/js/iOS/barcodescanner.js\"></script>");
+                out.println("<script type=\"text/javascript\" src=\"http://mtwagner.dyndns.org:8888/js/iOS/Connection.js\"></script>");
+                out.println("<script type=\"text/javascript\" src=\"http://mtwagner.dyndns.org:8888/js/iOS/handlePush.js\"></script>");
+            }else if(platform != null && platform.equals("Android")){
+                out.println("<script type=\"text/javascript\" src=\"http://mtwagner.dyndns.org:8888/js/Android/phonegap-1.2.0.js\"></script>");
+                out.println("<script type=\"text/javascript\" src=\"http://mtwagner.dyndns.org:8888/js/Android/childbrowser.js\"></script>");
+                out.println("<script type=\"text/javascript\" src=\"http://mtwagner.dyndns.org:8888/js/Android/barcodescanner.js\"></script>");                        	
+                out.println("<script type=\"text/javascript\" src=\"http://mtwagner.dyndns.org:8888/js/Android/C2DMPlugin.js\"></script>");
+                out.println("<script type=\"text/javascript\" src=\"http://mtwagner.dyndns.org:8888/js/Android/PG_C2DM_script.js\"></script>");
+            }
+
+            out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/doT.js\"></script>");
+
             String profileId = coreService.findGoogleAnalyticsProfileId().trim();
             if (!disableGoogleAnalytics && profileId.length() > 0) {
             	out.println("<script type=\"text/javascript\">");
@@ -240,7 +269,13 @@ public class PageTag extends SimpleTagSupport {
             }
             out.println("<meta name=\"viewport\" content=\"width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;\">");
             out.println("</head>");
-            out.println("<body>");
+
+            if(onBodyLoad != null){
+            	out.println("<body onload='" + onBodyLoad + "'>");
+            }else{
+            	out.println("<body onload='" + onBodyLoad + "'>");
+            }
+            
             out.println("<div data-role=\"page\" id=\"" + id + "\">");
             out.println("<div data-role=\"header\">");
             if (loginButton || getAuthMapper().getLoginURL() != null) {

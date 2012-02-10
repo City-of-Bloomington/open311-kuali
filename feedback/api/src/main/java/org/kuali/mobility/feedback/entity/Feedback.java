@@ -134,7 +134,7 @@ public class Feedback implements Serializable {
     public void setCampus(String campus) {
         this.campus = campus;
     }
-
+    
     public String getAffiliation() {
         return affiliation;
     }
@@ -194,7 +194,7 @@ public class Feedback implements Serializable {
     	str = str + newline + "User Agent: " + this.getUserAgent();
     	str = str + newline + "Timestamp: " + this.getPostedTimestamp();
     	str = str + newline + "Service: " + this.getService();
-    	str = str + newline + newline + this.getNoteTextExport();
+    	str = str + newline + newline + this.getNoteTextExport();    	
     	return str;
     }
 }

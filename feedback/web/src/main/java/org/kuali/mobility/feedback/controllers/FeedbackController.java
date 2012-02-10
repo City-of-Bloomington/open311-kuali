@@ -50,6 +50,7 @@ public class FeedbackController{
     	deviceTypes.put("an", "Android");
     	deviceTypes.put("bb", "BlackBerry");
     	deviceTypes.put("ip", "iPhone");
+    	deviceTypes.put("ie", "Windows Mobile");
     	deviceTypes.put("sp", "Other Smartphone");
     	deviceTypes.put("other", "Other Device");
     }
