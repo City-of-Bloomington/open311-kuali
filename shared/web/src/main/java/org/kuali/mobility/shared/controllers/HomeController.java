@@ -104,6 +104,11 @@ public class HomeController {
     	return "logout";
     }
 
+    @RequestMapping(value = "qrcode", method = RequestMethod.GET)
+    public String qrcode(HttpServletRequest request, Model uiModel) {      
+    	return "qrcode";
+    }    
+    
     @RequestMapping(value = "yesLogout", method = RequestMethod.GET)
     public void fullLogout(HttpServletRequest request, HttpServletResponse response, Model uiModel) {      
     	request.getSession().setAttribute(Constants.KME_USER_KEY, null);

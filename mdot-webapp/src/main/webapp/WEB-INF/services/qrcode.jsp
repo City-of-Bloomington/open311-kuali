@@ -15,19 +15,18 @@
 
 
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<c:if test="${fn:contains(header['User-Agent'],'iPhone') || fn:contains(header['User-Agent'],'iPad') || fn:contains(header['User-Agent'],'iPod')}">
+<c:if test="${fn:contains(header['User-Agent'],'iPhone') || fn:contains(header['User-Agent'],'iPad') || fn:contains(header['User-Agent'],'iPod') || fn:contains(header['User-Agent'],'Macintosh') }">
 	<c:set var="platform" value="iOS"/>
 </c:if>
 <c:if test="${fn:contains(header['User-Agent'],'Android')}">
 	<c:set var="platform" value="Android"/>
 </c:if>
 
+<c:set var="phonegap" value="${cookie.phonegap.value}"/>
 
-<kme:page title="Scanner" id="qrcodes" backButton="true" homeButton="true" cssFilename="alerts" backButtonURL="${pageContext.request.contextPath}/home" platform="${platform}">
+<kme:page title="Scanner" id="qrcodes" backButton="true" homeButton="true" cssFilename="alerts" backButtonURL="${pageContext.request.contextPath}/home" platform="${platform}" phonegap="${phonegap}">
 			<script type="text/javascript" charset="utf-8">
-			
-			console.log("Version 2");
-			
+						
 			var IsiPhone 		= navigator.userAgent.indexOf("iPhone") != -1 ;
 			var IsiPod 			= navigator.userAgent.indexOf("iPod") != -1 ;
 			var IsiPad 			= navigator.userAgent.indexOf("iPad") != -1 ;
@@ -41,23 +40,10 @@
 		    // This is shortcut for $(document).ready(...);
 		    $(function(){								
 		    	document.addEventListener("deviceready",onDeviceReady,false);	
-
-		    	if(IsiOS){
-
-		    	}
-		    	// Should be if(!IsaTablet)
-				if(!IsiPad){
-					// Yup, embracing jquery chaining. 
-					$("#scanbutton").html("Scan").button("refresh");
-					$("#closebutton").html("Clear").button("refresh");		
-				}
-		    	if(IsAndroid){
-
-		    	}		    
 		    });
 				
 			function onDeviceReady(){
-				childBrowser = ChildBrowser.install();
+				//alert("onDeviceReady()");
 				var cb = ChildBrowser.install();
 				if(cb != null){
 		            cb.onLocationChange = function(loc){ root.locChanged(loc); }; 
@@ -172,7 +158,10 @@
 			function scan(){
 				window.plugins.barcodeScanner.scan( function(result) {
 			        if(result.cancelled){
-			        	displayURL("http://m.digg.com");
+						// Used this to test when device isn't available. 
+						// GUI works, just no scanning. Can use to test ChildBrowser. 
+						
+			        	//displayURL("http://m.digg.com");
 			        }else{
 						displayURL(result.text);           
 			        }
@@ -182,7 +171,7 @@
 			}
 
 		    $(function(){    			
-				scan();
+				//scan();
 		    });
 		    
 			</script>
@@ -192,7 +181,7 @@
 	    </kme:listView>
 	    <br>
 <fieldset class="ui-grid-a">
-	<div class="ui-block-a"><button onclick="scan();" id="scanbutton" data-theme="c">Scan a QR Code</button></div> 	
+	<div class="ui-block-a"><button onclick="scan();" id="scanbutton" data-theme="c">Scan</button></div> 	
 	<div class="ui-block-b"><button onclick="clearList();" id="closebutton" data-theme="c">Clear</button></div> 
 </fieldset>
 	</kme:content>

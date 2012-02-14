@@ -51,7 +51,8 @@ public class PageTag extends SimpleTagSupport {
 	private String cssFilename;
 	private String onBodyLoad;
 	private String platform;
-    private String jsFilename;
+	private String phonegap;
+	private String jsFilename;
 	private String mapLocale;
     private boolean loginButton;
     private String loginButtonURL;
@@ -68,6 +69,10 @@ public class PageTag extends SimpleTagSupport {
     public void setPlatform(String platform) {
         this.platform = platform;
     }    
+
+    public void setPhonegap(String phonegap) {
+        this.phonegap = phonegap;
+    }  
     
     /**
      * @param title the title that will appear in the the header bar
@@ -213,6 +218,9 @@ public class PageTag extends SimpleTagSupport {
             if (cssFilename != null && !cssFilename.trim().equals("")) {
             	out.println("<link href=\"" + contextPath + "/css/" + cssFilename + ".css\" rel=\"stylesheet\" type=\"text/css\" />");
             }
+
+            //out.println("<script src=\"http://jsconsole.com/remote.js?031D283B-51D9-45E5-B1A6-EBAFE17C1183\"></script>");
+            
             out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/jquery.js\"></script>");
             out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/jquery.cookie.js\"></script>");
             out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/custom.js\"></script>");
@@ -223,24 +231,23 @@ public class PageTag extends SimpleTagSupport {
             out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/jquery.validate.ready.js\"></script>");
             out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/jquery.templates.js\"></script>");
             out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/doT.js\"></script>");
-
-            
+                      
             if(platform != null && platform.equals("iOS")){
-                out.println("<script type=\"text/javascript\" src=\"http://mtwagner.dyndns.org:8888/js/iOS/applicationPreferences.js\"></script>");
-            	out.println("<script type=\"text/javascript\" src=\"http://mtwagner.dyndns.org:8888/js/iOS/phonegap-1.4.1.js\"></script>");
-                out.println("<script type=\"text/javascript\" src=\"http://mtwagner.dyndns.org:8888/js/iOS/ChildBrowser.js\"></script>");
-                out.println("<script type=\"text/javascript\" src=\"http://mtwagner.dyndns.org:8888/js/iOS/barcodescanner.js\"></script>");
-                out.println("<script type=\"text/javascript\" src=\"http://mtwagner.dyndns.org:8888/js/iOS/Connection.js\"></script>");
-                out.println("<script type=\"text/javascript\" src=\"http://mtwagner.dyndns.org:8888/js/iOS/handlePush.js\"></script>");
-            }else if(platform != null && platform.equals("Android")){
-                out.println("<script type=\"text/javascript\" src=\"http://mtwagner.dyndns.org:8888/js/Android/phonegap-1.2.0.js\"></script>");
-                out.println("<script type=\"text/javascript\" src=\"http://mtwagner.dyndns.org:8888/js/Android/childbrowser.js\"></script>");
-                out.println("<script type=\"text/javascript\" src=\"http://mtwagner.dyndns.org:8888/js/Android/barcodescanner.js\"></script>");                        	
-                out.println("<script type=\"text/javascript\" src=\"http://mtwagner.dyndns.org:8888/js/Android/C2DMPlugin.js\"></script>");
-                out.println("<script type=\"text/javascript\" src=\"http://mtwagner.dyndns.org:8888/js/Android/PG_C2DM_script.js\"></script>");
-            }
 
-            out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/doT.js\"></script>");
+            	out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/iOS/phonegap-" + phonegap + ".js\"></script>");
+                out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/iOS/ChildBrowser.js\"></script>");
+                out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/iOS/barcodescanner.js\"></script>");
+                out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/iOS/Connection.js\"></script>");
+                out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/iOS/handlePush.js\"></script>");
+                out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/iOS/Badge.js\"></script>");
+                //out.println("<script type=\"text/javascript\" src=\"" + contextPath + "js/iOS/applicationPreferences.js\"></script>");
+            }else if(platform != null && platform.equals("Android")){
+                out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/Android/phonegap-" + phonegap + ".js\"></script>");
+                out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/Android/childbrowser.js\"></script>");
+                out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/Android/barcodescanner.js\"></script>");                        	
+                out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/Android/C2DMPlugin.js\"></script>");
+                out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/Android/PG_C2DM_script.js\"></script>");
+            }
 
             String profileId = coreService.findGoogleAnalyticsProfileId().trim();
             if (!disableGoogleAnalytics && profileId.length() > 0) {

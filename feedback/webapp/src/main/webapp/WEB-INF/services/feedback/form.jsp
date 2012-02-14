@@ -17,6 +17,29 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
+<spring:message code="feedback.title" 	var="title"/>
+<spring:message code="feedback.subject" var="subject"/>
+<spring:message code="feedback.select" var="select"/>
+<spring:message code="feedback.general" var="general"/>
+<spring:message code="feedback.bus" var="bus"/>
+<spring:message code="feedback.alerts" var="alerts"/>
+<spring:message code="feedback.maps" var="maps"/>
+<spring:message code="feedback.news" var="news"/>
+<spring:message code="feedback.emergency" var="emergency"/>
+<spring:message code="feedback.events" var="events"/>
+<spring:message code="feedback.notices" var="notices"/>
+<spring:message code="feedback.oncourse" var="oncourse"/>
+<spring:message code="feedback.people" var="people"/>
+<spring:message code="feedback.searchiu" var="search"/>
+<spring:message code="feedback.computerlabs" var="labs"/>
+<spring:message code="feedback.devicetype" var="devicetype"/>
+<spring:message code="feedback.message" var="message"/>
+<spring:message code="feedback.youremail" var="youremail"/>
+<spring:message code="feedback.cancel" var="cancel"/>
+<spring:message code="feedback.submit" var="submit"/>
+<spring:message code="feedback.greeting" var="greeting"/>
+
 <c:if test="${fn:contains(header['User-Agent'],'iPhone') || fn:contains(header['User-Agent'],'iPad') || fn:contains(header['User-Agent'],'iPod') || fn:contains(header['User-Agent'],'Macintosh')}">
 	<c:set var="platform" value="iOS"/>
 </c:if>
@@ -24,7 +47,9 @@
 	<c:set var="platform" value="Android"/>
 </c:if>
 
-<kme:page title="Feedback" id="feedback_page" backButton="true" homeButton="true" cssFilename="feedback" appcacheFilename="iumobile.appcache" platform="${platform}">
+<c:set var="phonegap" value="${cookie.phonegap.value}"/>
+
+<kme:page title="${title}" id="feedback_page" backButton="true" homeButton="true" cssFilename="feedback" appcacheFilename="iumobile.appcache" platform="${platform}" phonegap="${phonegap}" onBodyLoad="onBodyLoad()">
 
 <script type="text/javascript">
 
@@ -87,79 +112,9 @@
     $(function(){    			
         $("#deviceType option[value=" + which + "]").attr('selected', 'selected');        
     });
-    
-    function capturePhoto(from){
-        console.log("Capture Photo!");
-		navigator.geolocation.getCurrentPosition(onSuccess, onError, { maximumAge: 3000, timeout: 5000, enableHighAccuracy: true });
-        if(from == "PHOTOLIBRARY"){
-            from = Camera.PictureSourceType.PHOTOLIBRARY;
-        }else if(from == "CAMERA"){
-            from = Camera.PictureSourceType.CAMERA;            
-        }else if(from == "SAVEDPHOTOALBUM"){
-            from = Camera.PictureSourceType.SAVEDPHOTOALBUM;        
-        }
-        navigator.camera.getPicture(onCapturePhotoSuccess, onCapturePhotoFail, { quality: 10 , allowEdit : true, sourceType : from }); 
-    }
-    function onCapturePhotoSuccess(imageData) {
-//    	alert(imageData);
-        var image = document.getElementById('myImage');
-        image.style.display = 'block';
-        image.src = "data:image/jpeg;base64," + imageData;
-        var formImage = document.getElementById('image');
-       	formImage.value = "data:image/jpeg;base64," + imageData;
-    }
-    function onCapturePhotoFail(message) {
-        alert('Failed because: ' + message);
-    }
-    
-    var onSuccess = function(position) {
-    	var location = document.getElementById('location');    	
-        var results = "";
-    	results += '{"latitude":"'+ position.coords.latitude          + '", ' ;
-    	results += '"longitude":"'+ position.coords.longitude         + '", ' ;
-    	results += '"altitude":"'+ position.coords.altitude          + '", ' ;
-    	results += '"accuracy":"'+ position.coords.accuracy          + '", ' ;
-    	results += '"altitudeAccuracy":"'+ position.coords.altitudeAccuracy  + '", ' ;
-    	results += '"heading":"'+ position.coords.heading           + '", ' ;
-    	results += '"speed":"'+ position.coords.speed             + '", ' ;
-    	results += '"timestamp":"'+ new Date(position.timestamp)      + '"}';
-		location.value = results;
-    };
-
-    // onError Callback receives a PositionError object
-    //
-    function onError(error) {
-        alert('code: '    + error.code    + '\n' +
-              'message: ' + error.message + '\n');
-    }
-    
+        
 </script>  
 
-
-<spring:message code="feedback.title" 	var="title"/>
-<spring:message code="feedback.subject" var="subject"/>
-<spring:message code="feedback.select" var="select"/>
-<spring:message code="feedback.general" var="general"/>
-<spring:message code="feedback.bus" var="bus"/>
-<spring:message code="feedback.alerts" var="alerts"/>
-<spring:message code="feedback.maps" var="maps"/>
-<spring:message code="feedback.news" var="news"/>
-<spring:message code="feedback.emergency" var="emergency"/>
-<spring:message code="feedback.events" var="events"/>
-<spring:message code="feedback.notices" var="notices"/>
-<spring:message code="feedback.oncourse" var="oncourse"/>
-<spring:message code="feedback.people" var="people"/>
-<spring:message code="feedback.searchiu" var="search"/>
-<spring:message code="feedback.computerlabs" var="labs"/>
-<spring:message code="feedback.devicetype" var="devicetype"/>
-<spring:message code="feedback.message" var="message"/>
-<spring:message code="feedback.youremail" var="youremail"/>
-<spring:message code="feedback.cancel" var="cancel"/>
-<spring:message code="feedback.submit" var="submit"/>
-<spring:message code="feedback.greeting" var="greeting"/>
-
-
-<kme:page title="${title}" id="feedback_page" backButton="true" homeButton="true" cssFilename="feedback">
     <kme:content>
         <form:form action="${pageContext.request.contextPath}/feedback" commandName="feedback" data-ajax="false" method="post"> ${greeting}
             <%--hidden fields: <form:hidden path="eventId"/>--%>

@@ -13,8 +13,18 @@
 
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<kme:page title="${title}" id="home" cssFilename="home" backButton="false" homeButton="false" preferencesButton="true" preferencesButtonURL="preferences">
+<c:if test="${fn:contains(header['User-Agent'],'iPhone') || fn:contains(header['User-Agent'],'iPad') || fn:contains(header['User-Agent'],'iPod') || fn:contains(header['User-Agent'],'Macintosh')}">
+	<c:set var="platform" value="iOS"/>
+</c:if>
+<c:if test="${fn:contains(header['User-Agent'],'Android')}">
+	<c:set var="platform" value="Android"/>
+</c:if>
+
+<c:set var="phonegap" value="${cookie.phonegap.value}"/>
+
+<kme:page title="${title}" id="home" cssFilename="home" backButton="false" homeButton="false" preferencesButton="true" preferencesButtonURL="preferences" platform="${platform}" phonegap="${phonegap}" onBodyLoad="onBodyLoad()">
 	<kme:content>
 
 		<c:if test="${param.native == 'yes'}">
@@ -27,6 +37,12 @@
 				$.cookie('native', 'no', {expires: 365, path: '/'});
 			</script>
 		</c:if>	
+
+			<script type="text/javascript">
+				$.cookie('phonegap', '${param.phonegap}', {expires: 365, path: '/'});
+				/*  ${cookie.phonegap.value} */
+			</script>
+
 
 	<%-- 
 		<!-- <p><a id="manualUpdate" href="#">Check for an updated Cache</a></p> -->
@@ -44,6 +60,8 @@
 	 	</div>
  	--%>
  	
+ 		<c:set var="bCount" value="0"/>
+ 	
 	    <kme:listView id="homeserviceslist" filter="false">
 	        <c:forEach items="${tools}" var="homeTool" varStatus="status">	            
 	            <kme:listItem hideDataIcon="true">
@@ -55,10 +73,31 @@
 			      		</c:if>
 			      	</a>
 	            </kme:listItem>
+	            
+	            <!-- Sum the badge counts. -->
+				<c:set var="bCount" value="${bCount + homeTool.tool.badgeCount}"/>
+
 			</c:forEach>	
+			<c:if test="${cookie.native.value == 'yes' || param.native == 'yes'}">
+	            <kme:listItem hideDataIcon="true">
+	            	<a href="qrcode?phonegap=1.4.1" style="background-image: url('http://mtwagner.dyndns.org:8888/images/service-icons/srvc-qrcode.png');">
+			      		<h3>QR Code Reader</h3>
+			      		<p class="wrap">Scan QR Codes for quick access to Information and Links</p>
+			      		<c:if test="${not empty homeTool.tool.badgeCount}"> 
+			      			<span class="countBadge ui-btn-up-c ui-btn-corner-all">${homeTool.tool.badgeCount}</span>
+			      		</c:if>
+			      	</a>
+	            </kme:listItem>
+	        </c:if>
 	    </kme:listView>
 	    <c:if test="${not empty ipAddress}">${ipAddress}</c:if>
 	</kme:content>
+
+	<script type="text/javascript">
+		function otherDeviceReadyFunctions(){
+			window.plugins.badge.set(${bCount});	
+		}
+	</script>
 	
 	<%-- 
 	<!-- When the DOM is ready (ie. Now), run the scripts. -->

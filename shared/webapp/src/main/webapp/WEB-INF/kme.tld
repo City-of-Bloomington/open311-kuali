@@ -89,6 +89,11 @@
             <rtexprvalue>true</rtexprvalue>
         </attribute>
         <attribute>
+            <name>phonegap</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
             <name>appcacheFilename</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
