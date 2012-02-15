@@ -24,8 +24,6 @@ import org.kuali.mobility.events.entity.Event;
 import org.kuali.mobility.events.service.EventsService;
 import org.kuali.mobility.security.authn.entity.User;
 import org.kuali.mobility.shared.Constants;
-//import org.kuali.mobility.user.entity.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,8 +33,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @RequestMapping("/events")
 public class EventsController {
+	
+    private static org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger( EventsController.class );
 
-	@Autowired
 	private EventsService eventsService;
 
 	public void setEventsService(EventsService eventsService) {
@@ -54,6 +53,7 @@ public class EventsController {
 		}
 
 		List<Category> categories = eventsService.getCategoriesByCampus(campus);
+		LOG.debug( "Found "+categories.size()+" categories via local service for campus "+campus );
 		uiModel.addAttribute("categories", categories);
 		uiModel.addAttribute("campus", campus);
 		return "events/list";
@@ -62,7 +62,8 @@ public class EventsController {
 	@RequestMapping(value = "/viewEvents", method = RequestMethod.GET)
 	public String viewEvents(HttpServletRequest request, Model uiModel, @RequestParam(required = true) String categoryId, @RequestParam(required = false) String campus) throws Exception {
 		List<Event> category = eventsService.getAllEvents(campus, categoryId);
-		uiModel.addAttribute("category", category);
+		uiModel.addAttribute("events", category);
+		uiModel.addAttribute("category", category.get(0).getCategory() );
 		uiModel.addAttribute("campus", campus);
 		return "events/eventsList";
 	}

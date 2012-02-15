@@ -39,7 +39,7 @@
     <import resource="classpath:ConferenceSpringBeans.xml" />
     <import resource="classpath:FeedbackSpringBeans.xml" />
     <import resource="classpath:NewsSpringBeans.xml" />
-    <import resource="classpath:DirectorySpringBeans.xml" />
+    <import resource="classpath:EventsSpringBeans.xml" />
     
     <!-- 
 	This is where the basenames for the i18n files are defined. The files themselves
@@ -68,6 +68,7 @@
 				<value>WEB-INF/classes/feedback</value>
 				<value>WEB-INF/classes/maps</value>	
 				<value>WEB-INF/classes/news</value>	
+				<value>WEB-INF/classes/events</value>	
 				<value>WEB-INF/classes/shared</value>	
 			</list>
 		</property>

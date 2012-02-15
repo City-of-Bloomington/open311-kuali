@@ -1,203 +1,86 @@
-/**
- * Copyright 2011 The Kuali Foundation Licensed under the
- * Educational Community License, Version 2.0 (the "License"); you may
- * not use this file except in compliance with the License. You may
- * obtain a copy of the License at
- *
- * http://www.osedu.org/licenses/ECL-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an "AS IS"
- * BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing
- * permissions and limitations under the License.
- */
 package org.kuali.mobility.events.entity;
 
-import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class Event implements Serializable {
+public interface Event {
 
-    private static final long serialVersionUID = -2196031917411001051L;
-    private String eventId;
-    private boolean allDay;
-    private String title;
-    private Date startDate;
-    private Date endDate;
-    private String displayStartDate;
-    private String displayEndDate;
-    private String displayStartTime;
-    private String displayEndTime;
-    private String location;
-    private List<String> description;
-    private String link;
-    private String contact;
-    private String cost;
-    private List<List<String>> otherInfo;
-    private String contactEmail;
-    private Category category;
+	public abstract String getContactEmail();
 
-    public String getContactEmail() {
-        return contactEmail;
-    }
+	public abstract void setContactEmail(String contactEmail);
 
-    public void setContactEmail(String contactEmail) {
-        this.contactEmail = contactEmail;
-    }
+	public abstract List<List<String>> getOtherInfo();
 
-    public List<List<String>> getOtherInfo() {
-        return otherInfo;
-    }
+	public abstract void setOtherInfo(List<List<String>> otherInfo);
 
-    public void setOtherInfo(List<List<String>> otherInfo) {
-        this.otherInfo = otherInfo;
-    }
+	public abstract String getContact();
 
-    public String getContact() {
-        return contact;
-    }
+	public abstract void setContact(String contact);
 
-    public void setContact(String contact) {
-        this.contact = contact;
-    }
+	public abstract String getCost();
 
-    public String getCost() {
-        return cost;
-    }
+	public abstract void setCost(String cost);
 
-    public void setCost(String cost) {
-        this.cost = cost;
-    }
+	public abstract Date getEndDate();
 
-    public Date getEndDate() {
-        return endDate;
-    }
+	public abstract void setEndDate(Date endDate);
 
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
-    }
+	public abstract String getDisplayStartTime();
 
-    public String getDisplayStartTime() {
-        return displayStartTime;
-    }
+	public abstract void setDisplayStartTime(String displayStartTime);
 
-    public void setDisplayStartTime(String displayStartTime) {
-        this.displayStartTime = displayStartTime;
-    }
+	public abstract String getDisplayEndTime();
 
-    public String getDisplayEndTime() {
-        return displayEndTime;
-    }
+	public abstract void setDisplayEndTime(String displayEndTime);
 
-    public void setDisplayEndTime(String displayEndTime) {
-        this.displayEndTime = displayEndTime;
-    }
+	public abstract List<String> getDescription();
 
-    public List<String> getDescription() {
-        return description;
-    }
+	public abstract void setDescription(List<String> description);
 
-    public void setDescription(List<String> description) {
-        this.description = description;
-    }
+	public abstract String getDisplayEndDate();
 
-    public String getDisplayEndDate() {
-        return displayEndDate;
-    }
+	public abstract void setDisplayEndDate(String displayEndDate);
 
-    public void setDisplayEndDate(String displayEndDate) {
-        this.displayEndDate = displayEndDate;
-    }
+	public abstract String getLocation();
 
-    public String getLocation() {
-        return location;
-    }
+	public abstract void setLocation(String location);
 
-    public void setLocation(String location) {
-        this.location = location;
-    }
+	public abstract String getLink();
 
-    public String getLink() {
-        return link;
-    }
+	public abstract void setLink(String link);
 
-    public void setLink(String link) {
-        this.link = link;
-    }
+	public abstract String getDisplayStartDate();
 
-    public String getDisplayStartDate() {
-        return displayStartDate;
-    }
+	public abstract void setDisplayStartDate(String displayStartDate);
 
-    public void setDisplayStartDate(String displayStartDate) {
-        this.displayStartDate = displayStartDate;
-    }
+	public abstract boolean isAllDay();
 
-    public boolean isAllDay() {
-        return allDay;
-    }
+	public abstract void setAllDay(boolean allDay);
 
-    public void setAllDay(boolean allDay) {
-        this.allDay = allDay;
-    }
+	public abstract String getEventId();
 
-    public String getEventId() {
-        return eventId;
-    }
+	public abstract void setEventId(String eventId);
 
-    public void setEventId(String eventId) {
-        this.eventId = eventId;
-    }
+	public abstract String getTitle();
 
-    public String getTitle() {
-        return title;
-    }
+	public abstract void setTitle(String title);
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+	public abstract Date getStartDate();
 
-    public Date getStartDate() {
-        return startDate;
-    }
+	public abstract void setStartDate(Date startDate);
 
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
+	/**
+	 * @param category the category to set
+	 */
+	public abstract void setCategory(Category category);
 
-    /**
-     * @param category the category to set
-     */
-    public void setCategory(Category category) {
-        this.category = category;
-    }
+	/**
+	 * @return the category
+	 */
+	public abstract Category getCategory();
 
-    /**
-     * @return the category
-     */
-    public Category getCategory() {
-        return category;
-    }
-    
-    public boolean equals( Object o )
-    {
-        boolean isEqual = false;
-        
-        if( o != null && o instanceof Event )
-        {
-            if( getEventId() != null && getEventId().equalsIgnoreCase( ((Event)o).getEventId() ) )
-            {
-                isEqual = true;
-            }
-        }
-        
-        return isEqual;
-    }
-    
-    public int hashCode()
-    {
-        return (41 + Integer.parseInt( getEventId().substring(5) ) );
-    }
+	public abstract boolean equals(Object o);
+
+	public abstract int hashCode();
+
 }

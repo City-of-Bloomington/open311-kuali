@@ -1,1 +1,963 @@
-{"events":[{"group":"2012-01-11","id":"6393-1136988","location":"Angell Hall","time":"19:00:00","title":"Secular Student Alliance"},{"group":"2012-01-14","id":"7855-1136843","location":"Museum of Art ","time":"11:00:00","title":"Storytime at the Museum"},{"group":"2012-01-17","id":"7878-1136879","location":"Michigan Union","time":"19:00:00","title":"Interfraternity Council Recruitment Mass Meeting"},{"group":"2012-01-18","id":"6393-1136989","location":"Angell Hall","time":"19:00:00","title":"Secular Student Alliance"},{"group":"2012-01-25","id":"6393-1136990","location":"Angell Hall","time":"19:00:00","title":"Secular Student Alliance"},{"group":"2012-01-28","id":"7855-1136845","location":"Museum of Art ","time":"11:00:00","title":"Storytime at the Museum"},{"group":"2012-02-01","id":"6393-1136991","location":"Angell Hall","time":"19:00:00","title":"Secular Student Alliance"},{"group":"2012-02-08","id":"6393-1136992","location":"Angell Hall","time":"19:00:00","title":"Secular Student Alliance"},{"group":"2012-02-15","id":"6393-1136993","location":"Angell Hall","time":"19:00:00","title":"Secular Student Alliance"},{"group":"2012-02-22","id":"6393-1136994","location":"Angell Hall","time":"19:00:00","title":"Secular Student Alliance"},{"group":"2012-02-29","id":"6393-1136995","location":"Angell Hall","time":"19:00:00","title":"Secular Student Alliance"},{"group":"2012-03-07","id":"6393-1136996","location":"Angell Hall","time":"19:00:00","title":"Secular Student Alliance"},{"group":"2012-03-14","id":"6393-1136997","location":"Angell Hall","time":"19:00:00","title":"Secular Student Alliance"},{"group":"2012-03-21","id":"6393-1136998","location":"Angell Hall","time":"19:00:00","title":"Secular Student Alliance"},{"group":"2012-03-28","id":"6393-1136999","location":"Angell Hall","time":"19:00:00","title":"Secular Student Alliance"},{"group":"2012-04-04","id":"6393-1137000","location":"Angell Hall","time":"19:00:00","title":"Secular Student Alliance"},{"group":"2012-04-11","id":"6393-1137001","location":"Angell Hall","time":"19:00:00","title":"Secular Student Alliance"},{"group":"2012-04-18","id":"6393-1137002","location":"Angell Hall","time":"19:00:00","title":"Secular Student Alliance"},{"group":"2012-04-25","id":"6393-1137003","location":"Angell Hall","time":"19:00:00","title":"Secular Student Alliance"}]}
+<?xml version="1.0" encoding="UTF-8"?>
+<events>
+	<event>
+		<buildingId>1000166</buildingId>
+		<buildingName>East Hall</buildingName>
+		<dateBegin>2012-02-06</dateBegin>
+		<dateEnd>2012-02-06</dateEnd>
+		<description>Sign up for a co-advising session with a Career Advisor
+			and a Concentration Advisor - meet with 2 advisors at the same time.
+			By appointment only, scheduled through the Psychology Department.
+		</description>
+		<guid>8053-1137327@events.umich.edu</guid>
+		<id>8053-1137327</id>
+		<lastModified>20120113T133349</lastModified>
+		<occurenceNotes></occurenceNotes>
+		<permanentUrl>http://events.umich.edu/event/8053-1137327
+		</permanentUrl>
+		<room>Psychology Undergraduate Office</room>
+		<sponsors>
+			<groupId>1140</groupId>
+			<groupName>The Career Center</groupName>
+			<website>http://careercenter.umich.edu</website>
+		</sponsors>
+		<subtitle></subtitle>
+		<tags>career advising</tags>
+		<tags>psychology department</tags>
+		<tags>the career center</tags>
+		<timeBegin>10:00:00</timeBegin>
+		<timeEnd>12:00:00</timeEnd>
+		<title>Career/Adademic Co-Advising at Psychology Department</title>
+		<tsBegin>20120206T100000</tsBegin>
+		<tsEnd>20120206T120000</tsEnd>
+		<type>Meeting</type>
+		<typeId>14</typeId>
+		<url></url>
+	</event>
+	<event>
+		<buildingId>1000215</buildingId>
+		<buildingName>Student Activities Building</buildingName>
+		<dateBegin>2012-02-08</dateBegin>
+		<dateEnd>2012-02-08</dateEnd>
+		<description>Come drop off your DC summer internship application
+			materials.&#xD;
+			&#xD;
+			For current PSIP participants only. </description>
+		<guid>8056-1137333@events.umich.edu</guid>
+		<id>8056-1137333</id>
+		<lastModified>20120113T135554</lastModified>
+		<occurenceNotes></occurenceNotes>
+		<permanentUrl>http://events.umich.edu/event/8056-1137333
+		</permanentUrl>
+		<room>3200 The Career Center</room>
+		<sponsors>
+			<groupId>1140</groupId>
+			<groupName>The Career Center</groupName>
+			<website>http://careercenter.umich.edu</website>
+		</sponsors>
+		<subtitle></subtitle>
+		<tags>psip</tags>
+		<tags>public service internship program</tags>
+		<tags>the career center</tags>
+		<timeBegin>18:00:00</timeBegin>
+		<timeEnd>20:00:00</timeEnd>
+		<title>PSIP Application Extravaganza </title>
+		<tsBegin>20120208T180000</tsBegin>
+		<tsEnd>20120208T200000</tsEnd>
+		<type>Meeting</type>
+		<typeId>14</typeId>
+		<url>http://careercenter.umich.edu</url>
+	</event>
+	<event>
+		<buildingId>1000206</buildingId>
+		<buildingName>Angell Hall</buildingName>
+		<dateBegin>2012-02-08</dateBegin>
+		<dateEnd>2012-02-08</dateEnd>
+		<description>The Secular Student Alliance welcomes all those
+			interested in protecting our First Amendment rights to freedom of
+			religion and freedom from religion. The group is structured to
+			provide a community for secularists, atheists, agnostics, humanists,
+			freethinkers, and non-theists - but is open to anyone who would like
+			to see Church and State remain separated.&#xD;
+			&#xD;
+			Food and drinks are provided. If you plan on stopping by, RSVP to
+			secularstudents-owner@umich.edu.</description>
+		<guid>6393-1136992@events.umich.edu</guid>
+		<id>6393-1136992</id>
+		<lastModified>20110811T160333</lastModified>
+		<occurenceNotes></occurenceNotes>
+		<permanentUrl>http://events.umich.edu/event/6393-1136992
+		</permanentUrl>
+		<room>2271</room>
+		<sponsors>
+			<groupId>2480</groupId>
+			<groupName>Secular Student Alliance</groupName>
+			<website>http://www.facebook.com/UmichSSA</website>
+		</sponsors>
+		<subtitle>Weekly Meeting</subtitle>
+		<tags>secular</tags>
+		<tags>student org</tags>
+		<timeBegin>19:00:00</timeBegin>
+		<timeEnd>21:00:00</timeEnd>
+		<title>Secular Student Alliance</title>
+		<tsBegin>20120208T190000</tsBegin>
+		<tsEnd>20120208T210000</tsEnd>
+		<type>Meeting</type>
+		<typeId>14</typeId>
+		<url>http://www.facebook.com/UmichSSA</url>
+	</event>
+	<event>
+		<buildingId>null</buildingId>
+		<buildingName>North Quad</buildingName>
+		<dateBegin>2012-02-09</dateBegin>
+		<dateEnd>2012-02-09</dateEnd>
+		<description>Schedule an appointment through the Communications
+			Department to meet with a Career Advisor from The Career Center at
+			North Quad</description>
+		<guid>8051-1137320@events.umich.edu</guid>
+		<id>8051-1137320</id>
+		<lastModified>20120113T131757</lastModified>
+		<occurenceNotes></occurenceNotes>
+		<permanentUrl>http://events.umich.edu/event/8051-1137320
+		</permanentUrl>
+		<room></room>
+		<sponsors>
+			<groupId>1140</groupId>
+			<groupName>The Career Center</groupName>
+			<website>http://careercenter.umich.edu</website>
+		</sponsors>
+		<subtitle></subtitle>
+		<tags>career advising</tags>
+		<tags>communications department</tags>
+		<tags>the career center</tags>
+		<timeBegin>12:00:00</timeBegin>
+		<timeEnd>14:00:00</timeEnd>
+		<title>Career Advising at Communications Department</title>
+		<tsBegin>20120209T120000</tsBegin>
+		<tsEnd>20120209T140000</tsEnd>
+		<type>Meeting</type>
+		<typeId>14</typeId>
+		<url></url>
+	</event>
+	<event>
+		<buildingId>1000215</buildingId>
+		<buildingName>Student Activities Building</buildingName>
+		<dateBegin>2012-02-10</dateBegin>
+		<dateEnd>2012-02-10</dateEnd>
+		<description>IRP participants will have the opportunity to discuss
+			their internship search process with other group members.
+		</description>
+		<guid>8197-1137480@events.umich.edu</guid>
+		<id>8197-1137480</id>
+		<lastModified>20120126T084309</lastModified>
+		<occurenceNotes></occurenceNotes>
+		<permanentUrl>http://events.umich.edu/event/8197-1137480
+		</permanentUrl>
+		<room>3200 The Career Center</room>
+		<sponsors>
+			<groupId>1140</groupId>
+			<groupName>The Career Center</groupName>
+			<website>http://careercenter.umich.edu</website>
+		</sponsors>
+		<subtitle></subtitle>
+		<tags>internship readiness program</tags>
+		<tags>irp</tags>
+		<tags>the career center</tags>
+		<timeBegin>16:00:00</timeBegin>
+		<timeEnd>17:00:00</timeEnd>
+		<title>IRP Zone Workshop</title>
+		<tsBegin>20120210T160000</tsBegin>
+		<tsEnd>20120210T170000</tsEnd>
+		<type>Meeting</type>
+		<typeId>14</typeId>
+		<url>http://careercenter.umich.edu</url>
+	</event>
+	<event>
+		<buildingId>1005101</buildingId>
+		<buildingName>Weill Hall</buildingName>
+		<dateBegin>2012-02-15</dateBegin>
+		<dateEnd>2012-02-15</dateEnd>
+		<description>This is a regular PSIP meeting for the 2011-2012
+			cohort.&#xD;
+			&#xD;
+			For current PSIP participants only. </description>
+		<guid>8158-1137442@events.umich.edu</guid>
+		<id>8158-1137442</id>
+		<lastModified>20120123T084613</lastModified>
+		<occurenceNotes>For current PSIP participants only.</occurenceNotes>
+		<permanentUrl>http://events.umich.edu/event/8158-1137442
+		</permanentUrl>
+		<room>Betty Ford Classroom - Gerald R. Ford School of Public Policy
+		</room>
+		<sponsors>
+			<groupId>1140</groupId>
+			<groupName>The Career Center</groupName>
+			<website>http://careercenter.umich.edu</website>
+		</sponsors>
+		<subtitle></subtitle>
+		<tags>psip</tags>
+		<tags>public service internship program</tags>
+		<tags>the career center</tags>
+		<timeBegin>18:00:00</timeBegin>
+		<timeEnd>20:00:00</timeEnd>
+		<title>PSIP Meeting</title>
+		<tsBegin>20120215T180000</tsBegin>
+		<tsEnd>20120215T200000</tsEnd>
+		<type>Meeting</type>
+		<typeId>14</typeId>
+		<url>http://careercenter.umich.edu</url>
+	</event>
+	<event>
+		<buildingId>1000206</buildingId>
+		<buildingName>Angell Hall</buildingName>
+		<dateBegin>2012-02-15</dateBegin>
+		<dateEnd>2012-02-15</dateEnd>
+		<description>The Secular Student Alliance welcomes all those
+			interested in protecting our First Amendment rights to freedom of
+			religion and freedom from religion. The group is structured to
+			provide a community for secularists, atheists, agnostics, humanists,
+			freethinkers, and non-theists - but is open to anyone who would like
+			to see Church and State remain separated.&#xD;
+			&#xD;
+			Food and drinks are provided. If you plan on stopping by, RSVP to
+			secularstudents-owner@umich.edu.</description>
+		<guid>6393-1136993@events.umich.edu</guid>
+		<id>6393-1136993</id>
+		<lastModified>20110811T160333</lastModified>
+		<occurenceNotes></occurenceNotes>
+		<permanentUrl>http://events.umich.edu/event/6393-1136993
+		</permanentUrl>
+		<room>2271</room>
+		<sponsors>
+			<groupId>2480</groupId>
+			<groupName>Secular Student Alliance</groupName>
+			<website>http://www.facebook.com/UmichSSA</website>
+		</sponsors>
+		<subtitle>Weekly Meeting</subtitle>
+		<tags>secular</tags>
+		<tags>student org</tags>
+		<timeBegin>19:00:00</timeBegin>
+		<timeEnd>21:00:00</timeEnd>
+		<title>Secular Student Alliance</title>
+		<tsBegin>20120215T190000</tsBegin>
+		<tsEnd>20120215T210000</tsEnd>
+		<type>Meeting</type>
+		<typeId>14</typeId>
+		<url>http://www.facebook.com/UmichSSA</url>
+	</event>
+	<event>
+		<buildingId>1000152</buildingId>
+		<buildingName>Tisch Hall</buildingName>
+		<dateBegin>2012-02-17</dateBegin>
+		<dateEnd>2012-02-17</dateEnd>
+		<description>Meet with a Career Advisor at the History Department.
+			Sign up with the History Department for an appointment.</description>
+		<guid>8052-1137325@events.umich.edu</guid>
+		<id>8052-1137325</id>
+		<lastModified>20120113T133118</lastModified>
+		<occurenceNotes></occurenceNotes>
+		<permanentUrl>http://events.umich.edu/event/8052-1137325
+		</permanentUrl>
+		<room></room>
+		<sponsors>
+			<groupId>1140</groupId>
+			<groupName>The Career Center</groupName>
+			<website>http://careercenter.umich.edu</website>
+		</sponsors>
+		<subtitle></subtitle>
+		<tags>career advising</tags>
+		<tags>history department</tags>
+		<tags>the career center</tags>
+		<timeBegin>13:00:00</timeBegin>
+		<timeEnd>15:00:00</timeEnd>
+		<title>Career Advising at the History Department</title>
+		<tsBegin>20120217T130000</tsBegin>
+		<tsEnd>20120217T150000</tsEnd>
+		<type>Meeting</type>
+		<typeId>14</typeId>
+		<url></url>
+	</event>
+	<event>
+		<buildingId>1000166</buildingId>
+		<buildingName>East Hall</buildingName>
+		<dateBegin>2012-02-20</dateBegin>
+		<dateEnd>2012-02-20</dateEnd>
+		<description>Sign up for a co-advising session with a Career Advisor
+			and a Concentration Advisor - meet with 2 advisors at the same time.
+			By appointment only, scheduled through the Psychology Department.
+		</description>
+		<guid>8053-1137328@events.umich.edu</guid>
+		<id>8053-1137328</id>
+		<lastModified>20120113T133349</lastModified>
+		<occurenceNotes></occurenceNotes>
+		<permanentUrl>http://events.umich.edu/event/8053-1137328
+		</permanentUrl>
+		<room>Psychology Undergraduate Office</room>
+		<sponsors>
+			<groupId>1140</groupId>
+			<groupName>The Career Center</groupName>
+			<website>http://careercenter.umich.edu</website>
+		</sponsors>
+		<subtitle></subtitle>
+		<tags>career advising</tags>
+		<tags>psychology department</tags>
+		<tags>the career center</tags>
+		<timeBegin>10:00:00</timeBegin>
+		<timeEnd>12:00:00</timeEnd>
+		<title>Career/Adademic Co-Advising at Psychology Department</title>
+		<tsBegin>20120220T100000</tsBegin>
+		<tsEnd>20120220T120000</tsEnd>
+		<type>Meeting</type>
+		<typeId>14</typeId>
+		<url></url>
+	</event>
+	<event>
+		<buildingId>null</buildingId>
+		<buildingName>North Quad</buildingName>
+		<dateBegin>2012-02-20</dateBegin>
+		<dateEnd>2012-02-20</dateEnd>
+		<description>Schedule an appointment through the Communications
+			Department to meet with a Career Advisor from The Career Center at
+			North Quad</description>
+		<guid>8051-1137321@events.umich.edu</guid>
+		<id>8051-1137321</id>
+		<lastModified>20120113T131757</lastModified>
+		<occurenceNotes></occurenceNotes>
+		<permanentUrl>http://events.umich.edu/event/8051-1137321
+		</permanentUrl>
+		<room></room>
+		<sponsors>
+			<groupId>1140</groupId>
+			<groupName>The Career Center</groupName>
+			<website>http://careercenter.umich.edu</website>
+		</sponsors>
+		<subtitle></subtitle>
+		<tags>career advising</tags>
+		<tags>communications department</tags>
+		<tags>the career center</tags>
+		<timeBegin>14:00:00</timeBegin>
+		<timeEnd>16:00:00</timeEnd>
+		<title>Career Advising at Communications Department</title>
+		<tsBegin>20120220T140000</tsBegin>
+		<tsEnd>20120220T160000</tsEnd>
+		<type>Meeting</type>
+		<typeId>14</typeId>
+		<url></url>
+	</event>
+	<event>
+		<buildingId>1000206</buildingId>
+		<buildingName>Angell Hall</buildingName>
+		<dateBegin>2012-02-22</dateBegin>
+		<dateEnd>2012-02-22</dateEnd>
+		<description>The Secular Student Alliance welcomes all those
+			interested in protecting our First Amendment rights to freedom of
+			religion and freedom from religion. The group is structured to
+			provide a community for secularists, atheists, agnostics, humanists,
+			freethinkers, and non-theists - but is open to anyone who would like
+			to see Church and State remain separated.&#xD;
+			&#xD;
+			Food and drinks are provided. If you plan on stopping by, RSVP to
+			secularstudents-owner@umich.edu.</description>
+		<guid>6393-1136994@events.umich.edu</guid>
+		<id>6393-1136994</id>
+		<lastModified>20110811T160333</lastModified>
+		<occurenceNotes></occurenceNotes>
+		<permanentUrl>http://events.umich.edu/event/6393-1136994
+		</permanentUrl>
+		<room>2271</room>
+		<sponsors>
+			<groupId>2480</groupId>
+			<groupName>Secular Student Alliance</groupName>
+			<website>http://www.facebook.com/UmichSSA</website>
+		</sponsors>
+		<subtitle>Weekly Meeting</subtitle>
+		<tags>secular</tags>
+		<tags>student org</tags>
+		<timeBegin>19:00:00</timeBegin>
+		<timeEnd>21:00:00</timeEnd>
+		<title>Secular Student Alliance</title>
+		<tsBegin>20120222T190000</tsBegin>
+		<tsEnd>20120222T210000</tsEnd>
+		<type>Meeting</type>
+		<typeId>14</typeId>
+		<url>http://www.facebook.com/UmichSSA</url>
+	</event>
+	<event>
+		<buildingId>1000206</buildingId>
+		<buildingName>Angell Hall</buildingName>
+		<dateBegin>2012-02-29</dateBegin>
+		<dateEnd>2012-02-29</dateEnd>
+		<description>The Secular Student Alliance welcomes all those
+			interested in protecting our First Amendment rights to freedom of
+			religion and freedom from religion. The group is structured to
+			provide a community for secularists, atheists, agnostics, humanists,
+			freethinkers, and non-theists - but is open to anyone who would like
+			to see Church and State remain separated.&#xD;
+			&#xD;
+			Food and drinks are provided. If you plan on stopping by, RSVP to
+			secularstudents-owner@umich.edu.</description>
+		<guid>6393-1136995@events.umich.edu</guid>
+		<id>6393-1136995</id>
+		<lastModified>20110811T160333</lastModified>
+		<occurenceNotes></occurenceNotes>
+		<permanentUrl>http://events.umich.edu/event/6393-1136995
+		</permanentUrl>
+		<room>2271</room>
+		<sponsors>
+			<groupId>2480</groupId>
+			<groupName>Secular Student Alliance</groupName>
+			<website>http://www.facebook.com/UmichSSA</website>
+		</sponsors>
+		<subtitle>Weekly Meeting</subtitle>
+		<tags>secular</tags>
+		<tags>student org</tags>
+		<timeBegin>19:00:00</timeBegin>
+		<timeEnd>21:00:00</timeEnd>
+		<title>Secular Student Alliance</title>
+		<tsBegin>20120229T190000</tsBegin>
+		<tsEnd>20120229T210000</tsEnd>
+		<type>Meeting</type>
+		<typeId>14</typeId>
+		<url>http://www.facebook.com/UmichSSA</url>
+	</event>
+	<event>
+		<buildingId>1000166</buildingId>
+		<buildingName>East Hall</buildingName>
+		<dateBegin>2012-03-05</dateBegin>
+		<dateEnd>2012-03-05</dateEnd>
+		<description>Sign up for a co-advising session with a Career Advisor
+			and a Concentration Advisor - meet with 2 advisors at the same time.
+			By appointment only, scheduled through the Psychology Department.
+		</description>
+		<guid>8053-1137329@events.umich.edu</guid>
+		<id>8053-1137329</id>
+		<lastModified>20120113T133349</lastModified>
+		<occurenceNotes></occurenceNotes>
+		<permanentUrl>http://events.umich.edu/event/8053-1137329
+		</permanentUrl>
+		<room>Psychology Undergraduate Office</room>
+		<sponsors>
+			<groupId>1140</groupId>
+			<groupName>The Career Center</groupName>
+			<website>http://careercenter.umich.edu</website>
+		</sponsors>
+		<subtitle></subtitle>
+		<tags>career advising</tags>
+		<tags>psychology department</tags>
+		<tags>the career center</tags>
+		<timeBegin>10:00:00</timeBegin>
+		<timeEnd>12:00:00</timeEnd>
+		<title>Career/Adademic Co-Advising at Psychology Department</title>
+		<tsBegin>20120305T100000</tsBegin>
+		<tsEnd>20120305T120000</tsEnd>
+		<type>Meeting</type>
+		<typeId>14</typeId>
+		<url></url>
+	</event>
+	<event>
+		<buildingId>1000206</buildingId>
+		<buildingName>Angell Hall</buildingName>
+		<dateBegin>2012-03-07</dateBegin>
+		<dateEnd>2012-03-07</dateEnd>
+		<description>The Secular Student Alliance welcomes all those
+			interested in protecting our First Amendment rights to freedom of
+			religion and freedom from religion. The group is structured to
+			provide a community for secularists, atheists, agnostics, humanists,
+			freethinkers, and non-theists - but is open to anyone who would like
+			to see Church and State remain separated.&#xD;
+			&#xD;
+			Food and drinks are provided. If you plan on stopping by, RSVP to
+			secularstudents-owner@umich.edu.</description>
+		<guid>6393-1136996@events.umich.edu</guid>
+		<id>6393-1136996</id>
+		<lastModified>20110811T160333</lastModified>
+		<occurenceNotes></occurenceNotes>
+		<permanentUrl>http://events.umich.edu/event/6393-1136996
+		</permanentUrl>
+		<room>2271</room>
+		<sponsors>
+			<groupId>2480</groupId>
+			<groupName>Secular Student Alliance</groupName>
+			<website>http://www.facebook.com/UmichSSA</website>
+		</sponsors>
+		<subtitle>Weekly Meeting</subtitle>
+		<tags>secular</tags>
+		<tags>student org</tags>
+		<timeBegin>19:00:00</timeBegin>
+		<timeEnd>21:00:00</timeEnd>
+		<title>Secular Student Alliance</title>
+		<tsBegin>20120307T190000</tsBegin>
+		<tsEnd>20120307T210000</tsEnd>
+		<type>Meeting</type>
+		<typeId>14</typeId>
+		<url>http://www.facebook.com/UmichSSA</url>
+	</event>
+	<event>
+		<buildingId>null</buildingId>
+		<buildingName>North Quad</buildingName>
+		<dateBegin>2012-03-13</dateBegin>
+		<dateEnd>2012-03-13</dateEnd>
+		<description>Schedule an appointment through the Communications
+			Department to meet with a Career Advisor from The Career Center at
+			North Quad</description>
+		<guid>8051-1137322@events.umich.edu</guid>
+		<id>8051-1137322</id>
+		<lastModified>20120113T131757</lastModified>
+		<occurenceNotes></occurenceNotes>
+		<permanentUrl>http://events.umich.edu/event/8051-1137322
+		</permanentUrl>
+		<room></room>
+		<sponsors>
+			<groupId>1140</groupId>
+			<groupName>The Career Center</groupName>
+			<website>http://careercenter.umich.edu</website>
+		</sponsors>
+		<subtitle></subtitle>
+		<tags>career advising</tags>
+		<tags>communications department</tags>
+		<tags>the career center</tags>
+		<timeBegin>10:00:00</timeBegin>
+		<timeEnd>12:00:00</timeEnd>
+		<title>Career Advising at Communications Department</title>
+		<tsBegin>20120313T100000</tsBegin>
+		<tsEnd>20120313T120000</tsEnd>
+		<type>Meeting</type>
+		<typeId>14</typeId>
+		<url></url>
+	</event>
+	<event>
+		<buildingId>1005101</buildingId>
+		<buildingName>Weill Hall</buildingName>
+		<dateBegin>2012-03-14</dateBegin>
+		<dateEnd>2012-03-14</dateEnd>
+		<description>This is a regular PSIP meeting for the 2011-2012
+			cohort.&#xD;
+			&#xD;
+			For current PSIP participants only. </description>
+		<guid>8158-1137443@events.umich.edu</guid>
+		<id>8158-1137443</id>
+		<lastModified>20120123T084613</lastModified>
+		<occurenceNotes>For current PSIP participants only.</occurenceNotes>
+		<permanentUrl>http://events.umich.edu/event/8158-1137443
+		</permanentUrl>
+		<room>Betty Ford Classroom - Gerald R. Ford School of Public Policy
+		</room>
+		<sponsors>
+			<groupId>1140</groupId>
+			<groupName>The Career Center</groupName>
+			<website>http://careercenter.umich.edu</website>
+		</sponsors>
+		<subtitle></subtitle>
+		<tags>psip</tags>
+		<tags>public service internship program</tags>
+		<tags>the career center</tags>
+		<timeBegin>18:00:00</timeBegin>
+		<timeEnd>20:00:00</timeEnd>
+		<title>PSIP Meeting</title>
+		<tsBegin>20120314T180000</tsBegin>
+		<tsEnd>20120314T200000</tsEnd>
+		<type>Meeting</type>
+		<typeId>14</typeId>
+		<url>http://careercenter.umich.edu</url>
+	</event>
+	<event>
+		<buildingId>1000206</buildingId>
+		<buildingName>Angell Hall</buildingName>
+		<dateBegin>2012-03-14</dateBegin>
+		<dateEnd>2012-03-14</dateEnd>
+		<description>The Secular Student Alliance welcomes all those
+			interested in protecting our First Amendment rights to freedom of
+			religion and freedom from religion. The group is structured to
+			provide a community for secularists, atheists, agnostics, humanists,
+			freethinkers, and non-theists - but is open to anyone who would like
+			to see Church and State remain separated.&#xD;
+			&#xD;
+			Food and drinks are provided. If you plan on stopping by, RSVP to
+			secularstudents-owner@umich.edu.</description>
+		<guid>6393-1136997@events.umich.edu</guid>
+		<id>6393-1136997</id>
+		<lastModified>20110811T160333</lastModified>
+		<occurenceNotes></occurenceNotes>
+		<permanentUrl>http://events.umich.edu/event/6393-1136997
+		</permanentUrl>
+		<room>2271</room>
+		<sponsors>
+			<groupId>2480</groupId>
+			<groupName>Secular Student Alliance</groupName>
+			<website>http://www.facebook.com/UmichSSA</website>
+		</sponsors>
+		<subtitle>Weekly Meeting</subtitle>
+		<tags>secular</tags>
+		<tags>student org</tags>
+		<timeBegin>19:00:00</timeBegin>
+		<timeEnd>21:00:00</timeEnd>
+		<title>Secular Student Alliance</title>
+		<tsBegin>20120314T190000</tsBegin>
+		<tsEnd>20120314T210000</tsEnd>
+		<type>Meeting</type>
+		<typeId>14</typeId>
+		<url>http://www.facebook.com/UmichSSA</url>
+	</event>
+	<event>
+		<buildingId>1000152</buildingId>
+		<buildingName>Tisch Hall</buildingName>
+		<dateBegin>2012-03-16</dateBegin>
+		<dateEnd>2012-03-16</dateEnd>
+		<description>Meet with a Career Advisor at the History Department.
+			Sign up with the History Department for an appointment.</description>
+		<guid>8052-1137326@events.umich.edu</guid>
+		<id>8052-1137326</id>
+		<lastModified>20120113T133118</lastModified>
+		<occurenceNotes></occurenceNotes>
+		<permanentUrl>http://events.umich.edu/event/8052-1137326
+		</permanentUrl>
+		<room></room>
+		<sponsors>
+			<groupId>1140</groupId>
+			<groupName>The Career Center</groupName>
+			<website>http://careercenter.umich.edu</website>
+		</sponsors>
+		<subtitle></subtitle>
+		<tags>career advising</tags>
+		<tags>history department</tags>
+		<tags>the career center</tags>
+		<timeBegin>10:00:00</timeBegin>
+		<timeEnd>12:00:00</timeEnd>
+		<title>Career Advising at the History Department</title>
+		<tsBegin>20120316T100000</tsBegin>
+		<tsEnd>20120316T120000</tsEnd>
+		<type>Meeting</type>
+		<typeId>14</typeId>
+		<url></url>
+	</event>
+	<event>
+		<buildingId>1000166</buildingId>
+		<buildingName>East Hall</buildingName>
+		<dateBegin>2012-03-19</dateBegin>
+		<dateEnd>2012-03-19</dateEnd>
+		<description>Sign up for a co-advising session with a Career Advisor
+			and a Concentration Advisor - meet with 2 advisors at the same time.
+			By appointment only, scheduled through the Psychology Department.
+		</description>
+		<guid>8053-1137330@events.umich.edu</guid>
+		<id>8053-1137330</id>
+		<lastModified>20120113T133349</lastModified>
+		<occurenceNotes></occurenceNotes>
+		<permanentUrl>http://events.umich.edu/event/8053-1137330
+		</permanentUrl>
+		<room>Psychology Undergraduate Office</room>
+		<sponsors>
+			<groupId>1140</groupId>
+			<groupName>The Career Center</groupName>
+			<website>http://careercenter.umich.edu</website>
+		</sponsors>
+		<subtitle></subtitle>
+		<tags>career advising</tags>
+		<tags>psychology department</tags>
+		<tags>the career center</tags>
+		<timeBegin>10:00:00</timeBegin>
+		<timeEnd>12:00:00</timeEnd>
+		<title>Career/Adademic Co-Advising at Psychology Department</title>
+		<tsBegin>20120319T100000</tsBegin>
+		<tsEnd>20120319T120000</tsEnd>
+		<type>Meeting</type>
+		<typeId>14</typeId>
+		<url></url>
+	</event>
+	<event>
+		<buildingId>1000206</buildingId>
+		<buildingName>Angell Hall</buildingName>
+		<dateBegin>2012-03-21</dateBegin>
+		<dateEnd>2012-03-21</dateEnd>
+		<description>The Secular Student Alliance welcomes all those
+			interested in protecting our First Amendment rights to freedom of
+			religion and freedom from religion. The group is structured to
+			provide a community for secularists, atheists, agnostics, humanists,
+			freethinkers, and non-theists - but is open to anyone who would like
+			to see Church and State remain separated.&#xD;
+			&#xD;
+			Food and drinks are provided. If you plan on stopping by, RSVP to
+			secularstudents-owner@umich.edu.</description>
+		<guid>6393-1136998@events.umich.edu</guid>
+		<id>6393-1136998</id>
+		<lastModified>20110811T160333</lastModified>
+		<occurenceNotes></occurenceNotes>
+		<permanentUrl>http://events.umich.edu/event/6393-1136998
+		</permanentUrl>
+		<room>2271</room>
+		<sponsors>
+			<groupId>2480</groupId>
+			<groupName>Secular Student Alliance</groupName>
+			<website>http://www.facebook.com/UmichSSA</website>
+		</sponsors>
+		<subtitle>Weekly Meeting</subtitle>
+		<tags>secular</tags>
+		<tags>student org</tags>
+		<timeBegin>19:00:00</timeBegin>
+		<timeEnd>21:00:00</timeEnd>
+		<title>Secular Student Alliance</title>
+		<tsBegin>20120321T190000</tsBegin>
+		<tsEnd>20120321T210000</tsEnd>
+		<type>Meeting</type>
+		<typeId>14</typeId>
+		<url>http://www.facebook.com/UmichSSA</url>
+	</event>
+	<event>
+		<buildingId>1000206</buildingId>
+		<buildingName>Angell Hall</buildingName>
+		<dateBegin>2012-03-28</dateBegin>
+		<dateEnd>2012-03-28</dateEnd>
+		<description>The Secular Student Alliance welcomes all those
+			interested in protecting our First Amendment rights to freedom of
+			religion and freedom from religion. The group is structured to
+			provide a community for secularists, atheists, agnostics, humanists,
+			freethinkers, and non-theists - but is open to anyone who would like
+			to see Church and State remain separated.&#xD;
+			&#xD;
+			Food and drinks are provided. If you plan on stopping by, RSVP to
+			secularstudents-owner@umich.edu.</description>
+		<guid>6393-1136999@events.umich.edu</guid>
+		<id>6393-1136999</id>
+		<lastModified>20110811T160333</lastModified>
+		<occurenceNotes></occurenceNotes>
+		<permanentUrl>http://events.umich.edu/event/6393-1136999
+		</permanentUrl>
+		<room>2271</room>
+		<sponsors>
+			<groupId>2480</groupId>
+			<groupName>Secular Student Alliance</groupName>
+			<website>http://www.facebook.com/UmichSSA</website>
+		</sponsors>
+		<subtitle>Weekly Meeting</subtitle>
+		<tags>secular</tags>
+		<tags>student org</tags>
+		<timeBegin>19:00:00</timeBegin>
+		<timeEnd>21:00:00</timeEnd>
+		<title>Secular Student Alliance</title>
+		<tsBegin>20120328T190000</tsBegin>
+		<tsEnd>20120328T210000</tsEnd>
+		<type>Meeting</type>
+		<typeId>14</typeId>
+		<url>http://www.facebook.com/UmichSSA</url>
+	</event>
+	<event>
+		<buildingId>null</buildingId>
+		<buildingName>North Quad</buildingName>
+		<dateBegin>2012-03-29</dateBegin>
+		<dateEnd>2012-03-29</dateEnd>
+		<description>Schedule an appointment through the Communications
+			Department to meet with a Career Advisor from The Career Center at
+			North Quad</description>
+		<guid>8051-1137323@events.umich.edu</guid>
+		<id>8051-1137323</id>
+		<lastModified>20120113T131757</lastModified>
+		<occurenceNotes></occurenceNotes>
+		<permanentUrl>http://events.umich.edu/event/8051-1137323
+		</permanentUrl>
+		<room></room>
+		<sponsors>
+			<groupId>1140</groupId>
+			<groupName>The Career Center</groupName>
+			<website>http://careercenter.umich.edu</website>
+		</sponsors>
+		<subtitle></subtitle>
+		<tags>career advising</tags>
+		<tags>communications department</tags>
+		<tags>the career center</tags>
+		<timeBegin>11:00:00</timeBegin>
+		<timeEnd>13:00:00</timeEnd>
+		<title>Career Advising at Communications Department</title>
+		<tsBegin>20120329T110000</tsBegin>
+		<tsEnd>20120329T130000</tsEnd>
+		<type>Meeting</type>
+		<typeId>14</typeId>
+		<url></url>
+	</event>
+	<event>
+		<buildingId>1000206</buildingId>
+		<buildingName>Angell Hall</buildingName>
+		<dateBegin>2012-04-04</dateBegin>
+		<dateEnd>2012-04-04</dateEnd>
+		<description>The Secular Student Alliance welcomes all those
+			interested in protecting our First Amendment rights to freedom of
+			religion and freedom from religion. The group is structured to
+			provide a community for secularists, atheists, agnostics, humanists,
+			freethinkers, and non-theists - but is open to anyone who would like
+			to see Church and State remain separated.&#xD;
+			&#xD;
+			Food and drinks are provided. If you plan on stopping by, RSVP to
+			secularstudents-owner@umich.edu.</description>
+		<guid>6393-1137000@events.umich.edu</guid>
+		<id>6393-1137000</id>
+		<lastModified>20110811T160333</lastModified>
+		<occurenceNotes></occurenceNotes>
+		<permanentUrl>http://events.umich.edu/event/6393-1137000
+		</permanentUrl>
+		<room>2271</room>
+		<sponsors>
+			<groupId>2480</groupId>
+			<groupName>Secular Student Alliance</groupName>
+			<website>http://www.facebook.com/UmichSSA</website>
+		</sponsors>
+		<subtitle>Weekly Meeting</subtitle>
+		<tags>secular</tags>
+		<tags>student org</tags>
+		<timeBegin>19:00:00</timeBegin>
+		<timeEnd>21:00:00</timeEnd>
+		<title>Secular Student Alliance</title>
+		<tsBegin>20120404T190000</tsBegin>
+		<tsEnd>20120404T210000</tsEnd>
+		<type>Meeting</type>
+		<typeId>14</typeId>
+		<url>http://www.facebook.com/UmichSSA</url>
+	</event>
+	<event>
+		<buildingId>1005101</buildingId>
+		<buildingName>Weill Hall</buildingName>
+		<dateBegin>2012-04-11</dateBegin>
+		<dateEnd>2012-04-11</dateEnd>
+		<description>This is the last PSIP meeting for the 2011-2012
+			cohort.&#xD;
+			&#xD;
+			For current PSIP participants only. </description>
+		<guid>8159-1137444@events.umich.edu</guid>
+		<id>8159-1137444</id>
+		<lastModified>20120123T085431</lastModified>
+		<occurenceNotes>For current PSIP participants only.</occurenceNotes>
+		<permanentUrl>http://events.umich.edu/event/8159-1137444
+		</permanentUrl>
+		<room>Betty Ford Classroom - Gerald R. Ford School of Public Policy
+		</room>
+		<sponsors>
+			<groupId>1140</groupId>
+			<groupName>The Career Center</groupName>
+			<website>http://careercenter.umich.edu</website>
+		</sponsors>
+		<subtitle></subtitle>
+		<tags>psip</tags>
+		<tags>public service internship program</tags>
+		<tags>the career center</tags>
+		<timeBegin>18:00:00</timeBegin>
+		<timeEnd>20:00:00</timeEnd>
+		<title>PSIP Meeting</title>
+		<tsBegin>20120411T180000</tsBegin>
+		<tsEnd>20120411T200000</tsEnd>
+		<type>Meeting</type>
+		<typeId>14</typeId>
+		<url>http://careercenter.umich.edu</url>
+	</event>
+	<event>
+		<buildingId>1000206</buildingId>
+		<buildingName>Angell Hall</buildingName>
+		<dateBegin>2012-04-11</dateBegin>
+		<dateEnd>2012-04-11</dateEnd>
+		<description>The Secular Student Alliance welcomes all those
+			interested in protecting our First Amendment rights to freedom of
+			religion and freedom from religion. The group is structured to
+			provide a community for secularists, atheists, agnostics, humanists,
+			freethinkers, and non-theists - but is open to anyone who would like
+			to see Church and State remain separated.&#xD;
+			&#xD;
+			Food and drinks are provided. If you plan on stopping by, RSVP to
+			secularstudents-owner@umich.edu.</description>
+		<guid>6393-1137001@events.umich.edu</guid>
+		<id>6393-1137001</id>
+		<lastModified>20110811T160333</lastModified>
+		<occurenceNotes></occurenceNotes>
+		<permanentUrl>http://events.umich.edu/event/6393-1137001
+		</permanentUrl>
+		<room>2271</room>
+		<sponsors>
+			<groupId>2480</groupId>
+			<groupName>Secular Student Alliance</groupName>
+			<website>http://www.facebook.com/UmichSSA</website>
+		</sponsors>
+		<subtitle>Weekly Meeting</subtitle>
+		<tags>secular</tags>
+		<tags>student org</tags>
+		<timeBegin>19:00:00</timeBegin>
+		<timeEnd>21:00:00</timeEnd>
+		<title>Secular Student Alliance</title>
+		<tsBegin>20120411T190000</tsBegin>
+		<tsEnd>20120411T210000</tsEnd>
+		<type>Meeting</type>
+		<typeId>14</typeId>
+		<url>http://www.facebook.com/UmichSSA</url>
+	</event>
+	<event>
+		<buildingId>1000206</buildingId>
+		<buildingName>Angell Hall</buildingName>
+		<dateBegin>2012-04-18</dateBegin>
+		<dateEnd>2012-04-18</dateEnd>
+		<description>The Secular Student Alliance welcomes all those
+			interested in protecting our First Amendment rights to freedom of
+			religion and freedom from religion. The group is structured to
+			provide a community for secularists, atheists, agnostics, humanists,
+			freethinkers, and non-theists - but is open to anyone who would like
+			to see Church and State remain separated.&#xD;
+			&#xD;
+			Food and drinks are provided. If you plan on stopping by, RSVP to
+			secularstudents-owner@umich.edu.</description>
+		<guid>6393-1137002@events.umich.edu</guid>
+		<id>6393-1137002</id>
+		<lastModified>20110811T160333</lastModified>
+		<occurenceNotes></occurenceNotes>
+		<permanentUrl>http://events.umich.edu/event/6393-1137002
+		</permanentUrl>
+		<room>2271</room>
+		<sponsors>
+			<groupId>2480</groupId>
+			<groupName>Secular Student Alliance</groupName>
+			<website>http://www.facebook.com/UmichSSA</website>
+		</sponsors>
+		<subtitle>Weekly Meeting</subtitle>
+		<tags>secular</tags>
+		<tags>student org</tags>
+		<timeBegin>19:00:00</timeBegin>
+		<timeEnd>21:00:00</timeEnd>
+		<title>Secular Student Alliance</title>
+		<tsBegin>20120418T190000</tsBegin>
+		<tsEnd>20120418T210000</tsEnd>
+		<type>Meeting</type>
+		<typeId>14</typeId>
+		<url>http://www.facebook.com/UmichSSA</url>
+	</event>
+	<event>
+		<buildingId>1000206</buildingId>
+		<buildingName>Angell Hall</buildingName>
+		<dateBegin>2012-04-25</dateBegin>
+		<dateEnd>2012-04-25</dateEnd>
+		<description>The Secular Student Alliance welcomes all those
+			interested in protecting our First Amendment rights to freedom of
+			religion and freedom from religion. The group is structured to
+			provide a community for secularists, atheists, agnostics, humanists,
+			freethinkers, and non-theists - but is open to anyone who would like
+			to see Church and State remain separated.&#xD;
+			&#xD;
+			Food and drinks are provided. If you plan on stopping by, RSVP to
+			secularstudents-owner@umich.edu.</description>
+		<guid>6393-1137003@events.umich.edu</guid>
+		<id>6393-1137003</id>
+		<lastModified>20110811T160333</lastModified>
+		<occurenceNotes></occurenceNotes>
+		<permanentUrl>http://events.umich.edu/event/6393-1137003
+		</permanentUrl>
+		<room>2271</room>
+		<sponsors>
+			<groupId>2480</groupId>
+			<groupName>Secular Student Alliance</groupName>
+			<website>http://www.facebook.com/UmichSSA</website>
+		</sponsors>
+		<subtitle>Weekly Meeting</subtitle>
+		<tags>secular</tags>
+		<tags>student org</tags>
+		<timeBegin>19:00:00</timeBegin>
+		<timeEnd>21:00:00</timeEnd>
+		<title>Secular Student Alliance</title>
+		<tsBegin>20120425T190000</tsBegin>
+		<tsEnd>20120425T210000</tsEnd>
+		<type>Meeting</type>
+		<typeId>14</typeId>
+		<url>http://www.facebook.com/UmichSSA</url>
+	</event>
+</events>

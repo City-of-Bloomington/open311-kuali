@@ -89,6 +89,12 @@
             <groupId>net.sf.flexjson</groupId>
             <artifactId>flexjson</artifactId>
         </dependency> 
+        <!-- RSS reader dependencies -->
+		<dependency>
+			<groupId>net.java.dev.rome</groupId>
+			<artifactId>rome</artifactId>
+			<version>1.0.0</version>
+		</dependency>
    		<!-- Testing dependencies -->
         <dependency>
             <groupId>org.mortbay.jetty</groupId>

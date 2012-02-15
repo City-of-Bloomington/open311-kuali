@@ -37,7 +37,7 @@ public final class EventPredicate implements Predicate {
             {
                 campusMatch = true;
             }
-            if( getCampus() != null && getCampus().equalsIgnoreCase( ((Category)obj).getCampus() ))
+            if( getCampus() != null && getCampus().equalsIgnoreCase( (((Event)obj).getCategory()).getCampus() ))
             {
                 campusMatch = true;
             }
@@ -45,7 +45,7 @@ public final class EventPredicate implements Predicate {
             {
                 categoryMatch = true;
             }
-            if( getCategoryId() != null && getCategoryId().equalsIgnoreCase( ((Category)obj).getCategoryId() ) )
+            if( getCategoryId() != null && getCategoryId().equalsIgnoreCase( (((Event)obj).getCategory()).getCategoryId() ) )
             {
                 categoryMatch = true;
             }

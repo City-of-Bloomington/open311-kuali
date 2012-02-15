@@ -21,12 +21,25 @@
 
 <!--    <bean class="edu.iu.m.news.service.RssCacheServiceImpl" />-->
 
+
     <bean id="mapper" class="org.kuali.mobility.util.mapper.DataMapperImpl"/>
     
-    <bean id="eventDao" class="org.kuali.mobility.events.dao.EventsDaoImpl">
+	<bean id="event" class="org.kuali.mobility.events.entity.EventImpl" scope="prototype"/>
+
+<!--     <bean id="eventDao" class="org.kuali.mobility.events.dao.EventsDaoImpl">
         <property name="mapper" ref="mapper"/>
+        <property name="categorySourceFile" value="categories.xml"/>
+        <property name="categoryMappingFile" value="categoryMapping.xml"/>
     </bean>
-    
+ -->    
+    <bean id="eventDao" class="org.kuali.mobility.events.dao.EventsDaoUMImpl">
+        <property name="mapper" ref="mapper"/>
+        <property name="categorySourceFile" value="categories.xml"/>
+        <property name="categoryMappingFile" value="categoryMapping.xml"/>
+        <property name="eventSourceFile" value="eventCategory12.xml"/>
+        <property name="eventMappingFile" value="eventMapping.xml"/>
+    </bean>
+
     <bean id="eventService" class="org.kuali.mobility.events.service.EventsServiceImpl">
         <property name="dao" ref="eventDao"/>
     </bean>

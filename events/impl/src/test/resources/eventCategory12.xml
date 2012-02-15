@@ -1,1 +1,318 @@
-{"events":[{"group":"2012-01-10","id":"7827-1136661","location":"Michigan Union","time":"18:00:00","title":"Free HIV Testing"},{"group":"2012-01-17","id":"7827-1136662","location":"Michigan Union","time":"18:00:00","title":"Free HIV Testing"},{"group":"2012-01-24","id":"7827-1136663","location":"Michigan Union","time":"18:00:00","title":"Free HIV Testing"},{"group":"2012-01-31","id":"7827-1136664","location":"Michigan Union","time":"18:00:00","title":"Free HIV Testing"},{"group":"2012-02-07","id":"7827-1136665","location":"Michigan Union","time":"18:00:00","title":"Free HIV Testing"},{"group":"2012-02-14","id":"7827-1136666","location":"Michigan Union","time":"18:00:00","title":"Free HIV Testing"},{"group":"2012-02-21","id":"7827-1136667","location":"Michigan Union","time":"18:00:00","title":"Free HIV Testing"},{"group":"2012-03-06","id":"7827-1136669","location":"Michigan Union","time":"18:00:00","title":"Free HIV Testing"},{"group":"2012-03-13","id":"7827-1136670","location":"Michigan Union","time":"18:00:00","title":"Free HIV Testing"},{"group":"2012-03-20","id":"7827-1136671","location":"Michigan Union","time":"18:00:00","title":"Free HIV Testing"},{"group":"2012-03-27","id":"7827-1136672","location":"Michigan Union","time":"18:00:00","title":"Free HIV Testing"}]}
+<?xml version="1.0" encoding="UTF-8"?>
+<events>
+	<event>
+		<buildingId>1000120</buildingId>
+		<buildingName>Michigan Union</buildingName>
+		<dateBegin>2012-02-07</dateBegin>
+		<dateEnd>2012-02-07</dateEnd>
+		<description>Testing conducted on a first-come, first-serve basis.
+			&#xD;
+			&#xD;
+			Screening for sexually transmitted infections will also be available, with a
+			request for donation.&#xD;
+			&#xD;
+			Supported by: Multi-Ethnic Student Affairs, Washtenaw County Public Health
+			Department, University Health Service, Alpha Phi Alpha Fraternity,
+			CoitusLove, and the Student Planning Committee&#xD; </description>
+		<guid>7827-1136665@events.umich.edu</guid>
+		<id>7827-1136665</id>
+		<lastModified>20111209T164539</lastModified>
+		<occurenceNotes>No testing on February 28th (spring break)
+		</occurenceNotes>
+		<permanentUrl>http://events.umich.edu/event/7827-1136665
+		</permanentUrl>
+		<room>Multi-Ethnic Student Affairs, Room 2202</room>
+		<sponsors>
+			<groupId>1129</groupId>
+			<groupName>University Health Service</groupName>
+			<website></website>
+		</sponsors>
+		<sponsors>
+			<groupId>1135</groupId>
+			<groupName>Multi-Ethnic Student Affairs</groupName>
+			<website></website>
+		</sponsors>
+		<subtitle>Free, rapid, anonymous, HIV Testing - open to all students
+		</subtitle>
+		<tags>health and wellness</tags>
+		<tags>multicultural</tags>
+		<timeBegin>18:00:00</timeBegin>
+		<timeEnd>19:30:00</timeEnd>
+		<title>Free HIV Testing</title>
+		<tsBegin>20120207T180000</tsBegin>
+		<tsEnd>20120207T193000</tsEnd>
+		<type>Health / Wellness Clinic</type>
+		<typeId>12</typeId>
+		<url>www.mesa.umich.edu</url>
+	</event>
+	<event>
+		<buildingId>1000120</buildingId>
+		<buildingName>Michigan Union</buildingName>
+		<dateBegin>2012-02-14</dateBegin>
+		<dateEnd>2012-02-14</dateEnd>
+		<description>Testing conducted on a first-come, first-serve basis.
+			&#xD;
+			&#xD;
+			Screening for sexually transmitted infections will also be available, with a
+			request for donation.&#xD;
+			&#xD;
+			Supported by: Multi-Ethnic Student Affairs, Washtenaw County Public Health
+			Department, University Health Service, Alpha Phi Alpha Fraternity,
+			CoitusLove, and the Student Planning Committee&#xD; </description>
+		<guid>7827-1136666@events.umich.edu</guid>
+		<id>7827-1136666</id>
+		<lastModified>20111209T164539</lastModified>
+		<occurenceNotes>No testing on February 28th (spring break)
+		</occurenceNotes>
+		<permanentUrl>http://events.umich.edu/event/7827-1136666
+		</permanentUrl>
+		<room>Multi-Ethnic Student Affairs, Room 2202</room>
+		<sponsors>
+			<groupId>1129</groupId>
+			<groupName>University Health Service</groupName>
+			<website></website>
+		</sponsors>
+		<sponsors>
+			<groupId>1135</groupId>
+			<groupName>Multi-Ethnic Student Affairs</groupName>
+			<website></website>
+		</sponsors>
+		<subtitle>Free, rapid, anonymous, HIV Testing - open to all students
+		</subtitle>
+		<tags>health and wellness</tags>
+		<tags>multicultural</tags>
+		<timeBegin>18:00:00</timeBegin>
+		<timeEnd>19:30:00</timeEnd>
+		<title>Free HIV Testing</title>
+		<tsBegin>20120214T180000</tsBegin>
+		<tsEnd>20120214T193000</tsEnd>
+		<type>Health / Wellness Clinic</type>
+		<typeId>12</typeId>
+		<url>www.mesa.umich.edu</url>
+	</event>
+	<event>
+		<buildingId>1000120</buildingId>
+		<buildingName>Michigan Union</buildingName>
+		<dateBegin>2012-02-21</dateBegin>
+		<dateEnd>2012-02-21</dateEnd>
+		<description>Testing conducted on a first-come, first-serve basis.
+			&#xD;
+			&#xD;
+			Screening for sexually transmitted infections will also be available, with a
+			request for donation.&#xD;
+			&#xD;
+			Supported by: Multi-Ethnic Student Affairs, Washtenaw County Public Health
+			Department, University Health Service, Alpha Phi Alpha Fraternity,
+			CoitusLove, and the Student Planning Committee&#xD; </description>
+		<guid>7827-1136667@events.umich.edu</guid>
+		<id>7827-1136667</id>
+		<lastModified>20111209T164539</lastModified>
+		<occurenceNotes>No testing on February 28th (spring break)
+		</occurenceNotes>
+		<permanentUrl>http://events.umich.edu/event/7827-1136667
+		</permanentUrl>
+		<room>Multi-Ethnic Student Affairs, Room 2202</room>
+		<sponsors>
+			<groupId>1129</groupId>
+			<groupName>University Health Service</groupName>
+			<website></website>
+		</sponsors>
+		<sponsors>
+			<groupId>1135</groupId>
+			<groupName>Multi-Ethnic Student Affairs</groupName>
+			<website></website>
+		</sponsors>
+		<subtitle>Free, rapid, anonymous, HIV Testing - open to all students
+		</subtitle>
+		<tags>health and wellness</tags>
+		<tags>multicultural</tags>
+		<timeBegin>18:00:00</timeBegin>
+		<timeEnd>19:30:00</timeEnd>
+		<title>Free HIV Testing</title>
+		<tsBegin>20120221T180000</tsBegin>
+		<tsEnd>20120221T193000</tsEnd>
+		<type>Health / Wellness Clinic</type>
+		<typeId>12</typeId>
+		<url>www.mesa.umich.edu</url>
+	</event>
+	<event>
+		<buildingId>1000120</buildingId>
+		<buildingName>Michigan Union</buildingName>
+		<dateBegin>2012-03-06</dateBegin>
+		<dateEnd>2012-03-06</dateEnd>
+		<description>Testing conducted on a first-come, first-serve basis.
+			&#xD;
+			&#xD;
+			Screening for sexually transmitted infections will also be available, with a
+			request for donation.&#xD;
+			&#xD;
+			Supported by: Multi-Ethnic Student Affairs, Washtenaw County Public Health
+			Department, University Health Service, Alpha Phi Alpha Fraternity,
+			CoitusLove, and the Student Planning Committee&#xD; </description>
+		<guid>7827-1136669@events.umich.edu</guid>
+		<id>7827-1136669</id>
+		<lastModified>20111209T164539</lastModified>
+		<occurenceNotes>No testing on February 28th (spring break)
+		</occurenceNotes>
+		<permanentUrl>http://events.umich.edu/event/7827-1136669
+		</permanentUrl>
+		<room>Multi-Ethnic Student Affairs, Room 2202</room>
+		<sponsors>
+			<groupId>1129</groupId>
+			<groupName>University Health Service</groupName>
+			<website></website>
+		</sponsors>
+		<sponsors>
+			<groupId>1135</groupId>
+			<groupName>Multi-Ethnic Student Affairs</groupName>
+			<website></website>
+		</sponsors>
+		<subtitle>Free, rapid, anonymous, HIV Testing - open to all students
+		</subtitle>
+		<tags>health and wellness</tags>
+		<tags>multicultural</tags>
+		<timeBegin>18:00:00</timeBegin>
+		<timeEnd>19:30:00</timeEnd>
+		<title>Free HIV Testing</title>
+		<tsBegin>20120306T180000</tsBegin>
+		<tsEnd>20120306T193000</tsEnd>
+		<type>Health / Wellness Clinic</type>
+		<typeId>12</typeId>
+		<url>www.mesa.umich.edu</url>
+	</event>
+	<event>
+		<buildingId>1000120</buildingId>
+		<buildingName>Michigan Union</buildingName>
+		<dateBegin>2012-03-13</dateBegin>
+		<dateEnd>2012-03-13</dateEnd>
+		<description>Testing conducted on a first-come, first-serve basis.
+			&#xD;
+			&#xD;
+			Screening for sexually transmitted infections will also be available, with a
+			request for donation.&#xD;
+			&#xD;
+			Supported by: Multi-Ethnic Student Affairs, Washtenaw County Public Health
+			Department, University Health Service, Alpha Phi Alpha Fraternity,
+			CoitusLove, and the Student Planning Committee&#xD; </description>
+		<guid>7827-1136670@events.umich.edu</guid>
+		<id>7827-1136670</id>
+		<lastModified>20111209T164539</lastModified>
+		<occurenceNotes>No testing on February 28th (spring break)
+		</occurenceNotes>
+		<permanentUrl>http://events.umich.edu/event/7827-1136670
+		</permanentUrl>
+		<room>Multi-Ethnic Student Affairs, Room 2202</room>
+		<sponsors>
+			<groupId>1129</groupId>
+			<groupName>University Health Service</groupName>
+			<website></website>
+		</sponsors>
+		<sponsors>
+			<groupId>1135</groupId>
+			<groupName>Multi-Ethnic Student Affairs</groupName>
+			<website></website>
+		</sponsors>
+		<subtitle>Free, rapid, anonymous, HIV Testing - open to all students
+		</subtitle>
+		<tags>health and wellness</tags>
+		<tags>multicultural</tags>
+		<timeBegin>18:00:00</timeBegin>
+		<timeEnd>19:30:00</timeEnd>
+		<title>Free HIV Testing</title>
+		<tsBegin>20120313T180000</tsBegin>
+		<tsEnd>20120313T193000</tsEnd>
+		<type>Health / Wellness Clinic</type>
+		<typeId>12</typeId>
+		<url>www.mesa.umich.edu</url>
+	</event>
+	<event>
+		<buildingId>1000120</buildingId>
+		<buildingName>Michigan Union</buildingName>
+		<dateBegin>2012-03-20</dateBegin>
+		<dateEnd>2012-03-20</dateEnd>
+		<description>Testing conducted on a first-come, first-serve basis.
+			&#xD;
+			&#xD;
+			Screening for sexually transmitted infections will also be available, with a
+			request for donation.&#xD;
+			&#xD;
+			Supported by: Multi-Ethnic Student Affairs, Washtenaw County Public Health
+			Department, University Health Service, Alpha Phi Alpha Fraternity,
+			CoitusLove, and the Student Planning Committee&#xD; </description>
+		<guid>7827-1136671@events.umich.edu</guid>
+		<id>7827-1136671</id>
+		<lastModified>20111209T164539</lastModified>
+		<occurenceNotes>No testing on February 28th (spring break)
+		</occurenceNotes>
+		<permanentUrl>http://events.umich.edu/event/7827-1136671
+		</permanentUrl>
+		<room>Multi-Ethnic Student Affairs, Room 2202</room>
+		<sponsors>
+			<groupId>1129</groupId>
+			<groupName>University Health Service</groupName>
+			<website></website>
+		</sponsors>
+		<sponsors>
+			<groupId>1135</groupId>
+			<groupName>Multi-Ethnic Student Affairs</groupName>
+			<website></website>
+		</sponsors>
+		<subtitle>Free, rapid, anonymous, HIV Testing - open to all students
+		</subtitle>
+		<tags>health and wellness</tags>
+		<tags>multicultural</tags>
+		<timeBegin>18:00:00</timeBegin>
+		<timeEnd>19:30:00</timeEnd>
+		<title>Free HIV Testing</title>
+		<tsBegin>20120320T180000</tsBegin>
+		<tsEnd>20120320T193000</tsEnd>
+		<type>Health / Wellness Clinic</type>
+		<typeId>12</typeId>
+		<url>www.mesa.umich.edu</url>
+	</event>
+	<event>
+		<buildingId>1000120</buildingId>
+		<buildingName>Michigan Union</buildingName>
+		<dateBegin>2012-03-27</dateBegin>
+		<dateEnd>2012-03-27</dateEnd>
+		<description>Testing conducted on a first-come, first-serve basis.
+			&#xD;
+			&#xD;
+			Screening for sexually transmitted infections will also be available, with a
+			request for donation.&#xD;
+			&#xD;
+			Supported by: Multi-Ethnic Student Affairs, Washtenaw County Public Health
+			Department, University Health Service, Alpha Phi Alpha Fraternity,
+			CoitusLove, and the Student Planning Committee&#xD; </description>
+		<guid>7827-1136672@events.umich.edu</guid>
+		<id>7827-1136672</id>
+		<lastModified>20111209T164539</lastModified>
+		<occurenceNotes>No testing on February 28th (spring break)
+		</occurenceNotes>
+		<permanentUrl>http://events.umich.edu/event/7827-1136672
+		</permanentUrl>
+		<room>Multi-Ethnic Student Affairs, Room 2202</room>
+		<sponsors>
+			<groupId>1129</groupId>
+			<groupName>University Health Service</groupName>
+			<website></website>
+		</sponsors>
+		<sponsors>
+			<groupId>1135</groupId>
+			<groupName>Multi-Ethnic Student Affairs</groupName>
+			<website></website>
+		</sponsors>
+		<subtitle>Free, rapid, anonymous, HIV Testing - open to all students
+		</subtitle>
+		<tags>health and wellness</tags>
+		<tags>multicultural</tags>
+		<timeBegin>18:00:00</timeBegin>
+		<timeEnd>19:30:00</timeEnd>
+		<title>Free HIV Testing</title>
+		<tsBegin>20120327T180000</tsBegin>
+		<tsEnd>20120327T193000</tsEnd>
+		<type>Health / Wellness Clinic</type>
+		<typeId>12</typeId>
+		<url>www.mesa.umich.edu</url>
+	</event>
+</events>
