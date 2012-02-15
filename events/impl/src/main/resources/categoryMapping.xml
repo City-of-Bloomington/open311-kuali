@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<dataMapping id="category" className="org.kuali.mobility.events.entity.Category" list="true" rootElement="categorys">
-    <mapping mapTo="categoryId" mapFrom="id"/>
-    <mapping mapTo="title" mapFrom="name"/>
-    <mapping mapTo="order"/>
-</dataMapping>
