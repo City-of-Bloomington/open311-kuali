@@ -17,7 +17,7 @@
 <kme:page title="Event Categories" id="events" backButton="true" homeButton="true" cssFilename="events" backButtonURL="${pageContext.request.contextPath}/home">
 	<kme:content>
 		<kme:listView id="eventslist" dataTheme="c" dataDividerTheme="b" filter="false">
-			<kme:listItem>
+<%-- 			<kme:listItem>
 				<c:url var="calendarUrl" value="/calendar">
 				</c:url>
 				<a href="${calendarUrl}">
@@ -25,7 +25,7 @@
 						My Calendar
 					</h3> </a>
 			</kme:listItem>
-
+ --%>
 			<c:forEach items="${categories}" var="category" varStatus="status">
 				<kme:listItem>
 					<c:url var="url" value="/events/viewEvents">

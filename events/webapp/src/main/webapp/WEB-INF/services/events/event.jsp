@@ -57,7 +57,7 @@
 					<br />
 					<h3>Category</h3>
 					<p class="wrap">
-						<c:out value="${event.category}" />
+						<c:out value="${event.category.title}" />
 					</p>
 				</c:if>
 				<c:if test="${not empty event.cost}">
