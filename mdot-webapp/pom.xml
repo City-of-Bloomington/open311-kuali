@@ -245,6 +245,18 @@
 		</dependency>
 		<dependency>
 			<groupId>org.kuali.mobility</groupId>
+			<artifactId>events-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.kuali.mobility</groupId>
+			<artifactId>events-impl</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.kuali.mobility</groupId>
+			<artifactId>events-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.kuali.mobility</groupId>
 			<artifactId>people-api</artifactId>
 		</dependency>
 		<dependency>
@@ -254,7 +266,8 @@
 		<dependency>
 			<groupId>org.kuali.mobility</groupId>
 			<artifactId>people-web</artifactId>
-		</dependency>		
+		</dependency>
+		
 		
 		<dependency> 
             <groupId>org.kuali.mobility</groupId>
@@ -328,11 +341,19 @@
         </dependency>   
         <dependency> 
             <groupId>org.kuali.mobility</groupId>
+            <artifactId>events-webapp</artifactId>
+			<version>${tool.events.version}</version>
+            <type>war</type>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency> 
+            <groupId>org.kuali.mobility</groupId>
             <artifactId>people-webapp</artifactId>
 			<version>${tool.people.version}</version>
             <type>war</type>
             <scope>runtime</scope>
-        </dependency>  		
+        </dependency>
+		
 		
 		
 		<!-- Spring dependencies -->
@@ -398,7 +419,7 @@
 				<filtering>true</filtering>
 			</resource>
         </resources>
-		<finalName>mdot</finalName>
+		<finalName>michigan</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.mortbay.jetty</groupId>
@@ -406,7 +427,7 @@
 				<configuration>
 				    <scanIntervalSeconds>5</scanIntervalSeconds>
 				    <webAppConfig>
-						<contextPath>/mdot</contextPath>
+						<contextPath>/michigan</contextPath>
 		              	<extraClasspath>target/classes;../admin/webapp/target/classes;../alerts/webapp/target/classes;../computerlabs/webapp/target/classes;../conference/webapp/target/classes;../dining/webapp/target/classes;../emergencyinfo/webapp/target/classes;../feedback/webapp/target/classes;../maps/webapp/target/classes;../news/webapp/target/classes;../shared/webapp/target/classes</extraClasspath>
 					    <!--  
 					    <baseResource implementation="org.mortbay.resource.ResourceCollection">
