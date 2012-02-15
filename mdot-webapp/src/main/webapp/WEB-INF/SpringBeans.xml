@@ -40,6 +40,7 @@
     <import resource="classpath:FeedbackSpringBeans.xml" />
     <import resource="classpath:NewsSpringBeans.xml" />
     <import resource="classpath:EventsSpringBeans.xml" />
+    <import resource="classpath:DirectorySpringBeans.xml" />
     
     <!-- 
 	This is where the basenames for the i18n files are defined. The files themselves
