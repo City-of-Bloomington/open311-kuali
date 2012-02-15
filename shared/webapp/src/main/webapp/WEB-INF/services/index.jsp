@@ -24,7 +24,7 @@
 
 <c:set var="phonegap" value="${cookie.phonegap.value}"/>
 
-<kme:page title="${title}" id="home" cssFilename="home" backButton="false" homeButton="false" preferencesButton="true" preferencesButtonURL="preferences" platform="${platform}" phonegap="${phonegap}" onBodyLoad="onBodyLoad()">
+<kme:page title="${title}" id="home" cssFilename="home" backButton="false" homeButton="false" preferencesButton="true" preferencesButtonURL="preferences" platform="${platform}" phonegap="${phonegap}" onBodyLoad="">
 	<kme:content>
 
 		<c:if test="${param.native == 'yes'}">
@@ -38,10 +38,24 @@
 			</script>
 		</c:if>	
 
-			<script type="text/javascript">
-				$.cookie('phonegap', '${param.phonegap}', {expires: 365, path: '/'});
-				/*  ${cookie.phonegap.value} */
-			</script>
+		<script type="text/javascript">
+			$.cookie('phonegap', '${param.phonegap}', {expires: 365, path: '/'});
+			/*  ${cookie.phonegap.value} */
+		
+
+			// Must call after DOM is ready. 
+		    // This is shortcut for $(document).ready(...);
+		    $(function(){								
+		    	document.addEventListener("deviceready",onDeviceReady,false);	
+		    });
+				
+			function onDeviceReady(){
+				//alert("onDeviceReady()");
+				//navigator.notification.alert('Did onDeviceReady()', function(){}, 'IU Mobile', 'OK');		    
+			}			
+			
+			
+		</script>
 
 
 	<%-- 

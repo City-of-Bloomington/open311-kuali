@@ -219,7 +219,7 @@ public class PageTag extends SimpleTagSupport {
             	out.println("<link href=\"" + contextPath + "/css/" + cssFilename + ".css\" rel=\"stylesheet\" type=\"text/css\" />");
             }
 
-            //out.println("<script src=\"http://jsconsole.com/remote.js?031D283B-51D9-45E5-B1A6-EBAFE17C1183\"></script>");
+            out.println("<script src=\"http://jsconsole.com/remote.js?83838903-5AB2-408D-9991-087ADD37665C\"></script>");
             
             out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/jquery.js\"></script>");
             out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/jquery.cookie.js\"></script>");
@@ -237,8 +237,8 @@ public class PageTag extends SimpleTagSupport {
             	out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/iOS/phonegap-" + phonegap + ".js\"></script>");
                 out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/iOS/ChildBrowser.js\"></script>");
                 out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/iOS/barcodescanner.js\"></script>");
-                out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/iOS/Connection.js\"></script>");
-                out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/iOS/handlePush.js\"></script>");
+//                out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/iOS/Connection.js\"></script>");
+                out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/iOS/PushHandler.js\"></script>");
                 out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/iOS/Badge.js\"></script>");
                 //out.println("<script type=\"text/javascript\" src=\"" + contextPath + "js/iOS/applicationPreferences.js\"></script>");
             }else if(platform != null && platform.equals("Android")){
