@@ -419,7 +419,7 @@
 				<filtering>true</filtering>
 			</resource>
         </resources>
-		<finalName>michigan</finalName>
+		<finalName>mdot</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.mortbay.jetty</groupId>
@@ -427,7 +427,7 @@
 				<configuration>
 				    <scanIntervalSeconds>5</scanIntervalSeconds>
 				    <webAppConfig>
-						<contextPath>/michigan</contextPath>
+						<contextPath>/mdot</contextPath>
 		              	<extraClasspath>target/classes;../admin/webapp/target/classes;../alerts/webapp/target/classes;../computerlabs/webapp/target/classes;../conference/webapp/target/classes;../dining/webapp/target/classes;../emergencyinfo/webapp/target/classes;../feedback/webapp/target/classes;../maps/webapp/target/classes;../news/webapp/target/classes;../shared/webapp/target/classes</extraClasspath>
 					    <!--  
 					    <baseResource implementation="org.mortbay.resource.ResourceCollection">
