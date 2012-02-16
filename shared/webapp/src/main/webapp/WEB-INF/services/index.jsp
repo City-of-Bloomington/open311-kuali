@@ -94,7 +94,7 @@
 			</c:forEach>	
 			<c:if test="${cookie.native.value == 'yes' || param.native == 'yes'}">
 	            <kme:listItem hideDataIcon="true">
-	            	<a href="qrcode?phonegap=1.4.1" style="background-image: url('http://mtwagner.dyndns.org:8888/images/service-icons/srvc-qrcode.png');">
+	            	<a href="qrcode?phonegap=1.4.1" style="background-image: url('${pageContext.request.contextPath}/images/service-icons/srvc-qrcode.png');">
 			      		<h3>QR Code Reader</h3>
 			      		<p class="wrap">Scan QR Codes for quick access to Information and Links</p>
 			      		<c:if test="${not empty homeTool.tool.badgeCount}"> 

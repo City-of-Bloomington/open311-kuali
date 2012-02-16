@@ -63,6 +63,15 @@
 				var title = "";
 				var parsedURL = parseURL(url);
 
+				
+				if(parsedURL.protocol == "kuali"  || parsedURL.protocol == "kualis"){
+					title = "Kuali Link";
+					html += '<li data-theme="c" data-role="list-divider" id="list-divider">Scanned the following QRCode</li>';
+					html += '<li data-theme="c"><a href="#" onclick="safeLink(\''+ url +'\')"><h3 style="white-space:normal">' + title + '</h3><p>' + url + '</p></a></li>';					
+					$("#list").html(html).listview("refresh");
+					$("[data-role='page']").page('refresh');				
+				}
+				
 				if(parsedURL.protocol == "http" || parsedURL.protocol == "https"){
 					/*
 					Doesn't work in Android version for some reason. 
@@ -104,6 +113,15 @@
 				}
 			}
 
+		    
+		    function safeLink(url){
+		    	var newurl = "";
+				newurl = url.replace("kualis://", "https://");
+				newurl = newurl.replace("kuali://", "http://");					
+				//alert(newurl);
+		    	window.location = newurl;	
+		    }
+		    
 			function onClickLink(url){
 				if(IsiOS){
 			        try{ 
