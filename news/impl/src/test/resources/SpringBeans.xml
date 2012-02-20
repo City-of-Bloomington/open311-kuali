@@ -12,15 +12,6 @@
 						http://www.springframework.org/schema/tx 
 						http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
 
-<!--	<import resource="classpath:DatabaseSpringBeans.xml" />
-	<import resource="classpath:ConfigSpringBeans.xml" />
-	<import resource="classpath:EntityManagerSpringBeans.xml" />
-	<import resource="classpath:RiceSpringBeans.xml" />-->
-
-	<!-- https://performance.oncourse.iu.edu/ X-Mapping-bmipgloi https://regression.oncourse.iu.edu X-Mapping-jfafkpgg -->
-
-<!--    <bean class="edu.iu.m.news.service.RssCacheServiceImpl" />-->
-
     <bean id="mapper" class="org.kuali.mobility.util.mapper.DataMapperImpl"/>
 
 	<bean id="newsSource" class="org.kuali.mobility.news.entity.NewsSourceImpl"/>
@@ -42,6 +33,6 @@
         <property name="dao" ref="newsDao"/>
         <property name="cache" ref="newsCache"/>
     </bean>
-
+    
 </beans>
  

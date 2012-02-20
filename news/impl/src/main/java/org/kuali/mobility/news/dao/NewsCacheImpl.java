@@ -30,6 +30,7 @@ import org.apache.log4j.Logger;
 import org.kuali.mobility.news.entity.NewsArticle;
 import org.kuali.mobility.news.entity.NewsFeed;
 import org.kuali.mobility.news.entity.NewsSource;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
@@ -79,6 +80,7 @@ public class NewsCacheImpl implements NewsCache, ApplicationContextAware {
 	 * @param source the NewsSource that defines the feed to update
 	 */
 	@SuppressWarnings("unchecked")
+	//@Cacheable(value="newsFeed", key="#feed.sourceId")
 	public void updateFeed(NewsFeed feed, NewsSource source) {
 		LOG.debug( "Updating feed for source "+source.getId() );
 		feed.setOrder(source.getOrder());

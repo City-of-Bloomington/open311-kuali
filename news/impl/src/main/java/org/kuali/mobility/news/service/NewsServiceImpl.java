@@ -20,13 +20,11 @@ import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.kuali.mobility.configparams.service.ConfigParamService;
 import org.kuali.mobility.news.dao.NewsCache;
 import org.kuali.mobility.news.dao.NewsDao;
 import org.kuali.mobility.news.entity.NewsArticle;
 import org.kuali.mobility.news.entity.NewsFeed;
 import org.kuali.mobility.news.entity.NewsSource;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.ApplicationContext;
@@ -61,21 +59,21 @@ public class NewsServiceImpl implements NewsService {
 	}
 
 	@Override
-	@Cacheable(value="newsSource", key="#id")
+	//@Cacheable(value="newsSource", key="#id")
 	public NewsSource getNewsSourceById(Long id) {
 		LOG.debug( "Called getNewsSourceById web service." );
 		return getDao().lookup(id);
 	}
 	
 	@Override
-	@CacheEvict(value = "newsSource", key="#id", allEntries=false)
+	//@CacheEvict(value = "newsSource", key="#id", allEntries=false)
 	public NewsSource deleteNewsSourcebyId(long id) {
 		LOG.debug( "Called deleteNewsSourceById web service." );
 		return getDao().delete(getDao().lookup(id));
 	}
 
 	@Override
-	@CacheEvict(value = "newsSource", key="#newsSource.id", allEntries=false)
+	//@CacheEvict(value = "newsSource", key="#newsSource.id", allEntries=false)
 	public NewsSource saveNewsSource(NewsSource newsSource) {
 		LOG.debug( "Called saveNewsSourceById web service." );
 		LOG.debug( "Dao is "+(null == getDao() ? "" : "not")+" null." );
@@ -158,6 +156,7 @@ public class NewsServiceImpl implements NewsService {
 	}
 	
 	@Override
+	//@CacheEvict(value = "newsFeed", allEntries=true)
 	public List<NewsFeed> getAllActiveNewsFeeds() {
 		LOG.debug( "Entering getAllActiveNewsFeeds()." );
 		List<NewsFeed> feeds = new ArrayList<NewsFeed>(getCache().getNewsFeeds().values());
@@ -176,6 +175,7 @@ public class NewsServiceImpl implements NewsService {
 	}
 
 	@Override
+	//@CacheEvict(value = "newsFeed", key="#newsSourceId", allEntries=false)
 	public NewsFeed getNewsFeed(long newsSourceId) {
 		NewsFeed feed = null;
 		Long sourceId = new Long( newsSourceId );
