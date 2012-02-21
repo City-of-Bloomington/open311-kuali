@@ -110,7 +110,8 @@
     // Must call after DOM is ready. 
     // This is shortcut for $(document).ready(...);
     $(function(){    			
-        $("#deviceType option[value=" + which + "]").attr('selected', 'selected');        
+        $("#deviceType option[value=" + which + "]").attr('selected', 'selected');
+        $("#deviceType").selectmenu('refresh', true);        
     });
         
 </script>  
