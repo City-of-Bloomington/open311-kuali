@@ -17,7 +17,7 @@
 
 <spring:message code="dining.title" var="title"/>
 
-<kme:page title="${title}" id="dining" backButton="true" homeButton="true" cssFilename="dining">
+<kme:page title="${title}" id="dining" institutionCss="michigan" backButton="true" homeButton="true" cssFilename="dining">
 	<kme:content>
 		<kme:listView id="menulist" dataTheme="c" dataDividerTheme="b" filter="false">
 			<script type="text/javascript">

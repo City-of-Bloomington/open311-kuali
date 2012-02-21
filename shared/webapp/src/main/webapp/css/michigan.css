@@ -1,0 +1,66 @@
+/*
+  Copyright 2011 The Kuali Foundation Licensed under the Educational Community
+  License, Version 2.0 (the "License"); you may not use this file except in
+  compliance with the License. You may obtain a copy of the License at
+  http://www.osedu.org/licenses/ECL-2.0 Unless required by applicable law or
+  agreed to in writing, software distributed under the License is distributed
+  on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+  express or implied. See the License for the specific language governing
+  permissions and limitations under the License.
+*/
+
+/* Header bar color */
+.ui-bar-a {
+    background-color:#142F4D;
+}
+
+div#home h1.ui-title {
+	background:transparent url('../images/um-wordmark.png') 50% 0 no-repeat;
+	text-indent:-9999px;
+	height:24px;
+	margin:8px 30px 7px 30px;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+       only screen and (min--moz-device-pixel-ratio: 1.5),
+       only screen and (min-resolution: 240dpi) {
+	
+	div#home h1.ui-title {
+		background-image:url('../images/um-wordmark@2x.png');
+		-moz-background-size: 204px 24px;
+		-o-background-size: 204px 24px;
+		-webkit-background-size: 204px 24px;
+		background-size: 204px 24px;
+	}
+}
+
+.ui-li-divider.ui-bar-b, .ui-li-divider.ui-btn-up-b, .ui-li-divide.ui-btn-hover-b, .ui-li-divide.ui-btn-down-b {
+	border-top:1px solid #DDDDDD;
+}
+
+.ui-btn-up-a {
+	background-image: -moz-linear-gradient(top, #243F5D, #445F7D);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #243F5D), color-stop(1, #445F7D));
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#243F5D', EndColorStr='#445F7D')";
+}
+
+.ui-btn-hover-a {
+	background-image: -moz-linear-gradient(top, #888888, #AAAABB);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #888888), color-stop(1, #AAAABB));
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#888888', EndColorStr='#AAAABB')";
+}
+
+.ui-btn-down-a {
+	background-image: -moz-linear-gradient(top, #AAAAAA, #AAAABB);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #AAAAAA), color-stop(1, #AAAABB));
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#AAAAAA', EndColorStr='#AAAABB')";
+}
+.ui-btn-up-c {
+	background-image: -moz-linear-gradient(top, #D7D7D9, #B5B5B9);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #D7D7D9), color-stop(1, #B5B5B9));
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#D7D7D9', EndColorStr='#B5B5B9')";
+}
+	
+.ui-icon {
+	background-color:#142F4D;
+}

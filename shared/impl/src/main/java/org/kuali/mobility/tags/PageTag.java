@@ -58,7 +58,8 @@ public class PageTag extends SimpleTagSupport {
     private String loginButtonURL;
 	private String logoutButtonURL;
 	private boolean disableGoogleAnalytics;
-    
+	private String institutionCss;
+
 	/**
 	 * @param id the id of the div containing the page content
 	 */
@@ -214,7 +215,7 @@ public class PageTag extends SimpleTagSupport {
             out.println("<link href=\"" + contextPath + "/css/jquery.mobile.css\" rel=\"stylesheet\" type=\"text/css\" />");
             out.println("<link href=\"" + contextPath + "/css/jquery-mobile-fluid960.css\" rel=\"stylesheet\" type=\"text/css\" />");
             out.println("<link href=\"" + contextPath + "/css/kme.css\" rel=\"stylesheet\" type=\"text/css\" />");
-            out.println("<link href=\"" + contextPath + "/css/custom\" rel=\"stylesheet\" type=\"text/css\" />");
+            out.println("<link href=\"" + contextPath + "/css/" + institutionCss + ".css\" rel=\"stylesheet\" type=\"text/css\" />");
             if (cssFilename != null && !cssFilename.trim().equals("")) {
             	out.println("<link href=\"" + contextPath + "/css/" + cssFilename + ".css\" rel=\"stylesheet\" type=\"text/css\" />");
             }
@@ -333,5 +334,9 @@ public class PageTag extends SimpleTagSupport {
 
 	public void setAuthMapper(AuthenticationMapper authMapper) {
 		this.authMapper = authMapper;
+	}
+	
+	public void setInstitutionCss(String institutionCss) {
+		this.institutionCss = institutionCss;
 	}
 }

@@ -18,7 +18,7 @@
 <spring:message code="computerlabs.title" var="title"/>
 <spring:message code="computerlabs.seats" var="seats"/>
 
-<kme:page title="${title}" id="computerlabs" homeButton="true"
+<kme:page title="${title}" id="computerlabs" institutionCss="michigan" homeButton="true"
 	backButton="true" cssFilename="computerlabs">
 	<kme:content>
 		<kme:listView id="computerlablist" dataTheme="c" dataDividerTheme="b"
