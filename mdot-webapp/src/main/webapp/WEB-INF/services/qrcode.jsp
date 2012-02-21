@@ -15,10 +15,10 @@
 
 
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<c:if test="${fn:contains(header['User-Agent'],'iPhone') || fn:contains(header['User-Agent'],'iPad') || fn:contains(header['User-Agent'],'iPod') || fn:contains(header['User-Agent'],'Macintosh') }">
+<c:if test="${fn:contains(header['User-Agent'],'iPhone') || fn:contains(header['User-Agent'],'iPad') || fn:contains(header['User-Agent'],'iPod') }">
 	<c:set var="platform" value="iOS"/>
 </c:if>
-<c:if test="${fn:contains(header['User-Agent'],'Android')}">
+<c:if test="${fn:contains(header['User-Agent'],'Android')  || fn:contains(header['User-Agent'],'Macintosh')}">
 	<c:set var="platform" value="Android"/>
 </c:if>
 
@@ -43,12 +43,15 @@
 		    });
 				
 			function onDeviceReady(){
-				//alert("onDeviceReady()");
-				var cb = ChildBrowser.install();
-				if(cb != null){
-		            cb.onLocationChange = function(loc){ root.locChanged(loc); }; 
-		            cb.onClose          = function(){root.onCloseBrowser();}; 
-		            cb.onOpenExternal   = function(){root.onOpenExternal();}; 
+				//navigator.notification.alert("PhoneGap: onDeviceReady()", function(){}, "Kuali Mobile", 'OK');
+				var cb;
+				if(IsiOS){
+					cb = ChildBrowser.install();
+					if(cb != null){
+			            cb.onLocationChange = function(loc){ root.locChanged(loc); }; 
+		    	        cb.onClose          = function(){root.onCloseBrowser();}; 
+		        	    cb.onOpenExternal   = function(){root.onOpenExternal();}; 
+					}
 				}
 			}
 		    
@@ -169,6 +172,10 @@
 
 			
 			function clearList(){
+				console.log("clearList");
+
+				// Testing the statusBarNotification here. 
+				//window.plugins.statusBarNotification.notify('Kuali Mobile', "Cleared Scan List!");
 				var html = '<li data-theme="c" data-role="list-divider" id="list-divider">Scanned the following QRCode</li>';
 				$("#list").html(html).listview("refresh");
 			}
