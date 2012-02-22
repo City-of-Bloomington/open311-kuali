@@ -9,10 +9,23 @@
   permissions and limitations under the License.
 --%>
 
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
+<spring:message code="mdot.name" 			var="mdotName"/>
+<spring:message code="qrcode.mdotLink" 		var="mdotLink"/>
+<spring:message code="qrcode.email" 		var="email"/>
+<spring:message code="qrcode.emailsubject" 	var="emailsubject"/>
+<spring:message code="qrcode.url" 			var="url"/>
+<spring:message code="qrcode.phonenumber" 	var="phonenumber"/>
+<spring:message code="qrcode.scan" 			var="scan"/>
+<spring:message code="qrcode.scanningfailed" 		var="scanningfailed"/>
+<spring:message code="qrcode.scanner" 		var="scanner"/>
+<spring:message code="qrcode.clear" 		var="clear"/>
+<spring:message code="qrcode.scanned" 		var="scanned"/>
+<spring:message code="qrcode.recipient" 	var="recipient"/>
 
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:if test="${fn:contains(header['User-Agent'],'iPhone') || fn:contains(header['User-Agent'],'iPad') || fn:contains(header['User-Agent'],'iPod') }">
@@ -24,7 +37,10 @@
 
 <c:set var="phonegap" value="${cookie.phonegap.value}"/>
 
-<kme:page title="Scanner" id="qrcodes" backButton="true" homeButton="true" cssFilename="alerts" backButtonURL="${pageContext.request.contextPath}/home" platform="${platform}" phonegap="${phonegap}">
+
+
+
+<kme:page title="${scanner}" id="qrcodes" backButton="true" homeButton="true" cssFilename="alerts" backButtonURL="${pageContext.request.contextPath}/home" platform="${platform}" phonegap="${phonegap}">
 			<script type="text/javascript" charset="utf-8">
 						
 			var IsiPhone 		= navigator.userAgent.indexOf("iPhone") != -1 ;
@@ -68,8 +84,8 @@
 
 				
 				if(parsedURL.protocol == "kuali"  || parsedURL.protocol == "kualis"){
-					title = "Kuali Link";
-					html += '<li data-theme="c" data-role="list-divider" id="list-divider">Scanned the following QRCode</li>';
+					title = "${mdotLink}";
+					html += '<li data-theme="c" data-role="list-divider" id="list-divider">${scanned}</li>';
 					html += '<li data-theme="c"><a href="#" onclick="safeLink(\''+ url +'\')"><h3 style="white-space:normal">' + title + '</h3><p>' + url + '</p></a></li>';					
 					$("#list").html(html).listview("refresh");
 					$("[data-role='page']").page('refresh');				
@@ -85,33 +101,33 @@
 						title = response.substring(start + 7, end);	
 					});
 					*/
-					title = "URL Link";
-					html += '<li data-theme="c" data-role="list-divider" id="list-divider">Scanned the following QRCode</li>';
+					title = "${url}";
+					html += '<li data-theme="c" data-role="list-divider" id="list-divider">${scanned}</li>';
 					html += '<li data-theme="c"><a href="#" onclick="onClickLink(\''+ url +'\')"><h3 style="white-space:normal">' + title + '</h3><p>' + url + '</p></a></li>';					
 					$("#list").html(html).listview("refresh");
 					$("[data-role='page']").page('refresh');
 				}
 				
 				if(parsedURL.protocol == "tel" || myurl.toLowerCase().indexOf("tel:") != -1){
-					title = "Phone Number";
+					title = "${phonenumber}";
 					url = "tel:" + myurl.substring(4);
-					html += '<li data-theme="c" data-role="list-divider" id="list-divider">Scanned the following QRCode</li>';
+					html += '<li data-theme="c" data-role="list-divider" id="list-divider">${scanned}</li>';
 					html += '<li data-theme="c" class="link-phone"><a href="'+ url +'"><h3 style="white-space:normal">' + title + '</h3><p>' + url + '</p></a></li>';
 					$("#list").html(html).listview("refresh");
 				}
 
 				if(parsedURL.protocol == "mailto" || myurl.toLowerCase().indexOf("mailto:") != -1){
-					title = "Email Address";
+					title = "${email}";
 					list = url.split("?");
 					var subject = "";
 					var address = list[0];
 					address = address.split(":")[1];
 					if(list[1] != undefined){					
 						list = list[1].split("&");
-						var subject = "<p>Subject: " + list[0].split("=")[1] + "</p>";
+						var subject = "<p>${emailsubject}: " + list[0].split("=")[1] + "</p>";
 					}
-					html += '<li data-theme="c" data-role="list-divider" id="list-divider">Scanned the following QRCode</li>';
-					html += '<li data-theme="c" class="link-email"><a href="'+ url +'"><h3 style="white-space:normal">' + title + '</h3><p>Recipient: ' + address + '</p>' + subject + '</a></li>';
+					html += '<li data-theme="c" data-role="list-divider" id="list-divider">${scanned}</li>';
+					html += '<li data-theme="c" class="link-email"><a href="'+ url +'"><h3 style="white-space:normal">' + title + '</h3><p>${recipient}: ' + address + '</p>' + subject + '</a></li>';
 					$("#list").html(html).listview("refresh");
 				}
 			}
@@ -176,7 +192,7 @@
 
 				// Testing the statusBarNotification here. 
 				//window.plugins.statusBarNotification.notify('Kuali Mobile', "Cleared Scan List!");
-				var html = '<li data-theme="c" data-role="list-divider" id="list-divider">Scanned the following QRCode</li>';
+				var html = '<li data-theme="c" data-role="list-divider" id="list-divider">${scanned}</li>';
 				$("#list").html(html).listview("refresh");
 			}
 			
@@ -191,7 +207,8 @@
 						displayURL(result.text);           
 			        }
 			    }, function(error) {
-			        alert("Scanning failed: " + error);
+			    	navigator.notification.alert("${scanningfailed}: " + error, function(){}, "${mdotName}", 'OK');
+//			        alert("Scanning failed: " + error);
 			    });
 			}
 
@@ -202,12 +219,12 @@
 			</script>
 	<kme:content>
 	    <kme:listView id="list" filter="false">
-			<li data-theme="c" data-role="list-divider" id="list-divider">Scanned the following QRCode</li>		
+			<li data-theme="c" data-role="list-divider" id="list-divider">${scanned}</li>		
 	    </kme:listView>
 	    <br>
 <fieldset class="ui-grid-a">
-	<div class="ui-block-a"><button onclick="scan();" id="scanbutton" data-theme="c">Scan</button></div> 	
-	<div class="ui-block-b"><button onclick="clearList();" id="closebutton" data-theme="c">Clear</button></div> 
+	<div class="ui-block-a"><button onclick="scan();" id="scanbutton" data-theme="c">${scan}</button></div> 	
+	<div class="ui-block-b"><button onclick="clearList();" id="closebutton" data-theme="c">${clear}</button></div> 
 </fieldset>
 	</kme:content>
 </kme:page>
