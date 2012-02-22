@@ -55,12 +55,30 @@ div#home h1.ui-title {
 	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #AAAAAA), color-stop(1, #AAAABB));
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#AAAAAA', EndColorStr='#AAAABB')";
 }
-.ui-btn-up-c {
-	background-image: -moz-linear-gradient(top, #D7D7D9, #B5B5B9);
-	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #D7D7D9), color-stop(1, #B5B5B9));
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#D7D7D9', EndColorStr='#B5B5B9')";
+.ui-btn-up-c, li.ui-li-static {
+	background-image: -moz-linear-gradient(top, #D7D7D9, #B5B5B9) !important;
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #D7D7D9), color-stop(1, #B5B5B9)) !important;
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#D7D7D9', EndColorStr='#B5B5B9') !important";
 }
 	
 .ui-icon {
-	background-color:#142F4D;
+	
+	background-color:#142F4D !important;
 }
+
+.ui-body-c {
+	/* Proper way to set the bg color */
+	background-color:#142F4D !important;
+	/* Hack to override jQuery Mobile's default setting of bg color using shorthand 'background' property */
+	background:#142F4D !important;
+}
+
+div.ui-content {
+	background-color: #D7D7D9 !important;
+	background: #D7D7D9 !important;
+}
+
+/*div.ui-page {
+	background-color:#142F4D !important;
+	background:#142F4D !important;
+}*/
