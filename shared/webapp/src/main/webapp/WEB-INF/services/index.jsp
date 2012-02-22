@@ -39,9 +39,12 @@
 		</c:if>	
 
 		<script type="text/javascript">
-			$.cookie('phonegap', '${param.phonegap}', {expires: 365, path: '/'});
 			/*  ${cookie.phonegap.value} */
-		
+			var pgCookie = $.cookie('phonegap');
+			var pgParam = '${param.phonegap}';
+			if(pgCookie == null || pgParam != ''){
+				$.cookie('phonegap', '${param.phonegap}', {expires: 365, path: '/'});
+			}		
 
 			// Must call after DOM is ready. 
 		    // This is shortcut for $(document).ready(...);

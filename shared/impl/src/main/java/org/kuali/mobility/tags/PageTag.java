@@ -220,7 +220,7 @@ public class PageTag extends SimpleTagSupport {
             	out.println("<link href=\"" + contextPath + "/css/" + cssFilename + ".css\" rel=\"stylesheet\" type=\"text/css\" />");
             }
 
-            out.println("<script src=\"http://jsconsole.com/remote.js?83838903-5AB2-408D-9991-087ADD37665C\"></script>");
+            //out.println("<script src=\"http://jsconsole.com/remote.js?83838903-5AB2-408D-9991-087ADD37665C\"></script>");
             
             out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/jquery.js\"></script>");
             out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/jquery.cookie.js\"></script>");
