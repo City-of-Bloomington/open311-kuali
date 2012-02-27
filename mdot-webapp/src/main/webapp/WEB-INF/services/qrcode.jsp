@@ -74,7 +74,7 @@
 		    function displayURL(myurl){
 				// Saving past scans would be easy. 
 				// + local storage to persist
-//				var html = $("#list").html();	
+				var html = $("#list").html();	
 				
 				
 				var html = "";	
@@ -185,11 +185,10 @@
 					segments: a.pathname.replace(/^\//,'').split('/')
 				};
 			}
-
 			
 			function clearList(){
 				console.log("clearList");
-
+				
 				// Testing the statusBarNotification here. 
 				//window.plugins.statusBarNotification.notify('Kuali Mobile', "Cleared Scan List!");
 				var html = '<li data-theme="c" data-role="list-divider" id="list-divider">${scanned}</li>';

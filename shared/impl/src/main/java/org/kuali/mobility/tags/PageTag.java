@@ -241,7 +241,7 @@ public class PageTag extends SimpleTagSupport {
 //                out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/iOS/Connection.js\"></script>");
                 out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/iOS/PushHandler.js\"></script>");
                 out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/iOS/Badge.js\"></script>");
-                //out.println("<script type=\"text/javascript\" src=\"" + contextPath + "js/iOS/applicationPreferences.js\"></script>");
+                out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/iOS/applicationPreferences.js\"></script>");
             }else if(platform != null && platform.equals("Android")){
                 out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/android/phonegap-" + phonegap + ".js\"></script>");
                 out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/android/childbrowser.js\"></script>");

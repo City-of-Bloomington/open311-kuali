@@ -10,7 +10,6 @@ applicationPreferences.prototype.get = function(key,success,fail)
 
 applicationPreferences.prototype.set = function(key,value,success,fail) 
 {
-    alert(".js set");
     var args = {};
     args.key = key;
     args.value = value;
