@@ -16,7 +16,7 @@
 
 <spring:message code="alerts.title" var="title"/>
 
-<kme:page title="${title}" id="campusalerts" backButton="true" homeButton="true" cssFilename="alerts" backButtonURL="${pageContext.request.contextPath}/home">
+<kme:page title="${title}" id="campusalerts" backButton="true" homeButton="true" cssFilename="alerts">
 	<kme:content>
 	    <kme:listView id="alertlist" filter="false">
 	        <script type="text/javascript">

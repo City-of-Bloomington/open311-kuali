@@ -267,6 +267,18 @@
 			<groupId>org.kuali.mobility</groupId>
 			<artifactId>people-web</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.kuali.mobility</groupId>
+			<artifactId>weather-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.kuali.mobility</groupId>
+			<artifactId>weather-impl</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.kuali.mobility</groupId>
+			<artifactId>weather-web</artifactId>
+		</dependency>
 		
 		
 		<dependency> 
@@ -353,6 +365,13 @@
             <type>war</type>
             <scope>runtime</scope>
         </dependency>
+        <dependency> 
+            <groupId>org.kuali.mobility</groupId>
+            <artifactId>weather-webapp</artifactId>
+			<version>${tool.weather.version}</version>
+            <type>war</type>
+            <scope>runtime</scope>
+        </dependency>
 		
 		
 		
@@ -428,7 +447,7 @@
 				    <scanIntervalSeconds>5</scanIntervalSeconds>
 				    <webAppConfig>
 						<contextPath>/mdot</contextPath>
-		              	<extraClasspath>target/classes;../admin/webapp/target/classes;../alerts/webapp/target/classes;../computerlabs/webapp/target/classes;../conference/webapp/target/classes;../dining/webapp/target/classes;../emergencyinfo/webapp/target/classes;../feedback/webapp/target/classes;../maps/webapp/target/classes;../news/webapp/target/classes;../shared/webapp/target/classes</extraClasspath>
+		              	<extraClasspath>target/classes;../admin/webapp/target/classes;../alerts/webapp/target/classes;../computerlabs/webapp/target/classes;../conference/webapp/target/classes;../dining/webapp/target/classes;../emergencyinfo/webapp/target/classes;../feedback/webapp/target/classes;../maps/webapp/target/classes;../news/webapp/target/classes;../shared/webapp/target/classes;../weather/webapp/target/classes</extraClasspath>
 					    <!--  
 					    <baseResource implementation="org.mortbay.resource.ResourceCollection">
 			              	<resourcesAsCSV>src/main/webapp,../admin/webapp/src/main/webapp,../alerts/webapp/src/main/webapp,../computerlabs/webapp/src/main/webapp,../conference/webapp/src/main/webapp,../dining/webapp/src/main/webapp,../emergencyinfo/webapp/src/main/webapp,../feedback/webapp/src/main/webapp,../maps/webapp/src/main/webapp,../news/webapp/src/main/webapp,../shared/webapp/src/main/webapp</resourcesAsCSV>
@@ -448,6 +467,7 @@
 				   		<scanTarget>../news/api/target/classes;../news/impl/target/classes;../news/web/target/classes;../news/webapp/target/classes</scanTarget>
 				   		<scanTarget>../shared/api/target/classes;../shared/impl/target/classes;../shared/web/target/classes;../shared/webapp/target/classes</scanTarget>
 				   		<scanTarget>../user/api/target/classes;../user/impl/target/classes;../user/web/target/classes;../user/webapp/target/classes</scanTarget>
+				   		<scanTarget>../weather/api/target/classes;../weather/impl/target/classes;../weather/web/target/classes;../weather/webapp/target/classes</scanTarget>
 				    </scanTargets>
 					<connectors>
 						<connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">

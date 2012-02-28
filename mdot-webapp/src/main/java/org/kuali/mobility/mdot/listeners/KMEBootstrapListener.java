@@ -66,6 +66,16 @@ public class KMEBootstrapListener extends BootstrapListener {
 		tools.add(ht);
 
 		tool = new Tool();
+		tool.setAlias("weather");
+		tool.setTitle("Weather");
+		tool.setUrl("weather");
+		tool.setDescription("Check your local weather!");
+		tool.setIconUrl("images/service-icons/srvc-weather.png");
+		adminService.saveTool(tool);
+		ht = new HomeTool(home, tool, 2);
+		tools.add(ht);
+
+		tool = new Tool();
 		tool.setAlias("news");
 		tool.setTitle("News");
 		tool.setUrl("news");

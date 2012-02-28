@@ -53,6 +53,7 @@
 		<tool.maps.version>2.0.0-SNAPSHOT</tool.maps.version>
 		<tool.news.version>2.0.0-SNAPSHOT</tool.news.version>
 		<tool.people.version>2.0.0-SNAPSHOT</tool.people.version>
+		<tool.weather.version>2.0.0-SNAPSHOT</tool.weather.version>
 		
 		<security.authentication>2.0.0-SNAPSHOT</security.authentication>
 
@@ -82,6 +83,7 @@
 				<module>maps</module>
 				<module>news</module>
 				<module>people</module>
+				<module>weather</module>
 				<module>mdot-webapp</module>
 			</modules>
 		</profile>
@@ -409,6 +411,27 @@
                 <groupId>org.kuali.mobility</groupId>
                 <artifactId>people-webapp</artifactId>
                 <version>${tool.people.version}</version>
+            </dependency>
+            <!-- Weather Service -->
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>weather-api</artifactId>
+                <version>${tool.weather.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>weather-impl</artifactId>
+                <version>${tool.weather.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>weather-web</artifactId>
+                <version>${tool.weather.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>weather-webapp</artifactId>
+                <version>${tool.weather.version}</version>
             </dependency>
    			<!-- Spring dependencies -->
 			<dependency>
