@@ -22,10 +22,9 @@
 <c:if test="${fn:contains(header['User-Agent'],'Android')}">
 	<c:set var="platform" value="Android"/>
 </c:if>
+<c:set var="phonegap" value="${cookie.phonegap.value}"/>
 
-
-
-<kme:page title="Search Results" id="people" backButton="true" homeButton="true" cssFilename="people" appcacheFilename="iumobile.appcache" onBodyLoad="init()" platform="${platform}">
+<kme:page title="Search Results" id="people" backButton="true" homeButton="true" cssFilename="people" appcacheFilename="iumobile.appcache" onBodyLoad="init()" platform="${platform}" phonegap="${phonegap}">
 <script type="text/javascript" charset="utf-8">
 
 // Wait for PhoneGap to load
@@ -153,7 +152,14 @@ function onSaveError(contactError) {
 </script>
 	<kme:content>
 		<kme:listView id="detailsList" filter="false" dataTheme="c" dataInset="false">
-			<script type="text/javascript">			
+			<script type="text/javascript">		
+				var nativeCookie 	= $.cookie('native');
+				var pgCookie 		= $.cookie('phonegap')
+				var canSaveContact = 0;
+				if(nativeCookie == "yes" && pgCookie != ''){
+					canSaveContact = 1;
+				}
+				
 				$('[data-role=page][id=people]').live('pagebeforeshow', function(event, ui) {
 					$('#detailsTemplate').template('detailsTemplate');
 					refreshTemplate('${pageContext.request.contextPath}/people/details', '#detailsList', 'detailsTemplate', '<li>The person was not found.</li>', function() {$('#detailsList').listview('refresh');});				
@@ -208,11 +214,14 @@ function onSaveError(contactError) {
 						<li class="link-phone"><a href="tel:\${person.phone}">\${person.phone}</a></li>
 					{{/if}}				
 					
+					{{if canSaveContact}}
 					<li>
 						<a id="savecontact" data-icon="plus" href="#" data-role="button" onclick="saveContact('\${person.firstName}', '\${person.lastName}', '\${person.departments}', '\${person.email}', '\${person.phone}')" data-theme="c">
 							Save Contact
 						</a>
 					</li>
+					{{/if}}
+
 				{{else}}
 					<li>The person was not found.</li>
 				{{/if}}
