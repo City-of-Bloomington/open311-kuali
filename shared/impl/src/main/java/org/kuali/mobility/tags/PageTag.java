@@ -215,13 +215,11 @@ public class PageTag extends SimpleTagSupport {
             out.println("<link href=\"" + contextPath + "/css/jquery.mobile.css\" rel=\"stylesheet\" type=\"text/css\" />");
             out.println("<link href=\"" + contextPath + "/css/jquery-mobile-fluid960.css\" rel=\"stylesheet\" type=\"text/css\" />");
             out.println("<link href=\"" + contextPath + "/css/kme.css\" rel=\"stylesheet\" type=\"text/css\" />");
-            out.println("<link href=\"" + contextPath + "/css/" + institutionCss + ".css\" rel=\"stylesheet\" type=\"text/css\" />");
+            out.println("<link href=\"" + contextPath + "/css/institution.css\" rel=\"stylesheet\" type=\"text/css\" />");
             if (cssFilename != null && !cssFilename.trim().equals("")) {
             	out.println("<link href=\"" + contextPath + "/css/" + cssFilename + ".css\" rel=\"stylesheet\" type=\"text/css\" />");
             }
-
-            //out.println("<script src=\"http://jsconsole.com/remote.js?83838903-5AB2-408D-9991-087ADD37665C\"></script>");
-            
+      
             out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/jquery.js\"></script>");
             out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/jquery.cookie.js\"></script>");
             out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/custom.js\"></script>");
