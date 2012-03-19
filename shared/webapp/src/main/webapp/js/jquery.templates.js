@@ -30,41 +30,6 @@ function refreshTemplate(ajaxUrl, htmlElement, templateName, emptyContentMessage
 	});
 }
 
-function refreshDoTTemplate(ajaxUrl, htmlElement, templateName, emptyContentMessage, successCallback, failCallback) {
-	$.mobile.showPageLoadingMsg();
-	$(htmlElement).text('');
-	var dynamicDataResp = $.ajax({
-		url: ajaxUrl,
-		dataType: 'json',
-		async: false,
-		cache: false,
-	});
-	dynamicDataResp.done(function(){
-		var dynamicDataObj = jQuery.parseJSON(dynamicDataResp.responseText);
-
-		var doTFn = doT.template(document.getElementById(templateName).text, undefined, undefined);
-		document.getElementById(htmlElement).innerHTML = doTFn(dynamicDataObj);
-
-		if (!$(htmlElement).children().length) {
-			$(htmlElement).html(emptyContentMessage);
-		}
-		if (successCallback) {
-			successCallback();
-		}
-	});
-	dynamicDataResp.fail(function(){
-		$.mobile.hidePageLoadingMsg();
-		if (failCallback) {
-			failCallback();
-		}
-		alert("An error has occurred. Make sure you have network connectivity.");
-	});
-	dynamicDataResp.always(function(){
-		$.mobile.hidePageLoadingMsg();
-	});
-}
-
-
 function setPageTitle(title) {
 	$('div[data-role=page] div[data-role=header] h1').text(title);
 	$('title').text(title);

@@ -18,6 +18,7 @@ package org.kuali.mobility.people.controllers;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -59,18 +60,23 @@ public class PeopleController {
 		SearchCriteria s = new SearchCriteria();
 		uiModel.addAttribute("search", s);
 		//removeFromCache(request.getSession(), "People.Search.Results");
+		request.setAttribute("watermark", "[Keyword] or [Last, First] or [First Last]");
 		return "people/index";
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
 	public String postSimpleSearch(Model uiModel, @ModelAttribute("search") SearchCriteria search, BindingResult result, HttpServletRequest request) {
-		if (validateSimpleSearch(search, result)) {
+		if (validateSimpleSearch(search, result, request)) {
 			List<DirectoryEntry> people = peopleService.findEntries(search);
 
 			Map<String, String> userNameHashes = new HashMap<String, String>();
-			for (DirectoryEntry d : people) {
-				Person p = (Person)d;
+			for (Iterator d = people.iterator(); d.hasNext();) {
+				Person p = (Person) d.next();
 				userNameHashes.put(p.getHashedUserName(), p.getUserName());
+				if (p.getUserName() != null && search != null && search.getSearchText() != null && p.getUserName().trim().equals(search.getSearchText().trim())) {
+					putInCache(request.getSession(), "People.Search.UniqueResult", p);
+					d.remove();
+				}
 			}
 			
 			request.getSession().setAttribute("People.UserNames.Hashes", userNameHashes);
@@ -78,9 +84,10 @@ public class PeopleController {
 			putInCache(request.getSession(), "People.Search.Results", people);
 			putInCache(request.getSession(), "People.Search.Criteria", search);
 
+			request.setAttribute("watermark", "[Keyword] or [Last, First] or [First Last]");
+
 			return "people/index";
 		} else {
-
 			return "people/index";
 		}
 	}
@@ -90,19 +97,37 @@ public class PeopleController {
     @ResponseBody
     public String getListJson(HttpServletRequest request) {
 		List<Person> people = (List<Person>) getFromCache(request.getSession(), "People.Search.Results");
-		if (people == null) return null;
+		SearchCriteria sc = (SearchCriteria)getFromCache(request.getSession(), "People.Search.Criteria");		
+		if (people == null || people.size() == 0) {
+			if (sc != null && sc.getSearchText() != null) {
+				List<Map<String, Object>> results = new ArrayList<Map<String, Object>>();
+				Map<String, Object> m = new HashMap<String, Object>();
+				m.put("error", true);
+				results.add(m);
+				return new JSONSerializer().exclude("*.class").deepSerialize(results);
+			}
+			return null;
+		}
 		
 		List<Map<String, Object>> results = new ArrayList<Map<String, Object>>();
 		SearchCriteria s = (SearchCriteria)getFromCache(request.getSession(), "People.Search.Criteria");
-		if (!people.isEmpty() && people.get(0) != null && people.get(0).getUserName() != null && s != null && s.getSearchText() != null) {
-			if (people.get(0).getUserName().trim().equals(s.getSearchText().trim())) {
-				Person p1 = people.remove(0);
+		Person up = (Person) getFromCache(request.getSession(), "People.Search.UniqueResult");
+		if (!people.isEmpty() && up != null && up.getUserName() != null && s != null && s.getSearchText() != null) {
+			if (up.getUserName().trim().equals(s.getSearchText().trim())) {
 				List<Person> u = new ArrayList<Person>();
-				u.add(p1);
+				u.add(up);
 				Map<String, Object> m = new HashMap<String, Object>();
 				m.put("heading", "Exact network id match");
 				m.put("directoryEntries", u);
 				results.add(m);
+
+				for (Iterator d = people.iterator(); d.hasNext();) {
+					Person p = (Person) d.next();
+					if (p.getUserName().equals(up.getUserName())) {
+						d.remove();
+						break;
+					}
+				}			
 			}
 		}
 
@@ -112,7 +137,6 @@ public class PeopleController {
 			m.put("directoryEntries", people);
 			results.add(m);
 		}
-		//return new JSONSerializer().exclude("*.class").deepSerialize(people);
 		return new JSONSerializer().exclude("*.class").deepSerialize(results);
     }
 
@@ -210,11 +234,12 @@ public class PeopleController {
 		}
 	}
 
-	private boolean validateSimpleSearch(SearchCriteria search, BindingResult result) {
+	private boolean validateSimpleSearch(SearchCriteria search, BindingResult result, HttpServletRequest request) {
 		boolean hasErrors = false;
-		Errors errors = ((Errors) result);
+		//Errors errors = ((Errors) result);
 		if ((search.getSearchText() == null || search.getSearchText().trim().isEmpty())) {
-			errors.rejectValue("searchText", "", "You must provide at least one letter to search.");
+			//errors.rejectValue("searchText", "", "You must provide at least one letter to search.");
+			request.setAttribute("watermark", "You must provide at least one letter to search.");
 			hasErrors = true;
 		}
 		return !hasErrors;
