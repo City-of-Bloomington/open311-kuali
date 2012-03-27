@@ -64,5 +64,8 @@ public interface NewsSource {
 	 * @param order the display order
 	 */
 	public void setOrder(int order);
+	
+	public void setParentId( Long parentId );
+	public Long getParentId();
 
 }

@@ -136,4 +136,22 @@ public class NewsDaoDBImpl implements NewsDao {
 		this.entityManager = entityManager;
 	}
 
+	@Override
+	public List<NewsSource> findNewsSources(Long parentId, Boolean isActive) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<NewsSource> findAllActiveNewsSources(Long parentId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<NewsSource> findAllNewsSources(Long parentId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

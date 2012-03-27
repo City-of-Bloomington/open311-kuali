@@ -23,8 +23,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.log4j.Logger;
 import org.kuali.mobility.news.entity.NewsSource;
+import org.kuali.mobility.news.util.NewsSourcePredicate;
 import org.kuali.mobility.util.mapper.DataMapper;
 import org.springframework.context.ApplicationContext;
 
@@ -41,17 +43,32 @@ public class NewsDaoImpl implements NewsDao {
 	private String newsMappingFile;
 	private String newsMappingUrl;
 
+	public List<NewsSource> findNewsSources( final Long parentId, final Boolean isActive )
+	{
+		initData();
+		return (List<NewsSource>)CollectionUtils.select( getCache().getNewsSources().values(), new NewsSourcePredicate( parentId, isActive ) );
+	}
+	
 	@Override
 	public List<NewsSource> findAllActiveNewsSources() {
 		initData();
-		
-		return new ArrayList<NewsSource>(getCache().getNewsSources().values());
+		return (List<NewsSource>)CollectionUtils.select( getCache().getNewsSources().values(), new NewsSourcePredicate( null, new Boolean(true) ) );
 	}
-
+	
+	public List<NewsSource> findAllActiveNewsSources( final Long parentId ) {
+		initData();
+		return (List<NewsSource>)CollectionUtils.select( (List<NewsSource>)getCache().getNewsSources(), new NewsSourcePredicate( parentId, new Boolean(true) ) );
+	}
+	
 	@Override
 	public List<NewsSource> findAllNewsSources() {
 		initData();
 		return new ArrayList<NewsSource>(getCache().getNewsSources().values());
+	}
+	
+	public List<NewsSource> findAllNewsSources( final Long parentId ) {
+		initData();
+		return (List<NewsSource>)CollectionUtils.select( (List<NewsSource>)getCache().getNewsSources(), new NewsSourcePredicate( parentId, null ) );
 	}
 
 	@Override

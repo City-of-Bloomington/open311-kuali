@@ -58,6 +58,15 @@ public class NewsServiceImpl implements NewsService {
 		return getDao().findAllActiveNewsSources();
 	}
 
+	public List<NewsSource> getAllActiveNewsSources( final Long parentId ) {
+		LOG.debug( "Called getAllActiveNewsSources web service." );
+		return getDao().findAllActiveNewsSources(parentId);
+	}
+	
+	public List<NewsSource> getNewsSources( final Long parentId, final Boolean isActive) {
+		return getDao().findNewsSources(parentId, isActive);
+	}
+
 	@Override
 	//@Cacheable(value="newsSource", key="#id")
 	public NewsSource getNewsSourceById(Long id) {
@@ -174,6 +183,16 @@ public class NewsServiceImpl implements NewsService {
 		return feeds;
 	}
 
+	public List<NewsFeed> getNewsFeeds( final Long parentId, final Boolean isActive ) {
+		List<NewsFeed> feeds = new ArrayList<NewsFeed>();
+		
+		for( NewsSource s : getNewsSources( parentId, isActive ) ) {
+			feeds.add( getNewsFeed( s.getId().longValue() ) );
+		}
+		
+		return feeds;
+	}
+	
 	@Override
 	//@CacheEvict(value = "newsFeed", key="#newsSourceId", allEntries=false)
 	public NewsFeed getNewsFeed(long newsSourceId) {

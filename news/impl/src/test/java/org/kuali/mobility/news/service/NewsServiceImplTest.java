@@ -64,7 +64,7 @@ public class NewsServiceImplTest {
 	public void testGetNewsSourceById() {
 		NewsService service = (NewsService)getApplicationContext().getBean("newsService");
 		NewsSource source = service.getNewsSourceById(new Long(2) );
-		assertTrue( "Failed to find news source.", source != null && "CNN.com - Health".equalsIgnoreCase( source.getName() ) );
+		assertTrue( "Failed to find news source.", source != null && "BBC - News".equalsIgnoreCase( source.getName() ) );
 	}
 
 	@Test
@@ -72,6 +72,13 @@ public class NewsServiceImplTest {
 		NewsService service = (NewsService)getApplicationContext().getBean("newsService");
 		List<NewsFeed> feeds = service.getAllActiveNewsFeeds();
 		assertTrue( "Failed to find news feeds.", feeds != null && feeds.size() > 0 );
+	}
+
+	@Test
+	public void testGetNewsFeeds() {
+		NewsService service = (NewsService)getApplicationContext().getBean("newsService");
+		List<NewsFeed> feeds = service.getNewsFeeds( new Long(1), new Boolean( true ) );
+		assertTrue( "Failed to find child news feed for source 1.", feeds != null && feeds.size() > 0 );
 	}
 
 	@Test

@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.log4j.Logger;
 import org.kuali.mobility.configparams.service.ConfigParamService;
 import org.kuali.mobility.news.entity.NewsFeed;
+import org.kuali.mobility.news.entity.NewsSource;
 import org.kuali.mobility.news.service.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -41,6 +42,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class NewsController {
 	public static final Logger LOG = Logger.getLogger( NewsController.class );
     
+	private final Boolean ACTIVE = new Boolean( true );
+	
 	@Autowired
     private NewsService newsService;
     public void setNewsService(NewsService newsService) {
@@ -62,7 +65,7 @@ public class NewsController {
 	 */
     @RequestMapping(method = RequestMethod.GET)
     public String newsHome(Model uiModel, HttpServletRequest request) {	
-    	List<NewsFeed> feeds = newsService.getAllActiveNewsFeeds();
+    	List<NewsFeed> feeds = newsService.getNewsFeeds( Long.valueOf(0), ACTIVE );
     	int sampleSize = 2;
     	try {
     		String configSampleSize = configParamService.findValueByName("News.Sample.Size");
@@ -70,6 +73,13 @@ public class NewsController {
     	} catch (Exception e) {
     		
     	}
+    	if( feeds == null || feeds.size() == 0 ) {
+    		LOG.debug( "======= No NewsFeed found for parent 0. ========" );
+    	}
+    	for( NewsFeed f : feeds ) {
+    		LOG.debug( "Feed for News Source: "+f.getSourceId() );
+    	}
+    	
     	uiModel.addAttribute("newsFeeds", feeds);
     	uiModel.addAttribute("sampleSize", sampleSize);
     	return "news/newsHome";
@@ -86,16 +96,30 @@ public class NewsController {
      */
     @RequestMapping(value = "/{sourceId}", method = RequestMethod.GET)
     public String getNewsArticle(HttpServletRequest request, @PathVariable("sourceId") long sourceId, @RequestParam(value = "articleId", required = false) String articleId, Model uiModel) {
-		LOG.debug( "getNewsArticle() : sourceId = "+sourceId+" articleId = "+articleId );
+    	String destination = null;
+    	LOG.debug( "getNewsArticle() : sourceId = "+sourceId+" articleId = "+articleId );
     	if (articleId != null && articleId != "") {
     		uiModel.addAttribute("article", newsService.getNewsArticle(articleId, sourceId));
     		uiModel.addAttribute("feedTitle", newsService.getNewsFeed(sourceId).getTitle());
     		LOG.debug( "Forwarding to news/newsArticle" );
-        	return "news/newsArticle";
+        	destination = "news/newsArticle";
     	} else {
-    		uiModel.addAttribute("feed", newsService.getNewsFeed(sourceId));
-    		LOG.debug( "Forwarding to news/newsStream" );
-        	return "news/newsStream";
+    		List<NewsFeed> feeds = newsService.getNewsFeeds( Long.valueOf( sourceId ), ACTIVE );
+    		if( feeds == null || feeds.isEmpty() ) {
+	    		uiModel.addAttribute("feed", newsService.getNewsFeed(sourceId));
+	    		LOG.debug( "Forwarding to news/newsStream" );
+	        	destination = "news/newsStream";
+    		} else {
+    	    	uiModel.addAttribute("newsFeeds", feeds);
+    	    	int sampleSize = 2;
+    	    	try {
+    	    		String configSampleSize = configParamService.findValueByName("News.Sample.Size");
+    	    		sampleSize = Integer.parseInt(configSampleSize);
+    	    	} catch (Exception e) {}
+    	    	uiModel.addAttribute("sampleSize", sampleSize);
+	        	destination = "news/newsHome";
+    		}
     	}
+    	return destination;
     }
 }

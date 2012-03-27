@@ -21,6 +21,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.persistence.Version;
 
 /**
@@ -55,6 +56,10 @@ public class NewsSourceDBImpl implements NewsSource {
     @Column(name="VER_NBR")
     private Long versionNumber;
 	
+	// TODO: Change this so it can be persisted.
+	@Transient
+	private Long parentId;
+	
 	/* (non-Javadoc)
 	 * @see org.kuali.mobility.news.entity.NewsSource#getId()
 	 */
@@ -82,7 +87,6 @@ public class NewsSourceDBImpl implements NewsSource {
 	/* (non-Javadoc)
 	 * @see org.kuali.mobility.news.entity.NewsSource#setUrl(java.lang.String)
 	 */
-	@Override
 	public void setUrl(String url) {
 		this.url = url;
 	}
@@ -98,7 +102,6 @@ public class NewsSourceDBImpl implements NewsSource {
 	/* (non-Javadoc)
 	 * @see org.kuali.mobility.news.entity.NewsSource#setVersionNumber(java.lang.Long)
 	 */
-	@Override
 	public void setVersionNumber(Long versionNumber) {
 		this.versionNumber = versionNumber;
 	}
@@ -130,7 +133,6 @@ public class NewsSourceDBImpl implements NewsSource {
 	/* (non-Javadoc)
 	 * @see org.kuali.mobility.news.entity.NewsSource#setName(java.lang.String)
 	 */
-	@Override
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -149,5 +151,13 @@ public class NewsSourceDBImpl implements NewsSource {
 	@Override
 	public void setOrder(int order) {
 		this.order = order;
+	}
+
+	public Long getParentId() {
+		return parentId;
+	}
+
+	public void setParentId(Long parentId) {
+		this.parentId = parentId;
 	}
 }

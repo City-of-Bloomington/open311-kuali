@@ -82,6 +82,16 @@ public class NewsCacheImpl implements NewsCache, ApplicationContextAware {
 	@SuppressWarnings("unchecked")
 	//@Cacheable(value="newsFeed", key="#feed.sourceId")
 	public void updateFeed(NewsFeed feed, NewsSource source) {
+		if (source==null ) {
+			LOG.debug( "Not updating feed, source is null." );
+			return;
+		} else if( source.getUrl()==null )
+		{
+			LOG.debug( "Not updating feed due to no URL for source "+source.getId() );
+			feed.setTitle( source.getName() );
+			feed.setSourceId( source.getId() );
+			return;
+		}
 		LOG.debug( "Updating feed for source "+source.getId() );
 		feed.setOrder(source.getOrder());
 		
@@ -133,6 +143,9 @@ public class NewsCacheImpl implements NewsCache, ApplicationContextAware {
 				articles.add(article);
 			}
 			feed.setArticles(articles);
+		} else {
+			feed.setTitle( source.getName() );
+			feed.setSourceId( source.getId() );
 		}
 	}
 

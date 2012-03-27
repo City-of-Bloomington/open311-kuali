@@ -47,6 +47,11 @@
 		    <artifactId>rome</artifactId>
 		    <version>1.0</version>
 		</dependency>
+		<!-- List manipulation support -->
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+		</dependency>
 	</dependencies>
 	<build>
 		<resources>

@@ -29,6 +29,8 @@ import org.kuali.mobility.news.entity.NewsSource;
  */
 public interface NewsService {
 
+	public List<NewsSource> getNewsSources( Long parentId, Boolean isActive);
+	
 	/**
 	 * @return a list of all NewsSource objects sorted on NewsSource.order from least to greatest
 	 */
@@ -38,6 +40,7 @@ public interface NewsService {
 	 * @return a list of all active NewsSource objects sorted on NewsSource.order from least to greatest
 	 */
 	public List<NewsSource> getAllActiveNewsSources();
+	public List<NewsSource> getAllActiveNewsSources( Long parentId );
 	
 	/**
 	 * Delete a NewsSource object
@@ -91,6 +94,8 @@ public interface NewsService {
 	 */
 	public List<NewsFeed> getAllActiveNewsFeeds();
 	
+	public List<NewsFeed> getNewsFeeds( Long parentId, Boolean isActive );
+
 	/**
 	 * Retrieve the details of an article
 	 * 

@@ -26,15 +26,19 @@ import org.kuali.mobility.news.entity.NewsSource;
  */
 public interface NewsDao {
 	
+	public List<NewsSource> findNewsSources( Long parentId, Boolean isActive );
+	
 	/**
 	 * @return a list of active NewsSource objects
 	 */
 	public List<NewsSource> findAllActiveNewsSources();
+	public List<NewsSource> findAllActiveNewsSources( Long parentId );
 	
 	/**
 	 * @return a list of all NewsSource objects
 	 */
 	public List<NewsSource> findAllNewsSources();
+	public List<NewsSource> findAllNewsSources( Long parentId );
 	
 	/**
 	 * @return a single NewsSource object matched by its id

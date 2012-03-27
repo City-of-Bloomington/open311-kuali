@@ -23,6 +23,7 @@ public class NewsSourceImpl implements NewsSource {
 	private boolean active = true;
 	private int order = 0;
 	private Long versionNumber = null;
+	private Long parentId = null;
 
 	public Long getId() {
 		return id;
@@ -59,6 +60,12 @@ public class NewsSourceImpl implements NewsSource {
 	}
 	public void setVersionNumber(Long versionNumber) {
 		this.versionNumber = versionNumber;
+	}
+	public Long getParentId() {
+		return parentId;
+	}
+	public void setParentId(Long parentId) {
+		this.parentId = parentId;
 	}
 	
 

@@ -16,14 +16,15 @@
 package org.kuali.mobility.news.dao;
 
 import static org.junit.Assert.*;
-import static org.junit.Assert.fail;
 
 import java.util.List;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.log4j.Logger;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.kuali.mobility.news.entity.NewsSource;
+import org.kuali.mobility.news.util.NewsSourcePredicate;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
@@ -60,7 +61,7 @@ public class NewsDaoImplTest {
 	public void testLookup() {
 		NewsDao dao = (NewsDao)getApplicationContext().getBean("newsDao");
 		NewsSource source = dao.lookup( new Long( 2 ) );
-		assertTrue( "Failed to find news source.", source != null && "CNN.com - Health".equalsIgnoreCase( source.getName() ) );
+		assertTrue( "Failed to find news source.", source != null && "BBC - News".equalsIgnoreCase( source.getName() ) );
 	}
 
 	public static ApplicationContext getApplicationContext() {
