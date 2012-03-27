@@ -33,20 +33,28 @@
 					});
 				</script>
 				<script id="peopleTemplate" type="text/x-jquery-tmpl">
-						{{if error}}
-						<li>No results found.</li>
-						{{/if}}
 						{{if heading}}
 						<li data-role="list-divider" data-theme="b" data-icon="listview" >\${heading}</li>
+						{{/if}}
+						{{if error}}
+							<li>\${error}</li>
+						{{/if}}
+						{{if directoryEntries}}
   	  					{{each directoryEntries}}
 						<li>
         					<a href="${pageContext.request.contextPath}/people/\${hashedUserName}">
+								{{if lastName}}
 								<h3>\${lastName}, \${firstName}</h3>
+								{{else}}
+								<h3>\${displayName}</h3>
+								{{/if}}
+								{{if locations && 0 < locations.length}}
 								<p><strong>Location:</strong>
 								{{each(i,location) locations}}
 									\${location}{{if i+1 < locations.length}}, {{/if}}
 								{{/each}}
 								</p>
+								{{/if}}
 								<p><strong>Affiliation:</strong>
 								{{each(i,affiliation) affiliations}}
 									\${affiliation}{{if i+1 < affiliations.length}}, {{/if}}

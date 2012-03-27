@@ -80,6 +80,8 @@ public class DirectoryDaoUMImpl implements DirectoryDao {
 			        reader = new BufferedReader(new InputStreamReader(response, DEFAULT_CHARACTER_SET));
 			        
 			        for (String line; (line = reader.readLine()) != null;) {
+			            // No people found {"person":[]}
+			            // Too many results, exceed 300  {"person":[{}]}
 			            LOG.debug(line);
 			            
 			            line = line.substring(10, line.length()-1);
@@ -96,31 +98,37 @@ public class DirectoryDaoUMImpl implements DirectoryDao {
 				        
 				        for( HashMap p : people )
 				        {
-				        	LOG.debug( "Found "+(String)p.get("uniqname") );
-				        	Person entry = new PersonImpl();
-				        	if( p.containsKey("uniqname") )
-				        	{
-				        		entry.setUserName( (String)p.get("uniqname") );
-				        	}
-				        	if( p.containsKey("name") )
-				        	{
-				        		entry.setDisplayName( (String)p.get("name") );
-				        	}
-				        	if( p.containsKey("aff") )
-				        	{
-				        		if( p.get("aff") instanceof String ) {
-				        			List<String> aff = new ArrayList<String>();
-				        			aff.add( (String)p.get("aff") );
-				        			entry.setAffiliations( aff );
-				        		} else {
-				        			entry.setAffiliations( (List<String>)p.get("aff") );
-				        		}
-				        	}
-//				        	if( p.containsKey("title") )
-//				        	{
-//			        			entry.set( (String)p.get("title") );
+//				        	if ( p.isEmpty() ) {
+//				        		//Too many people found. Please supply more information
+//				        		LOG.info("Empty result"); 
 //				        	}
-				        	de.add(entry);
+//				        	else {
+					        	LOG.debug( "Found "+(String)p.get("uniqname") );
+					        	Person entry = new PersonImpl();
+					        	if( p.containsKey("uniqname") )
+					        	{
+					        		entry.setUserName( (String)p.get("uniqname") );
+					        	}
+					        	if( p.containsKey("name") )
+					        	{
+					        		entry.setDisplayName( (String)p.get("name") );
+					        	}
+					        	if( p.containsKey("aff") )
+					        	{
+					        		if( p.get("aff") instanceof String ) {
+					        			List<String> aff = new ArrayList<String>();
+					        			aff.add( (String)p.get("aff") );
+					        			entry.setAffiliations( aff );
+					        		} else {
+					        			entry.setAffiliations( (List<String>)p.get("aff") );
+					        		}
+					        	}
+	//				        	if( p.containsKey("title") )
+	//				        	{
+	//			        			entry.set( (String)p.get("title") );
+	//				        	}
+					        	de.add(entry);
+//				        	}
 				        }
 			        }
 			    } catch( UnsupportedEncodingException uee ) {
@@ -175,14 +183,26 @@ public class DirectoryDaoUMImpl implements DirectoryDao {
 	            
 		        if( raw == null ) {
 		        	LOG.debug( "Results were not parsed, "+personId+" not found." );
-		        } else {
+		        } 
+		        else if ( raw.containsKey( "errors" ) && raw.get("errors")!=null && raw.get("errors").hashCode()!=0 ){
+		        	// TODO get error description
+		        	// Object v = raw.get("errors");
+		        
+		        	LOG.debug("errors:" + raw.get("errors"));
+		        }		        
+		        else {
 		        	person = new PersonImpl();
 		        	if( raw.containsKey( "affiliation" ) ) {
-		        		
-//		        		person.setAffiliations(affiliations)
+		        		if( raw.get( "affiliation" ) instanceof List ) {
+		        			person.setAffiliations( (List<String>)raw.get( "affiliation" ) );
+		        		}
+		        		else {
+		        			List<String> aff = new ArrayList<String>();
+		        			aff.add( (String)raw.get( "affiliation" ) );
+		        			person.setAffiliations( aff );
+		        		}
 		        	}
 		        	if( raw.containsKey( "aliases" ) ) {
-		        		
 		        	}
 		        	if( raw.containsKey( "displayName" ) ) {
 		        		person.setDisplayName( (String)raw.get( "displayName" ) );
@@ -191,14 +211,43 @@ public class DirectoryDaoUMImpl implements DirectoryDao {
 		        		person.setEmail( (String)raw.get( "email" ) );
 		        	}
 		        	if( raw.containsKey( "title" ) ) {
+		        		if( raw.get( "title" ) instanceof List ) {
+		        			person.setDepartments( (List<String>)raw.get( "title" ) );
+		        		}
+		        		else {
+		        			List<String> aff = new ArrayList<String>();
+		        			aff.add( (String)raw.get( "title" ) );
+		        			person.setDepartments( aff );
+		        		}
 		        	}
 		        	if( raw.containsKey( "uniqname" ) ) {
 		        		person.setUserName( (String)raw.get( "uniqname" ) );
 		        	}
 		        	if( raw.containsKey( "workAddress" ) ) {
+		        		String rawAddress = null;
+		        		if( raw.get( "workAddress" ) instanceof List ) {
+		        			rawAddress = ((List<String>)raw.get( "workAddress" )).get(0);
+		        		}
+		        		else {
+		        			rawAddress = (String)raw.get("workAddress");
+		        		}
+		        		if( rawAddress != null ) {
+		        			rawAddress = rawAddress.replace( " $ ", "\n" );
+		        		}
+		        		person.setAddress(rawAddress);
 		        	}
 		        	if( raw.containsKey( "workPhone" ) ) {
-		        		person.setPhone( (String)raw.get( "workPhone" ) );
+		        		String rawPhone = null;
+		        		if( raw.get( "workPhone" ) instanceof List ) {
+		        			rawPhone = ((List<String>)raw.get( "workPhone" )).get(0);
+		        		}
+		        		else {
+		        			rawPhone = (String)raw.get("workPhone");
+		        		}
+		        		if( rawPhone != null ) {
+		        			rawPhone = rawPhone.replace( "/", "-" );
+		        		}
+		        		person.setPhone( rawPhone );
 		        	}
 		        	
 		        }

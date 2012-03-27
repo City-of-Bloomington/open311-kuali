@@ -134,7 +134,14 @@ public class PeopleController {
 		if (people.size() > 0) {
 			Map<String, Object> m = new HashMap<String, Object>();
 			m.put("heading", "People");
-			m.put("directoryEntries", people);
+			
+			if (people.size()==1 && people.get(0) != null && people.get(0).getUserName()==null) {
+				//Too many people found. DirectoryDaoUMImpl creates an empty Person object in this case. 
+				m.put("error", "Too many people found. Please be more specific.");
+			}
+			else {
+				m.put("directoryEntries", people);
+			}
 			results.add(m);
 		}
 		return new JSONSerializer().exclude("*.class").deepSerialize(results);
