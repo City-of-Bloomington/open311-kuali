@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<diningHalls>
+	<diningHall>
+		<campus>Central Campus</campus>
+		<name>Barbour Dining Hall</name>
+		<type>Dining Halls</type>
+	</diningHall>
+	<diningHall>
+		<campus>Central Campus</campus>
+		<location>Michigan League</location>
+		<name>Beanster's</name>
+		<type>University Unions Eateries</type>
+	</diningHall>
+	<diningHall>
+		<campus>North Campus</campus>
+		<location>Pierpont Commons</location>
+		<name>Beanster's</name>
+		<type>University Unions Eateries</type>
+	</diningHall>
+	<diningHall>
+		<campus>Central Campus</campus>
+		<location>Shapiro Library</location>
+		<name>Bert's Cafe</name>
+		<type>University Unions Eateries</type>
+	</diningHall>
+	<diningHall>
+		<campus>North Campus</campus>
+		<name>Bursley Dining Hall</name>
+		<type>Dining Halls</type>
+	</diningHall>
+	<diningHall>
+		<campus>North Campus</campus>
+		<location>Pierpont Commons</location>
+		<name>Commons Cafe</name>
+		<type>University Unions Eateries</type>
+	</diningHall>
+	<diningHall>
+		<campus>Central Campus</campus>
+		<name>East Quad Dining Hall</name>
+		<type>Dining Halls</type>
+	</diningHall>
+	<diningHall>
+		<campus>Hill Neighborhood</campus>
+		<name>Marketplace at HDC</name>
+		<type>Dining Halls</type>
+	</diningHall>
+	<diningHall>
+		<campus>Hill Neighborhood</campus>
+		<name>Mary Markley</name>
+		<type>Dining Halls</type>
+	</diningHall>
+	<diningHall>
+		<campus>Central Campus</campus>
+		<name>North Quad Dining Hall</name>
+		<type>Dining Halls</type>
+	</diningHall>
+	<diningHall>
+		<campus>Hill Neighborhood</campus>
+		<name>Twigs at Oxford</name>
+		<type>Dining Halls</type>
+	</diningHall>
+	<diningHall>
+		<campus>Central Campus</campus>
+		<name>South Quad Dining Hall</name>
+		<type>Dining Halls</type>
+	</diningHall>
+	<diningHall>
+		<campus>Central Campus</campus>
+		<location>Michigan Union</location>
+		<name>U Club</name>
+		<type>University Unions Eateries</type>
+	</diningHall>
+	<diningHall>
+		<campus>Central Campus</campus>
+		<location>Michigan League</location>
+		<name>U-go's</name>
+		<type>University Unions Eateries</type>
+	</diningHall>
+	<diningHall>
+		<campus>Central Campus</campus>
+		<location>Michigan Union</location>
+		<name>U-go's</name>
+		<type>University Unions Eateries</type>
+	</diningHall>
+	<diningHall>
+		<campus>North Campus</campus>
+		<location>Pierpont Commons</location>
+		<name>U-go's</name>
+		<type>University Unions Eateries</type>
+	</diningHall>
+	<diningHall>
+		<campus>Central Campus</campus>
+		<name>West Quad Dining Hall</name>
+		<type>Dining Halls</type>
+	</diningHall>
+</diningHalls>

@@ -32,6 +32,7 @@ import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
 import org.kuali.mobility.dining.entity.FoodItem;
 import org.kuali.mobility.dining.entity.Menu;
+import org.kuali.mobility.dining.entity.Place;
 
 public class DiningServiceImpl implements DiningService {
 	
@@ -116,6 +117,18 @@ public class DiningServiceImpl implements DiningService {
 		this.diningUrls = diningUrls;
 	}
 
+	@Override
+	public List<Place> getPlaces() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getMenusJson(String name, String location) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+		
 }
 
 

@@ -15,10 +15,13 @@
 
 package org.kuali.mobility.dining.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.kuali.mobility.dining.dao.DiningDao;
+import org.kuali.mobility.dining.entity.Place;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -34,5 +37,17 @@ public class DiningDaoImpl implements DiningDao {
     public void setEntityManager(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
+
+	@Override
+	public List<Place> getPlaceList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getMenusJson(String name, String location) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 } 

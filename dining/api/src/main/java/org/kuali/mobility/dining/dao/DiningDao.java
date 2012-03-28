@@ -15,6 +15,11 @@
 
 package org.kuali.mobility.dining.dao;
 
-public interface DiningDao {
+import java.util.List;
 
+import org.kuali.mobility.dining.entity.Place;
+
+public interface DiningDao {
+	public List<Place> getPlaceList();
+	public String getMenusJson(final String name, final String location);
 }

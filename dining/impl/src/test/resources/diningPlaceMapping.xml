@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataMapping id="diningHall" className="org.kuali.mobility.dining.entity.PlaceImpl" list="true" rootElement="diningHalls">
+	<mapping mapTo="campus"/>
+	<mapping mapTo="name"/>
+	<mapping mapTo="type"/>
+	<mapping mapTo="location" />
+
+</dataMapping>

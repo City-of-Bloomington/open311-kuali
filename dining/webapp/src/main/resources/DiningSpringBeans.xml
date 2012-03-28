@@ -17,51 +17,18 @@
 						http://www.springframework.org/schema/tx 
 						http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
 
-	<bean class="org.kuali.mobility.dining.service.DiningServiceImpl">
-		<property name="diningUrls">
-			<map>
-				<entry key="BL">
-					<list>
-						<value>http://localhost:9999/mdot/testdata/dining.xml</value>
-					</list>
-				</entry>
-				<entry key="CO">
-					<list>
-						<value>http://localhost:9999/mdot/testdata/dining.xml</value>
-					</list>
-				</entry>
-				<entry key="KO">
-					<list>
-						<value>http://localhost:9999/mdot/testdata/dining.xml</value>
-					</list>
-				</entry>
-				<entry key="NW">
-					<list>
-						<value>http://localhost:9999/mdot/testdata/dining.xml</value>
-					</list>
-				</entry>
-				<entry key="SB">
-					<list>
-						<value>http://localhost:9999/mdot/testdata/dining.xml</value>
-					</list>
-				</entry>
-				<entry key="SE">
-					<list>
-						<value>http://localhost:9999/mdot/testdata/dining.xml</value>
-					</list>
-				</entry>
-				<entry key="IN">
-					<list>
-						<value>http://localhost:9999/mdot/testdata/dining.xml</value>
-					</list>
-				</entry>
-				<entry key="EA">
-					<list>
-						<value>http://localhost:9999/mdot/testdata/dining.xml</value>
-					</list>
-				</entry>
-			</map>
-		</property>
+	<bean id="diningService" class="org.kuali.mobility.dining.service.DiningServiceUMImpl">
+		<property name="dao" ref="diningDao"></property>
 	</bean>
 
+    <bean id="mapper" class="org.kuali.mobility.util.mapper.DataMapperImpl"/>    
+    
+    <bean id="diningDao" class="org.kuali.mobility.dining.dao.DiningDaoUMImpl">
+    	<property name="mapper" ref="mapper"/>
+    	<property name="placeSourceUrl" value="http://akekee.dsc.umich.edu:8180/dining/getDiningHalls/"/>
+<!--         <property name="placeSourceFile" value="diningPlaces.xml"/> -->
+        <property name="placeMappingFile" value="diningPlaceMapping.xml"/>
+        <property name="menusJsonURI" value="http://akekee.dsc.umich.edu:8180/dining/getMeals?_type=json" />
+    </bean>
+    
 </beans>
