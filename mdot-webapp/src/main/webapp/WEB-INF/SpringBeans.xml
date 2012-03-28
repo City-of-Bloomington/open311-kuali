@@ -34,9 +34,10 @@
 	<import resource="classpath:KMESpringBeans.xml" />
 	<import resource="classpath:CampusSpringBeans.xml" />
 	<import resource="classpath:AlertsSpringBeans.xml" />
-	<import resource="classpath:DiningSpringBeans.xml" />
+	<import resource="classpath:BusSpringBeans.xml" />
 	<import resource="classpath:ComputerLabsSpringBeans.xml" />
     <import resource="classpath:ConferenceSpringBeans.xml" />
+	<import resource="classpath:DiningSpringBeans.xml" />
     <import resource="classpath:FeedbackSpringBeans.xml" />
     <import resource="classpath:NewsSpringBeans.xml" />
     <import resource="classpath:EventsSpringBeans.xml" />
