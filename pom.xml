@@ -8,86 +8,89 @@
 	the specific language governing permissions and limitations under the License. -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<name>Kuali Mobility Enterprise</name>
-	<groupId>org.kuali.mobility</groupId>
-	<artifactId>mobility</artifactId>
-	<packaging>pom</packaging>
-	<url>http://kuali.org/mobility</url>
-	<inceptionYear>2011</inceptionYear>
-	<version>2.0.0-SNAPSHOT</version>
-	<scm>
-		<connection>scm:svn:https://svn.kuali.org/repos/mobility/trunk</connection>
-		<developerConnection>scm:svn:https://svn.kuali.org/repos/mobility/trunk</developerConnection>
-		<url>https://svn.kuali.org/repos/mobility/trunk</url>
-	</scm>
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<spring.version>3.1.0.RC1</spring.version>
-		<spring.security.version>3.0.5.RELEASE</spring.security.version>
-		<jetty.version>6.1.26</jetty.version>
-		<jdom.version>1.1</jdom.version>
-		<persistence-api.version>1.0</persistence-api.version>
-		<flexjson.version>2.1</flexjson.version>
-		<json-lib.version>2.3</json-lib.version>
-		<commons-httpclient.version>3.1</commons-httpclient.version>
-		<httpclient.version>4.0.1</httpclient.version>
-		<slf4j.version>1.5.6</slf4j.version>
-		<log4j.version>1.2.14</log4j.version>
-		<commons-logging.version>1.1.1</commons-logging.version>
-		<junit.version>4.8.2</junit.version>
-		<net.sf.ehcache.version>1.6.2</net.sf.ehcache.version> <!-- 2.4.6 is most recent but seems not to be in mvn repo -->
-		<commons-collections.version>3.2.1</commons-collections.version>	
-		
-		<tool.shared.version>2.0.0-SNAPSHOT</tool.shared.version>
-		<tool.admin.version>2.0.0-SNAPSHOT</tool.admin.version>
-		<tool.alerts.version>2.0.0-SNAPSHOT</tool.alerts.version>
-		<tool.computerlabs.version>2.0.0-SNAPSHOT</tool.computerlabs.version>
-		<tool.conference.version>2.0.0-SNAPSHOT</tool.conference.version>
-		<tool.configparams.version>2.0.0-SNAPSHOT</tool.configparams.version>
-		<tool.dining.version>2.0.0-SNAPSHOT</tool.dining.version>
-		<tool.emergencyinfo.version>2.0.0-SNAPSHOT</tool.emergencyinfo.version>
-		<tool.events.version>2.0.0-SNAPSHOT</tool.events.version>
-		<tool.feedback.version>2.0.0-SNAPSHOT</tool.feedback.version>
-		<tool.maps.version>2.0.0-SNAPSHOT</tool.maps.version>
-		<tool.news.version>2.0.0-SNAPSHOT</tool.news.version>
-		<tool.people.version>2.0.0-SNAPSHOT</tool.people.version>
-		<tool.weather.version>2.0.0-SNAPSHOT</tool.weather.version>
-		
-		<security.authentication>2.0.0-SNAPSHOT</security.authentication>
+    <modelVersion>4.0.0</modelVersion>
+    <name>Kuali Mobility Enterprise</name>
+    <groupId>org.kuali.mobility</groupId>
+    <artifactId>mobility</artifactId>
+    <packaging>pom</packaging>
+    <url>http://kuali.org/mobility</url>
+    <inceptionYear>2011</inceptionYear>
+    <version>2.0.0-SNAPSHOT</version>
+    <scm>
+        <connection>scm:svn:https://svn.kuali.org/repos/mobility/trunk</connection>
+        <developerConnection>scm:svn:https://svn.kuali.org/repos/mobility/trunk</developerConnection>
+        <url>https://svn.kuali.org/repos/mobility/trunk</url>
+    </scm>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <spring.version>3.1.0.RC1</spring.version>
+        <spring.security.version>3.0.5.RELEASE</spring.security.version>
+        <jetty.version>6.1.26</jetty.version>
+        <jdom.version>1.1</jdom.version>
+        <persistence-api.version>1.0</persistence-api.version>
+        <flexjson.version>2.1</flexjson.version>
+        <json-lib.version>2.3</json-lib.version>
+        <commons-httpclient.version>3.1</commons-httpclient.version>
+        <httpclient.version>4.0.1</httpclient.version>
+        <slf4j.version>1.5.6</slf4j.version>
+        <log4j.version>1.2.14</log4j.version>
+        <commons-logging.version>1.1.1</commons-logging.version>
+        <junit.version>4.8.2</junit.version>
+        <net.sf.ehcache.version>1.6.2</net.sf.ehcache.version> <!-- 2.4.6 is most recent but seems not to be in mvn repo -->
+        <commons-collections.version>3.2.1</commons-collections.version>
+        <xstream.version>1.4.1</xstream.version>
+
+        <tool.shared.version>2.0.0-SNAPSHOT</tool.shared.version>
+        <tool.admin.version>2.0.0-SNAPSHOT</tool.admin.version>
+        <tool.alerts.version>2.0.0-SNAPSHOT</tool.alerts.version>
+        <tool.bus.version>2.0.0-SNAPSHOT</tool.bus.version>
+        <tool.computerlabs.version>2.0.0-SNAPSHOT</tool.computerlabs.version>
+        <tool.conference.version>2.0.0-SNAPSHOT</tool.conference.version>
+        <tool.configparams.version>2.0.0-SNAPSHOT</tool.configparams.version>
+        <tool.dining.version>2.0.0-SNAPSHOT</tool.dining.version>
+        <tool.emergencyinfo.version>2.0.0-SNAPSHOT</tool.emergencyinfo.version>
+        <tool.events.version>2.0.0-SNAPSHOT</tool.events.version>
+        <tool.feedback.version>2.0.0-SNAPSHOT</tool.feedback.version>
+        <tool.maps.version>2.0.0-SNAPSHOT</tool.maps.version>
+        <tool.news.version>2.0.0-SNAPSHOT</tool.news.version>
+        <tool.people.version>2.0.0-SNAPSHOT</tool.people.version>
+        <tool.weather.version>2.0.0-SNAPSHOT</tool.weather.version>
+
+        <security.authentication>2.0.0-SNAPSHOT</security.authentication>
 
         <util.testing>2.0.0-SNAPSHOT</util.testing>
         <util.webservice.adapter>2.0.0-SNAPSHOT</util.webservice.adapter>
-	</properties>
-	<profiles>
-		<profile>
-			<id>mdot</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			<modules>
-                <!-- <module>util.testing</module> -->
+    </properties>
+    <profiles>
+        <profile>
+            <id>mdot</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <modules>
+            <!-- <module>util.testing</module> -->
                 <module>security.authentication</module>
                 <module>util.webservice.adapter</module>
-				<module>shared</module>
+                <module>shared</module>
                 <module>admin</module>
-				<module>alerts</module>
-				<module>computerlabs</module>
+                <module>alerts</module>
+                <module>bus</module>
+                <module>computerlabs</module>
                 <module>conference</module>
-				<module>configparams</module>
+                <module>configparams</module>
                 <module>dining</module>
-				<module>emergencyinfo</module>
-				<module>events</module>
+                <module>emergencyinfo</module>
+                <module>events</module>
                 <module>feedback</module>
-				<module>maps</module>
-				<module>news</module>
-				<module>people</module>
-				<module>weather</module>
-				<module>mdot-webapp</module>
-			</modules>
-		</profile>
-	</profiles> 
+                <module>maps</module>
+                <module>news</module>
+                <module>people</module>
+                <module>weather</module>
+                <module>mdot-webapp</module>
+            </modules>
+        </profile>
+    </profiles> 
 	  
     <repositories>
         <repository>
@@ -103,21 +106,21 @@
         </repository>
     </repositories>
     
-	<licenses>
-		<license>
-			<name>Educational Community License, Version 2.0</name>
-			<url>http://www.osedu.org/licenses/ECL-2.0</url>
-			<distribution>repo</distribution>
-		</license>
-	</licenses>
-	<dependencyManagement>
-		<dependencies>
-			<!-- Cache dependencies -->
-			<dependency>
-			    <groupId>net.sf.ehcache</groupId>
-			    <artifactId>ehcache</artifactId>
-			    <version>${net.sf.ehcache.version}</version>
-			</dependency>
+    <licenses>
+        <license>
+            <name>Educational Community License, Version 2.0</name>
+            <url>http://www.osedu.org/licenses/ECL-2.0</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <dependencyManagement>
+        <dependencies>
+            <!-- Cache dependencies -->
+            <dependency>
+                <groupId>net.sf.ehcache</groupId>
+                <artifactId>ehcache</artifactId>
+                <version>${net.sf.ehcache.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.kuali.mobility</groupId>
                 <artifactId>util.testing</artifactId>
@@ -133,38 +136,38 @@
                 <artifactId>util.webservice.adapter</artifactId>
                 <version>${util.webservice.adapter}</version>
             </dependency>
-			<!-- Persistence dependencies -->
-			<dependency>
-				<groupId>javax.persistence</groupId>
-				<artifactId>persistence-api</artifactId>
-				<version>${persistence-api.version}</version>
-			</dependency>
-			<!-- Service dependencies -->
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>shared-api</artifactId>
-				<version>${tool.shared.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>shared-impl</artifactId>
-				<version>${tool.shared.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>shared-config</artifactId>
-				<version>${tool.shared.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>shared-web</artifactId>
-				<version>${tool.shared.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>shared-webapp</artifactId>
-				<version>${tool.shared.version}</version>
-			</dependency>
+            <!-- Persistence dependencies -->
+            <dependency>
+                <groupId>javax.persistence</groupId>
+                <artifactId>persistence-api</artifactId>
+                <version>${persistence-api.version}</version>
+            </dependency>
+            <!-- Service dependencies -->
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>shared-api</artifactId>
+                <version>${tool.shared.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>shared-impl</artifactId>
+                <version>${tool.shared.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>shared-config</artifactId>
+                <version>${tool.shared.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>shared-web</artifactId>
+                <version>${tool.shared.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>shared-webapp</artifactId>
+                <version>${tool.shared.version}</version>
+            </dependency>
             <!-- Admin Service -->
             <dependency>
                 <groupId>org.kuali.mobility</groupId>
@@ -186,85 +189,106 @@
                 <artifactId>admin-webapp</artifactId>
                 <version>${tool.admin.version}</version>
             </dependency>
-			<!-- Alerts Service -->
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>alerts-api</artifactId>
-				<version>${tool.alerts.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>alerts-impl</artifactId>
-				<version>${tool.alerts.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>alerts-web</artifactId>
-				<version>${tool.alerts.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>alerts-webapp</artifactId>
-				<version>${tool.alerts.version}</version>
-			</dependency>
-			<!-- Computer Labs Service -->
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>computerlabs-api</artifactId>
-				<version>${tool.computerlabs.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>computerlabs-impl</artifactId>
-				<version>${tool.computerlabs.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>computerlabs-web</artifactId>
-				<version>${tool.computerlabs.version}</version>
-			</dependency>
+            <!-- Alerts Service -->
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>alerts-api</artifactId>
+                <version>${tool.alerts.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>alerts-impl</artifactId>
+                <version>${tool.alerts.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>alerts-web</artifactId>
+                <version>${tool.alerts.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>alerts-webapp</artifactId>
+                <version>${tool.alerts.version}</version>
+            </dependency>
+            <!-- Bus Service -->
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>bus-api</artifactId>
+                <version>${tool.bus.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>bus-impl</artifactId>
+                <version>${tool.bus.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>bus-web</artifactId>
+                <version>${tool.bus.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>bus-webapp</artifactId>
+                <version>${tool.bus.version}</version>
+            </dependency>
+            <!-- Computer Labs Service -->
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>computerlabs-api</artifactId>
+                <version>${tool.computerlabs.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>computerlabs-impl</artifactId>
+                <version>${tool.computerlabs.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>computerlabs-web</artifactId>
+                <version>${tool.computerlabs.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.kuali.mobility</groupId>
                 <artifactId>computerlabs-webapp</artifactId>
                 <version>${tool.computerlabs.version}</version>
             </dependency>
-			<!-- Conference Service -->
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>conference-api</artifactId>
-				<version>${tool.conference.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>conference-impl</artifactId>
-				<version>${tool.conference.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>conference-web</artifactId>
-				<version>${tool.conference.version}</version>
-			</dependency>
+            <!-- Conference Service -->
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>conference-api</artifactId>
+                <version>${tool.conference.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>conference-impl</artifactId>
+                <version>${tool.conference.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>conference-web</artifactId>
+                <version>${tool.conference.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.kuali.mobility</groupId>
                 <artifactId>conference-webapp</artifactId>
                 <version>${tool.conference.version}</version>
             </dependency>
-			<!-- Configuration Parameters Service -->
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>configparams-api</artifactId>
-				<version>${tool.configparams.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>configparams-impl</artifactId>
-				<version>${tool.configparams.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>configparams-web</artifactId>
-				<version>${tool.configparams.version}</version>
-			</dependency>
+            <!-- Configuration Parameters Service -->
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>configparams-api</artifactId>
+                <version>${tool.configparams.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>configparams-impl</artifactId>
+                <version>${tool.configparams.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>configparams-web</artifactId>
+                <version>${tool.configparams.version}</version>
+            </dependency>
             <!-- Dining Service -->
             <dependency>
                 <groupId>org.kuali.mobility</groupId>
@@ -286,22 +310,22 @@
                 <artifactId>dining-webapp</artifactId>
                 <version>${tool.dining.version}</version>
             </dependency>
-			<!-- Emergency Information Service -->
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>emergencyinfo-api</artifactId>
-				<version>${tool.emergencyinfo.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>emergencyinfo-impl</artifactId>
-				<version>${tool.emergencyinfo.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>emergencyinfo-web</artifactId>
-				<version>${tool.emergencyinfo.version}</version>
-			</dependency>
+            <!-- Emergency Information Service -->
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>emergencyinfo-api</artifactId>
+                <version>${tool.emergencyinfo.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>emergencyinfo-impl</artifactId>
+                <version>${tool.emergencyinfo.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>emergencyinfo-web</artifactId>
+                <version>${tool.emergencyinfo.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.kuali.mobility</groupId>
                 <artifactId>emergencyinfo-webapp</artifactId>
@@ -349,43 +373,43 @@
                 <artifactId>feedback-webapp</artifactId>
                 <version>${tool.feedback.version}</version>
             </dependency>
-			<!-- Maps Service -->
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>maps-api</artifactId>
-				<version>${tool.maps.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>maps-impl</artifactId>
-				<version>${tool.maps.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>maps-web</artifactId>
-				<version>${tool.maps.version}</version>
-			</dependency>
+            <!-- Maps Service -->
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>maps-api</artifactId>
+                <version>${tool.maps.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>maps-impl</artifactId>
+                <version>${tool.maps.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>maps-web</artifactId>
+                <version>${tool.maps.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.kuali.mobility</groupId>
                 <artifactId>maps-webapp</artifactId>
                 <version>${tool.maps.version}</version>
             </dependency>
-			<!-- News Service -->
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>news-api</artifactId>
-				<version>${tool.news.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>news-impl</artifactId>
-				<version>${tool.news.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.kuali.mobility</groupId>
-				<artifactId>news-web</artifactId>
-				<version>${tool.news.version}</version>
-			</dependency>
+            <!-- News Service -->
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>news-api</artifactId>
+                <version>${tool.news.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>news-impl</artifactId>
+                <version>${tool.news.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>news-web</artifactId>
+                <version>${tool.news.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.kuali.mobility</groupId>
                 <artifactId>news-webapp</artifactId>
@@ -433,269 +457,274 @@
                 <artifactId>weather-webapp</artifactId>
                 <version>${tool.weather.version}</version>
             </dependency>
-   			<!-- Spring dependencies -->
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-core</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-expression</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-beans</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-aop</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-aspects</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-context</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-jdbc</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-orm</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-web</artifactId>
-				<version>3.0.5.RELEASE</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-webmvc</artifactId>
-				<version>3.0.5.RELEASE</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-tx</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-test</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework.security</groupId>
-				<artifactId>spring-security-taglibs</artifactId>
-				<version>${spring.security.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework.security.oauth</groupId>
-				<artifactId>spring-security-oauth</artifactId>
-				<version>${spring.security.oauth.version}</version>
-			</dependency>
+            <!-- Spring dependencies -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-core</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-expression</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-beans</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-aop</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-aspects</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-jdbc</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-orm</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-web</artifactId>
+                <version>3.0.5.RELEASE</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>3.0.5.RELEASE</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-tx</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-test</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-taglibs</artifactId>
+                <version>${spring.security.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.security.oauth</groupId>
+                <artifactId>spring-security-oauth</artifactId>
+                <version>${spring.security.oauth.version}</version>
+            </dependency>
             <!-- List manipulation support -->
             <dependency>
                 <groupId>commons-collections</groupId>
                 <artifactId>commons-collections</artifactId>
                 <version>${commons-collections.version}</version>
             </dependency>
-			<!-- Database dependencies -->
-			<dependency>
-				<groupId>hibernate</groupId>
-				<artifactId>hibernate-entitymanager</artifactId>
-				<version>3.4.0.GA</version>
-			</dependency>
-			<dependency>
-			    <groupId>org.apache.derby</groupId>
-			    <artifactId>derby</artifactId>
-			    <version>10.8.1.2</version>
-			</dependency>			 
-			<dependency>
-			    <groupId>mysql</groupId>
-			    <artifactId>mysql-connector-java</artifactId>
-			    <version>5.1.18</version>
-			</dependency>
-			<!-- JSON dependencies -->
-			<dependency>
-				<groupId>net.sf.flexjson</groupId>
-				<artifactId>flexjson</artifactId>
-				<version>${flexjson.version}</version>
-			</dependency>
-	        <dependency>
-		        <groupId>net.sf.json-lib</groupId>
-		        <artifactId>json-lib</artifactId>
-				<version>${json-lib.version}</version>
-	        </dependency>
-			<!-- XML dependencies -->
-			<dependency>
-				<groupId>org.jdom</groupId>
-				<artifactId>jdom</artifactId>
-				<version>${jdom.version}</version>
-			</dependency>
-			<!-- OAuth dependencies -->
-			<dependency>
-				<groupId>commons-httpclient</groupId>
-				<artifactId>commons-httpclient</artifactId>
-				<version>${commons-httpclient.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.httpcomponents</groupId>
-				<artifactId>httpclient</artifactId>
-				<version>${httpclient.version}</version>
-			</dependency>
-			<!-- Logging dependencies -->
-			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>slf4j-api</artifactId>
-				<version>${slf4j.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>jcl-over-slf4j</artifactId>
-				<version>${slf4j.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>slf4j-simple</artifactId>
-				<version>${slf4j.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>slf4j-log4j12</artifactId>
-				<version>${slf4j.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>log4j</groupId>
-				<artifactId>log4j</artifactId>
-				<version>${log4j.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>commons-logging</groupId>
-				<artifactId>commons-logging</artifactId>
-				<version>${commons-logging.version}</version>
-			</dependency>
-			<!-- Testing dependencies -->
-			<dependency>
-				<groupId>org.mortbay.jetty</groupId>
-				<artifactId>jetty</artifactId>
-				<version>${jetty.version}</version>
-				<type>jar</type>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.mortbay.jetty</groupId>
-				<artifactId>jetty-servlet-tester</artifactId>
-				<version>${jetty.version}</version>
-				<type>jar</type>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>junit</groupId>
-				<artifactId>junit</artifactId>
-				<version>${junit.version}</version>
-				<type>jar</type>
-				<scope>test</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
-	<build>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<configuration>
-						<source>1.6</source>
-						<target>1.6</target>
-					</configuration>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-assembly-plugin</artifactId>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-surefire-plugin</artifactId>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-site-plugin</artifactId>
-					<configuration>
-						<outputEncoding>UTF-8</outputEncoding>
-						<source>1.6</source>
-						<target>1.6</target>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-	</build>
-	<reporting>
-		<plugins>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>findbugs-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-checkstyle-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>cobertura-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<configuration>
-					<aggregate>true</aggregate>
-					<links>
-						<link>http://download.oracle.com/javase/6/docs/api/</link>
-						<link>http://java.sun.com/products/servlet/2.5/javadoc/</link>
-						<link>http://junit.sourceforge.net/javadoc/</link>
-					</links>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>jxr-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>jdepend-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>taglist-maven-plugin</artifactId>
-				<configuration>
-					<tags>
-						<tag>TODO</tag>
-						<tag>FIXME</tag>
-						<tag>@deprecated</tag>
-					</tags>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-report-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-site-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</reporting>
-	<modules>
-		<module>mdot-webapp</module>
-	</modules>
+            <!-- Database dependencies -->
+            <dependency>
+                <groupId>hibernate</groupId>
+                <artifactId>hibernate-entitymanager</artifactId>
+                <version>3.4.0.GA</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.derby</groupId>
+                <artifactId>derby</artifactId>
+                <version>10.8.1.2</version>
+            </dependency>			 
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>5.1.18</version>
+            </dependency>
+            <!-- JSON dependencies -->
+            <dependency>
+                <groupId>net.sf.flexjson</groupId>
+                <artifactId>flexjson</artifactId>
+                <version>${flexjson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.sf.json-lib</groupId>
+                <artifactId>json-lib</artifactId>
+                <version>${json-lib.version}</version>
+            </dependency>
+            <!-- XML dependencies -->
+            <dependency>
+                <groupId>org.jdom</groupId>
+                <artifactId>jdom</artifactId>
+                <version>${jdom.version}</version>
+            </dependency>
+            <dependency>
+    			<groupId>com.thoughtworks.xstream</groupId>
+        		<artifactId>xstream</artifactId>
+            	<version>${xstream.version}</version>
+            </dependency>
+            <!-- OAuth dependencies -->
+            <dependency>
+                <groupId>commons-httpclient</groupId>
+                <artifactId>commons-httpclient</artifactId>
+                <version>${commons-httpclient.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${httpclient.version}</version>
+            </dependency>
+            <!-- Logging dependencies -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>jcl-over-slf4j</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-simple</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-log4j12</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>${log4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-logging</groupId>
+                <artifactId>commons-logging</artifactId>
+                <version>${commons-logging.version}</version>
+            </dependency>
+            <!-- Testing dependencies -->
+            <dependency>
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>jetty</artifactId>
+                <version>${jetty.version}</version>
+                <type>jar</type>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>jetty-servlet-tester</artifactId>
+                <version>${jetty.version}</version>
+                <type>jar</type>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <type>jar</type>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <source>1.6</source>
+                        <target>1.6</target>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <configuration>
+                        <outputEncoding>UTF-8</outputEncoding>
+                        <source>1.6</source>
+                        <target>1.6</target>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>cobertura-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <configuration>
+                    <aggregate>true</aggregate>
+                    <links>
+                        <link>http://download.oracle.com/javase/6/docs/api/</link>
+                        <link>http://java.sun.com/products/servlet/2.5/javadoc/</link>
+                        <link>http://junit.sourceforge.net/javadoc/</link>
+                    </links>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jxr-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jdepend-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>taglist-maven-plugin</artifactId>
+                <configuration>
+                    <tags>
+                        <tag>TODO</tag>
+                        <tag>FIXME</tag>
+                        <tag>@deprecated</tag>
+                    </tags>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </reporting>
+    <modules>
+        <module>mdot-webapp</module>
+    </modules>
 </project>

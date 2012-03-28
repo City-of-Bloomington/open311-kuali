@@ -1,0 +1,2430 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<livefeed>
+<route>
+	<name>Commuter Southbound</name>
+	<id>0</id>
+	<topofloop>0</topofloop>
+	<busroutecolor>3400ff</busroutecolor>
+	<stop>
+		<name>Bonisteel and Beal (Cooley) W</name>
+		<name2>Cooley Lab</name2>
+		<name3>None</name3>
+		<latitude>42.29056</latitude>
+		<longitude>-83.71385</longitude>
+		<toa1>2598.20</toa1>
+		<id1>6</id1>
+		<toa2>2148.20</toa2>
+		<id2>21</id2>
+		<toa3>288.20</toa3>
+		<id3>101</id3>
+		<toa4>2152.92</toa4>
+		<id4>107</id4>
+		<toa5>847.40</toa5>
+		<id5>20</id5>
+		<toa6>1049.21</toa6>
+		<id6>134</id6>
+		<toa7>1725.27</toa7>
+		<id7>139</id7>
+		<toacount>7</toacount>
+	</stop>
+	<stop>
+		<name>Murfin and Bonisteel W</name>
+		<name2>Pierpont</name2>
+		<name3>None</name3>
+		<latitude>42.29048</latitude>
+		<longitude>-83.71832</longitude>
+		<toa1>2664.88</toa1>
+		<id1>6</id1>
+		<toa2>2214.88</toa2>
+		<id2>21</id2>
+		<toa3>354.88</toa3>
+		<id3>101</id3>
+		<toa4>2219.60</toa4>
+		<id4>107</id4>
+		<toa5>914.08</toa5>
+		<id5>20</id5>
+		<toa6>1115.89</toa6>
+		<id6>134</id6>
+		<toa7>1791.95</toa7>
+		<id7>139</id7>
+		<toacount>7</toacount>
+	</stop>
+	<stop>
+		<name>Mitchell Athletic Field W</name>
+		<name2>Mitchell Field</name2>
+		<name3>Mitchell Field Inbound</name3>
+		<latitude>42.28736</latitude>
+		<longitude>-83.72257</longitude>
+		<toa1>2732.19</toa1>
+		<id1>6</id1>
+		<toa2>2282.19</toa2>
+		<id2>21</id2>
+		<toa3>422.19</toa3>
+		<id3>101</id3>
+		<toa4>2286.91</toa4>
+		<id4>107</id4>
+		<toa5>981.39</toa5>
+		<id5>20</id5>
+		<toa6>1183.20</toa6>
+		<id6>134</id6>
+		<toa7>1859.26</toa7>
+		<id7>139</id7>
+		<toacount>7</toacount>
+	</stop>
+	<stop>
+		<name>Cancer and Geriatrics Center E</name>
+		<name2>Cancer Center</name2>
+		<name3>None</name3>
+		<latitude>42.2854</latitude>
+		<longitude>-83.73118</longitude>
+		<toa1>2848.98</toa1>
+		<id1>6</id1>
+		<toa2>2398.98</toa2>
+		<id2>21</id2>
+		<toa3>538.98</toa3>
+		<id3>101</id3>
+		<toa4>2403.70</toa4>
+		<id4>107</id4>
+		<toa5>1098.17</toa5>
+		<id5>20</id5>
+		<toa6>1299.98</toa6>
+		<id6>134</id6>
+		<toa7>1976.05</toa7>
+		<id7>139</id7>
+		<toacount>7</toacount>
+	</stop>
+	<stop>
+		<name>Taubman Center SE</name>
+		<name2>Taubman Center</name2>
+		<name3>None</name3>
+		<latitude>42.28495</latitude>
+		<longitude>-83.72766</longitude>
+		<toa1>2894.72</toa1>
+		<id1>6</id1>
+		<toa2>2444.72</toa2>
+		<id2>21</id2>
+		<toa3>584.72</toa3>
+		<id3>101</id3>
+		<toa4>2449.44</toa4>
+		<id4>107</id4>
+		<toa5>1143.91</toa5>
+		<id5>20</id5>
+		<toa6>1345.72</toa6>
+		<id6>134</id6>
+		<toa7>2021.79</toa7>
+		<id7>139</id7>
+		<toacount>7</toacount>
+	</stop>
+	<stop>
+		<name>Mary Markley W</name>
+		<name2>Markley</name2>
+		<name3>M-22 Structure</name3>
+		<latitude>42.28144</latitude>
+		<longitude>-83.72864</longitude>
+		<toa1>2993.69</toa1>
+		<id1>6</id1>
+		<toa2>2543.69</toa2>
+		<id2>21</id2>
+		<toa3>683.69</toa3>
+		<id3>101</id3>
+		<toa4>2548.41</toa4>
+		<id4>107</id4>
+		<toa5>1242.89</toa5>
+		<id5>20</id5>
+		<toa6>1444.70</toa6>
+		<id6>134</id6>
+		<toa7>2120.76</toa7>
+		<id7>139</id7>
+		<toacount>7</toacount>
+	</stop>
+	<stop>
+		<name>Observatory and Ann N</name>
+		<name2>Simpson Building</name2>
+		<name3>None</name3>
+		<latitude>42.28227</latitude>
+		<longitude>-83.73092</longitude>
+		<toa1>3055.49</toa1>
+		<id1>6</id1>
+		<toa2>2605.49</toa2>
+		<id2>21</id2>
+		<toa3>745.49</toa3>
+		<id3>101</id3>
+		<toa4>2610.21</toa4>
+		<id4>107</id4>
+		<toa5>1304.69</toa5>
+		<id5>20</id5>
+		<toa6>1506.50</toa6>
+		<id6>134</id6>
+		<toa7>2182.56</toa7>
+		<id7>139</id7>
+		<toacount>7</toacount>
+	</stop>
+	<stop>
+		<name>Zina Pitcher Place (at BSR)</name>
+		<name2>BSR Building</name2>
+		<name3>None</name3>
+		<latitude>42.28185126821878</latitude>
+		<longitude>-83.73355507850647</longitude>
+		<toa1>64.24</toa1>
+		<id1>6</id1>
+		<toa2>2674.24</toa2>
+		<id2>21</id2>
+		<toa3>814.24</toa3>
+		<id3>101</id3>
+		<toa4>2678.97</toa4>
+		<id4>107</id4>
+		<toa5>1373.44</toa5>
+		<id5>20</id5>
+		<toa6>1575.25</toa6>
+		<id6>134</id6>
+		<toa7>2251.32</toa7>
+		<id7>139</id7>
+		<toacount>7</toacount>
+	</stop>
+	<stop>
+		<name>Fletcher and Washington S</name>
+		<name2>Power Center</name2>
+		<name3>Fletcher St at Rackham</name3>
+		<latitude>42.28074593831875</latitude>
+		<longitude>-83.73725518584251</longitude>
+		<toa1>180.00</toa1>
+		<id1>6</id1>
+		<toa2>2790.00</toa2>
+		<id2>21</id2>
+		<toa3>930.00</toa3>
+		<id3>101</id3>
+		<toa4>2794.72</toa4>
+		<id4>107</id4>
+		<toa5>1489.20</toa5>
+		<id5>20</id5>
+		<toa6>1691.01</toa6>
+		<id6>134</id6>
+		<toa7>2367.07</toa7>
+		<id7>139</id7>
+		<toacount>7</toacount>
+	</stop>
+	<stop>
+		<name>C.C. Little SE</name>
+		<name2>Central Transit Center</name2>
+		<name3>C.C. Little</name3>
+		<latitude>42.27778</latitude>
+		<longitude>-83.73503</longitude>
+		<toa1>251.02</toa1>
+		<id1>6</id1>
+		<toa2>2861.02</toa2>
+		<id2>21</id2>
+		<toa3>1001.02</toa3>
+		<id3>101</id3>
+		<toa4>2865.74</toa4>
+		<id4>107</id4>
+		<toa5>1560.21</toa5>
+		<id5>20</id5>
+		<toa6>1762.02</toa6>
+		<id6>134</id6>
+		<toa7>2438.09</toa7>
+		<id7>139</id7>
+		<toacount>7</toacount>
+	</stop>
+	<stop>
+		<name>Willard and E. University W</name>
+		<name2>East Quad</name2>
+		<name3>None</name3>
+		<latitude>42.2738</latitude>
+		<longitude>-83.73561</longitude>
+		<toa1>353.55</toa1>
+		<id1>6</id1>
+		<toa2>2963.55</toa2>
+		<id2>21</id2>
+		<toa3>1103.55</toa3>
+		<id3>101</id3>
+		<toa4>2968.27</toa4>
+		<id4>107</id4>
+		<toa5>1662.75</toa5>
+		<id5>20</id5>
+		<toa6>1864.56</toa6>
+		<id6>134</id6>
+		<toa7>2540.63</toa7>
+		<id7>139</id7>
+		<toacount>7</toacount>
+	</stop>
+	<stop>
+		<name>S. University and Tappan W</name>
+		<name2>Shapiro Library</name2>
+		<name3>None</name3>
+		<latitude>42.27508</latitude>
+		<longitude>-83.73754</longitude>
+		<toa1>402.57</toa1>
+		<id1>6</id1>
+		<toa2>3012.57</toa2>
+		<id2>21</id2>
+		<toa3>1152.57</toa3>
+		<id3>101</id3>
+		<toa4>3017.29</toa4>
+		<id4>107</id4>
+		<toa5>1711.77</toa5>
+		<id5>20</id5>
+		<toa6>1913.58</toa6>
+		<id6>134</id6>
+		<toa7>2589.64</toa7>
+		<id7>139</id7>
+		<toacount>7</toacount>
+	</stop>
+	<stop>
+		<name>State and S. University W</name>
+		<name2>Union</name2>
+		<name3>Museum of Art</name3>
+		<latitude>42.27501</latitude>
+		<longitude>-83.74044</longitude>
+		<toa1>449.36</toa1>
+		<id1>6</id1>
+		<toa2>3059.36</toa2>
+		<id2>21</id2>
+		<toa3>1199.36</toa3>
+		<id3>101</id3>
+		<toa4>4.08</toa4>
+		<id4>107</id4>
+		<toa5>1758.56</toa5>
+		<id5>20</id5>
+		<toa6>1960.37</toa6>
+		<id6>134</id6>
+		<toa7>2636.43</toa7>
+		<id7>139</id7>
+		<toacount>7</toacount>
+	</stop>
+	<stop>
+		<name>Intramural Building W</name>
+		<name2>IM Building</name2>
+		<name3>None</name3>
+		<latitude>42.269665770463256</latitude>
+		<longitude>-83.74197721481323</longitude>
+		<toa1>550.87</toa1>
+		<id1>6</id1>
+		<toa2>100.87</toa2>
+		<id2>21</id2>
+		<toa3>1300.87</toa3>
+		<id3>101</id3>
+		<toa4>105.59</toa4>
+		<id4>107</id4>
+		<toa5>1860.06</toa5>
+		<id5>20</id5>
+		<toa6>2061.88</toa6>
+		<id6>134</id6>
+		<toa7>2737.94</toa7>
+		<id7>139</id7>
+		<toacount>7</toacount>
+	</stop>
+	<stop>
+		<name>Administrative Services Building S</name>
+		<name2>ICLE</name2>
+		<name3>None</name3>
+		<latitude>42.26860587802018</latitude>
+		<longitude>-83.74752670526505</longitude>
+		<toa1>629.19</toa1>
+		<id1>6</id1>
+		<toa2>179.19</toa2>
+		<id2>21</id2>
+		<toa3>1379.19</toa3>
+		<id3>101</id3>
+		<toa4>183.91</toa4>
+		<id4>107</id4>
+		<toa5>1938.38</toa5>
+		<id5>20</id5>
+		<toa6>2140.19</toa6>
+		<id6>134</id6>
+		<toa7>2816.26</toa7>
+		<id7>139</id7>
+		<toacount>7</toacount>
+	</stop>
+	<stop>
+		<name>Crisler Arena S</name>
+		<name2>Crisler Arena</name2>
+		<name3>None</name3>
+		<latitude>42.26439987447436</latitude>
+		<longitude>-83.74433755874634</longitude>
+		<toa1>780.00</toa1>
+		<id1>6</id1>
+		<toa2>330.00</toa2>
+		<id2>21</id2>
+		<toa3>1530.00</toa3>
+		<id3>101</id3>
+		<toa4>334.72</toa4>
+		<id4>107</id4>
+		<toa5>2089.20</toa5>
+		<id5>20</id5>
+		<toa6>2291.01</toa6>
+		<id6>134</id6>
+		<toa7>2967.07</toa7>
+		<id7>139</id7>
+		<toacount>7</toacount>
+	</stop>
+	<stopcount>16</stopcount>
+</route>
+<route>
+	<name>Commuter Northbound</name>
+	<id>1</id>
+	<topofloop>0</topofloop>
+	<busroutecolor>9933FF</busroutecolor>
+	<stop>
+		<name>Transportation</name>
+		<name2>Transportation</name2>
+		<name3>None</name3>
+		<latitude>42.26635305118044</latitude>
+		<longitude>-83.74528169631958</longitude>
+		<toa1>929.41</toa1>
+		<id1>6</id1>
+		<toa2>479.41</toa2>
+		<id2>21</id2>
+		<toa3>1679.41</toa3>
+		<id3>101</id3>
+		<toa4>484.13</toa4>
+		<id4>107</id4>
+		<toa5>2238.60</toa5>
+		<id5>20</id5>
+		<toa6>2440.41</toa6>
+		<id6>134</id6>
+		<toa7>56.48</toa7>
+		<id7>139</id7>
+		<toacount>7</toacount>
+	</stop>
+	<stop>
+		<name>Kipke and Greene N</name>
+		<name2>Kipke at Greene</name2>
+		<name3>None</name3>
+		<latitude>42.2680163795671</latitude>
+		<longitude>-83.74731481075287</longitude>
+		<toa1>985.73</toa1>
+		<id1>6</id1>
+		<toa2>535.73</toa2>
+		<id2>21</id2>
+		<toa3>1735.73</toa3>
+		<id3>101</id3>
+		<toa4>540.45</toa4>
+		<id4>107</id4>
+		<toa5>2294.92</toa5>
+		<id5>20</id5>
+		<toa6>2496.73</toa6>
+		<id6>134</id6>
+		<toa7>112.80</toa7>
+		<id7>139</id7>
+		<toacount>7</toacount>
+	</stop>
+	<stop>
+		<name>Administrative Services Building N</name>
+		<name2>Admin Services</name2>
+		<name3>None</name3>
+		<latitude>42.26932</latitude>
+		<longitude>-83.74747</longitude>
+		<toa1>1020.00</toa1>
+		<id1>6</id1>
+		<toa2>570.00</toa2>
+		<id2>21</id2>
+		<toa3>1770.00</toa3>
+		<id3>101</id3>
+		<toa4>574.72</toa4>
+		<id4>107</id4>
+		<toa5>2329.20</toa5>
+		<id5>20</id5>
+		<toa6>2531.01</toa6>
+		<id6>134</id6>
+		<toa7>147.07</toa7>
+		<id7>139</id7>
+		<toacount>7</toacount>
+	</stop>
+	<stop>
+		<name>Intramural Building E</name>
+		<name2>IM Building</name2>
+		<name3>None</name3>
+		<latitude>42.26960126441001</latitude>
+		<longitude>-83.74268665909767</longitude>
+		<toa1>1080.36</toa1>
+		<id1>6</id1>
+		<toa2>630.36</toa2>
+		<id2>21</id2>
+		<toa3>1830.36</toa3>
+		<id3>101</id3>
+		<toa4>635.08</toa4>
+		<id4>107</id4>
+		<toa5>2389.55</toa5>
+		<id5>20</id5>
+		<toa6>2591.36</toa6>
+		<id6>134</id6>
+		<toa7>207.43</toa7>
+		<id7>139</id7>
+		<toacount>7</toacount>
+	</stop>
+	<stop>
+		<name>State and S. University N</name>
+		<name2>Union</name2>
+		<name3>None</name3>
+		<latitude>42.27525472121965</latitude>
+		<longitude>-83.74061465263367</longitude>
+		<toa1>1230.00</toa1>
+		<id1>6</id1>
+		<toa2>780.00</toa2>
+		<id2>21</id2>
+		<toa3>1980.00</toa3>
+		<id3>101</id3>
+		<toa4>784.72</toa4>
+		<id4>107</id4>
+		<toa5>2539.20</toa5>
+		<id5>20</id5>
+		<toa6>2741.01</toa6>
+		<id6>134</id6>
+		<toa7>357.07</toa7>
+		<id7>139</id7>
+		<toacount>7</toacount>
+	</stop>
+	<stop>
+		<name>N. University and Fletcher E</name>
+		<name2>North U at Fletcher</name2>
+		<name3>None</name3>
+		<latitude>42.27852</latitude>
+		<longitude>-83.7373</longitude>
+		<toa1>1305.42</toa1>
+		<id1>6</id1>
+		<toa2>855.42</toa2>
+		<id2>21</id2>
+		<toa3>2055.42</toa3>
+		<id3>101</id3>
+		<toa4>860.14</toa4>
+		<id4>107</id4>
+		<toa5>2614.62</toa5>
+		<id5>20</id5>
+		<toa6>2816.43</toa6>
+		<id6>134</id6>
+		<toa7>432.49</toa7>
+		<id7>139</id7>
+		<toacount>7</toacount>
+	</stop>
+	<stop>
+		<name>C.C. Little SE</name>
+		<name2>Central Transit Center</name2>
+		<name3>C.C. Little</name3>
+		<latitude>42.27778</latitude>
+		<longitude>-83.73503</longitude>
+		<toa1>1347.94</toa1>
+		<id1>6</id1>
+		<toa2>897.94</toa2>
+		<id2>21</id2>
+		<toa3>2097.94</toa3>
+		<id3>101</id3>
+		<toa4>902.66</toa4>
+		<id4>107</id4>
+		<toa5>2657.13</toa5>
+		<id5>20</id5>
+		<toa6>2858.94</toa6>
+		<id6>134</id6>
+		<toa7>475.01</toa7>
+		<id7>139</id7>
+		<toacount>7</toacount>
+	</stop>
+	<stop>
+		<name>Ann and Zina Pitcher E</name>
+		<name2>Couzens</name2>
+		<name3>None</name3>
+		<latitude>42.28228</latitude>
+		<longitude>-83.73325</longitude>
+		<toa1>1450.48</toa1>
+		<id1>6</id1>
+		<toa2>1000.48</toa2>
+		<id2>21</id2>
+		<toa3>2200.48</toa3>
+		<id3>101</id3>
+		<toa4>1005.20</toa4>
+		<id4>107</id4>
+		<toa5>2759.68</toa5>
+		<id5>20</id5>
+		<toa6>2961.49</toa6>
+		<id6>134</id6>
+		<toa7>577.55</toa7>
+		<id7>139</id7>
+		<toacount>7</toacount>
+	</stop>
+	<stop>
+		<name>Mary Markley E</name>
+		<name2>Markley</name2>
+		<name3>None</name3>
+		<latitude>42.28137</latitude>
+		<longitude>-83.72865</longitude>
+		<toa1>1549.96</toa1>
+		<id1>6</id1>
+		<toa2>1099.96</toa2>
+		<id2>21</id2>
+		<toa3>2299.96</toa3>
+		<id3>101</id3>
+		<toa4>1104.68</toa4>
+		<id4>107</id4>
+		<toa5>2859.15</toa5>
+		<id5>20</id5>
+		<toa6>0.96</toa6>
+		<id6>134</id6>
+		<toa7>677.03</toa7>
+		<id7>139</id7>
+		<toacount>7</toacount>
+	</stop>
+	<stop>
+		<name>Taubman Center NW</name>
+		<name2>Taubman Center</name2>
+		<name3>None</name3>
+		<latitude>42.28501</latitude>
+		<longitude>-83.72755</longitude>
+		<toa1>1636.09</toa1>
+		<id1>6</id1>
+		<toa2>1186.09</toa2>
+		<id2>21</id2>
+		<toa3>2386.09</toa3>
+		<id3>101</id3>
+		<toa4>1190.81</toa4>
+		<id4>107</id4>
+		<toa5>2945.28</toa5>
+		<id5>20</id5>
+		<toa6>87.09</toa6>
+		<id6>134</id6>
+		<toa7>763.16</toa7>
+		<id7>139</id7>
+		<toacount>7</toacount>
+	</stop>
+	<stop>
+		<name>Cancer and Geriatrics Center W</name>
+		<name2>Cancer Center</name2>
+		<name3>None</name3>
+		<latitude>42.28547</latitude>
+		<longitude>-83.73113</longitude>
+		<toa1>1685.49</toa1>
+		<id1>6</id1>
+		<toa2>1235.49</toa2>
+		<id2>21</id2>
+		<toa3>2435.49</toa3>
+		<id3>101</id3>
+		<toa4>1240.21</toa4>
+		<id4>107</id4>
+		<toa5>2994.68</toa5>
+		<id5>20</id5>
+		<toa6>136.50</toa6>
+		<id6>134</id6>
+		<toa7>812.56</toa7>
+		<id7>139</id7>
+		<toacount>7</toacount>
+	</stop>
+	<stop>
+		<name>Mitchell Athletic Field E</name>
+		<name2>Mitchell Field</name2>
+		<name3>Mitchell Field Outbound</name3>
+		<latitude>42.28721</latitude>
+		<longitude>-83.72319</longitude>
+		<toa1>1769.27</toa1>
+		<id1>6</id1>
+		<toa2>1319.27</toa2>
+		<id2>21</id2>
+		<toa3>2519.27</toa3>
+		<id3>101</id3>
+		<toa4>1323.99</toa4>
+		<id4>107</id4>
+		<toa5>18.46</toa5>
+		<id5>20</id5>
+		<toa6>220.27</toa6>
+		<id6>134</id6>
+		<toa7>896.34</toa7>
+		<id7>139</id7>
+		<toacount>7</toacount>
+	</stop>
+	<stop>
+		<name>Bonisteel Blvd (Art and Architecture Bldg) E</name>
+		<name2>Pierpont</name2>
+		<name3>Art and Architecture</name3>
+		<latitude>42.29021</latitude>
+		<longitude>-83.7172</longitude>
+		<toa1>1891.02</toa1>
+		<id1>6</id1>
+		<toa2>1441.02</toa2>
+		<id2>21</id2>
+		<toa3>2641.02</toa3>
+		<id3>101</id3>
+		<toa4>1445.74</toa4>
+		<id4>107</id4>
+		<toa5>140.21</toa5>
+		<id5>20</id5>
+		<toa6>342.02</toa6>
+		<id6>134</id6>
+		<toa7>1018.09</toa7>
+		<id7>139</id7>
+		<toacount>7</toacount>
+	</stop>
+	<stop>
+		<name>Bonisteel and Beal E</name>
+		<name2>BIR Building</name2>
+		<name3>None</name3>
+		<latitude>42.29022</latitude>
+		<longitude>-83.71374</longitude>
+		<toa1>1939.55</toa1>
+		<id1>6</id1>
+		<toa2>1489.55</toa2>
+		<id2>21</id2>
+		<toa3>2689.55</toa3>
+		<id3>101</id3>
+		<toa4>1494.27</toa4>
+		<id4>107</id4>
+		<toa5>188.74</toa5>
+		<id5>20</id5>
+		<toa6>390.56</toa6>
+		<id6>134</id6>
+		<toa7>1066.62</toa7>
+		<id7>139</id7>
+		<toacount>7</toacount>
+	</stop>
+	<stop>
+		<name>Beal and Hayward (FXB) N</name>
+		<name2>FXB</name2>
+		<name3>None</name3>
+		<latitude>42.29368</latitude>
+		<longitude>-83.7124</longitude>
+		<toa1>2006.93</toa1>
+		<id1>6</id1>
+		<toa2>1556.93</toa2>
+		<id2>21</id2>
+		<toa3>2756.93</toa3>
+		<id3>101</id3>
+		<toa4>1561.65</toa4>
+		<id4>107</id4>
+		<toa5>256.13</toa5>
+		<id5>20</id5>
+		<toa6>457.94</toa6>
+		<id6>134</id6>
+		<toa7>1134.00</toa7>
+		<id7>139</id7>
+		<toacount>7</toacount>
+	</stop>
+	<stop>
+		<name>Hayward near Hubbard (at NC 53) E</name>
+		<name2>Hayward at NC-53</name2>
+		<name3>None</name3>
+		<latitude>42.2954</latitude>
+		<longitude>-83.7077</longitude>
+		<toa1>2069.71</toa1>
+		<id1>6</id1>
+		<toa2>1619.71</toa2>
+		<id2>21</id2>
+		<toa3>2819.71</toa3>
+		<id3>101</id3>
+		<toa4>1624.43</toa4>
+		<id4>107</id4>
+		<toa5>318.90</toa5>
+		<id5>20</id5>
+		<toa6>520.71</toa6>
+		<id6>134</id6>
+		<toa7>1196.78</toa7>
+		<id7>139</id7>
+		<toacount>7</toacount>
+	</stop>
+	<stop>
+		<name>Huron and Hubbard S</name>
+		<name2>Huron at Hubbard</name2>
+		<name3>None</name3>
+		<latitude>42.29526</latitude>
+		<longitude>-83.70492</longitude>
+		<toa1>2101.93</toa1>
+		<id1>6</id1>
+		<toa2>1651.93</toa2>
+		<id2>21</id2>
+		<toa3>2851.93</toa3>
+		<id3>101</id3>
+		<toa4>1656.65</toa4>
+		<id4>107</id4>
+		<toa5>351.12</toa5>
+		<id5>20</id5>
+		<toa6>552.94</toa6>
+		<id6>134</id6>
+		<toa7>1229.00</toa7>
+		<id7>139</id7>
+		<toacount>7</toacount>
+	</stop>
+	<stop>
+		<name>Glazier Way West Shelter</name>
+		<name2>Glazier Way</name2>
+		<name3>None</name3>
+		<latitude>42.288861823009405</latitude>
+		<longitude>-83.70599806308746</longitude>
+		<toa1>2247.21</toa1>
+		<id1>6</id1>
+		<toa2>1797.21</toa2>
+		<id2>21</id2>
+		<toa3>2997.21</toa3>
+		<id3>101</id3>
+		<toa4>1801.93</toa4>
+		<id4>107</id4>
+		<toa5>496.40</toa5>
+		<id5>20</id5>
+		<toa6>698.21</toa6>
+		<id6>134</id6>
+		<toa7>1374.28</toa7>
+		<id7>139</id7>
+		<toacount>7</toacount>
+	</stop>
+	<stopcount>18</stopcount>
+</route>
+<route>
+	<name>Northwood</name>
+	<id>2</id>
+	<topofloop>17</topofloop>
+	<busroutecolor>990000</busroutecolor>
+	<stop>
+		<name>C.C. Little NW</name>
+		<name2>Central Transit Center</name2>
+		<name3>Ruthven Museum</name3>
+		<latitude>42.27818197456284</latitude>
+		<longitude>-83.73513489961624</longitude>
+		<toa1>1080.97</toa1>
+		<id1>10</id1>
+		<toa2>550.17</toa2>
+		<id2>11</id2>
+		<toa3>1699.15</toa3>
+		<id3>151</id3>
+		<toacount>3</toacount>
+	</stop>
+	<stop>
+		<name>Fletcher and Washington N</name>
+		<name2>Power Center</name2>
+		<name3>None</name3>
+		<latitude>42.28091064759432</latitude>
+		<longitude>-83.73712241649628</longitude>
+		<toa1>1311.17</toa1>
+		<id1>10</id1>
+		<toa2>780.36</toa2>
+		<id2>11</id2>
+		<toa3>1929.35</toa3>
+		<id3>151</id3>
+		<toacount>3</toacount>
+	</stop>
+	<stop>
+		<name>Zina Pitcher Pl. (Kresge Research Bldg) N</name>
+		<name2>Kresge</name2>
+		<name3>None</name3>
+		<latitude>42.28288117216458</latitude>
+		<longitude>-83.73353362083435</longitude>
+		<toa1>1418.97</toa1>
+		<id1>10</id1>
+		<toa2>888.16</toa2>
+		<id2>11</id2>
+		<toa3>2037.15</toa3>
+		<id3>151</id3>
+		<toacount>3</toacount>
+	</stop>
+	<stop>
+		<name>Catherine and Glen (Victor Vaughn Bldg) W</name>
+		<name2>V. Vaughan</name2>
+		<name3>None</name3>
+		<latitude>42.28318</latitude>
+		<longitude>-83.73499</longitude>
+		<toa1>1442.60</toa1>
+		<id1>10</id1>
+		<toa2>911.79</toa2>
+		<id2>11</id2>
+		<toa3>20.77</toa3>
+		<id3>151</id3>
+		<toacount>3</toacount>
+	</stop>
+	<stop>
+		<name>Mitchell Athletic Field E</name>
+		<name2>Mitchell Field</name2>
+		<name3>Mitchell Field Outbound</name3>
+		<latitude>42.28721</latitude>
+		<longitude>-83.72319</longitude>
+		<toa1>1606.18</toa1>
+		<id1>10</id1>
+		<toa2>1075.37</toa2>
+		<id2>11</id2>
+		<toa3>184.36</toa3>
+		<id3>151</id3>
+		<toacount>3</toacount>
+	</stop>
+	<stop>
+		<name>Murfin and Bonisteel N</name>
+		<name2>Pierpont</name2>
+		<name3>None</name3>
+		<latitude>42.29092</latitude>
+		<longitude>-83.71837</longitude>
+		<toa1>1753.03</toa1>
+		<id1>10</id1>
+		<toa2>1222.23</toa2>
+		<id2>11</id2>
+		<toa3>331.21</toa3>
+		<id3>151</id3>
+		<toacount>3</toacount>
+	</stop>
+	<stop>
+		<name>Hubbard and Murfin (NCRB) E</name>
+		<name2>Hubbard at NW III</name2>
+		<name3>None</name3>
+		<latitude>42.29484</latitude>
+		<longitude>-83.719</longitude>
+		<toa1>1807.16</toa1>
+		<id1>10</id1>
+		<toa2>1276.35</toa2>
+		<id2>11</id2>
+		<toa3>385.33</toa3>
+		<id3>151</id3>
+		<toacount>3</toacount>
+	</stop>
+	<stop>
+		<name>Hubbard near Cram Circle E</name>
+		<name2>Hubbard at Cram Cir.</name2>
+		<name3>None</name3>
+		<latitude>42.29497</latitude>
+		<longitude>-83.716</longitude>
+		<toa1>1852.94</toa1>
+		<id1>10</id1>
+		<toa2>1322.14</toa2>
+		<id2>11</id2>
+		<toa3>431.12</toa3>
+		<id3>151</id3>
+		<toacount>3</toacount>
+	</stop>
+	<stop>
+		<name>Cram Circle N</name>
+		<name2>Cram Circle</name2>
+		<name3>None</name3>
+		<latitude>42.29685</latitude>
+		<longitude>-83.715</longitude>
+		<toa1>1901.88</toa1>
+		<id1>10</id1>
+		<toa2>1371.07</toa2>
+		<id2>11</id2>
+		<toa3>480.05</toa3>
+		<id3>151</id3>
+		<toacount>3</toacount>
+	</stop>
+	<stop>
+		<name>Bishop and Beal E</name>
+		<name2>Bishop Street</name2>
+		<name3>None</name3>
+		<latitude>42.29776</latitude>
+		<longitude>-83.71224</longitude>
+		<toa1>1955.33</toa1>
+		<id1>10</id1>
+		<toa2>1424.52</toa2>
+		<id2>11</id2>
+		<toa3>533.50</toa3>
+		<id3>151</id3>
+		<toacount>3</toacount>
+	</stop>
+	<stop>
+		<name>Beal and McIntyre (Fire Station) N</name>
+		<name2>Fire Station</name2>
+		<name3>None</name3>
+		<latitude>42.30049</latitude>
+		<longitude>-83.7126</longitude>
+		<toa1>2019.51</toa1>
+		<id1>10</id1>
+		<toa2>1488.71</toa2>
+		<id2>11</id2>
+		<toa3>597.69</toa3>
+		<id3>151</id3>
+		<toacount>3</toacount>
+	</stop>
+	<stop>
+		<name>McIntyre Dr. 1 SE</name>
+		<name2>McIntyre at NW-44</name2>
+		<name3>None</name3>
+		<latitude>42.30167</latitude>
+		<longitude>-83.70982</longitude>
+		<toa1>27.66</toa1>
+		<id1>10</id1>
+		<toa2>1536.85</toa2>
+		<id2>11</id2>
+		<toa3>645.84</toa3>
+		<id3>151</id3>
+		<toacount>3</toacount>
+	</stop>
+	<stop>
+		<name>McIntyre Dr. 2 S</name>
+		<name2>McIntyre at NW-46</name2>
+		<name3>None</name3>
+		<latitude>42.29808</latitude>
+		<longitude>-83.70985</longitude>
+		<toa1>77.67</toa1>
+		<id1>10</id1>
+		<toa2>1586.87</toa2>
+		<id2>11</id2>
+		<toa3>695.85</toa3>
+		<id3>151</id3>
+		<toacount>3</toacount>
+	</stop>
+	<stop>
+		<name>McIntyre Dr. 3 S</name>
+		<name2>Community Center</name2>
+		<name3>None</name3>
+		<latitude>42.29693</latitude>
+		<longitude>-83.70929</longitude>
+		<toa1>110.38</toa1>
+		<id1>10</id1>
+		<toa2>1619.58</toa2>
+		<id2>11</id2>
+		<toa3>728.56</toa3>
+		<id3>151</id3>
+		<toacount>3</toacount>
+	</stop>
+	<stop>
+		<name>Hayward and Hubbard E</name>
+		<name2>Hubbard at NC-46</name2>
+		<name3>None</name3>
+		<latitude>42.29594</latitude>
+		<longitude>-83.70753</longitude>
+		<toa1>155.00</toa1>
+		<id1>10</id1>
+		<toa2>1664.19</toa2>
+		<id2>11</id2>
+		<toa3>773.17</toa3>
+		<id3>151</id3>
+		<toacount>3</toacount>
+	</stop>
+	<stop>
+		<name>North Campus Administrative Complex E</name>
+		<name2>NCAC Hubbard</name2>
+		<name3>None</name3>
+		<latitude>42.29501</latitude>
+		<longitude>-83.70177</longitude>
+		<toa1>231.92</toa1>
+		<id1>10</id1>
+		<toa2>1741.12</toa2>
+		<id2>11</id2>
+		<toa3>850.10</toa3>
+		<id3>151</id3>
+		<toacount>3</toacount>
+	</stop>
+	<stop>
+		<name>Northwood V 2 E</name>
+		<name2>Northwood V</name2>
+		<name3>Northwood V 2</name3>
+		<latitude>42.29326460021789</latitude>
+		<longitude>-83.6989974975586</longitude>
+		<toa1>303.68</toa1>
+		<id1>10</id1>
+		<toa2>1812.88</toa2>
+		<id2>11</id2>
+		<toa3>921.86</toa3>
+		<id3>151</id3>
+		<toacount>3</toacount>
+	</stop>
+	<stop>
+		<name>North Campus Administrative Complex W</name>
+		<name2>NCAC Hubbard</name2>
+		<name3>None</name3>
+		<latitude>42.29514</latitude>
+		<longitude>-83.70176</longitude>
+		<toa1>377.34</toa1>
+		<id1>10</id1>
+		<toa2>1886.53</toa2>
+		<id2>11</id2>
+		<toa3>995.51</toa3>
+		<id3>151</id3>
+		<toacount>3</toacount>
+	</stop>
+	<stop>
+		<name>Hubbard and Huron W</name>
+		<name2>Hubbard at Huron Parkway</name2>
+		<name3>None</name3>
+		<latitude>42.29543</latitude>
+		<longitude>-83.70503</longitude>
+		<toa1>423.10</toa1>
+		<id1>10</id1>
+		<toa2>1932.29</toa2>
+		<id2>11</id2>
+		<toa3>1041.27</toa3>
+		<id3>151</id3>
+		<toacount>3</toacount>
+	</stop>
+	<stop>
+		<name>Hayward and Hubbard W</name>
+		<name2>Hubbard at Hayward</name2>
+		<name3>None</name3>
+		<latitude>42.29615</latitude>
+		<longitude>-83.70737</longitude>
+		<toa1>453.68</toa1>
+		<id1>10</id1>
+		<toa2>1962.88</toa2>
+		<id2>11</id2>
+		<toa3>1071.86</toa3>
+		<id3>151</id3>
+		<toacount>3</toacount>
+	</stop>
+	<stop>
+		<name>Beal and Hayward (FXB) S</name>
+		<name2>FXB</name2>
+		<name3>G.G. Brown</name3>
+		<latitude>42.29368</latitude>
+		<longitude>-83.71253</longitude>
+		<toa1>512.56</toa1>
+		<id1>10</id1>
+		<toa2>2021.76</toa2>
+		<id2>11</id2>
+		<toa3>1130.74</toa3>
+		<id3>151</id3>
+		<toacount>3</toacount>
+	</stop>
+	<stop>
+		<name>Bonisteel and Beal (Cooley) W</name>
+		<name2>Cooley Lab</name2>
+		<name3>None</name3>
+		<latitude>42.29056</latitude>
+		<longitude>-83.71385</longitude>
+		<toa1>593.92</toa1>
+		<id1>10</id1>
+		<toa2>63.12</toa2>
+		<id2>11</id2>
+		<toa3>1212.10</toa3>
+		<id3>151</id3>
+		<toacount>3</toacount>
+	</stop>
+	<stop>
+		<name>Murfin and Bonisteel W</name>
+		<name2>Pierpont</name2>
+		<name3>None</name3>
+		<latitude>42.29048</latitude>
+		<longitude>-83.71832</longitude>
+		<toa1>659.38</toa1>
+		<id1>10</id1>
+		<toa2>128.57</toa2>
+		<id2>11</id2>
+		<toa3>1277.55</toa3>
+		<id3>151</id3>
+		<toacount>3</toacount>
+	</stop>
+	<stop>
+		<name>Mitchell Athletic Field W</name>
+		<name2>Mitchell Field</name2>
+		<name3>Mitchell Field Inbound</name3>
+		<latitude>42.28736</latitude>
+		<longitude>-83.72257</longitude>
+		<toa1>742.41</toa1>
+		<id1>10</id1>
+		<toa2>211.60</toa2>
+		<id2>11</id2>
+		<toa3>1360.59</toa3>
+		<id3>151</id3>
+		<toacount>3</toacount>
+	</stop>
+	<stop>
+		<name>Ann and Zina Pitcher E</name>
+		<name2>Couzens</name2>
+		<name3>None</name3>
+		<latitude>42.28228</latitude>
+		<longitude>-83.73325</longitude>
+		<toa1>903.38</toa1>
+		<id1>10</id1>
+		<toa2>372.58</toa2>
+		<id2>11</id2>
+		<toa3>1521.56</toa3>
+		<id3>151</id3>
+		<toacount>3</toacount>
+	</stop>
+	<stop>
+		<name>Observatory (Mosher-Jordan) S</name>
+		<name2>Mosher-Jordan</name2>
+		<name3>None</name3>
+		<latitude>42.28094</latitude>
+		<longitude>-83.73105</longitude>
+		<toa1>959.40</toa1>
+		<id1>10</id1>
+		<toa2>428.60</toa2>
+		<id2>11</id2>
+		<toa3>1577.58</toa3>
+		<id3>151</id3>
+		<toacount>3</toacount>
+	</stop>
+	<stop>
+		<name>Observatory (Stockwell Hall) S</name>
+		<name2>Stockwell</name2>
+		<name3>None</name3>
+		<latitude>42.27881</latitude>
+		<longitude>-83.73096</longitude>
+		<toa1>987.05</toa1>
+		<id1>10</id1>
+		<toa2>456.24</toa2>
+		<id2>11</id2>
+		<toa3>1605.23</toa3>
+		<id3>151</id3>
+		<toacount>3</toacount>
+	</stop>
+	<stopcount>27</stopcount>
+</route>
+<route>
+	<name>Northwood Express</name>
+	<id>71</id>
+	<topofloop>6</topofloop>
+	<busroutecolor>993300</busroutecolor>
+	<stop>
+		<name>C.C. Little NW</name>
+		<name2>Central Transit Center</name2>
+		<name3>Ruthven Museum</name3>
+		<latitude>42.27818197456284</latitude>
+		<longitude>-83.73513489961624</longitude>
+		<toa1>83.93</toa1>
+		<id1>9</id1>
+		<toa2>2244.35</toa2>
+		<id2>115</id2>
+		<toa3>1279.06</toa3>
+		<id3>150</id3>
+		<toa4>810.18</toa4>
+		<id4>148</id4>
+		<toacount>4</toacount>
+	</stop>
+	<stop>
+		<name>Fletcher and Washington N</name>
+		<name2>Power Center</name2>
+		<name3>None</name3>
+		<latitude>42.28091064759432</latitude>
+		<longitude>-83.73712241649628</longitude>
+		<toa1>151.23</toa1>
+		<id1>9</id1>
+		<toa2>2311.66</toa2>
+		<id2>115</id2>
+		<toa3>1346.37</toa3>
+		<id3>150</id3>
+		<toa4>877.49</toa4>
+		<id4>148</id4>
+		<toacount>4</toacount>
+	</stop>
+	<stop>
+		<name>Mitchell Athletic Field E</name>
+		<name2>Mitchell Field</name2>
+		<name3>Mitchell Field Outbound</name3>
+		<latitude>42.28721</latitude>
+		<longitude>-83.72319</longitude>
+		<toa1>479.28</toa1>
+		<id1>9</id1>
+		<toa2>239.70</toa2>
+		<id2>115</id2>
+		<toa3>1674.41</toa3>
+		<id3>150</id3>
+		<toa4>1205.53</toa4>
+		<id4>148</id4>
+		<toacount>4</toacount>
+	</stop>
+	<stop>
+		<name>Murfin and Bonisteel N</name>
+		<name2>Pierpont</name2>
+		<name3>None</name3>
+		<latitude>42.29092</latitude>
+		<longitude>-83.71837</longitude>
+		<toa1>619.72</toa1>
+		<id1>9</id1>
+		<toa2>380.14</toa2>
+		<id2>115</id2>
+		<toa3>1814.85</toa3>
+		<id3>150</id3>
+		<toa4>1345.97</toa4>
+		<id4>148</id4>
+		<toacount>4</toacount>
+	</stop>
+	<stop>
+		<name>Murfin between Plymouth and Hubbard N</name>
+		<name2>Murfin at NW 3</name2>
+		<name3>None</name3>
+		<latitude>42.29705</latitude>
+		<longitude>-83.71961</longitude>
+		<toa1>720.00</toa1>
+		<id1>9</id1>
+		<toa2>480.42</toa2>
+		<id2>115</id2>
+		<toa3>1915.13</toa3>
+		<id3>150</id3>
+		<toa4>1446.25</toa4>
+		<id4>148</id4>
+		<toacount>4</toacount>
+	</stop>
+	<stop>
+		<name>Beal and McIntyre (Fire Station) E</name>
+		<name2>Fire Station</name2>
+		<name3>None</name3>
+		<latitude>42.30042</latitude>
+		<longitude>-83.71276</longitude>
+		<toa1>829.28</toa1>
+		<id1>9</id1>
+		<toa2>589.70</toa2>
+		<id2>115</id2>
+		<toa3>2024.41</toa3>
+		<id3>150</id3>
+		<toa4>1555.53</toa4>
+		<id4>148</id4>
+		<toacount>4</toacount>
+	</stop>
+	<stop>
+		<name>Bishop and Beal S</name>
+		<name2>Bishop Street</name2>
+		<name3>None</name3>
+		<latitude>42.29789</latitude>
+		<longitude>-83.71225</longitude>
+		<toa1>898.51</toa1>
+		<id1>9</id1>
+		<toa2>658.94</toa2>
+		<id2>115</id2>
+		<toa3>2093.64</toa3>
+		<id3>150</id3>
+		<toa4>1624.76</toa4>
+		<id4>148</id4>
+		<toacount>4</toacount>
+	</stop>
+	<stop>
+		<name>Cram Circle S</name>
+		<name2>Cram Circle</name2>
+		<name3>None</name3>
+		<latitude>42.29683</latitude>
+		<longitude>-83.71513</longitude>
+		<toa1>954.76</toa1>
+		<id1>9</id1>
+		<toa2>715.18</toa2>
+		<id2>115</id2>
+		<toa3>2149.89</toa3>
+		<id3>150</id3>
+		<toa4>1681.01</toa4>
+		<id4>148</id4>
+		<toacount>4</toacount>
+	</stop>
+	<stop>
+		<name>Hubbard near Cram Circle W</name>
+		<name2>Hubbard at Cram Circle</name2>
+		<name3>None</name3>
+		<latitude>42.29509</latitude>
+		<longitude>-83.716</longitude>
+		<toa1>1024.95</toa1>
+		<id1>9</id1>
+		<toa2>785.37</toa2>
+		<id2>115</id2>
+		<toa3>2220.08</toa3>
+		<id3>150</id3>
+		<toa4>1751.20</toa4>
+		<id4>148</id4>
+		<toacount>4</toacount>
+	</stop>
+	<stop>
+		<name>Hubbard and Murfin (NCRB) W</name>
+		<name2>Hubbard at Murfin</name2>
+		<name3>None</name3>
+		<latitude>42.29498</latitude>
+		<longitude>-83.719</longitude>
+		<toa1>686.38</toa1>
+		<id1>9</id1>
+		<toa2>446.81</toa2>
+		<id2>115</id2>
+		<toa3>1881.52</toa3>
+		<id3>150</id3>
+		<toa4>1412.64</toa4>
+		<id4>148</id4>
+		<toacount>4</toacount>
+	</stop>
+	<stop>
+		<name>Murfin and Bonisteel S</name>
+		<name2>Pierpont</name2>
+		<name3>None</name3>
+		<latitude>42.29063</latitude>
+		<longitude>-83.71858</longitude>
+		<toa1>1134.62</toa1>
+		<id1>9</id1>
+		<toa2>895.04</toa2>
+		<id2>115</id2>
+		<toa3>2329.75</toa3>
+		<id3>150</id3>
+		<toa4>1860.87</toa4>
+		<id4>148</id4>
+		<toacount>4</toacount>
+	</stop>
+	<stop>
+		<name>Mitchell Athletic Field W</name>
+		<name2>Mitchell Field</name2>
+		<name3>Mitchell Field Inbound</name3>
+		<latitude>42.28736</latitude>
+		<longitude>-83.72257</longitude>
+		<toa1>1243.52</toa1>
+		<id1>9</id1>
+		<toa2>1003.95</toa2>
+		<id2>115</id2>
+		<toa3>38.66</toa3>
+		<id3>150</id3>
+		<toa4>1969.78</toa4>
+		<id4>148</id4>
+		<toacount>4</toacount>
+	</stop>
+	<stop>
+		<name>Catherine and Glen S</name>
+		<name2>Glen at Catherine</name2>
+		<name3>Glen at Catherine SB</name3>
+		<latitude>42.283355438262575</latitude>
+		<longitude>-83.7357571721077</longitude>
+		<toa1>1371.25</toa1>
+		<id1>9</id1>
+		<toa2>1131.67</toa2>
+		<id2>115</id2>
+		<toa3>166.38</toa3>
+		<id3>150</id3>
+		<toa4>2097.50</toa4>
+		<id4>148</id4>
+		<toacount>4</toacount>
+	</stop>
+	<stopcount>13</stopcount>
+</route>
+<route>
+	<name>Oxford Loop to Northwood Express</name>
+	<id>106</id>
+	<topofloop>0</topofloop>
+	<busroutecolor>CC6600</busroutecolor>
+	<stop>
+		<name>Fletcher and Washington S</name>
+		<name2>Power Center</name2>
+		<name3>Fletcher St at Rackham</name3>
+		<latitude>42.28074593831875</latitude>
+		<longitude>-83.73725518584251</longitude>
+		<toa1>1929.96</toa1>
+		<id1>9</id1>
+		<toa2>1380.42</toa2>
+		<id2>115</id2>
+		<toa3>415.13</toa3>
+		<id3>150</id3>
+		<toa4>2346.25</toa4>
+		<id4>148</id4>
+		<toacount>4</toacount>
+	</stop>
+	<stop>
+		<name>C.C. Little SE</name>
+		<name2>Central Transit Center</name2>
+		<name3>C.C. Little</name3>
+		<latitude>42.27778</latitude>
+		<longitude>-83.73503</longitude>
+		<toa1>2029.18</toa1>
+		<id1>9</id1>
+		<toa2>1479.64</toa2>
+		<id2>115</id2>
+		<toa3>514.35</toa3>
+		<id3>150</id3>
+		<toa4>45.47</toa4>
+		<id4>148</id4>
+		<toacount>4</toacount>
+	</stop>
+	<stop>
+		<name>Church and Willard S</name>
+		<name2>East Quad</name2>
+		<name3>None</name3>
+		<latitude>42.27284732556473</latitude>
+		<longitude>-83.73459577560425</longitude>
+		<toa1>2153.94</toa1>
+		<id1>9</id1>
+		<toa2>1604.40</toa2>
+		<id2>115</id2>
+		<toa3>639.11</toa3>
+		<id3>150</id3>
+		<toa4>170.23</toa4>
+		<id4>148</id4>
+		<toacount>4</toacount>
+	</stop>
+	<stop>
+		<name>Hill St at Olivia E</name>
+		<name2>Henderson House</name2>
+		<name3>None</name3>
+		<latitude>42.27213282935663</latitude>
+		<longitude>-83.73180627822876</longitude>
+		<toa1>2205.55</toa1>
+		<id1>9</id1>
+		<toa2>1656.01</toa2>
+		<id2>115</id2>
+		<toa3>690.72</toa3>
+		<id3>150</id3>
+		<toa4>221.84</toa4>
+		<id4>148</id4>
+		<toacount>4</toacount>
+	</stop>
+	<stop>
+		<name>Oxford at South University N</name>
+		<name2>Oxford Housing</name2>
+		<name3>None</name3>
+		<latitude>42.27430407885204</latitude>
+		<longitude>-83.72606098651886</longitude>
+		<toa1>2352.05</toa1>
+		<id1>9</id1>
+		<toa2>1802.51</toa2>
+		<id2>115</id2>
+		<toa3>837.22</toa3>
+		<id3>150</id3>
+		<toa4>368.34</toa4>
+		<id4>148</id4>
+		<toacount>4</toacount>
+	</stop>
+	<stop>
+		<name>S. University and Linden W</name>
+		<name2>Trotter House</name2>
+		<name3>None</name3>
+		<latitude>42.27513762825771</latitude>
+		<longitude>-83.72886657714844</longitude>
+		<toa1>14.30</toa1>
+		<id1>9</id1>
+		<toa2>1864.76</toa2>
+		<id2>115</id2>
+		<toa3>899.47</toa3>
+		<id3>150</id3>
+		<toa4>430.59</toa4>
+		<id4>148</id4>
+		<toacount>4</toacount>
+	</stop>
+	<stopcount>6</stopcount>
+</route>
+<route>
+	<name>Bursley-Baits</name>
+	<id>68</id>
+	<topofloop>7</topofloop>
+	<busroutecolor>007f00</busroutecolor>
+	<stop>
+		<name>C.C. Little SE</name>
+		<name2>Central Transit Center</name2>
+		<name3>C.C. Little</name3>
+		<latitude>42.27778</latitude>
+		<longitude>-83.73503</longitude>
+		<toa1>43.27</toa1>
+		<id1>3</id1>
+		<toa2>1407.33</toa2>
+		<id2>15</id2>
+		<toa3>171.06</toa3>
+		<id3>25</id3>
+		<toa4>569.42</toa4>
+		<id4>145</id4>
+		<toa5>501.54</toa5>
+		<id5>149</id5>
+		<toa6>1413.07</toa6>
+		<id6>152</id6>
+		<toa7>812.33</toa7>
+		<id7>153</id7>
+		<toacount>7</toacount>
+	</stop>
+	<stop>
+		<name>Zina Pitcher Pl. (Kresge Research Bldg) N</name>
+		<name2>Kresge</name2>
+		<name3>None</name3>
+		<latitude>42.28288117216458</latitude>
+		<longitude>-83.73353362083435</longitude>
+		<toa1>195.51</toa1>
+		<id1>3</id1>
+		<toa2>89.57</toa2>
+		<id2>15</id2>
+		<toa3>323.29</toa3>
+		<id3>25</id3>
+		<toa4>721.65</toa4>
+		<id4>145</id4>
+		<toa5>653.78</toa5>
+		<id5>149</id5>
+		<toa6>95.31</toa6>
+		<id6>152</id6>
+		<toa7>964.57</toa7>
+		<id7>153</id7>
+		<toacount>7</toacount>
+	</stop>
+	<stop>
+		<name>Catherine and Glen (Victor Vaughn Bldg) W</name>
+		<name2>V. Vaughan</name2>
+		<name3>None</name3>
+		<latitude>42.28318</latitude>
+		<longitude>-83.73499</longitude>
+		<toa1>233.89</toa1>
+		<id1>3</id1>
+		<toa2>127.95</toa2>
+		<id2>15</id2>
+		<toa3>361.68</toa3>
+		<id3>25</id3>
+		<toa4>760.04</toa4>
+		<id4>145</id4>
+		<toa5>692.17</toa5>
+		<id5>149</id5>
+		<toa6>133.70</toa6>
+		<id6>152</id6>
+		<toa7>1002.96</toa7>
+		<id7>153</id7>
+		<toacount>7</toacount>
+	</stop>
+	<stop>
+		<name>Mitchell Athletic Field E</name>
+		<name2>Mitchell Field</name2>
+		<name3>Mitchell Field Outbound</name3>
+		<latitude>42.28721</latitude>
+		<longitude>-83.72319</longitude>
+		<toa1>380.72</toa1>
+		<id1>3</id1>
+		<toa2>274.78</toa2>
+		<id2>15</id2>
+		<toa3>508.51</toa3>
+		<id3>25</id3>
+		<toa4>906.87</toa4>
+		<id4>145</id4>
+		<toa5>838.99</toa5>
+		<id5>149</id5>
+		<toa6>280.52</toa6>
+		<id6>152</id6>
+		<toa7>1149.78</toa7>
+		<id7>153</id7>
+		<toacount>7</toacount>
+	</stop>
+	<stop>
+		<name>Murfin and Bonisteel N</name>
+		<name2>Pierpont</name2>
+		<name3>None</name3>
+		<latitude>42.29092</latitude>
+		<longitude>-83.71837</longitude>
+		<toa1>494.17</toa1>
+		<id1>3</id1>
+		<toa2>388.23</toa2>
+		<id2>15</id2>
+		<toa3>621.96</toa3>
+		<id3>25</id3>
+		<toa4>1020.32</toa4>
+		<id4>145</id4>
+		<toa5>952.44</toa5>
+		<id5>149</id5>
+		<toa6>393.97</toa6>
+		<id6>152</id6>
+		<toa7>1263.23</toa7>
+		<id7>153</id7>
+		<toacount>7</toacount>
+	</stop>
+	<stop>
+		<name>Bursley Hall W</name>
+		<name2>Bursley</name2>
+		<name3>Bursley (Cut Out Stop)</name3>
+		<latitude>42.29474</latitude>
+		<longitude>-83.72136</longitude>
+		<toa1>583.27</toa1>
+		<id1>3</id1>
+		<toa2>477.33</toa2>
+		<id2>15</id2>
+		<toa3>711.06</toa3>
+		<id3>25</id3>
+		<toa4>1109.42</toa4>
+		<id4>145</id4>
+		<toa5>1041.54</toa5>
+		<id5>149</id5>
+		<toa6>483.07</toa6>
+		<id6>152</id6>
+		<toa7>1352.33</toa7>
+		<id7>153</id7>
+		<toacount>7</toacount>
+	</stop>
+	<stop>
+		<name>Vera Baits II Housing S</name>
+		<name2>Baits II (Ziwet)</name2>
+		<name3>Baits II (Ziwet)</name3>
+		<latitude>42.29428439745609</latitude>
+		<longitude>-83.72408755123615</longitude>
+		<toa1>631.42</toa1>
+		<id1>3</id1>
+		<toa2>525.48</toa2>
+		<id2>15</id2>
+		<toa3>759.20</toa3>
+		<id3>25</id3>
+		<toa4>1157.57</toa4>
+		<id4>145</id4>
+		<toa5>1089.69</toa5>
+		<id5>149</id5>
+		<toa6>531.22</toa6>
+		<id6>152</id6>
+		<toa7>1400.48</toa7>
+		<id7>153</id7>
+		<toacount>7</toacount>
+	</stop>
+	<stop>
+		<name>Vera Baits I Housing S</name>
+		<name2>Baits I</name2>
+		<name3>None</name3>
+		<latitude>42.29158</latitude>
+		<longitude>-83.72323</longitude>
+		<toa1>853.27</toa1>
+		<id1>3</id1>
+		<toa2>747.33</toa2>
+		<id2>15</id2>
+		<toa3>981.06</toa3>
+		<id3>25</id3>
+		<toa4>1379.42</toa4>
+		<id4>145</id4>
+		<toa5>1311.54</toa5>
+		<id5>149</id5>
+		<toa6>753.07</toa6>
+		<id6>152</id6>
+		<toa7>152.33</toa7>
+		<id7>153</id7>
+		<toacount>7</toacount>
+	</stop>
+	<stop>
+		<name>Vera Baits II Housing N</name>
+		<name2>Baits II</name2>
+		<name3>Baits II (Coman)</name3>
+		<latitude>42.29413956344582</latitude>
+		<longitude>-83.7241593003273</longitude>
+		<toa1>943.27</toa1>
+		<id1>3</id1>
+		<toa2>837.33</toa2>
+		<id2>15</id2>
+		<toa3>1071.06</toa3>
+		<id3>25</id3>
+		<toa4>1469.42</toa4>
+		<id4>145</id4>
+		<toa5>1401.54</toa5>
+		<id5>149</id5>
+		<toa6>843.07</toa6>
+		<id6>152</id6>
+		<toa7>242.33</toa7>
+		<id7>153</id7>
+		<toacount>7</toacount>
+	</stop>
+	<stop>
+		<name>Bursley Hall E</name>
+		<name2>Bursley</name2>
+		<name3>Bursley Shelter</name3>
+		<latitude>42.294587952588756</latitude>
+		<longitude>-83.72078776359558</longitude>
+		<toa1>1010.71</toa1>
+		<id1>3</id1>
+		<toa2>904.77</toa2>
+		<id2>15</id2>
+		<toa3>1138.49</toa3>
+		<id3>25</id3>
+		<toa4>66.86</toa4>
+		<id4>145</id4>
+		<toa5>1468.98</toa5>
+		<id5>149</id5>
+		<toa6>910.51</toa6>
+		<id6>152</id6>
+		<toa7>309.77</toa7>
+		<id7>153</id7>
+		<toacount>7</toacount>
+	</stop>
+	<stop>
+		<name>Murfin and Bonisteel S</name>
+		<name2>Pierpont</name2>
+		<name3>None</name3>
+		<latitude>42.29063</latitude>
+		<longitude>-83.71858</longitude>
+		<toa1>1102.82</toa1>
+		<id1>3</id1>
+		<toa2>996.88</toa2>
+		<id2>15</id2>
+		<toa3>1230.60</toa3>
+		<id3>25</id3>
+		<toa4>158.97</toa4>
+		<id4>145</id4>
+		<toa5>91.09</toa5>
+		<id5>149</id5>
+		<toa6>1002.62</toa6>
+		<id6>152</id6>
+		<toa7>401.88</toa7>
+		<id7>153</id7>
+		<toacount>7</toacount>
+	</stop>
+	<stop>
+		<name>Mitchell Athletic Field W</name>
+		<name2>Mitchell Field</name2>
+		<name3>Mitchell Field Inbound</name3>
+		<latitude>42.28736</latitude>
+		<longitude>-83.72257</longitude>
+		<toa1>1211.31</toa1>
+		<id1>3</id1>
+		<toa2>1105.37</toa2>
+		<id2>15</id2>
+		<toa3>1339.10</toa3>
+		<id3>25</id3>
+		<toa4>267.46</toa4>
+		<id4>145</id4>
+		<toa5>199.58</toa5>
+		<id5>149</id5>
+		<toa6>1111.11</toa6>
+		<id6>152</id6>
+		<toa7>510.37</toa7>
+		<id7>153</id7>
+		<toacount>7</toacount>
+	</stop>
+	<stop>
+		<name>Catherine and Glen S</name>
+		<name2>Glen at Catherine</name2>
+		<name3>Glen at Catherine SB</name3>
+		<latitude>42.283355438262575</latitude>
+		<longitude>-83.7357571721077</longitude>
+		<toa1>1339.96</toa1>
+		<id1>3</id1>
+		<toa2>1234.02</toa2>
+		<id2>15</id2>
+		<toa3>1467.74</toa3>
+		<id3>25</id3>
+		<toa4>396.11</toa4>
+		<id4>145</id4>
+		<toa5>328.23</toa5>
+		<id5>149</id5>
+		<toa6>1239.76</toa6>
+		<id6>152</id6>
+		<toa7>639.02</toa7>
+		<id7>153</id7>
+		<toacount>7</toacount>
+	</stop>
+	<stop>
+		<name>Fletcher and Washington S</name>
+		<name2>Power Center</name2>
+		<name3>Fletcher St at Rackham</name3>
+		<latitude>42.28074593831875</latitude>
+		<longitude>-83.73725518584251</longitude>
+		<toa1>1421.93</toa1>
+		<id1>3</id1>
+		<toa2>1315.99</toa2>
+		<id2>15</id2>
+		<toa3>79.72</toa3>
+		<id3>25</id3>
+		<toa4>478.08</toa4>
+		<id4>145</id4>
+		<toa5>410.21</toa5>
+		<id5>149</id5>
+		<toa6>1321.74</toa6>
+		<id6>152</id6>
+		<toa7>721.00</toa7>
+		<id7>153</id7>
+		<toacount>7</toacount>
+	</stop>
+	<stopcount>14</stopcount>
+</route>
+<route>
+	<name>Research Link</name>
+	<id>143</id>
+	<topofloop>0</topofloop>
+	<busroutecolor>0000ff</busroutecolor>
+	<stop>
+		<name>Huron Pkwy and Plymouth S</name>
+		<name2>NCRC</name2>
+		<name3>None</name3>
+		<latitude>42.29923037819349</latitude>
+		<longitude>-83.70450139045715</longitude>
+		<toa1>1119.61</toa1>
+		<id1>159</id1>
+		<toacount>1</toacount>
+	</stop>
+	<stop>
+		<name>Hayward and Hubbard W</name>
+		<name2>Hubbard at Hayward</name2>
+		<name3>None</name3>
+		<latitude>42.29615</latitude>
+		<longitude>-83.70737</longitude>
+		<toa1>1188.24</toa1>
+		<id1>159</id1>
+		<toacount>1</toacount>
+	</stop>
+	<stop>
+		<name>Beal and Hayward (FXB) S</name>
+		<name2>FXB</name2>
+		<name3>G.G. Brown</name3>
+		<latitude>42.29368</latitude>
+		<longitude>-83.71253</longitude>
+		<toa1>1274.74</toa1>
+		<id1>159</id1>
+		<toacount>1</toacount>
+	</stop>
+	<stop>
+		<name>Mitchell Athletic Field W</name>
+		<name2>Mitchell Field</name2>
+		<name3>Mitchell Field Inbound</name3>
+		<latitude>42.28736</latitude>
+		<longitude>-83.72257</longitude>
+		<toa1>1515.12</toa1>
+		<id1>159</id1>
+		<toacount>1</toacount>
+	</stop>
+	<stop>
+		<name>Cancer and Geriatrics Center E</name>
+		<name2>Cancer Center</name2>
+		<name3>None</name3>
+		<latitude>42.2854</latitude>
+		<longitude>-83.73118</longitude>
+		<toa1>73.91</toa1>
+		<id1>159</id1>
+		<toacount>1</toacount>
+	</stop>
+	<stop>
+		<name>Taubman Center SE</name>
+		<name2>Taubman Center</name2>
+		<name3>None</name3>
+		<latitude>42.28495</latitude>
+		<longitude>-83.72766</longitude>
+		<toa1>123.63</toa1>
+		<id1>159</id1>
+		<toacount>1</toacount>
+	</stop>
+	<stop>
+		<name>Mary Markley W</name>
+		<name2>Markley</name2>
+		<name3>M-22 Structure</name3>
+		<latitude>42.28144</latitude>
+		<longitude>-83.72864</longitude>
+		<toa1>241.36</toa1>
+		<id1>159</id1>
+		<toacount>1</toacount>
+	</stop>
+	<stop>
+		<name>Observatory and Ann N</name>
+		<name2>Simpson Building</name2>
+		<name3>None</name3>
+		<latitude>42.28227</latitude>
+		<longitude>-83.73092</longitude>
+		<toa1>318.24</toa1>
+		<id1>159</id1>
+		<toacount>1</toacount>
+	</stop>
+	<stop>
+		<name>Zina Pitcher Pl. (Kresge Research Bldg) N</name>
+		<name2>Kresge</name2>
+		<name3>None</name3>
+		<latitude>42.28288117216458</latitude>
+		<longitude>-83.73353362083435</longitude>
+		<toa1>356.63</toa1>
+		<id1>159</id1>
+		<toacount>1</toacount>
+	</stop>
+	<stop>
+		<name>Mitchell Athletic Field E</name>
+		<name2>Mitchell Field</name2>
+		<name3>Mitchell Field Outbound</name3>
+		<latitude>42.28721</latitude>
+		<longitude>-83.72319</longitude>
+		<toa1>584.94</toa1>
+		<id1>159</id1>
+		<toacount>1</toacount>
+	</stop>
+	<stop>
+		<name>Beal and Hayward (FXB) N</name>
+		<name2>FXB</name2>
+		<name3>None</name3>
+		<latitude>42.29368</latitude>
+		<longitude>-83.7124</longitude>
+		<toa1>851.72</toa1>
+		<id1>159</id1>
+		<toacount>1</toacount>
+	</stop>
+	<stop>
+		<name>Hayward and Hubbard E</name>
+		<name2>Hubbard at NC-46</name2>
+		<name3>None</name3>
+		<latitude>42.29594</latitude>
+		<longitude>-83.70753</longitude>
+		<toa1>923.63</toa1>
+		<id1>159</id1>
+		<toacount>1</toacount>
+	</stop>
+	<stop>
+		<name>Huron Pkwy and Plymouth N</name>
+		<name2>NCRC</name2>
+		<name3>None</name3>
+		<latitude>42.30023420812771</latitude>
+		<longitude>-83.70420634746552</longitude>
+		<toa1>1038.24</toa1>
+		<id1>159</id1>
+		<toacount>1</toacount>
+	</stop>
+	<stopcount>13</stopcount>
+</route>
+<route>
+	<name>Intercampus to NIB</name>
+	<id>73</id>
+	<topofloop>0</topofloop>
+	<busroutecolor>FF00FF</busroutecolor>
+	<stop>
+		<name>Arbor Lakes</name>
+		<name2>Arbor Lakes</name2>
+		<name3>Arbor Lakes</name3>
+		<latitude>42.31063</latitude>
+		<longitude>-83.67626</longitude>
+		<toa1>1722.58</toa1>
+		<id1>17</id1>
+		<toa2>4137.00</toa2>
+		<id2>16</id2>
+		<toacount>2</toacount>
+	</stop>
+	<stop>
+		<name>Dominos Farms Lobby A</name>
+		<name2>Dominos Farms</name2>
+		<name3>Lobby A</name3>
+		<latitude>42.31478596042706</latitude>
+		<longitude>-83.68323147296906</longitude>
+		<toa1>1812.52</toa1>
+		<id1>17</id1>
+		<toa2>4226.95</toa2>
+		<id2>16</id2>
+		<toacount>2</toacount>
+	</stop>
+	<stop>
+		<name>Dominos Farms Lobby C</name>
+		<name2>Dominos Farms</name2>
+		<name3>Lobby C</name3>
+		<latitude>42.31601167688475</latitude>
+		<longitude>-83.68333876132965</longitude>
+		<toa1>1812.52</toa1>
+		<id1>17</id1>
+		<toa2>4226.95</toa2>
+		<id2>16</id2>
+		<toacount>2</toacount>
+	</stop>
+	<stop>
+		<name>Dominos Farms Lobby M</name>
+		<name2>Dominos Farms</name2>
+		<name3>Lobby M</name3>
+		<latitude>42.32111857182804</latitude>
+		<longitude>-83.68217468261719</longitude>
+		<toa1>1812.52</toa1>
+		<id1>17</id1>
+		<toa2>4226.95</toa2>
+		<id2>16</id2>
+		<toacount>2</toacount>
+	</stop>
+	<stop>
+		<name>Dominos Farms Lobby H</name>
+		<name2>Dominos Farms</name2>
+		<name3>Lobby H</name3>
+		<latitude>42.318137782145264</latitude>
+		<longitude>-83.68207812309265</longitude>
+		<toa1>1812.52</toa1>
+		<id1>17</id1>
+		<toa2>4226.95</toa2>
+		<id2>16</id2>
+		<toacount>2</toacount>
+	</stop>
+	<stop>
+		<name>Green Rd. Park and Ride Lot</name>
+		<name2>Green Rd</name2>
+		<name3>None</name3>
+		<latitude>42.29996043791455</latitude>
+		<longitude>-83.69303226470947</longitude>
+		<toa1>2263.77</toa1>
+		<id1>17</id1>
+		<toa2>388.19</toa2>
+		<id2>16</id2>
+		<toacount>2</toacount>
+	</stop>
+	<stop>
+		<name>North Campus Plant Services Building W</name>
+		<name2>Plant Services N</name2>
+		<name3>None</name3>
+		<latitude>42.29779404033904</latitude>
+		<longitude>-83.69624018669128</longitude>
+		<toa1>2360.57</toa1>
+		<id1>17</id1>
+		<toa2>484.99</toa2>
+		<id2>16</id2>
+		<toacount>2</toacount>
+	</stop>
+	<stop>
+		<name>North Campus Administrative Complex W (Baxter Rd.)</name>
+		<name2>NCAC Baxter</name2>
+		<name3>None</name3>
+		<latitude>42.29705601974965</latitude>
+		<longitude>-83.70253801345825</longitude>
+		<toa1>2415.24</toa1>
+		<id1>17</id1>
+		<toa2>539.66</toa2>
+		<id2>16</id2>
+		<toacount>2</toacount>
+	</stop>
+	<stop>
+		<name>Huron Pkwy and Plymouth N</name>
+		<name2>NCRC</name2>
+		<name3>None</name3>
+		<latitude>42.30023420812771</latitude>
+		<longitude>-83.70420634746552</longitude>
+		<toa1>2495.42</toa1>
+		<id1>17</id1>
+		<toa2>619.84</toa2>
+		<id2>16</id2>
+		<toacount>2</toacount>
+	</stop>
+	<stop>
+		<name>Turner Senior Ctr I</name>
+		<name2>Turner Senior Ctr</name2>
+		<name3>None</name3>
+		<latitude>42.301884739553934</latitude>
+		<longitude>-83.71392130851746</longitude>
+		<toa1>2723.62</toa1>
+		<id1>17</id1>
+		<toa2>848.04</toa2>
+		<id2>16</id2>
+		<toacount>2</toacount>
+	</stop>
+	<stop>
+		<name>Wall St. (Lot M-50) SE</name>
+		<name2>Wall St.</name2>
+		<name3>Lot M-50</name3>
+		<latitude>42.28881420228565</latitude>
+		<longitude>-83.73776346445084</longitude>
+		<toa1>3081.97</toa1>
+		<id1>17</id1>
+		<toa2>1206.39</toa2>
+		<id2>16</id2>
+		<toacount>2</toacount>
+	</stop>
+	<stop>
+		<name>Mitchell Athletic Field W</name>
+		<name2>Mitchell Field</name2>
+		<name3>Mitchell Field Inbound</name3>
+		<latitude>42.28736</latitude>
+		<longitude>-83.72257</longitude>
+		<toa1>3492.52</toa1>
+		<id1>17</id1>
+		<toa2>1616.95</toa2>
+		<id2>16</id2>
+		<toacount>2</toacount>
+	</stop>
+	<stop>
+		<name>Murfin and Bonisteel S</name>
+		<name2>Pierpont</name2>
+		<name3>None</name3>
+		<latitude>42.29063</latitude>
+		<longitude>-83.71858</longitude>
+		<toa1>2770.60</toa1>
+		<id1>17</id1>
+		<toa2>895.02</toa2>
+		<id2>16</id2>
+		<toacount>2</toacount>
+	</stop>
+	<stop>
+		<name>Kellogg Eye Center</name>
+		<name2>Kellogg Eye Center</name2>
+		<name3>None</name3>
+		<latitude>42.28800464447402</latitude>
+		<longitude>-83.73630970716476</longitude>
+		<toa1>3103.39</toa1>
+		<id1>17</id1>
+		<toa2>1227.81</toa2>
+		<id2>16</id2>
+		<toacount>2</toacount>
+	</stop>
+	<stop>
+		<name>Wall St. and Maiden Lane</name>
+		<name2>Wall St.</name2>
+		<name3>None</name3>
+		<latitude>42.28763557790137</latitude>
+		<longitude>-83.73400032520294</longitude>
+		<toa1>3162.52</toa1>
+		<id1>17</id1>
+		<toa2>1286.95</toa2>
+		<id2>16</id2>
+		<toacount>2</toacount>
+	</stop>
+	<stop>
+		<name>Cancer Center Driveway</name>
+		<name2>Cancer Center Driveway</name2>
+		<name3>Cancer Ctr Driveway</name3>
+		<latitude>42.28468296747876</latitude>
+		<longitude>-83.73138785362244</longitude>
+		<toa1>3372.52</toa1>
+		<id1>17</id1>
+		<toa2>1496.95</toa2>
+		<id2>16</id2>
+		<toacount>2</toacount>
+	</stop>
+	<stop>
+		<name>Taubman Center SE</name>
+		<name2>Taubman Center</name2>
+		<name3>None</name3>
+		<latitude>42.28495</latitude>
+		<longitude>-83.72766</longitude>
+		<toa1>3448.72</toa1>
+		<id1>17</id1>
+		<toa2>1573.14</toa2>
+		<id2>16</id2>
+		<toacount>2</toacount>
+	</stop>
+	<stop>
+		<name>Mary Markley W</name>
+		<name2>Markley</name2>
+		<name3>M-22 Structure</name3>
+		<latitude>42.28144</latitude>
+		<longitude>-83.72864</longitude>
+		<toa1>3546.18</toa1>
+		<id1>17</id1>
+		<toa2>1670.60</toa2>
+		<id2>16</id2>
+		<toacount>2</toacount>
+	</stop>
+	<stop>
+		<name>Observatory and Ann N</name>
+		<name2>Simpson Building</name2>
+		<name3>None</name3>
+		<latitude>42.28227</latitude>
+		<longitude>-83.73092</longitude>
+		<toa1>3586.24</toa1>
+		<id1>17</id1>
+		<toa2>1710.66</toa2>
+		<id2>16</id2>
+		<toacount>2</toacount>
+	</stop>
+	<stop>
+		<name>Zina Pitcher Pl. (Kresge Research Bldg) N</name>
+		<name2>Kresge</name2>
+		<name3>None</name3>
+		<latitude>42.28288117216458</latitude>
+		<longitude>-83.73353362083435</longitude>
+		<toa1>3644.38</toa1>
+		<id1>17</id1>
+		<toa2>1768.80</toa2>
+		<id2>16</id2>
+		<toacount>2</toacount>
+	</stop>
+	<stop>
+		<name>North Ingalls Building N</name>
+		<name2>NIB</name2>
+		<name3>None</name3>
+		<latitude>42.283522125080935</latitude>
+		<longitude>-83.73835355043411</longitude>
+		<toa1>3672.52</toa1>
+		<id1>17</id1>
+		<toa2>1796.95</toa2>
+		<id2>16</id2>
+		<toacount>2</toacount>
+	</stop>
+	<stopcount>21</stopcount>
+</route>
+<route>
+	<name>Intercampus to East Campus</name>
+	<id>72</id>
+	<topofloop>0</topofloop>
+	<busroutecolor>00CC00</busroutecolor>
+	<stop>
+		<name>Ann and Zina Pitcher E</name>
+		<name2>Couzens</name2>
+		<name3>None</name3>
+		<latitude>42.28228</latitude>
+		<longitude>-83.73325</longitude>
+		<toa1>4118.33</toa1>
+		<id1>17</id1>
+		<toa2>2242.76</toa2>
+		<id2>16</id2>
+		<toacount>2</toacount>
+	</stop>
+	<stop>
+		<name>Mary Markley E</name>
+		<name2>Markley</name2>
+		<name3>None</name3>
+		<latitude>42.28137</latitude>
+		<longitude>-83.72865</longitude>
+		<toa1>4194.01</toa1>
+		<id1>17</id1>
+		<toa2>2318.43</toa2>
+		<id2>16</id2>
+		<toacount>2</toacount>
+	</stop>
+	<stop>
+		<name>Taubman Center NW</name>
+		<name2>Taubman Center</name2>
+		<name3>None</name3>
+		<latitude>42.28501</latitude>
+		<longitude>-83.72755</longitude>
+		<toa1>3.06</toa1>
+		<id1>17</id1>
+		<toa2>2417.48</toa2>
+		<id2>16</id2>
+		<toacount>2</toacount>
+	</stop>
+	<stop>
+		<name>Cancer Center Driveway</name>
+		<name2>Cancer Center Driveway</name2>
+		<name3>Cancer Ctr Driveway</name3>
+		<latitude>42.28468296747876</latitude>
+		<longitude>-83.73138785362244</longitude>
+		<toa1>72.52</toa1>
+		<id1>17</id1>
+		<toa2>2486.95</toa2>
+		<id2>16</id2>
+		<toacount>2</toacount>
+	</stop>
+	<stop>
+		<name>Wall St. and Maiden Lane</name>
+		<name2>Wall St.</name2>
+		<name3>None</name3>
+		<latitude>42.28763557790137</latitude>
+		<longitude>-83.73400032520294</longitude>
+		<toa1>161.35</toa1>
+		<id1>17</id1>
+		<toa2>2575.77</toa2>
+		<id2>16</id2>
+		<toacount>2</toacount>
+	</stop>
+	<stop>
+		<name>Kellogg Eye Center</name>
+		<name2>Kellogg Eye Center</name2>
+		<name3>None</name3>
+		<latitude>42.28800464447402</latitude>
+		<longitude>-83.73630970716476</longitude>
+		<toa1>300.84</toa1>
+		<id1>17</id1>
+		<toa2>2715.27</toa2>
+		<id2>16</id2>
+		<toacount>2</toacount>
+	</stop>
+	<stop>
+		<name>Wall St. (Lot M-76) NW</name>
+		<name2>Wall St.</name2>
+		<name3>Lot M-76</name3>
+		<latitude>42.288772534122856</latitude>
+		<longitude>-83.73728603124619</longitude>
+		<toa1>211.17</toa1>
+		<id1>17</id1>
+		<toa2>2625.59</toa2>
+		<id2>16</id2>
+		<toacount>2</toacount>
+	</stop>
+	<stop>
+		<name>Mitchell Athletic Field E</name>
+		<name2>Mitchell Field</name2>
+		<name3>Mitchell Field Outbound</name3>
+		<latitude>42.28721</latitude>
+		<longitude>-83.72319</longitude>
+		<toa1>471.01</toa1>
+		<id1>17</id1>
+		<toa2>2885.43</toa2>
+		<id2>16</id2>
+		<toacount>2</toacount>
+	</stop>
+	<stop>
+		<name>Murfin and Bonisteel N</name>
+		<name2>Pierpont</name2>
+		<name3>None</name3>
+		<latitude>42.29092</latitude>
+		<longitude>-83.71837</longitude>
+		<toa1>614.44</toa1>
+		<id1>17</id1>
+		<toa2>3028.86</toa2>
+		<id2>16</id2>
+		<toacount>2</toacount>
+	</stop>
+	<stop>
+		<name>Turner Senior Ctr I</name>
+		<name2>Turner Senior Ctr</name2>
+		<name3>None</name3>
+		<latitude>42.301884739553934</latitude>
+		<longitude>-83.71392130851746</longitude>
+		<toa1>822.52</toa1>
+		<id1>17</id1>
+		<toa2>3236.95</toa2>
+		<id2>16</id2>
+		<toacount>2</toacount>
+	</stop>
+	<stop>
+		<name>North Campus Administrative Complex E (Baxter Rd.)</name>
+		<name2>NCAC Baxter</name2>
+		<name3>None</name3>
+		<latitude>42.29705601974965</latitude>
+		<longitude>-83.70253801345825</longitude>
+		<toa1>1056.80</toa1>
+		<id1>17</id1>
+		<toa2>3471.23</toa2>
+		<id2>16</id2>
+		<toacount>2</toacount>
+	</stop>
+	<stop>
+		<name>North Campus Plant Services Building E</name>
+		<name2>Plant Services N</name2>
+		<name3>None</name3>
+		<latitude>42.29794481767499</latitude>
+		<longitude>-83.69635820388794</longitude>
+		<toa1>1131.90</toa1>
+		<id1>17</id1>
+		<toa2>3546.32</toa2>
+		<id2>16</id2>
+		<toacount>2</toacount>
+	</stop>
+	<stop>
+		<name>Green Rd. Park and Ride Lot</name>
+		<name2>Green Rd</name2>
+		<name3>None</name3>
+		<latitude>42.29996043791455</latitude>
+		<longitude>-83.69303226470947</longitude>
+		<toa1>1205.66</toa1>
+		<id1>17</id1>
+		<toa2>3620.09</toa2>
+		<id2>16</id2>
+		<toacount>2</toacount>
+	</stop>
+	<stop>
+		<name>East Ann Arbor Health Center</name>
+		<name2>EAAHC</name2>
+		<name3>None</name3>
+		<latitude>42.30787747126423</latitude>
+		<longitude>-83.67561936378479</longitude>
+		<toa1>1450.52</toa1>
+		<id1>17</id1>
+		<toa2>3864.94</toa2>
+		<id2>16</id2>
+		<toacount>2</toacount>
+	</stop>
+	<stop>
+		<name>Arbor Lakes</name>
+		<name2>Arbor Lakes</name2>
+		<name3>Arbor Lakes</name3>
+		<latitude>42.31063</latitude>
+		<longitude>-83.67626</longitude>
+		<toa1>1651.82</toa1>
+		<id1>17</id1>
+		<toa2>4066.25</toa2>
+		<id2>16</id2>
+		<toacount>2</toacount>
+	</stop>
+	<stopcount>15</stopcount>
+</route>
+<route>
+	<name>MedExpress</name>
+	<id>144</id>
+	<topofloop>0</topofloop>
+	<busroutecolor>FF6600</busroutecolor>
+	<stop>
+		<name>Glazier Way East Shelter</name>
+		<name2>Glazier Way</name2>
+		<name3>Glazier Way Shelter</name3>
+		<latitude>42.28871300812816</latitude>
+		<longitude>-83.70484203100204</longitude>
+		<toacount>0</toacount>
+	</stop>
+	<stop>
+		<name>Veterans Affairs Hospital</name>
+		<name2>VA</name2>
+		<name3>None</name3>
+		<latitude>42.28642518310754</latitude>
+		<longitude>-83.71389448642731</longitude>
+		<toacount>0</toacount>
+	</stop>
+	<stop>
+		<name>Lot M-75</name>
+		<name2>Lot M-75</name2>
+		<name3>Lot M-75</name3>
+		<latitude>42.28681806790136</latitude>
+		<longitude>-83.72366309165955</longitude>
+		<toacount>0</toacount>
+	</stop>
+	<stop>
+		<name>Cancer and Geriatrics Center E</name>
+		<name2>Cancer Center</name2>
+		<name3>None</name3>
+		<latitude>42.2854</latitude>
+		<longitude>-83.73118</longitude>
+		<toacount>0</toacount>
+	</stop>
+	<stop>
+		<name>Taubman Center SE</name>
+		<name2>Taubman Center</name2>
+		<name3>None</name3>
+		<latitude>42.28495</latitude>
+		<longitude>-83.72766</longitude>
+		<toacount>0</toacount>
+	</stop>
+	<stop>
+		<name>Mary Markley W</name>
+		<name2>Markley</name2>
+		<name3>M-22 Structure</name3>
+		<latitude>42.28144</latitude>
+		<longitude>-83.72864</longitude>
+		<toacount>0</toacount>
+	</stop>
+	<stop>
+		<name>Observatory and Ann N</name>
+		<name2>Simpson Building</name2>
+		<name3>None</name3>
+		<latitude>42.28227</latitude>
+		<longitude>-83.73092</longitude>
+		<toacount>0</toacount>
+	</stop>
+	<stopcount>7</stopcount>
+</route>
+<routecount>10</routecount>
+</livefeed>
