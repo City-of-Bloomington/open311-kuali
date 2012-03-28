@@ -137,15 +137,15 @@
         </dependency>
         <dependency>
             <groupId>org.kuali.mobility</groupId>
-            <artifactId>dining-api</artifactId>
+            <artifactId>bus-api</artifactId>
         </dependency>
         <dependency>
             <groupId>org.kuali.mobility</groupId>
-            <artifactId>dining-impl</artifactId>
+            <artifactId>bus-impl</artifactId>
         </dependency>
         <dependency>
             <groupId>org.kuali.mobility</groupId>
-            <artifactId>dining-web</artifactId>
+            <artifactId>bus-web</artifactId>
         </dependency> 
         <dependency>
             <groupId>org.kuali.mobility</groupId>
@@ -159,6 +159,18 @@
             <groupId>org.kuali.mobility</groupId>
             <artifactId>conference-web</artifactId>
         </dependency> 
+        <dependency>
+            <groupId>org.kuali.mobility</groupId>
+            <artifactId>dining-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.kuali.mobility</groupId>
+            <artifactId>dining-impl</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.kuali.mobility</groupId>
+            <artifactId>dining-web</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.kuali.mobility</groupId>
             <artifactId>feedback-api</artifactId>
@@ -295,13 +307,13 @@
             <type>war</type>
             <scope>runtime</scope>
         </dependency>
-        <dependency> 
+        <dependency>
             <groupId>org.kuali.mobility</groupId>
-            <artifactId>dining-webapp</artifactId>
-			<version>${tool.dining.version}</version>
+            <artifactId>bus-webapp</artifactId>
+			<version>${tool.bus.version}</version>
             <type>war</type>
             <scope>runtime</scope>
-        </dependency>   
+        </dependency>
         <dependency> 
             <groupId>org.kuali.mobility</groupId>
             <artifactId>conference-webapp</artifactId>
@@ -309,6 +321,13 @@
             <type>war</type>
             <scope>runtime</scope>
         </dependency>   
+        <dependency> 
+            <groupId>org.kuali.mobility</groupId>
+            <artifactId>dining-webapp</artifactId>
+			<version>${tool.dining.version}</version>
+            <type>war</type>
+            <scope>runtime</scope>
+        </dependency>
         <dependency> 
             <groupId>org.kuali.mobility</groupId>
             <artifactId>feedback-webapp</artifactId>
