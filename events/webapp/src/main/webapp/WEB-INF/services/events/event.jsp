@@ -22,8 +22,7 @@
 
 <kme:page title="Event Detail" id="events" backButton="true" homeButton="true" backButtonURL="${back}">
 	<kme:content>
-		<kme:listView id="event" dataTheme="g">
-			<kme:listItem>
+		
 				<h3 class="wrap">
 					<c:out value="${event.title}" />
 				</h3>
@@ -96,7 +95,6 @@
 						</c:if>
 					</c:forEach>
 				</c:if>
-			</kme:listItem>
-		</kme:listView>
+
 	</kme:content>
 </kme:page>

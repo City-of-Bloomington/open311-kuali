@@ -18,9 +18,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-
 import org.apache.commons.collections.CollectionUtils;
 import org.kuali.mobility.events.dao.EventsDaoImpl;
+import org.kuali.mobility.events.dao.EventsDaoUMImpl;
 import org.kuali.mobility.events.entity.Category;
 import org.kuali.mobility.events.entity.Event;
 import org.kuali.mobility.events.util.CategoryPredicate;
@@ -65,7 +65,7 @@ public class EventsServiceImpl implements EventsService {
     @Override
     public List<Event> getAllEvents(String campus, String categoryId) {
         getDao().initData( campus, categoryId );
-        List<Event> events = (List<Event>)CollectionUtils.select( getDao().getEvents(), new EventPredicate( campus, categoryId, null ) );
+        List<Event> events =  getDao().getEvents();
         Collections.sort(events, new EventComparator());
         return events;
     }
@@ -81,7 +81,20 @@ public class EventsServiceImpl implements EventsService {
         return categories;
     }
 
-    /**
+    
+    @Override
+	public Category getCategory(String campus, String categoryId) {
+    	
+    	if ( getDao().getCategories() == null || getDao().getCategories().isEmpty() ) {
+    		getDao().initData( campus );
+    	}
+    	
+    	Category category = (Category) CollectionUtils.find ( getDao().getCategories(), new CategoryPredicate( campus, categoryId ) );
+        
+        return category;
+	}
+
+	/**
      * @return the dao
      */
     public EventsDaoImpl getDao() {
@@ -95,4 +108,15 @@ public class EventsServiceImpl implements EventsService {
         this.dao = dao;
     }
 
+    
+	public String getEventJson(final String eventId) {
+		String jsonData = null;
+		if (dao instanceof EventsDaoUMImpl) {
+			jsonData = ((EventsDaoUMImpl) dao).getEventJson(eventId);
+		}
+		else {
+			LOG.error("getEventJson method is NOT supported in dao implementation");
+		}
+		return jsonData;
+	}
 }

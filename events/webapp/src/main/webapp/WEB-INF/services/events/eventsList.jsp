@@ -9,52 +9,59 @@
   permissions and limitations under the License.
 --%>
 
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-<%-- <c:choose>
+<c:choose>
 	<c:when test="${category.returnPage eq 'Home'}">
 		<c:url var="back" value="/home" />
 	</c:when>
 	<c:otherwise>
- --%>		<c:url var="back" value="/events" />
-<%-- 	</c:otherwise>
+		<c:url var="back" value="/events" />
+	</c:otherwise>
 </c:choose>
- --%>
-<kme:page title="Events" id="events" backButton="true" homeButton="true" backButtonURL="${back}">
+<kme:page title="${category.title}" id="events" backButton="true"
+	homeButton="true" backButtonURL="${back}">
 	<kme:content>
-		<h3>
-			<c:out value="${category.title}" />
-		</h3>
+
 		<kme:listView id="eventslist" dataTheme="c" dataDividerTheme="b" filter="false">
-		
-<%-- 			<c:forEach items="${category.days}" var="day" varStatus="statusEventDay">
-				<kme:listItem dataTheme="b" dataRole="list-divider">
-					<fmt:formatDate value="${day.date}" pattern="EEEE" />
-					<fmt:formatDate value="${day.date}" pattern="MMMM d, yyyy" />
-				</kme:listItem>
- --%>				
- 			<c:forEach items="${events}" var="event" varStatus="status">
-					<kme:listItem>
-						<c:url var="url" value="/events/viewEvent">
-							<c:param name="categoryId" value="${category.categoryId}"></c:param>
-							<c:param name="campus" value="${campus}"></c:param>
-							<c:param name="eventId" value="${event.eventId}"></c:param>
-						</c:url>
-						<a style="padding-right: 25px !important;" href="${url}">
-							<h3 class="wrap">
-								<c:out value="${event.title}" />
-							</h3>
-							<p class="wrap">
-								<fmt:formatDate value="${event.startDate}" pattern="EEEE MMMM d, yyyy"/> @ 
-								<fmt:formatDate value="${event.startDate}" pattern="h:mm"/> 
-							</p> </a>
-					</kme:listItem>
-				</c:forEach>
-<%-- 			</c:forEach>
- --%>		</kme:listView>
+			<c:choose>
+				<c:when test="${empty events}">
+					<kme:listItem><h3 class="wrap">There are no ${category.title} events scheduled.</h3></kme:listItem>
+				</c:when>
+				<c:otherwise>
+					<c:set var="lastDate" value="NULL" />
+					<c:forEach items="${events}" var="event" varStatus="status">
+						<c:if test="${lastDate != event.displayStartDate}">
+							<c:set var="lastDate" value="${event.displayStartDate}" />
+							<kme:listItem dataTheme="b" dataRole="list-divider">
+								<fmt:formatDate value="${event.startDate}"
+									pattern="EEEE MMMM d, yyyy" />
+							</kme:listItem>
+						</c:if>
+						<kme:listItem>
+							<c:url var="url" value="/events/viewEvent">
+								<c:param name="categoryId" value="${category.categoryId}"></c:param>
+								<c:param name="campus" value="${campus}"></c:param>
+								<c:param name="eventId" value="${event.eventId}"></c:param>
+							</c:url>
+							<a style="padding-right: 25px !important;" href="${url}">
+								<h3 class="wrap">
+									<c:out value="${event.title}" />
+								</h3>
+								<p class="wrap">
+									<fmt:formatDate value="${event.startDate}"
+										pattern="EEEE MMMM d, yyyy @ h:mm a" />
+								</p>
+							</a>
+						</kme:listItem>
+					</c:forEach>
+				</c:otherwise>
+			</c:choose>
+		</kme:listView>
 	</kme:content>
 </kme:page>

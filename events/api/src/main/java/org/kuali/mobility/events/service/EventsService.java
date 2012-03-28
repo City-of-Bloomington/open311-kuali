@@ -27,4 +27,8 @@ public interface EventsService {
 	public List<Category> getCategoriesByCampus(String campus);
 
 	public Event getEvent(String campus, String categoryId, String eventId);
+	
+	public Category getCategory(String campus, String categoryId);
+
+	public String getEventJson(String eventId);	
 }

@@ -20,6 +20,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.kuali.mobility.events.entity.Category;
+import org.kuali.mobility.events.entity.CategoryImpl;
 import org.kuali.mobility.events.entity.Event;
 import org.kuali.mobility.events.service.EventsService;
 import org.kuali.mobility.security.authn.entity.User;
@@ -29,6 +30,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/events")
@@ -61,20 +63,40 @@ public class EventsController {
 
 	@RequestMapping(value = "/viewEvents", method = RequestMethod.GET)
 	public String viewEvents(HttpServletRequest request, Model uiModel, @RequestParam(required = true) String categoryId, @RequestParam(required = false) String campus) throws Exception {
-		List<Event> category = eventsService.getAllEvents(campus, categoryId);
-		uiModel.addAttribute("events", category);
-		uiModel.addAttribute("category", category.get(0).getCategory() );
+		List<Event> eventList = eventsService.getAllEvents(campus, categoryId);
+		uiModel.addAttribute("events", eventList);
+		Category category;
+		if ( eventList!=null && eventList.size()>0 ) {
+			category = eventList.get(0).getCategory() ;
+		}
+		else {
+			category = eventsService.getCategory(campus, categoryId);
+		}
+		if (category == null) {
+			LOG.error("Couldn't find category for categoryId - " + categoryId);
+			category = new CategoryImpl();
+			category.setCategoryId(categoryId);
+			category.setTitle(categoryId);
+		}
+		uiModel.addAttribute("category", category );
 		uiModel.addAttribute("campus", campus);
 		return "events/eventsList";
 	}
 
 	@RequestMapping(value = "/viewEvent", method = RequestMethod.GET)
 	public String viewEvent(HttpServletRequest request, Model uiModel, @RequestParam(required = true) String categoryId, @RequestParam(required = false) String campus, @RequestParam(required = true) String eventId) throws Exception {
-		Event event = eventsService.getEvent(campus, categoryId, eventId);
-		uiModel.addAttribute("event", event);
+		//Event event = eventsService.getEvent(campus, categoryId, eventId);
+		//uiModel.addAttribute("event", event);
+		uiModel.addAttribute("event", eventId);
 		uiModel.addAttribute("categoryId", categoryId);
 		uiModel.addAttribute("campus", campus);
-		return "events/event";
+		return "events/detail";
 	}
 
+	@RequestMapping(value = "/viewEvent", method = RequestMethod.GET, headers = "Accept=application/json")
+    @ResponseBody
+    public String getEventJson(@RequestParam(required = true) String eventId) {
+		return  eventsService.getEventJson(eventId);
+	}
+    
 }

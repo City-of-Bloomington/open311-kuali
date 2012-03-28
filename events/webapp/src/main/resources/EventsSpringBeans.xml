@@ -34,9 +34,10 @@
  -->    
     <bean id="eventDao" class="org.kuali.mobility.events.dao.EventsDaoUMImpl">
         <property name="mapper" ref="mapper"/>
-        <property name="categorySourceUrl" value="http://localhost:5150/events/getCategories"/>
+        <property name="categorySourceUrl" value="http://webservices.dsc.umich.edu/events/getCategories"/>
         <property name="categoryMappingFile" value="categoryMapping.xml"/>
         <property name="eventMappingFile" value="eventMapping.xml"/>
+        <property name="eventJsonURL" value="http://webservices.dsc.umich.edu/events/getEvents/id/" />
     </bean>
 
     <bean id="eventService" class="org.kuali.mobility.events.service.EventsServiceImpl">
