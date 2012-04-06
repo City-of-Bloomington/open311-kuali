@@ -56,6 +56,7 @@
         <tool.news.version>2.0.0-SNAPSHOT</tool.news.version>
         <tool.people.version>2.0.0-SNAPSHOT</tool.people.version>
         <tool.weather.version>2.0.0-SNAPSHOT</tool.weather.version>
+        <tool.reporting.version>2.0.0-SNAPSHOT</tool.reporting.version>
 
         <security.authentication>2.0.0-SNAPSHOT</security.authentication>
 
@@ -87,6 +88,7 @@
                 <module>news</module>
                 <module>people</module>
                 <module>weather</module>
+                <module>reporting</module>
                 <module>mdot-webapp</module>
             </modules>
         </profile>
@@ -209,6 +211,27 @@
                 <groupId>org.kuali.mobility</groupId>
                 <artifactId>alerts-webapp</artifactId>
                 <version>${tool.alerts.version}</version>
+            </dependency>
+            <!-- Reporting Service -->
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>reporting-api</artifactId>
+                <version>${tool.reporting.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>reporting-impl</artifactId>
+                <version>${tool.reporting.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>reporting-web</artifactId>
+                <version>${tool.reporting.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>reporting-webapp</artifactId>
+                <version>${tool.reporting.version}</version>
             </dependency>
             <!-- Bus Service -->
             <dependency>

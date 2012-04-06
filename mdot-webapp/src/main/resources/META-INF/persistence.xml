@@ -29,6 +29,8 @@
     <class>org.kuali.mobility.configparams.entity.ConfigParam</class>    
     <class>org.kuali.mobility.emergencyinfo.entity.EmergencyInfo</class>    
     <class>org.kuali.mobility.feedback.entity.Feedback</class>
+    <class>org.kuali.mobility.reporting.entity.Submission</class>
+    <class>org.kuali.mobility.reporting.entity.SubmissionAttribute</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
   </persistence-unit>
 

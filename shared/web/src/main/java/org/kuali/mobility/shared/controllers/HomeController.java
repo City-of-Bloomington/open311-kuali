@@ -21,10 +21,16 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
+import javax.annotation.Resource;
+import javax.persistence.spi.PersistenceUnitInfo;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hibernate.cfg.Configuration;
+import org.hibernate.ejb.Ejb3Configuration;
+import org.hibernate.tool.hbm2ddl.SchemaExport;
 import org.kuali.mobility.admin.entity.HomeScreen;
 import org.kuali.mobility.admin.entity.HomeTool;
 import org.kuali.mobility.admin.entity.Tool;
@@ -38,6 +44,7 @@ import org.kuali.mobility.shared.Constants;
 import org.kuali.mobility.shared.CoreService;
 import org.kuali.mobility.shared.entity.Backdoor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -49,6 +56,9 @@ public class HomeController {
 
 	private static org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(HomeController.class);
 	
+	@Resource(name="&entityManagerFactory")
+	private LocalContainerEntityManagerFactoryBean entityManagerFactory;
+	  
 	@Autowired
     private AdminService adminService;
 	
@@ -120,6 +130,24 @@ public class HomeController {
 			LOG.error(e.getMessage(), e);
 		}
     }
+
+    @RequestMapping(value = "ddl", method = RequestMethod.GET)
+    public void exportDatabaseSchema(HttpServletRequest request, HttpServletResponse response, Model uiModel) {      
+	    PersistenceUnitInfo persistenceUnitInfo = entityManagerFactory.getPersistenceUnitInfo();
+	    Map jpaPropertyMap = entityManagerFactory.getJpaPropertyMap();
+	
+	    // Use the currently configured database
+	    //Configuration configuration = new Ejb3Configuration().configure( persistenceUnitInfo, jpaPropertyMap ).getHibernateConfiguration();
+	    
+	    jpaPropertyMap.put("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect"); 
+	    Configuration configuration = new Ejb3Configuration().configure( persistenceUnitInfo, jpaPropertyMap ).getHibernateConfiguration();
+	
+	    SchemaExport schema = new SchemaExport(configuration);
+	    schema.setFormat(true);
+	    schema.setDelimiter(";");
+	    schema.setOutputFile("/tmp/schema.sql");
+  	    schema.create(false, false);
+	}
 
     private void buildHomeScreen(HttpServletRequest request, Model uiModel) {
     	User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
