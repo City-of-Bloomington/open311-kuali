@@ -20,6 +20,9 @@ import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.Cookie;
+
 import org.kuali.mobility.security.authn.entity.User;
 import org.kuali.mobility.security.authn.util.AuthenticationConstants;
 import org.kuali.mobility.security.authn.util.AuthenticationMapper;
@@ -191,6 +194,24 @@ public class PageTag extends SimpleTagSupport {
 
 	public void doTag() throws JspException {
         PageContext pageContext = (PageContext) getJspContext();
+        
+        // Get Cookies for Phonegapy stuff. 
+        HttpServletRequest hsr = (HttpServletRequest) pageContext.getRequest();
+        Cookie cks[] = hsr.getCookies();
+        for(Cookie c : cks){
+            LOG.info("---Cookies: " + c.getName());        	
+            if(c.getName().equals("platform") && platform == null){
+            	platform = c.getValue();
+            	LOG.info("---Platform: " + platform);
+            }
+            if(c.getName().equals("phonegap") && phonegap == null){
+            	phonegap = c.getValue();
+            	LOG.info("---Phonegap: " + phonegap);
+            }
+        }
+        
+        
+        
         ServletContext servletContext = pageContext.getServletContext();
 		WebApplicationContext ac = WebApplicationContextUtils.getWebApplicationContext(servletContext);
 		setAuthMapper( (AuthenticationMapper)ac.getBean("authenticationMapper") );

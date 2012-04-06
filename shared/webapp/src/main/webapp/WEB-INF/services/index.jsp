@@ -39,6 +39,11 @@
 		</c:if>	
 
 		<script type="text/javascript">
+			var pgPlatform = $.cookie('platform');
+			if(pgPlatform == null){
+				$.cookie('platform', '${platform}', {expires: 365, path: '/'})
+			}		
+		
 			/*  ${cookie.phonegap.value} */
 			var pgCookie = $.cookie('phonegap');
 			var pgParam = '${param.phonegap}';
@@ -105,7 +110,7 @@
 			      	</a>
 	            </kme:listItem>
 	        </c:if>
-	    </kme:listView>
+	    </kme:listView>	    
 	    <c:if test="${not empty ipAddress}">${ipAddress}</c:if>
 	</kme:content>
 
