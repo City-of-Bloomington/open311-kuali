@@ -131,14 +131,12 @@ public class HomeController {
 		}
     }
 
-    @RequestMapping(value = "ddl", method = RequestMethod.GET)
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+	@RequestMapping(value = "ddl", method = RequestMethod.GET)
     public void exportDatabaseSchema(HttpServletRequest request, HttpServletResponse response, Model uiModel) {      
 	    PersistenceUnitInfo persistenceUnitInfo = entityManagerFactory.getPersistenceUnitInfo();
-	    Map jpaPropertyMap = entityManagerFactory.getJpaPropertyMap();
-	
-	    // Use the currently configured database
-	    //Configuration configuration = new Ejb3Configuration().configure( persistenceUnitInfo, jpaPropertyMap ).getHibernateConfiguration();
-	    
+
+	    Map jpaPropertyMap = entityManagerFactory.getJpaPropertyMap();	
 	    jpaPropertyMap.put("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect"); 
 	    Configuration configuration = new Ejb3Configuration().configure( persistenceUnitInfo, jpaPropertyMap ).getHibernateConfiguration();
 	
