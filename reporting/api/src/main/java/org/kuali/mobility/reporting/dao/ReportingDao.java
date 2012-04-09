@@ -15,17 +15,15 @@
  
 package org.kuali.mobility.reporting.dao;
 
+import java.util.List;
+
 import org.kuali.mobility.reporting.entity.Submission;
 
 public interface ReportingDao {
 	
-//    Reporting findEmergencyInfoById(Long id);
-//    List<Reporting> findAllEmergencyInfo();
-//    List<Reporting> findAllEmergencyInfoByCampus(String campus);
-//    Long saveEmergencyInfo(Reporting emergencyInfo);
-//    void deleteEmergencyInfoById(Long id);
-//    void reorder(Long id, boolean up);
-
+    public List<Submission> findAllSubmissions();
+    public List<Submission> findAllSubmissionsByParentId(Long id);
+    public Submission findSubmissionById(Long id);
     public Long saveSubmission(Submission submission);
 
 }

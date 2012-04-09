@@ -64,7 +64,10 @@ public class Submission implements Serializable {
     
     @Column(name="PST_DT")
     private Timestamp postDate;
-    
+
+    @Column(name="ARCHVD_DT")
+    private Timestamp archivedDate;
+
     @Column(name="IP_ADDR")
     private String ipAddress;
 
@@ -151,6 +154,14 @@ public class Submission implements Serializable {
 
 	public void setPostDate(Timestamp postDate) {
 		this.postDate = postDate;
+	}
+
+	public Timestamp getArchivedDate() {
+		return archivedDate;
+	}
+
+	public void setArchivedDate(Timestamp archivedDate) {
+		this.archivedDate = archivedDate;
 	}
 
 	public String getIpAddress() {

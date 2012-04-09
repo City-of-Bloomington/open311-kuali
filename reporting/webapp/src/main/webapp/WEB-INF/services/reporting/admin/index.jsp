@@ -12,10 +12,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<kme:page title="Hello" id="reporting" backButton="true" homeButton="true" cssFilename="reporting">
+<kme:page title="Reporting Admin" id="reporting" backButton="true" homeButton="true" cssFilename="reporting">
     <kme:content>
-		Hello reporting world!
-    </kme:content>
+        <kme:listView id="submissionList" filter="false">
+            <c:forEach items="${submissions}" var="submission" varStatus="status">
+                <kme:listItem>
+                	<a href="details/${submission.id}">
+                		<h3>${submission.id}</h3>
+                    	<p>${submission.type} - <fmt:formatDate value="${submission.postDate}" type="both" /></p>
+               	 	</a>
+                </kme:listItem>
+            </c:forEach>
+        </kme:listView>    
+	</kme:content>
 </kme:page>

@@ -24,7 +24,8 @@ import org.kuali.mobility.reporting.entity.Submission;
 public interface ReportingService {
 
     public Long saveSubmission(Submission submission);
-
+    public List<Submission> findAllSubmissions();
+    
     public String toJson(Collection<Reporting> collection);
     public Reporting fromJsonToEntity(String json);
     public Collection<Reporting> fromJsonToCollection(String json);

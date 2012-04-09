@@ -35,41 +35,6 @@ public class ReportingServiceImpl implements ReportingService {
     @Autowired
     private ReportingDao reportingDao;
 
-//    @Transactional
-//    public void deleteEmergencyInfoById(Long id) {
-//        emergencyInfoDao.deleteEmergencyInfoById(id);
-//    }
-//
-//    @Transactional
-//    public List<Reporting> findAllEmergencyInfo() {
-//        return emergencyInfoDao.findAllEmergencyInfo();
-//    }
-//
-//    @Transactional
-//    public Reporting findEmergencyInfoById(Long id) {
-//        return emergencyInfoDao.findEmergencyInfoById(id);
-//    }
-//
-//    @Transactional
-//    public Long saveEmergencyInfo(Reporting emergencyInfo) {
-//        return emergencyInfoDao.saveEmergencyInfo(emergencyInfo);
-//    }
-//    
-//    @Transactional
-//    public void reorder(Long id, boolean up) {
-//        emergencyInfoDao.reorder(id, up); 
-//    }
-//
-//    @Transactional
-//    public ReportingDao getEmergencyInfoDao() {
-//        return emergencyInfoDao;
-//    }
-//
-//    @Transactional
-//    public List<Reporting> findAllEmergencyInfoByCampus(String campus) {
-//        return emergencyInfoDao.findAllEmergencyInfoByCampus(campus);
-//    }
-
     public Reporting fromJsonToEntity(String json) {
         return new JSONDeserializer<Reporting>().use(null, Reporting.class).deserialize(json);
     }
@@ -82,6 +47,13 @@ public class ReportingServiceImpl implements ReportingService {
         return new JSONDeserializer<List<Reporting>>().use(null, ArrayList.class).use("values", Reporting.class).deserialize(json);
     }
 
+    
+	@Override
+	@Transactional
+    public List<Submission> findAllSubmissions() {
+		return reportingDao.findAllSubmissions();
+    }
+    
 	@Override
 	@Transactional
 	public Long saveSubmission(Submission submission) {		

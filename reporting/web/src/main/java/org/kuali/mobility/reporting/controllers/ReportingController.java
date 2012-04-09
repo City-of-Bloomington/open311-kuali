@@ -57,14 +57,39 @@ public class ReportingController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String index(Model uiModel, HttpServletRequest request) {
-    	User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
+    	//User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
 		
     	return "reporting/index";
     }
 
+    
+    // 
+    // Reporting Administration Front End
+    //
+    
+    @RequestMapping(value = "/admin/index", method = RequestMethod.GET)
+    public String adminIndex(Model uiModel, HttpServletRequest request) {
+    	//User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
+		
+    	// TODO: Based on the user, find the reporting types that she is allowed to see and use as the filter.
+    	
+    	List<Submission> submissions = reportingService.findAllSubmissions();
+    	
+   		uiModel.addAttribute("submissions", submissions);    	
+    	return "reporting/admin/index";
+    }
+
+    
+    
+    
+    //
+    // Incident Reporting Tool Front End
+    // TODO: Should probably move this to an IncidentController in a separate incident tool 
+    // 
+    
     @RequestMapping(value="/incidentForm", method = RequestMethod.GET)
     public String incidentForm(Model uiModel, HttpServletRequest request) {
-    	User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
+    	//User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
    		Incident incident = new Incident();
    		uiModel.addAttribute("incident", incident);
     	return "incident/form";
