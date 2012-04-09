@@ -54,14 +54,7 @@
 		</property>
 		<property name="jpaPropertyMap">
 			<props>
-				<!-- 
-				validate: validate the schema, makes no changes to the database.
-				update: update the schema.
-				create: creates the schema, destroying previous data.
-				create-drop: drop the schema at the end of the session.
-				 -->
-	            <!-- <prop key="hibernate.hbm2ddl.auto">create-drop</prop> -->
-	            <prop key="hibernate.hbm2ddl.auto">validate</prop>
+	            <prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
 	        </props>
 		</property>
 	</bean>
