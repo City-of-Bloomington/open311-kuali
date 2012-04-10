@@ -35,7 +35,6 @@ public class ReportingDaoImpl implements ReportingDao {
     @SuppressWarnings("unchecked")
 	public List<Submission> findAllSubmissions() {
         try {
-	        //Query query = entityManager.createQuery("select s from Submission s where s.revisionNumber = (select max(ss.revisionNumber) from Submission ss where s.id = ss.id) order by s.postDate desc");
 	        Query query = entityManager.createQuery("select s from Submission s where s.archivedDate is null");
 	        return query.getResultList();
 	    } catch (NoResultException e) {

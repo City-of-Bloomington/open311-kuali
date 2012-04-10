@@ -89,22 +89,12 @@
             <rtexprvalue>true</rtexprvalue>
         </attribute>
         <attribute>
-            <name>onBodyLoad</name>
+            <name>phonegap</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
-        </attribute>        
+        </attribute>
         <attribute>
             <name>appcacheFilename</name>
-            <required>false</required>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
-        <attribute>
-            <name>platform</name>
-            <required>false</required>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
-        <attribute>
-            <name>phonegap</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
         </attribute>
@@ -297,6 +287,23 @@
         <attribute>
             <name>type</name>
             <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+    
+    <tag>
+        <name>labeledRow</name>
+        <tag-class>org.kuali.mobility.tags.LabeledRowTag</tag-class>
+        <body-content>empty</body-content>
+        <description>This tag is for labeledRowTag</description>
+        <attribute>
+            <name>fieldLabel</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>fieldValue</name>
+            <required>false</required>
             <rtexprvalue>true</rtexprvalue>
         </attribute>
     </tag>

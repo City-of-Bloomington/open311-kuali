@@ -34,6 +34,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -46,10 +47,10 @@ public class ReportingController {
 	public static final String INCIDENT_GROUP = "INCIDENT_GROUP";
 	public static final String SUMMARY = "SUMMARY";
 	public static final String EMAIL = "EMAIL";
-	public static final String AFFILLIATION_STUDENT = "AFFILLIATION_STUDENT";
-	public static final String AFFILLIATION_FACULTY = "AFFILLIATION_FACULTY";
-	public static final String AFFILLIATION_STAFF = "AFFILLIATION_STAFF";
-	public static final String AFFILLIATION_OTHER = "AFFILLIATION_OTHER";
+	public static final String AFFILIATION_STUDENT = "AFFILIATION_STUDENT";
+	public static final String AFFILIATION_FACULTY = "AFFILIATION_FACULTY";
+	public static final String AFFILIATION_STAFF = "AFFILIATION_STAFF";
+	public static final String AFFILIATION_OTHER = "AFFILIATION_OTHER";
 	public static final String CONTACT_ME = "CONTACT_ME";
 	
     @Autowired
@@ -79,6 +80,45 @@ public class ReportingController {
     	return "reporting/admin/index";
     }
 
+    @RequestMapping(value = "/admin/incident/details/{id}", method = RequestMethod.GET)
+    public String adminDetails(@PathVariable("id") Long id, Model uiModel, HttpServletRequest request) {
+    	//User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
+		    	
+    	Submission submission = reportingService.findSubmissionById(id);
+    	
+   		uiModel.addAttribute("submission", submission);    	   		
+   		uiModel.addAttribute("summary", findAttributeByKey(SUMMARY, submission.getAttributes()));    	
+   		uiModel.addAttribute("email", findAttributeByKey(EMAIL, submission.getAttributes()));
+   		if (findAttributeByKey(AFFILIATION_STUDENT, submission.getAttributes()).getValueText() != null) {
+   			uiModel.addAttribute("affiliationStudent", "Student");
+   		}
+   		if (findAttributeByKey(AFFILIATION_FACULTY, submission.getAttributes()).getValueText() != null) {
+   			uiModel.addAttribute("affiliationFaculty", "Faculty");
+   		}
+   		if (findAttributeByKey(AFFILIATION_STAFF, submission.getAttributes()).getValueText() != null) {
+   			uiModel.addAttribute("affiliationStaff", "Staff");
+   		}
+   		if (findAttributeByKey(AFFILIATION_OTHER, submission.getAttributes()).getValueText() != null) {
+   			uiModel.addAttribute("affiliationOther", "Other");
+   		}
+   		uiModel.addAttribute("contactMe", findAttributeByKey(CONTACT_ME, submission.getAttributes()));    	
+   		
+   		return "reporting/admin/incident/details";
+    }
+    
+    private SubmissionAttribute findAttributeByKey(String key, List<SubmissionAttribute> attributes) {
+    	if (key == null || key.trim().equals("")) {
+    		return null;
+    	}
+    	SubmissionAttribute found = null;
+    	for (SubmissionAttribute submissionAttribute : attributes) {
+			if (key.trim().equals(submissionAttribute.getKey())) {
+				found = submissionAttribute;
+				break;
+			}
+		}
+    	return found;
+    }
     
     
     
@@ -131,25 +171,25 @@ public class ReportingController {
         	submissionAttributeEmail.setSubmission(submission);
         	
         	SubmissionAttribute submissionAttributeAffiliationStudent = new SubmissionAttribute();
-        	submissionAttributeAffiliationStudent.setKey(AFFILLIATION_STUDENT);
+        	submissionAttributeAffiliationStudent.setKey(AFFILIATION_STUDENT);
         	submissionAttributeAffiliationStudent.setValueText(incident.getAffiliationStudent());
         	submissionAttributeAffiliationStudent.setSubmissionId(pk);
         	submissionAttributeAffiliationStudent.setSubmission(submission);
         	
         	SubmissionAttribute submissionAttributeAffiliationFaculty = new SubmissionAttribute();
-        	submissionAttributeAffiliationFaculty.setKey(AFFILLIATION_FACULTY);
+        	submissionAttributeAffiliationFaculty.setKey(AFFILIATION_FACULTY);
         	submissionAttributeAffiliationFaculty.setValueText(incident.getAffiliationFaculty());
         	submissionAttributeAffiliationFaculty.setSubmissionId(pk);
         	submissionAttributeAffiliationFaculty.setSubmission(submission);
         	
         	SubmissionAttribute submissionAttributeAffiliationStaff = new SubmissionAttribute();
-        	submissionAttributeAffiliationStaff.setKey(AFFILLIATION_STAFF);
+        	submissionAttributeAffiliationStaff.setKey(AFFILIATION_STAFF);
         	submissionAttributeAffiliationStaff.setValueText(incident.getAffiliationStaff());
         	submissionAttributeAffiliationStaff.setSubmissionId(pk);
         	submissionAttributeAffiliationStaff.setSubmission(submission);
         	
         	SubmissionAttribute submissionAttributeAffiliationOther = new SubmissionAttribute();
-        	submissionAttributeAffiliationOther.setKey(AFFILLIATION_OTHER);
+        	submissionAttributeAffiliationOther.setKey(AFFILIATION_OTHER);
         	submissionAttributeAffiliationOther.setValueText(incident.getAffiliationOther());
         	submissionAttributeAffiliationOther.setSubmissionId(pk);
         	submissionAttributeAffiliationOther.setSubmission(submission);

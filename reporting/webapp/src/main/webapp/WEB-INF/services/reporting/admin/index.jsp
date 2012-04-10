@@ -20,7 +20,7 @@
         <kme:listView id="submissionList" filter="false">
             <c:forEach items="${submissions}" var="submission" varStatus="status">
                 <kme:listItem>
-                	<a href="details/${submission.id}">
+                	<a href="incident/details/${submission.id}">
                 		<h3>${submission.id}</h3>
                     	<p>${submission.type} - <fmt:formatDate value="${submission.postDate}" type="both" /></p>
                	 	</a>

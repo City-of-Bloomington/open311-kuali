@@ -47,6 +47,11 @@ public class ReportingServiceImpl implements ReportingService {
         return new JSONDeserializer<List<Reporting>>().use(null, ArrayList.class).use("values", Reporting.class).deserialize(json);
     }
 
+	@Override
+	@Transactional
+    public Submission findSubmissionById(Long id) {
+		return reportingDao.findSubmissionById(id);    	
+    }
     
 	@Override
 	@Transactional
