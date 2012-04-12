@@ -31,27 +31,70 @@
         		<kme:labeledRow fieldLabel="Submission Type" fieldValue="${submission.type}" />
         	</kme:listItem>
         	<kme:listItem dataRole="list-divider">
-        		Affiliations
+        		Summary
         	</kme:listItem>
-        	<c:if test="${not empty affiliationStudent}">
-        		<kme:listItem>
-        			${affiliationStudent}
-        		</kme:listItem>
-        	</c:if>
-        	<c:if test="${not empty affiliationFaculty}">
-        		<kme:listItem>
-        			${affiliationFaculty}
-        		</kme:listItem>
-        	</c:if>
-        	<c:if test="${not empty affiliationStaff}">
-        		<kme:listItem>
-        			${affiliationStaff}
-        		</kme:listItem>
-        	</c:if>
-        	<c:if test="${not empty affiliationOther}">
-        		<kme:listItem>
-        			${affiliationOther}
-        		</kme:listItem>
+        	<kme:listItem>
+        		${summary}
+        	</kme:listItem>
+        	<c:if test="${affiliations}">
+	        	<kme:listItem dataRole="list-divider">
+	        		Affiliations
+	        	</kme:listItem>
+	        	<c:if test="${not empty affiliationStudent}">
+	        		<kme:listItem>
+	        			${affiliationStudent}
+	        		</kme:listItem>
+	        	</c:if>
+	        	<c:if test="${not empty affiliationFaculty}">
+	        		<kme:listItem>
+	        			${affiliationFaculty}
+	        		</kme:listItem>
+	        	</c:if>
+	        	<c:if test="${not empty affiliationStaff}">
+	        		<kme:listItem>
+	        			${affiliationStaff}
+	        		</kme:listItem>
+	        	</c:if>
+	        	<c:if test="${not empty affiliationOther}">
+	        		<kme:listItem>
+	        			${affiliationOther}
+	        		</kme:listItem>
+	        	</c:if>
+	        </c:if>
+        	<kme:listItem dataRole="list-divider">
+        		User Details
+        	</kme:listItem>
+        	<kme:listItem>
+        		<kme:labeledRow fieldLabel="Email" fieldValue="${email}" />
+        	</kme:listItem>
+        	<kme:listItem>
+        		<kme:labeledRow fieldLabel="Contact Me" fieldValue="${contactMeText}" />
+        	</kme:listItem>
+        	<kme:listItem>
+        		<kme:labeledRow fieldLabel="IP Address" fieldValue="${submission.ipAddress}" />
+        	</kme:listItem>
+        	<kme:listItem>
+        		<kme:labeledRow fieldLabel="User Agent" fieldValue="${submission.userAgent}" />		
+        	</kme:listItem>
+        	<kme:listItem>
+        		<kme:labeledRow fieldLabel="Network ID" fieldValue="${submission.userId}" />		
+        	</kme:listItem>
+        	<kme:listItem dataRole="list-divider">
+        		Revision Details
+        	</kme:listItem>
+        	<kme:listItem>
+        		<kme:labeledRow fieldLabel="Revision Number" fieldValue="${submission.revisionNumber}" />
+        	</kme:listItem>
+        	<kme:listItem>
+        		<kme:labeledRow fieldLabel="Revision User" fieldValue="${submission.revisionUserId}" />
+        	</kme:listItem>
+        	<kme:listItem>
+        		<kme:labeledRow fieldLabel="Active" fieldValue="${activeText}" />
+        	</kme:listItem>
+        	<c:if test="${activeText eq 'No'}">
+	        	<kme:listItem>
+	        		<kme:labeledRow fieldLabel="Archived Date" fieldValue="${submission.archivedDate}" />
+	        	</kme:listItem>
         	</c:if>
         </kme:listView>    
 	</kme:content>

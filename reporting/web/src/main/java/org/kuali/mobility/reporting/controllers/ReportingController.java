@@ -87,21 +87,34 @@ public class ReportingController {
     	Submission submission = reportingService.findSubmissionById(id);
     	
    		uiModel.addAttribute("submission", submission);    	   		
-   		uiModel.addAttribute("summary", findAttributeByKey(SUMMARY, submission.getAttributes()));    	
-   		uiModel.addAttribute("email", findAttributeByKey(EMAIL, submission.getAttributes()));
-   		if (findAttributeByKey(AFFILIATION_STUDENT, submission.getAttributes()).getValueText() != null) {
+   		
+   		uiModel.addAttribute("summary", findAttributeByKey(SUMMARY, submission.getAttributes()).getValueLargeText());    	
+   		
+   		uiModel.addAttribute("email", findAttributeByKey(EMAIL, submission.getAttributes()).getValueText());
+   		
+   		String affiliationStudent = findAttributeByKey(AFFILIATION_STUDENT, submission.getAttributes()).getValueText();
+   		String affiliationFaculty = findAttributeByKey(AFFILIATION_FACULTY, submission.getAttributes()).getValueText();
+   		String affiliationStaff = findAttributeByKey(AFFILIATION_STAFF, submission.getAttributes()).getValueText();
+   		String affiliationOther = findAttributeByKey(AFFILIATION_OTHER, submission.getAttributes()).getValueText();
+   		if (affiliationStudent != null) {
    			uiModel.addAttribute("affiliationStudent", "Student");
    		}
-   		if (findAttributeByKey(AFFILIATION_FACULTY, submission.getAttributes()).getValueText() != null) {
+   		if (affiliationFaculty != null) {
    			uiModel.addAttribute("affiliationFaculty", "Faculty");
    		}
-   		if (findAttributeByKey(AFFILIATION_STAFF, submission.getAttributes()).getValueText() != null) {
+   		if (affiliationStaff != null) {
    			uiModel.addAttribute("affiliationStaff", "Staff");
    		}
-   		if (findAttributeByKey(AFFILIATION_OTHER, submission.getAttributes()).getValueText() != null) {
+   		if (affiliationOther != null) {
    			uiModel.addAttribute("affiliationOther", "Other");
-   		}
-   		uiModel.addAttribute("contactMe", findAttributeByKey(CONTACT_ME, submission.getAttributes()));    	
+   		}    	
+   		uiModel.addAttribute("affiliations", !(affiliationStudent == null && affiliationFaculty == null && affiliationStaff == null && affiliationOther == null));
+   		
+   		boolean contactMe = findAttributeByKey(CONTACT_ME, submission.getAttributes()).getValueNumber() == 1 ? true : false;
+   		uiModel.addAttribute("contactMe", contactMe);
+   		uiModel.addAttribute("contactMeText", contactMe ? "Yes" : "No");
+   		
+   		uiModel.addAttribute("activeText", submission.getActive() == 1 ? "Yes" : "No");
    		
    		return "reporting/admin/incident/details";
     }
