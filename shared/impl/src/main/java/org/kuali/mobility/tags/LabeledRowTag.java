@@ -38,7 +38,11 @@ public class LabeledRowTag extends SimpleTagSupport {
         try {
         	if (fieldLabel != null && !fieldLabel.trim().equals("")) {
         		out.println("<div style=\"display:block; width:30%; text-align:right; float:left; color:#900\">" + fieldLabel + "</div> ");
-        		out.println("<div style=\"display:block; width:60%; padding-left:35%\">" + (fieldValue == null || fieldValue.trim().equals("") ? "&nbsp;" : fieldValue) + "</div>");
+        		out.println("<div style=\"display:block; width:60%; padding-left:35%\">" + (fieldValue == null || fieldValue.trim().equals("") ? "&nbsp;" : fieldValue));
+        		if (getJspBody() != null) {
+        			getJspBody().invoke(out);
+        		}
+        		out.println("</div>");
         	}
         } catch (Exception e) {
             LOG.error(e.getMessage(), e);

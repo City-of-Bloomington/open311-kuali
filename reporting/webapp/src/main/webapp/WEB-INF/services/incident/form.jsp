@@ -17,6 +17,63 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <kme:page title="Incident" id="incident" backButton="true" homeButton="true" cssFilename="incident">
+
+	<script type="text/javascript">
+    var pictureSource;   // picture source
+    var destinationType; // sets the format of returned value 
+
+    // Wait for PhoneGap to connect with the device
+    //
+    document.addEventListener("deviceready",onDeviceReady,false);
+
+    // PhoneGap is ready to be used!
+    function onDeviceReady() {
+    	alert("OnDeviceReady");
+		// Setup variable names shorter than the stock phonegap ones.  
+        pictureSource	= navigator.camera.PictureSourceType;
+        destinationType	= navigator.camera.DestinationType;
+    }
+
+    // Called when a photo is successfully retrieved
+    function onPhotoURISuccess(imageURI) {
+		// View the Photo's URI in the  console. Can use this to grap the photo with a form for 
+		console.log(imageURI);
+
+		// Get image handle
+		var largeImage = document.getElementById('largeImage');
+
+		console.log("largeImage:" + largeImage);
+		// Unhide image elements
+		largeImage.style.display = 'block';
+
+		// Show the captured photo
+		// The inline CSS rules are used to resize the image
+		console.log("pre" + largeImage.src);
+		largeImage.src = imageURI;
+		console.log("post" + largeImage.src);
+    }
+
+
+
+    // A button will call this function
+    function getPhoto(source) {
+    	alert("Destination type:" + destinationType);
+    	
+		// Retrieve image file location from specified source
+		// The quality, targetWidth, targetHeight taken together probably affect file size. 
+		navigator.camera.getPicture(onPhotoURISuccess, onFail, {quality: 50, 
+																destinationType: destinationType.FILE_URI,
+																sourceType: source, 
+																targetWidth: 320,
+																targetHeight: 320});
+    }
+    
+    // Called if something bad happens or fail silently...
+    function onFail(message) {
+		alert('Failed because: ' + message);
+    }
+   </script>
+
     <kme:content>
     	<kme:listView>
 		    <kme:listItem cssClass="link-phone">
@@ -36,7 +93,15 @@
 		                <label for="summary">Summary</label>
 		                <form:textarea path="summary" cols="40" rows="8" class="required" />
 		                <form:errors path="summary" />
-		
+						<div onclick="getPhoto(pictureSource.CAMERA);" style="display:block; height:30px; border:1px solid green">CAMERA!!!!</div>
+						<div onclick="getPhoto(pictureSource.PHOTOLIBRARY);" style="display:block; height:30px; border:1px solid green">LIBRARY!!!</div>
+						
+					    <button onclick="getPhoto(pictureSource.CAMERA);return false;">From CAMERA</button><br>
+					    <button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From PHOTOLIBRARY</button><br>
+					    <button onclick="navigator.notification.alert('Phonegap Alert', function(){}, 'Alert', 'OK');">alert</button><br>
+					    <img style="border:1px solid red; display:block; width:300px; height:200px;" id="largeImage" src="" />
+					    <a href="/mdot/reportingindex.html">test html</a>	
+					    						
 		                <label for="email">Email</label>
 		                <form:input path="email" type="text" value="" placeholder="Anonymous" class="email" />
 						

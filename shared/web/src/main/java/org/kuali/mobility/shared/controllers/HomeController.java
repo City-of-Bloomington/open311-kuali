@@ -178,7 +178,25 @@ public class HomeController {
 	    	tool.setUrl("backdoor");
 	    	copy.add(new HomeTool(home, tool, home.getHomeTools().size() + 1000));
     	}
- 	
+
+		tool = new Tool();
+		tool.setAlias("incident");
+		tool.setTitle("Incident Reporting");
+		tool.setUrl("reporting/incidentForm");
+		tool.setDescription("Submit campus incidents.");
+		tool.setIconUrl("images/service-icons/srvc-incident-green.png");
+		adminService.saveTool(tool);
+    	copy.add(new HomeTool(home, tool, home.getHomeTools().size() + 1000));
+
+		tool = new Tool();
+		tool.setAlias("reportingadmin");
+		tool.setTitle("Reporting");
+		tool.setUrl("reporting/admin/index");
+		tool.setDescription("Reporting administration.");
+		tool.setIconUrl("images/service-icons/srvc-feedback.png");
+		adminService.saveTool(tool);
+    	copy.add(new HomeTool(home, tool, home.getHomeTools().size() + 1000));
+    	    	
     	Collections.sort(copy);
     	
     	for (HomeTool homeTool : copy) {

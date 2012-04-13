@@ -12,11 +12,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <kme:page title="Reporting Admin" id="reporting" backButton="true" homeButton="true" cssFilename="reporting">
     <kme:content>
+    	<form:form action="${pageContext.request.contextPath}/reporting/incidentPost" commandName="incident" data-ajax="false" method="post"> 
+		<form:hidden path="userAgent" value="${header['User-Agent']}"/>
         <kme:listView id="submissionDetails" filter="false">
         	<kme:listItem dataRole="list-divider">
         		Base Details
@@ -34,7 +37,7 @@
         		Summary
         	</kme:listItem>
         	<kme:listItem>
-        		${summary}
+        		<form:textarea path="summary" cols="40" rows="8" class="required" />
         	</kme:listItem>
         	<c:if test="${affiliations}">
 	        	<kme:listItem dataRole="list-divider">
@@ -65,7 +68,9 @@
         		User Details
         	</kme:listItem>
         	<kme:listItem>
-        		<kme:labeledRow fieldLabel="Email" fieldValue="${email}" />
+        		<kme:labeledRow fieldLabel="Email">
+        			<form:input path="email" type="text" value="${email}" placeholder="Anonymous" class="email" />
+        		</kme:labeledRow>
         	</kme:listItem>
         	<kme:listItem>
         		<kme:labeledRow fieldLabel="Contact Me" fieldValue="${contactMeText}" />
@@ -97,11 +102,10 @@
 	        	</kme:listItem>
         	</c:if>
         	<kme:listItem dataRole="list-divider">
-        		Administrative Functions
+        		!Administrative Functions
         	</kme:listItem>
-        	<kme:listItem>
-        		<a href="../edit/${submission.id}">Edit</a>
-        	</kme:listItem>
-        </kme:listView>    
+        	
+        </kme:listView>
+        </form:form>    
 	</kme:content>
 </kme:page>

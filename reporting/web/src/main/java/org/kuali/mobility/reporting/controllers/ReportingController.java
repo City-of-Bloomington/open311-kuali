@@ -84,7 +84,28 @@ public class ReportingController {
     public String adminDetails(@PathVariable("id") Long id, Model uiModel, HttpServletRequest request) {
     	//User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
 		    	
-    	Submission submission = reportingService.findSubmissionById(id);
+    	prepareSubmissionById(id, uiModel);
+   		
+   		return "reporting/admin/incident/details";
+    }
+
+    @RequestMapping(value = "/admin/incident/edit/{id}", method = RequestMethod.GET)
+    public String adminEdit(@PathVariable("id") Long id, Model uiModel, HttpServletRequest request) {
+    	//User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
+
+   		Incident incident = new Incident();
+   		uiModel.addAttribute("incident", incident);
+
+    	prepareSubmissionById(id, uiModel);
+    	
+    	incident.setSummary("This is a test.");
+   		
+   		return "reporting/admin/incident/edit";
+    }
+
+    
+	private void prepareSubmissionById(Long id, Model uiModel) {
+		Submission submission = reportingService.findSubmissionById(id);
     	
    		uiModel.addAttribute("submission", submission);    	   		
    		
@@ -115,9 +136,7 @@ public class ReportingController {
    		uiModel.addAttribute("contactMeText", contactMe ? "Yes" : "No");
    		
    		uiModel.addAttribute("activeText", submission.getActive() == 1 ? "Yes" : "No");
-   		
-   		return "reporting/admin/incident/details";
-    }
+	}
     
     private SubmissionAttribute findAttributeByKey(String key, List<SubmissionAttribute> attributes) {
     	if (key == null || key.trim().equals("")) {

@@ -304,7 +304,7 @@
     <tag>
         <name>labeledRow</name>
         <tag-class>org.kuali.mobility.tags.LabeledRowTag</tag-class>
-        <body-content>empty</body-content>
+        <body-content>scriptless</body-content>
         <description>This tag is for labeledRowTag</description>
         <attribute>
             <name>fieldLabel</name>
