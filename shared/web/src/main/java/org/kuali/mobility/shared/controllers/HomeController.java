@@ -190,10 +190,10 @@ public class HomeController {
 
 		tool = new Tool();
 		tool.setAlias("reportingadmin");
-		tool.setTitle("Reporting");
+		tool.setTitle("Reporting Admin");
 		tool.setUrl("reporting/admin/index");
 		tool.setDescription("Reporting administration.");
-		tool.setIconUrl("images/service-icons/srvc-feedback.png");
+		tool.setIconUrl("images/service-icons/srvc-incident-admin.png");
 		adminService.saveTool(tool);
     	copy.add(new HomeTool(home, tool, home.getHomeTools().size() + 1000));
     	    	
