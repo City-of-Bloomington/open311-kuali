@@ -39,42 +39,13 @@
         	<kme:listItem>
         		<form:textarea path="summary" cols="40" rows="8" class="required" />
         	</kme:listItem>
-        	<%--
-        	<c:if test="${affiliations}">
-	        	<kme:listItem dataRole="list-divider">
-	        		Affiliations
-	        	</kme:listItem>
-	        	<c:if test="${not empty affiliationStudent}">
-	        		<kme:listItem>
-	        			${affiliationStudent}
-	        		</kme:listItem>
-	        	</c:if>
-	        	<c:if test="${not empty affiliationFaculty}">
-	        		<kme:listItem>
-	        			${affiliationFaculty}
-	        		</kme:listItem>
-	        	</c:if>
-	        	<c:if test="${not empty affiliationStaff}">
-	        		<kme:listItem>
-	        			${affiliationStaff}
-	        		</kme:listItem>
-	        	</c:if>
-	        	<c:if test="${not empty affiliationOther}">
-	        		<kme:listItem>
-	        			${affiliationOther}
-	        		</kme:listItem>
-	        	</c:if>
-	        </c:if>
-	        --%>
         	<kme:listItem dataRole="list-divider">
         		Affiliations
         	</kme:listItem>
-
             <form:checkbox data-theme="c" path="affiliationStudent" value="YES" style="left:0; width:25px; height:25px;" label="Student" />
             <form:checkbox data-theme="c" path="affiliationFaculty" value="YES" style="left:0; width:25px; height:25px;" label="Faculty" />
             <form:checkbox data-theme="c" path="affiliationStaff"   value="YES" style="left:0; width:25px; height:25px;" label="Staff" />
             <form:checkbox data-theme="c" path="affiliationOther"   value="YES" style="left:0; width:25px; height:25px;" label="Other" />
-     
         	<kme:listItem dataRole="list-divider">
         		User Details
         	</kme:listItem>

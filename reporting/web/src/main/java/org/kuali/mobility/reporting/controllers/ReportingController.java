@@ -128,22 +128,22 @@ public class ReportingController {
     	Submission submission = reportingService.findSubmissionById(id);
     			
    		Incident incident = new Incident();
-   		uiModel.addAttribute("incident", incident);
 
-   		//prepareSubmissionById(id, uiModel);
+   		prepareSubmissionById(id, uiModel);
     	
-    	incident.setSummary("This is a test.");
-
    		String affiliationStudent = findAttributeByKey(AFFILIATION_STUDENT, submission.getAttributes()).getValueText();
    		String affiliationFaculty = findAttributeByKey(AFFILIATION_FACULTY, submission.getAttributes()).getValueText();
    		String affiliationStaff = findAttributeByKey(AFFILIATION_STAFF, submission.getAttributes()).getValueText();
    		String affiliationOther = findAttributeByKey(AFFILIATION_OTHER, submission.getAttributes()).getValueText();
     	   		
+    	incident.setSummary(findAttributeByKey(SUMMARY, submission.getAttributes()).getValueLargeText());
     	incident.setAffiliationFaculty(affiliationFaculty);
     	incident.setAffiliationStudent(affiliationStudent);
     	incident.setAffiliationStaff(affiliationStaff);
     	incident.setAffiliationOther(affiliationOther);
     	
+   		uiModel.addAttribute("incident", incident);
+
    		return "reporting/admin/incident/edit";
     }
 
