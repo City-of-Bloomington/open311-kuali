@@ -17,6 +17,7 @@ package org.kuali.mobility.reporting.dao;
 
 import java.util.List;
 
+import org.kuali.mobility.reporting.entity.File;
 import org.kuali.mobility.reporting.entity.Submission;
 
 public interface ReportingDao {
@@ -25,5 +26,7 @@ public interface ReportingDao {
     public List<Submission> findAllSubmissionsByParentId(Long id);
     public Submission findSubmissionById(Long id);
     public Long saveSubmission(Submission submission);
+
+    public Long saveAttachment(File file);
 
 }

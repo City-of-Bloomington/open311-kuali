@@ -15,20 +15,17 @@
  
 package org.kuali.mobility.reporting.service;
 
-import java.util.Collection;
 import java.util.List;
 
-import org.kuali.mobility.reporting.entity.Reporting;
+import org.kuali.mobility.reporting.entity.File;
 import org.kuali.mobility.reporting.entity.Submission;
-
+ 
 public interface ReportingService {
 
 	public Submission findSubmissionById(Long id);
 	public Long saveSubmission(Submission submission);
     public List<Submission> findAllSubmissions();
     
-    public String toJson(Collection<Reporting> collection);
-    public Reporting fromJsonToEntity(String json);
-    public Collection<Reporting> fromJsonToCollection(String json);
-
+    public Long saveAttachment(File file);
+    
 }

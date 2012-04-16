@@ -31,6 +31,7 @@
     <class>org.kuali.mobility.feedback.entity.Feedback</class>
     <class>org.kuali.mobility.reporting.entity.Submission</class>
     <class>org.kuali.mobility.reporting.entity.SubmissionAttribute</class>
+    <class>org.kuali.mobility.reporting.entity.File</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
   </persistence-unit>
 

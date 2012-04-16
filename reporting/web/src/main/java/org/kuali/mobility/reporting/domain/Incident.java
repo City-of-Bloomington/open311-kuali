@@ -17,6 +17,8 @@ package org.kuali.mobility.reporting.domain;
 
 import java.io.Serializable;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class Incident implements Serializable {
 
 	private static final long serialVersionUID = 1844528404920336947L;
@@ -37,6 +39,8 @@ public class Incident implements Serializable {
     
     private boolean contactMe;
 
+    private MultipartFile file;
+    
 	public String getUserAgent() {
 		return userAgent;
 	}
@@ -99,6 +103,14 @@ public class Incident implements Serializable {
 
 	public void setContactMe(boolean contactMe) {
 		this.contactMe = contactMe;
+	}
+
+	public MultipartFile getFile() {
+		return file;
+	}
+
+	public void setFile(MultipartFile file) {
+		this.file = file;
 	}
     
 }

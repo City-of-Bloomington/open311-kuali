@@ -25,6 +25,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Version;
@@ -49,6 +50,8 @@ public class SubmissionAttribute implements Serializable {
 	@Column(name="KY")
 	private String key;
 	
+	// Start of denormalized values - could be refactored into normalized tables later
+	
 	@Column(name="VAL_TXT")
 	private String valueText;
 	
@@ -60,10 +63,19 @@ public class SubmissionAttribute implements Serializable {
 	
 	@Column(name="VAL_DT")
 	private Timestamp valueDate;
-	
+		
+    @Lob
 	@Column(name="VAL_BIN")
 	private byte[] valueBinary;
-	    
+    
+    @Column(name="CNTNT_TYP")
+    private String contentType;
+    
+    @Column(name="FILE_NM")
+    private String fileName;
+
+	// End of denormalized values
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="SUBMISSION_ID")
 	private Submission submission;
@@ -158,6 +170,22 @@ public class SubmissionAttribute implements Serializable {
 
 	public void setSubmission(Submission submission) {
 		this.submission = submission;
+	}
+
+	public String getContentType() {
+		return contentType;
+	}
+
+	public void setContentType(String contentType) {
+		this.contentType = contentType;
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
 	}
 		
 }

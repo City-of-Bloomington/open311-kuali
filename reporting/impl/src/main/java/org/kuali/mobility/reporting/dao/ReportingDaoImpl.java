@@ -23,68 +23,88 @@ import javax.persistence.OptimisticLockException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import org.kuali.mobility.reporting.entity.File;
 import org.kuali.mobility.reporting.entity.Submission;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class ReportingDaoImpl implements ReportingDao {
 
-    @PersistenceContext
-    private EntityManager entityManager;
-    
-    @SuppressWarnings("unchecked")
+	@PersistenceContext
+	private EntityManager entityManager;
+
+	@SuppressWarnings("unchecked")
 	public List<Submission> findAllSubmissions() {
-        try {
-	        Query query = entityManager.createQuery("select s from Submission s where s.archivedDate is null");
-	        return query.getResultList();
-	    } catch (NoResultException e) {
-	        return null;
-	    }    	
-    }
+		try {
+			Query query = entityManager
+					.createQuery("select s from Submission s where s.archivedDate is null");
+			return query.getResultList();
+		} catch (NoResultException e) {
+			return null;
+		}
+	}
 
-    @SuppressWarnings("unchecked")
-    public List<Submission> findAllSubmissionsByParentId(Long id) {
-        try {
-	        Query query = entityManager.createQuery("select s from Submission s where s.parentId = :id");
-	        query.setParameter("id", id);
-	        return query.getResultList();
-	    } catch (NoResultException e) {
-	        return null;
-	    }    	
-    } 
+	@SuppressWarnings("unchecked")
+	public List<Submission> findAllSubmissionsByParentId(Long id) {
+		try {
+			Query query = entityManager
+					.createQuery("select s from Submission s where s.parentId = :id");
+			query.setParameter("id", id);
+			return query.getResultList();
+		} catch (NoResultException e) {
+			return null;
+		}
+	}
 
-    public Submission findSubmissionById(Long id) {
-        try {
-	  	    Query query = entityManager.createQuery("select s from Submission s where s.id = :id");  	    
-	  	    query.setParameter("id", id);
-	  	    return (Submission) query.getSingleResult();
-	    } catch (Exception e) {
-  	        return null;
-  	    }
-    }
-    
-    public Long saveSubmission(Submission submission) {
-      if (submission == null) {
-    	  return null;
-	  }	  
-      try {
-	      if (submission.getId() == null) {
-	          entityManager.persist(submission);
-	      } else {
-	          entityManager.merge(submission);
-	      }
-	  } catch (OptimisticLockException oe) {
-	      return null;
-	  }
-	  return submission.getId();
-    }
+	public Submission findSubmissionById(Long id) {
+		try {
+			Query query = entityManager
+					.createQuery("select s from Submission s where s.id = :id");
+			query.setParameter("id", id);
+			return (Submission) query.getSingleResult();
+		} catch (Exception e) {
+			return null;
+		}
+	}
 
-    public EntityManager getEntityManager() {
-        return entityManager;
-    }
+	public Long saveSubmission(Submission submission) {
+		if (submission == null) {
+			return null;
+		}
+		try {
+			if (submission.getId() == null) {
+				entityManager.persist(submission);
+			} else {
+				entityManager.merge(submission);
+			}
+		} catch (OptimisticLockException oe) {
+			return null;
+		}
+		return submission.getId();
+	}
 
-    public void setEntityManager(EntityManager entityManager) {
-        this.entityManager = entityManager;
-    }
+	public Long saveAttachment(File file) {
+		if (file == null) {
+			return null;
+		}
+		try {
+			if (file.getId() == null) {
+				entityManager.persist(file);
+			} else {
+				entityManager.merge(file);
+			}
+		} catch (OptimisticLockException oe) {
+			return null;
+		}
+		return file.getId();
+	}
+
+	public EntityManager getEntityManager() {
+		return entityManager;
+	}
+
+	public void setEntityManager(EntityManager entityManager) {
+		this.entityManager = entityManager;
+	}
 
 }

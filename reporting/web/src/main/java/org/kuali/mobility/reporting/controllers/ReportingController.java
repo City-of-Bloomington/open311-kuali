@@ -15,6 +15,7 @@
  
 package org.kuali.mobility.reporting.controllers;
 
+import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
@@ -23,6 +24,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.kuali.mobility.reporting.domain.Incident;
+import org.kuali.mobility.reporting.entity.File;
 import org.kuali.mobility.reporting.entity.Submission;
 import org.kuali.mobility.reporting.entity.SubmissionAttribute;
 import org.kuali.mobility.reporting.service.ReportingService;
@@ -31,18 +33,22 @@ import org.kuali.mobility.shared.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.support.SessionStatus;
 
 
 @Controller 
 @RequestMapping("/reporting")
 public class ReportingController {
     
+	private static org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(ReportingController.class);
+
 	public static final String INCIDENT_TYPE = "INCIDENT";
 	public static final String INCIDENT_GROUP = "INCIDENT_GROUP";
 	public static final String SUMMARY = "SUMMARY";
@@ -89,17 +95,55 @@ public class ReportingController {
    		return "reporting/admin/incident/details";
     }
 
+    @RequestMapping(value = "/admin/incident/save2", method = RequestMethod.GET)
+    public String saveSumission2(HttpServletRequest request) {
+
+    	
+    	return "reporting/admin/index";    	
+    }
+    
+    @RequestMapping(value = "/admin/incident/save", method = RequestMethod.POST)
+    public String saveSumission(HttpServletRequest request, ModelMap model, @ModelAttribute("file") File file, BindingResult result, SessionStatus status) {
+    	
+    	if (file != null && file.getFile() != null) {
+    		String contentType = file.getFile().getContentType();
+    		String fileName = file.getFile().getOriginalFilename();
+    		file.setContentType(contentType);
+    		file.setFileName(fileName);
+    		try {
+				file.setBytes(file.getFile().getBytes());
+			} catch (IOException e) {
+				LOG.error("File contained no bytes.", e);
+			}
+    		reportingService.saveAttachment(file);
+    	}
+    	return "reporting/admin/index";
+    	//return "redirect:manageFiles.do?groupId=" + groupId;
+    }
+    
     @RequestMapping(value = "/admin/incident/edit/{id}", method = RequestMethod.GET)
     public String adminEdit(@PathVariable("id") Long id, Model uiModel, HttpServletRequest request) {
     	//User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
 
+    	Submission submission = reportingService.findSubmissionById(id);
+    			
    		Incident incident = new Incident();
    		uiModel.addAttribute("incident", incident);
 
-    	prepareSubmissionById(id, uiModel);
+   		//prepareSubmissionById(id, uiModel);
     	
     	incident.setSummary("This is a test.");
-   		
+
+   		String affiliationStudent = findAttributeByKey(AFFILIATION_STUDENT, submission.getAttributes()).getValueText();
+   		String affiliationFaculty = findAttributeByKey(AFFILIATION_FACULTY, submission.getAttributes()).getValueText();
+   		String affiliationStaff = findAttributeByKey(AFFILIATION_STAFF, submission.getAttributes()).getValueText();
+   		String affiliationOther = findAttributeByKey(AFFILIATION_OTHER, submission.getAttributes()).getValueText();
+    	   		
+    	incident.setAffiliationFaculty(affiliationFaculty);
+    	incident.setAffiliationStudent(affiliationStudent);
+    	incident.setAffiliationStaff(affiliationStaff);
+    	incident.setAffiliationOther(affiliationOther);
+    	
    		return "reporting/admin/incident/edit";
     }
 

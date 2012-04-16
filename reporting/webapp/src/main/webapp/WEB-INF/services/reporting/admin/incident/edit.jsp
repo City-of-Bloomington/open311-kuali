@@ -18,7 +18,7 @@
 
 <kme:page title="Reporting Admin" id="reporting" backButton="true" homeButton="true" cssFilename="reporting">
     <kme:content>
-    	<form:form action="${pageContext.request.contextPath}/reporting/incidentPost" commandName="incident" data-ajax="false" method="post"> 
+    	<form:form action="${pageContext.request.contextPath}/reporting/admin/incident/save" enctype="multipart/form-data" commandName="incident" data-ajax="false" method="post"> 
 		<form:hidden path="userAgent" value="${header['User-Agent']}"/>
         <kme:listView id="submissionDetails" filter="false">
         	<kme:listItem dataRole="list-divider">
@@ -39,6 +39,7 @@
         	<kme:listItem>
         		<form:textarea path="summary" cols="40" rows="8" class="required" />
         	</kme:listItem>
+        	<%--
         	<c:if test="${affiliations}">
 	        	<kme:listItem dataRole="list-divider">
 	        		Affiliations
@@ -64,6 +65,16 @@
 	        		</kme:listItem>
 	        	</c:if>
 	        </c:if>
+	        --%>
+        	<kme:listItem dataRole="list-divider">
+        		Affiliations
+        	</kme:listItem>
+
+            <form:checkbox data-theme="c" path="affiliationStudent" value="YES" style="left:0; width:25px; height:25px;" label="Student" />
+            <form:checkbox data-theme="c" path="affiliationFaculty" value="YES" style="left:0; width:25px; height:25px;" label="Faculty" />
+            <form:checkbox data-theme="c" path="affiliationStaff"   value="YES" style="left:0; width:25px; height:25px;" label="Staff" />
+            <form:checkbox data-theme="c" path="affiliationOther"   value="YES" style="left:0; width:25px; height:25px;" label="Other" />
+     
         	<kme:listItem dataRole="list-divider">
         		User Details
         	</kme:listItem>
@@ -102,10 +113,18 @@
 	        	</kme:listItem>
         	</c:if>
         	<kme:listItem dataRole="list-divider">
-        		!Administrative Functions
+        		Comments
         	</kme:listItem>
-        	
+        	<kme:listItem dataRole="list-divider">
+        		Attachments
+        	</kme:listItem>
+        	<kme:listItem>
+	        	<input type="file" name="file" />
+	        </kme:listItem>
         </kme:listView>
+        <div data-inline="true">
+        	<input data-theme="a" class="submit" type="submit" value="Submit" />
+        </div>
         </form:form>    
 	</kme:content>
 </kme:page>
