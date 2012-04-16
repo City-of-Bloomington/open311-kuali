@@ -25,7 +25,8 @@ public interface ReportingService {
 	public Submission findSubmissionById(Long id);
 	public Long saveSubmission(Submission submission);
     public List<Submission> findAllSubmissions();
-    
+    public List<Submission> findAllSubmissionsByParentId(Long id);
+
     public Long saveAttachment(File file);
     
 }

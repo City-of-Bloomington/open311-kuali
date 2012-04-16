@@ -16,13 +16,19 @@
 package org.kuali.mobility.reporting.domain;
 
 import java.io.Serializable;
+import java.util.List;
 
+import org.kuali.mobility.reporting.entity.SubmissionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 
 public class Incident implements Serializable {
 
 	private static final long serialVersionUID = 1844528404920336947L;
         
+	private Long id;
+	
+	private String newComment;
+	
     private String userAgent;
     
     private String summary;
@@ -40,6 +46,10 @@ public class Incident implements Serializable {
     private boolean contactMe;
 
     private MultipartFile file;
+
+    private List<SubmissionAttribute> attachments;
+
+    private List<SubmissionAttribute> comments;
     
 	public String getUserAgent() {
 		return userAgent;
@@ -111,6 +121,38 @@ public class Incident implements Serializable {
 
 	public void setFile(MultipartFile file) {
 		this.file = file;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public List<SubmissionAttribute> getAttachments() {
+		return attachments;
+	}
+
+	public void setAttachments(List<SubmissionAttribute> attachments) {
+		this.attachments = attachments;
+	}
+
+	public List<SubmissionAttribute> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<SubmissionAttribute> comments) {
+		this.comments = comments;
+	}
+
+	public String getNewComment() {
+		return newComment;
+	}
+
+	public void setNewComment(String newComment) {
+		this.newComment = newComment;
 	}
     
 }

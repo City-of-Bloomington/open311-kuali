@@ -54,4 +54,10 @@ public class ReportingServiceImpl implements ReportingService {
 		return reportingDao.saveAttachment(file);
     }
     
+	@Override
+	@Transactional
+    public List<Submission> findAllSubmissionsByParentId(Long id) {
+		return reportingDao.findAllSubmissionsByParentId(id);
+	}
+
 }

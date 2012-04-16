@@ -97,11 +97,38 @@
 	        	</kme:listItem>
         	</c:if>
         	<kme:listItem dataRole="list-divider">
+        		Comments
+        	</kme:listItem>
+        	<c:if test="${empty comments}">
+        		<kme:listItem>No commemnts</kme:listItem>
+        	</c:if>
+        	<c:forEach items="${comments}" var="comment" varStatus="status">
+	        	<kme:listItem>
+					${comment.valueLargeText}
+				</kme:listItem>        	
+        	</c:forEach>
+        	<kme:listItem dataRole="list-divider">
+        		Attachments
+        	</kme:listItem>
+        	<c:if test="${empty attachments}">
+        		<kme:listItem>No attachments</kme:listItem>
+        	</c:if>
+        	<c:forEach items="${attachments}" var="attachment" varStatus="status">
+	        	<kme:listItem>
+					${attachment.fileName}
+				</kme:listItem>        	
+        	</c:forEach>
+        	<c:if test="${submission.active eq 1}">
+        	<kme:listItem dataRole="list-divider">
         		Administrative Functions
         	</kme:listItem>
         	<kme:listItem>
         		<a href="../edit/${submission.id}">Edit</a>
         	</kme:listItem>
+        	<kme:listItem>
+        		<a href="../revisions/${submission.id}">Revision History</a>
+        	</kme:listItem>
+        	</c:if>
         </kme:listView>    
 	</kme:content>
 </kme:page>

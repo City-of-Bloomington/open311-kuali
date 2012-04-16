@@ -20,6 +20,7 @@
     <kme:content>
     	<form:form action="${pageContext.request.contextPath}/reporting/admin/incident/save" enctype="multipart/form-data" commandName="incident" data-ajax="false" method="post"> 
 		<form:hidden path="userAgent" value="${header['User-Agent']}"/>
+		<form:hidden path="id" value="${submission.id}"/>
         <kme:listView id="submissionDetails" filter="false">
         	<kme:listItem dataRole="list-divider">
         		Base Details
@@ -86,11 +87,24 @@
         	<kme:listItem dataRole="list-divider">
         		Comments
         	</kme:listItem>
+        	<c:forEach items="${incident.comments}" var="comment" varStatus="status">
+	        	<kme:listItem>
+					${comment.valueLargeText}
+				</kme:listItem>        	
+        	</c:forEach>
+        	<kme:listItem>
+        		<form:textarea path="newComment" cols="40" rows="8" />
+        	</kme:listItem>
         	<kme:listItem dataRole="list-divider">
         		Attachments
         	</kme:listItem>
+        	<c:forEach items="${incident.attachments}" var="attachment" varStatus="status">
+	        	<kme:listItem>
+					${attachment.fileName}
+				</kme:listItem>        	
+        	</c:forEach>
         	<kme:listItem>
-	        	<input type="file" name="file" />
+	        	Add a new attachment? <input type="file" name="file" />
 	        </kme:listItem>
         </kme:listView>
         <div data-inline="true">

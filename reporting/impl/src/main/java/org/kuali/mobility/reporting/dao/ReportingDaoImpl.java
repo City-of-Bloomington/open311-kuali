@@ -36,8 +36,7 @@ public class ReportingDaoImpl implements ReportingDao {
 	@SuppressWarnings("unchecked")
 	public List<Submission> findAllSubmissions() {
 		try {
-			Query query = entityManager
-					.createQuery("select s from Submission s where s.archivedDate is null");
+			Query query = entityManager.createQuery("select s from Submission s where s.archivedDate is null");
 			return query.getResultList();
 		} catch (NoResultException e) {
 			return null;
@@ -47,8 +46,7 @@ public class ReportingDaoImpl implements ReportingDao {
 	@SuppressWarnings("unchecked")
 	public List<Submission> findAllSubmissionsByParentId(Long id) {
 		try {
-			Query query = entityManager
-					.createQuery("select s from Submission s where s.parentId = :id");
+			Query query = entityManager.createQuery("select s from Submission s where s.parentId = :id or s.id = :id order by s.revisionNumber desc");
 			query.setParameter("id", id);
 			return query.getResultList();
 		} catch (NoResultException e) {
@@ -58,8 +56,7 @@ public class ReportingDaoImpl implements ReportingDao {
 
 	public Submission findSubmissionById(Long id) {
 		try {
-			Query query = entityManager
-					.createQuery("select s from Submission s where s.id = :id");
+			Query query = entityManager.createQuery("select s from Submission s where s.id = :id");
 			query.setParameter("id", id);
 			return (Submission) query.getSingleResult();
 		} catch (Exception e) {

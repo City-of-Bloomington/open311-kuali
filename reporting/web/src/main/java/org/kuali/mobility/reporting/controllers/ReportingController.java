@@ -58,6 +58,8 @@ public class ReportingController {
 	public static final String AFFILIATION_STAFF = "AFFILIATION_STAFF";
 	public static final String AFFILIATION_OTHER = "AFFILIATION_OTHER";
 	public static final String CONTACT_ME = "CONTACT_ME";
+	public static final String ATTACHMENT = "ATTACHMENT";
+	public static final String COMMENT = "COMMENT";
 	
     @Autowired
     private ReportingService reportingService;
@@ -91,7 +93,7 @@ public class ReportingController {
     	//User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
 		    	
     	prepareSubmissionById(id, uiModel);
-   		
+    	   		
    		return "reporting/admin/incident/details";
     }
 
@@ -101,22 +103,144 @@ public class ReportingController {
     	
     	return "reporting/admin/index";    	
     }
+
+    @RequestMapping(value = "/admin/incident/revisions/{id}", method = RequestMethod.GET)
+    public String revisions(@PathVariable("id") Long id, Model uiModel, HttpServletRequest request) {
+    	//User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
+		
+    	// TODO: Based on the user, find the reporting types that she is allowed to see and use as the filter.
+
+    	Submission submission = reportingService.findSubmissionById(id);
+    	Long parentId = submission.getParentId() == null ? submission.getId() : submission.getParentId();
+
+    	List<Submission> submissions = reportingService.findAllSubmissionsByParentId(parentId);
+    	
+   		uiModel.addAttribute("submissions", submissions);    	
+    	return "reporting/admin/incident/revisions";
+    }
     
     @RequestMapping(value = "/admin/incident/save", method = RequestMethod.POST)
-    public String saveSumission(HttpServletRequest request, ModelMap model, @ModelAttribute("file") File file, BindingResult result, SessionStatus status) {
+    public String addFile(HttpServletRequest request, ModelMap model, @ModelAttribute("file") Incident incident, BindingResult result, SessionStatus status) {
     	
-    	if (file != null && file.getFile() != null) {
-    		String contentType = file.getFile().getContentType();
-    		String fileName = file.getFile().getOriginalFilename();
-    		file.setContentType(contentType);
-    		file.setFileName(fileName);
+    	Submission oldSubmission = reportingService.findSubmissionById(incident.getId());
+    	oldSubmission.setActive(0);
+    	oldSubmission.setArchivedDate(new Timestamp(System.currentTimeMillis()));
+    	// Set revision attributes for oldSubmission
+    	reportingService.saveSubmission(oldSubmission);
+
+    	Long parentId = oldSubmission.getParentId() == null ? oldSubmission.getId() : oldSubmission.getParentId();
+    	
+    	Submission revisedSubmission = new Submission();
+    	revisedSubmission.setActive(1);
+    	revisedSubmission.setParentId(parentId);
+    	revisedSubmission.setPostDate(new Timestamp(System.currentTimeMillis()));
+    	revisedSubmission.setRevisionNumber(oldSubmission.getRevisionNumber() + 1);
+    	revisedSubmission.setType(INCIDENT_TYPE);
+    	revisedSubmission.setGroup(INCIDENT_GROUP);
+    	
+    	Long pk = reportingService.saveSubmission(revisedSubmission);
+    	
+    	SubmissionAttribute submissionAttributeSummary = new SubmissionAttribute();
+    	submissionAttributeSummary.setKey(SUMMARY);
+    	submissionAttributeSummary.setValueLargeText(incident.getSummary());
+    	submissionAttributeSummary.setSubmissionId(pk);
+    	submissionAttributeSummary.setSubmission(revisedSubmission);
+    	
+    	SubmissionAttribute submissionAttributeContactMe = new SubmissionAttribute();
+    	submissionAttributeContactMe.setKey(CONTACT_ME);
+    	submissionAttributeContactMe.setValueNumber(incident.isContactMe() ? 1L : 0L);
+    	submissionAttributeContactMe.setSubmissionId(pk);
+    	submissionAttributeContactMe.setSubmission(revisedSubmission);
+    	
+    	SubmissionAttribute submissionAttributeEmail = new SubmissionAttribute();
+    	submissionAttributeEmail.setKey(EMAIL);
+    	submissionAttributeEmail.setValueText(incident.getEmail());
+    	submissionAttributeEmail.setSubmissionId(pk);
+    	submissionAttributeEmail.setSubmission(revisedSubmission);
+    	
+    	SubmissionAttribute submissionAttributeAffiliationStudent = new SubmissionAttribute();
+    	submissionAttributeAffiliationStudent.setKey(AFFILIATION_STUDENT);
+    	submissionAttributeAffiliationStudent.setValueText(incident.getAffiliationStudent());
+    	submissionAttributeAffiliationStudent.setSubmissionId(pk);
+    	submissionAttributeAffiliationStudent.setSubmission(revisedSubmission);
+    	
+    	SubmissionAttribute submissionAttributeAffiliationFaculty = new SubmissionAttribute();
+    	submissionAttributeAffiliationFaculty.setKey(AFFILIATION_FACULTY);
+    	submissionAttributeAffiliationFaculty.setValueText(incident.getAffiliationFaculty());
+    	submissionAttributeAffiliationFaculty.setSubmissionId(pk);
+    	submissionAttributeAffiliationFaculty.setSubmission(revisedSubmission);
+    	
+    	SubmissionAttribute submissionAttributeAffiliationStaff = new SubmissionAttribute();
+    	submissionAttributeAffiliationStaff.setKey(AFFILIATION_STAFF);
+    	submissionAttributeAffiliationStaff.setValueText(incident.getAffiliationStaff());
+    	submissionAttributeAffiliationStaff.setSubmissionId(pk);
+    	submissionAttributeAffiliationStaff.setSubmission(revisedSubmission);
+    	
+    	SubmissionAttribute submissionAttributeAffiliationOther = new SubmissionAttribute();
+    	submissionAttributeAffiliationOther.setKey(AFFILIATION_OTHER);
+    	submissionAttributeAffiliationOther.setValueText(incident.getAffiliationOther());
+    	submissionAttributeAffiliationOther.setSubmissionId(pk);
+    	submissionAttributeAffiliationOther.setSubmission(revisedSubmission);
+    	
+    	List<SubmissionAttribute> attributes = new ArrayList<SubmissionAttribute>();
+    	attributes.add(submissionAttributeSummary);
+    	attributes.add(submissionAttributeEmail);
+    	attributes.add(submissionAttributeContactMe);
+    	attributes.add(submissionAttributeAffiliationStudent);
+    	attributes.add(submissionAttributeAffiliationFaculty);
+    	attributes.add(submissionAttributeAffiliationStaff);
+    	attributes.add(submissionAttributeAffiliationOther);
+    	    	    	
+    	// Save new attachment if available
+    	if (incident != null && incident.getFile() != null) {
+        	SubmissionAttribute newAttachment = new SubmissionAttribute();
+        	newAttachment.setKey(ATTACHMENT);
+        	newAttachment.setSubmissionId(pk);
+        	newAttachment.setSubmission(revisedSubmission);
+        	newAttachment.setContentType(incident.getFile().getContentType());
+    		newAttachment.setFileName(incident.getFile().getOriginalFilename());
     		try {
-				file.setBytes(file.getFile().getBytes());
+    			newAttachment.setValueBinary(incident.getFile().getBytes());
 			} catch (IOException e) {
 				LOG.error("File contained no bytes.", e);
 			}
-    		reportingService.saveAttachment(file);
+    		attributes.add(newAttachment);
     	}
+
+    	// Save new comment if available
+    	if (incident != null && incident.getNewComment() != null) {
+        	SubmissionAttribute newComment = new SubmissionAttribute();
+        	newComment.setKey(COMMENT);
+        	newComment.setSubmissionId(pk);
+        	newComment.setSubmission(revisedSubmission);
+   			newComment.setValueLargeText(incident.getNewComment());
+    		attributes.add(newComment);
+    	}
+    	
+    	// Need the comments and attachments from the oldSubmission
+    	for (SubmissionAttribute submissionAttribute : findAttributesByKey(ATTACHMENT, oldSubmission.getAttributes())) {
+        	SubmissionAttribute oldAttachment = new SubmissionAttribute();
+        	oldAttachment.setKey(ATTACHMENT);
+        	oldAttachment.setSubmissionId(revisedSubmission.getId());
+        	oldAttachment.setSubmission(revisedSubmission);
+        	oldAttachment.setContentType(submissionAttribute.getContentType());
+    		oldAttachment.setFileName(submissionAttribute.getFileName());				
+			oldAttachment.setValueBinary(submissionAttribute.getValueBinary());
+    		attributes.add(oldAttachment);
+		}
+    	for (SubmissionAttribute submissionAttribute : findAttributesByKey(COMMENT, oldSubmission.getAttributes())) {
+        	SubmissionAttribute oldComment = new SubmissionAttribute();
+        	oldComment.setKey(COMMENT);
+        	oldComment.setSubmissionId(revisedSubmission.getId());
+        	oldComment.setSubmission(revisedSubmission);
+			oldComment.setValueLargeText(submissionAttribute.getValueLargeText());
+    		attributes.add(oldComment);
+		}
+    	
+    	revisedSubmission.setAttributes(attributes);
+    	
+    	reportingService.saveSubmission(revisedSubmission);
+    	
     	return "reporting/admin/index";
     	//return "redirect:manageFiles.do?groupId=" + groupId;
     }
@@ -141,6 +265,9 @@ public class ReportingController {
     	incident.setAffiliationStudent(affiliationStudent);
     	incident.setAffiliationStaff(affiliationStaff);
     	incident.setAffiliationOther(affiliationOther);
+    	
+    	incident.setAttachments(findAttributesByKey(ATTACHMENT, submission.getAttributes()));
+    	incident.setComments(findAttributesByKey(COMMENT, submission.getAttributes()));
     	
    		uiModel.addAttribute("incident", incident);
 
@@ -179,6 +306,9 @@ public class ReportingController {
    		uiModel.addAttribute("contactMe", contactMe);
    		uiModel.addAttribute("contactMeText", contactMe ? "Yes" : "No");
    		
+   		uiModel.addAttribute("attachments", findAttributesByKey(ATTACHMENT, submission.getAttributes()));
+   		uiModel.addAttribute("comments", findAttributesByKey(COMMENT, submission.getAttributes()));
+
    		uiModel.addAttribute("activeText", submission.getActive() == 1 ? "Yes" : "No");
 	}
     
@@ -196,6 +326,18 @@ public class ReportingController {
     	return found;
     }
     
+    private List<SubmissionAttribute> findAttributesByKey(String key, List<SubmissionAttribute> attributes) {
+    	if (key == null || key.trim().equals("")) {
+    		return null;
+    	}
+    	List<SubmissionAttribute> found = new ArrayList<SubmissionAttribute>();
+    	for (SubmissionAttribute submissionAttribute : attributes) {
+			if (key.trim().equals(submissionAttribute.getKey())) {
+				found.add(submissionAttribute);
+			}
+		}
+    	return found;
+    }
     
     
     //
