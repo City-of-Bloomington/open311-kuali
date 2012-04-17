@@ -43,10 +43,14 @@
         	<kme:listItem dataRole="list-divider">
         		Affiliations
         	</kme:listItem>
-            <form:checkbox data-theme="c" path="affiliationStudent" value="YES" style="left:0; width:25px; height:25px;" label="Student" />
-            <form:checkbox data-theme="c" path="affiliationFaculty" value="YES" style="left:0; width:25px; height:25px;" label="Faculty" />
-            <form:checkbox data-theme="c" path="affiliationStaff"   value="YES" style="left:0; width:25px; height:25px;" label="Staff" />
-            <form:checkbox data-theme="c" path="affiliationOther"   value="YES" style="left:0; width:25px; height:25px;" label="Other" />
+        	<kme:listItem>
+        		<fieldset data-role="controlgroup">
+		            <form:checkbox data-theme="c" path="affiliationStudent" value="YES" style="left:0; width:25px; height:25px;" label="Student" />
+		            <form:checkbox data-theme="c" path="affiliationFaculty" value="YES" style="left:0; width:25px; height:25px;" label="Faculty" />
+		            <form:checkbox data-theme="c" path="affiliationStaff"   value="YES" style="left:0; width:25px; height:25px;" label="Staff" />
+		            <form:checkbox data-theme="c" path="affiliationOther"   value="YES" style="left:0; width:25px; height:25px;" label="Other" />
+	            </fieldset>
+            </kme:listItem>
         	<kme:listItem dataRole="list-divider">
         		User Details
         	</kme:listItem>
@@ -98,18 +102,23 @@
         	<kme:listItem dataRole="list-divider">
         		Attachments
         	</kme:listItem>
+        	<kme:listItem>
         	<c:forEach items="${incident.attachments}" var="attachment" varStatus="status">
 	        	<kme:listItem>
 					${attachment.fileName}
 				</kme:listItem>        	
         	</c:forEach>
+        	</kme:listItem>
         	<kme:listItem>
 	        	Add a new attachment? <input type="file" name="file" />
 	        </kme:listItem>
+	        <kme:listItem>
+	        	<div data-inline="true">
+        			<input data-theme="a" class="submit" type="submit" value="Submit" />
+        		</div>
+	        </kme:listItem>
         </kme:listView>
-        <div data-inline="true">
-        	<input data-theme="a" class="submit" type="submit" value="Submit" />
-        </div>
+        
         </form:form>    
 	</kme:content>
 </kme:page>

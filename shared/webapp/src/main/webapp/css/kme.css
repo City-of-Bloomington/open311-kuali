@@ -231,6 +231,7 @@
 	text-shadow: 0 1px 0 #fff;
 	background: #f0f0f0;
 	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #eeeeee), color-stop(1, #dddddd));
+	background-image: -moz-linear-gradient(top, #eeeeee, #dddddd);
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#eeeeee', EndColorStr='#dddddd')";
 }
 .ui-body-c, .ui-body-c input, .ui-body-c select, .ui-body-c textarea, .ui-body-c button {
@@ -761,4 +762,15 @@ div.error span {
 
 .wrap {
 	white-space:normal;
+}
+
+/* Adjustments to accommodate 100% wide li for labeledRow formatting
+-----------------------------------------------------------------------------------------------------------*/
+
+.ui-btn, .ui-controlgroup, fieldset.ui-controlgroup {
+    margin-right: 20px !important;
+}
+
+input.ui-input-text {
+    margin-top: -20px;
 }

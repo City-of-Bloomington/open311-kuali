@@ -93,7 +93,7 @@
 		                <label for="summary">Summary</label>
 		                <form:textarea path="summary" cols="40" rows="8" class="required" />
 		                <form:errors path="summary" />
-						<div onclick="getPhoto(pictureSource.CAMERA);" style="display:block; height:30px; border:1px solid green">CAMERA!!!!</div>
+						<%-- <div onclick="getPhoto(pictureSource.CAMERA);" style="display:block; height:30px; border:1px solid green">CAMERA!!!!</div>
 						<div onclick="getPhoto(pictureSource.PHOTOLIBRARY);" style="display:block; height:30px; border:1px solid green">LIBRARY!!!</div>
 						
 					    <button onclick="getPhoto(pictureSource.CAMERA);return false;">From CAMERA</button><br>
@@ -101,12 +101,13 @@
 					    <button onclick="navigator.notification.alert('Phonegap Alert', function(){}, 'Alert', 'OK');">alert</button><br>
 					    <img style="border:1px solid red; display:block; width:300px; height:200px;" id="largeImage" src="" />
 					    <a href="/mdot/reportingindex.html">test html</a>	
+					    --%>
 					    						
 		                <label for="email">Email</label>
 		                <form:input path="email" type="text" value="" placeholder="Anonymous" class="email" />
 						
 			            <fieldset data-role="controlgroup" data-theme="c">
-			    	    	<label for="affiliation">Affiliation</label><br/>				
+			    	    	<label for="affiliation">Affiliation</label>				
 				            <form:checkbox data-theme="c" path="affiliationStudent" value="YES" style="left:0; width:25px; height:25px;" label="Student" />
 				            <form:checkbox data-theme="c" path="affiliationFaculty" value="YES" style="left:0; width:25px; height:25px;" label="Faculty" />
 				            <form:checkbox data-theme="c" path="affiliationStaff"   value="YES" style="left:0; width:25px; height:25px;" label="Staff" />

@@ -39,7 +39,7 @@ public class ListItemTag extends SimpleTagSupport {
         PageContext pageContext = (PageContext) getJspContext();
         JspWriter out = pageContext.getOut();
         try {
-            out.println("<li " + (dataRole != null && !"".equals(dataRole.trim()) ? " data-role=\"" + dataRole.trim() + "\"" : "") + (hideDataIcon ? " data-icon=\"false\"" : (dataIcon != null && !"".equals(dataIcon.trim()) ? " data-icon=\"" + dataIcon.trim() + "\"" : "")) + (cssClass != null && !"".equals(cssClass.trim()) ? " class=\"" + cssClass.trim() + "\"" : "") + " data-theme=\"" + (dataTheme != null && !"".equals(dataTheme.trim()) ? dataTheme : "c") + "\">");
+            out.println("<li style='float:left; width:100%; clear:both;'" + (dataRole != null && !"".equals(dataRole.trim()) ? " data-role=\"" + dataRole.trim() + "\"" : "") + (hideDataIcon ? " data-icon=\"false\"" : (dataIcon != null && !"".equals(dataIcon.trim()) ? " data-icon=\"" + dataIcon.trim() + "\"" : "")) + (cssClass != null && !"".equals(cssClass.trim()) ? " class=\"" + cssClass.trim() + "\"" : "") + " data-theme=\"" + (dataTheme != null && !"".equals(dataTheme.trim()) ? dataTheme : "c") + "\">");
             getJspBody().invoke(out);          
             out.println("</li>");
         } catch (Exception e) {
