@@ -771,6 +771,11 @@ div.error span {
     margin-right: 20px !important;
 }
 
-input.ui-input-text {
+div.labeledRow input.ui-input-text {
     margin-top: -20px;
+}
+
+input.ui-input-text, textarea.ui-input-text {
+	margin-right:-20px;
+	width:95%;
 }

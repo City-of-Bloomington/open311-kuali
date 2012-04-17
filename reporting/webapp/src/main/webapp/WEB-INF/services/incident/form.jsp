@@ -90,7 +90,7 @@
 					<form:hidden path="userAgent" value="${header['User-Agent']}"/>
 					
 		            <fieldset>            
-		                <label for="summary">Summary</label>
+		                <label style="margin-top:10px; font-weight:normal; font-size:14px;" for="summary">Summary:</label>
 		                <form:textarea path="summary" cols="40" rows="8" class="required" />
 		                <form:errors path="summary" />
 						<%-- <div onclick="getPhoto(pictureSource.CAMERA);" style="display:block; height:30px; border:1px solid green">CAMERA!!!!</div>
@@ -103,19 +103,21 @@
 					    <a href="/mdot/reportingindex.html">test html</a>	
 					    --%>
 					    						
-		                <label for="email">Email</label>
+		                <label style="margin-top:10px; font-weight:normal; font-size:14px;" for="email">Email:</label>
 		                <form:input path="email" type="text" value="" placeholder="Anonymous" class="email" />
 						
+						<label style="margin-top:10px; font-weight:normal; font-size:14px;" for="affiliation">&nbsp;<br/>Affiliation:</label>
 			            <fieldset data-role="controlgroup" data-theme="c">
-			    	    	<label for="affiliation">Affiliation</label>				
+			    	    					
 				            <form:checkbox data-theme="c" path="affiliationStudent" value="YES" style="left:0; width:25px; height:25px;" label="Student" />
 				            <form:checkbox data-theme="c" path="affiliationFaculty" value="YES" style="left:0; width:25px; height:25px;" label="Faculty" />
 				            <form:checkbox data-theme="c" path="affiliationStaff"   value="YES" style="left:0; width:25px; height:25px;" label="Staff" />
 				            <form:checkbox data-theme="c" path="affiliationOther"   value="YES" style="left:0; width:25px; height:25px;" label="Other" />
 						</fieldset>
 						
+						<label style="margin-top:10px; font-weight:normal; font-size:14px;" for="contactMe">Contact Me:</label>
 			            <fieldset data-role="controlgroup" data-theme="c">
-			    	    	<label for="contactMe">Contact me</label><br/>				
+			    	    					
 			                <form:radiobutton data-theme="c" path="contactMe" value="YES" label="Yes, please follow up with me. I would like to receive support from the Teams or provide more information as needed" />
 			                <form:radiobutton data-theme="c" path="contactMe" value="NO"  label="No" />
 						</fieldset>
