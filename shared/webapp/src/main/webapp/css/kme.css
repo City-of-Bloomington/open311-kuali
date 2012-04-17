@@ -764,18 +764,30 @@ div.error span {
 	white-space:normal;
 }
 
-/* Adjustments to accommodate 100% wide li for labeledRow formatting
+/* Keep normal checkboxes from peeking out from behind jQuery Mobile checkbox clickable areas
 -----------------------------------------------------------------------------------------------------------*/
-
-.ui-btn, .ui-controlgroup, fieldset.ui-controlgroup {
-    margin-right: 20px !important;
+input[type="checkbox"] {
+	margin-left:10px;
 }
 
+
+/* Adjustments to accommodate 100% wide li for labeledRow formatting
+-----------------------------------------------------------------------------------------------------------*/
 div.labeledRow input.ui-input-text {
-    margin-top: -20px;
+    display:inline;
+    margin-right:-20px;
+    margin-left:-8px;
+    width:90%;
+}
+
+
+/*
+.ui-btn, .ui-controlgroup, fieldset.ui-controlgroup {
+    margin-right: 20px !important;
 }
 
 input.ui-input-text, textarea.ui-input-text {
 	margin-right:-20px;
 	width:95%;
 }
+*/

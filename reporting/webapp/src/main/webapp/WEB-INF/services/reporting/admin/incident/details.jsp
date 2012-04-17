@@ -100,7 +100,7 @@
         		Comments
         	</kme:listItem>
         	<c:if test="${empty comments}">
-        		<kme:listItem>No commemnts</kme:listItem>
+        		<kme:listItem>No comments</kme:listItem>
         	</c:if>
         	<c:forEach items="${comments}" var="comment" varStatus="status">
 	        	<kme:listItem>
