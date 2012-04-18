@@ -5,7 +5,9 @@
 	Unless required by applicable law or agreed to in writing, software distributed 
 	under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES 
 	OR CONDITIONS OF ANY KIND, either express or implied. See the License for 
-	the specific language governing permissions and limitations under the License. --><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	the specific language governing permissions and limitations under the License. -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <name>Kuali Mobility Enterprise</name>
     <groupId>org.kuali.mobility</groupId>
@@ -39,6 +41,7 @@
         <commons-collections.version>3.2.1</commons-collections.version>
         <xstream.version>1.4.1</xstream.version>
 
+		<tool.push.version>1.0-SNAPSHOT</tool.push.version>
         <tool.shared.version>2.0.0-SNAPSHOT</tool.shared.version>
         <tool.admin.version>2.0.0-SNAPSHOT</tool.admin.version>
         <tool.alerts.version>2.0.0-SNAPSHOT</tool.alerts.version>
@@ -56,7 +59,6 @@
         <tool.weather.version>2.0.0-SNAPSHOT</tool.weather.version>
         <tool.reporting.version>2.0.0-SNAPSHOT</tool.reporting.version>
         <tool.database.version>2.0.0-SNAPSHOT</tool.database.version>
-
         <security.authentication>2.0.0-SNAPSHOT</security.authentication>
 
         <util.testing>2.0.0-SNAPSHOT</util.testing>
@@ -87,6 +89,7 @@
                 <module>news</module>
                 <module>people</module>
                 <module>weather</module>
+                <module>push</module>
                 <module>reporting</module>
                 <module>database</module>
                 <module>mdot-webapp</module>
@@ -117,6 +120,28 @@
     </licenses>
     <dependencyManagement>
         <dependencies>
+			<!-- Push Dependencies -->
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>push-api</artifactId>
+                <version>${tool.push.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>push-impl</artifactId>
+                <version>${tool.push.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>push-web</artifactId>
+                <version>${tool.push.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.kuali.mobility</groupId>
+                <artifactId>push-webapp</artifactId>
+                <version>${tool.push.version}</version>
+            </dependency>	
+
             <!-- Cache dependencies -->
             <dependency>
                 <groupId>net.sf.ehcache</groupId>
@@ -770,5 +795,5 @@
     </reporting>
     <modules>
         <module>mdot-webapp</module>
-  </modules>
+    </modules>
 </project>

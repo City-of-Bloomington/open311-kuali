@@ -22,6 +22,11 @@
         <version>2.0.0-SNAPSHOT</version>
 	</parent>
 	<dependencies>
+	    <!-- MultipartFile Dependency -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+		</dependency>
 		<!-- Persistence dependencies -->
 		<dependency>
 			<groupId>javax.persistence</groupId>

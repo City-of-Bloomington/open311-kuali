@@ -110,6 +110,15 @@
 			      	</a>
 	            </kme:listItem>
 	        </c:if>
+	            <kme:listItem hideDataIcon="true">
+	            	<a href="push" style="background-image: url('${pageContext.request.contextPath}/images/service-icons/srvc-push.png');">
+			      		<h3>Push Notifications</h3>
+			      		<p class="wrap">Send notifications, view past notifications and registered devices. </p>
+			      		<c:if test="${not empty homeTool.tool.badgeCount}"> 
+			      			<span class="countBadge ui-btn-up-c ui-btn-corner-all">${homeTool.tool.badgeCount}</span>
+			      		</c:if>
+			      	</a>
+	            </kme:listItem>
 	    </kme:listView>	    
 	    <c:if test="${not empty ipAddress}">${ipAddress}</c:if>
 	</kme:content>

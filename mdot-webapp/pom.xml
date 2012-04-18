@@ -26,7 +26,15 @@
 		    <groupId>net.sf.ehcache</groupId>
 		    <artifactId>ehcache</artifactId>
 		</dependency>
-        <!-- Webapp dependencies -->
+
+<!-- Support for External Persisting Derby -->
+		<dependency>
+			<groupId>org.apache.derby</groupId>
+			<artifactId>derbyclient</artifactId>
+			<version>10.8.1.2</version>
+		</dependency>
+
+<!-- Webapp dependencies -->
    		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
@@ -85,7 +93,7 @@
 		<dependency>
 		    <groupId>org.apache.derby</groupId>
 		    <artifactId>derby</artifactId>
-		    <version>10.8.1.2</version>
+		    <version>10.8.2.2</version>
 		</dependency>
 		<dependency>
 		    <groupId>cglib</groupId>
@@ -97,12 +105,24 @@
 		    <artifactId>commons-fileupload</artifactId>
 		    <version>1.2.2</version>
 		</dependency>
-        <!-- Logging dependencies -->
+<!-- Logging dependencies -->
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
         </dependency>
-        <!-- Service dependencies -->
+<!-- Service dependencies -->
+        <dependency>
+            <groupId>org.kuali.mobility</groupId>
+            <artifactId>push-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.kuali.mobility</groupId>
+            <artifactId>push-impl</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.kuali.mobility</groupId>
+            <artifactId>push-web</artifactId>
+        </dependency>
 		<dependency>
 			<groupId>org.kuali.mobility</groupId>
 			<artifactId>security.authentication</artifactId>
@@ -421,7 +441,14 @@
             <type>war</type>
             <scope>runtime</scope>
         </dependency>
-        <dependency> 
+        <dependency>
+            <groupId>org.kuali.mobility</groupId>
+            <artifactId>push-webapp</artifactId>
+			<version>${tool.push.version}</version>
+            <type>war</type>
+            <scope>runtime</scope>
+        </dependency>
+		<dependency> 
             <groupId>org.kuali.mobility</groupId>
             <artifactId>database-webapp</artifactId>
 			<version>${tool.database.version}</version>
@@ -429,7 +456,7 @@
             <scope>runtime</scope>
         </dependency>
 		
-		<!-- Spring dependencies -->
+<!-- Spring dependencies -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
