@@ -17,7 +17,8 @@ package org.kuali.mobility.reporting.dao;
 
 import java.util.List;
 
-import org.kuali.mobility.reporting.entity.File;
+//import org.kuali.mobility.reporting.entity.File;
+import org.kuali.mobility.file.entity.File;
 import org.kuali.mobility.reporting.entity.Submission;
 
 public interface ReportingDao {

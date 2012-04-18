@@ -18,7 +18,8 @@ package org.kuali.mobility.reporting.service;
 import java.util.List;
 
 import org.kuali.mobility.reporting.dao.ReportingDao;
-import org.kuali.mobility.reporting.entity.File;
+//import org.kuali.mobility.reporting.entity.File;
+import org.kuali.mobility.file.entity.File;
 import org.kuali.mobility.reporting.entity.Submission;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

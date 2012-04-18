@@ -28,7 +28,7 @@
 
     // PhoneGap is ready to be used!
     function onDeviceReady() {
-    	alert("OnDeviceReady");
+    	//alert("OnDeviceReady");
 		// Setup variable names shorter than the stock phonegap ones.  
         pictureSource	= navigator.camera.PictureSourceType;
         destinationType	= navigator.camera.DestinationType;
@@ -36,36 +36,59 @@
 
     // Called when a photo is successfully retrieved
     function onPhotoURISuccess(imageURI) {
-		// View the Photo's URI in the  console. Can use this to grap the photo with a form for 
 		console.log(imageURI);
-
-		// Get image handle
+		uploadPhoto(imageURI);
 		var largeImage = document.getElementById('largeImage');
-
 		console.log("largeImage:" + largeImage);
-		// Unhide image elements
-		largeImage.style.display = 'block';
-
-		// Show the captured photo
-		// The inline CSS rules are used to resize the image
-		console.log("pre" + largeImage.src);
 		largeImage.src = imageURI;
 		console.log("post" + largeImage.src);
     }
 
+    function uploadPhoto(imageURI) {
+    	console.log("Attemping to Upload File: " + imageURI);
+    	var options = new FileUploadOptions();
+        options.fileKey="file";											// This is the form element name, had this been submitted by an
+        																// 		actual form. 
+        options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);	// FileName
+        options.mimeType="image/jpeg";									// mimeType
 
+        var params = new Object();
+        params.value1 = "test";
+        params.value2 = "param";
+
+        options.params = params;
+
+		var server	= "${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}";
+        var save 	= server + "/files/file/save"; 
+        var get 	= server + "/files/file/get/";
+        
+        var ft = new FileTransfer();
+        ft.upload(	imageURI, 
+        			save, 
+        			function(r){
+        	            var response = jQuery.parseJSON(r.response);
+        				var largeImage = document.getElementById('largeImage');
+        				var fileId = document.getElementById('fileId');
+						fileId.value = response.fileId;
+        				largeImage.src = get + response.fileid;
+						largeImage.style.display = 'block';
+        			}, 
+        			function(r){
+        	            alert("An error has occurred: Code = " + error.code);
+        	            console.log("upload error source " + error.source);
+        	            console.log("upload error target " + error.target);
+        			}, 
+        			options);
+    }
 
     // A button will call this function
     function getPhoto(source) {
-    	alert("Destination type:" + destinationType);
-    	
-		// Retrieve image file location from specified source
-		// The quality, targetWidth, targetHeight taken together probably affect file size. 
 		navigator.camera.getPicture(onPhotoURISuccess, onFail, {quality: 50, 
 																destinationType: destinationType.FILE_URI,
 																sourceType: source, 
-																targetWidth: 320,
-																targetHeight: 320});
+																targetWidth: 420,
+																targetHeight: 420});
+
     }
     
     // Called if something bad happens or fail silently...
@@ -83,7 +106,7 @@
 			    </a>
 		    </kme:listItem>
 		    <kme:listItem dataRole="list-divider">
-		    	Report Incident
+		    	Report Incident	
 		    </kme:listItem>
 			<kme:listItem>
 		        <form:form action="${pageContext.request.contextPath}/reporting/incidentPost" commandName="incident" data-ajax="false" method="post"> 
@@ -93,15 +116,19 @@
 		                <label style="margin-top:10px; font-weight:normal; font-size:14px;" for="summary">Summary:</label>
 		                <form:textarea path="summary" cols="40" rows="8" class="required" />
 		                <form:errors path="summary" />
-						<%-- <div onclick="getPhoto(pictureSource.CAMERA);" style="display:block; height:30px; border:1px solid green">CAMERA!!!!</div>
-						<div onclick="getPhoto(pictureSource.PHOTOLIBRARY);" style="display:block; height:30px; border:1px solid green">LIBRARY!!!</div>
+
+						<fieldset class="ui-grid-a">
+							<legend>Photo</legend>
+								<div class="ui-block-a"><button onclick="getPhoto(pictureSource.CAMERA);return false;">Camera</button></div>
+				    			<div class="ui-block-b"><button onclick="getPhoto(pictureSource.PHOTOLIBRARY);return false;">Album</button></div>
+						</fieldset>
+						<img style="border:1px solid black; display:none; width:100px; height:100px;" id="largeImage" src="" />
 						
-					    <button onclick="getPhoto(pictureSource.CAMERA);return false;">From CAMERA</button><br>
-					    <button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From PHOTOLIBRARY</button><br>
-					    <button onclick="navigator.notification.alert('Phonegap Alert', function(){}, 'Alert', 'OK');">alert</button><br>
-					    <img style="border:1px solid red; display:block; width:300px; height:200px;" id="largeImage" src="" />
-					    <a href="/mdot/reportingindex.html">test html</a>	
-					    --%>
+
+
+					    						
+				
+					
 					    						
 		                <label style="margin-top:10px; font-weight:normal; font-size:14px;" for="email">Email:</label>
 		                <form:input path="email" type="text" value="" placeholder="Anonymous" class="email" />

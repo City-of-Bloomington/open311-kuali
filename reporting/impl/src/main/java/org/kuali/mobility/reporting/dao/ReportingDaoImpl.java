@@ -23,7 +23,9 @@ import javax.persistence.OptimisticLockException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import org.kuali.mobility.reporting.entity.File;
+import org.kuali.mobility.file.entity.File;
+
+//import org.kuali.mobility.reporting.entity.File;
 import org.kuali.mobility.reporting.entity.Submission;
 import org.springframework.stereotype.Repository;
 

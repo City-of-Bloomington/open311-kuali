@@ -199,14 +199,14 @@ public class PageTag extends SimpleTagSupport {
         HttpServletRequest hsr = (HttpServletRequest) pageContext.getRequest();
         Cookie cks[] = hsr.getCookies();
         for(Cookie c : cks){
-            LOG.info("---Cookies: " + c.getName());        	
+            //LOG.info("---Cookies: " + c.getName());        	
             if(c.getName().equals("platform") && platform == null){
             	platform = c.getValue();
-            	LOG.info("---Platform: " + platform);
+            	//LOG.info("---Platform: " + platform);
             }
             if(c.getName().equals("phonegap") && phonegap == null){
             	phonegap = c.getValue();
-            	LOG.info("---Phonegap: " + phonegap);
+            	//LOG.info("---Phonegap: " + phonegap);
             }
         }
         
@@ -222,11 +222,11 @@ public class PageTag extends SimpleTagSupport {
         try {
             out.println("<!DOCTYPE html>");
 
-            if (appcacheFilename != null && !appcacheFilename.trim().equals("")) {
-            	out.println("<html manifest=\"" + contextPath + "/" + appcacheFilename + "\">");
-            } else {
+//            if (appcacheFilename != null && !appcacheFilename.trim().equals("")) {
+//            	out.println("<html manifest=\"" + contextPath + "/" + appcacheFilename + "\">");
+//            } else {
             	out.println("<html>");
-            }
+//            }
             
             out.println("<head>");
             out.println("<title>" + title + "</title>");
