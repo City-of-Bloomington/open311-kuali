@@ -7,7 +7,6 @@
 <spring:message code="dining.title" var="title"/>
 
 <kme:page title="${place}" id="dining" backButton="true" homeButton="true" cssFilename="dining" jsFilename="dining">
-	<script src="http://www.indiana.edu/~iumobile/js/jquery.transit.min.js"></script>
 	<kme:content>
 		<ul data-role="listview" id="dropdownHeader" data-theme="c" data-inset="false" data-filter="false" data-dividertheme="b">
             <li data-role="list-divider" data-theme="b" data-icon="arrow-d" class="dropdownHeader"><a id="toggleDropdown" href="#">Select a Menu</a></li>
@@ -48,10 +47,17 @@
 							{{/if}}
 						</li>
 						{{each items}}
-							<li class="contentItem category-\${i + 1}" data-theme="c"><h3 class="wrap">\${this.title}</h3>
+							<li class="contentItem category-\${i + 1}{{if attributes}}{{each attributes}} nutrition-\${$value}{{/each}}{{/if}}" data-theme="c"><h3 class="wrap">\${this.title}</h3>
 								{{if prices}}
 									<p class="wrap">
 									{{each prices}}
+										<em>\${$value} </em>
+									{{/each}}
+									</p>
+								{{/if}}
+								{{if attributes}}
+									<p class="wrap">
+									{{each attributes}}
 										<em>\${$value} </em>
 									{{/each}}
 									</p>

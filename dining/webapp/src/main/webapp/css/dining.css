@@ -8,10 +8,6 @@
   express or implied. See the License for the specific language governing
   permissions and limitations under the License.
 */
-.asdf {
-	
-}
-
 .ui-content {
     overflow-x: visible;
 }
@@ -30,7 +26,6 @@ ul#dropdownHeader a {
 
 ul#dropdownMenu {
     position:absolute;
-	/*top:0px;*/
     width:100%;
     z-index:2;
 }
@@ -39,3 +34,4 @@ ul#results {
     position:relative;
     z-index:3;
 }
+

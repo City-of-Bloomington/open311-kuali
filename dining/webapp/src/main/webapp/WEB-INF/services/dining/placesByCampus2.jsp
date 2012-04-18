@@ -7,7 +7,6 @@
 <spring:message code="dining.title" var="title"/>
 
 <kme:page title="${title}" id="diningPlaces" backButton="true" homeButton="true" cssFilename="dining" jsFilename="dining">
-	<script src="http://www.indiana.edu/~iumobile/js/jquery.transit.min.js"></script>
 	<kme:content>
 	<ul data-role="listview" id="dropdownHeader" data-theme="c" data-inset="false" data-filter="false" data-dividertheme="b">
             <li data-role="list-divider" data-theme="b" data-icon="arrow-d" class="dropdownHeader"><a id="toggleDropdown" href="#">Select Campus</a></li>

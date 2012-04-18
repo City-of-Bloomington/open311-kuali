@@ -6,7 +6,7 @@ var menuHeight = 0;
 
 $(document).ready(function() {
     $('li.contentItem').hide();
-    //alert('Hid the stuff');
+    $('ul#dropdownHeader span.ui-icon').hide();
 });
 
 if (!$.support.transition)
@@ -21,7 +21,8 @@ $(function() {
                     easing: 'in-out',
                     duration: '300ms'
                 });
-                $('span.ui-icon').removeClass('ui-icon-arrow-u');
+                $('li.dropdownHeader span.ui-icon').removeClass('ui-icon-arrow-d');
+                $('li.dropdownHeader span.ui-icon').addClass('ui-icon-arrow-u');
                 expanded = 1;
             } else {
                 $('ul#results').transition({
@@ -29,6 +30,8 @@ $(function() {
                     easing: 'in-out',
                     duration: '300ms'
                 });
+                $('li.dropdownHeader span.ui-icon').removeClass('ui-icon-arrow-u');
+                $('li.dropdownHeader span.ui-icon').addClass('ui-icon-arrow-d');
                 expanded = 0;
             }
             return false;
@@ -36,32 +39,25 @@ $(function() {
     );
 });
 
-/*function loadContents() {
-    alert ("passedItem: " + passedItem);
-    return false;
-}*/
-
 function loadContents(passedItem, itemName){
-	//alert('Passed this:' + passedItem);
     $('.dropdownHeader a').text(itemName);
     $('li.contentItem').hide();
     $('li.category-' + passedItem).show();
-    //alert(passedItem);
 }
-
 
 $(function() {
     $('li.dropdownItem').click(
         function () {
-        	//alert('clicked dropdown!');
+        	$('ul#dropdownHeader span.ui-icon').show();
             viewportHeight = $(window).height();
             var str = $(this).text();
-            //alert('this text is:' + str);
-            //selectedItem = str.split(' ').join('');
             selectedItem = $(this).attr("value");
-            //alert('select' + selectedItem);
             $('.dropdownHeader a').text('Loading.....');
             $('ul#results').transition({ y: viewportHeight, easing: 'in-out', duration: '500ms'}, function() { loadContents(selectedItem, str); });
+            // flip dropdown menu header arrow
+            $('li.dropdownHeader span.ui-icon').removeClass('ui-icon-arrow-u');
+            $('li.dropdownHeader span.ui-icon').addClass('ui-icon-arrow-d');
+            $('li.dropdownHeader span.ui-icon').prop('data-icon','arrow-d');
             $('ul#results').transition({ y: '0px', easing: 'in-out', duration: '500ms'});
             expanded = 0;
             return false;
