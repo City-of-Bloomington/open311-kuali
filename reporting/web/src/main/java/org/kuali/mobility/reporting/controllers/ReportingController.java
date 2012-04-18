@@ -95,7 +95,7 @@ public class ReportingController {
     	prepareSubmissionById(id, uiModel);
    		
    		return "reporting/admin/incident/details";
-    }
+    }   
     
     @RequestMapping(value = "/admin/incident/save", method = RequestMethod.POST)
     public String saveSumission(HttpServletRequest request, ModelMap model, @ModelAttribute("file") File file, BindingResult result, SessionStatus status) {
@@ -116,13 +116,6 @@ public class ReportingController {
     	//return "redirect:manageFiles.do?groupId=" + groupId;
     }
     
-    @RequestMapping(value = "/admin/incident/save2", method = RequestMethod.GET)
-    public String saveSumission2(HttpServletRequest request) {
-
-    	
-    	return "reporting/admin/index";    	
-    }
-
     @RequestMapping(value = "/admin/incident/revisions/{id}", method = RequestMethod.GET)
     public String revisions(@PathVariable("id") Long id, Model uiModel, HttpServletRequest request) {
     	//User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
@@ -284,7 +277,7 @@ public class ReportingController {
     	incident.setAffiliationStudent(affiliationStudent);
     	incident.setAffiliationStaff(affiliationStaff);
     	incident.setAffiliationOther(affiliationOther);
-     	
+    	    	
     	incident.setAttachments(findAttributesByKey(ATTACHMENT, submission.getAttributes()));
     	incident.setComments(findAttributesByKey(COMMENT, submission.getAttributes()));
     	

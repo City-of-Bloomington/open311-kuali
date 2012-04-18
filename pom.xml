@@ -89,8 +89,8 @@
                 <module>news</module>
                 <module>people</module>
                 <module>weather</module>
-                <module>push</module>
-<!--               <module>reporting</module>-->
+<!--              <module>push</module> -->   
+                <module>reporting</module>
                 <module>database</module>
                 <module>mdot-webapp</module>
             </modules>
