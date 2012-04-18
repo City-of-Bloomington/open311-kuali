@@ -41,7 +41,7 @@ public class FileController {
     @Autowired
     private FileService fileService;
 
-    @RequestMapping(value = "/file/get/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
     public void getFile(@PathVariable("id") Long id, HttpServletRequest request, HttpServletResponse response) {
     	    	
     	File file = fileService.findFileById(id);
@@ -60,7 +60,7 @@ public class FileController {
     	
     }
     
-    @RequestMapping(value = "/file/save", method = RequestMethod.POST)
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
     @ResponseBody
     public String handleFormUpload(MultipartHttpServletRequest request) {
     	    	

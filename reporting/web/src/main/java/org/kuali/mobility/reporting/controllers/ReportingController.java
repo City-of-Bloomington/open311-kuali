@@ -96,13 +96,6 @@ public class ReportingController {
    		
    		return "reporting/admin/incident/details";
     }
-
-    @RequestMapping(value = "/admin/incident/save2", method = RequestMethod.GET)
-    public String saveSumission2(HttpServletRequest request) {
-
-    	
-    	return "reporting/admin/index";    	
-    }
     
     @RequestMapping(value = "/admin/incident/save", method = RequestMethod.POST)
     public String saveSumission(HttpServletRequest request, ModelMap model, @ModelAttribute("file") File file, BindingResult result, SessionStatus status) {
@@ -291,19 +284,7 @@ public class ReportingController {
     	incident.setAffiliationStudent(affiliationStudent);
     	incident.setAffiliationStaff(affiliationStaff);
     	incident.setAffiliationOther(affiliationOther);
-    	
-   		uiModel.addAttribute("incident", incident);
-   		String affiliationStudent = findAttributeByKey(AFFILIATION_STUDENT, submission.getAttributes()).getValueText();
-   		String affiliationFaculty = findAttributeByKey(AFFILIATION_FACULTY, submission.getAttributes()).getValueText();
-   		String affiliationStaff = findAttributeByKey(AFFILIATION_STAFF, submission.getAttributes()).getValueText();
-   		String affiliationOther = findAttributeByKey(AFFILIATION_OTHER, submission.getAttributes()).getValueText();
-    	   		
-    	incident.setSummary(findAttributeByKey(SUMMARY, submission.getAttributes()).getValueLargeText());
-    	incident.setAffiliationFaculty(affiliationFaculty);
-    	incident.setAffiliationStudent(affiliationStudent);
-    	incident.setAffiliationStaff(affiliationStaff);
-    	incident.setAffiliationOther(affiliationOther);
-    	
+     	
     	incident.setAttachments(findAttributesByKey(ATTACHMENT, submission.getAttributes()));
     	incident.setComments(findAttributesByKey(COMMENT, submission.getAttributes()));
     	

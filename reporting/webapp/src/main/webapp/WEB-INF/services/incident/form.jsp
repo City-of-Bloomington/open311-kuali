@@ -59,8 +59,8 @@
         options.params = params;
 
 		var server	= "${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}";
-        var save 	= server + "/files/file/save"; 
-        var get 	= server + "/files/file/get/";
+        var save 	= server + "/files/save"; 
+        var get 	= server + "/files/get/";
         
         var ft = new FileTransfer();
         ft.upload(	imageURI, 
@@ -69,7 +69,6 @@
         	            var response = jQuery.parseJSON(r.response);
         				var largeImage = document.getElementById('largeImage');
         				var fileId = document.getElementById('fileId');
-						fileId.value = response.fileId;
         				largeImage.src = get + response.fileid;
 						largeImage.style.display = 'block';
         			}, 
