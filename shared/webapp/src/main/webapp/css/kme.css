@@ -21,7 +21,8 @@
 	color: 					#ffffff;
 	font-weight: bold;
 	text-shadow: 0 -1px 1px #000000;
-	/*background-image: -moz-linear-gradient(top, #cc0000, #990000);
+	/* Switching to flat color for base KME style
+	background-image: -moz-linear-gradient(top, #cc0000, #990000);
 	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #cc0000), color-stop(1, #990000));
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#cc0000', EndColorStr='#990000')";*/
 	background:#7D110C
@@ -455,30 +456,11 @@
 	font-family: Helvetica, Arial, sans-serif;
 	text-decoration: none;
 }
-/* Listview Icons
------------------------------------------------------------------------------------------------------------*/
 
-.ui-li-icon {
-/*
-	
-	disabled while testing sakai resource icons
-	
-	max-height: 40px;
-	max-width: 40px;
-	left: 10px;
-	top: .3em;*/
-}
-.ui-li-has-icon .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li-has-icon {
-/*
-		disabled while testing sakai resource icons
-	
-	min-height: 20px;
-	padding-left: 50px;*/
-}
 /* All Services - Definition List Default Styles
 -----------------------------------------------------------------------------------------------------------*/
 dl {
-	padding: 0;/*width: 90%;*//* temporary adjustment for testing to remove page padding *//*margin: -17px -15px -15px -15px;*/
+	padding: 0;
 }
 dl dt {
 	border-top: 2px solid #BBB;
@@ -486,7 +468,7 @@ dl dt {
 	margin: 0;
 	clear: left;
 	font-size: 17px;
-	font-weight: bold;/*width: 90%;*/
+	font-weight: bold;
 }
 dl dt a {
 	color: #000;
@@ -501,7 +483,7 @@ dl dd {
 	padding: 0;
 	margin: 0;
 	font-size: 14px;
-	font-weight: normal;/*width: 90%;*/
+	font-weight: normal;
 }
 dl dd a {
 	color: #333;
@@ -520,16 +502,6 @@ dl p {
 }
 /* Home
 -----------------------------------------------------------------------------------------------------------*/
-/* start - testing some overrides */
-/*div.ui-header {
-	position: fixed !important;
-	z-index: 100;
-}
-
-.ui-content {
-	padding-top: 55px;
-}*/
-
 .ui-body-b {
 	border: none;
 }
@@ -541,7 +513,6 @@ div#home {
 	padding: 0;
 	margin: 0;
 }
-/* end - testing some overrides */
 
 div#home ul li a {
 	background-repeat: no-repeat;
@@ -702,11 +673,8 @@ div#home span.countBadge {
 	padding-bottom: 8px;
 }
 
-
 .tabs-tabcontainer .tabs-tab1 {
-	
 }
-
 
 .tabs-tabcontainer .selected {
 	background-image: -webkit-gradient(
@@ -741,11 +709,8 @@ div.ui-body-b {
 	background-color: #E6E6E6 !important;
 }
 
-
 /* Error Messaging
 -----------------------------------------------------------------------------------------------------------*/
-
-
 div.error span {
 	color: #900;
 	background: #FCC url(images/icon-visualaid-error-16.png) no-repeat 12px;
@@ -757,9 +722,8 @@ div.error span {
 	border-radius: 10px;
 }
 
-/* Misc Stuff
+/* Misc Styles
 -----------------------------------------------------------------------------------------------------------*/
-
 .wrap {
 	white-space:normal;
 }
@@ -779,15 +743,3 @@ div.labeledRow input.ui-input-text {
     margin-left:-8px;
     width:90%;
 }
-
-
-/*
-.ui-btn, .ui-controlgroup, fieldset.ui-controlgroup {
-    margin-right: 20px !important;
-}
-
-input.ui-input-text, textarea.ui-input-text {
-	margin-right:-20px;
-	width:95%;
-}
-*/

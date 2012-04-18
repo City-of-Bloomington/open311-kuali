@@ -37,15 +37,12 @@ public class LabeledRowTag extends SimpleTagSupport {
         JspWriter out = pageContext.getOut();
         try {
         	if (fieldLabel != null && !fieldLabel.trim().equals("")) {
-        		//out.println("<div style=\"border:2px solid black; clear:both;\">");
-        		out.println("<div class=\"labeledRow\" style=\"width:30%; text-align:right; float:left; color:#900;\">" + fieldLabel + "</div> ");
-        		out.println("<div class=\"labeledRow\" style=\"width:60%; padding-left:35%\">" + (fieldValue == null || fieldValue.trim().equals("") ? "&nbsp;" : fieldValue));
-        		//out.println("<div class=\"labeledRow\" style=\"width:60%; text-align:left; float:right; \">" + (fieldValue == null || fieldValue.trim().equals("") ? "&nbsp;" : fieldValue));
+        		out.println("<div class=\"labeledRow labeledRowLabel\" style=\"width:30%; text-align:right; float:left; color:#900;\">" + fieldLabel + "</div> ");
+        		out.println("<div class=\"labeledRow labeledRowData\" style=\"width:60%; padding-left:35%\">" + (fieldValue == null || fieldValue.trim().equals("") ? "&nbsp;" : fieldValue));
         		if (getJspBody() != null) {
         			getJspBody().invoke(out);
         		}
         		out.println("</div>");
-        		//out.println("</div>");
         	}
         } catch (Exception e) {
             LOG.error(e.getMessage(), e);
