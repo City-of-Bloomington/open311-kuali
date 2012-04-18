@@ -41,7 +41,7 @@
         <commons-collections.version>3.2.1</commons-collections.version>
         <xstream.version>1.4.1</xstream.version>
 
-		<tool.push.version>1.0-SNAPSHOT</tool.push.version>
+<!--		<tool.push.version>1.0-SNAPSHOT</tool.push.version>-->
         <tool.shared.version>2.0.0-SNAPSHOT</tool.shared.version>
         <tool.admin.version>2.0.0-SNAPSHOT</tool.admin.version>
         <tool.alerts.version>2.0.0-SNAPSHOT</tool.alerts.version>
@@ -90,7 +90,7 @@
                 <module>people</module>
                 <module>weather</module>
                 <module>push</module>
-                <module>reporting</module>
+<!--               <module>reporting</module>-->
                 <module>database</module>
                 <module>mdot-webapp</module>
             </modules>
@@ -121,6 +121,7 @@
     <dependencyManagement>
         <dependencies>
 			<!-- Push Dependencies -->
+<!--
             <dependency>
                 <groupId>org.kuali.mobility</groupId>
                 <artifactId>push-api</artifactId>
@@ -141,7 +142,7 @@
                 <artifactId>push-webapp</artifactId>
                 <version>${tool.push.version}</version>
             </dependency>	
-
+-->
             <!-- Cache dependencies -->
             <dependency>
                 <groupId>net.sf.ehcache</groupId>

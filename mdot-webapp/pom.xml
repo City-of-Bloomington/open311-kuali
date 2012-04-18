@@ -111,6 +111,7 @@
             <artifactId>log4j</artifactId>
         </dependency>
 <!-- Service dependencies -->
+<!--
         <dependency>
             <groupId>org.kuali.mobility</groupId>
             <artifactId>push-api</artifactId>
@@ -123,6 +124,7 @@
             <groupId>org.kuali.mobility</groupId>
             <artifactId>push-web</artifactId>
         </dependency>
+-->
 		<dependency>
 			<groupId>org.kuali.mobility</groupId>
 			<artifactId>security.authentication</artifactId>
@@ -441,6 +443,7 @@
             <type>war</type>
             <scope>runtime</scope>
         </dependency>
+<!--
         <dependency>
             <groupId>org.kuali.mobility</groupId>
             <artifactId>push-webapp</artifactId>
@@ -448,6 +451,7 @@
             <type>war</type>
             <scope>runtime</scope>
         </dependency>
+-->
 		<dependency> 
             <groupId>org.kuali.mobility</groupId>
             <artifactId>database-webapp</artifactId>
