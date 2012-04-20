@@ -15,6 +15,9 @@
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
+<c:set var="native" value="${cookie.native.value}"/>
 
 <kme:page title="Incident" id="incident" backButton="true" homeButton="true" cssFilename="incident">
 
@@ -116,19 +119,21 @@
 		                <form:textarea path="summary" cols="40" rows="8" class="required" />
 		                <form:errors path="summary" />
 
-						<fieldset class="ui-grid-a">
-							<legend>Photo</legend>
-								<div class="ui-block-a"><button onclick="getPhoto(pictureSource.CAMERA);return false;">Camera</button></div>
-				    			<div class="ui-block-b"><button onclick="getPhoto(pictureSource.PHOTOLIBRARY);return false;">Album</button></div>
-						</fieldset>
-						<img style="border:1px solid black; display:none; width:100px; height:100px;" id="largeImage" src="" />
-						
 
+						<c:if test="${cookie.native.value == 'yes'}">
+							<fieldset class="ui-grid-a">
+								<legend>Photo</legend>
+									<div class="ui-block-a"><button onclick="getPhoto(pictureSource.CAMERA);return false;">Camera</button></div>
+				    				<div class="ui-block-b"><button onclick="getPhoto(pictureSource.PHOTOLIBRARY);return false;">Album</button></div>
+							</fieldset>
+							<img style="border:1px solid black; display:none; width:100px; height:100px;" id="largeImage" src="" />
+						</c:if>
+						<c:if test="${fn:contains(header['User-Agent'],'Windows') || fn:contains(header['User-Agent'],'Macintosh')}">
+							<label style="margin-top:10px; font-weight:normal; font-size:14px;" for="file">File:</label>
+							<input type="file" name="somename" size="40"> 
+						</c:if>
 
-					    						
-				
-					
-					    						
+					    											    						
 		                <label style="margin-top:10px; font-weight:normal; font-size:14px;" for="email">Email:</label>
 		                <form:input path="email" type="text" value="" placeholder="Anonymous" class="email" />
 						
