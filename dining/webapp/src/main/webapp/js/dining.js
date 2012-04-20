@@ -7,6 +7,17 @@ var menuHeight = 0;
 $(document).ready(function() {
     $('li.contentItem').hide();
     $('ul#dropdownHeader span.ui-icon').hide();
+    
+    var thisCount = 0;
+    $('li.contentItem').each(function(index) {
+    	thisCount = 0;
+    	$($(this).children('div.nutritionIcons')).each(function(index) {
+    		$($(this).children('span.nutrition')).each(function(index) {
+    			thisCount = thisCount + 1;
+    		});
+        });
+    	$(this).css('padding-right',(thisCount*40)+"px");
+	});
 });
 
 if (!$.support.transition)

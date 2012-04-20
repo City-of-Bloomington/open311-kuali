@@ -47,7 +47,9 @@
 							{{/if}}
 						</li>
 						{{each items}}
-							<li class="contentItem category-\${i + 1}{{if attributes}}{{each attributes}} nutrition-\${$value}{{/each}}{{/if}}" data-theme="c"><h3 class="wrap">\${this.title}</h3>
+							<li class="contentItem category-\${i + 1}" data-theme="c">
+								
+								<h3 class="wrap">\${this.title}</h3>
 								{{if prices}}
 									<p class="wrap">
 									{{each prices}}
@@ -56,17 +58,17 @@
 									</p>
 								{{/if}}
 								{{if attributes}}
-									<p class="wrap">
-									{{each attributes}}
-										<em>\${$value} </em>
-									{{/each}}
-									</p>
+									<div class="nutritionIcons">
+										{{each attributes}}
+											<span class="nutrition nutrition-\${$value}">\${$value}</span> 
+										{{/each}}
+									</div>
 								{{/if}}
 							</li>
 						{{/each}}
 					{{/each}}
 					{{else}}
-						<li class="contentItem category-\${i + 1}" data-role="list-divider" data-theme="b">Not serve</li>
+						<li class="contentItem category-\${i + 1}" data-role="list-divider" data-theme="b">Not served</li>
 					{{/if}}
 		
 				{{/each}}	

@@ -35,3 +35,46 @@ ul#results {
     z-index:3;
 }
 
+span.nutrition {
+	text-indent:-9999px;
+	display:block;
+	width:30px;
+	height:30px;
+	float:right;
+	margin-left:5px;
+	background-repeat:no-repeat;
+}
+
+span.nutrition-featured { background-image:url('../images/menu-icon-featured-30x30.png'); }
+span.nutrition-glutenfree { background-image:url('../images/menu-icon-glutenfree-30x30.png'); }
+span.nutrition-halal { background-image:url('../images/menu-icon-halal-30x30.png'); }
+span.nutrition-mhealthy { background-image:url('../images/menu-icon-mhealthy-30x30.png'); }
+span.nutrition-vegan { background-image:url('../images/menu-icon-vegan-30x30.png'); }
+span.nutrition-vegetarian { background-image:url('../images/menu-icon-vegetarian-30x30.png'); }
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+       only screen and (min--moz-device-pixel-ratio: 1.5),
+       only screen and (min-resolution: 240dpi) {
+	
+	span.nutrition {
+		-moz-background-size: 30px 30px;
+		-o-background-size: 30px 30px;
+		-webkit-background-size: 30px 30px;
+		background-size: 30px 30px;
+	}
+	
+	span.nutrition-featured { background-image:url('../images/menu-icon-featured-60x60.png'); }
+	span.nutrition-glutenfree { background-image:url('../images/menu-icon-glutenfree-60x60.png'); }
+	span.nutrition-halal { background-image:url('../images/menu-icon-halal-60x60.png'); }
+	span.nutrition-mhealthy { background-image:url('../images/menu-icon-mhealthy-60x60.png'); }	
+	span.nutrition-vegan { background-image:url('../images/menu-icon-vegan-60x60.png'); }
+	span.nutrition-vegetarian { background-image:url('../images/menu-icon-vegetarian-60x60.png'); }
+}
+
+div.nutritionIcons {
+	white-space:nowrap;
+	position: absolute;
+    right: 10px;
+    top: 10px;
+    white-space: nowrap;
+}

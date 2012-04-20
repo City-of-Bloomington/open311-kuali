@@ -728,6 +728,14 @@ div.error span {
 	white-space:normal;
 }
 
+li.contentItem {
+	overflow:hidden; /* Allow floated items to make the list item row expand */
+}
+
+/*.ui-li-heading {
+	float:left;
+}*/
+
 /* Keep normal checkboxes from peeking out from behind jQuery Mobile checkbox clickable areas
 -----------------------------------------------------------------------------------------------------------*/
 input[type="checkbox"] {
