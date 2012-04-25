@@ -97,12 +97,6 @@ public class HomeController {
     	return "preferences";
     }
     
-    @RequestMapping(value = "stylize")
-    public String stylize(HttpServletRequest request, Model uiModel) {      
-    	uiModel.addAttribute("styles", coreService.getCssCustomizations());
-    	return "stylize";
-    }
-    
     @RequestMapping(value = "kme.appcache", method = RequestMethod.GET)
     public String cachemanifest(HttpServletRequest request, HttpServletResponse response, Model uiModel) {      
     	//response.setContentType("text/cache-manifest");

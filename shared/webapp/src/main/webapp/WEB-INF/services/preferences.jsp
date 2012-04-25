@@ -21,12 +21,9 @@
 
 <spring:message code="preferences.title" var="title"/>
 <spring:message code="preferences.selectcampus" var="selectcampus"/>
-<spring:message code="preferences.demotools" var="demotools"/>
 <spring:message code="preferences.languages" var="languages"/>
 <spring:message code="preferences.nativeapp" var="nativeapp"/>
 <spring:message code="preferences.installnativeapp" var="installnative"/>
-<spring:message code="stylize.title" var="stylize"/>
-
 
 <kme:page title="${title}" id="preferences" backButton="true" homeButton="true">
 	<kme:content>
@@ -47,15 +44,6 @@
 					</a>
 				</kme:listItem>
 			</c:forEach>
-			<kme:listItem dataRole="list-divider" dataTheme="b">
-				${demotools}
-			</kme:listItem>
-			<kme:listItem >
-				<a href="${pageContext.request.contextPath}/stylize">
-					${stylize}
-				</a>
-			</kme:listItem>
-
 			<kme:listItem dataRole="list-divider" dataTheme="b">
 				${languages}
 			</kme:listItem>
@@ -83,8 +71,6 @@
 					</c:if>
 				</a>
 			</kme:listItem>
-
-
 			<c:if test="${cookie.native.value != 'yes'}">
 				<kme:listItem dataRole="list-divider" dataTheme="b" cssClass="installLink">
 					${nativeapp}
@@ -109,9 +95,7 @@
 						});
 					});	
 			</script>
-			</c:if>
-
-			
+			</c:if>			
 		</kme:listView>
 	</kme:content>
 </kme:page>

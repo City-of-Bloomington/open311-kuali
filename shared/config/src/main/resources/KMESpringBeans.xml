@@ -76,29 +76,5 @@
 
 	<bean id="coreService" class="org.kuali.mobility.shared.CoreServiceImpl" >
 		<property name="googleAnalyticsProfileId" value="${google.analytics.profile.id}" />
-		<property name="cssCustomizations">
-            <map>
-                <entry key="page.background.color" value="${page.background.color}" />
-				<entry key="header.text.color" value="${header.text.color}" />
-				<entry key="header.text.shadow" value="${header.text.shadow}" />
-				<entry key="header.gradient.start.color" value="${header.gradient.start.color}" />
-				<entry key="header.gradient.stop.color" value="${header.gradient.stop.color}" />
-				<entry key="header.logo.url" value="${header.logo.url}" />
-				<entry key="buttonA.text.color" value="${buttonA.text.color}" />
-				<entry key="buttonA.gradient.start.color" value="${buttonA.gradient.start.color}" />
-				<entry key="buttonA.gradient.stop.color" value="${buttonA.gradient.stop.color}" />
-				<entry key="buttonA.hover.gradient.start.color" value="${buttonA.hover.gradient.start.color}" />
-				<entry key="buttonA.hover.gradient.stop.color" value="${buttonA.hover.gradient.stop.color}" />
-				<entry key="buttonA.down.gradient.start.color" value="${buttonA.down.gradient.start.color}" /> 
-				<entry key="buttonA.down.gradient.stop.color" value="${buttonA.down.gradient.stop.color}" />
-				<entry key="buttonC.text.color" value="${buttonC.text.color}" />
-				<entry key="buttonC.gradient.start.color"  value="${buttonC.gradient.start.color}" />
-				<entry key="buttonC.gradient.stop.color" value="${buttonC.gradient.stop.color}" />
-				<entry key="buttonC.hover.gradient.start.color" value="${buttonC.hover.gradient.start.color}" />
-				<entry key="buttonC.hover.gradient.stop.color" value="${buttonC.hover.gradient.stop.color}" />
-				<entry key="buttonC.down.gradient.start.color" value="${buttonC.down.gradient.start.color}" />
-				<entry key="buttonC.down.gradient.stop.color" value="${buttonC.down.gradient.stop.color}" />
-            </map>
-        </property>
 	</bean>
 </beans>

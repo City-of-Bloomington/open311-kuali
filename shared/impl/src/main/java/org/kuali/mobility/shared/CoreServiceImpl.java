@@ -1,7 +1,5 @@
 package org.kuali.mobility.shared;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
@@ -20,13 +18,4 @@ public class CoreServiceImpl implements CoreService {
 		googleAnalyticsProfileId = id;
 	}
 
-	@Override
-	public void setCssCustomizations(Map<String, String> customizations) {
-		cssCustomizations.putAll(customizations);
-	}
-
-	@Override
-	public Map<String, String> getCssCustomizations() {
-		return new HashMap<String, String>(cssCustomizations);
-	}
 }
