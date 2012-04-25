@@ -244,7 +244,6 @@ public class PageTag extends SimpleTagSupport {
             out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/jquery.js\"></script>");
             out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/jquery.cookie.js\"></script>");
             out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/custom.js\"></script>");
-            out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/applyStylize.js\"></script>");
             out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/jquery.mobile.js\"></script>");
             out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/jquery.tmpl.js\"></script>");
             out.println("<script type=\"text/javascript\" src=\"" + contextPath + "/js/jquery.validate.js\"></script>");
