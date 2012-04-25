@@ -33,7 +33,10 @@
 			<artifactId>derbyclient</artifactId>
 			<version>10.8.1.2</version>
 		</dependency>
-
+<dependency>
+	<groupId>com.h2database</groupId>
+	<artifactId>h2</artifactId>
+</dependency>
 <!-- Webapp dependencies -->
    		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -533,11 +536,11 @@
 				    <webAppConfig>
 						<contextPath>/mdot</contextPath>
 		              	<extraClasspath>target/classes;../admin/webapp/target/classes;../alerts/webapp/target/classes;../computerlabs/webapp/target/classes;../conference/webapp/target/classes;../dining/webapp/target/classes;../emergencyinfo/webapp/target/classes;../feedback/webapp/target/classes;../maps/webapp/target/classes;../news/webapp/target/classes;../shared/webapp/target/classes;../weather/webapp/target/classes</extraClasspath>
-					    <!--  
+					    
 					    <baseResource implementation="org.mortbay.resource.ResourceCollection">
 			              	<resourcesAsCSV>src/main/webapp,../admin/webapp/src/main/webapp,../alerts/webapp/src/main/webapp,../computerlabs/webapp/src/main/webapp,../conference/webapp/src/main/webapp,../dining/webapp/src/main/webapp,../emergencyinfo/webapp/src/main/webapp,../feedback/webapp/src/main/webapp,../maps/webapp/src/main/webapp,../news/webapp/src/main/webapp,../shared/webapp/src/main/webapp</resourcesAsCSV>
 			            </baseResource>
-			            -->
+			            
 				    </webAppConfig>
 				    <scanTargets>
 				   		<scanTarget>../admin/api/target/classes;../admin/impl/target/classes;../admin/web/target/classes;../admin/webapp/target/classes</scanTarget>
