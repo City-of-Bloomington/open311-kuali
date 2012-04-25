@@ -18,16 +18,28 @@ package org.kuali.mobility.mdot.listeners;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.ServletContextEvent;
+
 import org.kuali.mobility.admin.entity.HomeScreen;
 import org.kuali.mobility.admin.entity.HomeTool;
 import org.kuali.mobility.admin.entity.Tool;
 import org.kuali.mobility.admin.service.AdminService;
+import org.kuali.mobility.shared.Wrapper;
 import org.kuali.mobility.shared.listeners.BootstrapListener;
+import org.springframework.context.ApplicationContext;
 
 public class KMEBootstrapListener extends BootstrapListener {
 	
 	@Override
-	public HomeScreen bootstrapHomeScreenTools(AdminService adminService) {
+	public HomeScreen bootstrapHomeScreenTools(ServletContextEvent event, AdminService adminService) {
+
+		ApplicationContext ctx = org.springframework.web.context.support.WebApplicationContextUtils.getWebApplicationContext(event.getServletContext());
+		Wrapper useBootstrapping = (Wrapper) ctx.getBean("useBootstrappingFlag");
+
+		if (!"true".equals(useBootstrapping.getValue())) {
+			return null;
+		}
+		
 		HomeScreen home = new HomeScreen();
 		home.setAlias("PUBLIC");
 		home.setTitle("Kuali Mobile");

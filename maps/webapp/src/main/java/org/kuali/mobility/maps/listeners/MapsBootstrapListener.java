@@ -3,6 +3,8 @@ package org.kuali.mobility.maps.listeners;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.ServletContextEvent;
+
 import org.kuali.mobility.admin.entity.HomeScreen;
 import org.kuali.mobility.admin.entity.HomeTool;
 import org.kuali.mobility.admin.entity.Tool;
@@ -12,7 +14,7 @@ import org.kuali.mobility.shared.listeners.BootstrapListener;
 public class MapsBootstrapListener extends BootstrapListener {
 
 	@Override
-	public HomeScreen bootstrapHomeScreenTools(AdminService adminService) {
+	public HomeScreen bootstrapHomeScreenTools(ServletContextEvent event, AdminService adminService) {
 		HomeScreen home = new HomeScreen();
 		home.setAlias("PUBLIC");
 		home.setTitle("Kuali Mobile");

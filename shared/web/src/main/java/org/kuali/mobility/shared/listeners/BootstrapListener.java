@@ -42,7 +42,10 @@ public abstract class BootstrapListener implements ServletContextListener {
 		if ("true".equals(useBootstrapping.getValue())) {
 			AdminService adminService = (AdminService) ctx.getBean("AdminService");
 	
-			HomeScreen home = bootstrapHomeScreenTools(adminService);
+			HomeScreen home = bootstrapHomeScreenTools(event, adminService);
+			if (home == null) {
+				return;
+			}
 			
 			adminService.saveHomeScreen(home);
 			
@@ -199,7 +202,7 @@ public abstract class BootstrapListener implements ServletContextListener {
 		}
 	}
 
-	public abstract HomeScreen bootstrapHomeScreenTools(AdminService adminService);
+	public abstract HomeScreen bootstrapHomeScreenTools(ServletContextEvent event, AdminService adminService);
 
 	public void contextDestroyed(ServletContextEvent event) {}
 

@@ -30,12 +30,10 @@
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-
-<!-- Commented out after first run when using Extrnal Persisting Derby.  		
 	<listener>
 		<listener-class>org.kuali.mobility.mdot.listeners.KMEBootstrapListener</listener-class>
 	</listener>
--->	 
+
     <servlet>
         <servlet-name>rest</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
