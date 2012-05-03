@@ -16,8 +16,6 @@
 
 	<bean id="newsSource" class="org.kuali.mobility.news.entity.NewsSourceImpl"/>
     
-    <bean id="newsFeed" class="org.kuali.mobility.news.entity.NewsFeedImpl" scope="prototype"/>
-    
     <bean id="newsArticle" class="org.kuali.mobility.news.entity.NewsArticleImpl" scope="prototype"/>
     
     <bean id="newsCache" class="org.kuali.mobility.news.dao.NewsCacheImpl"/>
@@ -29,10 +27,10 @@
         <property name="cache" ref="newsCache"/>
     </bean>
     
-    <bean id="newsService" class="org.kuali.mobility.news.service.NewsServiceImpl">
+<!--    <bean id="newsService" class="org.kuali.mobility.news.service.NewsServiceImpl">
         <property name="dao" ref="newsDao"/>
         <property name="cache" ref="newsCache"/>
-    </bean>
+    </bean>-->
     
 </beans>
  

@@ -64,6 +64,24 @@
       					</li>
 						{{/each}}
 						{{/if}}
+						{{if directoryEntriesgroup}}
+  	  					{{each directoryEntriesgroup}}
+						<li>
+						       <a href="${pageContext.request.contextPath}/people/group/\${hashedDN}">
+        						{{if displayName}}
+								<h3>\${displayName}</h3>
+								{{/if}}
+								{{if descriptions}}
+								<p><strong>Description:</strong>
+								{{each(i,description) descriptions}}
+									\${description}{{if i+1 < descriptions.length}}, {{/if}}
+								{{/each}}
+								</p>	
+								{{/if}}
+								</a>	
+					 	</li>
+					 {{/each}}
+					 {{/if}}
 				</script>					
 	        </kme:listView>
 		</div>

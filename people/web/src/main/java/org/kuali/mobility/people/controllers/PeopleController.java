@@ -29,6 +29,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.kuali.mobility.people.entity.DirectoryEntry;
+import org.kuali.mobility.people.entity.Group;
 import org.kuali.mobility.people.entity.Person;
 import org.kuali.mobility.people.entity.SearchCriteria;
 import org.kuali.mobility.people.service.DirectoryService;
@@ -68,22 +69,43 @@ public class PeopleController {
 	public String postSimpleSearch(Model uiModel, @ModelAttribute("search") SearchCriteria search, BindingResult result, HttpServletRequest request) {
 		if (validateSimpleSearch(search, result, request)) {
 			List<DirectoryEntry> people = peopleService.findEntries(search);
+			
+			//LOG.debug("people POST size: " + people.size());
 
 			Map<String, String> userNameHashes = new HashMap<String, String>();
 			for (Iterator d = people.iterator(); d.hasNext();) {
 				Person p = (Person) d.next();
-				userNameHashes.put(p.getHashedUserName(), p.getUserName());
-				if (p.getUserName() != null && search != null && search.getSearchText() != null && p.getUserName().trim().equals(search.getSearchText().trim())) {
+				if (p.getUserName()!=null)
+				{
+					//LOG.debug("p.getHashedUserName() " + p.getHashedUserName());
+					userNameHashes.put(p.getHashedUserName(), p.getUserName());
+				}
+				if (p.getUserName() != null && search != null && search.getSearchText() != null && p.getUserName().trim().equals(search.getSearchText().trim()))
+				{
 					putInCache(request.getSession(), "People.Search.UniqueResult", p);
 					d.remove();
 				}
 			}
 			
 			request.getSession().setAttribute("People.UserNames.Hashes", userNameHashes);
-			
 			putInCache(request.getSession(), "People.Search.Results", people);
 			putInCache(request.getSession(), "People.Search.Criteria", search);
-
+			//group info
+			List<Group> group = peopleService.findSimpleGroup(search.getSearchText().trim());
+			//
+			Map<String, String> groupDNHashes = new HashMap<String, String>();
+			for (Iterator d = group.iterator(); d.hasNext();) 
+			{
+				Group g = (Group) d.next();
+				if (g.getDisplayName()!=null)
+				{
+					LOG.debug("g.getHashedDN() " + g.getHashedDN());
+					groupDNHashes.put(g.getHashedDN(), g.getDN());
+				}
+			}
+			request.getSession().setAttribute("Group.distinguishedName.Hashes", groupDNHashes);
+			//LOG.debug("group POST size: " + group.size());
+			putInCache(request.getSession(), "Group.Search.Results", group);
 			request.setAttribute("watermark", "[Keyword] or [Last, First] or [First Last]");
 
 			return "people/index";
@@ -97,44 +119,30 @@ public class PeopleController {
     @ResponseBody
     public String getListJson(HttpServletRequest request) {
 		List<Person> people = (List<Person>) getFromCache(request.getSession(), "People.Search.Results");
-		SearchCriteria sc = (SearchCriteria)getFromCache(request.getSession(), "People.Search.Criteria");		
-		if (people == null || people.size() == 0) {
-			if (sc != null && sc.getSearchText() != null) {
-				List<Map<String, Object>> results = new ArrayList<Map<String, Object>>();
-				Map<String, Object> m = new HashMap<String, Object>();
-				m.put("error", true);
-				results.add(m);
-				return new JSONSerializer().exclude("*.class").deepSerialize(results);
-			}
-			return null;
-		}
-		
 		List<Map<String, Object>> results = new ArrayList<Map<String, Object>>();
-		SearchCriteria s = (SearchCriteria)getFromCache(request.getSession(), "People.Search.Criteria");
 		Person up = (Person) getFromCache(request.getSession(), "People.Search.UniqueResult");
-		if (!people.isEmpty() && up != null && up.getUserName() != null && s != null && s.getSearchText() != null) {
-			if (up.getUserName().trim().equals(s.getSearchText().trim())) {
-				List<Person> u = new ArrayList<Person>();
-				u.add(up);
-				Map<String, Object> m = new HashMap<String, Object>();
-				m.put("heading", "Exact network id match");
-				m.put("directoryEntries", u);
-				results.add(m);
-
-				for (Iterator d = people.iterator(); d.hasNext();) {
-					Person p = (Person) d.next();
-					if (p.getUserName().equals(up.getUserName())) {
-						d.remove();
-						break;
-					}
-				}			
-			}
+		
+		//
+		if (up != null) 
+		{
+			// LOG.debug("up data..");
+			List<Person> u = new ArrayList<Person>();
+			u.add(up);
+			Map<String, Object> m = new HashMap<String, Object>();
+			m.put("heading", "Exact network id match");
+			m.put("directoryEntries", u);
+			results.add(m);
+			
 		}
-
-		if (people.size() > 0) {
+	
+		if (people == null || people.size() == 0) 
+		{
+			LOG.debug("No People Info");
+		}
+		else
+		{
 			Map<String, Object> m = new HashMap<String, Object>();
 			m.put("heading", "People");
-			
 			if (people.size()==1 && people.get(0) != null && people.get(0).getUserName()==null) {
 				//Too many people found. DirectoryDaoUMImpl creates an empty Person object in this case. 
 				m.put("error", "Too many people found. Please be more specific.");
@@ -144,9 +152,33 @@ public class PeopleController {
 			}
 			results.add(m);
 		}
+		List<Group> group = (List<Group>) getFromCache(request.getSession(), "Group.Search.Results");
+		if (group == null || group.size() == 0) 
+		{
+			LOG.debug("No Group Info");
+		}
+		else
+		{
+				Map<String, Object> m = new HashMap<String, Object>();
+				m.put("heading", "Group");
+				//
+				if (group.size()==1 && group.get(0) != null && group.get(0).getDN().equalsIgnoreCase("error"))
+				{
+					//Too many people found. DirectoryDaoUMImpl creates an empty Person object in this case. 
+					m.put("error", "Too many groups found. Please be more specific.");
+				}
+				else 
+				{
+					m.put("directoryEntriesgroup", group);
+					LOG.debug(" results map size " + m.size());
+				}
+			
+				results.add(m);
+			
+		}
 		return new JSONSerializer().exclude("*.class").deepSerialize(results);
     }
-
+	
 	
 	@RequestMapping(value = "/advanced", method = RequestMethod.GET)
 	public String viewSearchForm(Model uiModel) {
@@ -205,6 +237,39 @@ public class PeopleController {
 		return "people/details";
 	}
 	
+	
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/group/{hashedDN}", method = RequestMethod.GET)
+	public String getGroupDetails(Model uiModel, HttpServletRequest request, @PathVariable("hashedDN") String hashedDisplayName) {
+
+		Map<String, Object> details = new HashMap<String, Object>();
+
+		Map<String, String> GroupNameHashes = (Map<String, String>) request.getSession().getAttribute("Group.distinguishedName.Hashes");
+		Group g = null;
+		if (hashedDisplayName != null) {
+			String groupName = GroupNameHashes.get(hashedDisplayName);
+			LOG.debug("group:" + hashedDisplayName + "groupname:" + groupName);
+			g = peopleService.lookupGroup(groupName);
+			/*if(g != null)
+			LOG.debug("group detail " + g.getDisplayName());*/
+		}
+		details.put("group", g);
+		details.put("loggedIn", false);
+
+		putInCache(request.getSession(), "Group.Search.Results.Group", details);
+		
+		return "people/groupdetails";
+	}
+	
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/groupdetails", method = RequestMethod.GET, headers = "Accept=application/json")
+    @ResponseBody
+    public String getGroupDetailsJson(HttpServletRequest request) {
+		Map<String, Object> details = (Map<String, Object>) getFromCache(request.getSession(), "Group.Search.Results.Group");
+		
+		return new JSONSerializer().exclude("*.class").deepSerialize(details);
+    }
+
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/details", method = RequestMethod.GET, headers = "Accept=application/json")
     @ResponseBody
@@ -214,6 +279,7 @@ public class PeopleController {
 		return new JSONSerializer().exclude("*.class").deepSerialize(details);
     }
 
+	
 	@RequestMapping(value = "/image/{hash}", method = RequestMethod.GET)
 	public void getImage(@PathVariable("hash") String imageKeyHash, Model uiModel, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		byte[] byteArray = (byte[]) request.getSession().getAttribute("People.Image.Email." + imageKeyHash);

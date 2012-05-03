@@ -16,6 +16,8 @@
 package org.kuali.mobility.bus.service;
 
 import java.util.List;
+
+import org.kuali.mobility.bus.dao.BusDao;
 import org.kuali.mobility.bus.entity.BusRoute;
 import org.kuali.mobility.bus.entity.BusStop;
 
@@ -26,4 +28,8 @@ public interface BusService {
     
     public List<BusStop> getStops( String campus );
     public BusStop getStop( String campus, long id );
+    
+	public List<BusStop> getNearbyStops(double lat1, double lon1, double radius);
+	
+	public BusDao getDao();
 }

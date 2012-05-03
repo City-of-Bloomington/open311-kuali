@@ -16,8 +16,12 @@
 package org.kuali.mobility.news.entity;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import javax.xml.bind.annotation.XmlRootElement;
+
+import com.sun.jmx.snmp.Timestamp;
 
 /**
  * Represents a single article present in a news feed.
@@ -25,6 +29,7 @@ import java.text.SimpleDateFormat;
  * @author Kuali Mobility Team (moblitiy.collab@kuali.org)
  *
  */
+@XmlRootElement(name="article")
 public class NewsArticleImpl implements Serializable, Comparable<NewsArticle>, NewsArticle {
 
 	private static final long serialVersionUID = -133725965130444787L;
@@ -32,7 +37,7 @@ public class NewsArticleImpl implements Serializable, Comparable<NewsArticle>, N
 	private String title;
 	private String link;
 	private String description;
-	private Timestamp publishDate;
+	private Date publishDate;
 	private String articleId;
 	private long sourceId;
 	
@@ -54,7 +59,7 @@ public class NewsArticleImpl implements Serializable, Comparable<NewsArticle>, N
 			copy.setArticleId(new String(articleId));
 		}
 		copy.setSourceId(sourceId);
-		copy.setPublishDate(new Timestamp(publishDate.getTime()));
+		copy.setPublishDate(new Date(publishDate.getTime()));
 		
 		return copy;
 	}
@@ -124,7 +129,7 @@ public class NewsArticleImpl implements Serializable, Comparable<NewsArticle>, N
 	 * @see org.kuali.mobility.news.entity.NewsArticle#getPublishDate()
 	 */
 	@Override
-	public Timestamp getPublishDate() {
+	public Date getPublishDate() {
 		return publishDate;
 	}
 
@@ -132,7 +137,7 @@ public class NewsArticleImpl implements Serializable, Comparable<NewsArticle>, N
 	 * @see org.kuali.mobility.news.entity.NewsArticle#setPublishDate(java.sql.Timestamp)
 	 */
 	@Override
-	public void setPublishDate(Timestamp publishDate) {
+	public void setPublishDate(Date publishDate) {
 		this.publishDate = publishDate;
 	}
 

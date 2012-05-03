@@ -36,4 +36,20 @@
 			<artifactId>shared-config</artifactId>
 		</dependency>
 	</dependencies>
+	<build>
+        <resources>
+			<resource>
+				<directory>${basedir}/src/main/resources</directory>
+				<filtering>false</filtering>
+			</resource>
+			<resource>
+				<directory>${basedir}/src/main/webapp/WEB-INF</directory>
+				<includes>
+					<include>**/web.xml</include>
+				</includes>
+				<targetPath>WEB-INF</targetPath>
+				<filtering>true</filtering>
+			</resource>
+        </resources>
+	</build>
 </project>

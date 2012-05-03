@@ -20,17 +20,15 @@ import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.kuali.mobility.news.entity.NewsArticle;
-import org.kuali.mobility.news.entity.NewsFeed;
 import org.kuali.mobility.news.entity.NewsSource;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
@@ -44,7 +42,6 @@ public class NewsCacheImpl implements NewsCache, ApplicationContextAware {
 	
 	private ApplicationContext applicationContext;
 	
-	private Map<Long, NewsFeed> newsFeeds = new HashMap<Long, NewsFeed>();
 	private Map<Long, NewsSource> newsSources = new HashMap<Long, NewsSource>();
 		
 	/**
@@ -59,17 +56,10 @@ public class NewsCacheImpl implements NewsCache, ApplicationContextAware {
 			{
 				getNewsSources().put(source.getId(), source);
 			}
-			NewsFeed feed = getNewsFeeds().get(source.getId());
-			if (feed == null) {
-				LOG.debug( "No news feed found for source id "+source.getId() );
-				feed = (NewsFeed)getApplicationContext().getBean("newsFeed");
-				getNewsFeeds().put(source.getId(), feed);
-			}
-			updateFeed(feed, source);
+			updateSource(source);
 		} else {
 			LOG.debug( "NewsSource is inactive & being removed." );
 			getNewsSources().remove(source.getId());
-			getNewsFeeds().remove(source.getId());
 		}
 	}
 	
@@ -80,20 +70,16 @@ public class NewsCacheImpl implements NewsCache, ApplicationContextAware {
 	 * @param source the NewsSource that defines the feed to update
 	 */
 	@SuppressWarnings("unchecked")
-	//@Cacheable(value="newsFeed", key="#feed.sourceId")
-	public void updateFeed(NewsFeed feed, NewsSource source) {
+	public void updateSource(NewsSource source) {
 		if (source==null ) {
-			LOG.debug( "Not updating feed, source is null." );
+			LOG.error( "Not updating, source is null." );
 			return;
 		} else if( source.getUrl()==null )
 		{
-			LOG.debug( "Not updating feed due to no URL for source "+source.getId() );
-			feed.setTitle( source.getName() );
-			feed.setSourceId( source.getId() );
+			LOG.debug( "Not updating source due to no URL for source "+source.getId() );
+			source.setTitle( source.getName() );
 			return;
 		}
-		LOG.debug( "Updating feed for source "+source.getId() );
-		feed.setOrder(source.getOrder());
 		
 		URL feedUrl = null;
 		try {
@@ -111,10 +97,9 @@ public class NewsCacheImpl implements NewsCache, ApplicationContextAware {
 		
 		if (syndFeed != null) {
 			LOG.debug( "Feed data retrieved, populating articles for: "+syndFeed.getTitle() );
-			feed.setTitle(syndFeed.getTitle());
-			feed.setAuthor(syndFeed.getAuthor());
-			feed.setDescription(syndFeed.getDescription());
-			feed.setSourceId(source.getId());
+			source.setTitle(syndFeed.getTitle());
+			source.setAuthor(syndFeed.getAuthor());
+			source.setDescription(syndFeed.getDescription());
 			
 			List<NewsArticle> articles = new ArrayList<NewsArticle>();
 			for (SyndEntryImpl entry : (List<SyndEntryImpl>)syndFeed.getEntries()) {
@@ -126,7 +111,7 @@ public class NewsCacheImpl implements NewsCache, ApplicationContextAware {
 				article.setLink(entry.getLink());
 				try
 				{
-					article.setPublishDate(new Timestamp(entry.getPublishedDate().getTime()));
+					article.setPublishDate(new Date(entry.getPublishedDate().getTime()));
 				}
 				catch( Exception e )
 				{
@@ -142,10 +127,9 @@ public class NewsCacheImpl implements NewsCache, ApplicationContextAware {
 				
 				articles.add(article);
 			}
-			feed.setArticles(articles);
+			source.setArticles(articles);
 		} else {
-			feed.setTitle( source.getName() );
-			feed.setSourceId( source.getId() );
+			source.setTitle( source.getName() );
 		}
 	}
 
@@ -155,14 +139,6 @@ public class NewsCacheImpl implements NewsCache, ApplicationContextAware {
 
 	public void setApplicationContext(ApplicationContext applicationContext) {
 		this.applicationContext = applicationContext;
-	}
-
-	public Map<Long, NewsFeed> getNewsFeeds() {
-		return newsFeeds;
-	}
-
-	public void setNewsFeeds(Map<Long, NewsFeed> newsFeeds) {
-		this.newsFeeds = newsFeeds;
 	}
 
 	public Map<Long, NewsSource> getNewsSources() {

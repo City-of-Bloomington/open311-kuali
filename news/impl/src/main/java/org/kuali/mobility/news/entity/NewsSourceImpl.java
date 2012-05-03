@@ -15,6 +15,18 @@
 
 package org.kuali.mobility.news.entity;
 
+import java.util.List;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.adapters.XmlAdapter;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
+@XmlRootElement(name="newsSource")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class NewsSourceImpl implements NewsSource {
 
 	private Long id = null;
@@ -22,8 +34,13 @@ public class NewsSourceImpl implements NewsSource {
 	private String url = null;
 	private boolean active = true;
 	private int order = 0;
-	private Long versionNumber = null;
 	private Long parentId = null;
+	private String title;
+	private String author;
+	private String description;
+	@XmlTransient
+	@XmlElement(type=NewsArticleImpl.class)
+	private List<NewsArticle> articles;
 
 	public Long getId() {
 		return id;
@@ -55,18 +72,72 @@ public class NewsSourceImpl implements NewsSource {
 	public void setOrder(int order) {
 		this.order = order;
 	}
-	public Long getVersionNumber() {
-		return versionNumber;
-	}
-	public void setVersionNumber(Long versionNumber) {
-		this.versionNumber = versionNumber;
-	}
 	public Long getParentId() {
 		return parentId;
 	}
 	public void setParentId(Long parentId) {
 		this.parentId = parentId;
 	}
+
+    /**
+     * @return the title
+     */
+    public String getTitle() {
+        return title;
+    }
+
+    /**
+     * @param title the title to set
+     */
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    /**
+     * @return the author
+     */
+    public String getAuthor() {
+        return author;
+    }
+
+    /**
+     * @param author the author to set
+     */
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    /**
+     * @return the description
+     */
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * @param description the description to set
+     */
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    /**
+     * @return the articles
+     */
+    public List<NewsArticle> getArticles() {
+        return articles;
+    }
+
+    /**
+     * @param articles the articles to set
+     */
+    public void setArticles(List<NewsArticle> articles) {
+        this.articles = articles;
+    }
 	
+    static class Adapter extends XmlAdapter<NewsSourceImpl,NewsSource> {
+    	public NewsSource unmarshal( NewsSourceImpl nsi ) { return nsi; }
+    	public NewsSourceImpl marshal( NewsSource ns ) { return (NewsSourceImpl)ns; }
+    }
 
 }

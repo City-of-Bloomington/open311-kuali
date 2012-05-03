@@ -29,4 +29,6 @@ public interface BusDao {
     public void loadRoutes();
     public void loadStops();
     public void loadBusLocations();
+    
+    public List<BusStop> findNearByStops(double lat1,double lon1, double radius);
 }

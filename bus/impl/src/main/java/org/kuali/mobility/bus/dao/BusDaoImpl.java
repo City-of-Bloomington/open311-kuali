@@ -68,4 +68,10 @@ public class BusDaoImpl implements BusDao {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+	@Override
+	public List<BusStop> findNearByStops(double lat1, double lon1, double radius) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

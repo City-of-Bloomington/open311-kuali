@@ -43,7 +43,7 @@ public class NewsDaoImplTest {
         return new String[] { "classpath:/SpringBeans.xml" };
     }
     
-	@Test
+    @Test
 	public void testFindAllActiveNewsSources() {
 		NewsDao dao = (NewsDao)getApplicationContext().getBean("newsDao");
 		List<NewsSource> sources = dao.findAllActiveNewsSources();

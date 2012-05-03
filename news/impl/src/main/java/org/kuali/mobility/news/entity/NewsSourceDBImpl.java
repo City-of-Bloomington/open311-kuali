@@ -15,6 +15,7 @@
 
 package org.kuali.mobility.news.entity;
 
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -52,14 +53,22 @@ public class NewsSourceDBImpl implements NewsSource {
 	@Column(name="ORDR")
 	private int order;
 	
-	@Version
-    @Column(name="VER_NBR")
-    private Long versionNumber;
-	
 	// TODO: Change this so it can be persisted.
 	@Transient
 	private Long parentId;
 	
+	@Transient
+	private String title;
+	
+    @Transient
+	private String author;
+	
+    @Transient
+	private String description;
+
+    @Transient
+	private List<NewsArticle> articles;
+    
 	/* (non-Javadoc)
 	 * @see org.kuali.mobility.news.entity.NewsSource#getId()
 	 */
@@ -91,21 +100,6 @@ public class NewsSourceDBImpl implements NewsSource {
 		this.url = url;
 	}
 	
-	/* (non-Javadoc)
-	 * @see org.kuali.mobility.news.entity.NewsSource#getVersionNumber()
-	 */
-	@Override
-	public Long getVersionNumber() {
-		return versionNumber;
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.kuali.mobility.news.entity.NewsSource#setVersionNumber(java.lang.Long)
-	 */
-	public void setVersionNumber(Long versionNumber) {
-		this.versionNumber = versionNumber;
-	}
-
 	/* (non-Javadoc)
 	 * @see org.kuali.mobility.news.entity.NewsSource#isActive()
 	 */
@@ -160,4 +154,60 @@ public class NewsSourceDBImpl implements NewsSource {
 	public void setParentId(Long parentId) {
 		this.parentId = parentId;
 	}
+
+    /**
+     * @return the title
+     */
+    public String getTitle() {
+        return title;
+    }
+
+    /**
+     * @param title the title to set
+     */
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    /**
+     * @return the author
+     */
+    public String getAuthor() {
+        return author;
+    }
+
+    /**
+     * @param author the author to set
+     */
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    /**
+     * @return the description
+     */
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * @param description the description to set
+     */
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    /**
+     * @return the articles
+     */
+    public List<NewsArticle> getArticles() {
+        return articles;
+    }
+
+    /**
+     * @param articles the articles to set
+     */
+    public void setArticles(List<NewsArticle> articles) {
+        this.articles = articles;
+    }
 }

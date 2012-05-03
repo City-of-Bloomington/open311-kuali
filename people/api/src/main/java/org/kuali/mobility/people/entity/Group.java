@@ -14,6 +14,35 @@
  */
 package org.kuali.mobility.people.entity;
 
+import java.util.List;
+
 public interface Group extends DirectoryEntry {
+	
+	public String  getHashedDN();
+	
+	public String getDN();
+
+	public void setDN(String userName);
+
+	public String getDisplayName();
+
+	public void setDisplayName(String displayName);
+	
+	public List<String> getDescriptions();
+
+	public void setDescriptions(List<String> descriptions);
+	
+	public String getEmail();
+	
+	public void setEmail(String email);
+	
+	public String gettelephoneNumber();
+	
+	public void settelephoneNumber(String telephoneNumber);
+	
+	public String getfacsimileTelephoneNumber();
+	
+	public void setfacsimileTelephoneNumber(String facsimileTelephoneNumber);
+
 	
 }

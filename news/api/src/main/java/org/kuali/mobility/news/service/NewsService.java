@@ -15,11 +15,11 @@
 package org.kuali.mobility.news.service;
 
 import java.util.List;
+import javax.jws.WebService;
 
 import org.kuali.mobility.news.dao.NewsCache;
 import org.kuali.mobility.news.dao.NewsDao;
 import org.kuali.mobility.news.entity.NewsArticle;
-import org.kuali.mobility.news.entity.NewsFeed;
 import org.kuali.mobility.news.entity.NewsSource;
 
 /**
@@ -27,6 +27,7 @@ import org.kuali.mobility.news.entity.NewsSource;
  * 
  * @author Kuali Mobility Team (moblitiy.collab@kuali.org)
  */
+@WebService
 public interface NewsService {
 
 	public List<NewsSource> getNewsSources( Long parentId, Boolean isActive);
@@ -43,22 +44,6 @@ public interface NewsService {
 	public List<NewsSource> getAllActiveNewsSources( Long parentId );
 	
 	/**
-	 * Delete a NewsSource object
-	 * 
-	 * @param id the id of the NewsSource to delete
-	 * @return the deleted NewsSource
-	 */
-	public NewsSource deleteNewsSourcebyId(long id);
-	
-	/**
-	 * Save a NewsSource object
-	 * 
-	 * @param newsSource the NewsSource to save
-	 * @return the saved NewsSource
-	 */
-	public NewsSource saveNewsSource(NewsSource newsSource);
-	
-	/**
 	 * Retrieve a NewsSource object
 	 * 
 	 * @param id the id of the NewsSource to retrieve
@@ -66,35 +51,18 @@ public interface NewsService {
 	 */
 	public NewsSource getNewsSourceById(Long id);
 	
-	/**
-	 * Make a NewsSource appear earlier in the lists returned by getAllNewsSources() and getAllActiveNewsSources().
-	 * The NewsSource must move up in the list unless it is already the first item.  This change should be persisted.
-	 * 
-	 * @param id the id of the NewsSource to move
-	 */
-	public void moveNewsSourceUp(long id);
+//	/**
+//	 * @param newsSourceId the id of the NewsSource that defines this feed
+//	 * @return a NewsFeed populated with data from the URL stored in the NewsSource, or null if the feed does not exists or there are errors parsing.
+//	 */
+//	public NewsFeed getNewsFeed(long newsSourceId);
 	
-	/**
-	 * Make a NewsSource appear later in the lists returned by getAllNewsSources() and getAllActiveNewsSources().
-	 * The NewsSource must move down in the list unless it is already the last item.  This change should be persisted.
-	 * 
-	 * @param id the id of the NewsSource to move
-	 */
-	public void moveNewsSourceDown(long id);
+//	/**
+//	 * @return a list of NewsFeed objects for each of the active NewsSource objects, sorted on their display order.
+//	 */
+//	public List<NewsFeed> getAllActiveNewsFeeds();
 	
-	
-	/**
-	 * @param newsSourceId the id of the NewsSource that defines this feed
-	 * @return a NewsFeed populated with data from the URL stored in the NewsSource, or null if the feed does not exists or there are errors parsing.
-	 */
-	public NewsFeed getNewsFeed(long newsSourceId);
-	
-	/**
-	 * @return a list of NewsFeed objects for each of the active NewsSource objects, sorted on their display order.
-	 */
-	public List<NewsFeed> getAllActiveNewsFeeds();
-	
-	public List<NewsFeed> getNewsFeeds( Long parentId, Boolean isActive );
+//	public List<NewsFeed> getNewsFeeds( Long parentId, Boolean isActive );
 
 	/**
 	 * Retrieve the details of an article

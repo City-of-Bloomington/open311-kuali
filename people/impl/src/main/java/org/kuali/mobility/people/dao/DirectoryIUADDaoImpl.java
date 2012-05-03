@@ -102,6 +102,10 @@ public class DirectoryIUADDaoImpl implements DirectoryDao {
 		}
 	}
 
+	public List<Group> findSimpleGroup(String groupId) {
+		throw new UnsupportedOperationException();
+	}
+	
 	public Group lookupGroup(String groupId) {
 		throw new UnsupportedOperationException();
 	}

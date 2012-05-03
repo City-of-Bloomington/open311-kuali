@@ -26,6 +26,6 @@ public interface DirectoryDao {
 	
 	public List<DirectoryEntry> findEntries(SearchCriteria search);
 	public Person lookupPerson(String personId);
+	public List<Group> findSimpleGroup(String groupId);
 	public Group lookupGroup(String groupId);
-	
 }

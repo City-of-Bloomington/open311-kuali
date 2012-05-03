@@ -43,5 +43,11 @@ permissions and limitations under the License.
     <bean id="busController" class="org.kuali.mobility.bus.controllers.BusController">
     	<property name="busService" ref="busService"/>
     </bean>
+    
+    <bean id="busInitBean" class="org.kuali.mobility.bus.service.BusInitBean" init-method="init" destroy-method="cleanup" depends-on="busService">
+		<property name="timePeriodInSec1" value="5" />
+		<property name="timePeriodInSec2" value="15" />
+		<property name="busService"><ref local="busService"/></property>    
+    </bean>    
 </beans>
  

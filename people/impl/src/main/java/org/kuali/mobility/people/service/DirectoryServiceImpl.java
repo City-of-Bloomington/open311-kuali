@@ -35,12 +35,16 @@ public class DirectoryServiceImpl implements DirectoryService {
 		return directoryDao.lookupPerson(personId);
 	}
 
-	public Group lookupGroup(String groupId) {
-		return directoryDao.lookupGroup(groupId);
+	public List<Group> findSimpleGroup(String groupId) {
+		return directoryDao.findSimpleGroup(groupId);
 	}
 
 	public List<DirectoryEntry> findEntries(SearchCriteria search) {
 		return directoryDao.findEntries(search);
+	}
+	
+	public Group lookupGroup(String groupId) {
+		return directoryDao.lookupGroup(groupId);
 	}
 
 	public DirectoryDao getDirectoryDao() {
@@ -51,4 +55,5 @@ public class DirectoryServiceImpl implements DirectoryService {
 		this.directoryDao = directoryDao;
 	}
 
+	
 }

@@ -172,6 +172,9 @@ function onSaveError(contactError) {
 					{{else}}
 					<li data-role="list-divider">\${person.displayName}</li>
 					{{/if}}
+
+					{{if (person.locations && person.locations.length > 0) || (person.affiliations && person.affiliations.length > 0)
+						|| (person.departments && person.departments.length > 0) || person.address }}
       				<li>
 						{{if person.locations && person.locations.length > 0}}
 							<h3 class="wrap">Campus:
@@ -204,6 +207,8 @@ function onSaveError(contactError) {
 							<h3 class="wrap">Address: <span style="font-weight:normal;">\${person.address}</span></h3>
 						{{/if}}
 					</li>
+					{{/if}}
+
 					{{if person.email}}
 						<li class="link-email">
 							<a href="mailto:\${person.email}" >\${person.email}</a>

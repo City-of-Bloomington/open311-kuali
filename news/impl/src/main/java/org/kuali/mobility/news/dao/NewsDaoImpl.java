@@ -63,7 +63,7 @@ public class NewsDaoImpl implements NewsDao {
 	@Override
 	public List<NewsSource> findAllNewsSources() {
 		initData();
-		return new ArrayList<NewsSource>(getCache().getNewsSources().values());
+		return (List<NewsSource>)(new ArrayList<NewsSource>(getCache().getNewsSources().values()));
 	}
 	
 	public List<NewsSource> findAllNewsSources( final Long parentId ) {
@@ -129,6 +129,9 @@ public class NewsDaoImpl implements NewsDao {
 				int i = 0;
 				for (NewsSource s : sources) {
 					s.setActive(true);
+                    if( s.isActive() ) {
+                        getCache().updateSource(s);
+                    }
 					if (s.getId() == null) {
 						s.setId(new Long(i));
 					}

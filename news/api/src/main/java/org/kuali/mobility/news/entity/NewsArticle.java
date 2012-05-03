@@ -15,8 +15,12 @@
 
 package org.kuali.mobility.news.entity;
 
-import java.sql.Timestamp;
 
+import java.util.Date;
+
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name="article")
 public interface NewsArticle {
 
 	public NewsArticle copy();
@@ -61,12 +65,12 @@ public interface NewsArticle {
 	/**
 	 * @return the publish date
 	 */
-	public Timestamp getPublishDate();
+	public Date getPublishDate();
 
 	/**
 	 * @param publishDate the publish date to set
 	 */
-	public void setPublishDate(Timestamp publishDate);
+	public void setPublishDate(Date publishDate);
 
 	/**
 	 * @return the article id

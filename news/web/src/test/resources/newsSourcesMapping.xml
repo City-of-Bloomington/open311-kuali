@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataMapping id="newsSource" className="org.kuali.mobility.news.entity.NewsSourceImpl" list="true" rootElement="newsSources">
+	<mapping mapTo="id"/>
+	<mapping mapTo="name"/>
+	<mapping mapTo="url"/>
+	<mapping mapTo="order"/>
+	<mapping mapTo="parentId" mapFrom="parent"/>
+	<mapping mapTo="active"/>
+</dataMapping>

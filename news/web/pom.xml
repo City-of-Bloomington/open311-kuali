@@ -22,6 +22,12 @@
         <version>2.0.0-SNAPSHOT</version>
 	</parent>
 	<dependencies>
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+        
 		<!-- Internal dependencies -->
 		<dependency>
 			<groupId>org.kuali.mobility</groupId>
@@ -49,6 +55,19 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
+		</dependency>
+		<!-- Apache CXF Dependencies -->
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-frontend-jaxws</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-transports-http</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-frontend-jaxrs</artifactId>
 		</dependency>
 		<!-- Testing dependencies -->
 		<dependency>

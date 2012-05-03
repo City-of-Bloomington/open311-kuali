@@ -37,6 +37,10 @@
             <groupId>net.sf.flexjson</groupId>
             <artifactId>flexjson</artifactId>
         </dependency>
+         <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+        </dependency>
     </dependencies>
     <build>
 <!--        <resources>

@@ -483,58 +483,58 @@ public class PublishingController {
     	return "publishing/editNews";
     }
     
-    /**
-     * Delete a NewsSource
-     * @param uiModel
-     * @param id the id of the NewsSource to delete
-     * @return the news entry page
-     */
-    @RequestMapping(value = "news/delete/{id}", method = RequestMethod.GET)
-    public String deleteNewsSource(Model uiModel, @PathVariable("id") long id) {
-    	newsService.deleteNewsSourcebyId(id);
-    	return news(uiModel);
-    }
-    
-    /**
-     * Save a NewsSource
-     * @param uiModel
-     * @param source the NewsSource to save
-     * @param result the binding validation result
-     * @return the news entry page
-     */
-    @RequestMapping(value = "news/edit", method = RequestMethod.POST)
-    public String editNewsSource(Model uiModel, @ModelAttribute("source") NewsSource source, BindingResult result) {
-    	if ("".equals(source.getUrl().trim())) {
-    		Errors errors = (Errors)result;
-    		errors.rejectValue("url", "", "Please enter a Url to an RSS or Atom feed.");
-    		return "publishing/editNews";
-    	}
-    	source.setUrl(source.getUrl().trim());
-    	newsService.saveNewsSource(source);
-    	return news(uiModel);
-    }
-    
-    /**
-     * Move a news feed up in the display order
-     * @param uiModel
-     * @param id the id of the NewsSource to move
-     * @return the news entry page
-     */
-    @RequestMapping(value = "news/up/{id}", method = RequestMethod.GET)
-    public String moveUp(Model uiModel, @PathVariable("id") long id) {
-    	newsService.moveNewsSourceUp(id);
-    	return news(uiModel);
-    }
-    
-    /**
-     * Move a news feed down in the display order
-     * @param uiModel
-     * @param id the id of the NewsSource to move
-     * @return the news entry page
-     */
-    @RequestMapping(value = "news/down/{id}", method = RequestMethod.GET)
-    public String moveDown(Model uiModel, @PathVariable("id") long id) {
-    	newsService.moveNewsSourceDown(id);
-    	return news(uiModel);
-    }
+//    /**
+//     * Delete a NewsSource
+//     * @param uiModel
+//     * @param id the id of the NewsSource to delete
+//     * @return the news entry page
+//     */
+//    @RequestMapping(value = "news/delete/{id}", method = RequestMethod.GET)
+//    public String deleteNewsSource(Model uiModel, @PathVariable("id") long id) {
+//    	newsService.deleteNewsSourcebyId(id);
+//    	return news(uiModel);
+//    }
+//    
+//    /**
+//     * Save a NewsSource
+//     * @param uiModel
+//     * @param source the NewsSource to save
+//     * @param result the binding validation result
+//     * @return the news entry page
+//     */
+//    @RequestMapping(value = "news/edit", method = RequestMethod.POST)
+//    public String editNewsSource(Model uiModel, @ModelAttribute("source") NewsSource source, BindingResult result) {
+//    	if ("".equals(source.getUrl().trim())) {
+//    		Errors errors = (Errors)result;
+//    		errors.rejectValue("url", "", "Please enter a Url to an RSS or Atom feed.");
+//    		return "publishing/editNews";
+//    	}
+//    	source.setUrl(source.getUrl().trim());
+//    	newsService.saveNewsSource(source);
+//    	return news(uiModel);
+//    }
+//    
+//    /**
+//     * Move a news feed up in the display order
+//     * @param uiModel
+//     * @param id the id of the NewsSource to move
+//     * @return the news entry page
+//     */
+//    @RequestMapping(value = "news/up/{id}", method = RequestMethod.GET)
+//    public String moveUp(Model uiModel, @PathVariable("id") long id) {
+//    	newsService.moveNewsSourceUp(id);
+//    	return news(uiModel);
+//    }
+//    
+//    /**
+//     * Move a news feed down in the display order
+//     * @param uiModel
+//     * @param id the id of the NewsSource to move
+//     * @return the news entry page
+//     */
+//    @RequestMapping(value = "news/down/{id}", method = RequestMethod.GET)
+//    public String moveDown(Model uiModel, @PathVariable("id") long id) {
+//    	newsService.moveNewsSourceDown(id);
+//    	return news(uiModel);
+//    }
 }

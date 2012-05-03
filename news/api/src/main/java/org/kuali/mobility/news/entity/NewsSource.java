@@ -15,6 +15,12 @@
 
 package org.kuali.mobility.news.entity;
 
+import java.util.List;
+
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+
+@XmlRootElement(name="newsSource")
 public interface NewsSource {
 
 	public Long getId();
@@ -30,10 +36,6 @@ public interface NewsSource {
 	 * @param url the URL of the feed
 	 */
 	public void setUrl(String url);
-
-	public Long getVersionNumber();
-
-	public void setVersionNumber(Long versionNumber);
 
 	/**
 	 * @return whether the feed is active or not
@@ -54,6 +56,48 @@ public interface NewsSource {
 	 * @param name the name to set for this feed.  It is not displayed to end users.
 	 */
 	public void setName(String name);
+
+	/**
+	 * @return the title
+	 */
+	public String getTitle();
+
+	/**
+	 * @param title the title to set
+	 */
+	public void setTitle(String title);
+
+	/**
+	 * @return the author
+	 */
+	public String getAuthor();
+
+	/**
+	 * @param author the author to set
+	 */
+	public void setAuthor(String author);
+
+	/**
+	 * @return the description of the feed
+	 */
+	public String getDescription();
+
+	/**
+	 * @param description the description of the feed
+	 */
+	public void setDescription(String description);
+
+	/**
+	 * @return the articles
+	 */
+	@XmlTransient
+	public List<NewsArticle> getArticles();
+
+	/**
+	 * @param articles the articles to set
+	 */
+	@XmlTransient
+	public void setArticles(List<NewsArticle> articles);
 
 	/**
 	 * @return the display order

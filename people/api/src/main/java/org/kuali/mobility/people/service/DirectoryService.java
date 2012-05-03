@@ -27,5 +27,6 @@ public interface DirectoryService {
 	public List<DirectoryEntry> findEntries(SearchCriteria search);
 	public Person lookupPerson(String personId);
 	public Group lookupGroup(String groupId);
+	public List<Group> findSimpleGroup(String groupId);
 
 }
