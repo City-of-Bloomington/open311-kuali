@@ -1,4 +1,4 @@
 open311-kuali
 =============
 
-Kuali Mobile module for Open311
+Kuali Mobile module for Open311.
