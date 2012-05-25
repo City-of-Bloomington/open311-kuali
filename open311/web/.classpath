@@ -7,7 +7,7 @@
   <classpathentry kind="var" path="M2_REPO/javax/persistence/persistence-api/1.0/persistence-api-1.0.jar"/>
   <classpathentry kind="var" path="M2_REPO/javax/servlet/jstl/1.1.0/jstl-1.1.0.jar"/>
   <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-  <classpathentry kind="src" path="/reporting-api"/>
+  <classpathentry kind="var" path="M2_REPO/org/kuali/mobility/reporting-api/2.0.0-SNAPSHOT/reporting-api-2.0.0-SNAPSHOT.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/kuali/mobility/shared-api/2.0.0-SNAPSHOT/shared-api-2.0.0-SNAPSHOT.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/springframework/spring-web/3.0.5.RELEASE/spring-web-3.0.5.RELEASE.jar" sourcepath="M2_REPO/org/springframework/spring-web/3.0.5.RELEASE/spring-web-3.0.5.RELEASE-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/aopalliance/aopalliance/1.0/aopalliance-1.0.jar" sourcepath="M2_REPO/aopalliance/aopalliance/1.0/aopalliance-1.0-sources.jar"/>
@@ -27,7 +27,7 @@
   <classpathentry kind="var" path="M2_REPO/org/springframework/spring-jdbc/3.1.0.RC1/spring-jdbc-3.1.0.RC1.jar"/>
   <classpathentry kind="var" path="M2_REPO/log4j/log4j/1.2.14/log4j-1.2.14.jar" sourcepath="M2_REPO/log4j/log4j/1.2.14/log4j-1.2.14-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/net/sf/flexjson/flexjson/2.1/flexjson-2.1.jar"/>
-  <classpathentry kind="src" path="/reporting-impl"/>
+  <classpathentry kind="var" path="M2_REPO/org/kuali/mobility/reporting-impl/2.0.0-SNAPSHOT/reporting-impl-2.0.0-SNAPSHOT.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/mortbay/jetty/jetty/6.1.26/jetty-6.1.26.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/mortbay/jetty/jetty-util/6.1.26/jetty-util-6.1.26.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/mortbay/jetty/servlet-api/2.5-20081211/servlet-api-2.5-20081211.jar"/>

@@ -43,7 +43,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.support.SessionStatus;
 
 @Controller 
-@RequestMapping("/reporting")
+@RequestMapping("/open311")
 public class Open311Controller {
 
 	private static org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(Open311Controller.class);
@@ -61,31 +61,31 @@ public class Open311Controller {
 	public static final String COMMENT = "COMMENT";
 	
     @Autowired
-    private Open311Service reportingService;
+    private Open311Service open311Service;
     
 
     @RequestMapping(method = RequestMethod.GET)
     public String index(Model uiModel, HttpServletRequest request) {
     	//User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
 		
-    	return "reporting/index";
+    	return "open311/index";
     }
 
     
     // 
-    // Reporting Administration Front End
+    // Open311 Administration Front End
     //
     
     @RequestMapping(value = "/admin/index", method = RequestMethod.GET)
     public String adminIndex(Model uiModel, HttpServletRequest request) {
     	//User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
 		
-    	// TODO: Based on the user, find the reporting types that she is allowed to see and use as the filter.
+    	// TODO: Based on the user, find the open311 reporting types that she is allowed to see and use as the filter.
     	
-    	List<Submission> submissions = reportingService.findAllSubmissions();
+    	List<Submission> submissions = open311Service.findAllSubmissions();
     	
    		uiModel.addAttribute("submissions", submissions);    	
-    	return "reporting/admin/index";
+    	return "open311/admin/index";
     }
 
     @RequestMapping(value = "/admin/incident/details/{id}", method = RequestMethod.GET)
@@ -94,7 +94,7 @@ public class Open311Controller {
 		    	
     	prepareSubmissionById(id, uiModel);
    		
-   		return "reporting/admin/incident/details";
+   		return "open311/admin/incident/details";
     }   
     
     @RequestMapping(value = "/admin/incident/save", method = RequestMethod.POST)
@@ -110,9 +110,9 @@ public class Open311Controller {
 			} catch (IOException e) {
 				LOG.error("File contained no bytes.", e);
 			}
-    		reportingService.saveAttachment(file);
+    		open311Service.saveAttachment(file);
     	}
-    	return "reporting/admin/index";
+    	return "open311/admin/index";
     	//return "redirect:manageFiles.do?groupId=" + groupId;
     }
     
@@ -122,23 +122,23 @@ public class Open311Controller {
 		
     	// TODO: Based on the user, find the reporting types that she is allowed to see and use as the filter.
 
-    	Submission submission = reportingService.findSubmissionById(id);
+    	Submission submission = open311Service.findSubmissionById(id);
     	Long parentId = submission.getParentId() == null ? submission.getId() : submission.getParentId();
 
-    	List<Submission> submissions = reportingService.findAllSubmissionsByParentId(parentId);
+    	List<Submission> submissions = open311Service.findAllSubmissionsByParentId(parentId);
     	
    		uiModel.addAttribute("submissions", submissions);    	
-    	return "reporting/admin/incident/revisions";
+    	return "open311/admin/incident/revisions";
     }
     
     @RequestMapping(value = "/admin/incident/save", method = RequestMethod.POST)
     public String addFile(HttpServletRequest request, ModelMap model, @ModelAttribute("file") Incident incident, BindingResult result, SessionStatus status) {
     	
-    	Submission oldSubmission = reportingService.findSubmissionById(incident.getId());
+    	Submission oldSubmission = open311Service.findSubmissionById(incident.getId());
     	oldSubmission.setActive(0);
     	oldSubmission.setArchivedDate(new Timestamp(System.currentTimeMillis()));
     	// Set revision attributes for oldSubmission
-    	reportingService.saveSubmission(oldSubmission);
+    	open311Service.saveSubmission(oldSubmission);
 
     	Long parentId = oldSubmission.getParentId() == null ? oldSubmission.getId() : oldSubmission.getParentId();
     	
@@ -150,7 +150,7 @@ public class Open311Controller {
     	revisedSubmission.setType(INCIDENT_TYPE);
     	revisedSubmission.setGroup(INCIDENT_GROUP);
     	
-    	Long pk = reportingService.saveSubmission(revisedSubmission);
+    	Long pk = open311Service.saveSubmission(revisedSubmission);
     	
     	SubmissionAttribute submissionAttributeSummary = new SubmissionAttribute();
     	submissionAttributeSummary.setKey(SUMMARY);
@@ -251,9 +251,9 @@ public class Open311Controller {
     	
     	revisedSubmission.setAttributes(attributes);
     	
-    	reportingService.saveSubmission(revisedSubmission);
+    	open311Service.saveSubmission(revisedSubmission);
     	
-    	return "reporting/admin/index";
+    	return "open311/admin/index";
     	//return "redirect:manageFiles.do?groupId=" + groupId;
     }
     
@@ -261,7 +261,7 @@ public class Open311Controller {
     public String adminEdit(@PathVariable("id") Long id, Model uiModel, HttpServletRequest request) {
     	//User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY);
 
-    	Submission submission = reportingService.findSubmissionById(id);
+    	Submission submission = open311Service.findSubmissionById(id);
     			
    		Incident incident = new Incident();
 
@@ -283,12 +283,12 @@ public class Open311Controller {
     	
    		uiModel.addAttribute("incident", incident);
 
-   		return "reporting/admin/incident/edit";
+   		return "open311/admin/incident/edit";
     }
 
     
 	private void prepareSubmissionById(Long id, Model uiModel) {
-		Submission submission = reportingService.findSubmissionById(id);
+		Submission submission = open311Service.findSubmissionById(id);
     	
    		uiModel.addAttribute("submission", submission);    	   		
    		
@@ -380,7 +380,7 @@ public class Open311Controller {
         	submission.setUserId(user.getPrincipalName());
         	//submission.setUserAgent();
         	
-            Long pk = reportingService.saveSubmission(submission);
+            Long pk = open311Service.saveSubmission(submission);
 
         	SubmissionAttribute submissionAttributeSummary = new SubmissionAttribute();
         	submissionAttributeSummary.setKey(SUMMARY);
@@ -435,7 +435,7 @@ public class Open311Controller {
         	
         	submission.setAttributes(attributes);
         	
-            reportingService.saveSubmission(submission);
+            open311Service.saveSubmission(submission);
             
             return "incident/thanks";                	
         } else {

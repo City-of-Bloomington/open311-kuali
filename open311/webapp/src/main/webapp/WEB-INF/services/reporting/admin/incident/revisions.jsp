@@ -15,7 +15,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<kme:page title="Reporting Admin" id="reporting" backButton="true" homeButton="true" cssFilename="reporting">
+<kme:page title="Open311 Admin" id="open311" backButton="true" homeButton="true" cssFilename="open311">
     <kme:content>
         <kme:listView id="submissionList" filter="false">
         	<kme:listItem dataRole="list-divider">

@@ -14,8 +14,8 @@
 <%@ taglib prefix="kme" uri="http://kuali.org/mobility" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
-<kme:page title="Hello" id="reporting" backButton="true" homeButton="true" cssFilename="reporting">
+<kme:page title="Hello" id="open311" backButton="true" homeButton="true" cssFilename="open311">
     <kme:content>
-		Hello reporting world!
+		Hello open311 world!
     </kme:content>
 </kme:page>

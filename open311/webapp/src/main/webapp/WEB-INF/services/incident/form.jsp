@@ -111,7 +111,7 @@
 		    	Report Incident	
 		    </kme:listItem>
 			<kme:listItem>
-		        <form:form action="${pageContext.request.contextPath}/reporting/incidentPost" commandName="incident" data-ajax="false" method="post"> 
+		        <form:form action="${pageContext.request.contextPath}/open311/incidentPost" commandName="incident" data-ajax="false" method="post"> 
 					<form:hidden path="userAgent" value="${header['User-Agent']}"/>
 					
 		            <fieldset>            

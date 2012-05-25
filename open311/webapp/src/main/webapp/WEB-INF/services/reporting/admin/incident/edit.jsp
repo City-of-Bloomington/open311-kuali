@@ -16,9 +16,9 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<kme:page title="Reporting Admin" id="reporting" backButton="true" homeButton="true" cssFilename="reporting">
+<kme:page title="Open311 Admin" id="open311" backButton="true" homeButton="true" cssFilename="open311">
     <kme:content>
-    	<form:form action="${pageContext.request.contextPath}/reporting/admin/incident/save" enctype="multipart/form-data" commandName="incident" data-ajax="false" method="post"> 
+    	<form:form action="${pageContext.request.contextPath}/open311/admin/incident/save" enctype="multipart/form-data" commandName="incident" data-ajax="false" method="post"> 
 		<form:hidden path="userAgent" value="${header['User-Agent']}"/>
 		<form:hidden path="id" value="${submission.id}"/>
         <kme:listView id="submissionDetails" filter="false">

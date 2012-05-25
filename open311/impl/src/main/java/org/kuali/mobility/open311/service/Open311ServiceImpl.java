@@ -30,36 +30,36 @@ import org.springframework.transaction.annotation.Transactional;
 public class Open311ServiceImpl implements Open311Service {
   
     @Autowired
-    private Open311Dao reportingDao;
+    private Open311Dao open311Dao;
 
 	@Override
 	@Transactional
     public Submission findSubmissionById(Long id) {
-		return reportingDao.findSubmissionById(id);    	
+		return open311Dao.findSubmissionById(id);    	
     }
     
 	@Override
 	@Transactional
     public List<Submission> findAllSubmissions() {
-		return reportingDao.findAllSubmissions();
+		return open311Dao.findAllSubmissions();
     }
     
 	@Override
 	@Transactional
 	public Long saveSubmission(Submission submission) {		
-		return reportingDao.saveSubmission(submission);
+		return open311Dao.saveSubmission(submission);
 	} 
     
 	@Override
 	@Transactional
     public Long saveAttachment(File file) {
-		return reportingDao.saveAttachment(file);
+		return open311Dao.saveAttachment(file);
     }
     
 	@Override
 	@Transactional
     public List<Submission> findAllSubmissionsByParentId(Long id) {
-		return reportingDao.findAllSubmissionsByParentId(id);
+		return open311Dao.findAllSubmissionsByParentId(id);
 	}
 
 }

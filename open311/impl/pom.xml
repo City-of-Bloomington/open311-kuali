@@ -13,11 +13,11 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<name>Reporting Implementation</name>
-	<artifactId>reporting-impl</artifactId>
+	<name>Open311 Implementation</name>
+	<artifactId>open311-impl</artifactId>
 	<packaging>jar</packaging>
 	<parent>
-		<artifactId>reporting</artifactId>
+		<artifactId>open311</artifactId>
         <groupId>org.kuali.mobility</groupId>
         <version>2.0.0-SNAPSHOT</version>
    	</parent>
@@ -37,7 +37,7 @@
 		<!-- Internal dependencies -->
 		<dependency>
 			<groupId>org.kuali.mobility</groupId>
-			<artifactId>reporting-api</artifactId>
+			<artifactId>open311-api</artifactId>
 		</dependency>
 		<!-- Persistence dependencies -->
 		<dependency>
