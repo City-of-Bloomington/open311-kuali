@@ -60,6 +60,7 @@
         <tool.people.version>2.0.0-SNAPSHOT</tool.people.version>
         <tool.weather.version>2.0.0-SNAPSHOT</tool.weather.version>
 		<tool.reporting.version>2.0.0-SNAPSHOT</tool.reporting.version>
+		<tool.open311.version>2.0.0-SNAPSHOT</tool.open311.version>
 		<tool.database.version>2.0.0-SNAPSHOT</tool.database.version>
         <security.authentication>2.0.0-SNAPSHOT</security.authentication>
 
@@ -93,6 +94,7 @@
                 <module>weather</module>
 				<!-- <module>push</module> -->
 				<module>reporting</module>
+				<module>open311</module>
 				<module>database</module>
                 <module>mdot-webapp</module>
             </modules>
@@ -252,6 +254,27 @@
 				<groupId>org.kuali.mobility</groupId>
 				<artifactId>reporting-webapp</artifactId>
 				<version>${tool.reporting.version}</version>
+			</dependency>
+			<!-- Open311 Service -->
+			<dependency>
+				<groupId>org.kuali.mobility</groupId>
+				<artifactId>open311-api</artifactId>
+				<version>${tool.open311.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.kuali.mobility</groupId>
+				<artifactId>open311-impl</artifactId>
+				<version>${tool.open311.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.kuali.mobility</groupId>
+				<artifactId>open311-web</artifactId>
+				<version>${tool.open311.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.kuali.mobility</groupId>
+				<artifactId>open311-webapp</artifactId>
+				<version>${tool.open311.version}</version>
 			</dependency>
             <!-- Bus Service -->
             <dependency>

@@ -184,6 +184,18 @@
             <artifactId>reporting-web</artifactId>
 		</dependency>
 		<dependency>
+            <groupId>org.kuali.mobility</groupId>
+            <artifactId>open311-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.kuali.mobility</groupId>
+            <artifactId>open311-impl</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.kuali.mobility</groupId>
+            <artifactId>open311-web</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.kuali.mobility</groupId>
 			<artifactId>conference-api</artifactId>
 		</dependency>
@@ -446,6 +458,13 @@
 			<type>war</type>
 			<scope>runtime</scope>
 		</dependency>
+        <dependency> 
+            <groupId>org.kuali.mobility</groupId>
+            <artifactId>open311-webapp</artifactId>
+			<version>${tool.open311.version}</version>
+			<type>war</type>
+			<scope>runtime</scope>
+		</dependency>	
 		<dependency>
 			<groupId>org.kuali.mobility</groupId>
 			<artifactId>people-webapp</artifactId>
