@@ -137,6 +137,16 @@ public class KMEBootstrapListener extends BootstrapListener {
 		ht = new HomeTool(home, tool, 7);
 		tools.add(ht);
 
+		tool = new Tool();
+		tool.setAlias("open311");
+		tool.setTitle("Opem311");
+		tool.setUrl("open311/incidentForm");
+		tool.setDescription("Submit questions and comments about Kuali Mobile.");
+		tool.setIconUrl("images/service-icons/srvc-feedback.png");
+		adminService.saveTool(tool);
+		ht = new HomeTool(home, tool, 7);
+		tools.add(ht);
+
 		home.setHomeTools(tools);
 		return home;
 	}
