@@ -139,7 +139,7 @@ public class KMEBootstrapListener extends BootstrapListener {
 
 		tool = new Tool();
 		tool.setAlias("open311");
-		tool.setTitle("Opem311");
+		tool.setTitle("Open311");
 		tool.setUrl("open311/incidentForm");
 		tool.setDescription("Submit questions and comments about Kuali Mobile.");
 		tool.setIconUrl("images/service-icons/srvc-feedback.png");
