@@ -31,7 +31,24 @@ public class Open311ServiceImpl implements Open311Service {
   
     @Autowired
     private Open311Dao open311Dao;
+		
+	public void setDao(Open311Dao open311Dao) {
+		this.open311Dao = open311Dao;
+	}
 
+	@Override
+	public List<Service> getService() {
+		
+		return open311Dao.getServiceList();
+	}
+	
+	@Override
+	public String getServiceJson( final String serviceCode) {
+		
+		return open311Dao.getServiceJson(serviceCode);
+	}
+	
+	
 	@Override
 	@Transactional
     public Submission findSubmissionById(Long id) {

@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<services>
+	<service>
+		<service_code>4e09c863992b94b915000000</service_code>
+		<service_name>City Performance</service_name>
+		<type>realtime</type>
+		<metadata>false</metadata>
+		<keywords/>
+		<group>Most Popular</group>
+		<description>
+		Report issues or concerns about the City of Bloomington's performance in serving the public.
+		</description>
+	</service>
+	<service>
+		<service_code>4e090d24992b941e78000027</service_code>
+		<service_name>Graffiti</service_name>
+		<type>realtime</type>
+		<metadata>true</metadata>
+		<keywords/>
+		<group>Most Popular</group>
+		<description>Report graffiti on public or private locations</description>
+	</service>
+	<service>
+		<service_code>4e090d24992b941e78000019</service_code>
+		<service_name>Potholes, Other Street Repair</service_name>
+		<type>realtime</type>
+		<metadata>false</metadata>
+		<keywords/>
+		<group>Most Popular</group>
+		<description>
+		Potholes, street patching, and other issues involving streets in need of repair
+		</description>
+	</service>
+	<service>
+		<service_code>4eeb5e87992b941e7d000000</service_code>
+		<service_name>iPhone App Feedback</service_name>
+		<type>realtime</type>
+		<metadata>false</metadata>
+		<keywords/>
+		<group>Most Popular</group>
+		<description>
+		Let us know how this app is working for you. Ideas and suggestions welcome.
+		</description>
+	</service>
+	<service>
+		<service_code>4e09d0b5992b942518000000</service_code>
+		<service_name>Abandoned Vehicle</service_name>
+		<type>realtime</type>
+		<metadata>false</metadata>
+		<keywords/>
+		<group>Appearance & Quality of Life</group>
+		<description>
+		Report an abandoned vehicle on public or private property.
+		</description>
+	</service>
+	<service>
+		<service_code>4e090d24992b941e7800001f</service_code>
+		<service_name>Noise</service_name>
+		<type>realtime</type>
+		<metadata>false</metadata>
+		<keywords/>
+		<group>Appearance & Quality of Life</group>
+		<description>Report noise violations</description>
+	</service>
+	<service>
+		<service_code>4e090d24992b941e78000021</service_code>
+		<service_name>Animal Control</service_name>
+		<type>realtime</type>
+		<metadata>false</metadata>
+		<keywords/>
+		<group>Miscellaneous</group>
+		<description>
+		Any reports related to animals including animal abuse, stray animals, dead animal removal
+		</description>
+	</service>
+	<service>
+		<service_code>4ea80e7e992b94050c000000</service_code>
+		<service_name>Business</service_name>
+		<type>realtime</type>
+		<metadata>false</metadata>
+		<keywords/>
+		<group>Miscellaneous</group>
+		<description>
+		Report concerns about a business practice or experience
+		</description>
+	</service>
+	<service>
+		<service_code>4e090d24992b941e78000003</service_code>
+		<service_name>Other</service_name>
+		<type>realtime</type>
+		<metadata>false</metadata>
+		<keywords/>
+		<group>Miscellaneous</group>
+		<description>Misc issues</description>
+	</service>
+	<service>
+		<service_code>4e09dce2992b94101a000000</service_code>
+		<service_name>Website & Mobile Apps Feedback</service_name>
+		<type>realtime</type>
+		<metadata>false</metadata>
+		<keywords/>
+		<group>Miscellaneous</group>
+		<description>
+		Issues involving www.bloomington.in.gov or other City-related websites
+		</description>
+	</service>
+	<service>
+		<service_code>4e090d24992b941e78000008</service_code>
+		<service_name>Fire Hazards</service_name>
+		<type>realtime</type>
+		<metadata>false</metadata>
+		<keywords/>
+		<group>Nonemergency Public Safety</group>
+		<description>Report potential fire hazards</description>
+	</service>
+	<service>
+		<service_code>4e090d24992b941e78000013</service_code>
+		<service_name>Line of Sight</service_name>
+		<type>realtime</type>
+		<metadata>false</metadata>
+		<keywords/>
+		<group>Nonemergency Public Safety</group>
+		<description>Report sight issues along public streets</description>
+	</service>
+	<service>
+		<service_code>4e090d24992b941e7800000a</service_code>
+		<service_name>Unsafe Structures</service_name>
+		<type>realtime</type>
+		<metadata>false</metadata>
+		<keywords/>
+		<group>Nonemergency Public Safety</group>
+		<description>
+		Issues involving buildings and other structures that might be dangerous
+		</description>
+	</service>
+	<service>
+		<service_code>4e090d24992b941e78000022</service_code>
+		<service_name>Parks & Playgrounds</service_name>
+		<type>realtime</type>
+		<metadata>false</metadata>
+		<keywords/>
+		<group>Parks and Recreation</group>
+		<description>
+		Issues related to parks maintained by the Parks & Recreation Department
+		</description>
+	</service>
+	<service>
+		<service_code>4e09c90b992b948a15000002</service_code>
+		<service_name>Parks & Rec Buildings</service_name>
+		<type>realtime</type>
+		<metadata>false</metadata>
+		<keywords/>
+		<group>Parks and Recreation</group>
+		<description>
+		Issues related to buildings maintained by the Parks & Recreation Department.
+		</description>
+	</service>
+	<service>
+		<service_code>4e09ccde992b94b616000001</service_code>
+		<service_name>Parks & Rec Programs</service_name>
+		<type>realtime</type>
+		<metadata>false</metadata>
+		<keywords/>
+		<group>Parks and Recreation</group>
+		<description>
+		Issues related to Parks and Recreation Department programs
+		</description>
+	</service>
+	<service>
+		<service_code>4e09cd16992b94e714000001</service_code>
+		<service_name>Trails</service_name>
+		<type>realtime</type>
+		<metadata>false</metadata>
+		<keywords/>
+		<group>Parks and Recreation</group>
+		<description>
+		Issues related to trails maintained by the Parks & Recreation Department
+		</description>
+	</service>
+	<service>
+		<service_code>4e090d24992b941e78000011</service_code>
+		<service_name>Blocked Street, Alley, Sidewalk</service_name>
+		<type>realtime</type>
+		<metadata>false</metadata>
+		<keywords/>
+		<group>Public Works</group>
+		<description>
+		A public area, such as an alley or sidewalk, is blocked from access
+		</description>
+	</service>
+	<service>
+		<service_code>4e090d24992b941e7800000b</service_code>
+		<service_name>Public Works Projects</service_name>
+		<type>realtime</type>
+		<metadata>false</metadata>
+		<keywords/>
+		<group>Public Works</group>
+		<description>
+		Issues related to construction projects of the Bloomington Public Works Department
+		</description>
+	</service>
+	<service>
+		<service_code>4e090d24992b941e7800001b</service_code>
+		<service_name>Street Snow Removal</service_name>
+		<type>realtime</type>
+		<metadata>false</metadata>
+		<keywords/>
+		<group>Public Works</group>
+		<description>
+		Issues involving snow removal of roads within the City's jurisdiction
+		</description>
+	</service>
+	<service>
+		<service_code>4e090d24992b941e78000020</service_code>
+		<service_name>Leaf Collection</service_name>
+		<type>realtime</type>
+		<metadata>false</metadata>
+		<keywords/>
+		<group>Sanitation & Clean Living</group>
+		<description>Report issues with leaf collection</description>
+	</service>
+	<service>
+		<service_code>4e090d24992b941e78000025</service_code>
+		<service_name>Recycling</service_name>
+		<type>realtime</type>
+		<metadata>true</metadata>
+		<keywords/>
+		<group>Sanitation & Clean Living</group>
+		<description>Issues related to City recycling pickup</description>
+	</service>
+	<service>
+		<service_code>4e090d24992b941e7800001a</service_code>
+		<service_name>Sand Removal</service_name>
+		<type>realtime</type>
+		<metadata>false</metadata>
+		<keywords/>
+		<group>Sanitation & Clean Living</group>
+		<description>
+		Issues involving the removal of sand off City streets
+		</description>
+	</service>
+	<service>
+		<service_code>4e090d24992b941e7800000f</service_code>
+		<service_name>Sidewalk Snow Removal</service_name>
+		<type>realtime</type>
+		<metadata>false</metadata>
+		<keywords/>
+		<group>Sanitation & Clean Living</group>
+		<description>Issues involving snow on public sidewalks</description>
+	</service>
+	<service>
+		<service_code>4e090d24992b941e78000023</service_code>
+		<service_name>Sidewalk and Curbs</service_name>
+		<type>realtime</type>
+		<metadata>false</metadata>
+		<keywords/>
+		<group>Sanitation & Clean Living</group>
+		<description>Report hazardous sidewalks and curbs</description>
+	</service>
+	<service>
+		<service_code>4e090d24992b941e78000005</service_code>
+		<service_name>Trash</service_name>
+		<type>realtime</type>
+		<metadata>true</metadata>
+		<keywords/>
+		<group>Sanitation & Clean Living</group>
+		<description>Issues with trash pickup</description>
+	</service>
+	<service>
+		<service_code>4e090d24992b941e78000024</service_code>
+		<service_name>Yard Waste</service_name>
+		<type>realtime</type>
+		<metadata>true</metadata>
+		<keywords/>
+		<group>Sanitation & Clean Living</group>
+		<description>Issues related to City yard waste pickup</description>
+	</service>
+	<service>
+		<service_code>4ec43027992b943344000000</service_code>
+		<service_name>Bus Services (Bloomington Transit)</service_name>
+		<type>realtime</type>
+		<metadata>false</metadata>
+		<keywords/>
+		<group>Transportation</group>
+		<description>Services provided by Bloomington Transit</description>
+	</service>
+	<service>
+		<service_code>4e09c8e4992b948a15000000</service_code>
+		<service_name>Parking Permits</service_name>
+		<type>realtime</type>
+		<metadata>false</metadata>
+		<keywords/>
+		<group>Transportation</group>
+		<description>Issues with City-issued parking permits</description>
+	</service>
+	<service>
+		<service_code>4e09c8ed992b948a15000001</service_code>
+		<service_name>Parking Tickets</service_name>
+		<type>realtime</type>
+		<metadata>false</metadata>
+		<keywords/>
+		<group>Transportation</group>
+		<description>
+		Issues related to parking tickets. This is not a way to appeal a ticket.
+		</description>
+	</service>
+	<service>
+		<service_code>4e090d24992b941e7800000c</service_code>
+		<service_name>Traffic Related Complaints</service_name>
+		<type>realtime</type>
+		<metadata>true</metadata>
+		<keywords/>
+		<group>Transportation</group>
+		<description>
+		Comments about dangerous traffic situations including issues with street signs, traffic markings, foliage trimming along a road, and curb painting
+		</description>
+	</service>
+	<service>
+		<service_code>4e7b3e4c992b945109000000</service_code>
+		<service_name>Traffic Suggestions</service_name>
+		<type>realtime</type>
+		<metadata>true</metadata>
+		<keywords/>
+		<group>Transportation</group>
+		<description>
+		Requests for the Traffic division including Street Signs, Traffic Markings, Foliage Trimming along a road, Curb Painting, and requests for Traffic Control
+		</description>
+	</service>
+	<service>
+		<service_code>4e090d24992b941e7800000e</service_code>
+		<service_name>Sewer Problems (Sanitary Sewers)</service_name>
+		<type>realtime</type>
+		<metadata>false</metadata>
+		<keywords/>
+		<group>Water & Sewage Utility</group>
+		<description>The sewage systems of residences and businesses</description>
+	</service>
+	<service>
+		<service_code>4e25ca6f992b94c76d000000</service_code>
+		<service_name>Sewer Problems (Storm Sewers)</service_name>
+		<type>realtime</type>
+		<metadata>false</metadata>
+		<keywords/>
+		<group>Water & Sewage Utility</group>
+		<description>Issues involving public storm sewers</description>
+	</service>
+	<service>
+		<service_code>4e25caba992b945f69000001</service_code>
+		<service_name>Utilities Construction</service_name>
+		<type>realtime</type>
+		<metadata>false</metadata>
+		<keywords/>
+		<group>Water & Sewage Utility</group>
+		<description>
+		Issues with construction for projects of the City of Bloomington's Utilities Department
+		</description>
+	</service>
+	<service>
+		<service_code>4e25caa0992b94266d000000</service_code>
+		<service_name>Utilities Yardwork</service_name>
+		<type>realtime</type>
+		<metadata>false</metadata>
+		<keywords/>
+		<group>Water & Sewage Utility</group>
+		<description>
+		Issues with yardwork performed by the City of Bloomington Utilities Department
+		</description>
+	</service>
+	<service>
+		<service_code>4e090d24992b941e78000017</service_code>
+		<service_name>Water Quality</service_name>
+		<type>realtime</type>
+		<metadata>false</metadata>
+		<keywords/>
+		<group>Water & Sewage Utility</group>
+		<description>
+		Comments on the City of Bloomington's water quality
+		</description>
+	</service>
+	<service>
+		<service_code>4e090d24992b941e78000015</service_code>
+		<service_name>Water Utility Billing Problems</service_name>
+		<type>realtime</type>
+		<metadata>false</metadata>
+		<keywords/>
+		<group>Water & Sewage Utility</group>
+		<description>
+		Report issues with billing services for City of Bloomington Utilities
+		</description>
+	</service>
+	<service>
+		<service_code>4e090d24992b941e7800000d</service_code>
+		<service_name>Water Utility Problems</service_name>
+		<type>realtime</type>
+		<metadata>false</metadata>
+		<keywords/>
+		<group>Water & Sewage Utility</group>
+		<description>Issues involving water utilities</description>
+	</service>
+	<service>
+		<service_code>4e090d24992b941e78000001</service_code>
+		<service_name>Weeds</service_name>
+		<type>realtime</type>
+		<metadata>false</metadata>
+		<keywords/>
+		<group>Water & Sewage Utility</group>
+		<description>Overgrown yards</description>
+	</service>
+</services>

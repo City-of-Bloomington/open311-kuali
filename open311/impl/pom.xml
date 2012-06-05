@@ -22,6 +22,7 @@
         <version>2.0.0-SNAPSHOT</version>
    	</parent>
 	<dependencies>
+	<!-- Internal dependencies -->
 	    <dependency>
             <groupId>org.kuali.mobility</groupId>
             <artifactId>shared-api</artifactId>
@@ -30,15 +31,27 @@
             <groupId>org.kuali.mobility</groupId>
             <artifactId>shared-impl</artifactId>
         </dependency>
-
-	    
-	    
-	    
-		<!-- Internal dependencies -->
+        <dependency>
+            <groupId>org.kuali.mobility</groupId>
+            <artifactId>shared-config</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.kuali.mobility</groupId>
+            <artifactId>configparams-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.kuali.mobility</groupId>
+            <artifactId>configparams-impl</artifactId>
+        </dependency> 
 		<dependency>
 			<groupId>org.kuali.mobility</groupId>
 			<artifactId>open311-api</artifactId>
 		</dependency>
+        <dependency>
+			<groupId>org.kuali.mobility</groupId>
+			<artifactId>util.webservice.adapter</artifactId>
+		</dependency>
+
 		<!-- Persistence dependencies -->
 		<dependency>
 			<groupId>javax.persistence</groupId>
@@ -49,11 +62,21 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-tx</artifactId>
 		</dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+        </dependency>
+
 		<!-- JSON dependencies -->
 	    <dependency>
            	<groupId>net.sf.flexjson</groupId>
        	    <artifactId>flexjson</artifactId>
         </dependency> 
+        <!-- XML dependencies -->
+        <dependency>
+			<groupId>org.jdom</groupId>
+			<artifactId>jdom</artifactId>
+		</dependency>
    		<!-- Testing dependencies -->
 		<dependency>
 			<groupId>org.mortbay.jetty</groupId>
@@ -70,7 +93,12 @@
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
 		</dependency>
-	</dependencies>
+        <dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+		</dependency>
+
+		</dependencies>
 	<build>
 		<resources>
 			<resource>
