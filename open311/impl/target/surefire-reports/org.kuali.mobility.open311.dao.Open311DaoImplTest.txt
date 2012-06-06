@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: org.kuali.mobility.open311.dao.Open311DaoImplTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.832 sec
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.07 sec

@@ -118,7 +118,7 @@ public class Open311DaoImpl implements Open311Dao {
 					serviceList = mapper.mapData(serviceList, new URL(getServiceSourceUrl()), new URL(getServiceMappingUrl()));
 				}
 				else {
-					serviceList = mapper.mapData(serviceList, new URL(getServiceSourceUrl()), getServiceMappingFile());
+				serviceList = mapper.mapData(serviceList, new URL(getServiceSourceUrl()), getServiceMappingFile());
 					
 				}
 			}
@@ -128,6 +128,7 @@ public class Open311DaoImpl implements Open311Dao {
 					return;
 				}
 				else {
+				
 					serviceList = mapper.mapData(serviceList, getServiceSourceFile(), getServiceMappingFile());
 				}	
 			}

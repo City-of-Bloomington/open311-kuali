@@ -26,6 +26,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.kuali.mobility.file.entity.File;
 import org.kuali.mobility.open311.domain.Incident;
 import org.kuali.mobility.open311.entity.Submission;
+import org.kuali.mobility.open311.entity.ServiceEntity;
 import org.kuali.mobility.open311.entity.SubmissionAttribute;
 import org.kuali.mobility.open311.service.Open311Service;
 import org.kuali.mobility.security.authn.entity.User;
@@ -62,7 +63,9 @@ public class Open311Controller {
 	
     @Autowired
     private Open311Service open311Service;
-    
+    public void setOpen311Service(Open311Service open311Service) {
+		this.open311Service = open311Service;
+	}
 
     @RequestMapping(method = RequestMethod.GET)
     public String index(Model uiModel, HttpServletRequest request) {
@@ -363,6 +366,13 @@ public class Open311Controller {
    		Incident incident = new Incident();
    		uiModel.addAttribute("incident", incident);
     	return "incident/form";
+    }
+	
+	@RequestMapping(value="/services", method = RequestMethod.GET)
+    public String getServices(Model uiModel, HttpServletRequest request) { 
+    	List<ServiceEntity> serviceList = open311Service.getService();
+    	uiModel.addAttribute("serviceList", serviceList);
+    	return "open311/services";
     }
 
     @RequestMapping(value="/incidentPost", method = RequestMethod.POST)

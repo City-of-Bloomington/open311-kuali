@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="5.832" errors="0" skipped="0" tests="2" name="org.kuali.mobility.open311.dao.Open311DaoImplTest">
+<testsuite failures="0" time="4.07" errors="0" skipped="0" tests="2" name="org.kuali.mobility.open311.dao.Open311DaoImplTest">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files (x86)\Java\jdk1.6\jre\bin"/>
@@ -58,6 +58,6 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
   </properties>
-  <testcase time="4.283" classname="org.kuali.mobility.open311.dao.Open311DaoImplTest" name="testGetServiceList"/>
-  <testcase time="0.889" classname="org.kuali.mobility.open311.dao.Open311DaoImplTest" name="testGetServiceJson"/>
+  <testcase time="2.286" classname="org.kuali.mobility.open311.dao.Open311DaoImplTest" name="testGetServiceList"/>
+  <testcase time="0.927" classname="org.kuali.mobility.open311.dao.Open311DaoImplTest" name="testGetServiceJson"/>
 </testsuite>

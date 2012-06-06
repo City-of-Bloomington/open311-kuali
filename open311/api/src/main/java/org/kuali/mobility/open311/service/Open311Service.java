@@ -17,6 +17,7 @@ package org.kuali.mobility.open311.service;
 
 import java.util.List;
 
+import org.kuali.mobility.open311.dao.Open311Dao;
 //import org.kuali.mobility.open311.entity.File;
 import org.kuali.mobility.file.entity.File;
 import org.kuali.mobility.open311.entity.Submission;
@@ -28,6 +29,9 @@ public interface Open311Service {
 	public Long saveSubmission(Submission submission);
     public List<Submission> findAllSubmissions();
     public List<Submission> findAllSubmissionsByParentId(Long id);
+	
+	public Open311Dao getDao();
+	public void setDao(Open311Dao dao);
 	public List<ServiceEntity> getService();
 	public String getServiceJson(final String serviceCode);
 	

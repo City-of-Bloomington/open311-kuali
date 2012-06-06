@@ -18,6 +18,7 @@ package org.kuali.mobility.open311.service;
 import java.util.List;
 
 import org.kuali.mobility.open311.dao.Open311Dao;
+import org.kuali.mobility.open311.dao.Open311DaoImpl;
 import org.kuali.mobility.open311.entity.Submission;
 import org.kuali.mobility.open311.service.Open311Service;
 //import org.kuali.mobility.open311.entity.File;
@@ -26,10 +27,15 @@ import org.kuali.mobility.open311.entity.ServiceEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 @Service
 public class Open311ServiceImpl implements Open311Service {
-  
+
+	public Open311ServiceImpl()
+	{}
+	
     @Autowired
     private Open311Dao dao;
 	
@@ -40,9 +46,32 @@ public class Open311ServiceImpl implements Open311Service {
 	public void setDao(Open311Dao dao) {
 		this.dao = dao;
 	}
+	
+	private static ApplicationContext applicationContext;
+	
+    
+    public static void createApplicationContext() {
+    	Open311ServiceImpl.setApplicationContext(new FileSystemXmlApplicationContext(getConfigLocations()));
+    }
 
+    private static String[] getConfigLocations() {
+        return new String[] { "classpath:/Open311SpringBeans.xml" };
+    }
+    
+	public static ApplicationContext getApplicationContext() {
+		Open311ServiceImpl.createApplicationContext();
+		return applicationContext;
+	}
+
+	public static void setApplicationContext(ApplicationContext applicationContext) {
+		Open311ServiceImpl.applicationContext = applicationContext;
+	}
+	
+	
 	@Override
 	public List<ServiceEntity> getService() {
+		
+		dao = (Open311DaoImpl) getApplicationContext().getBean("open311Dao");
 		
 		return dao.getServiceList();
 	}
