@@ -22,6 +22,7 @@ import org.kuali.mobility.open311.entity.Submission;
 import org.kuali.mobility.open311.service.Open311Service;
 //import org.kuali.mobility.open311.entity.File;
 import org.kuali.mobility.file.entity.File;
+import org.kuali.mobility.open311.entity.ServiceEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,53 +31,57 @@ import org.springframework.transaction.annotation.Transactional;
 public class Open311ServiceImpl implements Open311Service {
   
     @Autowired
-    private Open311Dao open311Dao;
-		
-	public void setDao(Open311Dao open311Dao) {
-		this.open311Dao = open311Dao;
+    private Open311Dao dao;
+	
+	public Open311Dao getDao() {
+		return dao;
+	}
+	
+	public void setDao(Open311Dao dao) {
+		this.dao = dao;
 	}
 
 	@Override
-	public List<Service> getService() {
+	public List<ServiceEntity> getService() {
 		
-		return open311Dao.getServiceList();
+		return dao.getServiceList();
 	}
 	
 	@Override
 	public String getServiceJson( final String serviceCode) {
 		
-		return open311Dao.getServiceJson(serviceCode);
+		return dao.getServiceJson(serviceCode);
 	}
 	
 	
 	@Override
 	@Transactional
     public Submission findSubmissionById(Long id) {
-		return open311Dao.findSubmissionById(id);    	
+		return dao.findSubmissionById(id);    	
     }
     
 	@Override
 	@Transactional
     public List<Submission> findAllSubmissions() {
-		return open311Dao.findAllSubmissions();
+		return dao.findAllSubmissions();
     }
     
 	@Override
 	@Transactional
 	public Long saveSubmission(Submission submission) {		
-		return open311Dao.saveSubmission(submission);
+		return dao.saveSubmission(submission);
 	} 
     
 	@Override
 	@Transactional
     public Long saveAttachment(File file) {
-		return open311Dao.saveAttachment(file);
+		return dao.saveAttachment(file);
     }
     
 	@Override
 	@Transactional
     public List<Submission> findAllSubmissionsByParentId(Long id) {
-		return open311Dao.findAllSubmissionsByParentId(id);
+		return dao.findAllSubmissionsByParentId(id);
 	}
 
 }

@@ -2,7 +2,7 @@ package org.kuali.mobility.open311.entity;
 
 import java.io.Serializable;
 
-public class ServiceImpl implements Service, Serializable {
+public class ServiceImpl implements ServiceEntity, Serializable {
 
 	private static final long serialVersionUID = 7822282214636842701L;
 	private String serviceCode;
@@ -57,8 +57,8 @@ public class ServiceImpl implements Service, Serializable {
 		this.description = description;
 	}
 
-	public Service compact () {
-		Service s = new ServiceImpl();
+	public ServiceEntity compact () {
+		ServiceEntity s = new ServiceImpl();
 		s.setServiceCode(getServiceCode());
 		return s;
 	}

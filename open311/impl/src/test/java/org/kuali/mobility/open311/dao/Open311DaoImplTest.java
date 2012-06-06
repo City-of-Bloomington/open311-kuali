@@ -7,7 +7,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.kuali.mobility.open311.entity.Service;
+import org.kuali.mobility.open311.entity.ServiceEntity;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
@@ -37,8 +37,8 @@ private static final Logger LOG = Logger.getLogger( Open311DaoImplTest.class );
 	@Test
 	public void testGetServiceList() {
 		Open311DaoImpl dao = (Open311DaoImpl) getApplicationContext().getBean("open311Dao");
-		List<Service> serviceList = dao.getServiceList();
-		LOG.info("Load open311 srevice " + serviceList.size());
+		List<ServiceEntity> serviceList = dao.getServiceList();
+		LOG.info("Load open311 service " + serviceList.size());
 		assertTrue( "Failed to load a list of open311 service.", serviceList!=null && serviceList.isEmpty()==false);
 	}
 

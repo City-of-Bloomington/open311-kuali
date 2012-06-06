@@ -35,7 +35,7 @@ import org.kuali.mobility.file.entity.File;
 
 //import org.kuali.mobility.open311.entity.File;
 import org.kuali.mobility.open311.dao.Open311Dao;
-import org.kuali.mobility.open311.entity.Service;
+import org.kuali.mobility.open311.entity.ServiceEntity;
 import org.kuali.mobility.open311.entity.Submission;
 import org.springframework.stereotype.Repository;
 
@@ -53,7 +53,7 @@ public class Open311DaoImpl implements Open311Dao {
 	private EntityManager entityManager;
 
 	private DataMapper mapper;
-	private List<Service> serviceList;
+	private List<ServiceEntity> serviceList;
 	
 	private String serviceSourceFile;
 	private String serviceSourceUrl;
@@ -94,7 +94,7 @@ public class Open311DaoImpl implements Open311Dao {
 		this.serviceMappingUrl = serviceMappingUrl;
 	}
 
-	public List<Service> getServiceList() {
+	public List<ServiceEntity> getServiceList() {
 		if (serviceList==null || serviceList.isEmpty()) {
 			initData();
 		}
@@ -107,7 +107,7 @@ public class Open311DaoImpl implements Open311Dao {
 
 	private void initData() {
 		if (serviceList==null)
-			serviceList = new ArrayList<Service>();
+			serviceList = new ArrayList<ServiceEntity>();
 		
 		boolean isServiceSourceUrlAvailable = (getServiceSourceUrl() != null ? true : false) ;
 		boolean isServiceMappingUrlAvailable = (getServiceMappingUrl() != null ? true : false) ;
@@ -119,6 +119,7 @@ public class Open311DaoImpl implements Open311Dao {
 				}
 				else {
 					serviceList = mapper.mapData(serviceList, new URL(getServiceSourceUrl()), getServiceMappingFile());
+					
 				}
 			}
 			else {

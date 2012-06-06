@@ -20,7 +20,7 @@ import java.util.List;
 //import org.kuali.mobility.open311.entity.File;
 import org.kuali.mobility.file.entity.File;
 import org.kuali.mobility.open311.entity.Submission;
-import org.kuali.mobility.open311.entity.Service;
+import org.kuali.mobility.open311.entity.ServiceEntity;
 
 
 public interface Open311Dao {
@@ -29,7 +29,7 @@ public interface Open311Dao {
     public List<Submission> findAllSubmissionsByParentId(Long id);
     public Submission findSubmissionById(Long id);
     public Long saveSubmission(Submission submission);
-	public List<Service> getServiceList();
+	public List<ServiceEntity> getServiceList();
 	public String getServiceJson(final String serviceCode);
 	
     public Long saveAttachment(File file);

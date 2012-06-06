@@ -20,6 +20,7 @@ import java.util.List;
 //import org.kuali.mobility.open311.entity.File;
 import org.kuali.mobility.file.entity.File;
 import org.kuali.mobility.open311.entity.Submission;
+import org.kuali.mobility.open311.entity.ServiceEntity;
  
 public interface Open311Service {
 
@@ -27,7 +28,9 @@ public interface Open311Service {
 	public Long saveSubmission(Submission submission);
     public List<Submission> findAllSubmissions();
     public List<Submission> findAllSubmissionsByParentId(Long id);
-
+	public List<ServiceEntity> getService();
+	public String getServiceJson(final String serviceCode);
+	
     public Long saveAttachment(File file);
     
 }
