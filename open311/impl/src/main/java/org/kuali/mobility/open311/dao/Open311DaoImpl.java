@@ -36,6 +36,8 @@ import org.kuali.mobility.file.entity.File;
 //import org.kuali.mobility.open311.entity.File;
 import org.kuali.mobility.open311.dao.Open311Dao;
 import org.kuali.mobility.open311.entity.ServiceEntity;
+import org.kuali.mobility.open311.entity.Attributes;
+import org.kuali.mobility.open311.entity.AttributesImpl;
 import org.kuali.mobility.open311.entity.Submission;
 import org.springframework.stereotype.Repository;
 
@@ -54,9 +56,13 @@ public class Open311DaoImpl implements Open311Dao {
 
 	private DataMapper mapper;
 	private List<ServiceEntity> serviceList;
+	private Attributes serviceAttributes;
 	
 	private String serviceSourceFile;
 	private String serviceSourceUrl;
+	private String serviceBaseUrl;
+	private String serviceBaseFile;
+	private String attributeMappingFile;
 	private String serviceMappingFile;
 	private String serviceMappingUrl;
 	
@@ -69,7 +75,7 @@ public class Open311DaoImpl implements Open311Dao {
 	public void setServiceSourceFile(String serviceSourceFile) {
 		this.serviceSourceFile = serviceSourceFile;
 	}
-
+	
 	public String getServiceSourceUrl() {
 		return serviceSourceUrl;
 	}
@@ -77,7 +83,23 @@ public class Open311DaoImpl implements Open311Dao {
 	public void setServiceSourceUrl(String serviceSourceUrl) {
 		this.serviceSourceUrl = serviceSourceUrl;
 	}
+	
+	public String getServiceBaseFile() {
+		return serviceBaseFile;
+	}
 
+	public void setServiceBaseFile(String serviceBaseFile) {
+		this.serviceBaseFile = serviceBaseFile;
+	}
+
+	public String getServiceBaseUrl() {
+		return serviceBaseUrl;
+	}
+
+	public void setServiceBaseUrl(String serviceBaseUrl) {
+		this.serviceBaseUrl = serviceBaseUrl;
+	}
+	
 	public String getServiceMappingFile() {
 		return serviceMappingFile;
 	}
@@ -94,11 +116,26 @@ public class Open311DaoImpl implements Open311Dao {
 		this.serviceMappingUrl = serviceMappingUrl;
 	}
 
+	public String getAttributeMappingFile() {
+		return attributeMappingFile;
+	}
+
+	public void setAttributeMappingFile(String attributeMappingFile) {
+		this.attributeMappingFile = attributeMappingFile;
+	}
+
 	public List<ServiceEntity> getServiceList() {
 		if (serviceList==null || serviceList.isEmpty()) {
 			initData();
 		}
 		return serviceList;
+	}
+	
+	public Attributes getServiceAttributes(final String serviceCode) {
+		if (serviceAttributes==null) {
+			getAttributes(serviceCode);
+		}
+		return serviceAttributes;
 	}
 
 	public void setMapper(DataMapper mapper) {
@@ -140,6 +177,40 @@ public class Open311DaoImpl implements Open311Dao {
 		} catch (IOException e) {
 			LOG.error(e.getMessage());
 		}
+	}
+	
+	private void getAttributes(final String serviceCode)
+	{
+		if (serviceAttributes==null)
+			serviceAttributes = new AttributesImpl();
+		
+		boolean isServiceBaseUrlAvailable = (getServiceBaseUrl() != null ? true : false) ;
+		
+		String serviceUrl="";
+		if(isServiceBaseUrlAvailable) {
+		serviceUrl= getServiceBaseUrl()+serviceCode+".xml";
+		}
+		try {
+			if(isServiceBaseUrlAvailable) {
+				
+				serviceAttributes = mapper.mapData(serviceAttributes, new URL(serviceUrl), getAttributeMappingFile());
+					
+			}
+			else {
+				serviceAttributes = mapper.mapData(serviceAttributes, getServiceBaseFile(), getAttributeMappingFile());
+				
+			}
+		
+		} catch (MalformedURLException e) {
+			LOG.error(e.getMessage());
+		} catch (ClassNotFoundException e) {
+			LOG.error(e.getMessage());
+		} catch (IOException e) {
+			LOG.error(e.getMessage());
+		}
+
+	
+	
 	}
 	
 	public String getServiceJsonURI() {

@@ -19,6 +19,10 @@ public class MappingElement implements Serializable
 	private String type;
 	@XStreamAsAttribute
 	private boolean isAttribute;
+	@XStreamAsAttribute
+	private String definedIn;
+	@XStreamAsAttribute
+	private String className;
 
 	/**
      * @return the list
@@ -70,5 +74,21 @@ public class MappingElement implements Serializable
 
 	public void setAttribute(boolean isAttribute) {
 		this.isAttribute = isAttribute;
+	}
+	
+	public String getDefinedIn() {
+		return definedIn;
+	}
+
+	public void setDefinedIsn(String definedIn) {
+		this.definedIn = definedIn;
+	}
+	
+	public String getClassName() {
+		return className;
+	}
+
+	public void setClassName(String className) {
+		this.className = className;
 	}
 }

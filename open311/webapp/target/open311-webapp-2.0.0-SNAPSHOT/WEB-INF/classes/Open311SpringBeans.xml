@@ -25,9 +25,11 @@
     
     <bean id="open311Dao" class="org.kuali.mobility.open311.dao.Open311DaoImpl">
     	<property name="mapper" ref="mapper"/>
-    	<property name="serviceSourceUrl" value="https://bloomington.in.gov/test/open311/v2/services.xml"/>
+    	<property name="serviceSourceUrl" value="https://bloomington.in.gov/crm/open311/v2/services.xml"/>
+		<property name="serviceBaseFile" value="attributes.xml"/>
+        <property name="attributeMappingFile" value="serviceAttributeMapping.xml"/>
         <property name="serviceMappingFile" value="open311ServiceMapping.xml"/>
-        <property name="serviceJsonURI" value="https://bloomington.in.gov/test/open311/v2/services/" />
+        <property name="serviceJsonURI" value="https://bloomington.in.gov/crm/open311/v2/services/" />
     </bean>
     
 </beans>

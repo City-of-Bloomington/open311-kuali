@@ -41,14 +41,16 @@ public class DataMapperImpl implements DataMapper {
 	@SuppressWarnings("unchecked")
 	@Override
 	public <B> B mapData(B responseObject, URL source, String mappingFile, String listName) throws ClassNotFoundException, IOException {
+
 		DataConfig dc = new DataConfig();
 		DataMapping mapping = null;
 		try {
 			mapping = dc.loadConfiguation(mappingFile);
 		} catch (IOException ioe) {
 			logger.error(ioe);
-		}
+		}			
 		XStream xstream = loadMapper(mapping, listName);
+		
 		if (xstream != null) {
 			URLConnection con = source.openConnection();
 			con.setConnectTimeout(connectionTimeoutMs);
@@ -107,6 +109,7 @@ public class DataMapperImpl implements DataMapper {
 			}
 			final String objectClass = mapping.getClassName();
 
+				
 			XStream xstream;
 			if( mapping.getMimeType() != null && "application/json".equalsIgnoreCase(mapping.getMimeType()) )
 			{
@@ -162,12 +165,37 @@ public class DataMapperImpl implements DataMapper {
 					xstream.alias(mapping.getRootElement(), (mapping.isList() ? List.class : Object.class));
 				}
 			}
+			
 			for (MappingElement map : mapping.getMappings()) {
 				if (map.isAttribute()) {
 					xstream.aliasAttribute(Class.forName(mapping.getClassName()), map.getMapTo(), map.getMapFrom());
 				} else {
-					xstream.aliasField(map.getMapFrom(), Class.forName(mapping.getClassName()), map.getMapTo());
+
+				
+					if(map.getClassName() != null && !"".equals(map.getClassName().trim())) {
+
+						xstream.alias(map.getMapTo(), Class.forName(map.getClassName()));
+					} else{
+					
+						if (map.getDefinedIn() != null && !"".equals(map.getDefinedIn().trim())) {
+		
+							xstream.aliasField(map.getMapFrom(), Class.forName(map.getDefinedIn()), map.getMapTo());
+
+							if (map.isList()){								
+								xstream.alias(map.getMapTo(), List.class);								
+							}	
+						} else{
+
+							xstream.aliasField(map.getMapFrom(), Class.forName(mapping.getClassName()), map.getMapTo());
+
+							if (map.isList()){
+								xstream.alias(map.getMapTo(), List.class);
+							}
+						}
+					}				
+
 				}
+				
 			}
 			return xstream;
 		} else {

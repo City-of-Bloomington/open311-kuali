@@ -21,6 +21,7 @@ import java.util.List;
 import org.kuali.mobility.file.entity.File;
 import org.kuali.mobility.open311.entity.Submission;
 import org.kuali.mobility.open311.entity.ServiceEntity;
+import org.kuali.mobility.open311.entity.Attributes;
 
 
 public interface Open311Dao {
@@ -31,6 +32,7 @@ public interface Open311Dao {
     public Long saveSubmission(Submission submission);
 	public List<ServiceEntity> getServiceList();
 	public String getServiceJson(final String serviceCode);
+	public Attributes getServiceAttributes(final String serviceCode);
 	
     public Long saveAttachment(File file);
 

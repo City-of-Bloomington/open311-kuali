@@ -24,6 +24,8 @@ import org.kuali.mobility.open311.service.Open311Service;
 //import org.kuali.mobility.open311.entity.File;
 import org.kuali.mobility.file.entity.File;
 import org.kuali.mobility.open311.entity.ServiceEntity;
+import org.kuali.mobility.open311.entity.Attributes;
+import org.kuali.mobility.open311.entity.AttributesImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -72,8 +74,16 @@ public class Open311ServiceImpl implements Open311Service {
 	public List<ServiceEntity> getService() {
 		
 		dao = (Open311DaoImpl) getApplicationContext().getBean("open311Dao");
-		
+
 		return dao.getServiceList();
+	}
+
+	@Override
+	public Attributes getServiceAttributes(final String serviceCode) {
+		
+		dao = (Open311DaoImpl) getApplicationContext().getBean("open311Dao");
+
+		return dao.getServiceAttributes(serviceCode);
 	}
 	
 	@Override

@@ -21,7 +21,8 @@
 	
 		<ul data-role="listview" id="dropdownMenu" data-theme="c" data-inset="false" data-filter="false" data-dividertheme="b">
         	<c:forEach items="${serviceList}" var="service" varStatus="index">
-            	<li data-theme="c" class="dropdownItem" value="${index.count}">${service.serviceName}</li>
+            	<li data-theme="c" class="dropdownItem" value="${index.count}">
+				<a href="${pageContext.request.contextPath}/open311/${service.serviceCode}">${service.serviceName}</a></li>
             </c:forEach> 
 			
         </ul>

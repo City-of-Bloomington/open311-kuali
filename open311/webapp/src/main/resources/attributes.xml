@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<service_definition>
+<service_code>49</service_code>
+<attributes>
+<attribute>
+<variable>true</variable>
+<code>propertyowner</code>
+<order>1</order>
+<datatype>singlevaluelist</datatype>
+<datatype_description/>
+<required>false</required>
+<description>Are you a property owner/manager</description>
+<values></values>
+</attribute>
+<attribute>
+<variable>true</variable>
+<code>propertytype</code>
+<order>2</order>
+<datatype>multivaluelist</datatype>
+<datatype_description/>
+<required>false</required>
+<description>Graffiti is on</description>
+<values></values>
+</attribute>
+<attribute>
+<variable>true</variable>
+<code>plagued</code>
+<order>3</order>
+<datatype>singlevaluelist</datatype>
+<datatype_description/>
+<required>false</required>
+<description>Is this area constantly plagued by graffiti?</description>
+<values></values>
+</attribute>
+<attribute>
+<variable>true</variable>
+<code>same</code>
+<order>4</order>
+<datatype>text</datatype>
+<datatype_description/>
+<required>false</required>
+<description>
+If so, is it always the same kind of graffiti (political, idealogical, offensive, tags, etc?)
+</description>
+<values></values>
+</attribute>
+<attribute>
+<variable>true</variable>
+<code>contact</code>
+<order>5</order>
+<datatype>singlevaluelist</datatype>
+<datatype_description/>
+<required>false</required>
+<description>Would you like to be contacted</description>
+<values></values>
+</attribute>
+</attributes>
+</service_definition>

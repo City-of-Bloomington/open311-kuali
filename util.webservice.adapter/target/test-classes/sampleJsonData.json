@@ -1,0 +1,41 @@
+{
+	"seats":{
+	"seat":[
+		{
+			"lab":"2120 Information Commons Computer Area",
+			"floor":"2nd",
+			"building":"University Library",
+			"building-code":"IN088",
+			"campus":"IN",
+			"availability":"13/19",
+			"windows-availability":"10/15",
+			"mac-availability":"3/4",
+			"software-availability":"2/2",
+			"floorplan":"http://ulib.iupui.edu/utility/area_map.php?location=1"
+		},
+		{
+			"lab":"2125 Information Commons Computer Cluster",
+			"floor":"2nd",
+			"building":"University Library",
+			"building-code":"IN088",
+			"campus":"IN",
+			"availability":"11/15",
+			"windows-availability":"11/15",
+			"mac-availability":"0/0",
+			"floorplan":"http://ulib.iupui.edu/utility/area_map.php?location=2"
+		},
+		{
+			"lab":"Fourth Floor Study Rooms",
+			"floor":"4th",
+			"building":"University Library",
+			"building-code":"IN088",
+			"campus":"IN",
+			"availability":"5/27",
+			"windows-availability":"5/24",
+			"mac-availability":"0/3",
+			"floorplan":"http://ulib.iupui.edu/utility/area_map.php?location=16"
+		}
+	]
+	}
+}
+		

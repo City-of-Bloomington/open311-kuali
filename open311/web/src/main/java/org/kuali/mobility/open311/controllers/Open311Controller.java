@@ -27,6 +27,8 @@ import org.kuali.mobility.file.entity.File;
 import org.kuali.mobility.open311.domain.Incident;
 import org.kuali.mobility.open311.entity.Submission;
 import org.kuali.mobility.open311.entity.ServiceEntity;
+import org.kuali.mobility.open311.entity.Attributes;
+import org.kuali.mobility.open311.entity.AttributesImpl;
 import org.kuali.mobility.open311.entity.SubmissionAttribute;
 import org.kuali.mobility.open311.service.Open311Service;
 import org.kuali.mobility.security.authn.entity.User;
@@ -373,6 +375,14 @@ public class Open311Controller {
     	List<ServiceEntity> serviceList = open311Service.getService();
     	uiModel.addAttribute("serviceList", serviceList);
     	return "open311/services";
+    }
+	
+	@RequestMapping(value="/{serviceCode}", method = RequestMethod.GET)
+    public String getServiceAttributes(Model uiModel, @PathVariable("serviceCode") String serviceCode){
+    	LOG.debug( "getServiceAttributes() : service code = "+serviceCode );
+		Attributes serviceAttributes = open311Service.getServiceAttributes(serviceCode);
+		uiModel.addAttribute("serviceAttributes", serviceAttributes.getAttributes());
+    	return "open311/service";
     }
 
     @RequestMapping(value="/incidentPost", method = RequestMethod.POST)

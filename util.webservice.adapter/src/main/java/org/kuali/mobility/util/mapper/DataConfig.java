@@ -39,6 +39,9 @@ public class DataConfig {
 		xstream.aliasAttribute(MappingElement.class, "isAttribute", "attribute");
 		xstream.aliasAttribute(MappingElement.class, "list", "list");
 		xstream.aliasAttribute(MappingElement.class, "type", "type");
+		xstream.aliasAttribute(MappingElement.class, "definedIn", "definedIn");
+		xstream.aliasAttribute(MappingElement.class, "className", "className");
+		
 		xstream.processAnnotations(DataMapping.class);
 		return xstream;
 	}

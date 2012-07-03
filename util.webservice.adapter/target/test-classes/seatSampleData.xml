@@ -1,0 +1,174 @@
+<?xml version='1.0' encoding='ISO-8859-1' ?>
+<seats>
+	<seat
+		lab="2120 Information Commons Computer Area"
+		floor="2nd"
+		building="University Library"
+		building-code="IN088"
+		campus="IN"
+		availability="13/19"
+		windows-availability="10/15"
+		mac-availability="3/4"
+		software-availability="2/2"
+		floorplan="http://ulib.iupui.edu/utility/area_map.php?location=1" />
+	<seat
+		lab="2125 Information Commons Computer Cluster"
+		floor="2nd"
+		building="University Library"
+		building-code="IN088"
+		campus="IN"
+		availability="11/15"
+		windows-availability="11/15"
+		mac-availability="0/0"
+		floorplan="http://ulib.iupui.edu/utility/area_map.php?location=2" />
+	<seat
+		lab="2135 Academic Research Computer Cluster"
+		floor="2nd"
+		building="University Library"
+		building-code="IN088"
+		campus="IN"
+		availability="20/31"
+		windows-availability="15/23"
+		mac-availability="5/8"
+		dual-availability="5/7"
+		wheelchair-availability="1/1"
+		floorplan="http://ulib.iupui.edu/utility/area_map.php?location=3" />
+	<seat
+		lab="2135 Academic Research Computer Area"
+		floor="2nd"
+		building="University Library"
+		building-code="IN088"
+		campus="IN"
+		availability="10/23"
+		windows-availability="10/23"
+		mac-availability="0/0"
+		floorplan="http://ulib.iupui.edu/utility/area_map.php?location=4" />
+	<seat
+		lab="2135 Academic Research Computer Area 2"
+		floor="2nd"
+		building="University Library"
+		building-code="IN088"
+		campus="IN"
+		availability="2/6"
+		windows-availability="2/6"
+		mac-availability="0/0"
+		floorplan="http://ulib.iupui.edu/utility/area_map.php?location=5" />
+	<seat
+		lab="2110 Philanthropy Computer Cluster"
+		floor="2nd"
+		building="University Library"
+		building-code="IN088"
+		campus="IN"
+		availability="4/8"
+		windows-availability="3/6"
+		mac-availability="1/2"
+		dual-availability="1/3"
+		floorplan="http://ulib.iupui.edu/utility/area_map.php?location=6" />
+	<seat
+		lab="3100 Computer Cluster"
+		floor="3rd"
+		building="University Library"
+		building-code="IN088"
+		campus="IN"
+		availability="22/29"
+		windows-availability="22/29"
+		mac-availability="0/0"
+		wheelchair-availability="1/1"
+		floorplan="http://ulib.iupui.edu/utility/area_map.php?location=7" />
+	<seat
+		lab="3115 Computer Cluster"
+		floor="3rd"
+		building="University Library"
+		building-code="IN088"
+		campus="IN"
+		availability="17/20"
+		windows-availability="17/20"
+		mac-availability="0/0"
+		wheelchair-availability="1/1"
+		floorplan="http://ulib.iupui.edu/utility/area_map.php?location=8" />
+	<seat
+		lab="3120 Apple Computer Cluster"
+		floor="3rd"
+		building="University Library"
+		building-code="IN088"
+		campus="IN"
+		availability="14/20"
+		windows-availability="0/0"
+		mac-availability="14/20"
+		wheelchair-availability="1/1"
+		floorplan="http://ulib.iupui.edu/utility/area_map.php?location=9" />
+	<seat
+		lab="3135 Computer Cluster"
+		floor="3rd"
+		building="University Library"
+		building-code="IN088"
+		campus="IN"
+		availability="14/20"
+		windows-availability="14/20"
+		mac-availability="0/0"
+		wheelchair-availability="1/1"
+		floorplan="http://ulib.iupui.edu/utility/area_map.php?location=10" />
+	<seat
+		lab="4100 Computer Cluster"
+		floor="4th"
+		building="University Library"
+		building-code="IN088"
+		campus="IN"
+		availability="17/27"
+		windows-availability="17/27"
+		mac-availability="0/0"
+		wheelchair-availability="0/1"
+		floorplan="http://ulib.iupui.edu/utility/area_map.php?location=11" />
+	<seat
+		lab="4115 Computer Cluster"
+		floor="4th"
+		building="University Library"
+		building-code="IN088"
+		campus="IN"
+		availability="19/29"
+		windows-availability="19/29"
+		mac-availability="0/0"
+		wheelchair-availability="0/1"
+		floorplan="http://ulib.iupui.edu/utility/area_map.php?location=12" />
+	<seat
+		lab="4120 Apple Computer Cluster"
+		floor="4th"
+		building="University Library"
+		building-code="IN088"
+		campus="IN"
+		availability="16/21"
+		windows-availability="0/1"
+		mac-availability="16/20"
+		floorplan="http://ulib.iupui.edu/utility/area_map.php?location=13" />
+	<seat
+		lab="4135 Rich Media Area"
+		floor="4th"
+		building="University Library"
+		building-code="IN088"
+		campus="IN"
+		availability="2/18"
+		windows-availability="2/9"
+		mac-availability="0/9"
+		rich-availability="2/18"
+		floorplan="http://ulib.iupui.edu/utility/area_map.php?location=14" />
+	<seat
+		lab="Third Floor Study Rooms"
+		floor="3rd"
+		building="University Library"
+		building-code="IN088"
+		campus="IN"
+		availability="7/13"
+		windows-availability="6/12"
+		mac-availability="1/1"
+		floorplan="http://ulib.iupui.edu/utility/area_map.php?location=15" />
+	<seat
+		lab="Fourth Floor Study Rooms"
+		floor="4th"
+		building="University Library"
+		building-code="IN088"
+		campus="IN"
+		availability="5/27"
+		windows-availability="5/24"
+		mac-availability="0/3"
+		floorplan="http://ulib.iupui.edu/utility/area_map.php?location=16" />
+</seats>
