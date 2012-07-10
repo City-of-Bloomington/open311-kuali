@@ -22,8 +22,8 @@ public class JAXBMapper {
 		return mapData(responseObject, source, mappingFileUrl, null);
 	}
 
-	public <B extends Object> B mapData(B responseObject, final String dataFile, final String mappingFile) throws ClassNotFoundException {
-		return mapData(responseObject, dataFile, mappingFile, null);
+	public <B, C extends Object> B mapData(B responseObject, C objectFactory, final String dataFile, final String mappingFile) throws ClassNotFoundException {
+		return mapData(responseObject, objectFactory, dataFile, mappingFile, null);
 	}
 
 	public <B> B mapData(B responseObject, URL source, String mappingFile, String listName) throws ClassNotFoundException, IOException {
@@ -31,14 +31,19 @@ public class JAXBMapper {
 		return responseObject;
 	}
 
-	public <B> B mapData(B responseObject, String dataFile, String mappingFile, String listName) throws ClassNotFoundException {
+	public <B, C> B mapData(B responseObject, C objectFactory, String dataFile, String mappingFile, String listName) throws ClassNotFoundException {
 		
 		 try {
- 
-		JAXBContext jaxbContext = JAXBContext.newInstance(responseObject.getClass());
+		 
+		 System.out.println("Inside JAXBMapper map function");
+		System.out.println(responseObject);
+		System.out.println(responseObject.getClass()+" "+objectFactory.getClass());
+		JAXBContext jaxbContext = JAXBContext.newInstance(responseObject.getClass(), objectFactory.getClass());
  
 		Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+		System.out.println(this.getClass().getClassLoader().getResourceAsStream(dataFile).toString());
 		responseObject = (B) jaxbUnmarshaller.unmarshal(this.getClass().getClassLoader().getResourceAsStream(dataFile));
+		System.out.println(responseObject);
  
 	  } catch (JAXBException e) {
 		e.printStackTrace();

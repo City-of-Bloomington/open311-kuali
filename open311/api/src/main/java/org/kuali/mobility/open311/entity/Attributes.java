@@ -11,4 +11,6 @@ public interface Attributes {
 		public AttributesCollection getAttributes();
 		public void setAttributes(AttributesCollection attributes);
 		
+		public Object getObjectFactory();
+		
 }

@@ -7,7 +7,8 @@ import org.eclipse.persistence.oxm.annotations.XmlPath;
 
 
 public class AttributeImpl extends Attribute implements Serializable {
-
+	
+	public AttributeImpl() {}
 	private static final long serialVersionUID = 7822282214636842702L;
 	
 	private String variable;

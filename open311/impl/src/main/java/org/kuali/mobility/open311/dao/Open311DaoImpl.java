@@ -195,6 +195,7 @@ public class Open311DaoImpl implements Open311Dao {
 		if (serviceAttributes==null)
 			serviceAttributes = new AttributesImpl();
 		
+		jaxbmapper=new JAXBMapper();
 		boolean isServiceBaseUrlAvailable = (getServiceBaseUrl() != null ? true : false) ;
 		
 		String serviceUrl="";
@@ -205,7 +206,7 @@ public class Open311DaoImpl implements Open311Dao {
 			if(isServiceBaseUrlAvailable) {
 				
 				serviceAttributes = mapper.mapData(serviceAttributes, new URL(serviceUrl), getAttributeMappingFile());
-					
+				
 			}
 			else {
 			
@@ -231,8 +232,10 @@ public class Open311DaoImpl implements Open311Dao {
 				System.out.println();
 				System.out.println();
 				System.out.println();
-				serviceAttributes = jaxbmapper.mapData(serviceAttributes, getServiceBaseFile(), getAttributeMappingFile());
-				System.out.println();
+				System.out.println(serviceAttributes);
+				System.out.println(jaxbmapper);
+				serviceAttributes = jaxbmapper.mapData(serviceAttributes, serviceAttributes.getObjectFactory(), getServiceBaseFile(), getAttributeMappingFile());
+				System.out.println(serviceAttributes);
 				System.out.println();
 				System.out.println();
 				System.out.println();

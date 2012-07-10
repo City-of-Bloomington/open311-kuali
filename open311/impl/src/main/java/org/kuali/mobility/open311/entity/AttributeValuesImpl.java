@@ -4,6 +4,7 @@ import java.util.List;
 
 public class AttributeValuesImpl implements AttributeValues {
 	
+	public AttributeValuesImpl() {}
 	private List<AttributeValue> value;
 
 	public void setValue(List<AttributeValue> value) {

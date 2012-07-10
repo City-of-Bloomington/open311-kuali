@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 public class AttributeValueImpl extends AttributeValue implements Serializable {
 
+	public AttributeValueImpl() {}
+	
 	private static final long serialVersionUID = 7822282214636842703L;
 	
 	private String key;

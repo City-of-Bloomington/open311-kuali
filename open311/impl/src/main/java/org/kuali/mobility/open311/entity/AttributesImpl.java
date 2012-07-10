@@ -2,9 +2,15 @@ package org.kuali.mobility.open311.entity;
 
 import java.io.Serializable;
 import java.util.List;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
+import java.util.HashMap;
+import java.util.Map;
 import javax.xml.bind.annotation.*;
 
 import org.eclipse.persistence.oxm.annotations.XmlPath;
+
 
 @XmlRootElement(name="service_definition")
 public class AttributesImpl implements Attributes, Serializable {
@@ -29,7 +35,28 @@ public class AttributesImpl implements Attributes, Serializable {
 		return attributes;
 	}
 	
+	public ObjectFactory getObjectFactory(){
+		return new ObjectFactory();
+	}
 	
-			
+	@XmlRegistry
+	public static class ObjectFactory {
+	
+		public AttributesCollection createAttributesCollection() {
+			return new AttributesCollectionImpl();
+		}
+	  
+		public AttributeValue createAttributeValue() {
+			return new AttributeValueImpl();
+		}
+	  
+		public Attribute createAttribute() {
+			return new AttributeImpl();
+		}
 		
+		public AttributeValues createAttributeValues() {
+			return new AttributeValuesImpl();
+		}
+	  
+	}	
 }
