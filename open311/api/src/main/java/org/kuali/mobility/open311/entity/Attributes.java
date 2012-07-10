@@ -5,10 +5,10 @@ import org.kuali.mobility.open311.entity.Attribute;
 
 public interface Attributes {
 		
-		public String getServiceCode();
-		public void setServiceCode(String servicecode);
+		public String getServicecode();
+		public void setServicecode(String servicecode);
 		
-		public List<Attribute> getAttributes();
-		public void setAttributes(List<Attribute> attributes);
+		public AttributesCollection getAttributes();
+		public void setAttributes(AttributesCollection attributes);
 		
 }

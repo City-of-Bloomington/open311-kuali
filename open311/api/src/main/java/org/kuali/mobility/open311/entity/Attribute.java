@@ -1,7 +1,7 @@
 package org.kuali.mobility.open311.entity;
 
 import java.util.List;
-import org.kuali.mobility.open311.entity.AttributeValue;
+import org.kuali.mobility.open311.entity.AttributeValues;
 
 public class Attribute {
 		
@@ -26,8 +26,8 @@ public class Attribute {
 		public String getDescription(){return "";}
 		public void setDescription(String description){}
 		
-		public List<AttributeValue> getValues() {return null;}
-		public void setValues(List<AttributeValue> values) {}
+		public AttributeValues getValues() {return null;}
+		public void setValues(AttributeValues values) {}
 		
 				
 }

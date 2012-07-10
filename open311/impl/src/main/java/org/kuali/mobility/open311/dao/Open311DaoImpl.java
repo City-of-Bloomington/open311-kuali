@@ -31,6 +31,10 @@ import javax.persistence.OptimisticLockException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+
 import org.kuali.mobility.file.entity.File;
 
 //import org.kuali.mobility.open311.entity.File;
@@ -38,12 +42,14 @@ import org.kuali.mobility.open311.dao.Open311Dao;
 import org.kuali.mobility.open311.entity.ServiceEntity;
 import org.kuali.mobility.open311.entity.Attributes;
 import org.kuali.mobility.open311.entity.AttributesImpl;
+import org.kuali.mobility.open311.entity.AttributeImpl;
 import org.kuali.mobility.open311.entity.Submission;
 import org.springframework.stereotype.Repository;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
 import org.kuali.mobility.util.mapper.DataMapper;
+import org.kuali.mobility.util.mapper.JAXBMapper;	
 
 @Repository
 public class Open311DaoImpl implements Open311Dao {
@@ -55,6 +61,7 @@ public class Open311DaoImpl implements Open311Dao {
 	private EntityManager entityManager;
 
 	private DataMapper mapper;
+	private JAXBMapper jaxbmapper;
 	private List<ServiceEntity> serviceList;
 	private Attributes serviceAttributes;
 	
@@ -141,6 +148,10 @@ public class Open311DaoImpl implements Open311Dao {
 	public void setMapper(DataMapper mapper) {
 		this.mapper = mapper;
 	}
+	
+	public void setJaxbmapper(JAXBMapper jaxbmapper) {
+		this.jaxbmapper = jaxbmapper;
+	}
 
 	private void initData() {
 		if (serviceList==null)
@@ -197,10 +208,53 @@ public class Open311DaoImpl implements Open311Dao {
 					
 			}
 			else {
-				serviceAttributes = mapper.mapData(serviceAttributes, getServiceBaseFile(), getAttributeMappingFile());
+			
+				System.out.println("******************************************Using Xstream");
+				System.out.println();
+				System.out.println();
+				System.out.println();
+				System.out.println();
+				System.out.println();
+				System.out.println();
+			//	serviceAttributes = mapper.mapData(serviceAttributes, getServiceBaseFile(), getAttributeMappingFile());
+				System.out.println();
+				System.out.println();
+				System.out.println();
+				System.out.println();
+				System.out.println();
+				System.out.println();
+				System.out.println("******************************************Finished XStream");
+				System.out.println("******************************************Using JAXB");
+				System.out.println();
+				System.out.println();
+				System.out.println();
+				System.out.println();
+				System.out.println();
+				System.out.println();
+				serviceAttributes = jaxbmapper.mapData(serviceAttributes, getServiceBaseFile(), getAttributeMappingFile());
+				System.out.println();
+				System.out.println();
+				System.out.println();
+				System.out.println();
+				System.out.println();
+				System.out.println();
+				System.out.println("******************************************Finished JAXB");
 				
 			}
+		System.out.println("******************************************Above JAXB code in open311daoimpl");
 		
+		JAXBContext jaxbContext = JAXBContext.newInstance(serviceAttributes.getClass());
+ 
+        Marshaller marshaller = jaxbContext.createMarshaller();
+        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        
+		System.out.println(JAXBContext.newInstance(AttributeImpl.class).getClass());
+
+        marshaller.marshal(serviceAttributes, System.out);
+			
+		
+		} catch (JAXBException e) {
+			LOG.error(e.getMessage());
 		} catch (MalformedURLException e) {
 			LOG.error(e.getMessage());
 		} catch (ClassNotFoundException e) {

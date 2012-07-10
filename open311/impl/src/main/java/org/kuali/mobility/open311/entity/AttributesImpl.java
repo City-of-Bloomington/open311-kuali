@@ -2,28 +2,34 @@ package org.kuali.mobility.open311.entity;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.xml.bind.annotation.*;
 
+import org.eclipse.persistence.oxm.annotations.XmlPath;
+
+@XmlRootElement(name="service_definition")
 public class AttributesImpl implements Attributes, Serializable {
 
 	private static final long serialVersionUID = 7822282214636842702L;
 	
-	private String servicecode;
-	private List<Attribute> attributes;
+	private String service_code;
 	
-	public String getServiceCode() {
-		return servicecode;
-	}
-	public void setServiceCode(String servicecode) {
-		this.servicecode = servicecode;
-	}
+	private AttributesCollection attributes;
 
-	public List<Attribute> getAttributes() {
-		return attributes;
+	public String getServicecode() {
+		return service_code;
 	}
-
-	public void setAttributes(List<Attribute> attributes) {
+	public void setServicecode(String service_code) {
+		this.service_code = service_code;
+	}
+	
+	public void setAttributes(AttributesCollection attributes) {
 		this.attributes = attributes;
 	}
-		
+	public AttributesCollection getAttributes() {
+		return attributes;
+	}
+	
+	
+			
 		
 }
