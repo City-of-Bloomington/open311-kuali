@@ -10,7 +10,16 @@
 <datatype_description/>
 <required>false</required>
 <description>Are you a property owner/manager</description>
-<values></values>
+<values>
+<value>
+<key>yes</key>
+<name>yes</name>
+</value>
+<value>
+<key>no</key>
+<name>no</name>
+</value>
+</values>
 </attribute>
 <attribute>
 <variable>true</variable>
@@ -20,7 +29,16 @@
 <datatype_description/>
 <required>false</required>
 <description>Graffiti is on</description>
-<values></values>
+<values>
+<value>
+<key>yes</key>
+<name>yes</name>
+</value>
+<value>
+<key>no</key>
+<name>no</name>
+</value>
+</values>
 </attribute>
 <attribute>
 <variable>true</variable>
