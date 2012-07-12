@@ -381,7 +381,7 @@ public class Open311Controller {
     public String getServiceAttributes(Model uiModel, @PathVariable("serviceCode") String serviceCode){
     	LOG.debug( "getServiceAttributes() : service code = "+serviceCode );
 		Attributes serviceAttributes = open311Service.getServiceAttributes(serviceCode);
-		uiModel.addAttribute("serviceAttributes", serviceAttributes.getAttributes().getAttribute());
+		uiModel.addAttribute("serviceAttributes", serviceAttributes.getAttribute());
     	return "open311/service";
     }
 

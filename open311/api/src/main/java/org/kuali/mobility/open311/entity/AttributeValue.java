@@ -1,11 +1,11 @@
 package org.kuali.mobility.open311.entity;
 
-public class AttributeValue {
-		
-		public String getKey(){return "";}
-		public void setKey(String key){}
-		
-		public String getName(){return "";}
-		public void setName(String name){}
+public interface AttributeValue {
+
+	public String getKey();
+	public void setKey(String key);
+	
+	public String getName();
+	public void setName(String name);
 		
 }

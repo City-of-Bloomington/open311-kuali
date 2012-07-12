@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <service_definition>
-<service_code>49</service_code>
+<servicecode>49</servicecode>
 <attributes>
 <attribute>
 <variable>true</variable>
 <code>propertyowner</code>
 <order>1</order>
 <datatype>singlevaluelist</datatype>
-<datatype_description/>
+<datatype_description>test</datatype_description>
 <required>false</required>
 <description>Are you a property owner/manager</description>
 <values>
@@ -26,9 +26,32 @@
 <code>propertytype</code>
 <order>2</order>
 <datatype>multivaluelist</datatype>
-<datatype_description/>
+<datatype_description>test</datatype_description>
 <required>false</required>
 <description>Graffiti is on</description>
+<values>
+<value>
+<key>Private Property</key>
+<name>Private Property</name>
+</value>
+<value>
+<key>Public Property</key>
+<name>Public Property</name>
+</value>
+<value>
+<key>Business</key>
+<name>Business</name>
+</value>
+</values>
+</attribute>
+<attribute>
+<variable>true</variable>
+<code>plagued</code>
+<order>3</order>
+<datatype>singlevaluelist</datatype>
+<datatype_description>test</datatype_description>
+<required>false</required>
+<description>Is this area constantly plagued by graffiti?</description>
 <values>
 <value>
 <key>yes</key>
@@ -42,35 +65,33 @@
 </attribute>
 <attribute>
 <variable>true</variable>
-<code>plagued</code>
-<order>3</order>
-<datatype>singlevaluelist</datatype>
-<datatype_description/>
-<required>false</required>
-<description>Is this area constantly plagued by graffiti?</description>
-<values></values>
-</attribute>
-<attribute>
-<variable>true</variable>
 <code>same</code>
 <order>4</order>
 <datatype>text</datatype>
-<datatype_description/>
+<datatype_description>test</datatype_description>
 <required>false</required>
 <description>
 If so, is it always the same kind of graffiti (political, idealogical, offensive, tags, etc?)
 </description>
-<values></values>
 </attribute>
 <attribute>
 <variable>true</variable>
 <code>contact</code>
 <order>5</order>
 <datatype>singlevaluelist</datatype>
-<datatype_description/>
+<datatype_description>test</datatype_description>
 <required>false</required>
 <description>Would you like to be contacted</description>
-<values></values>
+<values>
+<value>
+<key>yes</key>
+<name>yes</name>
+</value>
+<value>
+<key>no</key>
+<name>no</name>
+</value>
+</values>
 </attribute>
 </attributes>
 </service_definition>

@@ -2,7 +2,7 @@ package org.kuali.mobility.open311.entity;
 
 import java.io.Serializable;
 
-public class AttributeValueImpl extends AttributeValue implements Serializable {
+public class AttributeValueImpl implements AttributeValue, Serializable {
 
 	public AttributeValueImpl() {}
 	

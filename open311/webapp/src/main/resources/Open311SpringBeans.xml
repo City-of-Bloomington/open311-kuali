@@ -27,7 +27,7 @@
     	<property name="mapper" ref="mapper"/>
     	<property name="serviceSourceUrl" value="https://bloomington.in.gov/crm/open311/v2/services.xml"/>
 		<property name="serviceBaseFile" value="attributes.xml"/>
-        <property name="attributeMappingFile" value="serviceAttributeMapping.xml"/>
+        <property name="attributeMappingFile" value="JAXBserviceAttributeMapping.xml"/>
         <property name="serviceMappingFile" value="open311ServiceMapping.xml"/>
         <property name="serviceJsonURI" value="https://bloomington.in.gov/crm/open311/v2/services/" />
     </bean>

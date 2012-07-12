@@ -23,6 +23,8 @@ public class MappingElement implements Serializable
 	private String definedIn;
 	@XStreamAsAttribute
 	private String className;
+	@XStreamAsAttribute
+	private String path;
 
 	/**
      * @return the list
@@ -66,6 +68,14 @@ public class MappingElement implements Serializable
 
 	public void setMapFrom(String mapFrom) {
 		this.mapFrom = mapFrom;
+	}
+	
+	public String getPath() {
+		return path;
+	}
+
+	public void setPath(String path) {
+		this.path = path;
 	}
 
 	public boolean isAttribute() {

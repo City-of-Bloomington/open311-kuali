@@ -49,7 +49,8 @@ import org.springframework.stereotype.Repository;
 import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
 import org.kuali.mobility.util.mapper.DataMapper;
-import org.kuali.mobility.util.mapper.JAXBMapper;	
+import org.kuali.mobility.util.mapper.JAXBDataMapper;	
+import org.kuali.mobility.util.mapper.JAXBMapperImpl;	
 
 @Repository
 public class Open311DaoImpl implements Open311Dao {
@@ -61,7 +62,7 @@ public class Open311DaoImpl implements Open311Dao {
 	private EntityManager entityManager;
 
 	private DataMapper mapper;
-	private JAXBMapper jaxbmapper;
+	private JAXBDataMapper jaxbDataMapper;
 	private List<ServiceEntity> serviceList;
 	private Attributes serviceAttributes;
 	
@@ -149,8 +150,8 @@ public class Open311DaoImpl implements Open311Dao {
 		this.mapper = mapper;
 	}
 	
-	public void setJaxbmapper(JAXBMapper jaxbmapper) {
-		this.jaxbmapper = jaxbmapper;
+	public void setJAXBDatamapper(JAXBDataMapper jaxbDataMapper) {
+		this.jaxbDataMapper = jaxbDataMapper;
 	}
 
 	private void initData() {
@@ -195,7 +196,7 @@ public class Open311DaoImpl implements Open311Dao {
 		if (serviceAttributes==null)
 			serviceAttributes = new AttributesImpl();
 		
-		jaxbmapper=new JAXBMapper();
+		jaxbDataMapper=new JAXBMapperImpl();
 		boolean isServiceBaseUrlAvailable = (getServiceBaseUrl() != null ? true : false) ;
 		
 		String serviceUrl="";
@@ -233,8 +234,10 @@ public class Open311DaoImpl implements Open311Dao {
 				System.out.println();
 				System.out.println();
 				System.out.println(serviceAttributes);
-				System.out.println(jaxbmapper);
-				serviceAttributes = jaxbmapper.mapData(serviceAttributes, serviceAttributes.getObjectFactory(), getServiceBaseFile(), getAttributeMappingFile());
+				System.out.println(jaxbDataMapper);
+				System.out.println(getServiceBaseFile());
+				System.out.println(getAttributeMappingFile());
+				serviceAttributes = jaxbDataMapper.mapData(serviceAttributes, serviceAttributes.getObjectFactory(), getServiceBaseFile(), getAttributeMappingFile());
 				System.out.println(serviceAttributes);
 				System.out.println();
 				System.out.println();

@@ -2,11 +2,9 @@ package org.kuali.mobility.open311.entity;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.xml.bind.annotation.*;
-import org.eclipse.persistence.oxm.annotations.XmlPath;
 
 
-public class AttributeImpl extends Attribute implements Serializable {
+public class AttributeImpl implements Attribute, Serializable {
 	
 	public AttributeImpl() {}
 	private static final long serialVersionUID = 7822282214636842702L;
@@ -18,7 +16,7 @@ public class AttributeImpl extends Attribute implements Serializable {
 	private String datatypeDescription;
 	private String required;
 	private String description;
-	private AttributeValues values;
+	private List<AttributeValue> value;
 	
 	public String getVariable() {
 		return variable;
@@ -73,11 +71,13 @@ public class AttributeImpl extends Attribute implements Serializable {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public void setValues(AttributeValues values) {
-		this.values = values;
+	
+	public void setValue(List<AttributeValue> value) {
+		this.value = value;
 	}
-	public AttributeValues getValues() {
-		return values;
+
+	public List<AttributeValue> getValue() {
+		return value;
 	}
-		
+
 }

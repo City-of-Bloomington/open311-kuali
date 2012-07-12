@@ -71,6 +71,10 @@
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
+			<groupId>org.eclipse.persistence</groupId>
+			<artifactId>eclipselink</artifactId>
+		</dependency>	
+		<dependency>
 			<groupId>commons-pool</groupId>
 			<artifactId>commons-pool</artifactId>
 			<version>20030825.183949</version>
