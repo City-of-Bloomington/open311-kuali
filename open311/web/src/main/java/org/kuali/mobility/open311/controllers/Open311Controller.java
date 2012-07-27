@@ -385,12 +385,16 @@ public class Open311Controller{
     	LOG.debug( "getServiceAttributes() : service code = "+serviceCode );
 		Attributes serviceAttributes = open311Service.getServiceAttributes(serviceCode);
 		Service service = new Service();
-		int i=0;
-		for(Attribute a : serviceAttributes.getAttribute())
-		{
-			
-			service.getAttributes().get(i).setKey(a.getCode());
-			i++;
+		
+		if(!(serviceAttributes.getAttribute() == null)) {
+			int i=0;
+			for(Attribute a : serviceAttributes.getAttribute()) {
+				service.getAttributes().get(i).setKey(a.getCode());
+				i++;
+			}	
+		}
+		else {
+			serviceAttributes.setAttribute(new ArrayList<Attribute>());
 		}
 		
 		service.setResponseServiceCode(serviceAttributes.getServicecode());
