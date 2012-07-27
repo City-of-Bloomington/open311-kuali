@@ -1,0 +1,150 @@
+{
+   "principalId":"1234",
+   "principalName":"natjohns",
+   "tools":[
+      {
+         "badgeCount":"0",
+         "description":"Class information; forums, grades, etc.",
+         "iconUrl":"images/service-icons/srvc-myclasses.png",
+         "id":"1",
+         "title":"My Classes",
+         "url":"myclasses"
+      },
+      {
+         "badgeCount":"0",
+         "description":"Items for sale, jobs, apartments, and more.",
+         "iconUrl":"images/service-icons/srvc-classifieds.png",
+         "id":"0",
+         "title":"Classifieds",
+         "url":"https://onestart.iu.edu/ccf2-prd/ClassifiedsMb.do"
+      },
+      {
+         "badgeCount":"0",
+         "description":"Never miss a campus bus again.",
+         "iconUrl":"images/service-icons/srvc-bus.png",
+         "id":"0",
+         "title":"Bus Schedules",
+         "url":"bus"
+      },
+      {
+         "badgeCount":"0",
+         "description":"Get from here to there.",
+         "iconUrl":"images/service-icons/srvc-maps.png",
+         "id":"0",
+         "title":"Campus Maps",
+         "url":"maps"
+      },
+      {
+         "badgeCount":"0",
+         "description":"Live scores, rosters, news and schedules.",
+         "iconUrl":"images/service-icons/srvc-athletics.png",
+         "id":"0",
+         "title":"Athletics",
+         "url":"athletics"
+      },
+      {
+         "badgeCount":"0",
+         "description":"Search for students, faculty, and staff.",
+         "iconUrl":"images/service-icons/srvc-people.png",
+         "id":"0",
+         "title":"People",
+         "url":"people"
+      },
+      {
+         "badgeCount":"0",
+         "description":"Search campus labs for an open computer.",
+         "iconUrl":"images/service-icons/srvc-stc.png",
+         "id":"0",
+         "title":"Computer Labs",
+         "url":"computerlabs"
+      },
+      {
+         "badgeCount":"0",
+         "description":"IT Alerts and announcements.",
+         "iconUrl":"images/service-icons/srvc-itnotice.png",
+         "id":"0",
+         "title":"IT Notices",
+         "url":"itnotices"
+      },
+      {
+         "badgeCount":"0",
+         "description":"The latest information on IU events.",
+         "iconUrl":"images/service-icons/srvc-news.png",
+         "id":"0",
+         "title":"News",
+         "url":"news"
+      },
+      {
+         "badgeCount":"0",
+         "description":"See what's happening on campus.",
+         "iconUrl":"images/service-icons/srvc-events.png",
+         "id":"0",
+         "title":"Events",
+         "url":"events"
+      },
+      {
+         "badgeCount":"0",
+         "description":"Your personal OneStart calendar.",
+         "iconUrl":"images/service-icons/srvc-events.png",
+         "id":"0",
+         "title":"Calendar",
+         "url":"calendar/month"
+      },      
+      {
+         "badgeCount":"0",
+         "description":"Find answers to your IT questions.",
+         "iconUrl":"images/service-icons/srvc-kb.png",
+         "id":"0",
+         "title":"Knowledge Base",
+         "url":"knowledgebase"
+      },
+      {
+         "badgeCount":"0",
+         "description":"Ask a question and get an answer.",
+         "iconUrl":"images/service-icons/srvc-askiu.png",
+         "id":"0",
+         "title":"Ask IU",
+         "url":"askiu"
+      },
+      {
+         "badgeCount":"0",
+         "description":"Get up to date menus and prices.",
+         "iconUrl":"images/service-icons/srvc-dining.png",
+         "id":"0",
+         "title":"Dining Services",
+         "url":"dining"
+      },
+      {
+         "badgeCount":"0",
+         "description":"Police and medical phone numbers.",
+         "iconUrl":"images/service-icons/srvc-emergency.png",
+         "id":"0",
+         "title":"Emergency Contacts",
+         "url":"emergencycontacts"
+      },
+      {
+         "badgeCount":"2",
+         "description":"See a list of active campus alert messages.",
+         "iconUrl":"images/service-icons/srvc-alerts-green.png",
+         "id":"0",
+         "title":"Campus Alerts",
+         "url":"alerts"
+      },
+      {
+         "badgeCount":"0",
+         "description":"Questions and comments about IU Mobile.",
+         "iconUrl":"images/service-icons/srvc-feedback.png",
+         "id":"0",
+         "title":"Feedback",
+         "url":"feedback"
+      },
+      {
+         "badgeCount":"0",
+         "description":"IUPUI Athletics information.",
+         "iconUrl":"https://m.iu.edu/miu-prd/home/ip/images/ipicon-jag.png",
+         "id":"0",
+         "title":"Jaguar Athletics",
+         "url":"http://www.iupuijags.com"
+      }
+   ]
+}

@@ -17,12 +17,21 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <kme:page title="Open311 Services" id="services" backButton="true" homeButton="true">
+
+	<style type="text/css">
+      .description { font-size:12px}
+	  
+	</style>
 	<kme:content>
 	
-		<ul data-role="listview" id="dropdownMenu" data-theme="c" data-inset="false" data-filter="false" data-dividertheme="b">
+		<ul data-role="listview" data-theme="c" data-inset="false" data-filter="false" data-dividertheme="b">
         	<c:forEach items="${serviceList}" var="service" varStatus="index">
-            	<li data-theme="c" class="dropdownItem" value="${index.count}">
-				<a href="${pageContext.request.contextPath}/open311/${service.serviceCode}">${service.serviceName}</a></li>
+            	<li data-theme="c" value="${index.count}">
+				<a href="${pageContext.request.contextPath}/open311/${service.serviceCode}">${service.serviceName} <br/>
+				<div class="description" >${service.description}</div>
+				</a>
+				</li>
+				
             </c:forEach> 
 			
         </ul>

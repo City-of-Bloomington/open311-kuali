@@ -1,0 +1,211 @@
+@import url(http://fonts.googleapis.com/css?family=Muli:400,300);
+/****************************************
+ * Skip Navigation Container
+ ****************************************/
+
+#skipnav {
+	left: -9999em;
+	position: absolute;
+	top: -9999em;
+}
+#skipnav hr {
+	display: none;
+}
+/****************************************
+ * Branding Bar
+ ****************************************/
+
+#identity {
+	background-color: #7d110c;
+	color: #fff;
+	font-size: 0.625em; /* 10px */
+	height: 44px;
+	line-height: 1em; /* 10px */
+	width: auto;
+}
+#identity a {
+	color: #fff;
+	text-decoration: underline;
+}
+#identity hr {
+	display: none;
+}
+#identity #signature {
+	height: 44px;
+	margin: 0 auto;
+	position: relative;
+	text-align: left;
+	width: 960px;
+}
+#identity #signature a.iu {
+	background: url(../images/iu_crimson.gif) no-repeat 20px 0;
+	display: block;
+	height: 44px;
+	left: -20px;
+	position: relative;
+	top: 0;
+	width: 250px;
+}
+#identity #signature a.iu img {
+	display: none;
+}
+/****************************************
+ * Header
+ ****************************************/
+
+.header-graphics {
+	width:100%;
+	background-color:#000000;
+	height:310px;
+}
+.header-graphics .container_12 .grid_12 {
+	height:310px;
+	background-image:url(../images/phone-back.png);
+	background-color:#000000;
+}
+.header-graphics .title-graphic {
+	position:absolute;
+	background-image:url(../images/iu-mobile-title.png);
+	width:423px;
+	height:79px;
+	left: 0px;
+	top: 18px;
+}
+.header-graphics .title-graphic h1 {
+	display:none;
+}
+.header-graphics .title-graphic .phone-grapic {
+	position:absolute;
+	left: 481px;
+	top: -28px;
+}
+.header-graphics .title-graphic .blurbbox {
+	position:absolute;
+	left: 2px;
+	top: 120px;
+	color:#f4ebc2;
+	width:423px;
+	font-family:'muli', Verdana, Geneva, sans-serif;
+	font-size:1.2em;
+	line-height: 1.2em;
+}
+
+.header-graphics .title-graphic .blurbbox a{
+	
+	
+	color:#ffffff;
+	
+	font-family:'muli', Verdana, Geneva, sans-serif;
+	
+	
+}
+
+
+
+
+
+
+
+/****************************************
+ * Services
+ ****************************************/
+ 
+
+.service {
+	padding:0px 20px 40px;
+	background: url(../images/sprite-icons.png) no-repeat left top;
+}
+.service.srvc-announcements {
+	background-position: 0 0;
+}
+.service.srvc-askiu {
+	background-position: 0 -106px;
+}
+.service.srvc-athletics {
+	background-position: 0 -212px;
+}
+.service.srvc-busschedules {
+	background-position: 0 -318px;
+}
+.service.srvc-campusalerts1 {
+	background-position: 0 -424px;
+}
+.service.srvc-news {
+	background-position: 0 -530px;
+}
+.service.srvc-campusmaps {
+	background-position: 0 -636px;
+}
+.service.srvc-classcancellations {
+	background-position: 0 -742px;
+}
+.service.srvc-classifieds {
+	background-position: 0 -848px;
+}
+.service.srvc-computerlabs {
+	background-position: 0 -954px;
+}
+.service.srvc-dining {
+	background-position: 0 -1060px;
+}
+.service.srvc-emergcontacts {
+	background-position: 0 -1166px;
+}
+.service.srvc-events {
+	background-position: 0 -1272px;
+}
+.service.srvc-feedback {
+	background-position: 0 -1378px;
+}
+.service.srvc-people {
+	background-position: 0 -1484px;
+}
+.service.srvc-itunesu {
+	background-position: 0 -1590px;
+}
+.service.srvc-iupuilib {
+	background-position: 0 -1696px;
+}
+.service.srvc-kb {
+	background-position: 0 -1802px;
+}
+.service.srvc-myclasses {
+	background-position: 0 -1908px;
+}
+.service h2 {
+	padding-left:45px;
+	line-height: 1.4em;
+	font-family:'muli', Verdana, Geneva, sans-serif;
+	font-weight: bold;
+	font-size:1em;
+}
+.service p {
+	padding-left:45px;
+	font-family:'muli', Verdana, Geneva, sans-serif;
+	font-size:0.8em;
+	line-height: 1.4em;
+}
+/****************************************
+ * Native App Links
+ ****************************************/
+ .app-links {
+	width:100%;
+	padding-top:20px;
+	padding-bottom:20px;
+	background: #ebebeb url(../images/shadow.png) no-repeat center top;
+}
+.footer {
+	width:100%;
+	padding-top:20px;
+	padding-bottom:20px;
+	font-family:'muli', Verdana, Geneva, sans-serif;
+	font-size:0.8em;
+	color:#FFFFFF;
+	text-align:center;
+}
+.footer a {
+	color:#FFFFFF
+}
+.footer p {
+	margin-bottom:1em;
+}

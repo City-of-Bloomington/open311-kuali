@@ -1,6 +1,9 @@
 package org.kuali.mobility.open311.entity;
 
 import java.util.List;
+import java.util.Map;
+import javax.xml.bind.annotation.XmlTransient;
+
 
 public interface Attribute {
 		
@@ -25,8 +28,12 @@ public interface Attribute {
 		public String getDescription();
 		public void setDescription(String description);
 
-		public void setValue(List<AttributeValue> value);
-		public List<AttributeValue> getValue();
+		public void setValues(List<AttributeValue> values);
+		public List<AttributeValue> getValues();
+
+		@XmlTransient		
+		public void setvalueMap(Map<String,String> valueMap);
 		
-				
+		@XmlTransient
+		public Map<String,String> getvalueMap();
 }

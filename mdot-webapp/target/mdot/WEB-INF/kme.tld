@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN" "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd">
+<taglib>
+
+    <tlib-version>1.0</tlib-version>
+    <jsp-version>2.0</jsp-version>
+    <short-name>kme</short-name>
+    <uri>http://kuali.org/mobility</uri>
+    <description>Kuali Mobility Enterprise tag library</description>
+
+    <tag>
+        <name>page</name>
+        <tag-class>org.kuali.mobility.tags.PageTag</tag-class>
+        <body-content>scriptless</body-content>
+        <description>This tag is for a page</description>
+        <attribute>
+            <name>id</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>title</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>mapLocale</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>homeButton</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>boolean</type>
+        </attribute>
+        <attribute>
+            <name>loginButton</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>boolean</type>
+        </attribute>
+        <attribute>
+            <name>loginButtonURL</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>logoutButtonURL</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>backButton</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>boolean</type>
+        </attribute>
+        <attribute>
+            <name>backButtonURL</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>preferencesButton</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>boolean</type>
+        </attribute>
+        <attribute>
+            <name>preferencesButtonURL</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>usesGoogleMaps</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>boolean</type>
+        </attribute>
+        <attribute>
+            <name>cssFilename</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>jsFilename</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>onBodyLoad</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>        
+        <attribute>
+            <name>appcacheFilename</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>platform</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>phonegap</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+
+    <tag>
+        <name>content</name>
+        <tag-class>org.kuali.mobility.tags.ContentTag</tag-class>
+        <body-content>scriptless</body-content>
+        <description>This tag is for content</description>
+        <attribute>
+            <name>cssClass</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>dataTheme</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+
+    <tag>
+        <name>listView</name>
+        <tag-class>org.kuali.mobility.tags.ListViewTag</tag-class>
+        <body-content>scriptless</body-content>
+        <description>This tag is for jQuery Mobility general list views, ListView</description>
+        <attribute>
+            <name>id</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>filter</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>boolean</type>
+        </attribute>
+        <attribute>
+            <name>dataTheme</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>dataDividerTheme</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>dataInset</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>boolean</type>
+        </attribute>
+        <attribute>
+            <name>cssClass</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+
+    <tag>
+        <name>definitionListView</name>
+        <tag-class>org.kuali.mobility.tags.DefinitionListViewTag</tag-class>
+        <body-content>scriptless</body-content>
+        <description>This tag is for definitionListView</description>
+        <attribute>
+            <name>id</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>filter</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>boolean</type>
+        </attribute>
+    </tag>
+    
+    <tag>
+        <name>definitionListTerm</name>
+        <tag-class>org.kuali.mobility.tags.DefinitionListTermTag</tag-class>
+        <body-content>scriptless</body-content>
+        <description>This tag is for definitionListTerm</description>
+    </tag>
+    
+    <tag>
+        <name>definitionListDefinition</name>
+        <tag-class>org.kuali.mobility.tags.DefinitionListDefinitionTag</tag-class>
+        <body-content>scriptless</body-content>
+        <description>This tag is for definitionListDefinition</description>
+    </tag>
+    
+    <tag>
+        <name>unorderedList</name>
+        <tag-class>org.kuali.mobility.tags.UnorderedListTag</tag-class>
+        <body-content>scriptless</body-content>
+        <description>This tag is for unorderedList</description>
+    </tag>
+    
+    <tag>
+        <name>orderedList</name>
+        <tag-class>org.kuali.mobility.tags.OrderedListTag</tag-class>
+        <body-content>scriptless</body-content>
+        <description>This tag is for orderedList</description>
+    </tag>
+    
+    <tag>
+        <name>listItem</name>
+        <tag-class>org.kuali.mobility.tags.ListItemTag</tag-class>
+        <body-content>scriptless</body-content>
+        <description>This tag is for listItem</description>
+        <attribute>
+            <name>dataRole</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>dataTheme</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>dataIcon</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>hideDataIcon</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>boolean</type>
+        </attribute>
+        <attribute>
+            <name>cssClass</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+    
+    <tag>
+        <name>section</name>
+        <tag-class>org.kuali.mobility.tags.SectionTag</tag-class>
+        <body-content>scriptless</body-content>
+        <description>This tag is for section</description>
+    </tag>
+    
+    <tag>
+        <name>form</name>
+        <tag-class>org.kuali.mobility.tags.FormTag</tag-class>
+        <body-content>scriptless</body-content>
+        <description>This tag is for form</description>
+        <attribute>
+            <name>id</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>method</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>action</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+    
+    <tag>
+        <name>input</name>
+        <tag-class>org.kuali.mobility.tags.FormInputTag</tag-class>
+        <body-content>scriptless</body-content>
+        <description>This tag is for form input</description>
+        <attribute>
+            <name>id</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>title</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>name</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>type</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+    
+    <tag>
+        <name>labeledRow</name>
+        <tag-class>org.kuali.mobility.tags.LabeledRowTag</tag-class>
+        <body-content>scriptless</body-content>
+        <description>This tag is for labeledRowTag</description>
+        <attribute>
+            <name>fieldLabel</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>fieldValue</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+    
+</taglib>

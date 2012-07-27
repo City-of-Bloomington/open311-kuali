@@ -51,14 +51,13 @@ public class JAXBMapperImpl implements JAXBDataMapper{
 	}
 */
 		
-	public <B, C extends Object> B mapData(B responseObject, C objectFactory, final String dataFile, final String mappingFile) throws ClassNotFoundException {
+	public <B, C extends Object> B mapData(B responseObject, C objectFactory, final String source, final boolean isUrl, final String mappingFile) throws ClassNotFoundException, IOException {
 		
 		 try {
 				
 				InputStream is=mapData(mappingFile);
 
 				Map<String, Source> metadataSourceMap = new HashMap<String, Source>();
-				System.out.println(responseObject.getClass().getPackage().getName());
 		        metadataSourceMap.put(responseObject.getClass().getPackage().getName(), new StreamSource(is));
 		 
 		        Map<String, Object> properties = new HashMap<String, Object>();
@@ -69,10 +68,20 @@ public class JAXBMapperImpl implements JAXBDataMapper{
 		        classes[1]=objectFactory.getClass();
 		        
 		        JAXBContext jaxbContext = JAXBContext.newInstance(classes, properties);
-		        
 				Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-				responseObject= (B) jaxbUnmarshaller.unmarshal(this.getClass().getClassLoader().getResourceAsStream(dataFile));
-
+				
+				if(isUrl) {
+					URL sourceURL = new URL(source);
+					URLConnection con = sourceURL.openConnection();
+					con.setConnectTimeout(connectionTimeoutMs);
+					con.setReadTimeout(readTimeoutMs);
+					InputStream in = con.getInputStream();
+					responseObject= (B) jaxbUnmarshaller.unmarshal(in);
+				}
+				else {
+					responseObject= (B) jaxbUnmarshaller.unmarshal(this.getClass().getClassLoader().getResourceAsStream(source));
+				}
+				
 			  } catch (JAXBException e) {
 				e.printStackTrace();
 			  } catch (ClassNotFoundException e) {
@@ -95,19 +104,6 @@ public class JAXBMapperImpl implements JAXBDataMapper{
 			mappings = dc.loadConfiguation(mappingFile);
 		} catch (IOException ioe) {
 		}
-		
-			
-		for (DataMapping mapping : mappings)
-		{
-			System.out.println(mapping.getRootElement());
-			for (MappingElement map : mapping.getMappings()) {
-		
-				System.out.println(map.getPath());
-				System.out.println(map.getMapTo());
-			}
-		}
-		
-		
 		
 		try {
 		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataMappings>
 	<dataMapping rootElement="service_definition" className="org.kuali.mobility.open311.entity.AttributesImpl">
-		<mapping mapTo="servicecode"/>
+		<mapping mapTo="servicecode" mapFrom="service_code"/>
 		<mapping mapTo="attribute" path="attributes/attribute"/>
 	</dataMapping>
 	<dataMapping className="org.kuali.mobility.open311.entity.Attribute">
@@ -12,7 +12,7 @@
 		<mapping mapTo="datatypeDescription" mapFrom="datatype_description"/>
 		<mapping mapTo="required"/>
 		<mapping mapTo="description"/>
-		<mapping mapTo="value" path="values/value"/>
+		<mapping mapTo="values" path="values/value"/>
 	</dataMapping>
 	<dataMapping className="org.kuali.mobility.open311.entity.AttributeValue">	
 		<mapping mapTo="key"/>

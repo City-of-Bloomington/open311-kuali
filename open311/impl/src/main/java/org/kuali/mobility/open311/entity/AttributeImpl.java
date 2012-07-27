@@ -2,7 +2,8 @@ package org.kuali.mobility.open311.entity;
 
 import java.io.Serializable;
 import java.util.List;
-
+import java.util.Map;
+import javax.xml.bind.annotation.XmlTransient;
 
 public class AttributeImpl implements Attribute, Serializable {
 	
@@ -16,7 +17,9 @@ public class AttributeImpl implements Attribute, Serializable {
 	private String datatypeDescription;
 	private String required;
 	private String description;
-	private List<AttributeValue> value;
+	private List<AttributeValue> values;
+	@XmlTransient
+	private Map<String,String> valueMap;
 	
 	public String getVariable() {
 		return variable;
@@ -72,12 +75,22 @@ public class AttributeImpl implements Attribute, Serializable {
 		this.description = description;
 	}
 	
-	public void setValue(List<AttributeValue> value) {
-		this.value = value;
+	public void setValues(List<AttributeValue> values) {
+		this.values = values;
 	}
 
-	public List<AttributeValue> getValue() {
-		return value;
+	public List<AttributeValue> getValues() {
+		return values;
+	}
+	
+	@XmlTransient
+	public void setvalueMap(Map<String,String> valueMap) {
+		this.valueMap = valueMap;
+	}
+	
+	@XmlTransient
+	public Map<String,String> getvalueMap() {
+		return valueMap;
 	}
 
 }

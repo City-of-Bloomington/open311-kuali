@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menus>
+	<menu>
+	<date><![CDATA[01-21-2011]]></date>
+		<item>
+			<name><![CDATA[Chef's specials]]></name>
+			<price><![CDATA[1]]></price>
+		</item>
+		<item>
+			<name><![CDATA[Dollar day]]></name>
+			<price><![CDATA[1]]></price>
+		</item>
+		</menu>
+</menus>

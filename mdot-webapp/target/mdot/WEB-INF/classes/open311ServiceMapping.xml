@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataMapping id="service" className="org.kuali.mobility.open311.entity.ServiceImpl" list="true" rootElement="services">
+	<mapping mapTo="serviceCode" mapFrom="service_code"/>
+	<mapping mapTo="serviceName" mapFrom="service_name"/>
+	<mapping mapTo="type" />
+	<mapping mapTo="metadata" />
+	<mapping mapTo="keywords" />
+	<mapping mapTo="group"/>
+	<mapping mapTo="description" />
+
+</dataMapping>

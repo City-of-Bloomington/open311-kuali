@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2011 The Kuali Foundation Licensed under the Educational Community License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.osedu.org/licenses/ECL-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. -->
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context" xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop 
+						http://www.springframework.org/schema/aop/spring-aop-3.0.xsd 
+						http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+						http://www.springframework.org/schema/context 
+						http://www.springframework.org/schema/context/spring-context-3.0.xsd      
+						http://www.springframework.org/schema/jee 
+						http://www.springframework.org/schema/jee/spring-jee-3.0.xsd 
+						http://www.springframework.org/schema/tx 
+						http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+<!--	<import resource="classpath:DatabaseSpringBeans.xml" />
+	<import resource="classpath:ConfigSpringBeans.xml" />
+	<import resource="classpath:EntityManagerSpringBeans.xml" />
+	<import resource="classpath:RiceSpringBeans.xml" />-->
+
+	<!-- https://performance.oncourse.iu.edu/ X-Mapping-bmipgloi https://regression.oncourse.iu.edu X-Mapping-jfafkpgg -->
+
+<!--    <bean class="edu.iu.m.news.service.RssCacheServiceImpl" />-->
+
+
+    <bean id="mapper" class="org.kuali.mobility.util.mapper.DataMapperImpl"/>
+    
+	<bean id="event" class="org.kuali.mobility.events.entity.EventUMImpl" scope="prototype"/>
+
+<!--     <bean id="eventDao" class="org.kuali.mobility.events.dao.EventsDaoImpl">
+        <property name="mapper" ref="mapper"/>
+        <property name="categorySourceFile" value="categories.xml"/>
+        <property name="categoryMappingFile" value="categoryMapping.xml"/>
+    </bean>
+ -->    
+    <bean id="eventDao" class="org.kuali.mobility.events.dao.EventsDaoUMImpl">
+        <property name="mapper" ref="mapper"/>
+        <property name="categorySourceUrl" value="http://webservices.dsc.umich.edu/events/getCategories"/>
+        <property name="categoryMappingFile" value="categoryMapping.xml"/>
+        <property name="eventMappingFile" value="eventMapping.xml"/>
+        <property name="eventJsonURL" value="http://webservices.dsc.umich.edu/events/getEvents/id/" />
+    </bean>
+
+    <bean id="eventService" class="org.kuali.mobility.events.service.EventsServiceImpl">
+        <property name="dao" ref="eventDao"/>
+    </bean>
+    
+    <bean id="eventsController" class="org.kuali.mobility.events.controllers.EventsController">
+    	<property name="eventsService" ref="eventService"/>
+    </bean>
+
+</beans>
+ 

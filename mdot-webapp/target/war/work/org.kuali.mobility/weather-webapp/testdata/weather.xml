@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<dwml version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://graphical.weather.gov/xml/DWMLgen/schema/DWML.xsd">
+ <head>
+    <product concise-name="dwmlByDay" operational-mode="developmental" srsName="WGS 1984">
+      <creation-date refresh-frequency='PT1H'>2012-02-21T13:29:37-05:00</creation-date>
+     <category>current observations and forecast</category>
+    </product>
+    <source>
+      <production-center>Binghamton, NY</production-center>
+      <credit>http://www.erh.noaa.gov/bgm/</credit>
+      <more-information>http://www.nws.noaa.gov/forecasts/xml/</more-information>
+    </source>
+  </head>
+  <data type="forecast">
+
+  <location>
+    <location-key>point1</location-key>
+    <description>Ithaca, NY</description>
+    <point latitude="42.45" longitude="-76.51"/>
+    <city state="NY">Ithaca</city>
+    <height datum="mean sea level">394</height>
+  </location>
+  <moreWeatherInformation applicable-location="point1">http://forecast.weather.gov/MapClick.php?lat=42.45&amp;lon=-76.51</moreWeatherInformation>
+  <time-layout time-coordinate="local" summarization="12hourly">
+    <layout-key>k-p12h-n13-1</layout-key>
+      <start-valid-time period-name="This Afternoon">2012-02-21T12:00:00-05:00</start-valid-time>
+      <start-valid-time period-name="Tonight">2012-02-21T18:00:00-05:00</start-valid-time>
+      <start-valid-time period-name="Wednesday">2012-02-22T06:00:00-05:00</start-valid-time>
+      <start-valid-time period-name="Wednesday Night">2012-02-22T18:00:00-05:00</start-valid-time>
+      <start-valid-time period-name="Thursday">2012-02-23T06:00:00-05:00</start-valid-time>
+      <start-valid-time period-name="Thursday Night">2012-02-23T18:00:00-05:00</start-valid-time>
+      <start-valid-time period-name="Friday">2012-02-24T06:00:00-05:00</start-valid-time>
+      <start-valid-time period-name="Friday Night">2012-02-24T18:00:00-05:00</start-valid-time>
+      <start-valid-time period-name="Saturday">2012-02-25T06:00:00-05:00</start-valid-time>
+      <start-valid-time period-name="Saturday Night">2012-02-25T18:00:00-05:00</start-valid-time>
+      <start-valid-time period-name="Sunday">2012-02-26T06:00:00-05:00</start-valid-time>
+      <start-valid-time period-name="Sunday Night">2012-02-26T18:00:00-05:00</start-valid-time>
+      <start-valid-time period-name="Monday">2012-02-27T06:00:00-05:00</start-valid-time>
+  </time-layout>
+
+  <time-layout time-coordinate="local" summarization="12hourly">
+    <layout-key>k-p24h-n7-1</layout-key>
+      <start-valid-time period-name="This Afternoon">2012-02-21T12:00:00-05:00</start-valid-time>
+      <start-valid-time period-name="Wednesday">2012-02-22T06:00:00-05:00</start-valid-time>
+      <start-valid-time period-name="Thursday">2012-02-23T06:00:00-05:00</start-valid-time>
+      <start-valid-time period-name="Friday">2012-02-24T06:00:00-05:00</start-valid-time>
+      <start-valid-time period-name="Saturday">2012-02-25T06:00:00-05:00</start-valid-time>
+      <start-valid-time period-name="Sunday">2012-02-26T06:00:00-05:00</start-valid-time>
+      <start-valid-time period-name="Monday">2012-02-27T06:00:00-05:00</start-valid-time>
+  </time-layout>
+
+  <time-layout time-coordinate="local" summarization="12hourly">
+    <layout-key>k-p24h-n6-2</layout-key>
+      <start-valid-time period-name="Tonight">2012-02-21T18:00:00-05:00</start-valid-time>
+      <start-valid-time period-name="Wednesday Night">2012-02-22T18:00:00-05:00</start-valid-time>
+      <start-valid-time period-name="Thursday Night">2012-02-23T18:00:00-05:00</start-valid-time>
+      <start-valid-time period-name="Friday Night">2012-02-24T18:00:00-05:00</start-valid-time>
+      <start-valid-time period-name="Saturday Night">2012-02-25T18:00:00-05:00</start-valid-time>
+      <start-valid-time period-name="Sunday Night">2012-02-26T18:00:00-05:00</start-valid-time>
+  </time-layout>
+
+
+  <parameters applicable-location="point1">
+
+    <temperature type="maximum" units="Fahrenheit" time-layout="k-p24h-n7-1">
+      <name>Daily Maximum Temperature</name>
+        <value>44</value>
+        <value>48</value>
+        <value>47</value>
+        <value>48</value>
+        <value>37</value>
+        <value>38</value>
+        <value>40</value>
+    </temperature>
+
+    <temperature type="minimum" units="Fahrenheit" time-layout="k-p24h-n6-2">
+      <name>Daily Minimum Temperature</name>
+        <value>36</value>
+        <value>32</value>
+        <value>35</value>
+        <value>27</value>
+        <value>22</value>
+        <value>25</value>
+    </temperature>
+
+    <probability-of-precipitation  type="12 hour" units="percent" time-layout="k-p12h-n13-1">
+      <name>12 Hourly Probability of Precipitation</name>
+        <value>60</value>
+        <value>70</value>
+        <value>70</value>
+        <value>70</value>
+        <value>50</value>
+        <value>70</value>
+        <value>60</value>
+        <value>50</value>
+        <value>40</value>
+        <value>30</value>
+        <value xsi:nil="true"></value>
+        <value xsi:nil="true"></value>
+        <value xsi:nil="true"></value>
+    </probability-of-precipitation>
+
+    <weather time-layout="k-p12h-n13-1">
+      <name>Weather Type, Coverage, Intensity</name>
+        <weather-conditions weather-summary="Rain Likely"/>
+        <weather-conditions weather-summary="Rain Likely"/>
+        <weather-conditions weather-summary="Rain Likely"/>
+        <weather-conditions weather-summary="Rain/Snow Likely"/>
+        <weather-conditions weather-summary="Chance Rain/Snow"/>
+        <weather-conditions weather-summary="Rain/Snow Likely"/>
+        <weather-conditions weather-summary="Rain Likely"/>
+        <weather-conditions weather-summary="Chance Rain/Snow"/>
+        <weather-conditions weather-summary="Chance Snow"/>
+        <weather-conditions weather-summary="Chance Snow"/>
+        <weather-conditions weather-summary="Partly Sunny"/>
+        <weather-conditions weather-summary="Partly Cloudy"/>
+        <weather-conditions weather-summary="Partly Sunny"/>
+    </weather>
+
+    <conditions-icon type="forecast-NWS" time-layout="k-p12h-n13-1">
+      <name>Conditions Icon</name>        
+        <icon-link>http://forecast.weather.gov/images/wtf/ra60.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/nra70.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/ra70.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/nrasn70.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/rasn50.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/nrasn70.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/ra60.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/nrasn50.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/sn40.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/nsn30.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/bkn.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/nsct.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/bkn.jpg</icon-link>
+    </conditions-icon>
+
+    <wordedForecast time-layout="k-p12h-n13-1" dataSource="bgmNetcdf" wordGenerator="markMitchell">
+      <name>Text Forecast</name>
+        <text>Rain likely, mainly after 5pm.  Cloudy, with a high near 44. South wind between 13 and 15 mph.  Chance of precipitation is 60%. New rainfall amounts of less than a tenth of an inch possible. </text>
+        <text>Rain likely, mainly between 1am and 4am.  Cloudy, with a low around 36. South wind between 9 and 14 mph.  Chance of precipitation is 70%. New rainfall amounts of less than a tenth of an inch possible. </text>
+        <text>Rain likely, mainly after 3pm.  Mostly cloudy, with a high near 48. West wind between 8 and 15 mph.  Chance of precipitation is 70%. New rainfall amounts of less than a tenth of an inch possible. </text>
+        <text>Rain likely before midnight, then snow showers likely between midnight and 1am, then a chance of rain and snow showers after 1am.  Mostly cloudy, with a low around 32. West wind between 3 and 7 mph.  Chance of precipitation is 70%. New precipitation amounts between a tenth and quarter of an inch possible. </text>
+        <text>A chance of rain and snow showers before 9am, then a chance of rain showers.  Cloudy, with a high near 47. South wind between 3 and 8 mph.  Chance of precipitation is 50%. New precipitation amounts between a tenth and quarter of an inch possible. </text>
+        <text>A chance of rain showers before 1am, then rain and snow showers likely.  Cloudy, with a low around 35.   Chance of precipitation is 70%. New precipitation amounts between a tenth and quarter of an inch possible. </text>
+        <text>Rain showers likely.  Cloudy, with a high near 48.   Chance of precipitation is 60%.</text>
+        <text>A chance of rain and snow showers.  Mostly cloudy, with a low around 27.   Chance of precipitation is 50%.</text>
+        <text>A chance of snow showers.  Mostly cloudy and breezy, with a high near 37. Chance of precipitation is 40%.</text>
+        <text>A chance of snow showers.  Mostly cloudy, with a low around 22.   Chance of precipitation is 30%.</text>
+        <text>Partly sunny, with a high near 38.  </text>
+        <text>Partly cloudy, with a low around 25.  </text>
+        <text>Partly sunny, with a high near 40.  </text>
+    </wordedForecast>
+
+</parameters>
+</data>
+<data type="current observations">
+	<location>
+		<location-key>point1</location-key>
+		<point latitude="42.48" longitude="-76.47"/>
+		<area-description>Ithaca / Tompkins County, NY</area-description>
+		<height datum="mean sea level" height-units="feet">1099</height>
+	</location>
+	<moreWeatherInformation applicable-location="point1">http://www.nws.noaa.gov/data/obhistory/KITH.html</moreWeatherInformation>	
+	<time-layout time-coordinate="local">	
+		<layout-key>k-p1h-n1-1</layout-key>	
+		<start-valid-time period-name="current">2012-02-21T12:56:00-05:00</start-valid-time>	
+	</time-layout>	
+	<parameters applicable-location="point1">		
+		<temperature type="apparent" units="Fahrenheit" time-layout="k-p1h-n1-1"><value>37</value></temperature>		
+		<temperature type="dew point" units="Fahrenheit" time-layout="k-p1h-n1-1"><value>15</value></temperature>		
+		<humidity type="relative" time-layout="k-p1h-n1-1"><value>41</value></humidity>		
+		<weather time-layout="k-p1h-n1-1">			
+			<name>Weather Type, Coverage, Intensity</name>			
+			<weather-conditions weather-summary="Mostly Cloudy"/>			
+			<weather-conditions><value><visibility units="statute miles">10.00</visibility>	</value></weather-conditions>
+		</weather>		
+		<conditions-icon type="forecast-NWS" time-layout="k-p1h-n1-1"><name>Conditions Icon</name><icon-link>http://forecast.weather.gov/images/wtf/bkn.jpg</icon-link></conditions-icon>		
+		<direction type="wind" units="degrees true" time-layout="k-p1h-n1-1"><value>170</value></direction>		
+		<pressure type="barometer" units="inches of mercury" time-layout="k-p1h-n1-1"><value>29.95</value></pressure>		
+		<wind-speed type="gust" units="knots" time-layout="k-p1h-n1-1"><value>0</value></wind-speed>		
+		<wind-speed type="sustained" units="knots" time-layout="k-p1h-n1-1"><value>13</value></wind-speed>	
+	</parameters>
+</data>
+</dwml>

@@ -171,25 +171,22 @@ public class DataMapperImpl implements DataMapper {
 					xstream.aliasAttribute(Class.forName(mapping.getClassName()), map.getMapTo(), map.getMapFrom());
 				} else {
 
-				
 					if(map.getClassName() != null && !"".equals(map.getClassName().trim())) {
 
 						xstream.alias(map.getMapTo(), Class.forName(map.getClassName()));
 					} else{
-					
-						if (map.getDefinedIn() != null && !"".equals(map.getDefinedIn().trim())) {
-		
-							xstream.aliasField(map.getMapFrom(), Class.forName(map.getDefinedIn()), map.getMapTo());
+						if (map.isList()){								
+							xstream.alias(map.getMapTo(), List.class);								
+						}
+						else {
+							if (map.getDefinedIn() != null && !"".equals(map.getDefinedIn().trim())) {
+			
+								xstream.aliasField(map.getMapFrom(), Class.forName(map.getDefinedIn()), map.getMapTo());
 
-							if (map.isList()){								
-								xstream.alias(map.getMapTo(), List.class);								
-							}	
-						} else{
+							} else{
 
-							xstream.aliasField(map.getMapFrom(), Class.forName(mapping.getClassName()), map.getMapTo());
+								xstream.aliasField(map.getMapFrom(), Class.forName(mapping.getClassName()), map.getMapTo());
 
-							if (map.isList()){
-								xstream.alias(map.getMapTo(), List.class);
 							}
 						}
 					}				

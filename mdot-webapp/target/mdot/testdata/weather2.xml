@@ -1,0 +1,595 @@
+Geocode Vals for zip code 14853 are: 42.4422,-76.5002
+WR: 
+<?xml version="1.0"?>
+<dwml version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://graphical.weather.gov/xml/DWMLgen/schema/DWML.xsd">
+  <head>
+    <product srsName="WGS 1984" concise-name="glance" operational-mode="official">
+      <title>NOAA's National Weather Service Forecast at a Glance</title>
+      <field>meteorological</field>
+      <category>forecast</category>
+      <creation-date refresh-frequency="PT1H">2012-02-22T02:47:42Z</creation-date>
+    </product>
+    <source>
+      <more-information>http://graphical.weather.gov/xml/</more-information>
+      <production-center>Meteorological Development Laboratory<sub-center>Product Generation Branch</sub-center></production-center>
+      <disclaimer>http://www.nws.noaa.gov/disclaimer.html</disclaimer>
+      <credit>http://www.weather.gov/</credit>
+      <credit-logo>http://www.weather.gov/images/xml_logo.gif</credit-logo>
+      <feedback>http://www.weather.gov/feedback.php</feedback>
+    </source>
+  </head>
+  <data>
+    <location>
+      <location-key>point1</location-key>
+      <point latitude="42.44" longitude="-76.50"/>
+    </location>
+    <moreWeatherInformation applicable-location="point1">http://forecast.weather.gov/MapClick.php?textField1=42.44&amp;textField2=-76.50</moreWeatherInformation>
+    <time-layout time-coordinate="local" summarization="none">
+      <layout-key>k-p24h-n7-1</layout-key>
+      <start-valid-time period-name="Tomorrow">2012-02-22T07:00:00-05:00</start-valid-time>
+      <end-valid-time>2012-02-22T19:00:00-05:00</end-valid-time>
+      <start-valid-time period-name="Thursday">2012-02-23T07:00:00-05:00</start-valid-time>
+      <end-valid-time>2012-02-23T19:00:00-05:00</end-valid-time>
+      <start-valid-time period-name="Friday">2012-02-24T07:00:00-05:00</start-valid-time>
+      <end-valid-time>2012-02-24T19:00:00-05:00</end-valid-time>
+      <start-valid-time period-name="Saturday">2012-02-25T07:00:00-05:00</start-valid-time>
+      <end-valid-time>2012-02-25T19:00:00-05:00</end-valid-time>
+      <start-valid-time period-name="Sunday">2012-02-26T07:00:00-05:00</start-valid-time>
+      <end-valid-time>2012-02-26T19:00:00-05:00</end-valid-time>
+      <start-valid-time period-name="Monday">2012-02-27T07:00:00-05:00</start-valid-time>
+      <end-valid-time>2012-02-27T19:00:00-05:00</end-valid-time>
+      <start-valid-time period-name="Tuesday">2012-02-28T07:00:00-05:00</start-valid-time>
+      <end-valid-time>2012-02-28T19:00:00-05:00</end-valid-time>
+    </time-layout>
+    <time-layout time-coordinate="local" summarization="none">
+      <layout-key>k-p24h-n7-2</layout-key>
+      <start-valid-time period-name="Tonight">2012-02-21T19:00:00-05:00</start-valid-time>
+      <end-valid-time>2012-02-22T08:00:00-05:00</end-valid-time>
+      <start-valid-time period-name="Tomorrow Night">2012-02-22T19:00:00-05:00</start-valid-time>
+      <end-valid-time>2012-02-23T08:00:00-05:00</end-valid-time>
+      <start-valid-time period-name="Thursday Night">2012-02-23T19:00:00-05:00</start-valid-time>
+      <end-valid-time>2012-02-24T08:00:00-05:00</end-valid-time>
+      <start-valid-time period-name="Friday Night">2012-02-24T19:00:00-05:00</start-valid-time>
+      <end-valid-time>2012-02-25T08:00:00-05:00</end-valid-time>
+      <start-valid-time period-name="Saturday Night">2012-02-25T19:00:00-05:00</start-valid-time>
+      <end-valid-time>2012-02-26T08:00:00-05:00</end-valid-time>
+      <start-valid-time period-name="Sunday Night">2012-02-26T19:00:00-05:00</start-valid-time>
+      <end-valid-time>2012-02-27T08:00:00-05:00</end-valid-time>
+      <start-valid-time period-name="Monday Night">2012-02-27T19:00:00-05:00</start-valid-time>
+      <end-valid-time>2012-02-28T08:00:00-05:00</end-valid-time>
+    </time-layout>
+    <time-layout time-coordinate="local" summarization="none">
+      <layout-key>k-p3h-n40-3</layout-key>
+      <start-valid-time>2012-02-21T22:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-22T01:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-22T04:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-22T07:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-22T10:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-22T13:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-22T16:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-22T19:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-22T22:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-23T01:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-23T04:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-23T07:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-23T10:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-23T13:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-23T16:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-23T19:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-23T22:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-24T01:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-24T04:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-24T07:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-24T10:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-24T13:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-24T16:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-24T19:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-25T01:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-25T07:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-25T13:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-25T19:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-26T01:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-26T07:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-26T13:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-26T19:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-27T01:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-27T07:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-27T13:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-27T19:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-28T01:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-28T07:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-28T13:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-28T19:00:00-05:00</start-valid-time>
+    </time-layout>
+    <time-layout time-coordinate="local" summarization="none">
+      <layout-key>k-p1h-n78-4</layout-key>
+      <start-valid-time>2012-02-21T22:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-21T23:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-22T00:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-22T01:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-22T02:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-22T03:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-22T04:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-22T05:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-22T06:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-22T07:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-22T08:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-22T09:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-22T10:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-22T11:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-22T12:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-22T13:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-22T14:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-22T15:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-22T16:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-22T17:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-22T18:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-22T19:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-22T20:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-22T21:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-22T22:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-22T23:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-23T00:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-23T01:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-23T02:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-23T03:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-23T04:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-23T05:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-23T06:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-23T07:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-23T08:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-23T09:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-23T10:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-23T11:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-23T12:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-23T13:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-23T14:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-23T15:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-23T16:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-23T17:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-23T18:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-23T19:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-23T20:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-23T21:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-23T22:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-23T23:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-24T00:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-24T01:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-24T02:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-24T03:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-24T04:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-24T05:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-24T06:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-24T07:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-24T08:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-24T09:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-24T10:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-24T11:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-24T12:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-24T13:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-24T14:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-24T15:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-24T16:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-24T17:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-24T18:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-24T19:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-25T01:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-25T07:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-25T13:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-25T19:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-26T01:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-26T07:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-26T13:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-02-26T19:00:00-05:00</start-valid-time>
+    </time-layout>
+    <parameters applicable-location="point1">
+      <temperature type="maximum" units="Fahrenheit" time-layout="k-p24h-n7-1">
+        <name>Daily Maximum Temperature</name>
+        <value>41</value>
+        <value>41</value>
+        <value>40</value>
+        <value>37</value>
+        <value>36</value>
+        <value>42</value>
+        <value>42</value>
+      </temperature>
+      <temperature type="minimum" units="Fahrenheit" time-layout="k-p24h-n7-2">
+        <name>Daily Minimum Temperature</name>
+        <value>32</value>
+        <value>28</value>
+        <value>37</value>
+        <value>29</value>
+        <value>23</value>
+        <value>21</value>
+        <value>31</value>
+      </temperature>
+      <cloud-amount type="total" units="percent" time-layout="k-p3h-n40-3">
+        <name>Cloud Cover Amount</name>
+        <value>97</value>
+        <value>99</value>
+        <value>96</value>
+        <value>73</value>
+        <value>75</value>
+        <value>77</value>
+        <value>79</value>
+        <value>81</value>
+        <value>95</value>
+        <value>83</value>
+        <value>76</value>
+        <value>90</value>
+        <value>87</value>
+        <value>77</value>
+        <value>82</value>
+        <value>86</value>
+        <value>100</value>
+        <value>91</value>
+        <value>100</value>
+        <value>100</value>
+        <value>100</value>
+        <value>100</value>
+        <value>89</value>
+        <value>78</value>
+        <value>78</value>
+        <value>95</value>
+        <value>87</value>
+        <value>72</value>
+        <value>76</value>
+        <value>68</value>
+        <value>62</value>
+        <value>30</value>
+        <value>46</value>
+        <value>57</value>
+        <value>87</value>
+        <value>82</value>
+        <value>81</value>
+        <value>81</value>
+        <value>71</value>
+        <value>46</value>
+      </cloud-amount>
+      <hazards time-layout="k-p1h-n78-4">
+        <name>Watches, Warnings, and Advisories</name>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+        <hazard-conditions/>
+      </hazards>
+      <weather time-layout="k-p3h-n40-3">
+        <name>Weather Type, Coverage, and Intensity</name>
+        <weather-conditions>
+          <value coverage="chance" intensity="light" weather-type="rain" qualifier="none">
+            <visibility xsi:nil="true"/>
+          </value>
+          <value coverage="chance" intensity="light" additive="and" weather-type="snow" qualifier="none">
+            <visibility xsi:nil="true"/>
+          </value>
+        </weather-conditions>
+        <weather-conditions>
+          <value coverage="likely" intensity="light" weather-type="snow" qualifier="none">
+            <visibility xsi:nil="true"/>
+          </value>
+          <value coverage="chance" intensity="light" additive="and" weather-type="rain" qualifier="none">
+            <visibility xsi:nil="true"/>
+          </value>
+        </weather-conditions>
+        <weather-conditions>
+          <value coverage="chance" intensity="light" weather-type="rain" qualifier="none">
+            <visibility xsi:nil="true"/>
+          </value>
+          <value coverage="chance" intensity="light" additive="and" weather-type="snow" qualifier="none">
+            <visibility xsi:nil="true"/>
+          </value>
+        </weather-conditions>
+        <weather-conditions>
+          <value coverage="chance" intensity="light" weather-type="rain" qualifier="none">
+            <visibility xsi:nil="true"/>
+          </value>
+        </weather-conditions>
+        <weather-conditions>
+          <value coverage="chance" intensity="light" weather-type="rain" qualifier="none">
+            <visibility xsi:nil="true"/>
+          </value>
+        </weather-conditions>
+        <weather-conditions>
+          <value coverage="chance" intensity="light" weather-type="rain" qualifier="none">
+            <visibility xsi:nil="true"/>
+          </value>
+        </weather-conditions>
+        <weather-conditions>
+          <value coverage="likely" intensity="light" weather-type="rain" qualifier="none">
+            <visibility xsi:nil="true"/>
+          </value>
+        </weather-conditions>
+        <weather-conditions>
+          <value coverage="likely" intensity="light" weather-type="rain" qualifier="or">
+            <visibility xsi:nil="true"/>
+          </value>
+          <value coverage="likely" intensity="light" additive="or" weather-type="snow" qualifier="or">
+            <visibility xsi:nil="true"/>
+          </value>
+        </weather-conditions>
+        <weather-conditions>
+          <value coverage="likely" intensity="light" weather-type="rain" qualifier="or">
+            <visibility xsi:nil="true"/>
+          </value>
+          <value coverage="likely" intensity="light" additive="or" weather-type="snow" qualifier="or">
+            <visibility xsi:nil="true"/>
+          </value>
+        </weather-conditions>
+        <weather-conditions>
+          <value coverage="chance" intensity="light" weather-type="rain" qualifier="or">
+            <visibility xsi:nil="true"/>
+          </value>
+          <value coverage="chance" intensity="light" additive="or" weather-type="snow" qualifier="or">
+            <visibility xsi:nil="true"/>
+          </value>
+        </weather-conditions>
+        <weather-conditions>
+          <value coverage="chance" intensity="light" weather-type="snow" qualifier="none">
+            <visibility xsi:nil="true"/>
+          </value>
+        </weather-conditions>
+        <weather-conditions>
+          <value coverage="slight chance" intensity="light" weather-type="rain showers" qualifier="or">
+            <visibility xsi:nil="true"/>
+          </value>
+          <value coverage="slight chance" intensity="light" additive="or" weather-type="snow showers" qualifier="or">
+            <visibility xsi:nil="true"/>
+          </value>
+        </weather-conditions>
+        <weather-conditions>
+          <value coverage="slight chance" intensity="light" weather-type="rain showers" qualifier="or">
+            <visibility xsi:nil="true"/>
+          </value>
+          <value coverage="slight chance" intensity="light" additive="or" weather-type="snow showers" qualifier="or">
+            <visibility xsi:nil="true"/>
+          </value>
+        </weather-conditions>
+        <weather-conditions>
+          <value coverage="slight chance" intensity="light" weather-type="rain showers" qualifier="none">
+            <visibility xsi:nil="true"/>
+          </value>
+        </weather-conditions>
+        <weather-conditions>
+          <value coverage="slight chance" intensity="light" weather-type="rain showers" qualifier="none">
+            <visibility xsi:nil="true"/>
+          </value>
+        </weather-conditions>
+        <weather-conditions>
+          <value coverage="chance" intensity="light" weather-type="rain" qualifier="none">
+            <visibility xsi:nil="true"/>
+          </value>
+        </weather-conditions>
+        <weather-conditions>
+          <value coverage="chance" intensity="light" weather-type="rain" qualifier="none">
+            <visibility xsi:nil="true"/>
+          </value>
+        </weather-conditions>
+        <weather-conditions>
+          <value coverage="likely" intensity="light" weather-type="rain" qualifier="none">
+            <visibility xsi:nil="true"/>
+          </value>
+        </weather-conditions>
+        <weather-conditions>
+          <value coverage="likely" intensity="light" weather-type="rain" qualifier="none">
+            <visibility xsi:nil="true"/>
+          </value>
+        </weather-conditions>
+        <weather-conditions>
+          <value coverage="chance" intensity="light" weather-type="rain" qualifier="none">
+            <visibility xsi:nil="true"/>
+          </value>
+        </weather-conditions>
+        <weather-conditions>
+          <value coverage="chance" intensity="light" weather-type="rain" qualifier="none">
+            <visibility xsi:nil="true"/>
+          </value>
+        </weather-conditions>
+        <weather-conditions>
+          <value coverage="chance" intensity="light" weather-type="rain showers" qualifier="none">
+            <visibility xsi:nil="true"/>
+          </value>
+        </weather-conditions>
+        <weather-conditions>
+          <value coverage="chance" intensity="light" weather-type="rain showers" qualifier="none">
+            <visibility xsi:nil="true"/>
+          </value>
+        </weather-conditions>
+        <weather-conditions>
+          <value coverage="chance" intensity="light" weather-type="snow showers" qualifier="none">
+            <visibility xsi:nil="true"/>
+          </value>
+        </weather-conditions>
+        <weather-conditions>
+          <value coverage="chance" intensity="light" weather-type="snow showers" qualifier="none">
+            <visibility xsi:nil="true"/>
+          </value>
+        </weather-conditions>
+        <weather-conditions>
+          <value coverage="chance" intensity="light" weather-type="snow showers" qualifier="none">
+            <visibility xsi:nil="true"/>
+          </value>
+        </weather-conditions>
+        <weather-conditions>
+          <value coverage="chance" intensity="light" weather-type="snow showers" qualifier="none">
+            <visibility xsi:nil="true"/>
+          </value>
+        </weather-conditions>
+        <weather-conditions>
+          <value coverage="chance" intensity="light" weather-type="snow showers" qualifier="none">
+            <visibility xsi:nil="true"/>
+          </value>
+        </weather-conditions>
+        <weather-conditions>
+          <value coverage="chance" intensity="light" weather-type="snow showers" qualifier="none">
+            <visibility xsi:nil="true"/>
+          </value>
+        </weather-conditions>
+        <weather-conditions>
+          <value coverage="slight chance" intensity="light" weather-type="snow showers" qualifier="none">
+            <visibility xsi:nil="true"/>
+          </value>
+        </weather-conditions>
+        <weather-conditions>
+          <value coverage="slight chance" intensity="light" weather-type="snow showers" qualifier="none">
+            <visibility xsi:nil="true"/>
+          </value>
+        </weather-conditions>
+        <weather-conditions/>
+        <weather-conditions/>
+        <weather-conditions>
+          <value coverage="slight chance" intensity="light" weather-type="snow showers" qualifier="none">
+            <visibility xsi:nil="true"/>
+          </value>
+        </weather-conditions>
+        <weather-conditions>
+          <value coverage="slight chance" intensity="light" weather-type="snow showers" qualifier="none">
+            <visibility xsi:nil="true"/>
+          </value>
+        </weather-conditions>
+        <weather-conditions>
+          <value coverage="chance" intensity="light" weather-type="snow showers" qualifier="none">
+            <visibility xsi:nil="true"/>
+          </value>
+        </weather-conditions>
+        <weather-conditions>
+          <value coverage="chance" intensity="light" weather-type="snow showers" qualifier="none">
+            <visibility xsi:nil="true"/>
+          </value>
+        </weather-conditions>
+        <weather-conditions>
+          <value coverage="chance" intensity="light" weather-type="snow showers" qualifier="none">
+            <visibility xsi:nil="true"/>
+          </value>
+        </weather-conditions>
+        <weather-conditions>
+          <value coverage="chance" intensity="light" weather-type="snow showers" qualifier="none">
+            <visibility xsi:nil="true"/>
+          </value>
+        </weather-conditions>
+        <weather-conditions>
+          <value coverage="slight chance" intensity="light" weather-type="snow showers" qualifier="none">
+            <visibility xsi:nil="true"/>
+          </value>
+        </weather-conditions>
+      </weather>
+      <conditions-icon type="forecast-NWS" time-layout="k-p3h-n40-3">
+        <name>Conditions Icons</name>
+        <icon-link>http://forecast.weather.gov/images/wtf/nrasn70.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/nrasn70.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/nrasn70.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/ra70.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/ra70.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/ra70.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/ra70.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/nrasn70.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/nrasn70.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/nrasn70.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/nsn70.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/rasn70.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/rasn20.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/shra20.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/shra20.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/nra20.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/nra70.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/nra70.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/nra70.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/ra70.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/ra50.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/shra50.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/shra50.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/nsn50.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/nsn50.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/sn50.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/sn40.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/nsn40.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/nsn30.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/sn30.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/sn20.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/nsct.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/nsct.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/sn10.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/sn20.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/nsn20.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/nsn30.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/sn30.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/sn30.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/nsn30.jpg</icon-link>
+      </conditions-icon>
+    </parameters>
+  </data>
+</dwml>
+

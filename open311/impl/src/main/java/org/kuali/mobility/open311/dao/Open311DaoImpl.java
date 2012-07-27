@@ -24,6 +24,8 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.util.ArrayList;	
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -42,7 +44,8 @@ import org.kuali.mobility.open311.dao.Open311Dao;
 import org.kuali.mobility.open311.entity.ServiceEntity;
 import org.kuali.mobility.open311.entity.Attributes;
 import org.kuali.mobility.open311.entity.AttributesImpl;
-import org.kuali.mobility.open311.entity.AttributeImpl;
+import org.kuali.mobility.open311.entity.Attribute;
+import org.kuali.mobility.open311.entity.AttributeValue;
 import org.kuali.mobility.open311.entity.Submission;
 import org.springframework.stereotype.Repository;
 
@@ -62,7 +65,7 @@ public class Open311DaoImpl implements Open311Dao {
 	private EntityManager entityManager;
 
 	private DataMapper mapper;
-	private JAXBDataMapper jaxbDataMapper;
+	private JAXBMapperImpl jaxbDataMapper;
 	private List<ServiceEntity> serviceList;
 	private Attributes serviceAttributes;
 	
@@ -71,6 +74,7 @@ public class Open311DaoImpl implements Open311Dao {
 	private String serviceBaseUrl;
 	private String serviceBaseFile;
 	private String attributeMappingFile;
+	private String attributeMappingFileJaxb;
 	private String serviceMappingFile;
 	private String serviceMappingUrl;
 	
@@ -132,6 +136,14 @@ public class Open311DaoImpl implements Open311Dao {
 		this.attributeMappingFile = attributeMappingFile;
 	}
 
+	public String getAttributeMappingFileJaxb() {
+		return attributeMappingFileJaxb;
+	}
+
+	public void setAttributeMappingFileJaxb(String attributeMappingFileJaxb) {
+		this.attributeMappingFileJaxb = attributeMappingFileJaxb;
+	}
+
 	public List<ServiceEntity> getServiceList() {
 		if (serviceList==null || serviceList.isEmpty()) {
 			initData();
@@ -150,7 +162,7 @@ public class Open311DaoImpl implements Open311Dao {
 		this.mapper = mapper;
 	}
 	
-	public void setJAXBDatamapper(JAXBDataMapper jaxbDataMapper) {
+	public void setJAXBDatamapper(JAXBMapperImpl jaxbDataMapper) {
 		this.jaxbDataMapper = jaxbDataMapper;
 	}
 
@@ -200,64 +212,48 @@ public class Open311DaoImpl implements Open311Dao {
 		boolean isServiceBaseUrlAvailable = (getServiceBaseUrl() != null ? true : false) ;
 		
 		String serviceUrl="";
+
 		if(isServiceBaseUrlAvailable) {
 		serviceUrl= getServiceBaseUrl()+serviceCode+".xml";
 		}
+
 		try {
+		
+			JAXBContext jaxbContext = JAXBContext.newInstance(serviceAttributes.getClass());
+ 
+			Marshaller marshaller = jaxbContext.createMarshaller();
+			marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+		 			
 			if(isServiceBaseUrlAvailable) {
 				
-				serviceAttributes = mapper.mapData(serviceAttributes, new URL(serviceUrl), getAttributeMappingFile());
+//				serviceAttributes = mapper.mapData(serviceAttributes, new URL(serviceUrl), getAttributeMappingFile());
+//				marshaller.marshal(serviceAttributes, System.out);
 				
+				serviceAttributes = jaxbDataMapper.mapData(serviceAttributes, serviceAttributes.getObjectFactory(), serviceUrl, true, getAttributeMappingFileJaxb());
+				marshaller.marshal(serviceAttributes, System.out);
 			}
-			else {
+			else {	
+				serviceAttributes = jaxbDataMapper.mapData(serviceAttributes, serviceAttributes.getObjectFactory(), getServiceBaseFile(), false, getAttributeMappingFileJaxb());
+				marshaller.marshal(serviceAttributes, System.out);				
+			}
 			
-				System.out.println("******************************************Using Xstream");
-				System.out.println();
-				System.out.println();
-				System.out.println();
-				System.out.println();
-				System.out.println();
-				System.out.println();
-			//	serviceAttributes = mapper.mapData(serviceAttributes, getServiceBaseFile(), getAttributeMappingFile());
-				System.out.println();
-				System.out.println();
-				System.out.println();
-				System.out.println();
-				System.out.println();
-				System.out.println();
-				System.out.println("******************************************Finished XStream");
-				System.out.println("******************************************Using JAXB");
-				System.out.println();
-				System.out.println();
-				System.out.println();
-				System.out.println();
-				System.out.println();
-				System.out.println();
-				System.out.println(serviceAttributes);
-				System.out.println(jaxbDataMapper);
-				System.out.println(getServiceBaseFile());
-				System.out.println(getAttributeMappingFile());
-				serviceAttributes = jaxbDataMapper.mapData(serviceAttributes, serviceAttributes.getObjectFactory(), getServiceBaseFile(), getAttributeMappingFile());
-				System.out.println(serviceAttributes);
-				System.out.println();
-				System.out.println();
-				System.out.println();
-				System.out.println();
-				System.out.println();
-				System.out.println("******************************************Finished JAXB");
-				
-			}
-		System.out.println("******************************************Above JAXB code in open311daoimpl");
-		
-		JAXBContext jaxbContext = JAXBContext.newInstance(serviceAttributes.getClass());
- 
-        Marshaller marshaller = jaxbContext.createMarshaller();
-        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-        
-		System.out.println(JAXBContext.newInstance(AttributeImpl.class).getClass());
+			if(serviceAttributes.getAttribute()!=null)
+			{
+				for(Attribute a:serviceAttributes.getAttribute())
+				{
+					Map<String,String> valueMap = null;
+					if(a.getValues()!=null)
+					{
+						valueMap = new LinkedHashMap<String,String>();
+						for(AttributeValue v:a.getValues())
+						{
+							valueMap.put(v.getKey(), v.getName());
+						}
+					}
+					a.setvalueMap(valueMap);
 
-        marshaller.marshal(serviceAttributes, System.out);
-			
+				}
+			}
 		
 		} catch (JAXBException e) {
 			LOG.error(e.getMessage());

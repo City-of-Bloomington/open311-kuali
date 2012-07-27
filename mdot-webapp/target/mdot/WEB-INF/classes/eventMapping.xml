@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataMapping id="event" className="org.kuali.mobility.events.entity.EventUMImpl" list="true" rootElement="events">
+    <mapping mapTo="eventId" mapFrom="id"/>
+    <mapping mapTo="title" mapFrom="title"/>
+    <mapping mapTo="displayStartTime" mapFrom="timeBegin"/>
+    <mapping mapTo="displayStartDate" mapFrom="dateBegin"/>
+    <mapping mapTo="location" mapFrom="buildingName"/>
+    <mapping mapTo="urlString" mapFrom="url"/>
+    <mapping mapTo="desc" mapFrom="description"/>
+    <mapping mapTo="startDate" mapFrom="tsBegin"/>
+    <mapping mapTo="endDate" mapFrom="tsEnd"/>
+    <mapping mapTo="displayEndTime" mapFrom="timeEnd"/>
+    <mapping mapTo="displayEndDate" mapFrom="dateEnd"/>
+</dataMapping>

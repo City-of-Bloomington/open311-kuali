@@ -22,8 +22,6 @@ import java.util.List;
 import org.kuali.mobility.configparams.dao.ConfigParamDao;
 import org.kuali.mobility.configparams.entity.ConfigParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -43,7 +41,6 @@ public class ConfigParamServiceImpl implements ConfigParamService {
 	private ConfigParamDao configParamDao;
 
 	@Transactional
-	@CacheEvict(value = "configParams", key="#id", allEntries=false)
 	public void deleteConfigParamById(Long id) {
 		configParamDao.deleteConfigParamById(id);
 	}
@@ -54,19 +51,16 @@ public class ConfigParamServiceImpl implements ConfigParamService {
 	}
 
 	@Transactional
-	@Cacheable(value="configParams", key="#id")
 	public ConfigParam findConfigParamById(Long id) {
 		return configParamDao.findConfigParamById(id);
 	}
 
 	@Transactional
-	@Cacheable(value="configParams", key="#name")
 	public ConfigParam findConfigParamByName(String name) {
 		return configParamDao.findConfigParamByName(name);
 	}
 
 	@Transactional(readOnly = true)
-	@Cacheable(value="configParams", key="#name")
 	public String findValueByName(String name) {
 		ConfigParam configParam = findConfigParamByName(name);
 		String value = configParam != null ? configParam.getValue() : null;
@@ -74,7 +68,6 @@ public class ConfigParamServiceImpl implements ConfigParamService {
 	}
 
 	@Transactional
-	@CacheEvict(value = "configParams", key="#configParam.configParamId", allEntries=false)
 	public Long saveConfigParam(ConfigParam configParam) {
 		return configParamDao.saveConfigParam(configParam);
 	}

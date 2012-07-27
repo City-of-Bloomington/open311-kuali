@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<statuses>
+  <status>
+    <campus>IU</campus>
+    <type>Emergency</type>
+    <key>1</key>
+    <title>Earthquake Emergency</title>
+    <priority>1</priority>
+    <text><![CDATA[Earthquake test]]></text>
+    <mobile-text><![CDATA[Earthquake test]]></mobile-text>
+    <url><![CDATA[http://indianauniversity.info]]></url>
+  </status>
+  <status>
+    <campus>IU</campus>
+    <type>Emergency</type>
+    <key>2</key>
+    <title>Sunshine Emergency</title>
+    <priority>1</priority>
+    <text><![CDATA[Sunshine test]]></text>
+    <mobile-text><![CDATA[Sunshine test]]></mobile-text>
+    <url><![CDATA[http://indianauniversity.info]]></url>
+  </status>
+</statuses>

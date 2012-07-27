@@ -11,14 +11,14 @@ public class AttributesImpl implements Attributes, Serializable {
 	
 	private String service_code;
 	
-    private List<Attribute> attribute;
+    private List<Attribute> attributes;
 	
-	public void setAttribute(List<Attribute> attribute) {
-		this.attribute = attribute;
+	public void setAttribute(List<Attribute> attributes) {
+		this.attributes = attributes;
 	}
 
 	public List<Attribute> getAttribute() {
-		return attribute;
+		return attributes;
 	}
     
    	public String getServicecode() {

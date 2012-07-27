@@ -21,8 +21,6 @@ import org.kuali.mobility.admin.dao.AdminDao;
 import org.kuali.mobility.admin.entity.HomeScreen;
 import org.kuali.mobility.admin.entity.Tool;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -46,28 +44,24 @@ public class AdminServiceImpl implements AdminService {
 	
 	@Transactional
 	@Override
-	@Cacheable(value="homeScreens", key="#homeScreenId")
 	public HomeScreen getHomeScreenById(long homeScreenId) {
 		return adminDao.getHomeScreenById(homeScreenId);
 	}
 	
 	@Transactional
 	@Override
-	@Cacheable(value="homeScreens", key="#alias")
 	public HomeScreen getHomeScreenByAlias(String alias) {
 		return adminDao.getHomeScreenByAlias(alias);
 	}
 	
 	@Transactional
 	@Override
-	@CacheEvict(value = "homeScreens", key="#homeScreen.homeScreenId", allEntries=false)
 	public Long saveHomeScreen(HomeScreen homeScreen) {
 		return adminDao.saveHomeScreen(homeScreen);
 	}
 
 	@Transactional
 	@Override
-	@CacheEvict(value = "homeScreens", key="#homeScreenId", allEntries=false)
 	public void deleteHomeScreenById(long homeScreenId) {
 		adminDao.deleteHomeScreenById(homeScreenId);
 	}
@@ -86,14 +80,12 @@ public class AdminServiceImpl implements AdminService {
 	
 	@Transactional
 	@Override
-	@CacheEvict(value = "homeScreens", allEntries=true)
 	public Long saveTool(Tool tool) {
 		return adminDao.saveTool(tool);
 	}
 
 	@Transactional
 	@Override
-	@CacheEvict(value = "homeScreens", allEntries=true)
 	public void deleteToolById(long toolId) {
 		adminDao.deleteToolById(toolId);
 	}

@@ -25,9 +25,11 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.kuali.mobility.file.entity.File;
 import org.kuali.mobility.open311.domain.Incident;
+import org.kuali.mobility.open311.domain.Service;
 import org.kuali.mobility.open311.entity.Submission;
 import org.kuali.mobility.open311.entity.ServiceEntity;
 import org.kuali.mobility.open311.entity.Attributes;
+import org.kuali.mobility.open311.entity.Attribute;
 import org.kuali.mobility.open311.entity.AttributesImpl;
 import org.kuali.mobility.open311.entity.SubmissionAttribute;
 import org.kuali.mobility.open311.service.Open311Service;
@@ -45,9 +47,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.support.SessionStatus;
 
+
 @Controller 
 @RequestMapping("/open311")
-public class Open311Controller {
+public class Open311Controller{
 
 	private static org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(Open311Controller.class);
 
@@ -381,10 +384,29 @@ public class Open311Controller {
     public String getServiceAttributes(Model uiModel, @PathVariable("serviceCode") String serviceCode){
     	LOG.debug( "getServiceAttributes() : service code = "+serviceCode );
 		Attributes serviceAttributes = open311Service.getServiceAttributes(serviceCode);
+		Service service = new Service();
+		int i=0;
+		for(Attribute a : serviceAttributes.getAttribute())
+		{
+			
+			service.getAttributes().get(i).setKey(a.getCode());
+			i++;
+		}
+		
+		service.setResponseServiceCode(serviceAttributes.getServicecode());
+   		uiModel.addAttribute("service", service);
 		uiModel.addAttribute("serviceAttributes", serviceAttributes.getAttribute());
     	return "open311/service";
     }
 
+	@RequestMapping(value="/servicePost", method = RequestMethod.POST)
+    public String submitService(Model uiModel, HttpServletRequest request, @ModelAttribute("service") Service service, BindingResult result) {
+		
+		service.toStr();
+		return "incident/thanks";
+	}
+		
+		
     @RequestMapping(value="/incidentPost", method = RequestMethod.POST)
     public String submitIncident(Model uiModel, HttpServletRequest request, @ModelAttribute("incident") Incident incident, BindingResult result) {
        	User user = (User) request.getSession().getAttribute(Constants.KME_USER_KEY); 	

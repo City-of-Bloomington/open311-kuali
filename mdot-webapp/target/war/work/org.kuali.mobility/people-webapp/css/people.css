@@ -1,0 +1,86 @@
+/*
+  Copyright 2011 The Kuali Foundation Licensed under the Educational Community
+  License, Version 2.0 (the "License"); you may not use this file except in
+  compliance with the License. You may obtain a copy of the License at
+  http://www.osedu.org/licenses/ECL-2.0 Unless required by applicable law or
+  agreed to in writing, software distributed under the License is distributed
+  on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+  express or implied. See the License for the specific language governing
+  permissions and limitations under the License.
+*/
+.ui-li-static {
+	padding-right:15px !important;
+}
+
+.ui-content {
+	padding-top: 15px;
+}
+
+.ui-br {
+	padding: 10px 0;
+}
+
+div#peopleSlider select {
+	background-color: red;
+}
+
+/* corner rounding classes
+-----------------------------------------------------------------------------------------------------------*/
+
+div#peopleSlider .ui-corner-tl {
+	-moz-border-radius-topleft: 		1.6em;
+	-webkit-border-top-left-radius: 	1.6em;
+	border-top-left-radius: 			1.6em;
+}
+div#peopleSlider .ui-corner-tr {
+	-moz-border-radius-topright: 		1.6em;
+	-webkit-border-top-right-radius: 	1.6em;
+	border-top-right-radius: 			1.6em;
+}
+div#peopleSlider .ui-corner-bl {
+	-moz-border-radius-bottomleft: 		1.6em;
+	-webkit-border-bottom-left-radius: 	1.6em;
+	border-bottom-left-radius: 			1.6em;
+}
+div#peopleSlider .ui-corner-br {
+	-moz-border-radius-bottomright: 	1.6em;
+	-webkit-border-bottom-right-radius: 1.6em;
+	border-bottom-right-radius: 		1.6em;
+}
+div#peopleSlider .ui-corner-top {
+	-moz-border-radius-topleft: 		1.6em;
+	-webkit-border-top-left-radius: 	1.6em;
+	border-top-left-radius: 			1.6em;
+	-moz-border-radius-topright: 		1.6em;
+	-webkit-border-top-right-radius: 	1.6em;
+	border-top-right-radius: 			1.6em;
+}
+div#peopleSlider .ui-corner-bottom {
+	-moz-border-radius-bottomleft: 		1.6em;
+	-webkit-border-bottom-left-radius: 	1.6em;
+	border-bottom-left-radius: 			1.6em;
+	-moz-border-radius-bottomright: 	1.6em;
+	-webkit-border-bottom-right-radius: 1.6em;
+	border-bottom-right-radius: 		1.6em;
+	}
+div#peopleSlider .ui-corner-right {
+	-moz-border-radius-topright: 		1.6em;
+	-webkit-border-top-right-radius: 	1.6em;
+	border-top-right-radius: 			1.6em;
+	-moz-border-radius-bottomright: 	1.6em;
+	-webkit-border-bottom-right-radius: 1.6em;
+	border-bottom-right-radius: 		1.6em;
+}
+div#peopleSlider .ui-corner-left {
+	-moz-border-radius-topleft: 		1.6em;
+	-webkit-border-top-left-radius: 	1.6em;
+	border-top-left-radius: 			1.6em;
+	-moz-border-radius-bottomleft: 		1.6em;
+	-webkit-border-bottom-left-radius: 	1.6em;
+	border-bottom-left-radius: 			1.6em;
+}
+div#peopleSlider .ui-corner-all {
+	-moz-border-radius: 				1.6em;
+	-webkit-border-radius: 				1.6em;
+	border-radius: 						1.6em;
+}

@@ -1,0 +1,52 @@
+[
+   {
+      "id":"240",
+      "firstName":"Zach",
+      "lastName":"Collier",
+      "title":"Principal Systems Analyst, IU Mobile",
+      "institution":"Indiana University",
+      "campus":"IU University-wide",
+      "status":"Staff",
+      "email":"zcollier@indiana.edu"
+   },
+   {
+      "id":"651",
+      "firstName":"Jeremy",
+      "lastName":"Hopf",
+      "title":"Systems Analyst",
+      "institution":"UITS",
+      "campus":"IU Bloomington",
+      "status":"Staff",
+      "email":"jhopf@indiana.edu"
+   },
+   {
+      "id":"236",
+      "firstName":"Nathaniel",
+      "lastName":"Johnson",
+      "title":"Manager, ESPD",
+      "institution":"Indiana University",
+      "campus":"IU University-wide",
+      "status":"Staff",
+      "email":"natjohns@indiana.edu"
+   },
+   {
+      "id":"683",
+      "firstName":"Jeremy",
+      "lastName":"Walker",
+      "title":"Systems Analyst",
+      "institution":"ESPD",
+      "campus":"IU Bloomington",
+      "status":"Staff",
+      "email":"jtwalker@indiana.edu"
+   },
+      {
+      "id":"666",
+      "firstName":"Mitchell",
+      "lastName":"Wagner",
+      "title":"Systems Analyst Programmer, IU Mobile",
+      "institution":"Indiana University",
+      "campus":"IU Bloomington",
+      "status":"Staff",
+      "email":"mtwagner@indiana.edu"
+   }
+]

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<newsSources>
+	<newsSource>
+		<id>2</id>
+		<name>BBC - News</name>
+		<url>http://feeds.bbci.co.uk/news/rss.xml</url>
+		<order>0</order>
+		<active>true</active>
+	</newsSource>
+	<newsSource>
+		<id>1</id>
+		<name>CNN.com</name>
+		<order>1</order>
+		<active>true</active>
+	</newsSource>
+	<newsSource>
+		<id>50</id>
+		<name>CNN.com - World</name>
+		<url>http://rss.cnn.com/rss/cnn_world.rss</url>
+		<order>1</order>
+		<active>true</active>
+		<parent>1</parent>
+	</newsSource>
+	<newsSource>
+		<id>7</id>
+		<name>CNN.com - Health</name>
+		<url>http://rss.cnn.com/rss/cnn_health.rss</url>
+		<order>2</order>
+		<active>true</active>
+		<parent>1</parent>
+	</newsSource>
+	<newsSource>
+		<id>1234</id>
+		<name>CNN.com - Tech</name>
+		<url>http://rss.cnn.com/rss/cnn_tech.rss</url>
+		<order>3</order>
+		<active>true</active>
+		<parent>1</parent>
+	</newsSource>
+	<newsSource>
+		<id>1337</id>
+		<name>CNN.com - Politics</name>
+		<url>http://rss.cnn.com/rss/cnn_allpolitics.rss</url>
+		<order>4</order>
+		<active>false</active>
+		<parent>1</parent>
+	</newsSource>
+</newsSources>

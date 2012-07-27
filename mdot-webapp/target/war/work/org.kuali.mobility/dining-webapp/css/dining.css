@@ -1,0 +1,80 @@
+/*
+  Copyright 2011 The Kuali Foundation Licensed under the Educational Community
+  License, Version 2.0 (the "License"); you may not use this file except in
+  compliance with the License. You may obtain a copy of the License at
+  http://www.osedu.org/licenses/ECL-2.0 Unless required by applicable law or
+  agreed to in writing, software distributed under the License is distributed
+  on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+  express or implied. See the License for the specific language governing
+  permissions and limitations under the License.
+*/
+.ui-content {
+    overflow-x: visible;
+}
+
+ul#dropdownHeader {
+    text-align:center;
+    position:relative;
+    top:0px;
+    margin:-15px -15px 15px -15px;
+    z-index:1;
+}
+
+ul#dropdownHeader a {
+    text-align:center;
+}
+
+ul#dropdownMenu {
+    position:absolute;
+    width:100%;
+    z-index:2;
+}
+
+ul#results {
+    position:relative;
+    z-index:3;
+}
+
+span.nutrition {
+	text-indent:-9999px;
+	display:block;
+	width:30px;
+	height:30px;
+	float:right;
+	margin-left:5px;
+	background-repeat:no-repeat;
+}
+
+span.nutrition-featured { background-image:url('../images/menu-icon-featured-30x30.png'); }
+span.nutrition-glutenfree { background-image:url('../images/menu-icon-glutenfree-30x30.png'); }
+span.nutrition-halal { background-image:url('../images/menu-icon-halal-30x30.png'); }
+span.nutrition-mhealthy { background-image:url('../images/menu-icon-mhealthy-30x30.png'); }
+span.nutrition-vegan { background-image:url('../images/menu-icon-vegan-30x30.png'); }
+span.nutrition-vegetarian { background-image:url('../images/menu-icon-vegetarian-30x30.png'); }
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+       only screen and (min--moz-device-pixel-ratio: 1.5),
+       only screen and (min-resolution: 240dpi) {
+	
+	span.nutrition {
+		-moz-background-size: 30px 30px;
+		-o-background-size: 30px 30px;
+		-webkit-background-size: 30px 30px;
+		background-size: 30px 30px;
+	}
+	
+	span.nutrition-featured { background-image:url('../images/menu-icon-featured-60x60.png'); }
+	span.nutrition-glutenfree { background-image:url('../images/menu-icon-glutenfree-60x60.png'); }
+	span.nutrition-halal { background-image:url('../images/menu-icon-halal-60x60.png'); }
+	span.nutrition-mhealthy { background-image:url('../images/menu-icon-mhealthy-60x60.png'); }	
+	span.nutrition-vegan { background-image:url('../images/menu-icon-vegan-60x60.png'); }
+	span.nutrition-vegetarian { background-image:url('../images/menu-icon-vegetarian-60x60.png'); }
+}
+
+div.nutritionIcons {
+	white-space:nowrap;
+	position: absolute;
+    right: 10px;
+    top: 10px;
+    white-space: nowrap;
+}
