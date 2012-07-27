@@ -129,7 +129,7 @@ public class Service implements Serializable {
 		System.out.println(getResponseServiceCode());
 		for(Attribute a : attributes)
 		{
-			System.out.println(a.getKey()+" "+a.getValue());
+			System.out.println(a.getKey()+" "+a.getValue()+" "+a.getType());
 		}
 	}
 }

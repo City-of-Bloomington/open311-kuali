@@ -20,6 +20,12 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.net.URI;
+import java.net.URL;
+import java.net.URLConnection;
+import java.io.OutputStreamWriter;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -390,6 +396,7 @@ public class Open311Controller{
 			int i=0;
 			for(Attribute a : serviceAttributes.getAttribute()) {
 				service.getAttributes().get(i).setKey(a.getCode());
+				service.getAttributes().get(i).setType(a.getDatatype());
 				i++;
 			}	
 		}
@@ -406,8 +413,83 @@ public class Open311Controller{
 	@RequestMapping(value="/servicePost", method = RequestMethod.POST)
     public String submitService(Model uiModel, HttpServletRequest request, @ModelAttribute("service") Service service, BindingResult result) {
 		
-		service.toStr();
-		return "incident/thanks";
+		if (isValidService(service, result)) {
+			service.toStr();
+						
+			String url="api_key=5012e4acc3618&jurisdiction_id=bloomington.in.gov&service_code="+service.getResponseServiceCode()+"&lat="+service.getLatitude()+"&long="+service.getLongitude();
+			if(!(service.getAddressString() == null || "".equals(service.getAddressString().trim()))) {
+				url=url+"&address_string="+service.getAddressString();
+			}
+			
+			if(!(service.getEmail() == null || "".equals(service.getEmail().trim()))) {
+				url=url+"&email="+service.getEmail();
+			}
+			
+			if(!(service.getFname() == null || "".equals(service.getFname().trim()))) {
+				url=url+"&first_name="+service.getFname();
+			}
+			
+			if(!(service.getLname() == null || "".equals(service.getLname().trim()))) {
+				url=url+"&last_name="+service.getLname();
+			}
+			
+			if(!(service.getPhone() == null || "".equals(service.getPhone().trim()))) {
+				url=url+"&phone="+service.getPhone();
+			}
+			
+			if(!(service.getDescription() == null || "".equals(service.getDescription().trim()))) {
+				url=url+"&description="+service.getDescription();
+			}
+			
+			if(!(service.getAttributes() == null)) {
+				for(int j=0; j < service.getAttributes().size(); j++)
+				{
+					if(service.getAttributes().get(j).getType().equalsIgnoreCase("multivaluelist")) {
+						String values[]=service.getAttributes().get(j).getValue().split(",");
+						for(String s:values) {
+							url=url+"&attribute["+service.getAttributes().get(j).getKey()+"]="+s;
+						}
+					}
+					else {
+						url=url+"&attribute["+service.getAttributes().get(j).getKey()+"]="+service.getAttributes().get(j).getValue();
+					}
+				}
+			}
+			
+			URL serviceURL = null;
+			try {
+				URI uri = new URI("https",null, "bloomington.in.gov",-1,"/test/open311/v2/requests.xml", url, null);
+				serviceURL = uri.toURL();
+			} catch (Exception e) {}
+			
+			System.out.println(serviceURL.toString());
+			
+			try {
+				URLConnection conn = serviceURL.openConnection();
+				conn.setDoOutput(true);
+				conn.setUseCaches (false);
+				conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+				OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
+				wr.flush();
+
+				// Get the response
+				BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+				String line;
+				System.out.println("**********************************************");
+				
+				while ((line = rd.readLine()) != null) {
+					System.out.println(line);
+				}
+				System.out.println("**********************************************");
+				wr.close();
+				rd.close();
+			} catch (Exception e) {
+			}
+			
+			return "incident/thanks";
+		} else {
+        	return "open311/service";    	
+        }
 	}
 		
 		
@@ -494,6 +576,20 @@ public class Open311Controller{
     	Errors errors = ((Errors) result);
     	if (incident == null || incident.getSummary() == null || "".equals(incident.getSummary().trim())) {
     		errors.rejectValue("summary", "", "Please enter a summary.");
+    		hasErrors = true;
+    	}
+    	return !hasErrors;
+    }
+
+	private boolean isValidService(Service service, BindingResult result) {
+    	boolean hasErrors = false;
+    	Errors errors = ((Errors) result);
+    	if (service == null || service.getLatitude() == null || "".equals(service.getLatitude().trim())) {
+    		errors.rejectValue("latitude", "", "Please enter a Latitude.");
+    		hasErrors = true;
+    	}
+		if (service == null || service.getLongitude() == null || "".equals(service.getLongitude().trim())) {
+			errors.rejectValue("longitude", "", "Please enter a Longitude.");
     		hasErrors = true;
     	}
     	return !hasErrors;

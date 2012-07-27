@@ -225,24 +225,40 @@
 		
 		<kme:listItem>
 			First Name : <form:input path="fname" id="fname" />
+		</kme:listItem>
+		<kme:listItem>
 			Last Name : <form:input path="lname" id="lname" />
+		</kme:listItem>
+		<kme:listItem>
 			Email : <form:input path="email" id="email" />
+		</kme:listItem>
+		<kme:listItem>
 			Phone : <form:input path="phone" id="phone" />
+		</kme:listItem>
+		<kme:listItem>
 			Latitude : <form:textarea path="latitude" id="lat" class="required" /><br/><br/>
+					   <form:errors path="latitude" />
+		</kme:listItem>
+		<kme:listItem>
 			Longitude : <form:textarea path="longitude" id="lng" class="required" /><br/><br/>
+		                <form:errors path="longitude" />
+		</kme:listItem>				
+		<kme:listItem>
 			Address : <form:textarea path="addressString" id="address" cols="10" rows="8" />
-			
+		</kme:listItem>
+		<kme:listItem>
 			<div id="map_canvas"></div>
-
 		</kme:listItem>
 		
 		<form:hidden path="responseServiceCode" />
+		
 		
 		<c:forEach items="${serviceAttributes}" var="attribute" varStatus="index">
             <kme:listItem>
 			
 				<form:hidden path="attributes[${index.index}].key" />
-
+				<form:hidden path="attributes[${index.index}].type" />
+				
 				<c:if test="${attribute.datatype == 'string'}">
 					<c:out value="${attribute.description}"/>   <form:input path="attributes[${index.index}].value" class="${attribute.required}"/>
 				</c:if>
