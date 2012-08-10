@@ -23,6 +23,14 @@ import java.util.List;
 import java.net.URI;
 import java.net.URL;
 import java.net.URLConnection;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.client.methods.HttpPost;
+
 import java.io.OutputStreamWriter;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -457,23 +465,26 @@ public class Open311Controller{
 			}
 			
 			URL serviceURL = null;
+			URI uri = null;
 			try {
-				URI uri = new URI("https",null, "bloomington.in.gov",-1,"/test/open311/v2/requests.xml", url, null);
+				uri = new URI("https",null, "bloomington.in.gov",-1,"/test/open311/v2/requests.xml", url, null);
 				serviceURL = uri.toURL();
 			} catch (Exception e) {}
 			
 			System.out.println(serviceURL.toString());
 			
-			try {
-				URLConnection conn = serviceURL.openConnection();
-				conn.setDoOutput(true);
-				conn.setUseCaches (false);
-				conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-				OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
-				wr.flush();
+			final HttpClient client = new DefaultHttpClient();
+			HttpConnectionParams.setConnectionTimeout(client.getParams(), 10000); //Timeout Limit
+			HttpResponse response;
 
-				// Get the response
-				BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+			try {
+
+				final HttpPost post1 = new HttpPost(serviceURL.toString());
+				
+				response = client.execute(post1);
+
+				if(response!=null){					
+				BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
 				String line;
 				System.out.println("**********************************************");
 				
@@ -481,8 +492,7 @@ public class Open311Controller{
 					System.out.println(line);
 				}
 				System.out.println("**********************************************");
-				wr.close();
-				rd.close();
+				}	
 			} catch (Exception e) {
 			}
 			

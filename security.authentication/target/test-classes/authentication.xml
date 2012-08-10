@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment>KME Authentication Configuration</comment>
+	<entry key="loginURL">http://weblogin.umich.edu/</entry>
+	<entry key="logoutURL">logout.jsp</entry>
+	<entry key="authPath1">/oauth</entry>
+	<entry key="authPath2">/backdoor</entry>
+	<entry key="authPath3">/admin</entry>
+	<entry key="authPath4">/publishing</entry>
+</properties>
