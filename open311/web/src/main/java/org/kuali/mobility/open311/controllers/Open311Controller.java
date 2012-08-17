@@ -30,6 +30,9 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.params.HttpConnectionParams;
 
 import java.io.OutputStreamWriter;
 import java.io.BufferedReader;
@@ -407,7 +410,7 @@ public class Open311Controller{
 				service.getAttributes().get(i).setType(a.getDatatype());
 				i++;
 			}	
-		}
+		}	
 		else {
 			serviceAttributes.setAttribute(new ArrayList<Attribute>());
 		}
@@ -422,82 +425,74 @@ public class Open311Controller{
     public String submitService(Model uiModel, HttpServletRequest request, @ModelAttribute("service") Service service, BindingResult result) {
 		
 		if (isValidService(service, result)) {
-			service.toStr();
-						
-			String url="api_key=5012e4acc3618&jurisdiction_id=bloomington.in.gov&service_code="+service.getResponseServiceCode()+"&lat="+service.getLatitude()+"&long="+service.getLongitude();
-			if(!(service.getAddressString() == null || "".equals(service.getAddressString().trim()))) {
-				url=url+"&address_string="+service.getAddressString();
-			}
+
+			List<NameValuePair> pairs = new ArrayList<NameValuePair>();
 			
-			if(!(service.getEmail() == null || "".equals(service.getEmail().trim()))) {
-				url=url+"&email="+service.getEmail();
-			}
-			
-			if(!(service.getFname() == null || "".equals(service.getFname().trim()))) {
-				url=url+"&first_name="+service.getFname();
-			}
-			
-			if(!(service.getLname() == null || "".equals(service.getLname().trim()))) {
-				url=url+"&last_name="+service.getLname();
-			}
-			
-			if(!(service.getPhone() == null || "".equals(service.getPhone().trim()))) {
-				url=url+"&phone="+service.getPhone();
-			}
-			
-			if(!(service.getDescription() == null || "".equals(service.getDescription().trim()))) {
-				url=url+"&description="+service.getDescription();
-			}
-			
-			if(!(service.getAttributes() == null)) {
-				for(int j=0; j < service.getAttributes().size(); j++)
-				{
-					if(service.getAttributes().get(j).getType().equalsIgnoreCase("multivaluelist")) {
-						String values[]=service.getAttributes().get(j).getValue().split(",");
-						for(String s:values) {
-							url=url+"&attribute["+service.getAttributes().get(j).getKey()+"]="+s;
-						}
-					}
-					else {
-						url=url+"&attribute["+service.getAttributes().get(j).getKey()+"]="+service.getAttributes().get(j).getValue();
-					}
-				}
-			}
-			
-			URL serviceURL = null;
-			URI uri = null;
-			try {
-				uri = new URI("https",null, "bloomington.in.gov",-1,"/test/open311/v2/requests.xml", url, null);
-				serviceURL = uri.toURL();
-			} catch (Exception e) {}
-			
-			System.out.println(serviceURL.toString());
-			
+			String serviceURL = "https://bloomington.in.gov/test/open311/v2/requests.xml";
+
 			final HttpClient client = new DefaultHttpClient();
 			HttpConnectionParams.setConnectionTimeout(client.getParams(), 10000); //Timeout Limit
 			HttpResponse response;
 
 			try {
-
-				final HttpPost post1 = new HttpPost(serviceURL.toString());
+			
+				pairs.add(new BasicNameValuePair("api_key", "5012e4acc3618"));
+				pairs.add(new BasicNameValuePair("jurisdiction_id", "bloomington.in.gov"));
+				pairs.add(new BasicNameValuePair("service_code", service.getResponseServiceCode()));
+				pairs.add(new BasicNameValuePair("lat", service.getLatitude()));
+				pairs.add(new BasicNameValuePair("long", service.getLongitude()));
 				
+				
+				if(!(service.getAddressString() == null || "".equals(service.getAddressString().trim()))) {
+					pairs.add(new BasicNameValuePair("address_string", service.getAddressString()));
+				}
+				
+				if(!(service.getEmail() == null || "".equals(service.getEmail().trim()))) {
+					pairs.add(new BasicNameValuePair("email", service.getEmail()));
+				}
+				
+				if(!(service.getFname() == null || "".equals(service.getFname().trim()))) {
+					pairs.add(new BasicNameValuePair("first_name", service.getFname()));
+				}
+				
+				if(!(service.getLname() == null || "".equals(service.getLname().trim()))) {
+					pairs.add(new BasicNameValuePair("last_name", service.getLname()));
+				}
+				
+				if(!(service.getPhone() == null || "".equals(service.getPhone().trim()))) {
+					pairs.add(new BasicNameValuePair("phone", service.getPhone()));
+				}
+				
+				if(!(service.getDescription() == null || "".equals(service.getDescription().trim()))) {
+					pairs.add(new BasicNameValuePair("description", service.getDescription()));
+				}
+				
+				if(!(service.getAttributes() == null)) {
+					for(int j=0; j < service.getAttributes().size(); j++)
+					{
+						if(service.getAttributes().get(j).getType().equalsIgnoreCase("multivaluelist")) {
+							String values[]=service.getAttributes().get(j).getValue().split(",");
+							for(String s:values) {
+								pairs.add(new BasicNameValuePair("attribute["+service.getAttributes().get(j).getKey()+"]", s));
+							}
+						}
+						else {
+							pairs.add(new BasicNameValuePair("attribute["+service.getAttributes().get(j).getKey()+"]", service.getAttributes().get(j).getValue()));
+						}
+					}
+				}
+			
+				final HttpPost post1 = new HttpPost(serviceURL);
+				post1.setEntity(new UrlEncodedFormEntity(pairs));
+
 				response = client.execute(post1);
 
-				if(response!=null){					
-				BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
-				String line;
-				System.out.println("**********************************************");
-				
-				while ((line = rd.readLine()) != null) {
-					System.out.println(line);
-				}
-				System.out.println("**********************************************");
-				}	
 			} catch (Exception e) {
 			}
-			
+				
 			return "incident/thanks";
-		} else {
+		} 
+		else {
         	return "open311/service";    	
         }
 	}
